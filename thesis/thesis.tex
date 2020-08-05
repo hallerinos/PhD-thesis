@@ -1,0 +1,72 @@
+\documentclass{svmono}
+
+\usepackage{type1cm}
+\usepackage{makeidx}         % allows index generation
+\usepackage{graphicx}        % standard LaTeX graphics tool
+\usepackage{multicol}        % used for the two-column index
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{bbold}
+\usepackage{subfigure}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{pdfpages}
+\usepackage[top=3cm,bottom=4cm,outer=3.5cm,inner=3.5cm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{ifthen}
+\usetikzlibrary{tikzmark}
+
+\newcommand{\todo}[1]{{\color{cyan} \scshape !!! #1 !!!}}
+
+\input{definitions}
+
+\makeindex % used for the subject index
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\author{Andreas Haller}
+\title{On the tuning of particle transport,\\ the fabrication and the detection of\\ topological phases of matter}
+\subtitle{PhD Thesis}
+
+\maketitle
+
+\frontmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{dedication}
+\include{acknowledgement}
+
+\tableofcontents
+
+\include{acronym}
+
+
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{introduction}
+
+\include{parts_chapters/part_general}
+\include{parts_chapters/chapter_general}
+
+% \include{parts_chapters/part_results}
+% \include{parts_chapters/chapter_results}
+
+\include{parts_chapters/part_conclusions}
+\include{parts_chapters/chapter_conclusions}
+
+\include{references}
+
+\include{appendix}
+
+\backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \printindex
+
+\end{document}

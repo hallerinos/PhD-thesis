@@ -1,0 +1,51 @@
+\documentclass[tikz]{standalone} % border={left bottom right top}
+\input{./Tensors_2.tex}
+\input{../definitions.tex}
+\usepackage{braket}
+\begin{document}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth'
+}
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc/.style={
+      start angle=0, end angle=360,radius=0.4
+    }
+  }
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc2/.style={
+      start angle=0, end angle=360,radius=0.2
+    }
+  }
+
+\definecolor{blue}{rgb}{0.2745098039, 0.5333333333, 0.9450980392}
+\definecolor{red}{rgb}{0.9176470588, 0.2588235294, 0.2078431373}
+\definecolor{yellos}{rgb}{0.9764705882, 0.7333333333, 0.1764705882}
+\definecolor{green}{rgb}{0.2039215686, 0.662745098, 0.3176470588}
+
+\begin{tikzpicture}[scale=1.1]
+
+
+\def\numOfSites{1}
+
+\foreach \x in {0,...,\numOfSites} {
+ 	\node at (\x,0) {$\FS^{\x}$};
+ 	\draw[->, out=45, in=135] (\x+.1, 0.2) to node[pos=.5,above] {$a^\dag$} (\x+0.9, 0.2);
+ 	\draw[<-, out=-45, in=-135] (\x-.9, -0.2) to node[pos=.5,below] {$a$} (\x-.1, -0.2);
+}
+\node at (-1,0) {0};
+\node at (\numOfSites+1,0) {0};
+\end{tikzpicture}
+
+\end{document}

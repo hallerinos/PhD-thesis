@@ -1,0 +1,73 @@
+\documentclass[tikz]{standalone} % border={left bottom right top}
+\input{tikz_lib.tex}
+\begin{document}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth'
+}
+
+\def\kagomeUC#1 {
+  \begin{scope}[shift={#1}, xshift=-0.25cm,yshift=-0.125cm, scale=0.5]
+    \coordinate (D1) at (1cm, 0);
+    \coordinate (D2) at (0.5, 0.8660254038);
+    \coordinate (D3) at ($(D1)-(D2)$);
+    \draw (0,0) -- ++(D1);
+    \draw (0,0) -- ++(D2);
+    \draw (D2) -- ++(D3);
+    % \draw[dashed] (D1) -- ++(D3);
+    % \draw[dashed] (D2) -- ++(D2);
+    % \draw[dashed] (D1) -- ++(D1);
+    \cTens{red}{0.1}{(0,0)}
+    \cTens{green}{0.1}{(D1)}
+    \cTens{blue}{0.1}{(D2)}
+  \end{scope}
+}
+
+\definecolor{myblue}{rgb}{0.2745098039, 0.5333333333, 0.9450980392}
+\definecolor{myred}{rgb}{0.9176470588, 0.2588235294, 0.2078431373}
+\definecolor{myyellow}{rgb}{0.9764705882, 0.7333333333, 0.1764705882}
+\definecolor{mygreen}{rgb}{0.2039215686, 0.662745098, 0.3176470588}
+
+\begin{tikzpicture}[scale=0.5]
+
+  \fill[black!10!white,dashed] (0,0) -- ++(-2,-2) -- ++(4,0);
+
+  \fill[black!10!white,dashed] (0,0) -- ++(-1,1) -- ++(2,0);
+  \draw[->] (-3,0) -- (3,0) node[right] {$k$};
+  \draw[->] (0,-3) -- (0,3) node[above] {$\varepsilon_k$};
+
+  \draw[myred] (-2,-2) -- (2,2);
+  \draw[myblue] (-2,2) -- (2,-2);
+
+  \foreach \y in {-8,...,8}{
+    \draw[myred,fill=white] (0.25*\y,0.25*\y) circle (0.1cm);
+    \draw[myblue,fill=white] (-0.25*\y,0.25*\y) circle (0.1cm);
+  }
+  \foreach \y in {-8,...,4}{
+    \draw[myblue,fill=myblue] (-0.25*\y,0.25*\y) circle (0.1cm);
+  }
+  \foreach \y in {-8,...,4}{
+    \draw[myred,fill=myred] (0.25*\y,0.25*\y) circle (0.1cm);
+  }
+  \draw[myblue,fill=myblue] (-1.5,1.5) circle (0.1cm) coordinate (1);
+  \draw[myred,fill=myred] (1.5,1.5) circle (0.1cm) coordinate (2);
+
+  \draw[myred,->, shorten >=0.05cm, shorten <=0.05cm] (.5,.5) to[bend right] (-1.5,1.5);
+  \draw[myblue,->, shorten >=0.05cm, shorten <=0.05cm] (-.5,.5) to[bend left] (1.5,1.5);
+
+  \node[myred,above] at (2,2.1) {$R$};
+  \node[myblue,above] at (-2,2.1) {$L$};
+
+  \draw[->-=.5,dashed] (-3,-4) coordinate (lt) -- ++(3,0) coordinate (ct) node[above,pos=0.5] {$k\PQ$};
+  \draw[->-=.5] (ct) -- ++(3,0) coordinate (rt) node[above,pos=0.5] {$k+q$};
+
+  \draw[->-=.5] (lt)++(0,-2) coordinate (lb) -- ++ (3,0) coordinate (cb) node[above,pos=0.5] {$k'\PQ$};
+  \draw[->-=.5,dashed] (cb) -- ++(3,0) coordinate (rb) node[above,pos=0.5] {$k'-q$};
+
+  \draw[scatter] (ct) -- (cb);
+
+  \node at (0,-7.5) {$c^{\dag}_{k+q,R}c^{\dag}_{k'-q,L}c^{\PD}_{k'\PQ,R}c^{\PD}_{k\PQ,L}$};
+\end{tikzpicture}
+
+\end{document}
