@@ -47,7 +47,7 @@ The single particle wave function $\Psi_\alpha(r)$ of a quantum state occupying 
 \begin{align}
     \Psi_\alpha(r) \coloneqq \braket{r|\alpha}.
 \end{align}
-It is is thus understood as the coefficients for the basis transform $\ket{\alpha}\rightarrow\ket{r}$, i.e. 
+It is is thus understood as the coefficients for the basis transform $\ket{\alpha}\rightarrow\ket{r}$, i.e.
 \begin{align}
     \ket{\alpha} = \int{\rm d}{r}\, \Psi_\alpha(r) \ket{r}.
 \end{align}
@@ -103,9 +103,9 @@ Notice that through the linear map we can express the canonical basis of any sub
 and as such have a tool which promotes the vacuum to any state of the full Fock space.
 \begin{figure}
     \centering
-    \subfigure[]{\includegraphics{thesis/figures/connected_fock_space_bosons.pdf}}
+    \subfigure[]{\includegraphics{figures/connected_fock_space_bosons.pdf}}
     \hfil
-    \subfigure[]{\includegraphics{thesis/figures/connected_fock_space_fermions.pdf}}
+    \subfigure[]{\includegraphics{figures/connected_fock_space_fermions.pdf}}
     \caption{(a) Subspaces $\FS^N$ of $N$-particle bosonic states $\ket{N}$ characterized by a single quantum number. Adjacent spaces are connected through the linear maps $a^{(\dag)}$ defined in \cref{eq:creation,eq:annihilation}. (b) Subspaces for a fermionic system characterized by a single quantum number.}
     \label{fig:my_label}
 \end{figure}
@@ -151,17 +151,17 @@ To conclude this first section, a change of basis $\{\ket\alpha\}\rightarrow\{\k
 which requires only a computation of the single-particle matrix elements $\braket{\alpha|\beta}$.
 Before we move on to the representation of observables, a word on common notations: Quite often the authors assume a certain particle statistics and operator algebra at the beginning of their work which implies a constant (and thus dropped) subscript $\nu$.
 In such cases, fermionic annihilation operators are mostly identified through the letter $c$ whereas $b$ often corresponds to bosonic operators.
-Furthermore, a common convention identifies the commutator through crotchets 
+Furthermore, a common convention identifies the commutator through crotchets
 \begin{align}
     \left[\hat A,\hat B\right]\coloneqq\commutator{\hat A,\hat B}_+ = \hat A\hat B - \hat B\hat A
 \end{align}
-and the anticommutator through curly braces 
+and the anticommutator through curly braces
 \begin{align}
     \anticommutator{\hat A,\hat B}\coloneqq\commutator{\hat A,\hat B}_- = \hat A\hat B + \hat B\hat A.
 \end{align}
 Let me also provide a useful expression to evaluate the commutation relation of operator products recursively
 \begin{align}
-    \commutator{\hat A, \hat B \hat C}_\pm 
+    \commutator{\hat A, \hat B \hat C}_\pm
     &= \hat A\hat B\hat C \mp \hat B\hat C\hat A + \hat B\hat A\hat C - \hat B\hat A\hat C
     \\
     &= \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\hat C\hat A \mp \hat B\hat A\hat C
@@ -188,7 +188,7 @@ It is thus not surprizing that the general expression of such operators can be g
 
 A one-body operator $\hat o$ diagonal in an arbitrary single-particle basis $\{\alpha\}$ ($\hat o = \sum_\alpha o_{\alpha}\ket{\alpha}\bra{\alpha}$) is trivially extended to the $N$-particle states written in the same basis
 \begin{align}
-    \hat O_1 
+    \hat O_1
     = \sum_{\alpha_i} o_{\alpha_i}a^\dag_{\alpha_i}a^\pdag_{\alpha_i}.
 \end{align}
 This is most easily understood: one-body operators act on only a single entity of the full set of particles, leaving the others untouched.
@@ -198,11 +198,11 @@ In a more general basis, the one-body operator transforms according to \cref{eq:
     \hat O_1 = \sum_{\alpha, \beta}\braket{\alpha | \hat o | \beta} a^\dag_\alpha a^\pdag_\beta = \sum_{\alpha,\beta}o_{\alpha,\beta}a^\dag_\alpha a^\pdag_\beta
     \label{eq:one_body_operator}
 \end{align}
-It is now straightforward to introduce generic $2$-body operators $\hat O_2$ 
+It is now straightforward to introduce generic $2$-body operators $\hat O_2$
 \begin{align}
     \hat O_2 = \sum_{\alpha,\beta,\gamma,\delta}O_{\alpha,\beta,\gamma,\delta}a^\dag_\alpha a^\dag_\beta a^\pdag_\gamma a^\pdag_\delta
 \end{align}
-in which the expectation value reads $O_{\alpha,\beta,\gamma,\delta}\coloneqq \braket{\alpha,\beta | \hat o | \gamma,\delta}$. 
+in which the expectation value reads $O_{\alpha,\beta,\gamma,\delta}\coloneqq \braket{\alpha,\beta | \hat o | \gamma,\delta}$.
 For example, a generic two-point interaction $\hat V\ket{r_1,\dots,r_N}=1/2\sum_{n\neq m}V(r_n,r_m)\ket{r_1,\dots,r_N}$ in continuous space takes the second quantized form
 \begin{align}
     \hat V = \frac12\int{\rd^d r}\int{\rd^d r'}V(r-r')a^\dag(r)a^\dag(r')a^\pdag(r')a^\pdag(r).
@@ -228,7 +228,7 @@ and impose generic two-body interactions
     \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^rr\int\rd^dr'V(r-r')a^\dag_s(r)a^\dag_{s'}(r')a^\pdag_{s'}(r)a^\pdag_{s}(r)
 \end{align}
 with operators $a^\pdag_s(r)$ annihilating a particle with flavor $s$ at position $r$.
-The local term $V_{ae}$ is given through the local potential 
+The local term $V_{ae}$ is given through the local potential
 \begin{align}
     \hat V_{ae} = \sum_{a}V_{ei}(R_a - r)
 \end{align}
@@ -270,13 +270,13 @@ With that purpose, let us start by the free fermionic 1D Hamiltonian $\hat H_0$ 
 with dispersion relation $\varepsilon_k =\frac{k^2}{2m}$ depicted in \cref{fig:1D_quadratic_dispersion}.
 \begin{figure}
     \centering
-    \includegraphics{thesis/figures/1D_quadratic_dispersion.png}
+    \includegraphics{figures/1D_quadratic_dispersion.png}
     \caption{Quadratic dispersion relation with approximations close to the Fermi energy $\varepsilon_F$.}
     \label{fig:1D_quadratic_dispersion}
 \end{figure}
 Close to the Fermi energy $\varepsilon_F\coloneqq\varepsilon_{\pm k_F}$, we can approximate the free dispersion and obtain a system of two different species
 \begin{align}
-    \hat H_0 
+    \hat H_0
     &= \sum_k \brlr{\varepsilon_F \pm \frac{k_F}{m}(k\mp k_F) + \mathcal{O}(k^2)}\hat n_k
     \\
     &= \sum_q \brlr{\varepsilon_F + \frac{k_F}{m}q\brlr{\hat n_{q+k_F}-\hat n_{q-k_F}} + \mathcal{O}(k^2)}
@@ -304,11 +304,11 @@ This implies drastic consequences on the relevant action of operators, which we 
 Let us note here that the density operator of the left/right species $\hat\rho_{\tau,q}$, $\tau\in\{L,R\}$ applied to a Fermi sea creates stable particle-hole excitations (i.e. particles and holes propagate with the same velocity $\pm v_F$) and can thus be used to construct a complete basis of the subspace $\FS^N$ -- for this rather dry discussion, I refer to~\cite{vonDelft1998}.
 The consequences of the approximation in \cref{eq:dispersion_linearization} is easily understood in the single-particle operators
 \begin{align}
-    c^\dag_x = \frac1{\sqrt L}\sum_k \re^{-\ri k x}c^\dag_k \approx \frac1{\sqrt L}\sum_{|q|<\Gamma}\re^{-\ri (q+k_F) x}c^\dag_{R, q} + \re^{-\ri (q-k_F) x}c^\dag_{L, q} 
+    c^\dag_x = \frac1{\sqrt L}\sum_k \re^{-\ri k x}c^\dag_k \approx \frac1{\sqrt L}\sum_{|q|<\Gamma}\re^{-\ri (q+k_F) x}c^\dag_{R, q} + \re^{-\ri (q-k_F) x}c^\dag_{L, q}
 \end{align}
 which is then used to find the local density
 \begin{align}
-    \hat n(x) 
+    \hat n(x)
     &\approx \frac1L\sum_{q,q'}\brlr{\re^{-\ri (q+k_F) x}c^\dag_{R, q} + \re^{\ri (k_F-q) x}c^\dag_{L, q}}\brlr{\re^{\ri (k_F+q') x}c^\pdag_{R, q'} + \re^{-\ri (k_F-q') x}c^\pdag_{L, q'}},
     \\
     &= \hat \rho_R(x) + \hat \rho_L(x) + \re^{-2\ri k_F}c^\dag_{R}(x)c^\pdag_{L}(x) + \re^{2\ri k_F}c^\dag_{L}(x)c^\pdag_{R}(x).
@@ -319,7 +319,7 @@ The last two terms scatters right with left movers and transfers particles from 
 
 We now turn to an arbitrary two-body interaction of the form~\cref{eq:two_point_interaction} which reads
 \begin{align}
-    \hat V 
+    \hat V
     % &= \frac12\int\rd x'\int\rd x V(x'-x)c^\dag(x')c^\dag(x)c^\pdag(x)c^\pdag(x')
     % \\
     &= \frac12\int\rd r\int\rd x V(r)c^\dag(r+x)c^\dag(x)c^\pdag(x)c^\pdag(r+x),
@@ -341,17 +341,17 @@ For a later study is important to note that the amplitude of the two different $
 A full classification of hypothetical scattering processes is given in~\cref{fig:scattering_processes}.
 \begin{figure}
     \centering
-    \subfigure[]{\includegraphics[width=0.328\textwidth]{thesis/figures/g4_R.pdf}}
-    \subfigure[]{\includegraphics[width=0.328\textwidth]{thesis/figures/g4_L.pdf}}
-    \subfigure[]{\includegraphics[width=0.328\textwidth]{thesis/figures/g2.pdf}}
-    \subfigure[]{\includegraphics[width=0.328\textwidth]{thesis/figures/g1.pdf}}
-    \subfigure[]{\includegraphics[width=0.328\textwidth]{thesis/figures/g13.pdf}}
-    \subfigure[]{\includegraphics[width=0.328\textwidth]{thesis/figures/g22.pdf}}
+    \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g4_R.pdf}}
+    \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g4_L.pdf}}
+    \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g2.pdf}}
+    \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g1.pdf}}
+    \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g13.pdf}}
+    \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g22.pdf}}
     \caption{Relevant scattering processes of a generic density-density interaction in one-dimensional quantum systems. (a)/(b) The depicted scattering is commonly referred to as ``forward scattering'' $g_4$ process ($4$ right/left operators, $q\approx0$), (c) as ``backscattering'' $g_2$ process (containing $2$ pairs of right and left operators, $q\approx0$) and (d) as ``Umklapp'' process $g_\perp$ with momentum transfer $q\approx 2k_F$. Other possible scatterings like the ones depicted in (e) and (f) require the existence of high-energy excitations and are thus exponentially suppressed at low temperatures.}
     \label{fig:scattering_processes}
 \end{figure}
 This simple argumentation allows to consider only the most relevant processes at low temperatures, i.e. those presented in panels (a) - (d).
-We will call those processes forward scattering (note that we are discarding chemical potentials on the right hand side of the following equations) 
+We will call those processes forward scattering (note that we are discarding chemical potentials on the right hand side of the following equations)
 \begin{align}
     g_4\sum_{k,k'}c^\dag_{k+q,\tau}c^\dag_{k'-q,\tau}c^\pdag_{k',\tau}c^\pdag_{k,\tau} = g_4 \hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\tau},
 \end{align}
