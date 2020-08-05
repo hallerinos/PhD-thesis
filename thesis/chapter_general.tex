@@ -30,8 +30,10 @@ In order to perceive a basic overview in this topic, I conclude the introduction
 The present chapter is inspired by a number of excellent books and lectures such as~\cite{AltlandSimons2010,BruusFlensberg2004,FetterWalecka2003} extending the basic aspects of quantum mechanics to a modern way of understanding quantum field theory in general.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{On the quantization of motion and fields}
 \label{sec:on_quantization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
@@ -205,7 +207,7 @@ It is now straightforward to introduce generic $2$-body operators $\hat O_2$
 in which the expectation value reads $O_{\alpha,\beta,\gamma,\delta}\coloneqq \braket{\alpha,\beta | \hat o | \gamma,\delta}$.
 For example, a generic two-point interaction $\hat V\ket{r_1,\dots,r_N}=1/2\sum_{n\neq m}V(r_n,r_m)\ket{r_1,\dots,r_N}$ in continuous space takes the second quantized form
 \begin{align}
-    \hat V = \frac12\int{\rd^d r}\int{\rd^d r'}V(r-r')a^\dag(r)a^\dag(r')a^\pdag(r')a^\pdag(r).
+    \hat V = \frac12\int{\rd^d r}\int{\rd^d r'}V({\bf r}-{\bf r'})a^\dag({\bf r})a^\dag({\bf r'})a^\pdag({\bf r'})a^\pdag({\bf r}).
     \label{eq:two_point_interaction}
 \end{align}
 The generalization to generic $M$-body operators is now straightforward
@@ -214,48 +216,91 @@ The generalization to generic $M$-body operators is now straightforward
 \end{align}
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Nearly free systems and the Jellium model}
-\label{sec:nearly_free_systems_and_the_Jellium_model}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Periodic potentials}
+\label{sec:periodic_potentials}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 To get acquainted with the concept of second quantization, it will be useful to consider such systems which are effectively characterized by a Hamiltonian composed of generic one-body operators of the form \cref{eq:one_body_operator}, and interactions which do not alter the excitation spectrum of the non-interacting system.
 In particular, we consider the usual Hamiltonian of free particles
 \begin{align}
-    \hat H_0 = \sum_s\int\rd^d r a^\dag_s(r)\brlr{\frac{\hat p^2}{2m}+ \hat V_{ae}(r)}a_s^\pdag(r)
+    \hat H_0 = \sum_s\int\rd^d r\, a^\dag_s({\bf r})\brlr{\frac{\hat p^2}{2m}+ \hat V_{ae}({\bf r})}a_s^\pdag({\bf r})
 \end{align}
 and impose generic two-body interactions
 \begin{align}
-    \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^rr\int\rd^dr'V(r-r')a^\dag_s(r)a^\dag_{s'}(r')a^\pdag_{s'}(r)a^\pdag_{s}(r)
+    \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V({\bf r}-{\bf r'})a^\dag_s({\bf r})a^\dag_{s'}({\bf r'})a^\pdag_{s'}({\bf r})a^\pdag_{s}({\bf r})
 \end{align}
-with operators $a^\pdag_s(r)$ annihilating a particle with flavor $s$ at position $r$.
+with operators $a^\pdag_s({\bf r})$ annihilating a particle with flavor $s$ at position $\bf r$.
 The local term $V_{ae}$ is given through the local potential
 \begin{align}
-    \hat V_{ae} = \sum_{a}V_{ei}(R_a - r)
+    \hat V_{ae} = \sum_{i}V_{ae}({\bf a}_i - {\bf r})
 \end{align}
-and the value of $V_{ei}$ is determined by the relative distance from some position $R_a$.
+and the value of $V_{ae}$ is determined by the relative distance from the position ${\bf a}_i$.
 If the creation operators satisfy the anticommutator algebra in real space
 \begin{align}
-    \anticommutator{a^\pdag_s(r),a^\dag_{s'}(r')}=\delta_{s,s'}\delta(r-r'),
+    \anticommutator{a^\pdag_s({\bf r}),a^\dag_{s'}({\bf r'})}=\delta_{s,s'}\delta({\bf r}-{\bf r'}),
 \end{align}
 the Hamiltonian defines an electronic system embedded in a traditional solid state system.
 To describe the dynamics of the electrons, atoms are effectively frozen due to their significantly larger mass.
-Therefore, the positions $R_a$ can be assumed independent of time and are fixed to a periodic structure given by the underlying lattice formed by the solid.
-The bare (Bravais) lattice structure in $d$ dimensions is in general spanned by $d$ linearly independent (not necessary mutually perpendicular and normalized) vectors $r_i$ and can thus be defined as the set
+Therefore, the positions ${\bf a}_i$ can be assumed independent of time and are fixed to a periodic structure given by the underlying lattice formed by the solid.
+The bare (Bravais) lattice structure in $d$ dimensions is in general spanned by $d$ linearly independent (not necessary mutually perpendicular and normalized) vectors ${\bf R}_i$ and can thus be defined as the set
 \begin{align}
-    \mathcal{R} = \anticommutator{\sum_{i=1}^d n_i r_i,\ n_i\in\mathbb Z}.
+    \mathcal{R} = \anticommutator{\sum_{i=1}^d n_i {\bf R}_i,\ n_i\in\mathds Z}.
 \end{align}
-An additional vector $b_a$ (called the basis) is now used to define the position of an atom relative to a point of the Bravais lattice, such that every atomic position can be written as $R_a = \sum_i n_i r_i + b_a$ with some fixed $n_i$.
+Additional vectors $\{{\bf b}_i\}$ (called the basis) are used to define the position of the atoms relative to the points of the Bravais lattice, such that every atomic position can be written as ${\bf a}_j = \sum_i n_i {\bf R}_i + {\bf b}_j$ with integers $n_i\in\mathds Z$.
 The beauty of this approach becomes visible as soon as we define the lattice translation operator
 \begin{align}
-    \hat T_n : \psi(r) \mapsto \psi\brlr{r+\sum_i n_i a_i},\ n\in\mathbb Z^d
+    \hat T_{\bf n} : \psi({\bf r}) \mapsto \psi\brlr{{\bf r}+T_{\bf n}},\ T_{\bf n}\coloneqq\sum_i n_i {\bf R}_i={\bf n}\underline{\bf R}
+\end{align}
+which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bf n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bf R}\coloneqq ({\bf R}_1,\dots,{\bf R}_d)^T$.
+The atom-electron potential $V_{ae}({\bf r})$ is per definition invariant under lattice translations, and the two-body interaction $V_{ee}({\bf r}-{\bf r'})$ is clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the spectrum in eigenfunctions of $\hat T_n$.
+The eigenfunctions of all translation operators $\hat T_n$ are called Bloch waves and have the following properties
+\begin{align}
+    \hat T_{\bf n}\psi({\bf r}) &= c_{\bf n}\psi({\bf r})\\
+    c_{{\bf n}_1}c_{{\bf n}_2} &= c_{{\bf n}_1+{\bf n}_2} \Rightarrow c_{\bf n} = \re^{{\bf s}{\bf n}\underline{\bf R}},\ {\bf s}\in\mathds C^d\\
+    1=\int_V\rd^dr\,\abs{\psi({\bf r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bf n}\psi({\bf r})}^2 \Rightarrow 1=\abs{c_{\bf n}}^2 \Rightarrow {\bf s}=\ri{\bf k},\ {\bf k}\in\mathds R^d
+\end{align}
+It is now possible to phrase Bloch's theorem, which states that the eigenfunctions are
+\begin{align}
+    \psi({\bf r}) = \re^{\ri{\bf k}{\bf r}}u({\bf r}).
+\end{align}
+In particular, $\psi$ are weighted plane waves in which $u$ inherits the lattice periodicity
+\begin{align}
+    \hat T_{\bf n} u({\bf r})
+    =
+    \re^{-\ri{\bf k}\brlr{{\bf r}+{\bf n}\underline{\bf R}}}c_{\bf n}\psi({\bf r})
+    =
+    \re^{-\ri{\bf k}{\bf r}}\re^{-\ri{\bf k}{\bf n}\underline{\bf R}}c_{\bf n}\psi({\bf r})
+    =
+    u({\bf r}).
+\end{align}
+The particular form of the weights obviously depends on the form of the potential, and even for simple potentials general solutions become quite involved.
+However, there are two complementary classes of systems which are analytically amendable that I will discuss in the next two sections.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Nearly free systems}
+\label{sec:nearly_free_systems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In some materials, the conduction electrons behave as if they were ``nearly free'', such that their dynamics is not guided from the local and interaction potentials.
+Without entering into much detail, metals with such properties are found in the groups I-IV of the periodic table for which the element's bound electrons provide a Pauli blockade close to the atomic core and as such effectively screen the nuclear charge.
+In practice, the weighted function $u$ can be set to unity and as a result the kinetic Hamiltonian assumes the free particle form
+\begin{align}
+    \hat H_0 = \sum_{\bf k}\frac{{\bf k}^2}{2m}a^\dag_{{\bf k}s}a^\pdag_{{\bf k}s}.
 \end{align}
 
+[TBC...]
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Tight binding systems}
 \label{sec:tight_binding_systems}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The systems considered here are those of tightly bound constituents to the lattice centers.
+Such types can be found in traditional solid state scenarios where the nuclei are well separated beyond the typical Bohr radius of the valence electrons, in setups of ultracold atoms trapped in optical lattices (see \cref{sec:ultracold_atoms_trapped_in_optical_lattices}), in optical waveguides or polaritons.
+In \cref{part:results}, I will mostly cover theoretical aspects of tight binding models which can be experimentally realized in a variety of different setups.
+For this reason, it will be useful to review briefly how these models are motivated in general from a more traditional solid state aspect, and how they can be understood in the more modern approach of second quantization.
+
+[TBC...]
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -498,25 +543,73 @@ leading to the identity
 \begin{align}
     \hat H' = \sum_{q>0} Eq B'^\dag_q B'^\pdag_q = \sum_{q>0} \omega_q B'^\dag_q B'^\pdag_q.
 \end{align}
-Notice that this Hamiltonian is equal to the Harmonic oscillator occupying the frequencies $\omega_q\coloneqq Eq$, which is why I will proceed by reviewing some of its basic properties.
+Notice that we succeeded to rewrite the original problem to a sum of decoupled Harmonic oscillators with frequencies $\omega_q\coloneqq Eq$.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The harmonic oscillator}
 \label{sec:the_harmonic_oscillator}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Matrix product states}
+% \label{sec:matrix_product_states}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Exact diagonalization}
+% \label{sec:exact_diagonalization}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Schmidt decomposition}
+% \label{sec:schmidt_decomposition}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Variational ground state search}
+% \label{sec:variational_ground_state_search}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Time evolution}
+% \label{sec:time_evolution}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Topological phases of matter}
+% \label{sec:topological_phases_of_matter}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{The Su-Schrieffer-Heeger chain}
+% \label{sec:the_ssh_chain}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Symmetry classification of topological phases}
+% \label{sec:symmetry_classification_of_topological_phases}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Tight binding systems}
-\label{sec:tight_binding_systems}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Matrix Product States}
-\label{sec:matrix_product_states}
-
-\section{Topological phases of matter}
-\label{ch:topological_phases_of_matter}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ultracold atoms trapped in optical lattices}
-\label{ch:ultracold_atoms_trapped_in_optical_lattices}
+\label{sec:ultracold_atoms_trapped_in_optical_lattices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
