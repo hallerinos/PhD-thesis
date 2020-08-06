@@ -250,15 +250,16 @@ The beauty of this approach becomes visible as soon as we define the lattice tra
 \end{align}
 which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bf n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bf R}\coloneqq ({\bf R}_1,\dots,{\bf R}_d)^T$.
 The atom-electron potential $V_{ae}({\bf r})$ is per definition invariant under lattice translations, and the two-body interaction $V_{ee}({\bf r}-{\bf r'})$ is clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the spectrum in eigenfunctions of $\hat T_n$.
-The eigenfunctions of all translation operators $\hat T_n$ are called Bloch waves and have the following properties
+The eigenfunctions of all translation operators $\hat T_n$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the reciprocal lattice vector ${\bf k}$ arise from imposing boundary conditions. E.g. Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi({\bf r}+ L_j{\bf R}_j)=\psi({\bf r})$, which confines the allowed values of $k_j$ to multiples of $\frac{\bf G_j}{L_j}$ in which $\bf G_j$ is the reciprocal vector of ${\bf R}_j$, i.e. ${\bf G}_j {\bf R}_j = 2\pi$.}
 \begin{align}
     \hat T_{\bf n}\psi({\bf r}) &= c_{\bf n}\psi({\bf r})\\
     c_{{\bf n}_1}c_{{\bf n}_2} &= c_{{\bf n}_1+{\bf n}_2} \Rightarrow c_{\bf n} = \re^{{\bf s}{\bf n}\underline{\bf R}},\ {\bf s}\in\mathds C^d\\
     1=\int_V\rd^dr\,\abs{\psi({\bf r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bf n}\psi({\bf r})}^2 \Rightarrow 1=\abs{c_{\bf n}}^2 \Rightarrow {\bf s}=\ri{\bf k},\ {\bf k}\in\mathds R^d
 \end{align}
-It is now possible to phrase Bloch's theorem, which states that the eigenfunctions are
+It is now possible to phrase Bloch's theorem, which states that the eigenfunctions of a particle moving in periodic potentials assume the simple structure
 \begin{align}
-    \psi({\bf r}) = \re^{\ri{\bf k}{\bf r}}u({\bf r}).
+    \psi({\bf r}) = \psi_{\bf k}({\bf r}) = \re^{\ri{\bf k}{\bf r}}u_{\bf k}({\bf r}).
+    \label{eq:bloch_theorem}
 \end{align}
 In particular, $\psi$ are weighted plane waves in which $u$ inherits the lattice periodicity
 \begin{align}
@@ -270,7 +271,14 @@ In particular, $\psi$ are weighted plane waves in which $u$ inherits the lattice
     =
     u({\bf r}).
 \end{align}
-The particular form of the weights obviously depends on the form of the potential, and even for simple potentials general solutions become quite involved.
+The particular form of the weights obviously depends on the form of the potential, and even for simple potentials general solutions become quite involved\footnote{Except maybe the simplest scenario of $U=0$ with the free particle Schrödinger equation. Note that $V({\bf r})={\rm const.}$ implies to set $u=1$ in \cref{eq:bloch_theorem}.}.
+In general, the wave vector $\bf k$ seems to play the same role in the problem of motion in a periodic potental than the particle momentum $\bf p$ in the Sommerfeld theory of a free particle.
+However, this is not true as is clear from the momentum operator being $\hat{\bf p}=-\ri\hbar\nabla$, and as such
+\begin{align}
+  \hat{\bf p}\psi_{\bf k}({\bf r}) = \hbar{\bf k}\psi - \ri\hbar\re^{\ri{\bf k}{\bf r}}\nabla u_{\bf k}(\bf r).
+\end{align}
+The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\bf k}$ is only an eigenstate of momentum if the potential is a constant and $\nabla V=0$.
+It should be seen as 
 However, there are two complementary classes of systems which are analytically amendable that I will discuss in the next two sections.
 %
 %
@@ -284,8 +292,7 @@ In practice, the weighted function $u$ can be set to unity and as a result the k
 \begin{align}
     \hat H_0 = \sum_{\bf k}\frac{{\bf k}^2}{2m}a^\dag_{{\bf k}s}a^\pdag_{{\bf k}s}.
 \end{align}
-
-[TBC...]
+\tbc
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -296,8 +303,7 @@ The systems considered here are those of tightly bound constituents to the latti
 Such types can be found in traditional solid state scenarios where the nuclei are well separated beyond the typical Bohr radius of the valence electrons, in setups of ultracold atoms trapped in optical lattices (see \cref{ch:ultracold_atoms_trapped_in_optical_lattices}), in optical waveguides or polaritons.
 In \cref{part:results}, I will mostly cover theoretical aspects of tight binding models which can be experimentally realized in a variety of different setups.
 For this reason, it will be useful to review briefly how these models are motivated in general from a more traditional solid state aspect, and how they can be understood in the more modern approach of second quantization.
-
-[TBC...]
+\tbc
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -436,7 +442,7 @@ To proceed further, it will be useful to compute the commutation of the density 
     -\sigma_\tau\delta_{\tau,\tau'}\delta_{q,-q'}\frac{qL}{2\pi}
     \label{eq:chiral_density_commutation}
 \end{align}
-in which $\sigma_\tau=\pm1$ for $\tau=R/L$, respectively, and the right hand side is obtained through a projection on the ground state\footnote{This is proper approximation for small interactions only (as a result from a first order perturbative expansion). For a more thorough discussion of \cref{eq:chiral_density_commutation}, see~\cite{Giamarchi2003}.}.
+in which $\sigma_\tau=\pm1$ for $\tau=R/L$, respectively, and the right hand side is obtained through a projection on the ground state\footnote{This is a reasonable approximation for small interactions only (as a result from a first order perturbative expansion). For a more thorough discussion of \cref{eq:chiral_density_commutation}, see~\cite{Giamarchi2003}.}.
 We are now in shape to define canonical bosonic operators representing the interaction degrees of freedom for $q>0$
 \begin{align}
     b^\dag_{+q} \coloneqq \sqrt\frac{2\pi}{qL}\hat\rho_{-q,L},
@@ -547,9 +553,6 @@ Notice that we succeeded to rewrite the original problem to a sum of decoupled H
 \section{The harmonic oscillator}
 \label{sec:the_harmonic_oscillator}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 % %
 % %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
