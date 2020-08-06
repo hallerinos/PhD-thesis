@@ -278,7 +278,6 @@ However, this is not true as is clear from the momentum operator being $\hat{\bf
   \hat{\bf p}\psi_{\bf k}({\bf r}) = \hbar{\bf k}\psi - \ri\hbar\re^{\ri{\bf k}{\bf r}}\nabla u_{\bf k}(\bf r).
 \end{align}
 The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\bf k}$ is only an eigenstate of momentum if the potential is a constant and $\nabla V=0$.
-It should be seen as 
 However, there are two complementary classes of systems which are analytically amendable that I will discuss in the next two sections.
 %
 %
@@ -287,7 +286,7 @@ However, there are two complementary classes of systems which are analytically a
 \label{sec:nearly_free_systems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In some materials, the conduction electrons behave as if they were ``nearly free'', such that their dynamics is not guided from the local and interaction potentials.
-Without entering into much detail, metals with such properties are found in the groups I-IV of the periodic table for which the element's bound electrons provide a Pauli blockade close to the atomic core and as such effectively screen the nuclear charge.
+Metals with such properties are found in the groups I-IV of the periodic table for which the element's bound electrons provide a Pauli blockade close to the atomic core and as such effectively screen the nuclear charge.
 In practice, the weighted function $u$ can be set to unity and as a result the kinetic Hamiltonian assumes the free particle form
 \begin{align}
     \hat H_0 = \sum_{\bf k}\frac{{\bf k}^2}{2m}a^\dag_{{\bf k}s}a^\pdag_{{\bf k}s}.
@@ -522,8 +521,8 @@ As a final step, we want to find the spectrum of the previous Hamiltonian throug
 \begin{align}
     \hat H = \sum_{q>0} qB^\dag_q H B^\pdag_q = \sum_{q>0} qB'^\dag_q T^\dag H T B'^\pdag_q
 \end{align}
-which brings $H' = T^\dag H T$ into a diagonal form.
-Naive (unitary) rotations would not preserve the commutators of the spinor $B$, defined through
+is in its diagonal form.
+Naive (unitary) rotations do not preserve the commutators of the spinor $B$, defined through
 \begin{align}
     \commutator{B_{q,i}^\pdag,B^\dag_{q,j}} = \commutator{B_{q,i}'^\pdag,B'^\dag_{q,j}} = (-\sigma_z)_{i,j}
 \end{align}
@@ -531,14 +530,14 @@ which imposes an additional constraint on the transformation $T$ according to
 \begin{align}
     T^\dag\sigma_z T = \sigma_z,
     \quad
-    \sigma_z T^\dag\sigma_z = T^{-1}.
+    T^\dag = \sigma_zT^{-1}\sigma_z.
 \end{align}
-We thus find the sought similarity relation between the original and the rotated basis
+We thus find the similarity relation between the original and the rotated basis according to
 \begin{align}
-    T^\dag HT = H' \Leftrightarrow \sigma_z T^\dag\sigma_z\sigma_z H T = T^{-1}\sigma_z H T = \sigma_z H',
+    H'=T^\dag HT =\sigma_z T^{-1}\sigma_z H T,
 \end{align}
-which implies that $\sigma_z H'=E\sigma_z$ is composed from the eigenvalues of $\sigma_z H$.
-Explicit knowledge of the transformation is not needed, and we arrive at the appealing result $H' = E\mathbb1$ with the $2\times2$ unit matrix $\mathbb1$ and scalar eigenvalue
+which allows us to solve the eigenvalue equation of $\sigma_z H$ without knowing the explicit form of $T$.
+Since $\sigma_zH$ has vanishing trace, its spectrum is symmetric $\pm E$ and we arrive at the appealing result $H' = E\mathbb1$ with the $2\times2$ unit matrix $\mathbb1$ and scalar eigenvalue
 \begin{align}
     E = \frac1{2\pi}\sqrt{\brlr{2\pi v_F + g_4}^2 - g_2^2}
 \end{align}
