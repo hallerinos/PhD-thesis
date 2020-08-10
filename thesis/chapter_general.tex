@@ -220,78 +220,65 @@ The generalization to generic $M$-body operators is now straightforward
 To get acquainted with the concept of second quantization, it will be useful to consider such systems which are effectively characterized by a Hamiltonian composed of generic one-body operators of the form \cref{eq:one_body_operator}, and interactions which do not alter the excitation spectrum of the non-interacting system.
 In particular, we consider the usual Hamiltonian of free particles
 \begin{align}
-    \hat H_0 = \sum_s\int\rd^d r\, a^\dag_s({\bf r})\brlr{\frac{\hat p^2}{2m}+ \hat V_{ae}({\bf r})}a_s^\pdag({\bf r})
+    \hat H_0 = \sum_s\int\rd^d r\, a^\dag_s({\bf r})\brlr{\frac{\hat p^2}{2m}+V_{ae}({\bf r})}a_s^\pdag({\bf r})
 \end{align}
 and impose generic two-body interactions
 \begin{align}
-    \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V({\bf r}-{\bf r'})a^\dag_s({\bf r})a^\dag_{s'}({\bf r'})a^\pdag_{s'}({\bf r})a^\pdag_{s}({\bf r})
+    \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V_{ee}({\bf r}-{\bf r'})a^\dag_s({\bf r})a^\dag_{s'}({\bf r'})a^\pdag_{s'}({\bf r})a^\pdag_{s}({\bf r})
 \end{align}
 with operators $a^\pdag_s({\bf r})$ annihilating a particle with flavor $s$ at position $\bf r$.
-The local term $V_{ae}$ is given through the local potential
+The term $V_{ae}$ is a collection of $N_a$ local potentials
 \begin{align}
-    \hat V_{ae} = \sum_{i}V_{ae}({\bf a}_i - {\bf r})
+    V_{ae}({\bf r}) = \sum_{i=1}^{N_a}V_{ae}({\bf R}_i - {\bf r})
 \end{align}
-and the value of $V_{ae}$ is determined by the relative distance from the position ${\bf a}_i$.
+and the value of $V_{ae}$ is determined by the relative distance from the position ${\bf R}_i$.
 If the creation operators satisfy the anticommutator algebra in real space
 \begin{align}
     \anticommutator{a^\pdag_s({\bf r}),a^\dag_{s'}({\bf r'})}=\delta_{s,s'}\delta({\bf r}-{\bf r'}),
 \end{align}
-the Hamiltonian defines an electronic system embedded in a traditional solid state system.
-To describe the dynamics of the electrons, atoms are effectively frozen due to their significantly larger mass.
-Therefore, the positions ${\bf a}_i$ can be assumed independent of time and are fixed to a periodic structure given by the underlying lattice formed by the solid.
-The bare (Bravais) lattice structure in $d$ dimensions is in general spanned by $d$ linearly independent (not necessary mutually perpendicular and normalized) vectors ${\bf R}_i$ and can thus be defined as the set
+the Hamiltonian defines a spinful fermionic system embedded in a crystal lattice (e.g. electrons of traditional solid state setups).
+The bare (Bravais) lattice structure in $d$ dimensions is in general spanned by $d$ linearly independent (not necessary mutually perpendicular and normalized) vectors ${\bf x}_i$ and can thus be defined as the set
 \begin{align}
-    \mathcal{R} = \anticommutator{\sum_{i=1}^d n_i {\bf R}_i,\ n_i\in\mathds Z}.
+    \mathcal{R} = \anticommutator{\sum_{i=1}^d n_i {\bf x}_i,\ n_i\in\mathds Z}.
 \end{align}
-Additional vectors $\{{\bf b}_i\}$ (called the basis) are used to define the position of the atoms relative to the points of the Bravais lattice, such that every atomic position can be written as ${\bf a}_j = \sum_i n_i {\bf R}_i + {\bf b}_j$ with integers $n_i\in\mathds Z$.
+Additional vectors $\{{\bf b}_i\}$ (sometimes called the basis) are used to define the position of the potential minima relative to the points of the Bravais lattice, such that every position in the primitive cell is given by ${\bf R}_j = \sum_i n_i {\bf x}_i + {\bf b}_j$ with integers $n_i\in\mathds Z$.
 The beauty of this approach becomes visible as soon as we define the lattice translation operator
 \begin{align}
-    \hat T_{\bf n} : \psi({\bf r}) \mapsto \psi\brlr{{\bf r}+T_{\bf n}},\ T_{\bf n}\coloneqq\sum_i n_i {\bf R}_i={\bf n}\underline{\bf R}
+    \hat T_{\bf n} : \psi_\alpha({\bf r}) \mapsto \psi_\alpha\brlr{{\bf r}+T_{\bf n}},\ T_{\bf n}\coloneqq\sum_i n_i {\bf x}_i={\bf n}\underline{\bf x}
 \end{align}
-which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bf n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bf R}\coloneqq ({\bf R}_1,\dots,{\bf R}_d)^T$.
-The atom-electron potential $V_{ae}({\bf r})$ is per definition invariant under lattice translations, and the two-body interaction $V_{ee}({\bf r}-{\bf r'})$ is clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the spectrum in eigenfunctions of $\hat T_n$.
-The eigenfunctions of all translation operators $\hat T_n$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the reciprocal lattice vector ${\bf k}$ arise from imposing boundary conditions. E.g. Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi({\bf r}+ L_j{\bf R}_j)=\psi({\bf r})$, which confines the allowed values of $k_j$ to multiples of $\frac{\bf G_j}{L_j}$ in which $\bf G_j$ is the reciprocal vector of ${\bf R}_j$, i.e. ${\bf G}_j {\bf R}_j = 2\pi$.}
+which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bf n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bf x}\coloneqq ({\bf x}_1,\dots,{\bf x}_d)^T$.
+The local potential $V_{ae}({\bf r})$ is per definition invariant under lattice translations, and the two-body interaction $V_{ee}({\bf r}-{\bf r'})$ is clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the spectrum in eigenfunctions of $\hat T_n$.
+The eigenfunctions of all translation operators $\hat T_n$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the reciprocal lattice vector ${\bf k}$ arise from imposing boundary conditions. E.g. Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bf r}+ L_j{\bf R}_j)=\psi_\alpha({\bf r})$, which confines the allowed values of $k_j$ to multiples of $\frac{\bf G_j}{L_j}$ in which $\bf G_j$ is the reciprocal vector of ${\bf R}_j$, i.e. ${\bf G}_j {\bf R}_j = 2\pi/a$.}
 \begin{align}
-    \hat T_{\bf n}\psi({\bf r}) &= c_{\bf n}\psi({\bf r})\\
-    c_{{\bf n}_1}c_{{\bf n}_2} &= c_{{\bf n}_1+{\bf n}_2} \Rightarrow c_{\bf n} = \re^{{\bf s}{\bf n}\underline{\bf R}},\ {\bf s}\in\mathds C^d\\
-    1=\int_V\rd^dr\,\abs{\psi({\bf r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bf n}\psi({\bf r})}^2 \Rightarrow 1=\abs{c_{\bf n}}^2 \Rightarrow {\bf s}=\ri{\bf k},\ {\bf k}\in\mathds R^d
+    \hat T_{\bf n}\psi_{\alpha}({\bf r}) &= c_{\bf n}\psi_{\alpha}({\bf r})\\
+    c_{{\bf n}_1}c_{{\bf n}_2} &= c_{{\bf n}_1+{\bf n}_2} \Rightarrow c_{\bf n} = \re^{{\bf s}{\bf n}\underline{\bf x}},\ {\bf s}\in\mathds C^d\\
+    1=\int_V\rd^dr\,\abs{\psi_{\alpha}({\bf r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bf n}\psi_{\alpha}({\bf r})}^2 \Rightarrow 1=\abs{c_{\bf n}}^2 \Rightarrow {\bf s}=\ri{\bf k},\ {\bf k}\in\mathds R^d
 \end{align}
 It is now possible to phrase Bloch's theorem, which states that the eigenfunctions of a particle moving in periodic potentials assume the simple structure
 \begin{align}
-    \psi({\bf r}) = \psi_{\bf k}({\bf r}) = \re^{\ri{\bf k}{\bf r}}u_{\bf k}({\bf r}).
+    \psi_\alpha({\bf r}) = \psi_{\alpha{\bf k}}({\bf r}) = \re^{\ri{\bf k}{\bf r}}u_{\alpha{\bf k}}({\bf r}).
     \label{eq:bloch_theorem}
 \end{align}
-In particular, $\psi$ are weighted plane waves in which $u$ inherits the lattice periodicity
+Note that we introduced the translation operators eigenvalue argument $\bf k$ in the list of good quantum numbers.
+In particular, $\psi$ is a weighted plane wave in which $u$ inherits the lattice periodicity
 \begin{align}
-    \hat T_{\bf n} u({\bf r})
+    \hat T_{\bf n} u_{\alpha{\bf k}}({\bf r})
     =
-    \re^{-\ri{\bf k}\brlr{{\bf r}+{\bf n}\underline{\bf R}}}c_{\bf n}\psi({\bf r})
+    \re^{-\ri{\bf k}\brlr{{\bf r}+{\bf n}\underline{\bf x}}}c_{\bf n}\psi_{\alpha{\bf k}}({\bf r})
     =
-    \re^{-\ri{\bf k}{\bf r}}\re^{-\ri{\bf k}{\bf n}\underline{\bf R}}c_{\bf n}\psi({\bf r})
+    \re^{-\ri{\bf k}{\bf r}}\re^{-\ri{\bf k}{\bf n}\underline{\bf x}}c_{\bf n}\psi_{\alpha{\bf k}}({\bf r})
     =
     u({\bf r}).
 \end{align}
-The particular form of the weights obviously depends on the form of the potential, and even for simple potentials general solutions become quite involved\footnote{Except maybe the simplest scenario of $U=0$ with the free particle Schrödinger equation. Note that $V({\bf r})={\rm const.}$ implies to set $u=1$ in \cref{eq:bloch_theorem}.}.
-In general, the wave vector $\bf k$ seems to play the same role in the problem of motion in a periodic potental than the particle momentum $\bf p$ in the Sommerfeld theory of a free particle.
+The particular expression of the weights obviously depends on the potential, and even for simple problems general solutions become quite involved\footnote{Except maybe the trivial scenario $V_{ae}({\bf r})={\rm const.}$ which implies to set $u=1$ in \cref{eq:bloch_theorem}.}.
+In general, the wave vector $\bf k$ seems to play the same role as the particle momentum $\bf p$ in the Sommerfeld theory of a free particle.
 However, this is not true as is clear from the momentum operator being $\hat{\bf p}=-\ri\hbar\nabla$, and as such
 \begin{align}
-  \hat{\bf p}\psi_{\bf k}({\bf r}) = \hbar{\bf k}\psi - \ri\hbar\re^{\ri{\bf k}{\bf r}}\nabla u_{\bf k}(\bf r).
+  \hat{\bf p}\psi_{\alpha{\bf k}}({\bf r}) = \hbar{\bf k}\psi_{\alpha{\bf k}} - \ri\hbar\re^{\ri{\bf k}{\bf r}}\nabla u_{\bf k}(\bf r).
 \end{align}
-The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\bf k}$ is only an eigenstate of momentum if the potential is a constant and $\nabla V=0$.
-However, there are two complementary classes of systems which are analytically amendable that I will discuss in the next two sections.
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Nearly free systems}
-\label{sec:nearly_free_systems}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In some materials, the conduction electrons behave as if they were ``nearly free'', such that their dynamics is not guided from the local and interaction potentials.
-Metals with such properties are found in the groups I-IV of the periodic table for which the element's bound electrons provide a Pauli blockade close to the atomic core and as such effectively screen the nuclear charge.
-In practice, the weighted function $u$ can be set to unity and as a result the kinetic Hamiltonian assumes the free particle form
-\begin{align}
-    \hat H_0 = \sum_{\bf k}\frac{{\bf k}^2}{2m}a^\dag_{{\bf k}s}a^\pdag_{{\bf k}s}.
-\end{align}
-\tbc
+The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bf k}}$ is only an eigenstate of momentum if the potential is a constant and $\nabla V_{ae}=0$.
+Derivation of the effective potential $V_{ae}$ for real materials and analytic solutions of the Bloch weights $u$ are often quite involved and not of particular interest for this thesis (for more details, see~\cite{AshcroftMermin1978,Czycholl2016}).
+Moreover, the introduction of tightly bound systems makes clear that a full knowledge of $u$ is not necessary to characterize the spectrum of such systems.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -302,7 +289,46 @@ The systems considered here are those of tightly bound constituents to the latti
 Such types can be found in traditional solid state scenarios where the nuclei are well separated beyond the typical Bohr radius of the valence electrons, in setups of ultracold atoms trapped in optical lattices (see \cref{ch:ultracold_atoms_trapped_in_optical_lattices}), in optical waveguides or polaritons.
 In \cref{part:results}, I will mostly cover theoretical aspects of tight binding models which can be experimentally realized in a variety of different setups.
 For this reason, it will be useful to review briefly how these models are motivated in general from a more traditional solid state aspect, and how they can be understood in the more modern approach of second quantization.
-\tbc
+\\
+
+For this purpose, we assume the problem of the single-particle Hamiltonian $\hat H_0$ to be fully solved, such that the Bloch states $\psi_{\alpha{\bf k}}$ are determined, diagonalize $\hat H_0$ and have energy eigenvalues $\varepsilon_{\alpha{\bf k}}$.
+This allows to introduce the Wannier basis -- a localized basis composed of the Bloch states and defined as
+\begin{align}
+    \ket{w_{\alpha{\bf R}}} = \frac1{\sqrt N}\sum_{\bf k}\re^{-\ri{\bf k}{\bf R}}\ket{\psi_{\alpha{\bf k}}}.
+    \label{eq:wannier_states}
+\end{align}
+We can translate this to the language of second quantization by the notion that
+the transformation between Bloch and Wannier basis is unitary, such that annihilation and creation operators of Wannier and Bloch states are set in relation by
+\begin{align}
+    a^\dag_{\alpha{\bf R}s} = \frac1{\sqrt N}\sum_{\bf k}\re^{-\ri{\bf k}{\bf R}}a^\dag_{\alpha{\bf k}s},
+    \quad
+    a^\dag_{\alpha{\bf k}s} = \frac1{\sqrt N}\sum_{\bf R}\re^{+\ri{\bf k}{\bf R}}a^\dag_{\alpha{\bf R}s}.
+    \label{eq:wannier_states_2}
+\end{align}
+Now, the free Hamiltonian is diagonal in the Bloch basis with energies $\varepsilon_{\alpha{\bf k}} = \int\rd^dr\, \psi_{\alpha{\bf k}}^* \hat H_0 \psi_{\alpha{\bf k}}$ and can be rewritten as
+\begin{align}
+    \hat H_0
+    =
+    \sum_{{\bf k},s}\varepsilon_{\alpha{\bf k}}a^\dag_{\alpha{\bf k}s}a^\pdag_{\alpha{\bf k}s}
+    \overset{\text{\cref{eq:wannier_states_2}}}{=}
+    \frac1N\sum_{\bf R, R', k}
+    \re^{\ri{\bf k}\brlr{{\bf R}-{\bf R'}}}
+    \varepsilon_{\alpha{\bf k}}
+    a^\dag_{\alpha{\bf R}s}a^\pdag_{\alpha{\bf R'}s}
+    =
+    \sum_{i, j}t_{\alpha,i,j}
+    a^\dag_{\alpha{\bf R}_is}a^\pdag_{\alpha{\bf R}_js}
+    \label{eq:tight_binding_hamiltonian}
+\end{align}
+in which the matrix element $t_{\alpha,i,j}$ denotes the strength of the scattering process between two lattice centers, to be determined through the energy bands
+\begin{align}
+    t_{\alpha,i,j} \coloneqq \frac1N\sum_{\bf k}\re^{\ri{\bf k}\brlr{{\bf R}_i-{\bf R}_j}}\varepsilon_{\alpha{\bf k}}.
+\end{align}
+On a more abstract level, the Hamiltonian \cref{eq:tight_binding_hamiltonian} denotes quantum particles hopping between lattice sites which are connected through the matrix $t_{\alpha}$.
+Similarly, the interaction $\hat V_{ee}$ can be written as
+\begin{align}
+    \hat V_{ee} = \sum_{i,i',j,j'}\sum_{\beta,s,s'}U_{i,i',j,j'}a^\dag_{\alpha,{\bf R}_is}a^\dag_{\beta,{\bf R}_{i'}s'}a^\pdag_{\beta,{\bf R}_js'}a^\pdag_{\alpha,{\bf R}_{j'}s}
+\end{align}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
