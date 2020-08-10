@@ -224,7 +224,7 @@ In particular, we consider the usual Hamiltonian of free particles
 \end{align}
 and impose generic two-body interactions
 \begin{align}
-    \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V_{ee}({\bf r}-{\bf r'})a^\dag_s({\bf r})a^\dag_{s'}({\bf r'})a^\pdag_{s'}({\bf r})a^\pdag_{s}({\bf r})
+    \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V_{ee}({\bf r}-{\bf r'})a^\dag_s({\bf r})a^\dag_{s'}({\bf r'})a^\pdag_{s'}({\bf r}')a^\pdag_{s}({\bf r})
 \end{align}
 with operators $a^\pdag_s({\bf r})$ annihilating a particle with flavor $s$ at position $\bf r$.
 The term $V_{ae}$ is a collection of $N_a$ local potentials
@@ -247,8 +247,8 @@ The beauty of this approach becomes visible as soon as we define the lattice tra
     \hat T_{\bf n} : \psi_\alpha({\bf r}) \mapsto \psi_\alpha\brlr{{\bf r}+T_{\bf n}},\ T_{\bf n}\coloneqq\sum_i n_i {\bf x}_i={\bf n}\underline{\bf x}
 \end{align}
 which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bf n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bf x}\coloneqq ({\bf x}_1,\dots,{\bf x}_d)^T$.
-The local potential $V_{ae}({\bf r})$ is per definition invariant under lattice translations, and the two-body interaction $V_{ee}({\bf r}-{\bf r'})$ is clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the spectrum in eigenfunctions of $\hat T_n$.
-The eigenfunctions of all translation operators $\hat T_n$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the reciprocal lattice vector ${\bf k}$ arise from imposing boundary conditions. E.g. Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bf r}+ L_j{\bf R}_j)=\psi_\alpha({\bf r})$, which confines the allowed values of $k_j$ to multiples of $\frac{\bf G_j}{L_j}$ in which $\bf G_j$ is the reciprocal vector of ${\bf R}_j$, i.e. ${\bf G}_j {\bf R}_j = 2\pi/a$.}
+The local potential $V_{ae}({\bf r})$ is per definition invariant under lattice translations, and the two-body interaction $V_{ee}({\bf r}-{\bf r'})$ is clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the eigenfunctions of $\hat H$ as eigenfunctions of $\hat T_{\bf n}$.
+The eigenfunctions of all translation operators $\hat T_{\bf n}$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the reciprocal lattice vector ${\bf k}$ arise from imposing boundary conditions. E.g. Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bf r}+ L_j{\bf R}_j)=\psi_\alpha({\bf r})$, which confines the allowed values of $k_j$ to multiples of $\frac{\bf G_j}{L_j}$ in which $\bf G_j$ is the reciprocal vector of ${\bf R}_j$, i.e. ${\bf G}_j {\bf R}_j = 2\pi/a$.}
 \begin{align}
     \hat T_{\bf n}\psi_{\alpha}({\bf r}) &= c_{\bf n}\psi_{\alpha}({\bf r})\\
     c_{{\bf n}_1}c_{{\bf n}_2} &= c_{{\bf n}_1+{\bf n}_2} \Rightarrow c_{\bf n} = \re^{{\bf s}{\bf n}\underline{\bf x}},\ {\bf s}\in\mathds C^d\\
@@ -276,9 +276,44 @@ However, this is not true as is clear from the momentum operator being $\hat{\bf
 \begin{align}
   \hat{\bf p}\psi_{\alpha{\bf k}}({\bf r}) = \hbar{\bf k}\psi_{\alpha{\bf k}} - \ri\hbar\re^{\ri{\bf k}{\bf r}}\nabla u_{\bf k}(\bf r).
 \end{align}
-The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bf k}}$ is only an eigenstate of momentum if the potential is a constant and $\nabla V_{ae}=0$.
+The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bf k}}$ is only an eigenstate of momentum if the potential is constant and thus $\nabla V_{ae}=0$.
 Derivation of the effective potential $V_{ae}$ for real materials and analytic solutions of the Bloch weights $u$ are often quite involved and not of particular interest for this thesis (for more details, see~\cite{AshcroftMermin1978,Czycholl2016}).
 Moreover, the introduction of tightly bound systems makes clear that a full knowledge of $u$ is not necessary to characterize the spectrum of such systems.
+However, to get an idea of the form of the Bloch functions, we here consider the simplest scenario of a particle moving in a one-dimensional potential
+\begin{align}
+    V_{ae}(x) = V_0 \Theta\brlr{\frac a2+{\rm mod}_{b}{x}}\Theta\brlr{\frac a2-{\rm mod}_{b}{x}},\ V_0,a,b\in\mathds R
+\end{align}
+such that the nontrivial contours are of size $b$ and displaced by a factor $a$ called the lattice spacing.
+In order to preserve the periodicity of the potential, the system size must be commensurate to the lattice spacing $a$, i.e. $L\in a\mathds N$.
+To simplify our problem, we can consider it to be a set of two different regions, i.e. (i) a free particle $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (i)}(x) = E\psi_{\rm (i)}(x)$ and (ii) a free particle moving in a constant potential $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (ii)}(x) = (E-V_0)\psi_{\rm (ii)}(x)$.
+The solution of both regions is a superposition of two plain waves with momentum $\hbar^2\alpha^2 = 2mE$ and $\hbar^2\beta^2 = 2m(E-V_0)$ and to read-out the Bloch factors I conveniently factor a crystal momentum
+\begin{align}
+    \psi_{\alpha k}^{\rm (i)}(x) = \re^{\ri kx}\brlr{A\re^{\ri (\alpha-k) x} + A'\re^{-\ri (\alpha+k) x}},
+    \quad
+    \psi_{\beta k}^{\rm (ii)}(x) = \re^{\ri kx}\brlr{B\re^{\ri (\beta-k) x} + B'\re^{-\ri (\beta+k) x}}.
+\end{align}
+We thus have
+\begin{align}
+    u_{\alpha k}^{\rm (i)}(x) = A\re^{\ri (\alpha-k) x} + A'\re^{-\ri (\alpha+k) x},
+    \quad
+    u_{\beta k}^{\rm (ii)}(x) = B\re^{\ri (\beta-k) x} + B'\re^{-\ri (\beta+k) x},
+\end{align}
+which need to be smooth for all repetitions $n\in 0,\dots,L-1$,
+\begin{align}
+    \psi_{\alpha k}^{\rm (i)}(na+0^-)=\psi_{\beta k}^{\rm (ii)}(na+0^+),
+    \quad
+    {\psi_{\alpha k}^{\rm (i)}}'(na+0^-)={\psi_{\beta k}^{\rm (ii)}}'(na+0^+),
+    \\
+    \psi_{\alpha k}^{\rm (i)}(na+b+0^-)=\psi_{\beta k}^{\rm (ii)}(na+b+0^+),
+    \quad
+    {\psi_{\alpha k}^{\rm (i)}}'(na+b+0^-)={\psi_{\beta k}^{\rm (ii)}}'(na+b+0^+),
+\end{align}
+and the Bloch functions are periodic
+\begin{align}
+    u_{\alpha k}^{\rm (i)}(x+b) = u_{\alpha k}^{\rm (i)}(x),
+    \quad
+    {u_{\alpha k}^{\rm (i)}}'(x+b) = {u_{\alpha k}^{\rm (i)}}'(x).
+\end{align}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -325,10 +360,16 @@ in which the matrix element $t_{\alpha,i,j}$ denotes the strength of the scatter
     t_{\alpha,i,j} \coloneqq \frac1N\sum_{\bf k}\re^{\ri{\bf k}\brlr{{\bf R}_i-{\bf R}_j}}\varepsilon_{\alpha{\bf k}}.
 \end{align}
 On a more abstract level, the Hamiltonian \cref{eq:tight_binding_hamiltonian} denotes quantum particles hopping between lattice sites which are connected through the matrix $t_{\alpha}$.
-Similarly, the interaction $\hat V_{ee}$ can be written as
+Similarly, the two-body interaction $\hat V_{ee}$ can be written as
 \begin{align}
-    \hat V_{ee} = \sum_{i,i',j,j'}\sum_{\beta,s,s'}U_{i,i',j,j'}a^\dag_{\alpha,{\bf R}_is}a^\dag_{\beta,{\bf R}_{i'}s'}a^\pdag_{\beta,{\bf R}_js'}a^\pdag_{\alpha,{\bf R}_{j'}s}
+    \hat V_{ee} = \sum_{i,i',j,j'}\sum_{s,s'}V_{i,i',j,j'}a^\dag_{\alpha,{\bf R}_is}a^\dag_{\alpha,{\bf R}_{i'}s'}a^\pdag_{\alpha,{\bf R}_js'}a^\pdag_{\alpha,{\bf R}_{j'}s}
 \end{align}
+in which the matrix element of the interaction is given by the integral
+\begin{align}
+    V_{i,i',j,j'} = \frac12\int\rd^dr\int\rd^dr'\,w^*_{\alpha{\bf R}_i}({\bf r})w^*_{\alpha{\bf R}_{i'}}({\bf r}')w_{\alpha{\bf R}_j}({\bf r}')w_{\alpha{\bf R}_{j'}}({\bf r})V_{ee}({\bf r-r'}).
+\end{align}
+The explicit determination of the matrix elements requires knowledge of the form of the Wannier states which, for real materials, is quite involved and a field of research on its own.
+To get an idea, we can solve the Schrödinger equation for a particularly easy model -- the Konig-Penney model, for which the potential is 
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
