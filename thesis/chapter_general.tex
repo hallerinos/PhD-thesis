@@ -217,17 +217,17 @@ The generalization to generic $M$-body operators is now straightforward
 \section{Periodic potentials}
 \label{sec:periodic_potentials}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To get acquainted with the concept of second quantization, it will be useful to consider such systems which are effectively characterized by a Hamiltonian composed of generic one-body operators of the form \cref{eq:one_body_operator}, and interactions which do not alter the excitation spectrum of the non-interacting system.
-In particular, we consider the usual Hamiltonian of free particles
+To see when second quantization becomes useful, I go one step back and review basic properties of a single particle moving in a periodic potential which are effectively characterized by a Hamiltonian composed of generic one-body operators of the form \cref{eq:one_body_operator}.
+In particular, the Hamiltonian considered here reads
 \begin{align}
     \hat H_0 = \sum_s\int\rd^d r\, a^\dag_s({\bf r})\brlr{\frac{\hat p^2}{2m}+V_{ae}({\bf r})}a_s^\pdag({\bf r})
 \end{align}
-and impose generic two-body interactions
-\begin{align}
-    \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V_{ee}({\bf r}-{\bf r'})a^\dag_s({\bf r})a^\dag_{s'}({\bf r'})a^\pdag_{s'}({\bf r}')a^\pdag_{s}({\bf r})
-\end{align}
+% and later impose generic two-body interactions
+% \begin{align}
+%     \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V_{ee}({\bf r}-{\bf r'})a^\dag_s({\bf r})a^\dag_{s'}({\bf r'})a^\pdag_{s'}({\bf r}')a^\pdag_{s}({\bf r})
+% \end{align}
 with operators $a^\pdag_s({\bf r})$ annihilating a particle with flavor $s$ at position $\bf r$.
-The term $V_{ae}$ is a collection of $N_a$ local potentials
+The local potential $\hat V_{ae}$ is a collection of $N_a$ local potentials
 \begin{align}
     V_{ae}({\bf r}) = \sum_{i=1}^{N_a}V_{ae}({\bf R}_i - {\bf r})
 \end{align}
@@ -254,7 +254,7 @@ The eigenfunctions of all translation operators $\hat T_{\bf n}$ are called Bloc
     c_{{\bf n}_1}c_{{\bf n}_2} &= c_{{\bf n}_1+{\bf n}_2} \Rightarrow c_{\bf n} = \re^{{\bf s}{\bf n}\underline{\bf x}},\ {\bf s}\in\mathds C^d\\
     1=\int_V\rd^dr\,\abs{\psi_{\alpha}({\bf r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bf n}\psi_{\alpha}({\bf r})}^2 \Rightarrow 1=\abs{c_{\bf n}}^2 \Rightarrow {\bf s}=\ri{\bf k},\ {\bf k}\in\mathds R^d
 \end{align}
-It is now possible to phrase Bloch's theorem, which states that the eigenfunctions of a particle moving in periodic potentials assume the simple structure
+It is now possible to phrase Bloch's theorem~\cite{Bloch1929}, which states that the eigenfunctions of a particle moving in periodic potentials assume the simple structure
 \begin{align}
     \psi_\alpha({\bf r}) = \psi_{\alpha{\bf k}}({\bf r}) = \re^{\ri{\bf k}{\bf r}}u_{\alpha{\bf k}}({\bf r}).
     \label{eq:bloch_theorem}
@@ -278,42 +278,137 @@ However, this is not true as is clear from the momentum operator being $\hat{\bf
 \end{align}
 The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bf k}}$ is only an eigenstate of momentum if the potential is constant and thus $\nabla V_{ae}=0$.
 Derivation of the effective potential $V_{ae}$ for real materials and analytic solutions of the Bloch weights $u$ are often quite involved and not of particular interest for this thesis (for more details, see~\cite{AshcroftMermin1978,Czycholl2016}).
-Moreover, the introduction of tightly bound systems makes clear that a full knowledge of $u$ is not necessary to characterize the spectrum of such systems.
-However, to get an idea of the form of the Bloch functions, we here consider the simplest scenario of a particle moving in a one-dimensional potential
+Moreover, the introduction of tightly bound systems will make clear that a full knowledge of $u$ is not necessary to characterize the spectrum of such systems.
+\\
+
+However, to get an idea of the form of the Bloch functions, let us solve the Schrödinger equation of a particle moving along one-dimension in the potential
 \begin{align}
-    V_{ae}(x) = V_0 \Theta\brlr{\frac a2+{\rm mod}_{b}{x}}\Theta\brlr{\frac a2-{\rm mod}_{b}{x}},\ V_0,a,b\in\mathds R
+    V_{ae}(x) = V_0 \Theta\brlr{b-{\rm mod}_{a}\commutator{x+b}},\ V_0,a,b\in\mathds R_+
+    \label{eq:kronig_penney_potential}
 \end{align}
 such that the nontrivial contours are of size $b$ and displaced by a factor $a$ called the lattice spacing.
-In order to preserve the periodicity of the potential, the system size must be commensurate to the lattice spacing $a$, i.e. $L\in a\mathds N$.
+This model is called the Kronig-Penney model~\cite{KronigPenney1931} and provides analytic solutions of bound electrons in the limit $b\rightarrow0$ and $V_0\rightarrow\infty$ such that $bV_0=P$, which is depicted in \cref{fig:kronig_penney_potential}.
+\begin{figure}
+    \centering
+    \includegraphics{figures/kronig_penney_potential.png}
+    \caption{Contour of the periodic potential \cref{eq:kronig_penney_potential}. The shaded region in blue highlights the limits $b\rightarrow0$ and $V_0\rightarrow\infty$ while preserving a finite product $bV_0=P$ at all times.}
+    \label{fig:kronig_penney_potential}
+\end{figure}
+
+% In order to preserve the periodicity of the potential, the system size must be commensurate to the lattice spacing $a$, i.e. $L\in a\mathds N$.
 To simplify our problem, we can consider it to be a set of two different regions, i.e. (i) a free particle $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (i)}(x) = E\psi_{\rm (i)}(x)$ and (ii) a free particle moving in a constant potential $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (ii)}(x) = (E-V_0)\psi_{\rm (ii)}(x)$.
-The solution of both regions is a superposition of two plain waves with momentum $\hbar^2\alpha^2 = 2mE$ and $\hbar^2\beta^2 = 2m(E-V_0)$ and to read-out the Bloch factors I conveniently factor a crystal momentum
+To derive the transcendental equation for the allowed energy eigenvalues it is useful to consider states with energies above the well ($E>V_0$) and to read-out the Bloch weights I conveniently factor a crystal momentum
 \begin{align}
     \psi_{\alpha k}^{\rm (i)}(x) = \re^{\ri kx}\brlr{A\re^{\ri (\alpha-k) x} + A'\re^{-\ri (\alpha+k) x}},
     \quad
-    \psi_{\beta k}^{\rm (ii)}(x) = \re^{\ri kx}\brlr{B\re^{\ri (\beta-k) x} + B'\re^{-\ri (\beta+k) x}}.
+    \psi_{\beta k}^{\rm (ii)}(x) = \re^{\ri kx}\brlr{B\re^{\ri (\beta-k) x} + B'\re^{-\ri (\beta+k) x}},
 \end{align}
+with $\hbar^2\alpha^2 = 2mE$, $\hbar^2\beta^2 = 2m(E-V_0)$.
 We thus have
 \begin{align}
     u_{\alpha k}^{\rm (i)}(x) = A\re^{\ri (\alpha-k) x} + A'\re^{-\ri (\alpha+k) x},
     \quad
     u_{\beta k}^{\rm (ii)}(x) = B\re^{\ri (\beta-k) x} + B'\re^{-\ri (\beta+k) x},
 \end{align}
-which need to be smooth for all repetitions $n\in 0,\dots,L-1$,
+which need to be smooth at the discontinuities of the potential,
 \begin{align}
-    \psi_{\alpha k}^{\rm (i)}(na+0^-)=\psi_{\beta k}^{\rm (ii)}(na+0^+),
+    \psi_{\alpha k}^{\rm (i)}(0^-)=\psi_{\beta k}^{\rm (ii)}(0^+),
     \quad
-    {\psi_{\alpha k}^{\rm (i)}}'(na+0^-)={\psi_{\beta k}^{\rm (ii)}}'(na+0^+),
+    {\psi_{\alpha k}^{\rm (i)}}'(0^-)={\psi_{\beta k}^{\rm (ii)}}'(0^+),
     \\
-    \psi_{\alpha k}^{\rm (i)}(na+b+0^-)=\psi_{\beta k}^{\rm (ii)}(na+b+0^+),
+    \psi_{\beta k}^{\rm (ii)}(-b+0^-) = \psi_{\alpha k}^{\rm (i)}(-b+0^+),
     \quad
-    {\psi_{\alpha k}^{\rm (i)}}'(na+b+0^-)={\psi_{\beta k}^{\rm (ii)}}'(na+b+0^+),
+    {\psi_{\beta k}^{\rm (ii)}}'(-b+0^-)={\psi_{\alpha k}^{\rm (i)}}'(-b+0^+),
 \end{align}
-and the Bloch functions are periodic
+and the Bloch functions inherit the potential's periodicity
 \begin{align}
-    u_{\alpha k}^{\rm (i)}(x+b) = u_{\alpha k}^{\rm (i)}(x),
+    u_{\alpha k}^{\rm (i)}(x+a) = u_{\alpha k}^{\rm (i)}(x),
     \quad
-    {u_{\alpha k}^{\rm (i)}}'(x+b) = {u_{\alpha k}^{\rm (i)}}'(x).
+    u_{\alpha k}^{\rm (i)}{}'(x+a) = u_{\alpha k}^{\rm (i)}{}'(x),
+    \\
+    u_{\beta k}^{\rm (ii)}(x+a) = u_{\beta k}^{\rm (ii)}(x),
+    \quad
+    u_{\beta k}^{\rm (ii)}{}'(x+a) = u_{\beta k}^{\rm (ii)}{}'(x).
 \end{align}
+All in all, we obtain the following matrix equation for the vector $(A,A',B,B')^T$ [{\bf ADAPT!!!}]
+\begin{align}
+    \begin{pmatrix}
+        % \re^{\ri\alpha na} & \re^{-\ri\alpha na} &
+        % -\re^{\ri\beta na} & -\re^{-\ri\beta na} \\
+        % %
+        % \ri\alpha\re^{\ri\alpha na} & -\ri\alpha\re^{-\ri\alpha na} &
+        % -\ri\beta\re^{\ri\beta na}  & +\ri\beta\re^{-\ri\beta na}  \\
+        % %
+        % -\re^{\ri\alpha (na+b)} & -\re^{-\ri\alpha (na+b)} &
+        %  \re^{\ri\beta (na+b)}  &  \re^{-\ri\beta (na+b)} \\
+        % %
+        % -\ri\alpha\re^{\ri\alpha (na+b)} & \ri\alpha\re^{-\ri\alpha (na+b)} &
+        %  \ri\beta\re^{\ri\beta (na+b)}   & -\ri\beta\re^{-\ri\beta (na+b)} \\
+        % %
+        % \re^{\ri(\alpha-k) (na+b)} & \re^{-\ri(\alpha+k) (na+b)} &
+        % -\re^{\ri(\beta-k) (b)}    & -\re^{-\ri(\beta+k) (b)} \\
+        % %
+        % \ri(\alpha-k)\re^{\ri(\alpha-k) (na+b)} & -\ri(\alpha+k)\re^{-\ri(\alpha+k) (na+b)} &
+        % -\ri(\beta-k)\re^{\ri(\beta-k) (b)}     & \ri(\beta+k)\re^{-\ri(\beta+k) (b)}
+        1 & 1 &
+        -1 & -1 \\
+        %
+        \alpha & -\alpha &
+        -\beta  & +\beta  \\
+        %
+        \re^{\ri(\alpha-k) (a+b)} & \re^{-\ri(\alpha+k) (a+b)} &
+        -\re^{\ri(\beta-k) (b)}    & -\re^{-\ri(\beta+k) (b)} \\
+        %
+        (\alpha-k)\re^{\ri(\alpha-k) (a+b)} & -(\alpha+k)\re^{-\ri(\alpha+k) (a+b)} &
+        -(\beta-k)\re^{\ri(\beta-k) b}     & (\beta+k)\re^{-\ri(\beta+k) b}
+    \end{pmatrix}
+\end{align}
+which leads to nontrivial results, if the determinant equals zero, i.e.
+\begin{align}
+    \cos (a k) = \cos(b\beta) \cos(\alpha(a+b)) + \frac{\alpha^2+\beta^2}{2\alpha\beta}\sin(b\beta)\sin(\alpha(a+b)).
+    \label{eq:konig_penney_energies_free}
+\end{align}
+For bound solutions inside the wells $0<E<V_0$, the equation reads
+\begin{align}
+    \cos (a k) = \cosh(b\beta) \cos(\alpha(a+b)) + \frac{{\color{red}{\rm [CHECK]}\pm}\alpha^2+\beta^2}{2\alpha\beta}\sinh(b\beta)\sin(\alpha(a+b)).
+    \label{eq:konig_penney_energies_bound}
+\end{align}
+We now reduce the complexity of the transcendental equation by using the aforementioned limits
+\begin{align}
+    b\rightarrow0,
+    \quad
+    V_0\rightarrow\infty,
+    \quad
+    bV_0 = P
+    \\
+    \Rightarrow
+    b\beta^2\rightarrow -2mP/\hbar^2,
+    \quad
+    \cos(b\beta)\rightarrow 1,
+    \quad
+    \sin(b\beta)\rightarrow b\beta
+\end{align}
+which simplify \cref{eq:konig_penney_energies_bound} to $\cos (a k) = f(\alpha a)$ in which
+\begin{align}
+    f(\alpha a) = \cos(\alpha a) + \frac{P}{\alpha a}\sin(\alpha a).
+    \label{eq:konig_penney_energies_bound_simplified}
+\end{align}
+The right-hand-side of \cref{eq:konig_penney_energies_bound_simplified} is in general not bound to the interval $[-1,+1]$ spanned by $\cos(ak)$ and establishes values of $\alpha$ (thus, the square-root of the energy $E$) for which no real-valued momentum can be found (see \cref{fig:kronig_penney_transcendental}).
+\begin{figure}
+    \centering
+    \includegraphics{figures/kronig_penney_transcendental.png}
+    \caption{Exemplified shape of $f(\alpha a)$ for $P=20$ given by \cref{eq:konig_penney_energies_bound_simplified}. The shaded red regions represent forbidden energies and thus establish what is known as band gaps.}
+    \label{fig:kronig_penney_transcendental}
+\end{figure}
+Such energies are called forbidden and realize a first understanding of band-gaps induced by the nonzero lattice potential $V_0>0$.
+In particular, if $P=0$, we are left with the energy-momentum relation of free electrons $k=\alpha$ and thus $E={\hbar^2k^2}/({2ma^2})$.
+If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $f$, which are given by the dominating term and yield discretized energies $E=(\hbar n\pi)^2/(2ma^2)$ spanned by integer numbers ($n=1,2,\dots$).
+\begin{figure}
+    \centering
+    \includegraphics{figures/kronig_penney_dispersion_1.png}
+    \caption{Shapes of the dispersion relation $(\alpha a/\pi)^2$ versus crystal momentum $ka/\pi$ given by \cref{eq:konig_penney_energies_bound_simplified}. The shaded red regions represent forbidden energies and thus establish what is known as band gaps.}
+    \label{fig:kronig_penney_dispersion}
+\end{figure}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -369,7 +464,6 @@ in which the matrix element of the interaction is given by the integral
     V_{i,i',j,j'} = \frac12\int\rd^dr\int\rd^dr'\,w^*_{\alpha{\bf R}_i}({\bf r})w^*_{\alpha{\bf R}_{i'}}({\bf r}')w_{\alpha{\bf R}_j}({\bf r}')w_{\alpha{\bf R}_{j'}}({\bf r})V_{ee}({\bf r-r'}).
 \end{align}
 The explicit determination of the matrix elements requires knowledge of the form of the Wannier states which, for real materials, is quite involved and a field of research on its own.
-To get an idea, we can solve the Schrödinger equation for a particularly easy model -- the Konig-Penney model, for which the potential is 
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
