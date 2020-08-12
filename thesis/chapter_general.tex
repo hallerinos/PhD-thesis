@@ -297,81 +297,58 @@ This model is called the Kronig-Penney model~\cite{KronigPenney1931} and provide
 
 % In order to preserve the periodicity of the potential, the system size must be commensurate to the lattice spacing $a$, i.e. $L\in a\mathds N$.
 To simplify our problem, we can consider it to be a set of two different regions, i.e. (i) a free particle $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (i)}(x) = E\psi_{\rm (i)}(x)$ and (ii) a free particle moving in a constant potential $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (ii)}(x) = (E-V_0)\psi_{\rm (ii)}(x)$.
-To derive the transcendental equation for the allowed energy eigenvalues it is useful to consider states with energies above the well ($E>V_0$) and to read-out the Bloch weights I conveniently factor a crystal momentum
+In order to read-out the Bloch weights I conveniently factor a crystal momentum from the wavefunction
 \begin{align}
-    \psi_{\alpha k}^{\rm (i)}(x) = \re^{\ri kx}\brlr{A\re^{\ri (\alpha-k) x} + A'\re^{-\ri (\alpha+k) x}},
-    \quad
-    \psi_{\beta k}^{\rm (ii)}(x) = \re^{\ri kx}\brlr{B\re^{\ri (\beta-k) x} + B'\re^{-\ri (\beta+k) x}},
-\end{align}
-with $\hbar^2\alpha^2 = 2mE$, $\hbar^2\beta^2 = 2m(E-V_0)$.
-We thus have
-\begin{align}
-    u_{\alpha k}^{\rm (i)}(x) = A\re^{\ri (\alpha-k) x} + A'\re^{-\ri (\alpha+k) x},
-    \quad
-    u_{\beta k}^{\rm (ii)}(x) = B\re^{\ri (\beta-k) x} + B'\re^{-\ri (\beta+k) x},
-\end{align}
-which need to be smooth at the discontinuities of the potential,
-\begin{align}
-    \psi_{\alpha k}^{\rm (i)}(0^-)=\psi_{\beta k}^{\rm (ii)}(0^+),
-    \quad
-    {\psi_{\alpha k}^{\rm (i)}}'(0^-)={\psi_{\beta k}^{\rm (ii)}}'(0^+),
+    \psi_{\alpha k}^{\rm (i)}(x) = \re^{\ri kx}u_{\alpha k}^{\rm (i)}(x),
+    \
+    \psi_{\beta k}^{\rm (ii)}(x) = \re^{\ri kx}u_{\beta k}^{\rm (ii)}(x),
     \\
-    \psi_{\beta k}^{\rm (ii)}(-b+0^-) = \psi_{\alpha k}^{\rm (i)}(-b+0^+),
+    u_{\alpha k}^{\rm (i)}(x) = A\re^{(\tau\alpha-\ri k) x} + A'\re^{-(\tau\alpha+\ri k) x},
+    \
+    u_{\beta k}^{\rm (ii)}(x) = B\re^{(\tau'\beta-\ri k) x} + B'\re^{-(\tau'\beta+\ri k) x},
+\end{align}
+with $\hbar^2\alpha^2 = 2m\abs{E}$, $\hbar^2\beta^2 = 2m\abs{(E-V_0)}$, $\tau^2=-\sign{E}$ and $\tau'^2=-\sign{E-V_0}$\footnote{Such that plane waves with $\tau=\tau'=\ri$ are obtained for $E>V_0$.}.
+The wavefunctions are supposed to be smooth at the boundaries\footnote{I hereby use the notation of limits from above or below, i.e. $f(0^\pm)=\lim_{\epsilon\rightarrow0}f(\epsilon)$ for $\epsilon>0$.}, which results in
+\begin{align}
+    % \psi_{\alpha k}^{\rm (i)}(0^+)=\psi_{\beta k}^{\rm (ii)}(0^-),
+    % \quad
+    % {\psi_{\alpha k}^{\rm (i)}}'(0^+)={\psi_{\beta k}^{\rm (ii)}}'(0^-),
+    % \\
+    \psi_{\alpha k}^{\rm (i)}(-b+0^-)=\psi_{\beta k}^{\rm (ii)}(-b+0^+),
     \quad
-    {\psi_{\beta k}^{\rm (ii)}}'(-b+0^-)={\psi_{\alpha k}^{\rm (i)}}'(-b+0^+),
+    {\psi_{\alpha k}^{\rm (i)}}'(-b+0^-)={\psi_{\beta k}^{\rm (ii)}}'(-b+0^+),
 \end{align}
 and the Bloch functions inherit the potential's periodicity
 \begin{align}
-    u_{\alpha k}^{\rm (i)}(x+a) = u_{\alpha k}^{\rm (i)}(x),
+    u_{\alpha k}^{\rm (i)}(a+0^+) = u_{\alpha k}^{\rm (ii)}(0^-),
     \quad
-    u_{\alpha k}^{\rm (i)}{}'(x+a) = u_{\alpha k}^{\rm (i)}{}'(x),
-    \\
-    u_{\beta k}^{\rm (ii)}(x+a) = u_{\beta k}^{\rm (ii)}(x),
-    \quad
-    u_{\beta k}^{\rm (ii)}{}'(x+a) = u_{\beta k}^{\rm (ii)}{}'(x).
+    u_{\alpha k}^{\rm (i)}{}'(a+0^+) = u_{\alpha k}^{\rm (ii)}{}'(0^-).
 \end{align}
-All in all, we obtain the following matrix equation for the vector $(A,A',B,B')^T$ [{\bf ADAPT!!!}]
+In summary, the following matrix equation is derived
 \begin{align}
-    \begin{pmatrix}
-        % \re^{\ri\alpha na} & \re^{-\ri\alpha na} &
-        % -\re^{\ri\beta na} & -\re^{-\ri\beta na} \\
-        % %
-        % \ri\alpha\re^{\ri\alpha na} & -\ri\alpha\re^{-\ri\alpha na} &
-        % -\ri\beta\re^{\ri\beta na}  & +\ri\beta\re^{-\ri\beta na}  \\
-        % %
-        % -\re^{\ri\alpha (na+b)} & -\re^{-\ri\alpha (na+b)} &
-        %  \re^{\ri\beta (na+b)}  &  \re^{-\ri\beta (na+b)} \\
-        % %
-        % -\ri\alpha\re^{\ri\alpha (na+b)} & \ri\alpha\re^{-\ri\alpha (na+b)} &
-        %  \ri\beta\re^{\ri\beta (na+b)}   & -\ri\beta\re^{-\ri\beta (na+b)} \\
-        % %
-        % \re^{\ri(\alpha-k) (na+b)} & \re^{-\ri(\alpha+k) (na+b)} &
-        % -\re^{\ri(\beta-k) (b)}    & -\re^{-\ri(\beta+k) (b)} \\
-        % %
-        % \ri(\alpha-k)\re^{\ri(\alpha-k) (na+b)} & -\ri(\alpha+k)\re^{-\ri(\alpha+k) (na+b)} &
-        % -\ri(\beta-k)\re^{\ri(\beta-k) (b)}     & \ri(\beta+k)\re^{-\ri(\beta+k) (b)}
-        1 & 1 &
-        -1 & -1 \\
+    M\coloneqq\begin{pmatrix}
+        +\re^{-\tau\alpha b} & +\re^{+\tau\alpha b} &
+        -\re^{-\tau'\beta  b} & -\re^{+\tau'\beta  b} \\
         %
-        \alpha & -\alpha &
-        -\beta  & +\beta  \\
+        +\alpha\re^{-\tau\alpha b} & -\alpha\re^{+\tau\alpha b} &
+        -\beta \re^{-\tau'\beta  b} & +\beta \re^{+\tau'\beta  b} \\
         %
-        \re^{\ri(\alpha-k) (a+b)} & \re^{-\ri(\alpha+k) (a+b)} &
-        -\re^{\ri(\beta-k) (b)}    & -\re^{-\ri(\beta+k) (b)} \\
+        +\re^{(\tau\alpha-\ri k) a}  & +\re^{-(\tau\alpha+\ri k) a} &
+        -1                      & -1                      \\
         %
-        (\alpha-k)\re^{\ri(\alpha-k) (a+b)} & -(\alpha+k)\re^{-\ri(\alpha+k) (a+b)} &
-        -(\beta-k)\re^{\ri(\beta-k) b}     & (\beta+k)\re^{-\ri(\beta+k) b}
-    \end{pmatrix}
+        +(\tau\alpha-\ri k)\re^{(\tau\alpha-\ri k) a}    & -(\tau\alpha+\ri k)\re^{-(\tau\alpha+\ri k) a} &
+        -(\tau'\beta-\ri k)                          & -(\tau'\beta +\ri k)                       \\
+    \end{pmatrix},
 \end{align}
-which leads to nontrivial results, if the determinant equals zero, i.e.
+satisfying $M(A,A',B,B')^T=0$.
+For nontrivial results, the determinant of $M$ should be equal to zero, which is satisfied for solutions of the transcendental equation
 \begin{align}
-    \cos (a k) = \cos(b\beta) \cos(\alpha(a+b)) + \frac{\alpha^2+\beta^2}{2\alpha\beta}\sin(b\beta)\sin(\alpha(a+b)).
-    \label{eq:konig_penney_energies_free}
-\end{align}
-For bound solutions inside the wells $0<E<V_0$, the equation reads
-\begin{align}
-    \cos (a k) = \cosh(b\beta) \cos(\alpha(a+b)) + \frac{{\color{red}{\rm [CHECK]}\pm}\alpha^2+\beta^2}{2\alpha\beta}\sinh(b\beta)\sin(\alpha(a+b)).
-    \label{eq:konig_penney_energies_bound}
+    \cos(a k)
+    =
+    \cosh(\alpha\tau(a+b))\cosh(b\beta\tau')
+    +
+    \frac{\alpha^2\tau^2+\beta^2\tau'^2}{2\alpha\beta\tau\tau'}\sinh(\alpha\tau(a+b))\sinh(b\beta\tau).
+    \label{eq:kronig_penney_transcendental_equation}
 \end{align}
 We now reduce the complexity of the transcendental equation by using the aforementioned limits
 \begin{align}
@@ -379,21 +356,26 @@ We now reduce the complexity of the transcendental equation by using the aforeme
     \quad
     V_0\rightarrow\infty,
     \quad
-    bV_0 = P
+    bV_0 = {\rm constant}
     \\
     \Rightarrow
-    b\beta^2\rightarrow -2mP/\hbar^2,
+    b\beta^2\rightarrow 2mbV_0/\hbar^2,
     \quad
-    \cos(b\beta)\rightarrow 1,
+    \cosh(b\beta\tau')\rightarrow 1,
     \quad
-    \sin(b\beta)\rightarrow b\beta
+    \sinh(b\beta\tau')\rightarrow b\beta\tau'
 \end{align}
-which simplify \cref{eq:konig_penney_energies_bound} to $\cos (a k) = f(\alpha a)$ in which
+which approximate \cref{eq:kronig_penney_transcendental_equation} in the limit of narrow and strong periodic potentials\footnote{This limit is actually equivalent to a potential composed by delta-distributions.}
+\begin{align}
+    f(\alpha a) = \cosh(\alpha\tau a) + \tau'^2\frac{P}{\alpha\tau a}\sinh(\alpha\tau a).
+    \label{eq:kronig_penney_transcendental_equation_approx}
+\end{align}
+If we now assume bound states of the form $0<E<V_0$, we have $\tau^2=-1$ and $\tau'^2=+1$, such that \cref{eq:kronig_penney_transcendental_equation_approx} becomes
 \begin{align}
     f(\alpha a) = \cos(\alpha a) + \frac{P}{\alpha a}\sin(\alpha a).
-    \label{eq:konig_penney_energies_bound_simplified}
+    \label{eq:kronig_penney_transcendental_equation_approx_bound}
 \end{align}
-The right-hand-side of \cref{eq:konig_penney_energies_bound_simplified} is in general not bound to the interval $[-1,+1]$ spanned by $\cos(ak)$ and establishes values of $\alpha$ (thus, the square-root of the energy $E$) for which no real-valued momentum can be found (see \cref{fig:kronig_penney_transcendental}).
+The right-hand-side of \cref{eq:kronig_penney_transcendental_equation_approx_bound} is in general not bound to the interval $[-1,+1]$ spanned by $\cos(ak)$ and establishes values of $\alpha$ (thus, the square-root of the energy $E$) for which no real-valued momentum can be found (see \cref{fig:kronig_penney_transcendental}).
 \begin{figure}
     \centering
     \includegraphics{figures/kronig_penney_transcendental.png}
@@ -407,7 +389,7 @@ If we approach $P\rightarrow\infty$, the allowed energies are formed by the root
     \centering
     \includegraphics{figures/kronig_penney_dispersion_1.png}
     \includegraphics{figures/kronig_penney_dispersion_2.png}
-    \caption{Shapes of the dispersion relation $(\alpha a/\pi)^2$ versus crystal momentum $ka/\pi$ given by \cref{eq:konig_penney_energies_bound_simplified}. The shaded red regions represent forbidden energies and thus establish what is known as band gaps.}
+    \caption{Shapes of the dispersion relation $(\alpha a/\pi)^2$ versus crystal momentum $ka/\pi$ given by \cref{eq:konig_penney_energies_bound_simplified}. Different opacity (transparent to colors) represent increasing values of $P\in\{0.1,1,5,20,50,1000\}$.}
     \label{fig:kronig_penney_dispersion}
 \end{figure}
 %
