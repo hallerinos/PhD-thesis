@@ -32,7 +32,7 @@ Perhaps the most interesting behavior of quantum many-body physics is that of so
 In order to perceive a basic overview in this topic, I conclude the introduction with a review on the classification of non-interacting topological matter and finish with some general statements on interacting topological insulators.
 \\
 
-The present chapter is inspired by a number of excellent books and lectures such as~\cite{AltlandSimons2010,BruusFlensberg2004,FetterWalecka2003} extending the basic aspects of quantum mechanics to a modern way of understanding quantum field theory in general.
+The present chapter is inspired by a number of excellent books and lectures such as~\cite{AshcroftMermin1978,AltlandSimons2010,BruusFlensberg2004,Czycholl2016,FetterWalecka2003,Giamarchi2003} extending the basic aspects of quantum mechanics to a modern way of understanding quantum field theory in general.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Creation and annihilation operators}
@@ -217,7 +217,7 @@ The generalization to generic $M$-body operators is now straightforward
 \section{Periodic potentials}
 \label{sec:periodic_potentials}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To see when second quantization becomes useful, I go one step back and review basic properties of a single particle moving in a periodic potential which are effectively characterized by a Hamiltonian composed of generic one-body operators of the form \cref{eq:one_body_operator}.
+To really see when second quantization becomes useful, I go one step back and review basic properties of a single particle moving in a periodic potential which are effectively characterized by a Hamiltonian composed of generic one-body operators of the form \cref{eq:one_body_operator}.
 In particular, the Hamiltonian considered here reads
 \begin{align}
     \hat H_0 = \sum_s\int\rd^d r\, a^\dag_s({\bf r})\brlr{\frac{\hat p^2}{2m}+V_{ae}({\bf r})}a_s^\pdag({\bf r})
@@ -297,7 +297,7 @@ This model is called the Kronig-Penney model~\cite{KronigPenney1931} and provide
 
 % In order to preserve the periodicity of the potential, the system size must be commensurate to the lattice spacing $a$, i.e. $L\in a\mathds N$.
 To simplify our problem, we can consider it to be a set of two different regions, i.e. (i) a free particle $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (i)}(x) = E\psi_{\rm (i)}(x)$ and (ii) a free particle moving in a constant potential $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (ii)}(x) = (E-V_0)\psi_{\rm (ii)}(x)$.
-In order to read-out the Bloch weights I conveniently factor a crystal momentum from the wavefunction
+In order to read-out the Bloch weights I conveniently factor a crystal momentum from the wave function
 \begin{align}
     \psi_{\alpha k}^{\rm (i)}(x) = \re^{\ri kx}u_{\alpha k}^{\rm (i)}(x),
     \
@@ -308,7 +308,7 @@ In order to read-out the Bloch weights I conveniently factor a crystal momentum 
     u_{\beta k}^{\rm (ii)}(x) = B\re^{(\tau'\beta-\ri k) x} + B'\re^{-(\tau'\beta+\ri k) x},
 \end{align}
 with $\hbar^2\alpha^2 = 2m\abs{E}$, $\hbar^2\beta^2 = 2m\abs{(E-V_0)}$, $\tau^2=-\sign{E}$ and $\tau'^2=-\sign{E-V_0}$\footnote{Such that plane waves with $\tau=\tau'=\ri$ are obtained for $E>V_0$.}.
-The wavefunctions are supposed to be smooth at the boundaries\footnote{I hereby use the notation of limits from above or below, i.e. $f(0^\pm)=\lim_{\epsilon\rightarrow0}f(\epsilon)$ for $\epsilon>0$.}, which results in
+The wave functions are supposed to be smooth at the boundaries\footnote{I hereby use the notation of limits from above or below, i.e. $f(0^\pm)=\lim_{\epsilon\rightarrow0}f(\epsilon)$ for $\epsilon>0$.}, which results in
 \begin{align}
     % \psi_{\alpha k}^{\rm (i)}(0^+)=\psi_{\beta k}^{\rm (ii)}(0^-),
     % \quad
@@ -326,31 +326,29 @@ and the Bloch functions inherit the potential's periodicity
 \end{align}
 In summary, the following matrix equation is derived
 \begin{align}
-    M\coloneqq\begin{pmatrix}
-        +\re^{-\tau\alpha b} & +\re^{+\tau\alpha b} &
-        -\re^{-\tau'\beta  b} & -\re^{+\tau'\beta  b} \\
+    M=\begin{pmatrix}
+        1 & 1 & -1 & -1\\
         %
-        +\alpha\re^{-\tau\alpha b} & -\alpha\re^{+\tau\alpha b} &
-        -\beta \re^{-\tau'\beta  b} & +\beta \re^{+\tau'\beta  b} \\
+        \tau\alpha & -\tau\alpha & -\tau'\beta & \tau'\beta\\
         %
-        +\re^{(\tau\alpha-\ri k) a}  & +\re^{-(\tau\alpha+\ri k) a} &
-        -1                      & -1                      \\
+        \re^{(\tau \alpha-\ri k)(a-b)}  & \re^{-(\tau \alpha+\ri k) (a-b)} &
+        -\re^{-(\tau'\beta -\ri k)b}     & -\re^{ (\tau'\beta+\ri k)b} \\
         %
-        +(\tau\alpha-\ri k)\re^{(\tau\alpha-\ri k) a}    & -(\tau\alpha+\ri k)\re^{-(\tau\alpha+\ri k) a} &
-        -(\tau'\beta-\ri k)                          & -(\tau'\beta +\ri k)                       \\
+        (\tau \alpha-\ri k)\re^{(\tau \alpha-\ri k)(a-b)}  & -(\tau \alpha+\ri k)\re^{-(\tau \alpha+\ri k) (a-b)} &
+        -(\tau'\beta -\ri k)\re^{-(\tau'\beta -\ri k)b}     & (\tau'\beta+\ri k)\re^{ (\tau'\beta+\ri k)b} \\
     \end{pmatrix},
 \end{align}
 satisfying $M(A,A',B,B')^T=0$.
 For nontrivial results, the determinant of $M$ should be equal to zero, which is satisfied for solutions of the transcendental equation
 \begin{align}
-    \cos(a k)
+    \cos(ka)
     =
-    \cosh(\alpha\tau(a+b))\cosh(b\beta\tau')
+    \cosh(\alpha\tau(a-b))\cosh(b\beta\tau')
     +
-    \frac{\alpha^2\tau^2+\beta^2\tau'^2}{2\alpha\beta\tau\tau'}\sinh(\alpha\tau(a+b))\sinh(b\beta\tau).
+    \frac{\alpha^2\tau^2+\beta^2\tau'^2}{2\alpha\beta\tau\tau'}\sinh(\alpha\tau(a-b))\sinh(b\beta\tau).
     \label{eq:kronig_penney_transcendental_equation}
 \end{align}
-We now reduce the complexity of the transcendental equation by using the aforementioned limits
+To approximate the right hand side in the aforementioned limits, application of
 \begin{align}
     b\rightarrow0,
     \quad
@@ -365,33 +363,70 @@ We now reduce the complexity of the transcendental equation by using the aforeme
     \quad
     \sinh(b\beta\tau')\rightarrow b\beta\tau'
 \end{align}
-which approximate \cref{eq:kronig_penney_transcendental_equation} in the limit of narrow and strong periodic potentials\footnote{This limit is actually equivalent to a potential composed by delta-distributions.}
+provides an exact solution of \cref{eq:kronig_penney_transcendental_equation} in the limit of narrow and strong periodic potentials\footnote{This limit is actually equivalent to a potential composed by delta-distributions.}
 \begin{align}
-    f(\alpha a) = \cosh(\alpha\tau a) + \tau'^2\frac{P}{\alpha\tau a}\sinh(\alpha\tau a).
+    f(\alpha a) = \cosh(\alpha\tau a) + \tau'^2\frac{P}{\alpha\tau a}\sinh(\alpha\tau a),
+    \quad
+    P=mabV_0/\hbar^2.
     \label{eq:kronig_penney_transcendental_equation_approx}
 \end{align}
-If we now assume bound states of the form $0<E<V_0$, we have $\tau^2=-1$ and $\tau'^2=+1$, such that \cref{eq:kronig_penney_transcendental_equation_approx} becomes
+If we assume bound states between the potential wells $0<E<V_0$, the signs become $\tau^2=-1$ and $\tau'^2=+1$, such that \cref{eq:kronig_penney_transcendental_equation_approx} evaluates to
 \begin{align}
     f(\alpha a) = \cos(\alpha a) + \frac{P}{\alpha a}\sin(\alpha a).
     \label{eq:kronig_penney_transcendental_equation_approx_bound}
 \end{align}
-The right-hand-side of \cref{eq:kronig_penney_transcendental_equation_approx_bound} is in general not bound to the interval $[-1,+1]$ spanned by $\cos(ak)$ and establishes values of $\alpha$ (thus, the square-root of the energy $E$) for which no real-valued momentum can be found (see \cref{fig:kronig_penney_transcendental}).
-\begin{figure}
-    \centering
-    \includegraphics{figures/kronig_penney_transcendental.png}
-    \caption{Exemplified shape of $f(\alpha a)$ for $P=20$ given by \cref{eq:konig_penney_energies_bound_simplified}. The shaded red regions represent forbidden energies and thus establish what is known as band gaps.}
-    \label{fig:kronig_penney_transcendental}
-\end{figure}
+The right-hand-side of \cref{eq:kronig_penney_transcendental_equation_approx_bound} is in general not bound to the interval $[-1,+1]$ spanned by $\cos(ak)$ and establishes values of $\alpha$ (thus, the square-root of the energy $E$) for which no (real) momentum exists (see \cref{fig:kronig_penney_dispersion} (a)).
 Such energies are called forbidden and realize a first understanding of band-gaps induced by the nonzero lattice potential $V_0>0$.
-In particular, if $P=0$, we are left with the energy-momentum relation of free electrons $k=\alpha$ and thus $E={\hbar^2k^2}/({2ma^2})$.
-If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $f$, which are given by the dominating term and yield discretized energies $E=(\hbar n\pi)^2/(2ma^2)$ spanned by integer numbers ($n=1,2,\dots$).
+\\
+
+If $P=0$, we are left with the energy-momentum relation of free electrons $k=\alpha$ and thus $E_0={\hbar^2k^2}/({2m})$.
+If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $f$, which are given by the dominating term and yield discretized energies $E_{\infty,n_b}=(\hbar n_b\pi)^2/(2ma^2)$ spanned by integer numbers ($n_b=1,2,\dots$).
+The intermediate regimes $0<P<\infty$ can be solved by numerical evaluation of \cref{eq:kronig_penney_transcendental_equation_approx_bound} and are plotted in \cref{fig:kronig_penney_dispersion} (a).
+Straightforward evaluation of $\arccos(f)$ evaluates the crystal momentum $ka$ which is displayed in \cref{fig:kronig_penney_dispersion} (b).
+\\
+
+To get an analytic understanding of the wave functions in the above limit, let's focus on the region without potential (i) [$b$ is sent to zero anyhow]
+\begin{align}
+    \psi_{\alpha k}^{\rm (i)}(x) = \re^{\ri kx}u_{\alpha k}^{\rm (i)}(x),
+    \quad
+    u_{\alpha k}^{\rm (i)}(x) = A\re^{\ri(\alpha-k) x} + A'\re^{-\ri(\alpha+k) x},
+    \quad
+    u_{\alpha k}^{\rm (i)}(x+na)=u_{\alpha k}^{\rm (i)}(x)
+    \label{eq:kronig_penney_wavefunctions}
+\end{align}
+in which the prefactors are related by\footnote{An additional constraint for $AA^*$ is found by requiring normalization of the wave functions, which allows to compute expectation values. However, it is not needed for the purpose of this section and I refer to \cite{KronigPenney1931}.}
+\begin{align}
+    A' = -A\frac{1-\re^{\ri(\alpha-k)a)}}{1-\re^{-\ri(\alpha+k)a}}.
+    \label{eq:kronig_penney_constants}
+\end{align}
+Starting from \cref{eq:kronig_penney_transcendental_equation_approx_bound}, we see that for any solution $\alpha a$ there are an infinite number of symmetric points in momentum space which fulfill the same equation, i.e. (a) $ka + 2n\pi$ and (b) $-ka+2n\pi$.
+Close inspection of \cref{eq:kronig_penney_wavefunctions,eq:kronig_penney_constants} reveals that a transformation according to (a) leaves the wave function invariant, while (b) maps it to the solutions of $-ka$, $-\alpha a$.
+In other words (b) simply flips the direction of the propagating wave and establishes a mirror symmetry at the $ka=0$ axis which is a consequence of the system being invariant under time-reversal.
+The properties (a) and (b) denote the so-called ``unfolding'' of the reduced scheme presented in \cref{fig:kronig_penney_dispersion} (b).
+It uniquely relates a crystal momentum $n_b\pi\leq ka<(n_b+1)\pi$ to an energy value $n_b\pi\leq \alpha a<(n_b+1)\pi$ by introducing a band index $(n_b=0,1,\dots)$.
+Here, the limit of free particles ($P=0$) is readily restored, since \cref{eq:kronig_penney_constants} vanishes for $\alpha a = ka$.
 \begin{figure}
     \centering
-    \includegraphics{figures/kronig_penney_dispersion_1.png}
-    \includegraphics{figures/kronig_penney_dispersion_2.png}
-    \caption{Shapes of the dispersion relation $(\alpha a/\pi)^2$ versus crystal momentum $ka/\pi$ given by \cref{eq:konig_penney_energies_bound_simplified}. Different opacity (transparent to colors) represent increasing values of $P\in\{0.1,1,5,20,50,1000\}$.}
+    \subfigure[]{\includegraphics{figures/kronig_penney_transcendental.png}}
+    \subfigure[]{\includegraphics{figures/kronig_penney_dispersion_2.png}}
+    \subfigure[]{\includegraphics{figures/kronig_penney_dispersion_1.png}}
+    \caption{
+    (a) Plot of the right-hand-side of the transcendental equation. Solutions do not exist in the red regions.
+    (b)-(c) Shapes of the dispersion relation $(\alpha a/\pi)^2$ versus crystal momentum $ka/\pi$ given by \cref{eq:kronig_penney_transcendental_equation_approx_bound}.
+    Different opacity (transparent to colors) represent increasing values of $P\in\{0.1,1,5,20,50,1000\}$.
+    (c) The properties of the wave functions allow to uniquely relate the crystal momentum $ka$ to an energy $\alpha a$ in which the limit of free electrons [i.e. $P\rightarrow0$] is pronounced.}
     \label{fig:kronig_penney_dispersion}
 \end{figure}
+
+In the limit $P\rightarrow\infty$, the energy $E_{\infty,n_b}$ takes discrete values and thus ultimately kills any motion -- the resulting waves are tightly bound to the potential minimum.
+If we relax this limit a bit, i.e. $P\gg 1$, a reasonable approximation of the lowest band curvature is obtained by a first order Taylor series of \cref{eq:kronig_penney_transcendental_equation_approx_bound} resulting in the typical dispersion relation for tight binding systems, i.e.
+\begin{align}
+    \varepsilon\approx\varepsilon_0 - t \cos(k a),
+    \quad
+    \varepsilon_0 = E_{\infty,n_b=1} - \frac{\pi^2 \hbar^4}{a^3 m^2 b V_0},
+    \quad
+    t = -\frac{\pi^2\hbar^4}{a^3 m^2 bV_0}.
+\end{align}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
