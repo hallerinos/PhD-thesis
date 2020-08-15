@@ -296,7 +296,7 @@ This model is called the Kronig-Penney model~\cite{KronigPenney1931} and provide
 \end{figure}
 
 % In order to preserve the periodicity of the potential, the system size must be commensurate to the lattice spacing $a$, i.e. $L\in a\mathds N$.
-To simplify our problem, we can consider it to be a set of two different regions, i.e. (i) a free particle $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (i)}(x) = E\psi_{\rm (i)}(x)$ and (ii) a free particle moving in a constant potential $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (ii)}(x) = (E-V_0)\psi_{\rm (ii)}(x)$.
+To simplify our problem, we can consider it to be a set of two different regions, i.e. (i) a free particle $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (i)}(x) = E\psi_{\rm (i)}(x)$ followed by (ii) a particle moving in a constant potential $-\frac{\hbar^2}{2m}\partial_x^2\psi_{\rm (ii)}(x) = (E-V_0)\psi_{\rm (ii)}(x)$.
 In order to read-out the Bloch weights I conveniently factor a crystal momentum from the wave function
 \begin{align}
     \psi_{\alpha k}^{\rm (i)}(x) = \re^{\ri kx}u_{\alpha k}^{\rm (i)}(x),
@@ -382,7 +382,7 @@ Such energies are called forbidden and realize a first understanding of band-gap
 If $P=0$, we are left with the energy-momentum relation of free electrons $k=\alpha$ and thus $E_0={\hbar^2k^2}/({2m})$.
 If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $f$, which are given by the dominating term and yield discretized energies $E_{\infty,n_b}=(\hbar n_b\pi)^2/(2ma^2)$ spanned by integer numbers ($n_b=1,2,\dots$).
 The intermediate regimes $0<P<\infty$ can be solved by numerical evaluation of \cref{eq:kronig_penney_transcendental_equation_approx_bound} and are plotted in \cref{fig:kronig_penney_dispersion} (a).
-Straightforward evaluation of $\arccos(f)$ evaluates the crystal momentum $ka$ which is displayed in \cref{fig:kronig_penney_dispersion} (b).
+Straightforward evaluation of $\arccos(f)$ evaluates the crystal momentum $ka$ and yields the so-called ``reduced zone scheme'' displayed in \cref{fig:kronig_penney_dispersion} (b).
 \\
 
 To get an analytic understanding of the wave functions in the above limit, let's focus on the region without potential (i) [$b$ is sent to zero anyhow]
@@ -399,12 +399,31 @@ in which the prefactors are related by\footnote{An additional constraint for $AA
     A' = -A\frac{1-\re^{\ri(\alpha-k)a)}}{1-\re^{-\ri(\alpha+k)a}}.
     \label{eq:kronig_penney_constants}
 \end{align}
-Starting from \cref{eq:kronig_penney_transcendental_equation_approx_bound}, we see that for any solution $\alpha a$ there are an infinite number of symmetric points in momentum space which fulfill the same equation, i.e. (a) $ka + 2n\pi$ and (b) $-ka+2n\pi$.
+Starting from \cref{eq:kronig_penney_transcendental_equation_approx_bound}, we see that for any solution $\alpha a$ satisfying $f(\alpha a)=\cos(k a)$ there are an infinite number of symmetric points in momentum space which fulfill the same equation, i.e. (a) $ka + 2n\pi$ and (b) $-ka+2n\pi$.
 Close inspection of \cref{eq:kronig_penney_wavefunctions,eq:kronig_penney_constants} reveals that a transformation according to (a) leaves the wave function invariant, while (b) maps it to the solutions of $-ka$, $-\alpha a$.
-In other words (b) simply flips the direction of the propagating wave and establishes a mirror symmetry at the $ka=0$ axis which is a consequence of the system being invariant under time-reversal.
-The properties (a) and (b) denote the so-called ``unfolding'' of the reduced scheme presented in \cref{fig:kronig_penney_dispersion} (b).
-It uniquely relates a crystal momentum $n_b\pi\leq ka<(n_b+1)\pi$ to an energy value $n_b\pi\leq \alpha a<(n_b+1)\pi$ by introducing a band index $(n_b=0,1,\dots)$.
-Here, the limit of free particles ($P=0$) is readily restored, since \cref{eq:kronig_penney_constants} vanishes for $\alpha a = ka$.
+In other words, (a) is merely a shift by a unit reciprocal vector and (b) flips the direction of the propagating wave, hence establishes a mirror symmetry at the $ka=0$ axis which is a consequence of the system being invariant under time-reversal.
+The properties (a) and (b) allow to define the ``unfolding'' of the reduced zone scheme:
+without loss of generality, a crystal momentum $n_b\pi\leq ka<(n_b+1)\pi$ can be uniquely connected to an energy value $n_b\pi\leq \alpha a<(n_b+1)\pi$ by introducing a band index $(n_b=0,1,\dots)$.
+Here, the limit of free particles ($P=0$) is readily restored, since \cref{eq:kronig_penney_constants} vanishes for $\alpha a = ka$ [except for the special points $ka=n_b\pi$].
+At the special points, \cref{eq:kronig_penney_constants} is actually ill defined and evaluates to the two viable solutions $A'=\pm A$, which can be understood from the two non-commuting limits
+\begin{align}
+    -\lim_{\alpha a \searrow n_b\pi}\frac{1-\re^{\ri(\alpha a-n_b\pi))}}{1-\re^{-\ri(\alpha a+n_b\pi)}}
+    =
+    -\lim_{\epsilon\searrow0}\frac{1-\re^{+\ri\epsilon}}{1-\re^{-\ri\epsilon}}
+    =
+    \lim_{\epsilon\searrow0}\re^{+\ri\epsilon}\frac{1-\re^{-\ri\epsilon}}{1-\re^{-\ri\epsilon}}
+    =
+    +1,
+    \\
+    -\lim_{k a \searrow n_b\pi}\frac{1-\re^{\ri(n_b\pi - ka))}}{1-\re^{-\ri(n_b\pi+ka)}}
+    =
+    -\lim_{k a \searrow n_b\pi}\frac{1-\re^{-\ri(n_b\pi + ka))}}{1-\re^{-\ri(n_b\pi+ka)}}
+    =
+    -1.
+\end{align}
+The two allowed eigenfunctions are standing waves $\propto \cos(kx),\sin(kx)$.
+By reformulating the special points in terms of the particles de Broglie wavelength $\lambda=2\pi/k$, the formation of standing waves can be understood as a residual effect of (constructive) Bragg reflection on a periodic grid structure.
+Standing waves are obtained if the particle's de Broglie wavelength and the spacing of the potential satisfy $2a=n_b\lambda$.
 \begin{figure}
     \centering
     \subfigure[]{\includegraphics{figures/kronig_penney_transcendental.png}}
