@@ -248,7 +248,7 @@ The beauty of this approach becomes visible as soon as we define the lattice tra
 \end{align}
 which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bf n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bf x}\coloneqq ({\bf x}_1,\dots,{\bf x}_d)^T$.
 The local potential $V_{ae}({\bf r})$ is per definition invariant under lattice translations, and the two-body interaction $V_{ee}({\bf r}-{\bf r'})$ is clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the eigenfunctions of $\hat H$ as eigenfunctions of $\hat T_{\bf n}$.
-The eigenfunctions of all translation operators $\hat T_{\bf n}$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the reciprocal lattice vector ${\bf k}$ arise from imposing boundary conditions. E.g. Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bf r}+ L_j{\bf R}_j)=\psi_\alpha({\bf r})$, which confines the allowed values of $k_j$ to multiples of $\frac{\bf G_j}{L_j}$ in which $\bf G_j$ is the reciprocal vector of ${\bf R}_j$, i.e. ${\bf G}_j {\bf R}_j = 2\pi/a$.}
+The eigenfunctions of all translation operators $\hat T_{\bf n}$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the vector ${\bf k}$ arise from imposing boundary conditions. For instance, Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bf r}+ L_j{\bf R}_j)=\psi_\alpha({\bf r})$, which confines the allowed values of $k_j$ to integer multiples of $\frac{\bf G_j}{L_j}$ in which $\bf G_j$ is the reciprocal vector of ${\bf R}_j$, i.e. ${\bf G}_j {\bf R}_j = 2\pi/a$.}
 \begin{align}
     \hat T_{\bf n}\psi_{\alpha}({\bf r}) &= c_{\bf n}\psi_{\alpha}({\bf r})\\
     c_{{\bf n}_1}c_{{\bf n}_2} &= c_{{\bf n}_1+{\bf n}_2} \Rightarrow c_{\bf n} = \re^{{\bf s}{\bf n}\underline{\bf x}},\ {\bf s}\in\mathds C^d\\
@@ -446,6 +446,25 @@ If we relax this limit a bit, i.e. $P\gg 1$, a reasonable approximation of the l
     \quad
     t = -\frac{\pi^2\hbar^4}{a^3 m^2 bV_0}.
 \end{align}
+
+An alternative way to solve generic potentials can be obtained by expanding the Schrödinger equation in the reciprocal space through the following identities\footnote{The reciprocal space provides a way to Fourier-transform as the functions $\re^{\ri {\bf G r}}$ form a basis on the primitive cell of the real lattice over the square-integrable functions. In particular, the functions satisfy the orthogonality equation $\delta_{\bf G, G'}=\frac1{\Omega}\int\rd^dr\,\re^{\ri({\bf G-G'}){\bf r}}$.}
+\begin{align}
+    V_{ae}({\bf r}) = \sum_{\bf G}V_{ae}{}_{\bf G}\re^{\ri {\bf G r}},
+    \quad
+    V_{ae}{}_{\bf G} = \frac1{V}\int\rd^dr\,V_{ae}({\bf r}){\bf G}\re^{-\ri {\bf G r}},
+    \\
+    u_{n{\bf k}}({\bf r}) = \sum_{\bf G}u_{n{\bf k}}({\bf r}){}_{\bf G}\re^{\ri {\bf G r}},
+    \quad
+    u_{n{\bf k}}({\bf r}){}_{\bf G} = \frac1{V}\int\rd^dr\,u_{n{\bf k}}({\bf r})\re^{-\ri {\bf G r}},
+\end{align}
+in which $V$ is the volume of the primitive cell.
+Straightforward evaluation yields the algebraic eigenvalue problem for the unknown functions $u_{n{\bf k}}{}_{\bf G}$
+\begin{align}
+    \frac{\hbar^2}{2m}({\bf G}+{\bf k})^2u_{n{\bf k}}{}_{\bf G}+\sum_{\bf G'}V_{ae}{}_{\bf G-G'}u_{n{\bf k}}{}_{\bf G'} = E_{n{\bf k}}.
+    \label{eq:periodic_lattices_numerics}
+\end{align}
+The dimension of the linear equation is infinite due to the sum over all reciprocal lattice vectors and has to be truncated if one wants to solve the equation numerically [the convergence of such a truncation has to be carefully checked for a serious investigation].
+Clearly, strongly confined potentials such as delta functions are particularly bad candidates to solve numerically through evaluation of \cref{eq:periodic_lattices_numerics} because the resulting matrix equation will not be sparse and any truncation will have a significant error.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -458,12 +477,32 @@ In \cref{part:results}, I will mostly cover theoretical aspects of tight binding
 For this reason, it will be useful to review briefly how these models are motivated in general from a more traditional solid state aspect, and how they can be understood in the more modern approach of second quantization.
 \\
 
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics{figures/wannier1_1.png}}
+    \subfigure[]{\includegraphics{figures/wannier1_10.png}}
+    \subfigure[]{\includegraphics{figures/wannier1_100.png}}\\
+    \subfigure[]{\includegraphics{figures/wannier2_1.png}}
+    \subfigure[]{\includegraphics{figures/wannier2_10.png}}
+    \subfigure[]{\includegraphics{figures/wannier2_100.png}}\\
+    \caption{Example Wannier functions of the first two bands for a periodic potential of the form $V_{ae}(x)=V_0\sin(2\pi/ax)$ for different potential depth.}
+    \label{fig:tight_binding_wanniers}
+\end{figure}
+
 For this purpose, we assume the problem of the single-particle Hamiltonian $\hat H_0$ to be fully solved, such that the Bloch states $\psi_{\alpha{\bf k}}$ are determined, diagonalize $\hat H_0$ and have energy eigenvalues $\varepsilon_{\alpha{\bf k}}$.
 This allows to introduce the Wannier basis -- a localized basis composed of the Bloch states and defined as
 \begin{align}
     \ket{w_{\alpha{\bf R}}} = \frac1{\sqrt N}\sum_{\bf k}\re^{-\ri{\bf k}{\bf R}}\ket{\psi_{\alpha{\bf k}}}.
     \label{eq:wannier_states}
 \end{align}
+To be more precise, the Wannier basis is not unique: every momentum-resolved Bloch function can be multiplied with a complex phase without changing its properties.
+This naturally provides a gauge freedom to optimize the localization of the Wannier functions and thus the determination of a maximally localized Wannier function is actually a pretty involved task.
+However, to get an idea how Wannier functions may look like, let us here consider a periodic potential of the form
+\begin{align}
+    V_{ae}(x) = V_0\cos\brlr{\frac{2\pi}a x}
+\end{align}
+which yield a particular easy (a tridiagonal Toeplitz) matrix equation for the Bloch vectors presented in \cref{eq:periodic_lattices_numerics}.
+To obtain the Wannier functions displayed in \cref{fig:tight_binding_wanniers}, we gauge every Bloch function to be purely real at $x=0$, resulting in the example wave functions presented in Fig.~\cref{fig:tight_binding_wanniers}.
 We can translate this to the language of second quantization by the notion that
 the transformation between Bloch and Wannier basis is unitary, such that annihilation and creation operators of Wannier and Bloch states are set in relation by
 \begin{align}
