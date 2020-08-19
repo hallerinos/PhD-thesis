@@ -2,8 +2,8 @@
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{On the quantization of motion and fields}
-\label{ch:on_quantization}
+\chapter{The quantization of motion and fields}
+\label{ch:the_quantization_of_motion_and_fields}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -270,7 +270,7 @@ In particular, $\psi$ is a weighted plane wave in which $u$ inherits the lattice
     =
     u({\bf r}).
 \end{align}
-The particular expression of the weights obviously depends on the potential, and even for simple problems general solutions become quite involved\footnote{Except maybe the trivial scenario $V_{ae}({\bf r})={\rm const.}$ which implies to set $u=1$ in \cref{eq:bloch_theorem}.}.
+The particular expression of the weights obviously depends on the potential, and even for simple problems obtaining general solutions becomes a hard task\footnote{Except maybe the trivial scenario $V_{ae}({\bf r})={\rm const.}$ which implies to set $u=1$ in \cref{eq:bloch_theorem}.}.
 In general, the wave vector $\bf k$ seems to play the same role as the particle momentum $\bf p$ in the Sommerfeld theory of a free particle.
 However, this is not true as is clear from the momentum operator being $\hat{\bf p}=-\ri\hbar\nabla$, and as such
 \begin{align}
@@ -380,7 +380,12 @@ Such energies are called forbidden and realize a first understanding of band-gap
 \\
 
 If $P=0$, we are left with the energy-momentum relation of free electrons $k=\alpha$ and thus $E_0={\hbar^2k^2}/({2m})$.
-If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $f$, which are given by the dominating term and yield discretized energies $E_{\infty,n_b}=(\hbar n_b\pi)^2/(2ma^2)$ spanned by integer numbers ($n_b=1,2,\dots$).
+If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $f$, which are given by the dominating term and yield discretized energies
+\begin{align}
+    E_{\infty,n_b}=(\hbar n_b\pi)^2/(2ma^2)
+    \label{eq:kronig_penney_energy_tb}
+\end{align}
+spanned by integer numbers ($n_b=1,2,\dots$).
 The intermediate regimes $0<P<\infty$ can be solved by numerical evaluation of \cref{eq:kronig_penney_transcendental_equation_approx_bound} and are plotted in \cref{fig:kronig_penney_dispersion} (a).
 Straightforward evaluation of $\arccos(f)$ evaluates the crystal momentum $ka$ and yields the so-called ``reduced zone scheme'' displayed in \cref{fig:kronig_penney_dispersion} (b).
 \\
@@ -437,17 +442,18 @@ Standing waves are obtained if the particle's de Broglie wavelength and the spac
     \label{fig:kronig_penney_dispersion}
 \end{figure}
 
-In the limit $P\rightarrow\infty$, the energy $E_{\infty,n_b}$ takes discrete values and thus ultimately kills any motion -- the resulting waves are tightly bound to the potential minimum.
+In the limit $P\rightarrow\infty$, the energy $E_{\infty,n_b}$ assumes the discrete values in \cref{eq:kronig_penney_energy_tb} resulting in motionless eigenstates -- the resulting waves are tightly bound to the potential minimum.
 If we relax this limit a bit, i.e. $P\gg 1$, a reasonable approximation of the lowest band curvature is obtained by a first order Taylor series of \cref{eq:kronig_penney_transcendental_equation_approx_bound} resulting in the typical dispersion relation for tight binding systems, i.e.
 \begin{align}
-    \varepsilon\approx\varepsilon_0 - t \cos(k a),
+    E_{P\gg1,1}\approx t_0 + t_1 \cos(k a),
     \quad
-    \varepsilon_0 = E_{\infty,n_b=1} - \frac{\pi^2 \hbar^4}{a^3 m^2 b V_0},
+    t_0 = + E_{\infty,1} - \frac{\pi^2 \hbar^4}{a^3 m^2 b V_0},
     \quad
-    t = -\frac{\pi^2\hbar^4}{a^3 m^2 bV_0}.
+    t_1 = -\frac{\pi^2\hbar^4}{a^3 m^2 bV_0}.
+    \label{eq:kronig_penney_tight_binding_dispersion}
 \end{align}
 
-An alternative way to solve generic potentials can be obtained by expanding the Schrödinger equation in the reciprocal space through the following identities\footnote{The reciprocal space provides a way to Fourier-transform as the functions $\re^{\ri {\bf G r}}$ form a basis on the primitive cell of the real lattice over the square-integrable functions. In particular, the functions satisfy the orthogonality equation $\delta_{\bf G, G'}=\frac1{\Omega}\int\rd^dr\,\re^{\ri({\bf G-G'}){\bf r}}$.}
+A way to numerically solve generic potentials is obtained by expanding the Schrödinger equation in reciprocal space through the following identities\footnote{The reciprocal space provides a way to Fourier-transform as the functions $\re^{\ri {\bf G r}}$ form a basis on the primitive cell of the real lattice over the square-integrable functions. In particular, the functions satisfy the orthogonality equation $\delta_{\bf G, G'}=\frac1{\Omega}\int\rd^dr\,\re^{\ri({\bf G-G'}){\bf r}}$.}
 \begin{align}
     V_{ae}({\bf r}) = \sum_{\bf G}V_{ae}{}_{\bf G}\re^{\ri {\bf G r}},
     \quad
@@ -457,7 +463,7 @@ An alternative way to solve generic potentials can be obtained by expanding the 
     \quad
     u_{n{\bf k}}({\bf r}){}_{\bf G} = \frac1{V}\int\rd^dr\,u_{n{\bf k}}({\bf r})\re^{-\ri {\bf G r}},
 \end{align}
-in which $V$ is the volume of the primitive cell.
+in which $V$ is the volume of the primitive unit cell.
 Straightforward evaluation yields the algebraic eigenvalue problem for the unknown functions $u_{n{\bf k}}{}_{\bf G}$
 \begin{align}
     \frac{\hbar^2}{2m}({\bf G}+{\bf k})^2u_{n{\bf k}}{}_{\bf G}+\sum_{\bf G'}V_{ae}{}_{\bf G-G'}u_{n{\bf k}}{}_{\bf G'} = E_{n{\bf k}}.
@@ -472,7 +478,7 @@ Clearly, strongly confined potentials such as delta functions are particularly b
 \label{sec:tight_binding_systems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The systems considered here are those of tightly bound constituents to the lattice centers.
-Such types can be found in traditional solid state scenarios where the nuclei are well separated beyond the typical Bohr radius of the valence electrons, in setups of ultracold atoms trapped in optical lattices (see \cref{ch:ultracold_atoms_trapped_in_optical_lattices}), in optical waveguides or polaritons.
+Such types can be found in traditional solid state scenarios where the nuclei are well separated beyond the typical Bohr radius of the valence electrons, in setups of ultracold atoms trapped in optical lattices, in optical waveguides or polaritons.
 In \cref{part:results}, I will mostly cover theoretical aspects of tight binding models which can be experimentally realized in a variety of different setups.
 For this reason, it will be useful to review briefly how these models are motivated in general from a more traditional solid state aspect, and how they can be understood in the more modern approach of second quantization.
 \\
@@ -485,7 +491,7 @@ For this reason, it will be useful to review briefly how these models are motiva
     \subfigure[]{\includegraphics{figures/wannier2_1.png}}
     \subfigure[]{\includegraphics{figures/wannier2_10.png}}
     \subfigure[]{\includegraphics{figures/wannier2_100.png}}\\
-    \caption{Example Wannier functions of the first two bands for a periodic potential of the form $V_{ae}(x)=V_0\sin(2\pi/ax)$ for different potential depth.}
+    \caption{Example Wannier functions of the first two bands for a periodic potential of the form $V_{ae}(x)=V_0\sin(2\pi/ax)$ for different potential depth. The integration of the Bloch states was performed by assuming a periodicity over $L=50$ lattice translations.}
     \label{fig:tight_binding_wanniers}
 \end{figure}
 
@@ -495,23 +501,27 @@ This allows to introduce the Wannier basis -- a localized basis composed of the 
     \ket{w_{\alpha{\bf R}}} = \frac1{\sqrt N}\sum_{\bf k}\re^{-\ri{\bf k}{\bf R}}\ket{\psi_{\alpha{\bf k}}}.
     \label{eq:wannier_states}
 \end{align}
-To be more precise, the Wannier basis is not unique: every momentum-resolved Bloch function can be multiplied with a complex phase without changing its properties.
-This naturally provides a gauge freedom to optimize the localization of the Wannier functions and thus the determination of a maximally localized Wannier function is actually a pretty involved task.
-However, to get an idea how Wannier functions may look like, let us here consider a periodic potential of the form
+Note that every momentum-resolved Bloch function can be multiplied with a complex phase without changing its properties.
+This naturally provides a gauge freedom to optimize the Wannier function's properties -- for instance, the construction of a maximally localized basis~\cite{Marzari2012}.
+Without going into details of optimizing Wannier functions, I want to present a basic visualization of these localized states.
+For this purpose, let us consider a cosine periodic potential
 \begin{align}
     V_{ae}(x) = V_0\cos\brlr{\frac{2\pi}a x}
 \end{align}
 which yield a particular easy (a tridiagonal Toeplitz) matrix equation for the Bloch vectors presented in \cref{eq:periodic_lattices_numerics}.
-To obtain the Wannier functions displayed in \cref{fig:tight_binding_wanniers}, we gauge every Bloch function to be purely real at $x=0$, resulting in the example wave functions presented in Fig.~\cref{fig:tight_binding_wanniers}.
-We can translate this to the language of second quantization by the notion that
-the transformation between Bloch and Wannier basis is unitary, such that annihilation and creation operators of Wannier and Bloch states are set in relation by
+To obtain the Wannier functions, we gauge every Bloch function to be purely real at $x=0$, resulting in the examples displayed in \cref{fig:tight_binding_wanniers}.
+\\
+
+The existence of localized Wannier states is translated to the language of second quantization by the notion that transformations between a Bloch and Wannier basis is always unitary.
+Hence, annihilation and creation operators of Wannier and Bloch states are set in relation by
 \begin{align}
     a^\dag_{\alpha{\bf R}s} = \frac1{\sqrt N}\sum_{\bf k}\re^{-\ri{\bf k}{\bf R}}a^\dag_{\alpha{\bf k}s},
     \quad
     a^\dag_{\alpha{\bf k}s} = \frac1{\sqrt N}\sum_{\bf R}\re^{+\ri{\bf k}{\bf R}}a^\dag_{\alpha{\bf R}s}.
     \label{eq:wannier_states_2}
 \end{align}
-Now, the free Hamiltonian is diagonal in the Bloch basis with energies $\varepsilon_{\alpha{\bf k}} = \int\rd^dr\, \psi_{\alpha{\bf k}}^* \hat H_0 \psi_{\alpha{\bf k}}$ and can be rewritten as
+Since the non-interacting Hamiltonian is diagonal in the Bloch basis, the Bloch basis are eigenfunctions with energies $\varepsilon_{\alpha{\bf k}} = \int\rd^dr\, \psi_{\alpha{\bf k}}^* \hat H_0 \psi_{\alpha{\bf k}}$.
+In particular, the Hamiltonian is readily cast into the localized basis according to
 \begin{align}
     \hat H_0
     =
@@ -522,34 +532,74 @@ Now, the free Hamiltonian is diagonal in the Bloch basis with energies $\varepsi
     \varepsilon_{\alpha{\bf k}}
     a^\dag_{\alpha{\bf R}s}a^\pdag_{\alpha{\bf R'}s}
     =
-    \sum_{i, j}t_{\alpha,i,j}
-    a^\dag_{\alpha{\bf R}_is}a^\pdag_{\alpha{\bf R}_js}
+    \sum_{i, j}T_{\alpha,i,j}
+    a^\dag_{\alpha{\bf R}_is}a^\pdag_{\alpha{\bf R}_js}.
     \label{eq:tight_binding_hamiltonian}
 \end{align}
-in which the matrix element $t_{\alpha,i,j}$ denotes the strength of the scattering process between two lattice centers, to be determined through the energy bands
+The matrix $T_{\alpha}$ contains all amplitudes of transition processes between two lattice centers, to be determined through the dispersion relation of the $\alpha$-band
 \begin{align}
-    t_{\alpha,i,j} \coloneqq \frac1N\sum_{\bf k}\re^{\ri{\bf k}\brlr{{\bf R}_i-{\bf R}_j}}\varepsilon_{\alpha{\bf k}}.
+    T_{\alpha,i,j} \coloneqq \frac1N\sum_{\bf k}\re^{\ri{\bf k}\brlr{{\bf R}_i-{\bf R}_j}}\varepsilon_{\alpha{\bf k}}.
 \end{align}
-On a more abstract level, the Hamiltonian \cref{eq:tight_binding_hamiltonian} denotes quantum particles hopping between lattice sites which are connected through the matrix $t_{\alpha}$.
-Similarly, the two-body interaction $\hat V_{ee}$ can be written as
+On an abstract level, the tight binding Hamiltonian denotes quantum particles hopping between lattice sites, connected through the matrix elements $T_{\alpha,i,j}$.
+Without quantitative computations of the transition probabilities, we can fix the matrix to $T_{\alpha,i,j}=\sum_rt_{\alpha,r}\delta_{i-r,j} + \hc$ with some constants $t_{\alpha,r}$.
+The relation \cref{eq:tight_binding_hamiltonian} has strong implications on the analytic form of the dispersion relation $\varepsilon_{\alpha{\bf k}}$ -- it is fully determined through the geometry of the crystal lattice.
+For instance, one-dimensional lattices with single atom unit cells and lattice spacing $a$ have the particularly easy solution
 \begin{align}
-    \hat V_{ee} = \sum_{i,i',j,j'}\sum_{s,s'}V_{i,i',j,j'}a^\dag_{\alpha,{\bf R}_is}a^\dag_{\alpha,{\bf R}_{i'}s'}a^\pdag_{\alpha,{\bf R}_js'}a^\pdag_{\alpha,{\bf R}_{j'}s}
+    \varepsilon_{\alpha k} = \sum_r 2t_r\cos(r ka).
+    \label{eq:1D_tight_binding_dispersion}
 \end{align}
-in which the matrix element of the interaction is given by the integral
+Note that this equation is consistent with the Kronig-Penney dispersion relation in the tight-binding limit, presented in \cref{eq:kronig_penney_tight_binding_dispersion}.
+In higher dimensions, the evaluation of the dispersion relation may become lengthy, but remains always analytic.
+\\
+
+In the following chapters, I present results for interacting single-band approximations which allows to fix (and drop) the band index $\alpha$.
+This situation is achieved in case the bottom band is sufficiently separated from the second (e.g. through a strong on-site lattice potential).
+A corresponding two-body interaction $\hat V_{ee}$ in the single-band approximation reads
 \begin{align}
-    V_{i,i',j,j'} = \frac12\int\rd^dr\int\rd^dr'\,w^*_{\alpha{\bf R}_i}({\bf r})w^*_{\alpha{\bf R}_{i'}}({\bf r}')w_{\alpha{\bf R}_j}({\bf r}')w_{\alpha{\bf R}_{j'}}({\bf r})V_{ee}({\bf r-r'}).
+    \hat V_{ee} = \frac12\sum_{i,i',j,j'}\sum_{s,s'}V_{i,i',j,j'}a^\dag_{{\bf R}_is}a^\dag_{{\bf R}_{i'}s'}a^\pdag_{{\bf R}_js'}a^\pdag_{{\bf R}_{j'}s}.
 \end{align}
-The explicit determination of the matrix elements requires knowledge of the form of the Wannier states which, for real materials, is quite involved and a field of research on its own.
+The matrix elements of the interaction are given by the integral expressions
+\begin{align}
+    V_{i,i',j,j'} = \int\rd^dr\int\rd^dr'\,w^*_{{\bf R}_i}({\bf r})w^*_{{\bf R}_{i'}}({\bf r}')w_{{\bf R}_j}({\bf r}')w_{{\bf R}_{j'}}({\bf r})V_{ee}({\bf r-r'}).
+    \label{eq:two_body_interaction_transition_rates}
+\end{align}
+The explicit determination of the matrix elements requires knowledge of the form of the Wannier states which, for real materials, is an active field of research on its own.
+However, these states are localized and as such the transition rate integrals are short-ranged in most cases.
+For this reason, it is sufficient to account for transitions and interactions up to nearest neighbors
+\begin{align}
+    T_{i,j} \approx \mu\delta_{i,j} + t\delta_{i-1,j}+t^*\delta_{i+1,j},
+    \quad
+    V_{i,i',j,j'} \approx U\delta_{i,j'}\delta_{i',j}\delta_{i,i'} + V\delta_{i,j'}\delta_{i',j}(\delta_{i-1,i'}+\delta_{i+1,i'}).
+\end{align}
+In summary, we are at liberty to simplify a bit the notation and arrive at the family of Hubbard-type models, written in second quantization
+\begin{align}
+    \hat H_{\rm Hubbard} = \sum_{i,j,s}t_{i,j}a^\dag_{is}a^\pdag_{js} + \frac U2\sum_{i,s,s'}\hat n_{i,s}\hat n_{i,s'} + V\sum_{i,s,s'}\hat n_{i,s}\hat n_{i+1,s'}.
+    \label{eq:hubbard_hamiltonian}
+\end{align}
+The operator $a_{is}$ annihilates a Wannier state of flavor $s$, localized around the $i$'th lattice position.
+Perhaps the most successful description of electrons in solids is band theory -- based on screened many-body interactions described by effective one-body potentials.
+However, due to its intrinsic single-particle character, band theory cannot reliably capture truly many-body features such as band magnetism or Mott to metal-insulator transitions.
+This motivates the study of Hubbard-type models: despite being a brutal simplification of the true two-body interaction, they are the easiest systems that provide an explanation of such interaction-driven features.
+Although its apparent innocence, there is no universal treatment of Hubbard models in general.
+In one spacial dimension, the Hamiltonian can be solved analytically and thus falls in the category of being ``integrable''~\cite{Essler2005}.
+In general, integrability is a quite fragile property and even slight perturbations will break it in general.
+The models we study in the next chapters, albeit closely related to the one-dimensional Hubbard model, do not categorize as integrable due to the presence of additional terms that break some of its fundamental symmetries (e.g. the conservation of the particle flavor).
+This motivates the use of alternative methods to study the properties of interacting tight binding models.
+One of the most prominent and useful analytic concepts in one dimension is the theory of Luttinger liquids (paired with renormalization group theory) which approximates the microscopic model in the low temperature limit.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Luttinger liquids}
 \label{sec:luttinger_liquids}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Luttinger liquids provide a viable tool to study the low-temperature properties of many systems in one and two dimensions.
+I start by giving a basic overview on the mapping from spinless fermions to particle-hole excitations in the vicinity of the Fermi points before I introduce the more general formulas for spinful models.
+\subsection{The Tomonaga Luttinger model}
 We are interested to build an effective model in one dimension capturing the relevant degrees of freedom at low temperatures.
 With that purpose, let us start by the free fermionic 1D Hamiltonian $\hat H_0$ denoted by the following (diagonal) representation in momentum space
 \begin{align}
-    \hat H_0 = \sum_k \frac{k^2}{2m}\hat n_k
+    \hat H_0 = \sum_k \frac{(\hbar k)^2}{2m}\hat n_k
+    \label{eq:hamiltonian_free_particles}
 \end{align}
 with dispersion relation $\varepsilon_k =\frac{k^2}{2m}$ depicted in \cref{fig:1D_quadratic_dispersion}.
 \begin{figure}
@@ -561,14 +611,14 @@ with dispersion relation $\varepsilon_k =\frac{k^2}{2m}$ depicted in \cref{fig:1
 Close to the Fermi energy $\varepsilon_F\coloneqq\varepsilon_{\pm k_F}$, we can approximate the free dispersion and obtain a system of two different species
 \begin{align}
     \hat H_0
-    &= \sum_k \brlr{\varepsilon_F \pm \frac{k_F}{m}(k\mp k_F) + \mathcal{O}(k^2)}\hat n_k
+    &= \sum_k \hbar^2\brlr{\varepsilon_F \pm \frac{k_F}{m}(k\mp k_F) + \mathcal{O}(k^2)}\hat n_k
     \\
-    &= \sum_q \brlr{\varepsilon_F + \frac{k_F}{m}q\brlr{\hat n_{q+k_F}-\hat n_{q-k_F}} + \mathcal{O}(k^2)}
-    &\approx \sum_{q} v_Fq \brlr{c^\dag_{q,R}c^\pdag_{q,R} - c^\dag_{q,L}c^\pdag_{q,L}}
+    &= \sum_q \hbar^2\brlr{\varepsilon_F + \frac{k_F}{m}q\brlr{\hat n_{q+k_F}-\hat n_{q-k_F}} + \mathcal{O}(k^2)}
+    \approx \sum_{q} v_F \hbar q \brlr{c^\dag_{q,R}c^\pdag_{q,R} - c^\dag_{q,L}c^\pdag_{q,L}}
     \label{eq:dispersion_linearization}
 \end{align}
 which implies a restriction of $q$ to a small window $|q|<\Gamma\ll m\varepsilon_F$ beyond which \cref{eq:dispersion_linearization} is considered to be invalid.
-Note the introduction of the so-called right and left operators $c_{R/L,q}$ which annihilate particles propagating to the left/right with Fermi velocity $\pm v_F=k_F/m$.
+Note the introduction of the so-called right and left operators $c_{R/L,q}$ which annihilate particles propagating to the left/right with Fermi velocity $\pm v_F=\hbar k_F/m$.
 \\
 
 For the next part, it will be convenient to understand the meaning of the local density in momentum space, i.e.
@@ -647,13 +697,13 @@ and Umklapp scattering
 \begin{align}
     g_\perp\sum_{k,k'} c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\tau}c^\pdag_{k,\overline\tau}.
 \end{align}
-Umklapp terms cannot be expressed in the density operators of the moving modes $\hat\rho_{q,\tau}$ and, for this reason, are discarded here\footnote{Later, we will see that such terms are ``marginal'' and can be neglected under if certain requirements are satisfied (mostly depending on the strength of the interaction $V(q)/t$).}.
+Umklapp terms cannot be expressed in the density operators of the moving modes $\hat\rho_{q,\tau}$ and, for this reason, are discarded here\footnote{Later, we will see that the Umklapp term in the spinless case are ``marginal'' and can be disregarded under certain conditions.}.
 Other processes like those depicted in \cref{fig:scattering_processes} (e) and (f) require the existence of high-energy excitations and can thus be neglected for the effective low temperature theory developed here.
 In summary, we can express the interaction in terms of the density-density operators as
 \begin{align}
-    \hat V \approx \frac{1}{2L}\sum_{q,\tau}\brlr{g_4\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\tau} + g_2\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}}
+    \hat V \approx \frac{\hbar}{2L}\sum_{q,\tau}\brlr{g_4\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\tau} + g_2\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}}
     =
-    \frac{1}{L}\sum_{q>0}
+    \frac{\hbar}{L}\sum_{q>0}
     \begin{pmatrix}
         \hat\rho^\pdag_{q,R} & \hat\rho^\pdag_{q,L}
     \end{pmatrix}
@@ -693,7 +743,7 @@ We are now in shape to define canonical bosonic operators representing the inter
 that satisfy the commutation relation $\commutator{b_q^\pdag,b_{q'}^\dag} = \delta_{q,q'}$.
 Using \cref{eq:canonical_bosonic_operators} results in a familiar expression for the interaction written in \cref{eq:interaction_densities}, i.e.
 \begin{align}
-    \hat V \approx\sum_{q>0}\frac{q}{2\pi}
+    \hat V \approx\sum_{q>0}\frac{\hbar q}{2\pi}
     \begin{pmatrix}
         b_q & b^\dag_{-q}
     \end{pmatrix}
@@ -714,19 +764,19 @@ One can easily verify the commutator of the mover-density with the kinetic Hamil
 \begin{align}
     \commutator{\hat H_0, \hat\rho_{q,\tau}}
     =
-    \sum_{p,\tau'}v_F\sigma_{\tau'}\commutator{\hat n_{p,\tau'},\hat\rho_{q,\tau}}
+    \sum_{p,\tau'}v_F\sigma_{\tau'}\hbar \commutator{\hat n_{p,\tau'},\hat\rho_{q,\tau}}
     =
-    \sigma_\tau v_F q \hat\rho_{q,\tau}
+    \sigma_\tau v_F \hbar q \hat\rho_{q,\tau}
 \end{align}
 and find its equivalent expression in bosonic degrees of freedom to be
 \begin{align}
-    \hat H_0' = \frac{\pi v_F}L\sum_{q,\tau}\hat\rho_{q,\tau}\hat\rho_{-q,\tau} = \frac{2\pi v_F}L\sum_{q>0,\tau}\hat\rho_{q,\tau}\hat\rho_{-q,\tau},
+    \hat H_0' = \frac{\hbar \pi v_F}L\sum_{q,\tau}\hat\rho_{q,\tau}\hat\rho_{-q,\tau} = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau}\hat\rho_{q,\tau}\hat\rho_{-q,\tau},
 \end{align}
 which can be verified through evaluation of
 \begin{align}
     \commutator{\hat H_0',\hat\rho_{q,\tau}}
     \overset{\text{\cref{eq:recursive_commutation}}}{=}
-    -\frac{\pi v_F}L
+    -\frac{\hbar \pi v_F}L
     \sum_{p,\tau'}
     \brlr{
     \commutator{\hat\rho_{q,\tau},\hat\rho_{p,\tau'}}\hat\rho_{-p,\tau'}
@@ -734,13 +784,13 @@ which can be verified through evaluation of
     \hat\rho_{p,\tau'}\commutator{\hat\rho_{q,\tau},\hat\rho_{-p,\tau'}}
     }
     =
-    \sigma_\tau v_F q\hat\rho_{q,\tau}
+    \sigma_\tau v_F \hbar q\hat\rho_{q,\tau}
 \end{align}
 and thus we conclude our previous statement $\hat H_0' = \hat H_0 + \mu$ with an irrelevant constant $\mu$.
 The effective low energy Hamiltonian containing kinetic and interaction energy satisfies the following matrix equation
 \begin{align}
     \hat H = \hat H_0 + \hat V \approx
-    \sum_{q>0}\frac{q}{2\pi}
+    \sum_{q>0}\frac{\hbar q}{2\pi}
     \begin{pmatrix}
         b_q & b^\dag_{-q}
     \end{pmatrix}
@@ -756,7 +806,7 @@ The effective low energy Hamiltonian containing kinetic and interaction energy s
 \end{align}
 As a final step, we want to find the spectrum of the previous Hamiltonian through a basis transformation $B_q = T B'_q$\footnote{The matrix coupling the dot product of the operator spinors $B_q$ is independent on the momentum $q$ and as such the basis transformation $T$ will not depend on $q$ as well.} with $B_q = (b_q^\dag, b_{-q})^T$ such that
 \begin{align}
-    \hat H = \sum_{q>0} qB^\dag_q H B^\pdag_q = \sum_{q>0} qB'^\dag_q T^\dag H T B'^\pdag_q
+    \hat H = \sum_{q>0}\hbar qB^\dag_q H B^\pdag_q = \sum_{q>0}\hbar qB'^\dag_q T^\dag H T B'^\pdag_q
 \end{align}
 is in its diagonal form.
 Naive (unitary) rotations do not preserve the commutators of the spinor $B$, defined through
@@ -774,21 +824,74 @@ We thus find the similarity relation between the original and the rotated basis 
     H'=T^\dag HT =\sigma_z T^{-1}\sigma_z H T,
 \end{align}
 which allows us to solve the eigenvalue equation of $\sigma_z H$ without knowing the explicit form of $T$.
-Since $\sigma_zH$ has vanishing trace, its spectrum is symmetric $\pm E$ and we arrive at the appealing result $H' = E\mathbb1$ with the $2\times2$ unit matrix $\mathbb1$ and scalar eigenvalue
+Since $\sigma_zH$ has vanishing trace, its spectrum is symmetric $\pm E$ and we arrive at the appealing result $H' = u\mathbb1$ with the $2\times2$ unit matrix $\mathbb1$ and scalar eigenvalue
 \begin{align}
-    E = \frac1{2\pi}\sqrt{\brlr{2\pi v_F + g_4}^2 - g_2^2}
+    u = \frac1{2\pi}\sqrt{\brlr{2\pi v_F + g_4}^2 - g_2^2}
 \end{align}
 leading to the identity
 \begin{align}
-    \hat H' = \sum_{q>0} Eq B'^\dag_q B'^\pdag_q = \sum_{q>0} \omega_q B'^\dag_q B'^\pdag_q.
+    \hat H = \sum_{q>0} u\hbar q B'^\dag_q B'^\pdag_q = \sum_{q>0} \hbar \omega_q B'^\dag_q B'^\pdag_q = \sum_q \hbar  \omega_q b'^\dag_qb'^\pdag_q.
 \end{align}
-Notice that we succeeded to rewrite the original problem to a sum of decoupled Harmonic oscillators with frequencies $\omega_q\coloneqq Eq$.
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The harmonic oscillator}
-\label{sec:the_harmonic_oscillator}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Notice that we succeeded to rewrite the original problem to a sum of decoupled Harmonic oscillators with frequencies $\omega_q\coloneqq u|q|$.
+In particular, assuming two canonically conjugate fields $\commutator{\pi_k,\phi_{k'}} = -\ri\hbar\delta_{k,k'}$, the standard substitution of ladder operators, i.e.
+\begin{align}
+    b'_q = \sqrt{\frac{mw_q}{2\hbar}}\brlr{\hat\phi_q + \frac{\ri}{mw_q}\hat\pi_{-q}},
+    \quad
+    b'^\dag_q = \sqrt{\frac{mw_q}{2\hbar}}\brlr{\hat\phi_{-q} - \frac{\ri}{mw_q}\hat\pi_{q}},
+\end{align}
+brings the diagonalized Hamiltonian to the more traditional form
+\begin{align}
+    \hat H = \sum_q \frac{\hat\pi_q\hat\pi_{-q}}{2m} + \frac{m\omega_q^2}2\hat\phi_q\hat\phi_{-q}
+    =
+    \int\rd x\, \brlr{\frac{\hat\pi^2}{2m} + \frac{Da^2}2(\partial_x\hat\phi)^2}.
+\end{align}
+In the above, we introduced an effective spring constant through the velocity and lattice spacing $D=mu^2/a^2$.
+In particular, the field $\partial_x\hat\phi$ can be interpreted as the position offset from the quasiparticle's equilibrium position and $\hat\pi$ is its effective momentum.
+Moving to dimensionless units (by imposing $\hbar=c=1$ and requiring a unit mass) and rescaling the fields $\hat\phi\rightarrow \frac1{uK}\hat\phi$, $\hat\pi\rightarrow uK\hat\pi$ results in the standard Luttinger liquid Hamiltonian (apart an overall factor $2$)
+\begin{align}
+    2\hat H = \int\rd x\, \brlr{uK\hat\pi^2 + \frac uK(\partial_x\hat\phi)^2},
+\end{align}
+in which the couplings are encoded in the dimensionless Luttinger parameter
+\begin{align}
+    K = \sqrt{\frac{1+y_4/2-y_2/2}{1+y_4/2+y_2/2}},
+    \quad
+    y_4=g_4/(\pi v_F),
+    \quad
+    y_2=g_2/(\pi v_F).
+\end{align}
+The expressions of the effective fields in terms of the local creation and annihilation operators result from a quite involved calculation which is particularly clearly presented in several excellent books on the topic~\cite{Bruus2004,Giamarchi2003,Gogolin2004}.
+On a more intuitive level, the relation to the local densities (given the intuition build from the equivalence to the quantum harmonic oscillator) is straightforward:
+\begin{align}
+    \partial_x\hat\phi(x)=-\pi[\hat\rho_R(x)+\hat\rho_L(x)],
+    \quad
+    \hat\pi(x)=\partial_x\hat\theta=\pi[\hat\rho_R(x)-\hat\rho_L(x)].
+\end{align}
+The relation to the annihilation operators (in the continuum) are maybe less obvious
+\begin{align}
+    c_{R/L}(x) = \frac1{\sqrt{2\pi\alpha}}\eta_{R/L}\re^{\pm\ri k_F x}\re^{\mp\ri\phi(x) + \ri\theta(x)}
+\end{align}
+in which the operator identity is to be understood in the limit $\alpha\rightarrow0$\footnote{This limit arises from the fact that the fermionic creation operators are only defined in case of a finite momentum cutoff which is controlled by $\alpha$.}.
+However, we are able to understand it again from a more intuitive viewpoint:
+the operators $\eta$ are called Klein factors which are needed to connect the different subspaces $\FS^N$ of fixed particle number $N$.
+The factors $\re^{\pm\ri k_Fx}$ are readily obtained from the confinement of the right/left operators at the two Fermi points.
+The last exponential can be understood as a (Grassmann) coherent state composed from the superposition of (right/left dispersion) particle-hole excitations.
+Lastly, I want to stress that the results presented here are actually independent of the original starting point, i.e. \cref{eq:hamiltonian_free_particles}.
+The only microscopic parameter entering in the final theory is $v_F$, which can be replaced by arbitrary group velocities evaluated on the Fermi surface $v_F=(\partial_k\varepsilon_k)_{k=k_F}$.
+Significant deviations are then expected in case of flat bands (to be more precise, in case of strong interactions comparable with the bandwidth of the kinetic Hamiltonian), in which case all the scattering processes displayed in \cref{fig:scattering_processes} contribute significantly.
+
+\subsection{Models with spin}
+For spinful systems, we must first require that the kinetic Hamiltonian is fully decoupled, i.e.
+\begin{align}
+    \hat H_0 = \hat H_{0,\uparrow}+\hat H_{0,\downarrow}
+\end{align}
+which allows to introduce a pair of conjugate fields $(\phi_s,\theta_s)$ for each spin flavor $s$.
+
+% %
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{The harmonic oscillator}
+% \label{sec:the_harmonic_oscillator}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %
 % %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -841,11 +944,9 @@ Notice that we succeeded to rewrite the original problem to a sum of decoupled H
 % \subsection{Symmetry classification of topological phases}
 % \label{sec:symmetry_classification_of_topological_phases}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Ultracold atoms trapped in optical lattices}
-\label{ch:ultracold_atoms_trapped_in_optical_lattices}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Topological phases of matter}
+\label{ch:topological_phases_of_matter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
