@@ -578,6 +578,7 @@ In summary, we are at liberty to simplify a bit the notation and arrive at the f
 \end{align}
 The operator $a_{is}$ annihilates a Wannier state of flavor $s$, localized around the $i$'th lattice position.
 Perhaps the most successful description of electrons in solids is band theory -- based on screened many-body interactions described by effective one-body potentials.
+This results in a form of \cref{eq:hubbard_hamiltonian} without density-density interactions such that a diagonalization of the hopping matrix $T$ solves the problem.
 However, due to its intrinsic single-particle character, band theory cannot reliably capture truly many-body features such as band magnetism or Mott to metal-insulator transitions.
 This motivates the study of Hubbard-type models: despite being a brutal simplification of the true two-body interaction, they are the easiest systems that provide an explanation of such interaction-driven features.
 Although its apparent innocence, there is no universal treatment of Hubbard models in general.
@@ -681,23 +682,36 @@ A full classification of hypothetical scattering processes is given in~\cref{fig
     \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g1.pdf}}
     \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g13.pdf}}
     \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g22.pdf}}
-    \caption{Relevant scattering processes of a generic density-density interaction in one-dimensional quantum systems. (a)/(b) The depicted scattering is commonly referred to as ``forward scattering'' $g_4$ process ($4$ right/left operators, $q\approx0$), (c) as ``backscattering'' $g_2$ process (containing $2$ pairs of right and left operators, $q\approx0$) and (d) as ``Umklapp'' process $g_\perp$ with momentum transfer $q\approx 2k_F$. Other possible scatterings like the ones depicted in (e) and (f) require the existence of high-energy excitations and are thus exponentially suppressed at low temperatures.}
+    \caption{Relevant scattering processes of a generic density-density interaction in one-dimensional quantum systems. (a)/(b) The depicted scattering is commonly referred to as ``forward scattering'' $g_4$ process ($4$ right/left operators, $q\approx0$), (c) as ``backscattering'' $g_2$ process (containing $2$ pairs of right and left operators, $q\approx0$) and (d) as ``Umklapp'' process $g_1$ with momentum transfer $q\approx 2k_F$. Other possible scatterings like the ones depicted in (e) and (f) require the existence of high-energy excitations and are thus exponentially suppressed at low temperatures.}
     \label{fig:scattering_processes}
 \end{figure}
 This simple argumentation allows to consider only the most relevant processes at low temperatures, i.e. those presented in panels (a) - (d).
 We will call those processes forward scattering (note that we are discarding chemical potentials on the right hand side of the following equations)
 \begin{align}
-    g_4\sum_{k,k'}c^\dag_{k+q,\tau}c^\dag_{k'-q,\tau}c^\pdag_{k',\tau}c^\pdag_{k,\tau} = g_4 \hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\tau},
+    g_4\sum_{k,k',q}c^\dag_{k+q,\tau}c^\dag_{k'-q,\tau}c^\pdag_{k',\tau}c^\pdag_{k,\tau} = g_4 \sum_q\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\tau},
 \end{align}
 backscattering
 \begin{align}
-    g_2\sum_{k,k'}c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\overline\tau}c^\pdag_{k,\tau} = g_2 \hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}
+    g_2\sum_{k,k',q}c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\overline\tau}c^\pdag_{k,\tau} = g_2\sum_q \hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}
 \end{align}
 and Umklapp scattering
 \begin{align}
-    g_\perp\sum_{k,k'} c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\tau}c^\pdag_{k,\overline\tau}.
+    g_1\sum_{k,k',q} c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\tau}c^\pdag_{k,\overline\tau}.
 \end{align}
-Umklapp terms cannot be expressed in the density operators of the moving modes $\hat\rho_{q,\tau}$ and, for this reason, are discarded here\footnote{Later, we will see that the Umklapp term in the spinless case are ``marginal'' and can be disregarded under certain conditions.}.
+I make one important remark on the Umklapp scattering of spinless fermions, that is
+\begin{align}
+    \sum_{k,k',q}
+    c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\tau}c^\pdag_{k,\overline\tau}
+    &=
+    \sum_{k,k',q,q'} \delta_{q,q'-k+k'}
+    c^\dag_{k'+q',\tau}c^\dag_{k-q',\overline\tau}c^\pdag_{k',\tau}c^\pdag_{k,\overline\tau}
+    \\
+    &=
+    -\sum_{k,k',q}c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\overline\tau}c^\pdag_{k,\tau}
+    = -\sum_q\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}.
+\end{align}
+This proofs that Umklapp terms are up to a sign equivalent to backscattering terms in case of indiscernible particles.
+% Umklapp terms cannot be expressed in the density operators of the moving modes $\hat\rho_{q,\tau}$ and, for this reason, are discarded here\footnote{Later, we will see that the Umklapp term in the spinless case are ``marginal'' and can be disregarded under certain conditions.}.
 Other processes like those depicted in \cref{fig:scattering_processes} (e) and (f) require the existence of high-energy excitations and can thus be neglected for the effective low temperature theory developed here.
 In summary, we can express the interaction in terms of the density-density operators as
 \begin{align}
@@ -833,34 +847,36 @@ leading to the identity
     \hat H = \sum_{q>0} u\hbar q B'^\dag_q B'^\pdag_q = \sum_{q>0} \hbar \omega_q B'^\dag_q B'^\pdag_q = \sum_q \hbar  \omega_q b'^\dag_qb'^\pdag_q.
 \end{align}
 Notice that we succeeded to rewrite the original problem to a sum of decoupled Harmonic oscillators with frequencies $\omega_q\coloneqq u|q|$.
-In particular, assuming two canonically conjugate fields $\commutator{\pi_k,\phi_{k'}} = -\ri\hbar\delta_{k,k'}$, the standard substitution of ladder operators, i.e.
+In particular, assuming two canonically conjugate fields $\commutator{\phi_{k},\pi_{k'}} = \ri\hbar\delta_{k,k'}$, the following substitution of ladder operators, i.e.
 \begin{align}
-    b'_q = \sqrt{\frac{mw_q}{2\hbar}}\brlr{\hat\phi_q + \frac{\ri}{mw_q}\hat\pi_{-q}},
+    b'_q = \sqrt{\frac{mw_q}{2\pi\hbar}}\brlr{\hat\phi_q + \frac{\ri}{mw_q}\hat\pi_{-q}},
     \quad
-    b'^\dag_q = \sqrt{\frac{mw_q}{2\hbar}}\brlr{\hat\phi_{-q} - \frac{\ri}{mw_q}\hat\pi_{q}},
+    b'^\dag_q = \sqrt{\frac{mw_q}{2\pi\hbar}}\brlr{\hat\phi_{-q} - \frac{\ri}{mw_q}\hat\pi_{q}},
 \end{align}
 brings the diagonalized Hamiltonian to the more traditional form
 \begin{align}
-    \hat H = \sum_q \frac{\hat\pi_q\hat\pi_{-q}}{2m} + \frac{m\omega_q^2}2\hat\phi_q\hat\phi_{-q}
+    \hat H = \sum_q \frac{\hat\pi_q\hat\pi_{-q}}{2\pi m} + \frac{m\omega_q^2}{2\pi}\hat\phi_q\hat\phi_{-q}
     =
-    \int\rd x\, \brlr{\frac{\hat\pi^2}{2m} + \frac{Da^2}2(\partial_x\hat\phi)^2}.
+    \int\frac{\rd x}{2\pi}\, \brlr{\hat\pi^2/m + {Da^2}(\partial_x\hat\phi)^2}.
 \end{align}
-In the above, we introduced an effective spring constant through the velocity and lattice spacing $D=mu^2/a^2$.
+In the above, I introduced an effective spring constant through the velocity and lattice spacing $D=mu^2/a^2$.
 In particular, the field $\partial_x\hat\phi$ can be interpreted as the position offset from the quasiparticle's equilibrium position and $\hat\pi$ is its effective momentum.
-Moving to dimensionless units (by imposing $\hbar=c=1$ and requiring a unit mass) and rescaling the fields $\hat\phi\rightarrow \frac1{uK}\hat\phi$, $\hat\pi\rightarrow uK\hat\pi$ results in the standard Luttinger liquid Hamiltonian (apart an overall factor $2$)
+Moving to dimensionless units (by imposing $\hbar=c=1$ and requiring a unit mass) and rescaling the fields $\hat\phi\rightarrow \frac1{uK}\hat\phi$, $\hat\pi\rightarrow uK\hat\pi$ results in the standard Luttinger liquid Hamiltonian
 \begin{align}
-    2\hat H = \int\rd x\, \brlr{uK\hat\pi^2 + \frac uK(\partial_x\hat\phi)^2},
+    \hat H = \int\frac{\rd x}{2\pi}\, \brlr{uK\hat\pi^2 + \frac uK(\partial_x\hat\phi)^2},
 \end{align}
-in which the couplings are encoded in the dimensionless Luttinger parameter
+in which the couplings are encoded in the dimensionless Luttinger parameters
 \begin{align}
-    K = \sqrt{\frac{1+y_4/2-y_2/2}{1+y_4/2+y_2/2}},
+    u = v_F\sqrt{\brlr{1 + y_4}^2 - y_2^2},
     \quad
-    y_4=g_4/(\pi v_F),
+    K = \sqrt{\frac{1+y_4-y_2}{1+y_4+y_2}},
     \quad
-    y_2=g_2/(\pi v_F).
+    y_4=g_4/(2\pi v_F),
+    \quad
+    y_2=g_2/(2\pi v_F).
 \end{align}
-The expressions of the effective fields in terms of the local creation and annihilation operators result from a quite involved calculation which is particularly clearly presented in several excellent books on the topic~\cite{Bruus2004,Giamarchi2003,Gogolin2004}.
-On a more intuitive level, the relation to the local densities (given the intuition build from the equivalence to the quantum harmonic oscillator) is straightforward:
+The expressions of the effective fields (after the particular choice of the rescaling by a factor $uK$) in terms of the local creation and annihilation operators result from a quite involved calculation which is particularly clearly presented in several excellent books on the topic~\cite{Bruus2004,Giamarchi2003,Gogolin2004}.
+On an intuitive level (given the demonstrated equivalence to the quantum harmonic oscillator), the relation to the local densities is straightforward:
 \begin{align}
     \partial_x\hat\phi(x)=-\pi[\hat\rho_R(x)+\hat\rho_L(x)],
     \quad
@@ -870,22 +886,99 @@ The relation to the annihilation operators (in the continuum) are maybe less obv
 \begin{align}
     c_{R/L}(x) = \frac1{\sqrt{2\pi\alpha}}\eta_{R/L}\re^{\pm\ri k_F x}\re^{\mp\ri\phi(x) + \ri\theta(x)}
 \end{align}
-in which the operator identity is to be understood in the limit $\alpha\rightarrow0$\footnote{This limit arises from the fact that the fermionic creation operators are only defined in case of a finite momentum cutoff which is controlled by $\alpha$.}.
+in which the operator identity is to be understood in the limit $\alpha\rightarrow0$\footnote{This limit arises from the fact that the fermionic creation operators are only defined in case of a finite momentum cutoff which is controlled by $\alpha$. For a detailed discussion, I refer to~\cite{Bruus2004}.}.
 However, we are able to understand it again from a more intuitive viewpoint:
 the operators $\eta$ are called Klein factors which are needed to connect the different subspaces $\FS^N$ of fixed particle number $N$.
 The factors $\re^{\pm\ri k_Fx}$ are readily obtained from the confinement of the right/left operators at the two Fermi points.
-The last exponential can be understood as a (Grassmann) coherent state composed from the superposition of (right/left dispersion) particle-hole excitations.
+The last exponential can be understood as a (Grassmann) coherent state composed of (right/left dispersing) particle-hole excitations.
+\\
+
+\todo{Add paragraph about correlation functions here}
+\\
+
 Lastly, I want to stress that the results presented here are actually independent of the original starting point, i.e. \cref{eq:hamiltonian_free_particles}.
 The only microscopic parameter entering in the final theory is $v_F$, which can be replaced by arbitrary group velocities evaluated on the Fermi surface $v_F=(\partial_k\varepsilon_k)_{k=k_F}$.
-Significant deviations are then expected in case of flat bands (to be more precise, in case of strong interactions comparable with the bandwidth of the kinetic Hamiltonian), in which case all the scattering processes displayed in \cref{fig:scattering_processes} contribute significantly.
+Significant deviations are then expected in case of flat bands (to be more precise, in case of strong interactions comparable with the bandwidth of the kinetic Hamiltonian), in which case all scattering processes of \cref{fig:scattering_processes} have to be accounted for.
+On a practical level, the evaluation of all scattering processes is a tough task and regularly neglected in the vast literature on the theoretical research of one-dimensional models, which then leads to expected quantitative deviations.
+However, on a qualitative viewpoint, the neglected scatterings (whenever they are irrelevant in a sense of not opening energy gaps) are widely accepted to change only the effective couplings such that physical consequences predicted from the Luttinger liquid theory [like the asymptotic decay of correlation functions] remain valid.
 
 \subsection{Models with spin}
 For spinful systems, we must first require that the kinetic Hamiltonian is fully decoupled, i.e.
 \begin{align}
     \hat H_0 = \hat H_{0,\uparrow}+\hat H_{0,\downarrow}
+    = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau,s\in\{\uparrow,\downarrow\}}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s}
 \end{align}
 which allows to introduce a pair of conjugate fields $(\phi_s,\theta_s)$ for each spin flavor $s$.
-
+The scattering processes $g_4$ and $g_2$ can be generalized in a straightforward manner, and we achieve
+\begin{align}
+  \hat V \approx
+  \sum_{q,\tau,s}
+  g_{4\parallel}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s}
+  +
+  g_{4\perp}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,\overline s}
+  +
+  g_{2\parallel}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\overline\tau,s}
+  +
+  g_{2\perp}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\overline\tau,\overline s}
+\end{align}
+To account for the scattering among different spins, it is customary to write the model in terms of a charge and spin degree of freedom, defined as
+\begin{align}
+    \hat f_+=\frac1{\sqrt2}\brlr{\hat f_\uparrow + \hat f_\downarrow},
+    \quad
+    \hat f_-=\frac1{\sqrt2}\brlr{\hat f_\uparrow - \hat f_\downarrow}.
+\end{align}
+This rotation is trivial on the level of the kinetic Hamiltonian and
+\begin{align}
+    \hat H_0 = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau,s\in\{+,-\}}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s}.
+\end{align}
+Things are different for the forward and backscattering processes $g_{2/4}$.
+In the spinful scenario, it is necessary to distinguish between intra-spin and inter-spin scattering, such that
+\begin{align}
+  \sum_{s\in\{\uparrow,\downarrow\}}
+  \brlr{
+  g_{4\parallel}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s}
+  +
+  g_{4\perp}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,\overline s}
+  +
+  g_{2\parallel}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\overline\tau,s}
+  +
+  g_{2\perp}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\overline\tau,\overline s}
+  }
+  \\
+  =
+  \frac12
+  \sum_{i\in\{2,4\}}
+  \brlr{
+  [g_{i\parallel}+g_{i\perp}]\hat\rho^\pdag_{q,\tau,+}\hat\rho^\dag_{q,\tau,+}
+  +
+  [g_{i\parallel}-g_{i\perp}]\hat\rho^\pdag_{q,\tau,-}\hat\rho^\dag_{q,\tau,-}
+  }.
+\end{align}
+In case of the Umklapp terms, things become a bit more messy.
+While the inter-spin Umklapp terms are again equivalent to backscattering terms (up to a sign), the $g_{1\perp}$ term will be
+\begin{align}
+    g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}c^\dag_{L,s}(x)c^\pdag_{R,s}(x)c^\dag_{R,\overline s}(x)c^\dag_{L,\overline s}(x)
+    =
+    g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\re^{-2\ri\phi_s(x)}\re^{2\ri\phi_{\overline s}(x)}
+    =
+    \frac{g_{1\perp}}{2\pi^2\alpha^2}\cos(2\sqrt2\phi_-(x))
+\end{align}
+and therefore, the total Hamiltonian is of the form
+\begin{align}
+    \hat H = \sum_{s\in\{+,-\}}\int\frac{\rd x}{4\pi}\brlr{u_s K_s\pi_s^2 + \frac{u_s}{K_s}(\partial_x\phi_s)^2} + \int\rd x\frac{2g_{1\perp}}{(2\pi\alpha)^2}\cos(2\sqrt2\phi_-(x))
+\end{align}
+with coupling constants
+\begin{align}
+    u_sK_s = v_F(1+y_{4s}-y_{2s}),
+    \quad
+    \frac{u_s}{K_s} = v_F(1+y_{4s}+y_{2s}),
+    \\
+    y_{is} = \frac{g_{i\parallel}+sg_{i\perp}}{2\pi v_F},
+    \quad
+    i\in\{1,2\},
+    \quad
+    s\in\{+,-\}.
+\end{align}
 % %
 % %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
