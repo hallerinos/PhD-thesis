@@ -700,15 +700,15 @@ and Umklapp scattering
 \end{align}
 I make one important remark on the Umklapp scattering of spinless fermions, that is
 \begin{align}
-    \sum_{k,k',q}
+    \sum_{k,k',q}V(q)
     c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\tau}c^\pdag_{k,\overline\tau}
-    &=
-    \sum_{k,k',q,q'} \delta_{q,q'-k+k'}
+    =
+    \sum_{k,k',q,q'}V(q) \delta_{q,q'-k+k'}
     c^\dag_{k'+q',\tau}c^\dag_{k-q',\overline\tau}c^\pdag_{k',\tau}c^\pdag_{k,\overline\tau}
     \\
-    &=
-    -\sum_{k,k',q}c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\overline\tau}c^\pdag_{k,\tau}
-    = -\sum_q\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}.
+    =
+    -\sum_{k,k',q}V(k'-k+q)c^\dag_{k+q,\tau}c^\dag_{k'-q,\overline\tau}c^\pdag_{k',\overline\tau}c^\pdag_{k,\tau}
+    \approx -V(2k_F)\sum_q\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}.
 \end{align}
 This proofs that Umklapp terms are up to a sign equivalent to backscattering terms in case of indiscernible particles.
 % Umklapp terms cannot be expressed in the density operators of the moving modes $\hat\rho_{q,\tau}$ and, for this reason, are discarded here\footnote{Later, we will see that the Umklapp term in the spinless case are ``marginal'' and can be disregarded under certain conditions.}.
@@ -975,7 +975,7 @@ with coupling constants
     \\
     y_{is} = \frac{g_{i\parallel}+sg_{i\perp}}{2\pi v_F},
     \quad
-    i\in\{1,2\},
+    i\in\{2,4\},
     \quad
     s\in\{+,-\}.
 \end{align}
