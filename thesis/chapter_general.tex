@@ -1262,7 +1262,7 @@ Now for the second order correction -- the first term in the connected correlato
     \label{eq:second_order_rg_term1}
 \end{align}
 and contains the decaying two-point correlations of the $h$-fields.
-For convenience, let me proceed with the assumption that the two-point correlations are of the form $\braket{h({\bf x})h({\bf x'})} = \frac K2 C(|{\bf x}-{\bf x'}|)\rd l$ such that the action is rewritten to
+For convenience, let me proceed with the assumption that the two-point correlations are of the form $\braket{h({\bf x})h({\bf x'})} = \frac K2 C(r=|{\bf x}-{\bf x'}|)\rd l$ such that the action is rewritten to
 \begin{align}
     \braket{S^2_I[\phi_{\Lambda'}+h]}=\frac{g^2}2\brlr{1 - \frac{K\beta^2}2\rd l}\int\rd^2x\rd^2x'
     \left(
@@ -1287,44 +1287,40 @@ The disconnected part of the correlation function is easily evaluated using the 
 Therefore, the $C$-independent terms cancel in the connected part of the correlation function and the final result is
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}} = \frac{g^2K\beta^2}8\rd l\int\rd^2x\rd^2x'
-    C({\bf x},{\bf x'})
+    C(|{\bf x}-{\bf x'}|)
     \left(
         \cos\commutator{\beta\phi_{\Lambda'}({\bf x})+\beta\phi_{\Lambda'}({\bf x'})}
-        \right.\\
+        \right.
+        \\
         \left.-
         \cos\commutator{\beta\phi_{\Lambda'}({\bf x})-\beta\phi_{\Lambda'}({\bf x'})}
     \right)
-    \\
-    \approx
-    \frac{\gamma g^2K\beta^2}8\rd l\int\rd^2x
-    \left(
-        \cos\commutator{2\beta\phi_{\Lambda'}({\bf x})}
-        % \right.\\
-        % \left.
-        -\cos\commutator{\beta\partial_{\bf x}\phi_{\Lambda'}({\bf x})}
-    \right).
-    \label{eq:RG_second_order_approximation}
+    % \\
+    % \approx
+    % \frac{\gamma g^2K\beta^2}8\rd l\int\rd^2x
+    % \left(
+    %     \cos\commutator{2\beta\phi_{\Lambda'}({\bf x})}
+    %     % \right.\\
+    %     % \left.
+    %     -\cos\commutator{\beta\partial_{\bf x}\phi_{\Lambda'}({\bf x})}
+    % \right).
+    % \label{eq:RG_second_order_approximation_1}
 \end{align}
-The constant $\gamma$ encodes the function $C(r)\approx\gamma\delta(r)$.
-This approximation is actually highly non-trivial and needs further discussion.
-For the employed momentum restrictions in \cref{eq:rg_hsq}, one would obtain here $C(r) = J_0(\Lambda r)$ with asymptotic expression $J_0(\Lambda r)\approx\sqrt{2/(\pi \Lambda r)}\cos(\Lambda r-\pi/4)$.
+% In case $C(|{\bf x}-{\bf x'}|)$ is sufficiently short-ranged, the arguments in the $\cos$ of \cref{eq:rg_int_1,eq:rg_int_2} can be approximated as indicated in \cref{eq:RG_second_order_approximation_1} using a non-universal constant $\gamma$.
+To proceed in solving the integral, the function $C$ needs to be discussed further.
+For the sharp momentum cutoff, one would obtain here $C(r) = J_0(\Lambda r)$ with asymptotic expression $J_0(\Lambda r)\approx\sqrt{2/(\pi \Lambda r)}\cos(\Lambda r-\pi/4)$.
 This function has a long algebraic tail and is thus not a sharp function.
 The origin of this long tail resides in the choice of the momentum cutoff in the integration scheme.
 In particular, the momentum integration can be rewritten to
 \begin{align}
-    \int_{0}^{\Lambda}\rd p \rightarrow \int_{0}^\infty\rd p\frac{\Lambda^{n}}{p^{n}+\Lambda^{n}},
+    \int_{0}^{\Lambda}\rd p \rightarrow \int_{0}^\infty\rd p f_n(p,\Lambda),
+    \quad
+    f_n(p,\Lambda) = \frac{\Lambda^n}{p^n+\Lambda^n},
     \quad
     n\in\mathds N,
     \label{eq:integral_cutoff}
 \end{align}
 implementing a smooth cutoff around $\Lambda$.
-\begin{figure}
-    \centering
-    \subfigure[]{\includegraphics[width=.49\textwidth]{figures/Crs_cutoff.pdf}}
-    \subfigure[]{\includegraphics[width=.49\textwidth]{figures/Crs.pdf}}
-    \caption{TO BE REPLACED. Panel (a) shows the chosen cutoff for the integral expression in \cref{eq:integral_cutoff}, which results in the approximation of $C(r)$ plotted in (b).}
-    \label{fig:rg_cutoff}
-\end{figure}
 The sharp situation is recovered for $n\rightarrow\infty$ (see \cref{fig:rg_cutoff}).
 In practice, the integration \cref{eq:rg_hsq} evaluates to the general integral
 \begin{align}
@@ -1335,27 +1331,64 @@ In practice, the integration \cref{eq:rg_hsq} evaluates to the general integral
     \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\brlr{\frac1{p^n+\Lambda'^n}-\frac1{p^n+\Lambda^n}}
     \\
     =
-    \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\frac{n\Lambda^{n-1}}{\left(\Lambda^n+p^n\right)^2}\rd\Lambda + O(\rd \Lambda^2).
+    \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\frac{n\Lambda^n}{\left(\Lambda^n+p^n\right)^2}\rd l + O(\rd l^2)
     \label{eq:rg_hxhxpr}
 \end{align}
-At this point it is worth mentioning that the correlation functions of the slow fields are
+leading to the modified function $C_n$ which depends on the smoothness $n$, i.e.
 \begin{align}
-    \braket{\phi_\Lambda({\bf x}),\phi_\Lambda(\bf x')} = \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\brlr{\frac1{p^n+\Lambda^n_{\rm min}}-\frac1{p^n+\Lambda^n_{\rm max}}}
+    C_n(r)
+    =
+    \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\frac{n\Lambda^n}{\left(\Lambda^n+p^n\right)^2}.
+    \label{eq:rg_cn_def}
 \end{align}
-which, in case of $n=2$, yield the appealing result
-\begin{align}
-    \braket{\phi_\Lambda({\bf x}),\phi_\Lambda(\bf x')} = \frac K2 \brlr{K_0(\Lambda_{\rm min} r) - K_0(\Lambda_{\rm max} r)}.
-    \label{eq:rg_slow_fields_approximation}
-\end{align}
-For the case $n=2$, the integral of the $h$-fields evaluates to
-\begin{align}
-    \braket{h({\bf x}),h(\bf x')}_h = \frac K2 r K_1(\Lambda r).
-\end{align}
-This concludes the analytic derivation of $C(r)=rK_1(\Lambda r)$, which is presented in \cref{fig:rg_cutoff}.
-It is noticeable that a smooth cutoff is useful to confine the fast-field correlations into the interval $\Lambda x < 1$, which justifies $C(r)\approx\gamma\delta(r)$.
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics{figures/cutoff_function.png}}
+    \subfigure[]{\includegraphics{figures/rg_correlations.png}}
+    \subfigure[]{\includegraphics{figures/rg_correlations_log.png}}
+    \caption{Panel (a) shows the chosen cutoff $f_n(p,\Lambda)$ with $n\in\{2,4,6,8,\infty\}$ for the integral expression in \cref{eq:integral_cutoff}, which results in the approximation of $C_n(r)$ plotted in (b). Panel (c) highlights the exponential sharp function $C_2(r)=\Lambda rK_1(r\Lambda)$ compared to the sharp cutoff result $C_\infty(r)=J_0(\Lambda r)$.}
+    \label{fig:rg_cutoff}
+\end{figure}
+% At this point it is worth mentioning that the correlation functions of the slow fields are
+% \begin{align}
+%     \braket{\phi_\Lambda({\bf x}),\phi_\Lambda(\bf x')} = \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\brlr{\frac1{p^n+\Lambda^n_{\rm min}}-\frac1{p^n+\Lambda^n_{\rm max}}}
+% \end{align}
+% which, in case of $n=2$, yield the appealing result
+% \begin{align}
+%     \braket{\phi_\Lambda({\bf x}),\phi_\Lambda(\bf x')} = \frac K2 \brlr{K_0(\Lambda_{\rm min} r) - K_0(\Lambda_{\rm max} r)}.
+%     \label{eq:rg_slow_fields_approximation}
+% \end{align}
+For the special case $n=2$, the integral of the $h$-fields evaluates to $C_2(r)=\frac K2 \Lambda r K_1(\Lambda r)$ that decays exponentially fast (see \cref{fig:rg_cutoff}(c)).
+Therefore, the integration of $C_2(r)$ can be confined to a small interval $r<\xi$ in which $\xi\sim1/\Lambda$ is a small length scale comparable with the lattice spacing.
 \\
 
-The first $\cos$ term in \cref{eq:RG_second_order_approximation} did not exist before -- it is a new sine-Gordon type interaction with scaling dimension $D_h = K\beta^2$.
+In order to utilize the confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bf R} = 1/2({\bf x}+{\bf x'})$ and ${\bf r} = 1/2({\bf x}-{\bf x'})$.
+The integral can then be rewritten to
+\begin{align}
+    -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
+    =
+    \frac{g^2K\beta^2}8\rd l\int\rd^2R\int_{0}^\xi\rd^2r
+    C_2(r)
+    \left(
+        \cos\commutator{\beta\phi_{\Lambda'}({\bf R}+{\bf r})+\beta\phi_{\Lambda'}({\bf R}-{\bf r})}
+        \right.
+        \label{eq:rg_int_1}\\
+        \left.-
+        \cos\commutator{\beta\phi_{\Lambda'}({\bf R}+{\bf r})-\beta\phi_{\Lambda'}({\bf R}-{\bf r})}
+    \right)
+    \label{eq:rg_int_2}
+    \\
+    \approx
+    \frac{\xi^2 g^2K\beta^2}8\rd l\int\rd^2R
+    \left(
+        \cos\commutator{2\beta\phi_{\Lambda'}({\bf R})}
+        -
+        \cos\commutator{\beta\partial_{\bf R}\phi_{\Lambda'}({\bf R})\xi)}
+    \right)
+    \label{eq:rg_int_rel_coords}
+\end{align}
+in which I use the fact that $\lim_{r\rightarrow0}C_2(\Lambda r)=1$.
+The $\cos$ term in \cref{eq:rg_int_1} did not exist before -- it is a new sine-Gordon type interaction with scaling dimension $D_h = K\beta^2$.
 Note that this term generation is continuous, and to account for it, we should start from a more generic interaction containing all the higher harmonics, i.e.
 \begin{align}
     S_{I'} = S_I + \sum_{j=1}^\infty g_j\int\rd x\rd\tau\cos(2j\beta\phi).
@@ -1365,11 +1398,11 @@ The first-order corrections of the Euclidian action then yield a coupled system 
 Note that this allows for a practical and well-justified simplification of dropping the sum in \cref{eq:sine_gordon_full}, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
 \\
 
-The second $\cos$ contribution in \cref{eq:RG_second_order_approximation} yields a renormalization of the quadratic part after the harmonic approximation (fully neglecting the constant which renormalizes the free energy)
+The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part after the harmonic approximation (fully neglecting the constant which renormalizes the free energy)
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
     \approx
-    \frac{\gamma g^2K\beta^4}{16}\rd l\int\rd x\rd\tau\frac1{u^2}(\partial_
+    \frac{\xi^4 g^2K\beta^4}{16}\rd l\int\rd x\rd\tau\frac1{u^2}(\partial_
     \tau\phi_{\Lambda'})^2+(\partial_x\phi_{\Lambda'})^2.
     \label{eq:RG_second_order_approximation}
 \end{align}
@@ -1379,20 +1412,20 @@ In summary, we obtain the effective action
 \end{align}
 which is self-similar to the original action up to the renormalized couplings
 \begin{align}
-    \frac1{uK'}=\frac1{uK}+\frac{\gamma g^2 K\beta^4\pi}{8 u^2}\rd l,
+    \frac1{uK'}=\frac1{uK}+\frac{\xi^4 g^2 K\beta^4\pi}{8 u^2}\rd l,
     \quad
-    \frac u{K'}=\frac u{K}+\frac{\gamma g^2 K\beta^4\pi}8\rd l,
+    \frac u{K'}=\frac u{K}+\frac{\xi^4 g^2 K\beta^4\pi}8\rd l,
     \quad
     g' = g\brlr{1 + \commutator{2-\frac{\beta^2 K}4}\rd l},
     \\
     \Rightarrow
-    K' = \brlr{\commutator{\frac{1}{uK}+\frac{\gamma g K\beta^4\pi}{8u^2}}\commutator{\frac{u}{K}+\frac{\gamma g K\beta^4\pi}{8}}}^{-1/2}
+    K' = \brlr{\commutator{\frac{1}{uK}+\frac{\xi^4 g K\beta^4\pi}{8u^2}}\commutator{\frac{u}{K}+\frac{\xi^4 g K\beta^4\pi}{8}}}^{-1/2}
     =
-    K-\frac{\pi \gamma \beta^4 g^2 K^3}{8u}\rd l + O(\rd l^2).
+    K-\frac{\pi \xi^4 \beta^4 g^2 K^3}{8u}\rd l + O(\rd l^2).
 \end{align}
 In summary, this concludes the derivation of the so-called RG flow which is described by the system of differential equations we just derived
 \begin{align}
-    \frac{\rd K}{\rd l} = -\frac{\pi \gamma \beta^4 g^2 K^3}{8u},
+    \frac{\rd K}{\rd l} = -\frac{\pi \xi^4 \beta^4 g^2 K^3}{8u},
     \quad
     \frac{\rd g}{\rd l} = g\brlr{2-\frac{\beta^2K}4}.
 \end{align}
@@ -1401,7 +1434,7 @@ It is beneficial to define the flow equations close to the critical point, e.g. 
 \begin{align}
     x = \frac{\beta^2 K}4 - 2,
     \quad
-    y = 4g\sqrt{\frac{\pi\gamma}{u}}
+    y = 4g\sqrt{\frac{\pi\xi^4}{u}}
 \end{align}
 which dictate the modified RG equations
 \begin{align}
