@@ -1346,7 +1346,7 @@ leading to the modified function $C_n$ which depends on the smoothness $n$, i.e.
     \subfigure[]{\includegraphics{figures/cutoff_function.png}}
     \subfigure[]{\includegraphics{figures/rg_correlations.png}}
     \subfigure[]{\includegraphics{figures/rg_correlations_log.png}}
-    \caption{Panel (a) shows the chosen cutoff $f_n(p,\Lambda)$ with $n\in\{2,4,6,8,\infty\}$ for the integral expression in \cref{eq:integral_cutoff}, which results in the approximation of $C_n(r)$ plotted in (b). Panel (c) highlights the exponential sharp function $C_2(r)=\Lambda rK_1(r\Lambda)$ compared to the sharp cutoff result $C_\infty(r)=J_0(\Lambda r)$.}
+    \caption{Panel (a) shows the chosen cutoff $f_n(p,\Lambda)$ with $n\in\{2,4,6,8,\infty\}$ for the integral expression in \cref{eq:integral_cutoff}, which results in various approximations of $C(r)$ for altering $n$ plotted in (b). Panel (c) highlights the exponential sharp function $C_2(r)=\Lambda rK_1(r\Lambda)$ compared to the sharp cutoff result $C_\infty(r)=J_0(\Lambda r)$.}
     \label{fig:rg_cutoff}
 \end{figure}
 % At this point it is worth mentioning that the correlation functions of the slow fields are
@@ -1359,15 +1359,16 @@ leading to the modified function $C_n$ which depends on the smoothness $n$, i.e.
 %     \label{eq:rg_slow_fields_approximation}
 % \end{align}
 For the special case $n=2$, the integral of the $h$-fields evaluates to $C_2(r)=\frac K2 \Lambda r K_1(\Lambda r)$ that decays exponentially fast (see \cref{fig:rg_cutoff}(c)).
-Therefore, the integration of $C_2(r)$ can be confined to a small interval $r<\xi$ in which $\xi\sim1/\Lambda$ is a small length scale comparable with the lattice spacing.
+In particular, the function follows the asymptotic decay $z K_1(z) \sim \sqrt{\pi z/2}\exp(-z)$ and is already negligible for $z=1$, i.e. $K_1(1)\approx0.0062$.
+Therefore, the integration of $C_2(r)$ can be confined to a small interval $r<\xi$ in which $\xi\sim2\pi/\Lambda=a$ is a small length scale comparable with the lattice spacing $a$.
 \\
 
-In order to utilize the confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bf R} = 1/2({\bf x}+{\bf x'})$ and ${\bf r} = 1/2({\bf x}-{\bf x'})$.
+In order to utilize the confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bf R} = 1/2({\bf x}+{\bf x'})$ and ${\bf r} = {\bf x}-{\bf x'}$.
 The integral can then be rewritten to
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
     =
-    \frac{g^2K\beta^2}8\rd l\int\rd^2R\int_{0}^\xi\rd^2r
+    \frac{g^2K\beta^2}8\rd l\int\rd^2R\int\rd^2r
     C_2(r)
     \left(
         \cos\commutator{\beta\phi_{\Lambda'}({\bf R}+{\bf r})+\beta\phi_{\Lambda'}({\bf R}-{\bf r})}
@@ -1379,16 +1380,15 @@ The integral can then be rewritten to
     \label{eq:rg_int_2}
     \\
     \approx
-    \frac{\xi^2 g^2K\beta^2}8\rd l\int\rd^2R
+    \frac{g^2K\beta^2}{8}\rd l\int\rd^2R\rd^2rC_2(r)
     \left(
         \cos\commutator{2\beta\phi_{\Lambda'}({\bf R})}
         -
-        \cos\commutator{\beta\partial_{\bf R}\phi_{\Lambda'}({\bf R})\xi)}
-    \right)
+        \cos\commutator{\beta\partial_{\bf R}\phi_{\Lambda'}({\bf R}){\bf r})}
+    \right).
     \label{eq:rg_int_rel_coords}
 \end{align}
-in which I use the fact that $\lim_{r\rightarrow0}C_2(\Lambda r)=1$.
-The $\cos$ term in \cref{eq:rg_int_1} did not exist before -- it is a new sine-Gordon type interaction with scaling dimension $D_h = K\beta^2$.
+The $\cos$ term in \cref{eq:rg_int_1} did not exist in the original Hamiltonian -- it is a new sine-Gordon type interaction with higher scaling dimension $D_h = K\beta^2$.
 Note that this term generation is continuous, and to account for it, we should start from a more generic interaction containing all the higher harmonics, i.e.
 \begin{align}
     S_{I'} = S_I + \sum_{j=1}^\infty g_j\int\rd x\rd\tau\cos(2j\beta\phi).
@@ -1402,30 +1402,31 @@ The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadrati
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
     \approx
-    \frac{\xi^4 g^2K\beta^4}{16}\rd l\int\rd x\rd\tau\frac1{u^2}(\partial_
+    \frac{\xi^4 g^2K\beta^4}{16u^2}\rd l\int\rd x\rd\tau\frac1{u^2}(\partial_
     \tau\phi_{\Lambda'})^2+(\partial_x\phi_{\Lambda'})^2.
     \label{eq:RG_second_order_approximation}
 \end{align}
+The constant $\xi^4/u^2$ is determined by the cutoff of the integrals over the relative coordinates, and $\xi\sim1/a$ is on the order of the lattice spacing.
 In summary, we obtain the effective action
 \begin{align}
     S_{\rm eff}^{(2)}[\phi_\Lambda] = \frac1{2\pi}\int\rd\brlr{ x\rd\tau\frac{1}{uK'}(\partial_\tau\phi_\Lambda)^2 + \frac{u}{K'}(\partial_x\phi_\Lambda)^2} +  g'\int\rd^2 x\cos(\beta\phi_\Lambda)
 \end{align}
 which is self-similar to the original action up to the renormalized couplings
 \begin{align}
-    \frac1{uK'}=\frac1{uK}+\frac{\xi^4 g^2 K\beta^4\pi}{8 u^2}\rd l,
+    \frac1{uK'}=\frac1{uK}+\frac{\xi^4 g^2 K\beta^4\pi}{8 u^4}\rd l,
     \quad
-    \frac u{K'}=\frac u{K}+\frac{\xi^4 g^2 K\beta^4\pi}8\rd l,
+    \frac u{K'}=\frac u{K}+\frac{\xi^4 g^2 K\beta^4\pi}{8u^2}\rd l,
     \quad
     g' = g\brlr{1 + \commutator{2-\frac{\beta^2 K}4}\rd l},
     \\
     \Rightarrow
-    K' = \brlr{\commutator{\frac{1}{uK}+\frac{\xi^4 g K\beta^4\pi}{8u^2}}\commutator{\frac{u}{K}+\frac{\xi^4 g K\beta^4\pi}{8}}}^{-1/2}
+    K' = \brlr{\commutator{\frac{1}{uK}+\frac{\xi^4 g K\beta^4\pi}{8u^4}}\commutator{\frac{u}{K}+\frac{\xi^4 g K\beta^4\pi}{8u^2}}}^{-1/2}
     =
-    K-\frac{\pi \xi^4 \beta^4 g^2 K^3}{8u}\rd l + O(\rd l^2).
+    K-\frac{\pi \xi^4 \beta^4 g^2 K^3}{8u^2}\rd l + O(\rd l^2).
 \end{align}
 In summary, this concludes the derivation of the so-called RG flow which is described by the system of differential equations we just derived
 \begin{align}
-    \frac{\rd K}{\rd l} = -\frac{\pi \xi^4 \beta^4 g^2 K^3}{8u},
+    \frac{\rd K}{\rd l} = -\frac{\pi \xi^4 \beta^4 g^2 K^3}{8u^2},
     \quad
     \frac{\rd g}{\rd l} = g\brlr{2-\frac{\beta^2K}4}.
 \end{align}
@@ -1434,7 +1435,7 @@ It is beneficial to define the flow equations close to the critical point, e.g. 
 \begin{align}
     x = \frac{\beta^2 K}4 - 2,
     \quad
-    y = 4g\sqrt{\frac{\pi\xi^4}{u}}
+    y = 4g\sqrt{\frac{\pi\xi^4}{u^2}}
 \end{align}
 which dictate the modified RG equations
 \begin{align}
@@ -1473,16 +1474,23 @@ I will then present renormalization strategies which provide variational search 
 As a conclusion, I describe the exploit of abelian symmetries in the numerical techniques which in general reduces the overall computational complexity.
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Schmidt decomposition}
-\label{sec:schmidt_decomposition}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tensor networks}
 \label{sec:tensor_networks}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+A tensor is a collection of complex numbers in multidimensional arrays.
+Its rank is given by the number of indices: for instance, scalar values are of rank zero, vectors of rank one and matrices of rank two.
+Tensor networks are in general contractions of many tensors and as such it is customary to define graphical representations which display its fundamental structure, i.e. its rank.
+
+It is then easy to identify the tensor contraction of two matrices as
+\begin{align}
+    C_{\alpha\beta}=\sum_{\gamma=1}^mA_{\alpha\gamma}B_{\gamma\beta}=\includegraphics[valign=c]{figures/MatrixMultiplication.pdf}
+\end{align}
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{figures/ComplexContraction1.pdf}
+    \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $1$ will contain less multiplications and performs thus faster.}
+\end{figure}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1497,10 +1505,8 @@ As a conclusion, I describe the exploit of abelian symmetries in the numerical t
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Abelian symmetries}
-\label{sec:abelian_symmetries}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Topological phases of matter}

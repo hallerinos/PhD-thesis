@@ -1,0 +1,51 @@
+\documentclass[tikz]{standalone} % border={left bottom right top}
+\input{./Tensors_2.tex}
+\input{../definitions.tex}
+\usepackage{braket}
+\begin{document}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth'
+}
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc/.style={
+      start angle=0, end angle=360,radius=0.4
+    }
+  }
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc2/.style={
+      start angle=0, end angle=360,radius=0.2
+    }
+  }
+
+\definecolor{blue}{rgb}{0.2745098039, 0.5333333333, 0.9450980392}
+\definecolor{red}{rgb}{0.9176470588, 0.2588235294, 0.2078431373}
+\definecolor{yellos}{rgb}{0.9764705882, 0.7333333333, 0.1764705882}
+\definecolor{green}{rgb}{0.2039215686, 0.662745098, 0.3176470588}
+
+
+\begin{tikzpicture}
+ \node (rw1) at (0,0) {};
+ \node (rw2) at (1,0) {};
+ % \shadedraw [ball color=gray] (rw1) circle (0.25cm);
+ \cTens{gray}{0.2}{(rw1)}
+  \draw ($(rw1)+(0.2,0)$)--($(rw2)+(-0.2,0)$);
+  \draw ($(rw1)+(-0.5,0)$)--($(rw1)+(-0.2,0)$);
+ % \shadedraw [ball color=gray] (rw2) circle (0.25cm);
+ \cTens{gray}{0.2}{(rw2)}
+  \draw ($(rw2)+(0.5,0)$)--($(rw2)+(0.2,0)$);
+\end{tikzpicture}
+
+
+\end{document}
