@@ -36,15 +36,17 @@
 
 
 \begin{tikzpicture}
- \node (rw1) at (0,0) {};
- \node (rw2) at (1,0) {};
- % \shadedraw [ball color=gray] (rw1) circle (0.25cm);
- \cTens{gray}{0.2}{(rw1)}
-  \draw ($(rw1)+(0.2,0)$)--($(rw2)+(-0.2,0)$);
-  \draw ($(rw1)+(-0.5,0)$)--($(rw1)+(-0.2,0)$) node[left,pos=0]{$i$};
- % \shadedraw [ball color=gray] (rw2) circle (0.25cm);
- \cTens{gray}{0.2}{(rw2)}
-  \draw ($(rw2)+(0.5,0)$)--($(rw2)+(0.2,0)$) node[right,pos=0]{$j$};
+    \node (rw1) at (0,-1) {};
+    \node (rw2) at (0,0) {};
+    % \draw (rw1) -- ++(-.5,0);
+    % \draw (rw2) -- ++(-.5,0);
+    \draw (rw1) -- ++(.5,0) -- ++(0.,1) -- ++(rw2);
+    % \begin{scope}[rotate=90,shift=(rw2)]
+    %     \tTens{gray}{0.5}{0.5}{(0,0)}
+    % \end{scope}
+    % \begin{scope}[rotate=90,shift=(rw1)]
+    %     \tTens{gray}{0.5}{0.5}{(0,0)}
+    % \end{scope}
 \end{tikzpicture}
 
 

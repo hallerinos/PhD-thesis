@@ -36,15 +36,25 @@
 
 
 \begin{tikzpicture}
- \node (rw1) at (0,0) {};
- \node (rw2) at (1,0) {};
- % \shadedraw [ball color=gray] (rw1) circle (0.25cm);
- \cTens{gray}{0.2}{(rw1)}
-  \draw ($(rw1)+(0.2,0)$)--($(rw2)+(-0.2,0)$);
-  \draw ($(rw1)+(-0.5,0)$)--($(rw1)+(-0.2,0)$) node[left,pos=0]{$i$};
- % \shadedraw [ball color=gray] (rw2) circle (0.25cm);
- \cTens{gray}{0.2}{(rw2)}
-  \draw ($(rw2)+(0.5,0)$)--($(rw2)+(0.2,0)$) node[right,pos=0]{$j$};
+ \node at (-0.25,1.75) {};
+ \node at (2,-0.75) {};
+ \draw (0.866025403784439,0.5) circle (1);
+ \node at (0,0) {
+  \begin{tikzpicture}[remember picture,overlay]
+   \node (A) at (0,0) {A};
+   \node (B) at (0.866025403784439,-0.5) {B};
+   \node (C) at (1.73205080756888,0) {C};
+   \node (D) at (1.73205080756888,1) {D};
+   \node (E) at (0.866025403784439,1.5) {E};
+   \node (F) at (0,1) {F};
+   \cTens{gray}{0.2}{(A)}
+   \cTens{gray}{0.2}{(B)}
+   \cTens{gray}{0.2}{(C)}
+   \cTens{gray}{0.2}{(D)}
+   \cTens{gray}{0.2}{(E)}
+   \cTens{gray}{0.2}{(F)}
+  \end{tikzpicture}
+  };
 \end{tikzpicture}
 
 

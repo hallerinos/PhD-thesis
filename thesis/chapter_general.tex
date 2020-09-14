@@ -1481,15 +1481,37 @@ As a conclusion, I describe the exploit of abelian symmetries in the numerical t
 A tensor is a collection of complex numbers in multidimensional arrays.
 Its rank is given by the number of indices: for instance, scalar values are of rank zero, vectors of rank one and matrices of rank two.
 Tensor networks are in general contractions of many tensors and as such it is customary to define graphical representations which display its fundamental structure, i.e. its rank.
-
-It is then easy to identify the tensor contraction of two matrices as
+The most common convention is to represent a tensor object as a circle, triangle, diamond or rectangle with as many legs as the tensor has indices.
+It is then easy to sketch the tensor contraction of a simple matrix-matrix multiplication as
 \begin{align}
-    C_{\alpha\beta}=\sum_{\gamma=1}^mA_{\alpha\gamma}B_{\gamma\beta}=\includegraphics[valign=c]{figures/MatrixMultiplication.pdf}
+    C_{i,j}=\sum_{k=1}^mA_{ik}B_{kj}=\includegraphics[valign=c]{figures/MatrixMultiplication.pdf}.
 \end{align}
-
+A triangle or diamond representation may make sense to indicate a tensor being an isometry.
+For instance, consider the two isometries $U$, $V$ of a generic singular value decomposition (SVD) $M = U S V$: they are the left- and right-singular vectors of $M$ and as such semi-unitaries, i.e.
+\begin{align}
+    U^\dag U^\pdag = \mathbb1,
+    \quad
+    V^\pdag V^\dag = \mathbb1.
+\end{align}
+In graphical notation, the identity matrix is represented as a straight line as it does neither stretch nor rotate the entries of a tensor.
+The previous equation can thus be recast to
+\begin{align}
+    U^\dag U^\pdag = \includegraphics[valign=c]{figures/right_isometry.pdf} = \includegraphics[valign=c]{figures/right_identity.pdf}\,,
+    \qquad
+    V^\pdag V^\dag = \includegraphics[valign=c]{figures/left_isometry.pdf} = \includegraphics[valign=c]{figures/left_identity.pdf}\,.
+\end{align}
+A simple squared unitary matrix is orthogonal with respect to both left/right multiplication with its adjoint and as such can be represented as a diamond.
+Things become finally more interesting when considering a larger tensor network.
+One easy example is a trace of many matrices, which can be sketched as a circle contraction.
+\begin{align}
+    \tr\brlr{ABCDEF} = \includegraphics[valign=c]{figures/MatrixTrace.pdf}\,.
+\end{align}
+For more complex contractions containing tensors of higher ranks, it is important to optimize the sequence of contractions to reduce the overall computational cost to a minimum.
+For instance, in \cref{fig:contraction_sequences} two different sequences of contractions obviously result in the same outcome, but the overall complexity class of sequence $1$ is $O(m^4)$ whereas sequence $2$ is $O(m^4)$.
 \begin{figure}
     \includegraphics[width=\textwidth]{figures/ComplexContraction1.pdf}
     \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $1$ will contain less multiplications and performs thus faster.}
+    \label{fig:contraction_sequences}
 \end{figure}
 %
 %
