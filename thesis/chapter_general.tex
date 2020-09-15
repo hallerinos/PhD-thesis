@@ -1481,37 +1481,125 @@ As a conclusion, I describe the exploit of abelian symmetries in the numerical t
 A tensor is a collection of complex numbers in multidimensional arrays.
 Its rank is given by the number of indices: for instance, scalar values are of rank zero, vectors of rank one and matrices of rank two.
 Tensor networks are in general contractions of many tensors and as such it is customary to define graphical representations which display its fundamental structure, i.e. its rank.
-The most common convention is to represent a tensor object as a circle, triangle, diamond or rectangle with as many legs as the tensor has indices.
+The most common convention is to represent a tensor object as a circle, triangle, hourglass or rectangle with as many legs as the tensor has indices.
 It is then easy to sketch the tensor contraction of a simple matrix-matrix multiplication as
 \begin{align}
-    C_{i,j}=\sum_{k=1}^mA_{ik}B_{kj}=\includegraphics[valign=c]{figures/MatrixMultiplication.pdf}.
+    C_{i,j}=A_{ik}B_{kj}=\includegraphics[valign=c]{figures/MatrixMultiplication.pdf},
 \end{align}
-A triangle or diamond representation may make sense to indicate a tensor being an isometry.
-For instance, consider the two isometries $U$, $V$ of a generic singular value decomposition (SVD) $M = U S V$: they are the left- and right-singular vectors of $M$ and as such semi-unitaries, i.e.
+in which I conveniently use the sum convention.
+Switching from formulas to graphical notation may become interesting when considering larger tensor networks.
+One easy example is a trace of many matrices, which can be sketched as a circle contraction.
+\begin{align}
+    \tr\brlr{ABCDEF} = \includegraphics[valign=c]{figures/MatrixTrace.pdf}.
+\end{align}
+For more complex contractions containing tensors of higher ranks, it is important to optimize the sequence of contractions to reduce the overall computational cost to a minimum.
+For instance, in \cref{fig:contraction_sequences} two different sequences of contractions obviously result in the same outcome, but the overall complexity class is different.
+Assume each leg has dimension $m$, then sequence $S_1$ is $O(m^4)$ whereas sequence $S_2$ is $O(m^4)$.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/ComplexContraction1.pdf}
+    \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $S_1$ is faster and more precise compared to $S_2$.}
+    \label{fig:contraction_sequences}
+\end{figure}
+A triangle representation may make sense to indicate a tensor being an isometry.
+For instance, consider the two isometries $U$, $V^\dag$ of a generic singular value decomposition (SVD) $M = U S V^\dag$: they contain the left- and right-singular vectors of $M$ and are thus semi-unitaries, i.e.
 \begin{align}
     U^\dag U^\pdag = \mathbb1,
     \quad
-    V^\pdag V^\dag = \mathbb1.
+    V^\dag V^\pdag = \mathbb1.
 \end{align}
 In graphical notation, the identity matrix is represented as a straight line as it does neither stretch nor rotate the entries of a tensor.
 The previous equation can thus be recast to
 \begin{align}
     U^\dag U^\pdag = \includegraphics[valign=c]{figures/right_isometry.pdf} = \includegraphics[valign=c]{figures/right_identity.pdf}\,,
     \qquad
-    V^\pdag V^\dag = \includegraphics[valign=c]{figures/left_isometry.pdf} = \includegraphics[valign=c]{figures/left_identity.pdf}\,.
+    V^\dag V^\pdag = \includegraphics[valign=c]{figures/left_isometry.pdf} = \includegraphics[valign=c]{figures/left_identity.pdf}\,.
 \end{align}
-A simple squared unitary matrix is orthogonal with respect to both left/right multiplication with its adjoint and as such can be represented as a diamond.
-Things become finally more interesting when considering a larger tensor network.
-One easy example is a trace of many matrices, which can be sketched as a circle contraction.
+A simple squared unitary matrix is orthogonal with respect to both left/right multiplication with its adjoint and as such can be represented as a hourglass.
+The SVD of a normal matrix $M$ can be recast to the graphical notation
 \begin{align}
-    \tr\brlr{ABCDEF} = \includegraphics[valign=c]{figures/MatrixTrace.pdf}\,.
+    \includegraphics[valign=c]{figures/matrix.pdf}
+    = M = U S V^\dag =
+    \includegraphics[valign=c]{figures/svd.pdf}\,.
 \end{align}
-For more complex contractions containing tensors of higher ranks, it is important to optimize the sequence of contractions to reduce the overall computational cost to a minimum.
-For instance, in \cref{fig:contraction_sequences} two different sequences of contractions obviously result in the same outcome, but the overall complexity class of sequence $1$ is $O(m^4)$ whereas sequence $2$ is $O(m^4)$.
+Let me now introduce probably the most important decomposition applied in tensor networks -- the generalized version of the SVD for rank $n$ tensors:
+(i) the rank $n$ array has to be reduced to a rank $2$ object, i.e. a matrix.
+This transformation (which must be a bijection) is commonly called tensor reshaping and is understood in graphical notation as a fusion of multiple tensor legs.
+(ii) The matrix then is decomposed through a standard SVD, followed by (iii) the restoration of the original rank $n$ object through the inverse reshaping applied in step (i).
+The identity relation between the original and decomposed tensor is assured by the inverse of (i).
+For a practical example, consider a rank $n$ tensor $T$ which is graphically depicted by $n$ legs (labelled by increasing numbers from $1,...,n$ from left to right).
+To perform a SVD between the bipartition after leg $j$, the tensor is reshaped to a matrix through a fusion of legs $1,...,j$ and $j+1,...,n$ prior to the performed SVD, after which the original rank is restored.
+In particular, the sequence of identities reads
+% \begin{align}
+%     % \includegraphics[valign=c]{figures/rankntensor.pdf}
+%     % =
+%     T_{i_1,i_n}^{i_2,\dots,i_j,i_{j+1},\dots,i_{n-1}}
+%     &\overset{(i)}{=}
+%     f^{-1}\circ T_{(i_1,\dots,i_j),(i_{j+1},\dots,i_n)}
+%     \\
+%     &\overset{(ii)}{=}
+%     f^{-1}\circ\sum_k U^\pdag_{(i_1,\dots,i_j),k}S^\pdag_{k}{V^\dag}_{k,(i_{j+1},\dots,i_n)}
+%     \\
+%     &\overset{(iii)}{=}
+%     \sum_kU_{i_1,k}^{i_2,\dots,i_j}S^\pdag_{k}{V^\dag}_{k,i_n}^{i_{j+1},\dots,i_{n-1}},
+% \end{align}
+\begin{align}
+    T_{i_1,i_n}^{i_2,\dots,i_j,i_{j+1},\dots,i_{n-1}}
+    \equiv&\includegraphics[valign=c]{figures/rankntensor.pdf},
+    \\
+    \overset{(i)}{=}&
+    f^{-1}\circ
+    \includegraphics[valign=c]{figures/reshaping.pdf}
+    \equiv
+    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}S^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)},
+    \\
+    \overset{(ii)}{=}&
+    f^{-1}\circ\includegraphics[valign=c]{figures/bigsvd.pdf}
+    \equiv
+    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}S^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)},
+    \\
+    \overset{(iii)}{=}&
+    \includegraphics[valign=c]{figures/rankntensor_decomposed.pdf}
+    \equiv
+    U_{i_1,k}^{\pdag i_2,\dots,i_j}S^\pdag_{k}{V^\dag}^{i_{j+1},\dots,i_{n-1}}_{k,i_n},
+\end{align}
+in which $f^{-1}$ denotes the inverse of the tensor reshaping / leg fusion, and Einstein notation implies the tensor contraction contraction with summed index $k$.
+In the equations, it is assumed that the applied SVD is compact: $S$ is a square and diagonal matrix containing the nonzero singular values, such that $S_{ij}\equiv S_i\delta_{ij}$.
+\\
+
+To get acquainted with the use of tensors in a more practical sense, let us aim to understand some of the described concepts in the context of two-dimensional pictures.
+If we assume the picture to be rasterized in an equidistant manner using square pixels, the RGB-entries of the pixel can be collected in a 3D array of the form
+\begin{align}
+    P_{i,j}^{c}\equiv\includegraphics[valign=c]{figures/tensor_picture.pdf}.
+\end{align}
+The position of the pixel is encoded by the indices $i,j$ and $c$ represents a leg containing the RGB-values (e.g., $c\in\{1,2,3\}\equiv\{r,g,b\}$).
+Using the concept of the generalized SVD, we can decompose the tensor $P$ into two semi-unitaries $U,V^\dag$ and a vector $S_k$ containing the singular values of the bipartition.
+There exist three different bipartitions: (a) $P_{(i,j),c}$, (b) $P_{(i,c),j}$ and (c) $P_{i,(j,c)}$.
+(b) and (c) are equivalent up to a transposition of the original object, therefore leaving two truly different decompositions, (a) and (b).
+The bipartition (a) targets a decomposition between $(i,j)$ and $c$ whereas (b) targets a decomposition between $i$ and $(j,c)$.
+Strategy (a) thus aims to truncate the color degree of freedom, which is not very useful due to the low dimensionality of the $c$ leg (there are only $3$ nonzero singular values to begin with), such that I will focus entirely on the decomposition of (b).
+\\
+
+Truncation of the singular values implicitly truncates the physically important rows and columns to be taken into consideration.
+In this sense, the SVD can be understood as a tensor renormalization, or a compression scheme.
+Loosely speaking, it reduces the complexity of an object while preserving the physical dimensions.
+The number of singular values kept in the approximation is thus naturally linked to the accuracy of the numerical renormalization.
+Assume the picture to be of dimensions $\dim(P)=n_y\times n_x\times 3$, it is then easy to see that keeping $m$ singular values implies that we need to store only a fraction of the matrices $U$ and $V^\dag$ to approximate the original picture $P$.
+In particular, we need to store $n_y m$ elements from $U$, $m$ singular values and $m\times n_x$ elements from $V^\dag$.
+In total, we thus arrive at a compression rate
+\begin{align}
+    C_m = \frac{(n_x+n_y+1)m}{n_x n_y},
+\end{align}
+which can be easily cast into $C_m<1$ by fixing $m\ll\min(n_x,n_y)$.
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/ComplexContraction1.pdf}
-    \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $1$ will contain less multiplications and performs thus faster.}
-    \label{fig:contraction_sequences}
+    \centering
+    \subfigure[]{\includegraphics{figures/SVD_uncompressed.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/beach_singular_values.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/SVD_compressed.png}}
+    \caption{(a) Uncompressed picture of a beach with dimensions $n_y\times n_x=3024\times2276$. (b) Singular values of the matrix $P_{i,(jc)}$. (c) Keeping the $250$ largest singular values still yields a good approximation of the uncompressed picture and requires only $19.3\%$ of the original storage space.}
+    \label{fig:fock_spaces}
 \end{figure}
 %
 %

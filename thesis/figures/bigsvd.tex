@@ -1,0 +1,84 @@
+\documentclass[tikz]{standalone} % border={left bottom right top}
+\input{./Tensors_2.tex}
+\input{../definitions.tex}
+\usepackage{braket}
+\begin{document}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth'
+}
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc/.style={
+      start angle=0, end angle=360,radius=0.4
+    }
+  }
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc2/.style={
+      start angle=0, end angle=360,radius=0.2
+    }
+  }
+
+\definecolor{blue}{rgb}{0.2745098039, 0.5333333333, 0.9450980392}
+\definecolor{red}{rgb}{0.9176470588, 0.2588235294, 0.2078431373}
+\definecolor{yellos}{rgb}{0.9764705882, 0.7333333333, 0.1764705882}
+\definecolor{green}{rgb}{0.2039215686, 0.662745098, 0.3176470588}
+
+
+\begin{tikzpicture}
+    \node (rw1) at (0,0) {};
+    \rTens{black}{2}{1.4}{(rw1)}
+    \draw[fill=white,white] ($(rw1)+(-.425,-0.7)$) rectangle ++(0.9,1.4);
+    \coordinate (1) at ($(rw1)+(0,.625)$);
+    \node[left] at ($(1)+(-1,0)$) {$i_1$};
+    \node[left] at ($(1)+(-1,-.5)$) {$i_2$};
+    \foreach \x in {1,2} {
+        \draw[white] (1) -- ++(-1,0);
+        \coordinate (1) at ($(1)+(0,-0.5)$);
+    }
+    \node[white] at ($(1)+(-0.75,0.21)$) {$\vdots$};
+    \coordinate (1) at ($(1)+(0,-0.25)$);
+    \node[left] at ($(1)+(-1,0)$) {$i_j$};
+    \foreach \x in {1} {
+        \draw[white] (1) -- ++(-1,0);
+    }
+
+    \coordinate (1) at ($(rw1)+(0,.625)$);
+    \node[right] at ($(1)+(1,0)$) {$i_{j+1}$};
+    \foreach \x in {1} {
+        \draw[white] (1) -- ++(1,0);
+        \coordinate (1) at ($(1)+(0,-0.5)$);
+    }
+    \node[white] at ($(1)+(0.75,0.21)$) {$\vdots$};
+    \coordinate (1) at ($(1)+(0,-0.25)$);
+    \node[right] at ($(1)+(1,0)$) {$i_{n-1}$};
+    \node[right] at ($(1)+(1,-.5)$) {$i_{n}$};
+    \foreach \x in {1,2} {
+        \draw[white] (1) -- ++(1,0);
+        \coordinate (1) at ($(1)+(0,-0.5)$);
+    }
+    \coordinate (tp1) at ($(rw1)+(-0.375,0)$);
+    \coordinate (tp2) at ($(rw1)+(0.375,0)$);
+    \draw (tp1) -- coordinate[pos=0.5] (tp3) (tp2);
+    \begin{scope}[rotate=-90,shift=(tp1)]
+        \tTens{gray}{2}{0.25}{(0,0)}
+    \end{scope}
+    \begin{scope}[rotate=90,shift=(tp2)]
+        \tTens{gray}{2}{0.25}{(0,0)}
+    \end{scope}
+    \cTens{black}{0.1}{(tp3)}
+    % \rTens{gray}{1}{2}{(rw1)}
+\end{tikzpicture}
+
+
+\end{document}
