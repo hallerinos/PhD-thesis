@@ -31,19 +31,21 @@
 
 \definecolor{blue}{rgb}{0.2745098039, 0.5333333333, 0.9450980392}
 \definecolor{red}{rgb}{0.9176470588, 0.2588235294, 0.2078431373}
-\definecolor{yellos}{rgb}{0.9764705882, 0.7333333333, 0.1764705882}
+\definecolor{yellow}{rgb}{0.9764705882, 0.7333333333, 0.1764705882}
 \definecolor{green}{rgb}{0.2039215686, 0.662745098, 0.3176470588}
 
 
 \begin{tikzpicture}
-    \node (rw1) at (0,0) {};
-    \draw ($(rw1)+(-0.5,0)$) node[left] {$y\vphantom{x}$} --($(rw1)+(.5,0)$) node[right] {$x\vphantom{y}$};
-    \coordinate (1) at ($(rw1)+(-0.5,-.125)$);
-    \foreach \y in {1}{
-        \draw ($(1)+(0.5,0)$) coordinate (1) -- ++(0,-0.25);
-    }
-    \node[below,yshift=-.175cm] at (1) {$c$};
-    \rTens{gray}{.5}{0.25}{(rw1)}
+    \rTens{yellow!75!white}{2}{2}{(0,0)}
+    \rTens{yellow}{2}{1}{(0,.5)}
+    \node at (0,0) {\color{white}$V^\dag$};
+    % \node[above] at (0,-1.) {\color{black}$n_x$};
+    % \node[left] at (1,0) {\color{black}$n_x$};
+
+    \draw[white, <->] (-1., -.8) -- (1., -.8) node[pos=.5, above] {\color{white}$n_x$};
+    \draw[white, <->] (.8, -1.) -- (.8, 1.) node[pos=.7, left] {\color{white}$n_x$};
+
+    \draw[white, <->] (-.8, 0) -- (-.8, 1.) node[pos=.5, right] {\color{white}$m$};
 \end{tikzpicture}
 
 

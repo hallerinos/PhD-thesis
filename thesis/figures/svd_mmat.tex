@@ -36,14 +36,11 @@
 
 
 \begin{tikzpicture}
-    \node (rw1) at (0,0) {};
-    \draw ($(rw1)+(-0.5,0)$) node[left] {$y\vphantom{x}$} --($(rw1)+(.5,0)$) node[right] {$x\vphantom{y}$};
-    \coordinate (1) at ($(rw1)+(-0.5,-.125)$);
-    \foreach \y in {1}{
-        \draw ($(1)+(0.5,0)$) coordinate (1) -- ++(0,-0.25);
-    }
-    \node[below,yshift=-.175cm] at (1) {$c$};
-    \rTens{gray}{.5}{0.25}{(rw1)}
+    \rTens{blue}{2}{2.65}{(0,0)}
+    \node at (0,0) {\color{white}$M$};
+
+    \draw[white, <->] (-1., -1.1) -- (1., -1.1) node[pos=.5, above] {\color{white}$n_x$};
+    \draw[white, <->] (0.8, -1.325) -- (0.8, 1.325) node[pos=.7, left] {\color{white}$n_y$};
 \end{tikzpicture}
 
 

@@ -1562,6 +1562,7 @@ In particular, the sequence of identities reads
     \includegraphics[valign=c]{figures/rankntensor_decomposed.pdf}
     \equiv
     U_{i_1,k}^{\pdag i_2,\dots,i_j}S^\pdag_{k}{V^\dag}^{i_{j+1},\dots,i_{n-1}}_{k,i_n},
+    \label{eq:SVD_generalized}
 \end{align}
 in which $f^{-1}$ denotes the inverse of the tensor reshaping / leg fusion, and Einstein notation implies the tensor contraction contraction with summed index $k$.
 In the equations, it is assumed that the applied SVD is compact: $S$ is a square and diagonal matrix containing the nonzero singular values, such that $S_{ij}\equiv S_i\delta_{ij}$.
@@ -1570,27 +1571,16 @@ In the equations, it is assumed that the applied SVD is compact: $S$ is a square
 To get acquainted with the use of tensors in a more practical sense, let us aim to understand some of the described concepts in the context of two-dimensional pictures.
 If we assume the picture to be rasterized in an equidistant manner using square pixels, the RGB-entries of the pixel can be collected in a 3D array of the form
 \begin{align}
-    P_{i,j}^{c}\equiv\includegraphics[valign=c]{figures/tensor_picture.pdf}.
+    P_{y,x}^{c}\equiv\includegraphics[valign=c]{figures/tensor_picture.pdf}.
 \end{align}
-The position of the pixel is encoded by the indices $i,j$ and $c$ represents a leg containing the RGB-values (e.g., $c\in\{1,2,3\}\equiv\{r,g,b\}$).
+The position of the pixel is encoded by the indices $y,x$ and $c$ represents a leg containing the RGB-values (e.g., $c\in\{1,2,3\}\equiv\{r,g,b\}$).
 Using the concept of the generalized SVD, we can decompose the tensor $P$ into two semi-unitaries $U,V^\dag$ and a vector $S_k$ containing the singular values of the bipartition.
-There exist three different bipartitions: (a) $P_{(i,j),c}$, (b) $P_{(i,c),j}$ and (c) $P_{i,(j,c)}$.
+There exist three different bipartitions: (a) $P_{(y,x),c}$, (b) $P_{(y,c),x}$ and (c) $P_{y,(x,c)}$.
 (b) and (c) are equivalent up to a transposition of the original object, therefore leaving two truly different decompositions, (a) and (b).
-The bipartition (a) targets a decomposition between $(i,j)$ and $c$ whereas (b) targets a decomposition between $i$ and $(j,c)$.
+The bipartition (a) targets a decomposition between $(y,x)$ and $c$ whereas (b) targets a decomposition between $y$ and $(x,c)$.
 Strategy (a) thus aims to truncate the color degree of freedom, which is not very useful due to the low dimensionality of the $c$ leg (there are only $3$ nonzero singular values to begin with), such that I will focus entirely on the decomposition of (b).
 \\
 
-Truncation of the singular values implicitly truncates the physically important rows and columns to be taken into consideration.
-In this sense, the SVD can be understood as a tensor renormalization, or a compression scheme.
-Loosely speaking, it reduces the complexity of an object while preserving the physical dimensions.
-The number of singular values kept in the approximation is thus naturally linked to the accuracy of the numerical renormalization.
-Assume the picture to be of dimensions $\dim(P)=n_y\times n_x\times 3$, it is then easy to see that keeping $m$ singular values implies that we need to store only a fraction of the matrices $U$ and $V^\dag$ to approximate the original picture $P$.
-In particular, we need to store $n_y m$ elements from $U$, $m$ singular values and $m\times n_x$ elements from $V^\dag$.
-In total, we thus arrive at a compression rate
-\begin{align}
-    C_m = \frac{(n_x+n_y+1)m}{n_x n_y},
-\end{align}
-which can be easily cast into $C_m<1$ by fixing $m\ll\min(n_x,n_y)$.
 \begin{figure}
     \centering
     \subfigure[]{\includegraphics{figures/SVD_uncompressed.png}}
@@ -1598,9 +1588,55 @@ which can be easily cast into $C_m<1$ by fixing $m\ll\min(n_x,n_y)$.
     \subfigure[]{\includegraphics{figures/beach_singular_values.png}}
     \hfil
     \subfigure[]{\includegraphics{figures/SVD_compressed.png}}
-    \caption{(a) Uncompressed picture of Castelsardo (Sardinia, IT) with dimensions $n_y\times n_x=3024\times2276$. (b) Singular values of the matrix $P_{i,(jc)}$. (c) Keeping the $250$ largest singular values still yields a good approximation of the uncompressed picture and requires only $19.3\%$ of the original storage space.}
-    \label{fig:fock_spaces}
+    \caption{(a) Uncompressed picture of Castelsardo (Sardinia, IT).
+    The digital picture consists of $n_y\times n_x=3024\times2276$ pixels. (b) Singular values of the matrix $P_{i,(jc)}$ representing the picture. (c) Keeping the $250$ largest singular values still yields a good approximation of the uncompressed picture and requires only $19.3\%$ of the original storage space.}
+    \label{fig:svd_image_compression}
 \end{figure}
+If the singular/spectral values are ordered, a truncation of the $S$ matrix neglects subdominant left and right eigenvectors of the original object and as such approximates the original matrix.
+In case of a subsequent normalization to the original trace, the truncation process can be understood as a compression or tensor renormalization scheme.
+The number of singular values kept in the approximation is thus naturally linked to the accuracy of the numerical renormalization.
+Assume the picture to be of dimensions $\dim(P)=p_y\times p_x\times 3$, then keeping $m$ singular values implies that we need to store only a fraction of the matrices $U$ and $V^\dag$ to approximate the original picture $P$.
+Assuming that the matrix $M\equiv \{P_{y,(x,c)}\}_{y,x,c}$ is of dimension $n_y=p_y$ times $n_x=3p_x$, the following visualization highlights the SVD
+\begin{align}
+    \includegraphics[valign=c]{figures/svd_mmat.pdf}
+    =
+    \includegraphics[valign=c]{figures/svd_umat.pdf}
+    \
+    \includegraphics[valign=c]{figures/svd_smat.pdf}
+    \
+    \includegraphics[valign=c]{figures/svd_vmat.pdf}.
+\end{align}
+If we limit to $m$ spectral values, we only need to store $n_y\cdot m$ elements from $U$, $m$ singular values and $m\cdot n_x$ elements from $V^\dag$.
+In total, we thus arrive at a compression rate
+\begin{align}
+    C_m = \frac{(n_x+n_y+1)m}{n_x n_y},
+\end{align}
+which allows for a high compression in case of a large and dense matrix $M$.
+To give an example, I present the impact of compression in \cref{fig:svd_image_compression}.
+Panel (a) denotes an uncompressed picture, the singular values of the digital picture presented in (b), and the result of keeping $250$ singular values as an approximation to the full picture, presented in (c).
+The approximated picture yields a compression rate of roughly $19\%$, and visible differences to the original are negligible.
+\\
+
+The identical compression scheme can actually be applied to quantum states.
+Recall that any state can be expressed by a set of good quantum numbers, such that
+\begin{align}
+    \ket{\psi} = \sum_{i_1,i_2,\dots,i_n}C({i_1,i_2,\dots,i_n})\ket{i_1,i_2,\dots,i_n}
+\end{align}
+and the collection of all $\ket{i_1,i_2,\dots,i_n}$ form a complete and orthonormal basis.
+Note that the $n$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $n$ and the dimension of the quantum numbers $i_j$.
+By the visual conventions, we may imagine the coefficients $C$ as a rank $n$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}
+\begin{align}
+    C(i_1,i_2,\dots,i_{n-1},i_n) \equiv C^{i_1,i_2,\dots,i_n} =  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
+\end{align}
+This allows to apply the generalized SVD in a sequential manner:
+Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single $S$ matrix in between two arbitrary leg positions $j,j+1$.
+This particular decomposition of a generic quantum state, i.e.
+\begin{align}
+    C^{i_1,i_2,\dots,i_n} = \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+\end{align}
+is called the canonical form of matrix product states.
+In this notation, it is obvious that any state can be recast to the canonical form, and that MPS have a large degree of gauge freedom.
+To be more precise, one may sandwich infinitely many identities written as unitary matrices which can rotate the local tensors, but leave the overall MPS invariant.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
