@@ -26,7 +26,7 @@ The importance of these solutions becomes clear after I introduce Luttinger liqu
 
 Ultimately, there is few detailed things to say analytically about truly many-body phases of matter as the complexity of finding a full solution scales exponentially with the number of constituents.
 This stresses the need of numerical techniques in the study of non-perturbative regimes which cannot be amended analytically.
-In this thesis, I mainly use matrix product states, which is why I provide a section here which highlights the basic ideas and outlines benefits and shortcomings compared to other techniques.
+In this thesis, I mainly use matrix product states (MPS), which is why I provide a section here which highlights the basic ideas and outlines benefits and shortcomings compared to other techniques.
 
 Perhaps the most interesting behavior of quantum many-body physics is that of so-called emergent phenomena -- e.g. the appearance of quasi-particles which extend the canonical statistical properties of fermions and bosons in low dimensions, or the presence of robust quasi-particles at the boundaries of a topological insulator.
 In order to perceive a basic overview in this topic, I conclude the introduction with a review on the classification of non-interacting topological matter and finish with some general statements on interacting topological insulators.
@@ -1465,12 +1465,12 @@ This not only restricts heavily the strict validity region of the effective fiel
 For instance, the spin-$1/2$ XXZ chain shows a sine-Gordon term with $\beta=4$, relevant for $K<1/2$.
 Such small Luttinger parameter requires a very strong nearest neighbor interactions compatible with the system's bandwidth.
 Naturally, we expect quantitative deviations from the Luttinger liquid predictions in such regions and must rely on numerical tools to resolve the microscopic details of these strongly correlated phases of matter.
-In this chapter, I will provide the essentials to get acquainted with the concepts of tensor networks, in particular with matrix product states.
+In this chapter, I will provide the essentials to get acquainted with the concepts of tensor networks, in particular with matrix product states (MPS).
 \\
 
 First, I give a basic introduction to tensor networks and explain the intuitive concept of renormalization through a truncation of the auxiliary dimension of these structures.
 Second, I review the concept of ``area laws'' -- a statement about the structure of quantum correlations of gapped and short-ranged Hamiltonians -- and connect it to the properties of tensor networks.
-I will then present renormalization strategies which provide variational search algorithms to target ground (and low-lying excited) states and continue by presenting a simple yet effective time-evolution algorithm in the framework of matrix product states.
+I will then present renormalization strategies which provide variational search algorithms to target ground (and low-lying excited) states and continue by presenting a simple yet effective time-evolution algorithm in the framework of MPS.
 As a conclusion, I describe the exploit of abelian symmetries in the numerical techniques which in general reduces the overall computational complexity.
 %
 %
@@ -1484,13 +1484,13 @@ Tensor networks are in general contractions of many tensors and as such it is cu
 The most common convention is to represent a tensor object as a circle, triangle, hourglass or rectangle with as many legs as the tensor has indices.
 It is then easy to sketch the tensor contraction of a simple matrix-matrix multiplication as
 \begin{align}
-    C_{i,j}=A_{ik}B_{kj}=\includegraphics[valign=c]{figures/MatrixMultiplication.pdf},
+    C_{i,j}=A_{ik}B_{kj}\equiv\includegraphics[valign=c]{figures/MatrixMultiplication.pdf},
 \end{align}
 in which I conveniently use the sum convention.
 Switching from formulas to graphical notation may become interesting when considering larger tensor networks.
 One easy example is a trace of many matrices, which can be sketched as a circle contraction.
 \begin{align}
-    \tr\brlr{ABCDEF} = \includegraphics[valign=c]{figures/MatrixTrace.pdf}.
+    \tr\brlr{ABCDEF} \equiv \includegraphics[valign=c]{figures/MatrixTrace.pdf}.
 \end{align}
 For more complex contractions containing tensors of higher ranks, it is important to optimize the sequence of contractions to reduce the overall computational cost to a minimum.
 For instance, in \cref{fig:contraction_sequences} two different sequences of contractions obviously result in the same outcome, but the overall complexity class is different.
@@ -1498,11 +1498,11 @@ Assume each leg has dimension $m$, then sequence $S_1$ is $O(m^4)$ whereas seque
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/ComplexContraction1.pdf}
-    \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $S_1$ is faster and more precise compared to $S_2$.}
+    \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $1$ requires less multiplications compared to $2$ and is thus less prone to numerical truncation errors.}
     \label{fig:contraction_sequences}
 \end{figure}
 A triangle representation may make sense to indicate a tensor being an isometry.
-For instance, consider the two isometries $U$, $V^\dag$ of a generic singular value decomposition (SVD) $M = U S V^\dag$: they contain the left- and right-singular vectors of $M$ and are thus semi-unitaries, i.e.
+For instance, consider the two isometries $U$, $V^\dag$ of a generic singular value decomposition (SVD) $M = U \Lambda V^\dag$: they contain the left- and right-singular vectors of $M$ and are thus semi-unitaries, i.e.
 \begin{align}
     U^\dag U^\pdag = \mathbb1,
     \quad
@@ -1511,15 +1511,16 @@ For instance, consider the two isometries $U$, $V^\dag$ of a generic singular va
 In graphical notation, the identity matrix is represented as a straight line as it does neither stretch nor rotate the entries of a tensor.
 The previous equation can thus be recast to
 \begin{align}
-    U^\dag U^\pdag = \includegraphics[valign=c]{figures/right_isometry.pdf} = \includegraphics[valign=c]{figures/right_identity.pdf}\,,
+    U^\dag U^\pdag \equiv \includegraphics[valign=c]{figures/right_isometry.pdf} = \includegraphics[valign=c]{figures/right_identity.pdf}\,,
     \qquad
-    V^\dag V^\pdag = \includegraphics[valign=c]{figures/left_isometry.pdf} = \includegraphics[valign=c]{figures/left_identity.pdf}\,.
+    V^\dag V^\pdag \equiv \includegraphics[valign=c]{figures/left_isometry.pdf} = \includegraphics[valign=c]{figures/left_identity.pdf}\,.
+    \label{eq:isometries}
 \end{align}
 A simple squared unitary matrix is orthogonal with respect to both left/right multiplication with its adjoint and as such can be represented as a hourglass.
 The SVD of a normal matrix $M$ can be recast to the graphical notation
 \begin{align}
     \includegraphics[valign=c]{figures/matrix.pdf}
-    = M = U S V^\dag =
+    \equiv M = U \Lambda V^\dag \equiv
     \includegraphics[valign=c]{figures/svd.pdf}\,.
 \end{align}
 Let me now introduce probably the most important decomposition applied in tensor networks -- the generalized version of the SVD for rank $n$ tensors:
@@ -1551,21 +1552,21 @@ In particular, the sequence of identities reads
     f^{-1}\circ
     \includegraphics[valign=c]{figures/reshaping.pdf}
     \equiv
-    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}S^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)},
+    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}\Lambda^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)},
     \\
     \overset{(ii)}{=}&
     f^{-1}\circ\includegraphics[valign=c]{figures/bigsvd.pdf}
     \equiv
-    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}S^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)},
+    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}\Lambda^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)},
     \\
     \overset{(iii)}{=}&
     \includegraphics[valign=c]{figures/rankntensor_decomposed.pdf}
     \equiv
-    U_{i_1,k}^{\pdag i_2,\dots,i_j}S^\pdag_{k}{V^\dag}^{i_{j+1},\dots,i_{n-1}}_{k,i_n},
+    U_{i_1,k}^{\pdag i_2,\dots,i_j}\Lambda^\pdag_{k}{V^\dag}^{i_{j+1},\dots,i_{n-1}}_{k,i_n},
     \label{eq:SVD_generalized}
 \end{align}
 in which $f^{-1}$ denotes the inverse of the tensor reshaping / leg fusion, and Einstein notation implies the tensor contraction contraction with summed index $k$.
-In the equations, it is assumed that the applied SVD is compact: $S$ is a square and diagonal matrix containing the nonzero singular values, such that $S_{ij}\equiv S_i\delta_{ij}$.
+In the equations above, it is assumed that the applied SVD is compact: $\Lambda$ is a square and diagonal matrix containing the nonzero singular values, such that $\Lambda_{ij}\equiv s_i\delta_{ij}$.
 \\
 
 To get acquainted with the use of tensors in a more practical sense, let us aim to understand some of the described concepts in the context of two-dimensional pictures.
@@ -1592,7 +1593,7 @@ Strategy (a) thus aims to truncate the color degree of freedom, which is not ver
     The digital picture consists of $n_y\times n_x=3024\times2276$ pixels. (b) Singular values of the matrix $P_{i,(jc)}$ representing the picture. (c) Keeping the $250$ largest singular values still yields a good approximation of the uncompressed picture and requires only $19.3\%$ of the original storage space.}
     \label{fig:svd_image_compression}
 \end{figure}
-If the singular/spectral values are ordered, a truncation of the $S$ matrix neglects subdominant left and right eigenvectors of the original object and as such approximates the original matrix.
+If the singular/spectral values are ordered, a truncation of the $\Lambda$ matrix neglects subdominant left and right eigenvectors of the original object and as such approximates the original matrix.
 In case of a subsequent normalization to the original trace, the truncation process can be understood as a compression or tensor renormalization scheme.
 The number of singular values kept in the approximation is thus naturally linked to the accuracy of the numerical renormalization.
 Assume the picture to be of dimensions $\dim(P)=p_y\times p_x\times 3$, then keeping $m$ singular values implies that we need to store only a fraction of the matrices $U$ and $V^\dag$ to approximate the original picture $P$.
@@ -1614,10 +1615,10 @@ In total, we thus arrive at a compression rate
 which allows for a high compression in case of a large and dense matrix $M$.
 To give an example, I present the impact of compression in \cref{fig:svd_image_compression}.
 Panel (a) denotes an uncompressed picture, the singular values of the digital picture presented in (b), and the result of keeping $250$ singular values as an approximation to the full picture, presented in (c).
-The approximated picture yields a compression rate of roughly $19\%$, and visible differences to the original are negligible.
+The approximated picture yields a compression rate of roughly $19\%$, and visible differences to the original are negligible (if you look closely, the compressed figure appears to have some ``noise'' in the nice color gradient of the sky).
 \\
 
-The identical compression scheme can actually be applied to quantum states.
+The depicted compression scheme can actually be applied to quantum states.
 Recall that any state can be expressed by a set of good quantum numbers, such that
 \begin{align}
     \ket{\psi} = \sum_{i_1,i_2,\dots,i_n}C({i_1,i_2,\dots,i_n})\ket{i_1,i_2,\dots,i_n}
@@ -1626,17 +1627,142 @@ and the collection of all $\ket{i_1,i_2,\dots,i_n}$ form a complete and orthonor
 Note that the $n$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $n$ and the dimension of the quantum numbers $i_j$.
 By the visual conventions, we may imagine the coefficients $C$ as a rank $n$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}
 \begin{align}
-    C(i_1,i_2,\dots,i_{n-1},i_n) \equiv C^{i_1,i_2,\dots,i_n} =  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
+    C(i_1,i_2,\dots,i_{n-1},i_n) = C^{i_1,i_2,\dots,i_n} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
 \end{align}
 This allows to apply the generalized SVD in a sequential manner:
-Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single $S$ matrix in between two arbitrary leg positions $j,j+1$.
+Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single $S$ matrix in between two arbitrary leg positions $\ell,\ell+1$.
+The necessary decomposition sequence is most easily reformulated in graphical notation
+\begin{align}
+    C^{i_1,i_2,\dots,i_n} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}
+    =
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_1.pdf}
+    \\
+    =
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_2.pdf}
+    \\
+    =
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_3.pdf}
+    \\
+    =\includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+\end{align}
+in which at each step the three gray tensors are contracted before performing the next SVD.
 This particular decomposition of a generic quantum state, i.e.
 \begin{align}
-    C^{i_1,i_2,\dots,i_n} = \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+    C^{i_1,i_2,\dots,i_n} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
 \end{align}
-is called the canonical form of matrix product states.
-In this notation, it is obvious that any state can be recast to the canonical form, and that MPS have a large degree of gauge freedom.
-To be more precise, one may sandwich infinitely many identities written as unitary matrices which can rotate the local tensors, but leave the overall MPS invariant.
+is called the canonical form of an MPS.
+In other words, it represents the Schmidt decomposition of the state $\ket{\psi}$ in the subspaces $\HS_A$ and $\HS_B$ spanned by the first $\ell$ and last $n-\ell$ quantum numbers i.e.
+\begin{align}
+    \ket\psi = \sum_{\bm i} C^{\bm i}\ket{\bm i} = \sum_{k}s_{k}\ket{\psi_{A,k}}
+    \ket{\psi_{B,k}}
+\end{align}
+in which the transformed states $\ket{\psi_{A/B,k}}$ are given by the SVD-decomposed coefficient matrix
+\begin{align}
+    \ket{\psi_{A,k}}
+    &=
+    \sum_{i_1,i_2,\dots,i_j}
+    U^{i_1}_{k_1} U^{i_2}_{k_1,k_2}U^{i_3}_{k_2,k_3}\dots U^{i_j}_{k_{j-1},k}\ket{i_1,i_2,\dots,i_j},\\
+    %
+    \ket{\psi_{B,k}}
+    &=
+    \sum_{i_{j+1},i_{j+2},\dots,i_n}
+    {V^\dag}^{i_{j+1}}_{k,k_{j+1}} {V^\dag}^{i_{j+2}}_{k_{j+1},k_{j+2}}{V^\dag}^{i_3}_{k_{j+2},k_{j+3}}\dots {V^\dag}^{i_n}_{k_{n-1}}\ket{i_{j+1},i_{j+2},\dots,i_n}.
+\end{align}
+It is now obvious that (i) any quantum state can be decomposed into an MPS, (ii) that each MPS can be brought into the canonical form and (iii) that MPS have a large gauge degree of freedom.
+Point (iii) is clear from the fact that one may sandwich infinitely many identities in the MPS (each written as a product of two unitary matrices) which may in general rotate the colored isometry tensors, but leave the overall state invariant.
+\\
+
+To become familar with the compression scheme, consider the way a generic density matrix
+\begin{align}
+    \hat\rho = \ket{\psi}\bra{\psi} = \sum_{k,k'}s_ks_{k'}\ket{\psi_{A,k},\psi_{B,k}}\bra{\psi_{A,k'},\psi_{B,k'}}
+\end{align}
+is expressed in terms of a canonical MPS.
+Imagine to compute the reduced density matrix of a bipartition after the $\ell$'th quantum number (same as before).
+A trace over the complement states of the partition $A/B$ gives the reduced density matrix, i.e.
+\begin{align}
+    \hat\rho_A = \tr_B(\hat\rho)
+    &=
+    \sum_{k,k',k''}
+    s_ks_{k'}
+    \braket{\psi_{B,k''}|\psi_{A,k},\psi_{B,k}}\braket{\psi_{A,k'},\psi_{B,k'}|\psi_{B,k''}}
+    =
+    \sum_k s_k^2 \ket{\psi_{A,k}}\bra{\psi_{A,k}},\nonumber\\
+    %
+    \hat\rho_B = \tr_A(\hat\rho)
+    &=
+    \sum_k s_k^2 \ket{\psi_{B,k}}\bra{\psi_{B,k}}.
+\end{align}
+Note that normalization of the quantum state $\ket\psi$ implies $\tr\rho=\sum_k s_k^2=1$ and $s_k^2$ can be interpreted as the probability of state $\ket{\psi_{A/B,k}}$ contributing to the reduced density matrix $\hat\rho_{A/B}$.
+The reduced density matrix is thus diagonal in the Schmidt decomposition, and solely determined by the spectral values $s_k$.
+Imagine now to approximate the state $\ket\psi$ with a state $\ket{\psi'}$ by limiting the number of different $s_k$ in the bipartition $A,B$ such that the $m$ largest spectral values are kept in $\ket{\psi'}$ and the rest is set to zero.
+Normalization of the state $\ket{\psi'}$ requires that $\sum_{k=1}^m {s'_k}^2$ must be renormalized to unity, which is satisfied if $s_k'=s_k/\sqrt{\sum_{l=1}^m s_l^2}$.
+The threshold $m$ is thus directly related to approximating the reduced density matrix $\hat \rho_{A/B}$ with the $m$ most likely states in the Schmidt decomposition of a given bipartition $A,B$.
+Please note that $s_k$ refers to the $k$'th singular value of a particular bipartition $A(\ell)/B(n-\ell)$, which considers the first/last $\ell/n-\ell$ quantum numbers.
+Therefore, it is appropriate to denote this dependence also in the spectral values, i.e. $s_k = s_k(\ell)$.
+If we now keep the $m$ largest singular values of any bipartition $A(\ell)$, $m$ is becomes a global property of the MPS and thus deserves a special name, usually called the bond dimension.
+\\
+
+Density matrices are naturally related to the generalized Gibbs entropy for quantum states
+\begin{align}
+    S_1 = \tr(\hat\rho_A\log\hat\rho_A) = \tr(\hat\rho_B\log\hat\rho_B) = \sum_k s^2_k\log(s^2_k)
+\end{align}
+which is a straightforward measure for the shared information between the bipartition, in information theory perspectives often called Shannon entropy of communication.
+In this context, $-\log(s^2_k)$ is understood as the information content (or surprisal) of the Schmidt state, and $S_1$ is simply the expectation value of surprisal.
+Such definition is readily understood from an experimentalist's point of view: measuring a state of very low spectral weight are surprizing, whereas likely quantum states bear a low surprise.
+In a quantum physics audience, the entropy $S_1$ is commonly referred to as von Neumann entropy, and I denote it as $S_1$ because of its relation to the Rényi entropy -- a generalized version of the Shannon entropy
+\begin{align}
+    S_\alpha = \frac{1}{1-\alpha}\tr\log\rho^\alpha
+\end{align}
+in the limit $\alpha\rightarrow1$.
+The derivation of the limit is infrequently presented in the literature, but straightforward by using the Schmidt decomposition and L'Hôpital's rule
+\begin{align}
+    S_1
+    =
+    \lim_{\alpha\rightarrow1}\frac1{1-\alpha}\tr\log\hat\rho_A^\alpha
+    =
+    -\lim_{\alpha\rightarrow1}\partial_\alpha\log\sum_k s_k^{2\alpha}
+    =
+    -\lim_{\alpha\rightarrow1}\frac{\sum_k\partial_\alpha s_k^{2\alpha}}{\sum_k s_k^{2\alpha}}
+    =
+    -\lim_{\alpha\rightarrow1}\sum_k \re^{\alpha\log s_k^2}
+    \\
+    =
+    -\lim_{\alpha\rightarrow1}\sum_k \re^{\alpha\log s_k^2}\log s_k^2
+    =
+    -\sum_k s_k^2\log s_k^2
+    =
+    -\tr \hat\rho_A\log\hat\rho_A.
+\end{align}
+In conclusion, using MPS techniques in the canonical form provides immediate access to the information content (or surprise) of a given bipartition.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Entanglement and the area law}
+\label{sec:entanglement_and_the_area_law}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+All of the discussion so far would not be very exciting for a wholehearted physicist, were it not for its close relation to quantum entanglement.
+The phenomenon was firstly noted in $1935$ by Albert Einstein, Boris Podolsky, and Nathan Rosen~\cite{EPR1935}, also Erwin Schrödinger~\cite{Schrdinger1935,Schrdinger1936}, describing what is famously known as the EPR paradox~\cite{Reid2009}.
+At its heart, it describes a group of particles interacting such that the quantum state of each individual particle cannot be described independently of the state of the others in the group.
+The paradox part in the aforementioned works is described by quantum measurements performed on individual particles, which leads to irreversible collapses of the wave function and an alteration of the original quantum state of the other particles in the group.
+Surprisingly, the phenomenon is independent of the distance between the particles and forms thus a unique form of correlations exclusively present in quantum systems.
+% The multiplication of the two coefficient functions is nothing but a tensor contraction of the legs $\bm q_B$.
+% In particular, we may write
+% \begin{align}
+%     \sum_{\bm q_B}C(\bm i_A,\bm q_B)C^*(\bm j_A,\bm q_B)
+%     \equiv
+%     \includegraphics[valign=c]{figures/arbitrary_reduced_density_matrix_decomposed.pdf}.
+% \end{align}
+% Note that in the above, I conveniently used the canonical form of the MPS.
+% As such, one may explore the isometry condition in \cref{eq:isometries}, resulting in the particularly appealing result
+% \begin{align}
+%     \sum_{\bm q_B}C(\bm i_A,\bm q_B)C^*(\bm j_A,\bm q_B)
+%     \equiv
+%     \includegraphics[valign=c]{figures/arbitrary_reduced_density_matrix_decomposed_simplified.pdf}.
+% \end{align}
+% Note that the isometrized canonical form allows to simplify the number of required contractions significantly, and
+% \begin{align}
+%     \sum_{\bm i_A, \bm j_A}\sum_{\bm q_B}C(\bm i_A,\bm q_B)C^*(\bm j_A,\bm q_B)\ket{\bm i_A}\bra{\bm j_A} = \sum_{\bm i'_A, \bm j'_A} S_k \ket{\bm i'_A}\bra{\bm j'_A}
+% \end{align}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
