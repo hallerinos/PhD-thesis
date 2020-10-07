@@ -1745,6 +1745,23 @@ The phenomenon was firstly noted in $1935$ by Albert Einstein, Boris Podolsky, a
 At its heart, it describes a group of particles interacting such that the quantum state of each individual particle cannot be described independently of the state of the others in the group.
 The paradox part in the aforementioned works is described by quantum measurements performed on individual particles, which leads to irreversible collapses of the wave function and an alteration of the original quantum state of the other particles in the group.
 Surprisingly, the phenomenon is independent of the distance between the particles and forms thus a unique form of correlations exclusively present in quantum systems.
+\\
+
+To make an example, consider the two-particle pure state $\ket{\psi}=\frac1{\sqrt2}\brlr{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}$ and the two particles being localized at two distant spacial positions.
+In case we prepare a projective measurement of the first particle being in the $\uparrow$-state, the probability of the outcome is obviously $1/2$ and we end up with a collapsed post-measurement state of the form $\ket{\tilde\psi} = \ket{\uparrow\downarrow}$.
+At the time of the measurement, the second particle collapses to the perfectly correlated alignment, and it does so immediately, independent on the spacial distance between the two parties.
+A subsequent measurement of the second particle will thus yield $\downarrow$ with probability $1$.
+Note that this instantaneous action does not violate causality since the outcome of the first measurement is random and as such cannot be used to transmit information.
+With this example in mind, let us now encapsulate the definition of $N$-partite separable and entangled for states with $N$ individual particles.
+\\
+
+A state $\ket{\psi_1,\psi_2\dots,\psi_N}$ is called fully $N$-partite separable iff. it can be written as~\cite{Horodecki1994}
+\begin{align}
+    \ket{\psi_1,\dots,\psi_N} = \ket{\psi_1}\otimes\ket{\psi_2}\otimes\dots\otimes\ket{\psi_N}.
+\end{align}
+In order to check this condition, it is sufficient to determine if the reduced density matrices $\rho_i$ of the elementary subsystems are pure [$\tr\rho_i^2=1$].
+On the contrary, the state is genuinely $N$-partite entangled, iff. all bipartite
+
 % The multiplication of the two coefficient functions is nothing but a tensor contraction of the legs $\bm q_B$.
 % In particular, we may write
 % \begin{align}
