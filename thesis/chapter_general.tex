@@ -1622,6 +1622,7 @@ The depicted compression scheme can actually be applied to quantum states.
 Recall that any state can be expressed by a set of good quantum numbers, such that
 \begin{align}
     \ket{\psi} = \sum_{i_1,i_2,\dots,i_n}C({i_1,i_2,\dots,i_n})\ket{i_1,i_2,\dots,i_n}
+    \label{eq:generic_state}
 \end{align}
 and the collection of all $\ket{i_1,i_2,\dots,i_n}$ form a complete and orthonormal basis.
 Note that the $n$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $n$ and the dimension of the quantum numbers $i_j$.
@@ -1704,19 +1705,19 @@ If we now keep the $m$ largest singular values of any bipartition $A(\ell)$, $m$
 
 Density matrices are naturally related to the generalized Gibbs entropy for quantum states
 \begin{align}
-    S_1 = \tr(\hat\rho_A\log\hat\rho_A) = \tr(\hat\rho_B\log\hat\rho_B) = \sum_k s^2_k\log(s^2_k)
+    S_1(\ell) = -\tr(\hat\rho_A\log\hat\rho_A) = -\tr(\hat\rho_B\log\hat\rho_B) = -\sum_k s^2_k\log(s^2_k)
 \end{align}
 which is a straightforward measure for the shared information between the bipartition, in information theory perspectives often called Shannon entropy of communication.
 In this context, $-\log(s^2_k)$ is understood as the information content (or surprisal) of the Schmidt state, and $S_1$ is simply the expectation value of surprisal.
 Such definition is readily understood from an experimentalist's point of view: measuring a state of very low spectral weight are surprizing, whereas likely quantum states bear a low surprise.
 In a quantum physics audience, the entropy $S_1$ is commonly referred to as von Neumann entropy, and I denote it as $S_1$ because of its relation to the Rényi entropy -- a generalized version of the Shannon entropy
 \begin{align}
-    S_\alpha = \frac{1}{1-\alpha}\tr\log\rho^\alpha
+    S_\alpha(\ell) = \frac{1}{1-\alpha}\tr\log\rho^\alpha_A
 \end{align}
 in the limit $\alpha\rightarrow1$.
 The derivation of the limit is infrequently presented in the literature, but straightforward by using the Schmidt decomposition and L'Hôpital's rule
 \begin{align}
-    S_1
+    S_1(\ell)
     =
     \lim_{\alpha\rightarrow1}\frac1{1-\alpha}\tr\log\hat\rho_A^\alpha
     =
@@ -1733,7 +1734,8 @@ The derivation of the limit is infrequently presented in the literature, but str
     =
     -\tr \hat\rho_A\log\hat\rho_A.
 \end{align}
-In conclusion, using MPS techniques in the canonical form provides immediate access to the information content (or surprise) of a given bipartition.
+In conclusion, using MPS techniques in the canonical form provides immediate access to the information content of a given bipartition.
+Note that the maximum entropy of an MPS is always restricted by the bond dimension $m$, i.e. $S_1(\ell)<\log(m)$.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1755,12 +1757,37 @@ Note that this instantaneous action does not violate causality since the outcome
 With this example in mind, let us now encapsulate the definition of $N$-partite separable and entangled for states with $N$ individual particles.
 \\
 
-A state $\ket{\psi_1,\psi_2\dots,\psi_N}$ is called fully $N$-partite separable iff. it can be written as~\cite{Horodecki1994}
+A state $\ket{\psi}$ is called $N$-partite separable iff. it can be written as a product of $N$ subsystems~\cite{Horodecki2009}
 \begin{align}
-    \ket{\psi_1,\dots,\psi_N} = \ket{\psi_1}\otimes\ket{\psi_2}\otimes\dots\otimes\ket{\psi_N}.
+    \ket{\psi} = \ket{\psi_1}\otimes\ket{\psi_2}\otimes\dots\otimes\ket{\psi_N}.
+    \label{eq:separable_states}
 \end{align}
-In order to check this condition, it is sufficient to determine if the reduced density matrices $\rho_i$ of the elementary subsystems are pure [$\tr\rho_i^2=1$].
-On the contrary, the state is genuinely $N$-partite entangled, iff. all bipartite
+Note that this expression is fundamentally different from the coherent superposition of exponentially many state vectors encountered in generic states (compare to ~\cref{eq:generic_state}).
+As such, we call a state entangled, if it cannot be decomposed according to~\cref{eq:separable_states}.
+The earlier example of a bipartite system is an element of the Bell basis, which are sometimes called ERP states
+\begin{align}
+    \ket{\psi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}}
+    \quad
+    \ket{\phi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\uparrow}\pm\ket{\downarrow\downarrow}}
+\end{align}
+and they all have remarkable properties, first recognized by Schrödinger -- if one measures only one of the states, one finds it with equal probability in either $\ket{0}$ or $\ket{1}$.
+As such, they give no information about the subsystems, whereas they are still pure and thus reveal full information about the global system.
+The Bell states are special cases of bipartite maximally entangled states~\cite{Horodecki2009} and as such great examples to explore the entropic manifestation of entanglement.
+In particular, it has been shown that the von Neumann entropy of a subsystem can be greater than the entropy of the global system iff. the state is entangled~\cite{Horodecki1994}.
+The inequality for separable states can thus be expressed as $S(B|A)=S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
+As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities.
+The discussions of entangled states breaking the positivity of $S(A|B)$ reach far beyond the present aim of this introduction \cite{Horodecki2006}, and I simply conclude here that the von Neumann entropy is a useful scalar measure of bipartite entanglement.
+\\
+
+Coming back to the connection to MPS with finite bond dimension, we now know that the upper bound restriction of the entropy limits the available entanglement of the approximation.
+This, in turn, does not provide an explanation why such an approximation should not ``go wrong quickly'' in a sense that the important properties of the approximated state are lost, even if the bond dimension is large.
+Incidentally, at the time DMRG was introduced by Steven White~\cite{White1992}, the success of the renormalization scheme remained a mystery.
+Some insights were concluded by the universal scaling laws of the entropy provided by Calabrese and Cardy in 2004~\cite{Calabrese2004} in proximity of a quantum critical point.
+It was until 2007, that Hastings published his famous proof of the area law for one-dimensional quantum systems~\cite{Hastings2007}.
+In its essence, it provides an upper bound to the von Neumann entropy for gapped and local (i.e. no long-ranged interactions) Hamiltonians scaling as the area ($\equiv$ a constant) of the one-dimensional system.
+Essentially, the two works can be summarized by the following statement
+
+% It has been until 1995 that the von Neumann entropy has been understood as the scalar value counting the number of quantum bits needed to transmit quantum states emitted by a statistical source~\cite{Schumacher1995}.
 
 % The multiplication of the two coefficient functions is nothing but a tensor contraction of the legs $\bm q_B$.
 % In particular, we may write
