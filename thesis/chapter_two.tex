@@ -194,6 +194,7 @@ The necessary decomposition sequence is most easily reformulated in graphical no
     \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_3.pdf}
     \\
     =\includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+    \label{eq:move_the_lambda_matrix}
 \end{align}
 in which at each step the three gray tensors are contracted before performing the next SVD.
 This particular decomposition of a generic quantum state, i.e.
@@ -460,11 +461,11 @@ To cast \cref{eq:lagrangian_multiplier} into a variational problem for the tenso
     0.
     \label{eq:lagrangian_multiplier_graphical}
 \end{align}
-I now proceed by the application of a gradient on both sides of \cref{eq:lagrangian_multiplier}, in which case the elements correspond to the entries of the contraction of the three colored tensors, i.e.
+I now proceed by the application of a gradient on both sides of \cref{eq:lagrangian_multiplier}, in which case the elements correspond to the entries of the contraction of the red, black and blue tensor, i.e.
 \begin{align}
     \nabla(\ell,\ell+1)_{kn}\equiv\frac\partial{\partial\brlr{U^{i_\ell}_{k,l}S_l V^{\dag i_{\ell+1}}_{l,n}}^*}.
 \end{align}
-The application of the gradient corresponds to removing the three central tensors from the conjugate contraction (and of course the scalar $1$) in \cref{eq:lagrangian_multiplier_graphical}.
+Since the tensors enter in the equation in a linear fashion, the application of the gradient corresponds to removing the three tensors from the conjugate contraction (and of course the scalar $1$) in \cref{eq:lagrangian_multiplier_graphical}.
 One finally arrives at
 \begin{align}
     \includegraphics[valign=c]{figures/lagrangian_multiplier_equation_3.pdf}
@@ -474,30 +475,80 @@ One finally arrives at
     .
     \label{eq:lagrangian_multiplier_graphical_2}
 \end{align}
-This can be better understood after reshaping $U^{[\ell]}\Lambda V^{\dag[\ell+1]}$ (the three colored tensors in \cref{eq:lagrangian_multiplier_graphical_2}) to a vector $v({\ell,\ell+1})$ of dimension $m^2D^2$ and the contracted network of the gray tensors to a matrix $h_{\rm eff.}(\ell,\ell+1)$ of dimension $m^2D^2\times m^2D^2$, such that
+This can be better understood after reshaping $U^{[\ell]}\Lambda V^{\dag[\ell+1]}$ (the red, black and blue tensors in \cref{eq:lagrangian_multiplier_graphical_2}) to a vector $v({\ell,\ell+1})$ of dimension $m^2D^2$ and the contracted network of the gray tensors to a matrix $h_{\rm eff.}(\ell,\ell+1)$ of dimension $m^2D^2\times m^2D^2$, such that
 \begin{align}
     h_{\rm eff.}(\ell,\ell+1)v({\ell,\ell+1}) = \lambda_\psi v({\ell,\ell+1}).
+    \label{eq:MPS_optimization}
 \end{align}
-The Lagrange multiplier $\lambda_\psi$ thus corresponds to the global energy of the MPS and the equations span a standard eigenvalue problem for the vector $v$ which can be solved efficiently for the end of the spectrum with libraries like ARPACK~\cite{Lehoucq1998}.
+The Lagrange multiplier $\lambda_\psi = v^\dag h_{\rm eff.} v / \sqrt{|v|^2}$ corresponds to the global energy of the MPS and the equations span a standard eigenvalue problem for the vector $v$ which can be solved efficiently for the end of the spectrum with libraries like ARPACK~\cite{Lehoucq1998}.
 Note that the standard eigenvalue problem is promoted to a generalized eigenvalue problem if we would not rely on the normalized and canonical form of the MPS~\cite{Silvi2019}.
-The aim now is to find the optimal vectors $v_{\ell,\ell+1}$ for all computational sites, which can be achieved by the growing and finite MPS algorithm.
+The aim now is to find the optimal vectors $v_{\ell,\ell+1}$ at each computational site, which can be achieved by the growing and finite MPS algorithm.
 \\
 
-The growing MPS algorithm is now formalized as follows:
+A minimal example of the growing MPS algorithm is formalized as follows:
 \begin{enumerate}
-    \item Compute the lowest energy state of two sites and decompose it to $U^{[1]}\Lambda V^{\dag[2]}$
+    \item Choose an even number $L$ corresponding to twice the number of iterations.
+    \item $n=1$. Compute the lowest energy vector $v(n,n+1)$ for a system of two sites only.
+    \item Use the generalized singular value decomposition in \cref{eq:SVD_generalized} to decouple the two quantum numbers into a product of two isometries and a matrix $\Lambda$ containing the spectral values
     \begin{align}
-        =
+        v(n,n+1) \equiv U^{[i_n]}\Lambda V^{\dag[i_{L+1-n}]}
+        .
     \end{align}
-    \item Split the tensor by two and copy it to its center, growing the MPS from $2n$ to $2n+2$ sites
+    Stop if $n=L/2$.
+    \item Grow the size of the MPS from $2n$ to $2n+2$ sites by replacing the central matrix $\Lambda$ with two rank-$3$ isometries and a (normalized) singular value matrix of fitting dimensions
     \begin{align}
-        \rightarrow
+        \brlr{\prod_{k=1}^nU^{[i_k]}}\Lambda \brlr{\prod_{k=1}^{n}V^{\dag[i_{L+1-n}]}}\rightarrow\brlr{\prod_{k=1}^nU^{[i_k]}}\tilde U^{[i_{n+1}]}\tilde\Lambda \tilde V^{\dag[i_{L-n}]} \brlr{\prod_{k=1}^{n}V^{\dag[i_{L+1-n}]}}.
     \end{align}
-    \item Compute the lowest energy tensor of the central two sites and continue with 2.
-    \begin{align}
-        \rightarrow
-    \end{align}
+    Then use \cref{eq:MPS_optimization} to variationally solve for the lowest energy vector $v(n+1,n+2)$ corresponding to the inserted tensors.
+    Increase $n\rightarrow n+1$ and go back to step 3.
 \end{enumerate}
+The common application of the growing algorithm is two-fold.
+It can be used naively to approximate the central tensors of a fully translationally invariant chain by sending $L\gg2$ to very large values.
+The convergence is reached when the overlap between the optimal vectors $v(n,n+1)$ and $v(n-1,n)$ of the previous iteration step approaches a user-specified threshold.
+This approach however requires the state to be fully translationally invariant over a single site.
+A workaround of this issue is to relax the insertion of two sites in the center of the MPS to arbitrary many.
+However, the convergence to the best thermodynamic MPS state is never achieved.
+This is due to the intrinsically finite structure of the MPS in the growing algorithm which breaks translational symmetry at every step, and another Ansatz is required.
+\\
+
+One viable option is to approximate the (infinite) environments to the left and right of the central tensors with the dominant eigenstates of the transfer matrices.
+The corresponding algorithm is then called infinite boundary conditioned MPS~\cite{phien2012} or variational uniform MPS (VUMPS)~\cite{zaunerstauber2018}.
+In our works, we were mostly interested in the simulation of finite systems and I omit the description of such an implementation.
+\\
+
+The second application concerns the MPS obtained after $L/2$ steps -- it can serve as a trial state for a finite system of length $L$, which is then refined by the second algorithm, finite MPS:
+\begin{enumerate}
+    \item Start with a trial MPS in the canonical form (e.g. acquired by the growing algorithm) and transform the MPS such that the $\Lambda$ matrix is between sites $1$ and $2$. Set $n=1$.
+    \item Compute the lowest energy vector $v(n,n+1)$ according to \cref{eq:MPS_optimization} and decompose it to two isometries and a matrix $\Lambda$ containing the singular values
+    \begin{align}
+        v(n,n+1) \equiv U^{[i_n]}\Lambda(n) V^{\dag[i_{n+1}]}
+        .
+    \end{align}
+    Proceed then with step $3$ (sweeping to the left) or $4$ (sweeping to the right).
+    \item Shift the matrix $\Lambda(n)$ to the next site by decomposing it to
+    \begin{align}
+        \Lambda(n) V^{\dag[i_{n+1}]} V^{\dag[i_{n+2}]} \rightarrow U^{[i_{n+1}]}\Lambda(n+1)\tilde V^{\dag[i_{n+2}]}
+        .
+    \end{align}
+    If $n\neq L-1$, increase $n\rightarrow n+1$ and go back to step 2.
+    This is called sweeping to the right.
+    \item Shift the matrix $\Lambda(n)$ to the previous site by decomposing it to
+    \begin{align}
+        U^{[i_{n-1}]}U^{[i_n]}\Lambda(n) \rightarrow \tilde U^{[i_{n-1}]}\Lambda(n-1) V^{\dag[i_n]}
+        .
+    \end{align}
+    If $n\neq1$, decrease $n\rightarrow n-1$ and go back to step 2.
+    This is called sweeping to the left.
+\end{enumerate}
+The finite MPS optimization is usually performed in so-called ``sweeps'', i.e. a full sweeping to the right cycle is done for each site $n=1,2,\dots,L-1$, after which a full sweeping to the left cycle $n=L-1,L-2,\dots,1$ is applied.
+\\
+
+The overall accuracy can be estimated by computing the variance of the approximation.
+If the MPS is equivalent to the eigenstate of the full Hamiltonian, the variance reduces to $0$. In general, however, the approximation is not a true eigenstate of the Hamiltonian and as such
+\begin{align}
+    \varepsilon = \sqrt{\braket{\psi(m)|\hat H^2|\psi(m)} - \braket{\psi(m)|\hat H|\psi(m)}^2}
+\end{align}
+provides an error estimate for the energy of an MPS with bond dimension $m$~\cite{Schollwoeck2011,Silvi2019}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
