@@ -168,22 +168,22 @@ The approximated picture yields a compression rate of roughly $19\%$, and visibl
 \\
 
 The depicted compression scheme can actually be applied to quantum states.
-Recall that any state can be expressed by a set of good quantum numbers, such that
+Recall that any state can be expressed by a set of $L$ good quantum numbers, such that
 \begin{align}
-    \ket{\psi} = \sum_{i_1,i_2,\dots,i_n}C({i_1,i_2,\dots,i_n})\ket{i_1,i_2,\dots,i_n}
+    \ket{\psi} = \sum_{i_1,i_2,\dots,i_L}C({i_1,i_2,\dots,i_L})\ket{i_1,i_2,\dots,i_L}
     \label{eq:generic_state}
 \end{align}
-and the collection of all $\ket{i_1,i_2,\dots,i_n}$ form a complete and orthonormal basis.
-Note that the $n$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $n$ and the dimension of the quantum numbers $i_j$.
-By the visual conventions, we may imagine the coefficients $C$ as a rank $n$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}
+and the collection of all $\ket{i_1,i_2,\dots,i_L}$ form a complete and orthonormal basis.
+Note that the $L$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $L$ and the dimension of the quantum numbers $i_j$.
+By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}
 \begin{align}
-    C(i_1,i_2,\dots,i_{n-1},i_n) = C^{i_1,i_2,\dots,i_n} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
+    C(i_1,i_2,\dots,i_L) = C^{i_1,i_2,\dots,i_L} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
 \end{align}
 This allows to apply the generalized SVD in a sequential manner:
-Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single $S$ matrix in between two arbitrary leg positions $\ell,\ell+1$.
+Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single $\Lambda$ matrix in between two arbitrary leg positions $\ell,\ell+1$.
 The necessary decomposition sequence is most easily reformulated in graphical notation
 \begin{align}
-    C^{i_1,i_2,\dots,i_n} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}
+    C^{i_1,i_2,\dots,i_L} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}
     =
     \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_1.pdf}
     \\
@@ -198,26 +198,28 @@ The necessary decomposition sequence is most easily reformulated in graphical no
 in which at each step the three gray tensors are contracted before performing the next SVD.
 This particular decomposition of a generic quantum state, i.e.
 \begin{align}
-    C^{i_1,i_2,\dots,i_n} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+    C^{i_1,i_2,\dots,i_L} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
 \end{align}
 is called the canonical form of an MPS.
-In other words, it represents the Schmidt decomposition of the state $\ket{\psi}$ in the subspaces $\HS_A$ and $\HS_B$ spanned by the first $\ell$ and last $n-\ell$ quantum numbers i.e.
+In other words, it represents the Schmidt decomposition of the state $\ket{\psi}$ in the subspaces $\HS_{A(\ell)}$ and $\HS_{B(\ell)}$ spanned by the first $\ell$ and last $L-\ell$ quantum numbers i.e.
 \begin{align}
-    \ket\psi = \sum_{\bm i} C^{\bm i}\ket{\bm i} = \sum_{k}s_{k}\ket{\psi_{A,k}}
-    \ket{\psi_{B,k}}
+    \ket\psi = \sum_{\bm i} C^{\bm i}\ket{\bm i} = \sum_{k}s_{k}(\ell)\ket{\psi_{A(\ell),k}}
+    \ket{\psi_{B(\ell),k}}
 \end{align}
 in which the transformed states $\ket{\psi_{A/B,k}}$ are given by the SVD-decomposed coefficient matrix
 \begin{align}
-    \ket{\psi_{A,k}}
+    \ket{\psi_{A(\ell),k}}
     &=
-    \sum_{i_1,i_2,\dots,i_j}
-    U^{i_1}_{k_1} U^{i_2}_{k_1,k_2}U^{i_3}_{k_2,k_3}\dots U^{i_j}_{k_{j-1},k}\ket{i_1,i_2,\dots,i_j},\\
+    U^{i_1}_{k_1} U^{i_2}_{k_1,k_2}U^{i_3}_{k_2,k_3}\dots U^{i_\ell}_{k_{\ell-1},k}\ket{i_1,i_2,i_3,\dots,i_j}
+    =\prod_{k=1}^\ell U^{[i_k]}\ket{i_1,\dots,i_\ell},\\
     %
-    \ket{\psi_{B,k}}
+    \ket{\psi_{B(\ell),k}}
     &=
-    \sum_{i_{j+1},i_{j+2},\dots,i_n}
-    {V^\dag}^{i_{j+1}}_{k,k_{j+1}} {V^\dag}^{i_{j+2}}_{k_{j+1},k_{j+2}}{V^\dag}^{i_3}_{k_{j+2},k_{j+3}}\dots {V^\dag}^{i_n}_{k_{n-1}}\ket{i_{j+1},i_{j+2},\dots,i_n}.
+    {V^\dag}^{i_{\ell+1}}_{k,k_{\ell+1}} {V^\dag}^{i_{\ell+2}}_{k_{\ell+1},k_{\ell+2}}\dots {V^\dag}^{i_L}_{k_{L-1}}\ket{i_{\ell+1},\dots,i_L}
+    =
+    \prod_{k=\ell+1}^L V^{\dag[i_k]}\ket{i_{\ell+1},\dots,i_L}.
 \end{align}
+Please note that I used the sum convention for convenience.
 It is now obvious that (i) any quantum state can be decomposed into an MPS, (ii) that each MPS can be brought into the canonical form and (iii) that MPS have a large gauge degree of freedom.
 Point (iii) is clear from the fact that one may sandwich infinitely many identities in the MPS (each written as a product of two unitary matrices) which may in general rotate the colored isometry tensors, but leave the overall state invariant.
 \\
@@ -227,7 +229,7 @@ To understand the influence of the compression scheme, consider the way a generi
 \begin{align}
     \hat\rho = \ket{\psi}\bra{\psi} = \sum_{k,k'}s_ks_{k'}\ket{\psi_{A,k},\psi_{B,k}}\bra{\psi_{A,k'},\psi_{B,k'}}.
 \end{align}
-Now imagine to compute the reduced density matrix of a bipartition formed by a block $A$ of the first $\ell$ quantum numbers and a block $B$ of the remaining ones (same as before).
+Now imagine to compute the reduced density matrix of a bipartition formed by a block $A(\ell)$ of the first $\ell$ quantum numbers and a block $B(\ell)$ of the remaining ones (same as before).
 A trace over the complement states of the partition $A/B$ gives the reduced density matrix in block $A/B$, i.e.
 \begin{align}
     \hat\rho_A = \tr_B(\hat\rho)
@@ -247,8 +249,8 @@ The reduced density matrix is thus diagonal in the Schmidt decomposition, and so
 Imagine now to approximate the state $\ket\psi$ with a state $\ket{\psi'}$ by limiting the number of different $s_k$ in the bipartition $A,B$ such that the $m$ largest spectral values are kept in $\ket{\psi'}$ and the rest is set to zero.
 Normalization of the state $\ket{\psi'}$ requires that $\sum_{k=1}^m {s'_k}^2$ must be renormalized to unity, which is satisfied if $s_k'=s_k/\sqrt{\sum_{l=1}^m s_l^2}$.
 The threshold $m$ is thus directly related to approximating the reduced density matrix $\hat \rho_{A/B}$ with the $m$ most likely states in the Schmidt decomposition of a given bipartition $A/B$.
-Please note that $s_k$ refers to the $k$'th singular value of a particular bipartition $A(\ell)/B(n-\ell)$, which considers the first/last $\ell/n-\ell$ quantum numbers.
-Therefore, it can be appropriate to denote this dependence also in the spectral values if needed, i.e. $s_k = s_k(\ell)$.
+Please note that $s_k\equiv s_k(\ell)$ refers to the $k$'th singular value of a particular bipartition $A(\ell)/B(\ell)$, which considers the first/last $\ell/L-\ell$ quantum numbers.
+% Therefore, it can be appropriate to denote this dependence also in the spectral values if needed, i.e. $s_k = s_k(\ell)$.
 If we keep the $m$ largest singular values $s_k(\ell)$, $k\in\{1,2,\dots,m\}$ for any block size $\ell$, $m$ is a global property of MPS called the bond dimension.
 \\
 
@@ -291,14 +293,14 @@ Let us now understand the action of operators in the basis of MPS.
 Consider a local operator acting on site $q$, which can be written in general as $\hat o_q = \sum_{i_q',i_q''}o_{i_q',i_q''}\ket{i_q'}\bra{i_q''}$.
 Its action on the canonical form of an MPS can be expressed as
 \begin{align}
-    \hat o_q\ket\psi &= \sum_{i_1,i_2,\dots,i_q,\dots,i_n}\sum_{i_q'}o_{i_q',i_q} C^{i_1,i_2,\dots,i_q,\dots,i_n}\ket{i_1,i_2,\dots,i_{q-1},i_q',i_{q+1},\dots,i_n}
+    \hat o_q\ket\psi &= \sum_{i_1,i_2,\dots,i_q,\dots,i_L}\sum_{i_q'}o_{i_q',i_q} C^{i_1,i_2,\dots,i_q,\dots,i_L}\ket{i_1,i_2,\dots,i_{q-1},i_q',i_{q+1},\dots,i_L}
     \\
-    &= \sum_{i_1,i_2,\dots,i_n}\tilde C^{i_1,i_2,\dots,i_n}\ket{i_1,i_2,\dots,i_n}
+    &= \sum_{i_1,i_2,\dots,i_L}\tilde C^{i_1,i_2,\dots,i_L}\ket{i_1,i_2,\dots,i_L}
 \end{align}
 and we note that it leaves the overall form of the MPS invariant.
 In particular, it acts as a contraction between the $o$-matrix and the $q$'th vertical leg of the $C$-tensor, according to
 \begin{align}
-    \tilde C^{i_1,i_2,\dots,i_n} = \sum_{i_q'}o_{i_q,i_q'}C^{i_1,i_2,\dots,i_q',\dots,i_n}.
+    \tilde C^{i_1,i_2,\dots,i_L} = \sum_{i_q'}o_{i_q,i_q'}C^{i_1,i_2,\dots,i_q',\dots,i_L}.
 \end{align}
 Therefore, we can represent any local operator as a rank-$2$ tensor composed by the matrix elements of $\hat o$.
 The same reasoning applies for operators acting on $p$ sites -- they are represented by rank-$2p$ tensors containing the entries of the matrix elements, contracted with the $p$ corresponding vertical links of the $C$-tensor.
@@ -321,7 +323,7 @@ They have the following representations
     \quad
     \hat Z = \ket{\uparrow}\bra{\uparrow} - \ket{\downarrow}\bra{\downarrow}.
 \end{align}
-Note that the Hamiltonian can be recast into a product of matrix operators of the form
+Note that the Hamiltonian can be recast into a product of bulk $i\neq1,L$ operators of the form
 \begin{align}
     \hat W^{[i]} =
     \begin{pmatrix}
@@ -340,17 +342,36 @@ The multiplication of the $\hat W$ matrix operators does not yield the desired r
 %         0 & 0 & \mathbb1
 %     \end{pmatrix},
 % \end{align}
-which is readily solved by two auxiliary boundary tensors
+which is readily solved by a slight modification of the boundary tensors
 \begin{align}
-    \hat W^{[0]} =
+    \hat W^{[1]} =
     \begin{pmatrix}
         \mathbb 1 & 0 & 0
     \end{pmatrix}
+    \begin{pmatrix}
+        \mathbb 1_1 & \hat X_1 & \hat Z_1\\
+         0 & 0 & \hat X_1\\
+        0 & 0 & \mathbb 1_1\\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \mathbb 1 & \hat X_1 & \hat Z_1
+    \end{pmatrix}
     ,
     \quad
-    \hat W^{[L+1]} =
+    \hat W^{[L]} =
+    \begin{pmatrix}
+        \mathbb 1_L & \hat X_L & \hat Z_L\\
+         0 & 0 & \hat X_L\\
+        0 & 0 & \mathbb 1_L\\
+    \end{pmatrix}
     \begin{pmatrix}
         0 \\ 0 \\ \mathbb 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        \hat Z_L\\
+        \hat X_L\\
+        \mathbb 1_L\\
     \end{pmatrix}
 \end{align}
 such that the global Hamiltonian is given by the product
@@ -359,7 +380,7 @@ such that the global Hamiltonian is given by the product
 % \end{align}
 % and as such
 \begin{align}
-    \hat H = \prod_{i=0}^{L+1}\hat W^{[i]}.
+    \hat H = \prod_{i=1}^{L}\hat W^{[i]}.
 \end{align}
 Since $\hat W$ contains a set of local operators which each have an MPO representation, the above operator expression acting on a state $\ket\psi$ is nothing but tensor contraction in which the local rank-$2$ tensors representing the action of the spin operators are promoted to a rank-$4$ MPO $W$ containing the matrix elements of $\hat W$.
 In particular, one obtains
@@ -409,7 +430,7 @@ For the numerical simulations employed in all of our articles, I implemented two
 The first one is the growing algorithm (sometimes dubbed iDMRG), which is most useful to construct the trial wavefunction of the second scheme, namely traditional DMRG reformulated in the language of MPS~\cite{Schollwoeck2011,Silvi2019}.
 \\
 
-Consider the way the energy expectation value is written in the MPS language: it is a sandwich of the product of $W$ operators (a local MPO representing the Hamiltonian) with the trial wavefunction.
+Consider the way the energy expectation value is written in the MPS language: it is a sandwich of the product of $W$ tensors (the local MPO representing the Hamiltonian) with the trial wavefunction.
 To find the groundstate, we extremize the energy
 \begin{align}
     E = \min_{\ket{\psi}}\braket{\psi |\hat H | \psi}
@@ -417,35 +438,66 @@ To find the groundstate, we extremize the energy
 under the constraint that $\braket{\psi|\psi}=1$.
 Using a Lagrange multiplier, the equation becomes
 \begin{align}
-    \braket{\psi|\hat H|\psi} - \lambda\brlr{\braket{\psi|\psi}-1} = 0.
+    \braket{\psi|\hat H|\psi} - \lambda_\psi\brlr{\braket{\psi|\psi}-1} = 0.
+    \label{eq:lagrangian_multiplier}
 \end{align}
-Now the MPS structure of $\ket\psi$ is exploited, and to proceed I decompose the state into the form
+Now the MPS structure of $\ket\psi$ is exploited, and I decompose the state into the canonical form
 \begin{align}
     \ket\psi
     =
-    \sum_{\bm i}\brlr{\prod_{k=1}^LT^{[k]}}\ket{\bm i}
-    =
-    \sum_{\bm i,\bm k}T^{i_1}_{k_1} T^{\i_2}_{k_1,k_2}\dots T^{\i_q}_{k_{q-1},k_q}\dots T^{\i_{L-1}}_{k_{L-2},k_{L-1}}T^{\i_L}_{k_{L-1}}\ket{\bm i}
-    \\
+    \brlr{\prod_{k=1}^{\ell}U^{[i_k]}}\Lambda\brlr{\prod_{k=\ell+1}^{L}V^{\dag[i_k]}}\ket{\bm i}
     \equiv
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed_decolorized.pdf}\ket{i_1,i_2,\dots,i_L}.
+\end{align}
+Please note that I use the sum convention in the above.
+To cast \cref{eq:lagrangian_multiplier} into a variational problem for the tensors at position $\ell$ and $\ell+1$, it is convenient to use the graphical notation
+\begin{align}
+    \includegraphics[valign=c]{figures/lagrangian_multiplier_equation_1.pdf}
+    -
+    \lambda_\psi
+    \brlr{\includegraphics[valign=c]{figures/lagrangian_multiplier_equation_2.pdf}-1}
+    =
+    0.
+    \label{eq:lagrangian_multiplier_graphical}
+\end{align}
+I now proceed by the application of a gradient on both sides of \cref{eq:lagrangian_multiplier}, in which case the elements correspond to the entries of the contraction of the three colored tensors, i.e.
+\begin{align}
+    \nabla(\ell,\ell+1)_{kn}\equiv\frac\partial{\partial\brlr{U^{i_\ell}_{k,l}S_l V^{\dag i_{\ell+1}}_{l,n}}^*}.
+\end{align}
+The application of the gradient corresponds to removing the three central tensors from the conjugate contraction (and of course the scalar $1$) in \cref{eq:lagrangian_multiplier_graphical}.
+One finally arrives at
+\begin{align}
+    \includegraphics[valign=c]{figures/lagrangian_multiplier_equation_3.pdf}
+    =
+    \lambda_\psi
+    \includegraphics[valign=c]{figures/lagrangian_multiplier_equation_4.pdf}
     .
+    \label{eq:lagrangian_multiplier_graphical_2}
 \end{align}
-To cast this equation into a variational problem for the colored tensor at position $q$, it is now more convenient to move to the graphical notation.
-The Lagrangian equation becomes
+This can be better understood after reshaping $U^{[\ell]}\Lambda V^{\dag[\ell+1]}$ (the three colored tensors in \cref{eq:lagrangian_multiplier_graphical_2}) to a vector $v({\ell,\ell+1})$ of dimension $m^2D^2$ and the contracted network of the gray tensors to a matrix $h_{\rm eff.}(\ell,\ell+1)$ of dimension $m^2D^2\times m^2D^2$, such that
 \begin{align}
-    0 = \braket{\psi|\hat H|\psi} - \lambda(\braket{\psi|\psi}-1)\equiv,
+    h_{\rm eff.}(\ell,\ell+1)v({\ell,\ell+1}) = \lambda_\psi v({\ell,\ell+1}).
 \end{align}
-on which the the gradient $\nabla_{{T^{[q]}}^*}$ is applied (the derivatives with respect to all entries of the red tensor).
-In this trivial example, the application of the gradient corresponds to removing the red tensor (and the scalar $1$) from the previous equation and one arrives at the appealing result
-\begin{align}
-    = .
-\end{align}
-This can be better understood after reshaping the contracted all-gray tensors to matrices $h_{\rm eff.}$, $n_{\rm eff.}$ of dimension $m^2D\times m^2D$ and $m^2\times m^2$, respectively. The tensor $T^{[q]}$ is then a vector $v$ of dimension $m^2D$ which reduces the previous equation to
-\begin{align}
-    h_{\rm eff.}v = \lambda n_{\rm eff.}v,
-\end{align}
-a generalized eigenvalue problem for the vector $v$ than can be solved efficiently with libraries like ARPACK~\cite{Lehoucq1998}.
-Note that the generalized eigenvalue problem can be reduced to a standard eigenvalue problem using the canonical form of MPS, in which case $n_{\rm eff}=\mathbb1$.
+The Lagrange multiplier $\lambda_\psi$ thus corresponds to the global energy of the MPS and the equations span a standard eigenvalue problem for the vector $v$ which can be solved efficiently for the end of the spectrum with libraries like ARPACK~\cite{Lehoucq1998}.
+Note that the standard eigenvalue problem is promoted to a generalized eigenvalue problem if we would not rely on the normalized and canonical form of the MPS~\cite{Silvi2019}.
+The aim now is to find the optimal vectors $v_{\ell,\ell+1}$ for all computational sites, which can be achieved by the growing and finite MPS algorithm.
+\\
+
+The growing MPS algorithm is now formalized as follows:
+\begin{enumerate}
+    \item Compute the lowest energy state of two sites and decompose it to $U^{[1]}\Lambda V^{\dag[2]}$
+    \begin{align}
+        =
+    \end{align}
+    \item Split the tensor by two and copy it to its center, growing the MPS from $2n$ to $2n+2$ sites
+    \begin{align}
+        \rightarrow
+    \end{align}
+    \item Compute the lowest energy tensor of the central two sites and continue with 2.
+    \begin{align}
+        \rightarrow
+    \end{align}
+\end{enumerate}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%

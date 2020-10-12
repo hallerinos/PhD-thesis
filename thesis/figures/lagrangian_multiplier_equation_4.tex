@@ -36,22 +36,22 @@
 
 
 \begin{tikzpicture}
-    \node (rw1) at (0,0) {};
-    \coordinate (1) at ($(rw1)+(-2,-.125)$);
-    \node[below,yshift=-.175cm] at ($(1)+(.5,0)$) {$i_1$};
-    \draw ($(1)+(0.5,0)$) coordinate (1) -- ++(0,-0.25);
-    \foreach \y in {1}{
-        \draw ($(1)+(0.75,0)$) coordinate (1) -- ++(0,-0.25);
-    }
-    \node[below,yshift=-.175cm] at (1) {$i_2$};
-    \node[yshift=-.125cm] at ($(1)+(0.75,0)$) {$\dots$};
-    \coordinate (1) at ($(1)+(0.75,0)$);
-    \foreach \y in {1,2}{
-        \draw ($(1)+(0.75,0)$) coordinate (1) -- ++(0,-0.25);
-    }
-    \node[below,yshift=-.175cm] at ($(1)+(-.5,0)$) {$i_{L-1}$};
-    \node[below,yshift=-.175cm] at (1) {$i_{L}$};
-    \rTens{gray}{4}{0.25}{(rw1)}
+
+    \node (cc) at (0,0) {};
+    \draw ($(cc)+(-.25,0)$) -- ($(cc)+(1.25,0)$);
+    \draw ($(cc)+(0.,0)$) coordinate (1) -- ++(0,-0.25);
+    \coordinate (tp) at ($(cc)+(0.,0)$);
+    \begin{scope}[rotate=-90,shift=(tp)]
+        \tTens{red}{0.25}{0.2}{(0,0)}
+    \end{scope}
+
+    \coordinate (tp) at ($(cc)+(0.5,0)$);
+    \cTens{black}{0.1}{(tp)}
+    \coordinate (tp) at ($(cc)+(1.,0)$);
+    \draw ($(tp)+(0.,0)$) coordinate (1) -- ++(0,-0.25);
+    \begin{scope}[rotate=90,shift=(tp)]
+        \tTens{blue}{0.25}{0.2}{(0,0)}
+    \end{scope}
 \end{tikzpicture}
 
 
