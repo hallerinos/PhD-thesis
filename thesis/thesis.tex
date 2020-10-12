@@ -25,6 +25,7 @@
 \usepackage{ifthen}
 \usepackage{dsfont}
 \usetikzlibrary{tikzmark}
+\bibliographystyle{abbrvdin}
 
 \newcommand{\todo}[1]{{\color{cyan} \scshape !!! #1 !!!}}
 
@@ -56,19 +57,23 @@
 \include{introduction}
 
 \include{part_general}
-\include{chapter_general}
+\include{chapter_one}
+\include{chapter_two}
+% \include{chapter_three}
 
 \include{part_results}
-\include{chapter_results}
+% \include{chapter_results}
 
-\include{part_conclusions}
-\include{chapter_conclusions}
+% \include{part_conclusions}
+% \include{chapter_conclusions}
 
-\include{references}
+% \include{references}
 
-\include{appendix}
+% \include{appendix}
 
-\backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \printindex
+
+\bibliography{biblio}
 
 \end{document}
