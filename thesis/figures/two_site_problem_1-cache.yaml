@@ -1,0 +1,2243 @@
+version: 0.12.2
+filePath: two_site_problem_1.tex
+options:
+  $BIBINPUTS:
+    - $ROOTDIR
+    - $ROOTDIR/$OUTDIR
+    - ''
+  $TEXINPUTS:
+    - $ROOTDIR
+    - $ROOTDIR/$OUTDIR
+    - ''
+  bibtexEngine: bibtex
+  cleanPatterns:
+    - '**/*.aux'
+    - '**/*.aux.bak'
+    - '**/*.bbl'
+    - '**/*.bcf'
+    - '**/*.blg'
+    - '**/*.dvi'
+    - '**/*.fdb_latexmk'
+    - '**/*.fls'
+    - '**/*.idx'
+    - '**/*.idx.bak'
+    - '**/*.ilg'
+    - '**/*.ind'
+    - '**/*.lof'
+    - '**/*.log'
+    - '**/*.lol'
+    - '**/*.lot'
+    - '**/*.nav'
+    - '**/*.out'
+    - '**/*.pdf'
+    - '**/*.ps'
+    - '**/*.snm'
+    - '**/*.synctex.gz'
+    - '**/*.toc'
+    - '/**/_minted-${JOB}'
+    - '/${OUTDIR}/sage-plots-for-${JOB}.tex'
+    - /missfont.log
+    - /texput.log
+    - /texput.aux
+  dviToPdfEngine: xdvipdfmx
+  engine: pdflatex
+  epstopdfBoundingBox: default
+  epstopdfOutputPath: $DIR_0/$NAME_0.pdf
+  indexAutomaticRanges: true
+  indexEngine: makeindex
+  indexOrdering: word
+  indexSorting: default
+  knitrConcordance: true
+  knitrOutputPath: $JOB.tex
+  lhs2texStyle: poly
+  literateAgdaEngine: agda
+  literateHaskellEngine: lhs2TeX
+  loadCache: true
+  loadUserOptions: true
+  outputFormat: pdf
+  phaseCycles: 20
+  pweaveCacheDirectory: pweave-cache-for-$JOB
+  pweaveFigureDirectory: pweave-figures-for-$JOB
+  pweaveKernel: python3
+  pweaveOutputFormat: tex
+  pweaveOutputPath: $JOB.tex
+  saveCache: true
+  severity: info
+  validateCache: true
+  synctex: true
+  copyTargetsToRoot: true
+  outputDirectory: ''
+  shellEscape: enabled
+  intermediatePostScript: false
+  $PATH: /Library/TeX/texbin
+files:
+  dicy-instance.yaml-ParsedYAML:
+    timeStamp: 2020-10-13T12:42:53.569Z
+    jobNames: []
+    value:
+      severity: info
+    type: ParsedYAML
+  dicy.yaml-ParsedYAML:
+    jobNames: []
+    type: ParsedYAML
+  two_site_problem_1.yaml-ParsedYAML:
+    jobNames: []
+    type: ParsedYAML
+  two_site_problem_1.tex-ParsedLaTeXMagic:
+    timeStamp: 2020-10-13T12:42:53.592Z
+    jobNames: []
+    value: {}
+    type: ParsedLaTeXMagic
+  /Users/ahaller/Library/Application Support/dicy/config.yaml-ParsedYAML:
+    timeStamp: 2020-10-13T12:42:53.590Z
+    jobNames: []
+    value:
+      synctex: true
+      engine: pdflatex
+      severity: warning
+      copyTargetsToRoot: true
+      outputDirectory: ''
+      outputFormat: pdf
+      cleanPatterns:
+        - '**/*.aux'
+        - '**/*.aux.bak'
+        - '**/*.bbl'
+        - '**/*.bcf'
+        - '**/*.blg'
+        - '**/*.dvi'
+        - '**/*.fdb_latexmk'
+        - '**/*.fls'
+        - '**/*.idx'
+        - '**/*.idx.bak'
+        - '**/*.ilg'
+        - '**/*.ind'
+        - '**/*.lof'
+        - '**/*.log'
+        - '**/*.lol'
+        - '**/*.lot'
+        - '**/*.nav'
+        - '**/*.out'
+        - '**/*.pdf'
+        - '**/*.ps'
+        - '**/*.snm'
+        - '**/*.synctex.gz'
+        - '**/*.toc'
+        - '/**/_minted-${JOB}'
+        - '/${OUTDIR}/sage-plots-for-${JOB}.tex'
+        - /missfont.log
+        - /texput.log
+        - /texput.aux
+      shellEscape: enabled
+      intermediatePostScript: false
+      $PATH: /Library/TeX/texbin
+    type: ParsedYAML
+  two_site_problem_1.tex:
+    timeStamp: 2020-10-13T13:59:53.565Z
+    jobNames: []
+    hash: JsGGRz/rVnXKVypM29PmaO7BoF9dy+NV0cl/eZXel7c=
+    type: LaTeX
+    subType: standalone
+  /Users/ahaller/Library/Application Support/dicy/config.yaml:
+    timeStamp: 2020-10-11T10:36:25.372Z
+    jobNames: []
+    type: YAML
+  x.y-Nil:
+    jobNames: []
+    type: Nil
+  two_site_problem_1.fls-ParsedFileListing:
+    timeStamp: 2020-10-13T12:44:12.411Z
+    jobNames: []
+    value:
+      messages: []
+      inputs:
+        - /Users/ahaller/PhD-thesis/thesis/definitions.tex
+        - /dev/null
+        - /usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary3d.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryangles.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.shapes.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadings.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarysnakes.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.shapes.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryshadings.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/keyval.tex
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+        - /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/base/size10.clo
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/braket/braket.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/marvosym/marvosym.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/ms/everyshi.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/standalone/standalone.cfg
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/standalone/standalone.cls
+        - >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+        - /usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+        - /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
+        - /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt
+        - /usr/local/texlive/2017/texmf.cnf
+        - Tensors_2.tex
+        - two_site_problem_1.aux
+        - two_site_problem_1.tex
+      outputs:
+        - two_site_problem_1.aux
+        - two_site_problem_1.log
+        - two_site_problem_1.pdf
+      calls: []
+    type: ParsedFileListing
+  two_site_problem_1.log-ParsedLaTeXLog:
+    timeStamp: 2020-10-13T12:46:17.725Z
+    jobNames: []
+    value:
+      messages:
+        - name: pdfTeX
+          severity: info
+          text: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 14
+              end: 14
+        - severity: info
+          name: pdfTeX
+          category: Package ifluatex
+          text: LuaTeX not detected.
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 15
+              end: 15
+        - name: pdfTeX
+          severity: info
+          text: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 17
+              end: 17
+        - name: pdfTeX
+          severity: info
+          text: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 19
+              end: 19
+        - name: pdfTeX
+          severity: info
+          text: xkeyval 2014/12/03 v2.7a package option processing (HA)
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 21
+              end: 21
+        - name: pdfTeX
+          severity: info
+          text: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/ms/everyshi.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 65
+              end: 65
+        - name: pdfTeX
+          severity: info
+          text: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.te
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 68
+              end: 68
+        - name: pdfTeX
+          severity: info
+          text: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 70
+              end: 70
+        - name: pdfTeX
+          severity: info
+          text: 'graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 73
+              end: 73
+        - name: pdfTeX
+          severity: info
+          text: 'graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 75
+              end: 75
+        - name: pdfTeX
+          severity: info
+          text: trig 2016/01/03 v1.10 sin cos tan (DPC)
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 77
+              end: 77
+        - severity: info
+          name: pdfTeX
+          category: Package graphics
+          text: 'Driver file: pdftex.def'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+            range:
+              start: 99
+              end: 99
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 81
+              end: 81
+        - name: pdfTeX
+          severity: info
+          text: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 85
+              end: 85
+        - name: pdfTeX
+          severity: info
+          text: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 87
+              end: 87
+        - name: pdfTeX
+          severity: info
+          text: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 144
+              end: 144
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: 'Driver file: pdftex.def'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 225
+              end: 225
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 148
+              end: 148
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `cmy' substituted by `cmy0'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1348
+              end: 1348
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 149
+              end: 149
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `hsb' substituted by `rgb'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1352
+              end: 1352
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 150
+              end: 150
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `RGB' extended
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1364
+              end: 1364
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 151
+              end: 151
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `HTML' substituted by `rgb'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1366
+              end: 1366
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 152
+              end: 152
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `Hsb' substituted by `hsb'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1367
+              end: 1367
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 153
+              end: 153
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `tHsb' substituted by `hsb'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1368
+              end: 1368
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 154
+              end: 154
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `HSB' substituted by `hsb'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1369
+              end: 1369
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 155
+              end: 155
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `Gray' substituted by `gray'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1370
+              end: 1370
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 156
+              end: 156
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `wave' substituted by `hsb'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1371
+              end: 1371
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 157
+              end: 157
+        - name: pdfTeX
+          severity: info
+          text: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 298
+              end: 298
+        - name: pdfTeX
+          severity: info
+          text: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 304
+              end: 304
+        - name: pdfTeX
+          severity: info
+          text: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 311
+              end: 311
+        - name: pdfTeX
+          severity: info
+          text: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 320
+              end: 320
+        - name: pdfTeX
+          severity: info
+          text: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 359
+              end: 359
+        - severity: warning
+          name: pdfTeX
+          category: Package pgf
+          text: >-
+            Snakes have been superseded by decorations. Please use the
+            decoration libraries instead of the snakes library
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarysnakes.code.tex
+            range:
+              start: 14
+              end: 14
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 425
+              end: 426
+        - name: pdfTeX
+          severity: info
+          text: amsmath 2016/11/05 v2.16a AMS math features
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 442
+              end: 442
+        - name: pdfTeX
+          severity: info
+          text: amstext 2000/06/29 v2.01 AMS text
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 446
+              end: 446
+        - name: pdfTeX
+          severity: info
+          text: amsbsy 1999/11/29 v1.2d Bold Symbols
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 452
+              end: 452
+        - name: pdfTeX
+          severity: info
+          text: amsopn 2016/03/08 v2.02 operator names
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 455
+              end: 455
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \frac
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 213
+              end: 213
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 458
+              end: 458
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \overline
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 375
+              end: 375
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 461
+              end: 461
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \ldots
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 472
+              end: 472
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 464
+              end: 464
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \dots
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 475
+              end: 475
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 465
+              end: 465
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \cdots
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 596
+              end: 596
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 466
+              end: 466
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Redeclaring font encoding OML
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 712
+              end: 712
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 470
+              end: 470
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Redeclaring font encoding OMS
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 713
+              end: 713
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 471
+              end: 471
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: 'Redefining \['
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 2817
+              end: 2817
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 492
+              end: 492
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: 'Redefining \]'
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+            range:
+              start: 2818
+              end: 2818
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 493
+              end: 493
+        - name: pdfTeX
+          severity: info
+          text: marvosym 2011/07/20 v2.2 Martin Vogel's Symbols font definitions
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/marvosym/marvosym.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 495
+              end: 495
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OML/cmm/m/it ... okay
+          source:
+            file: two_site_problem_1.tex
+            range:
+              start: 5
+              end: 5
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 500
+              end: 501
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for T1/cmr/m/n ... okay
+          source:
+            file: two_site_problem_1.tex
+            range:
+              start: 5
+              end: 5
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 502
+              end: 503
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OT1/cmr/m/n ... okay
+          source:
+            file: two_site_problem_1.tex
+            range:
+              start: 5
+              end: 5
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 504
+              end: 505
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OMS/cmsy/m/n ... okay
+          source:
+            file: two_site_problem_1.tex
+            range:
+              start: 5
+              end: 5
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 506
+              end: 507
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OMX/cmex/m/n ... okay
+          source:
+            file: two_site_problem_1.tex
+            range:
+              start: 5
+              end: 5
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 508
+              end: 509
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for U/cmr/m/n ... okay
+          source:
+            file: two_site_problem_1.tex
+            range:
+              start: 5
+              end: 5
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 510
+              end: 511
+        - name: pdfTeX
+          severity: info
+          text: >-
+            pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX
+            (HO)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 527
+              end: 528
+        - severity: info
+          name: pdfTeX
+          category: Package pdftexcmds
+          text: LuaTeX not detected.
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 529
+              end: 529
+        - severity: info
+          name: pdfTeX
+          category: Package pdftexcmds
+          text: \pdf@primitive is available.
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 530
+              end: 530
+        - severity: info
+          name: pdfTeX
+          category: Package pdftexcmds
+          text: \pdf@ifprimitive is available.
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 531
+              end: 531
+        - severity: info
+          name: pdfTeX
+          category: Package pdftexcmds
+          text: \pdfdraftmode found.
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 532
+              end: 532
+        - name: pdfTeX
+          severity: info
+          text: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 534
+              end: 534
+        - name: pdfTeX
+          severity: info
+          text: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+          source:
+            file: /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 536
+              end: 536
+        - name: pdfTeX
+          severity: info
+          text: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 538
+              end: 538
+        - name: pdfTeX
+          severity: info
+          text: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 540
+              end: 540
+        - name: pdfTeX
+          severity: info
+          text: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 542
+              end: 542
+        - name: pdfTeX
+          severity: info
+          text: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 544
+              end: 544
+        - severity: info
+          name: pdfTeX
+          category: Package etexcmds
+          text: >-
+            Could not find \expanded. That can mean that you are not using
+            pdfTeX 1.50 or that some package has redefined \expanded. In the
+            latter case, load this package earlier.
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 545
+              end: 548
+        - severity: info
+          name: pdfTeX
+          category: Package epstopdf-base
+          text: Redefining graphics rule for `.eps'
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+            range:
+              start: 438
+              end: 438
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 550
+              end: 551
+        - severity: info
+          name: pdfTeX
+          category: Package grfext
+          text: >-
+            Graphics extension search list:
+            [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+            \AppendGraphicsExtensions.
+          source:
+            file: >-
+              /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+            range:
+              start: 456
+              end: 456
+          log:
+            file: two_site_problem_1.log
+            range:
+              start: 552
+              end: 555
+      inputs: []
+      outputs:
+        - two_site_problem_1.pdf
+      calls: []
+    type: ParsedLaTeXLog
+  two_site_problem_1.aux:
+    timeStamp: 2020-10-13T13:59:54.525Z
+    jobNames: []
+    hash: M0WgdaIvs7vARWeh5WYO0CQNU/WIH0WKIjTc1Cp40zU=
+    type: LaTeXAuxilary
+  two_site_problem_1.fls:
+    timeStamp: 2020-10-13T13:59:54.525Z
+    jobNames: []
+    hash: l7vZET3FaKdnnFBLXmkY8GJ1EhdV8EdnRZWYPCh5ekI=
+    type: FileListing
+  two_site_problem_1.log:
+    timeStamp: 2020-10-13T13:59:54.526Z
+    jobNames: []
+    hash: 7G8TKJMWOlooQ1bC2jT5BCroD+EmVqDfuQot5W7powY=
+    type: LaTeXLog
+    subType: pdfTeX
+  two_site_problem_1.synctex.gz:
+    timeStamp: 2020-10-13T13:59:54.526Z
+    jobNames: []
+    hash: oqNC3AUbLecrlEnXbtwXcv/kAMZiq+ElcM+qMFbUtnA=
+    type: SyncTeX
+  two_site_problem_1.pdf:
+    timeStamp: 2020-10-13T13:59:54.526Z
+    jobNames: []
+    hash: 4jiLciwUELooq1zCxWqNDGNStE9Mxu5PxnmiXKzkxeQ=
+    type: PortableDocumentFormat
+  two_site_problem_1.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-10-13T12:45:26.888Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+    type: ParsedLaTeXAuxilary
+  /Users/ahaller/PhD-thesis/thesis/definitions.tex:
+    timeStamp: 2020-10-06T10:26:09.793Z
+    jobNames: []
+    type: TeX
+  /dev/null:
+    timeStamp: 2020-10-13T13:59:49.798Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map:
+    timeStamp: 2016-11-25T18:31:10.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm:
+    timeStamp: 2016-11-25T18:31:38.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb:
+    timeStamp: 2016-11-25T18:32:13.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb:
+    timeStamp: 2016-11-25T18:32:13.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb:
+    timeStamp: 2016-11-25T18:32:13.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii:
+    timeStamp: 2016-11-25T18:33:26.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty:
+    timeStamp: 2017-03-26T21:48:50.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty:
+    timeStamp: 2017-03-26T21:48:50.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary3d.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryangles.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.shapes.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadings.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarysnakes.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.shapes.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryshadings.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/keyval.tex:
+    timeStamp: 2016-11-25T18:33:39.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex:
+    timeStamp: 2016-11-25T18:33:39.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex:
+    timeStamp: 2016-11-25T18:33:39.000Z
+    jobNames: []
+    type: TeX
+  /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty:
+    timeStamp: 2016-11-25T18:33:40.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty:
+    timeStamp: 2016-11-25T18:33:40.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty:
+    timeStamp: 2017-01-23T00:01:05.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty:
+    timeStamp: 2016-11-25T18:33:40.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty:
+    timeStamp: 2016-11-25T18:33:40.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls:
+    timeStamp: 2016-11-25T18:33:41.000Z
+    jobNames: []
+    type: LaTeXClass
+  /usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty:
+    timeStamp: 2016-11-25T18:33:41.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/base/size10.clo:
+    timeStamp: 2016-11-25T18:33:41.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/latex/braket/braket.sty:
+    timeStamp: 2016-11-25T18:33:43.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg:
+    timeStamp: 2016-11-25T18:33:50.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg:
+    timeStamp: 2016-11-25T18:33:50.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def:
+    timeStamp: 2017-01-23T00:01:06.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty:
+    timeStamp: 2017-04-15T22:59:15.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty:
+    timeStamp: 2016-11-25T18:33:50.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty:
+    timeStamp: 2016-11-25T18:33:50.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg:
+    timeStamp: 2016-11-25T18:33:53.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/latex/marvosym/marvosym.sty:
+    timeStamp: 2016-11-25T18:33:53.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/ms/everyshi.sty:
+    timeStamp: 2016-11-25T18:33:55.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty:
+    timeStamp: 2016-11-25T18:33:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty:
+    timeStamp: 2016-11-25T18:33:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty:
+    timeStamp: 2016-11-25T18:33:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/math/pgfmath.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgffor.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty:
+    timeStamp: 2016-11-25T18:33:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/standalone/standalone.cfg:
+    timeStamp: 2016-11-25T18:33:59.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-dist/tex/latex/standalone/standalone.cls:
+    timeStamp: 2016-11-25T18:33:59.000Z
+    jobNames: []
+    type: LaTeXClass
+  /usr/local/texlive/2017/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty:
+    timeStamp: 2016-11-25T18:34:01.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty:
+    timeStamp: 2016-11-25T18:34:03.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty:
+    timeStamp: 2016-11-25T18:34:03.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf:
+    timeStamp: 2017-05-06T16:23:44.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map:
+    timeStamp: 2017-05-24T02:37:52.000Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt:
+    timeStamp: 2017-09-28T13:52:35.625Z
+    jobNames: []
+  /usr/local/texlive/2017/texmf.cnf:
+    timeStamp: 2017-05-24T02:37:45.000Z
+    jobNames: []
+  Tensors_2.tex:
+    timeStamp: 2020-10-06T10:26:09.810Z
+    jobNames: []
+    hash: ieQz+OdxU87933wLpCoKe1sqq2hWvd3CLJ2zvZNg47c=
+    type: TeX
+rules:
+  - name: ApplyOptions
+    command: load
+    phase: initialize
+    parameters: []
+    inputs:
+      - file: dicy.yaml-ParsedYAML
+        type: default
+      - file: two_site_problem_1.yaml-ParsedYAML
+        type: default
+      - file: two_site_problem_1.tex-ParsedLaTeXMagic
+        type: default
+      - file: dicy-instance.yaml-ParsedYAML
+        type: default
+      - file: /Users/ahaller/Library/Application Support/dicy/config.yaml-ParsedYAML
+        type: default
+    outputs: []
+  - name: LoadAndValidateCache
+    command: load
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: Migrate
+    command: load
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: ApplyOptions
+    command: load
+    phase: execute
+    parameters: []
+    inputs:
+      - file: dicy.yaml-ParsedYAML
+        type: default
+      - file: two_site_problem_1.yaml-ParsedYAML
+        type: default
+      - file: two_site_problem_1.tex-ParsedLaTeXMagic
+        type: default
+      - file: dicy-instance.yaml-ParsedYAML
+        type: default
+      - file: /Users/ahaller/Library/Application Support/dicy/config.yaml-ParsedYAML
+        type: default
+    outputs: []
+  - name: ParseOptionsFile
+    command: load
+    phase: execute
+    parameters: []
+    inputs:
+      - file: /Users/ahaller/Library/Application Support/dicy/config.yaml
+        type: default
+    outputs:
+      - file: /Users/ahaller/Library/Application Support/dicy/config.yaml-ParsedYAML
+        type: default
+  - name: ParseLaTeXMagic
+    command: load
+    phase: execute
+    parameters:
+      - two_site_problem_1.tex
+    inputs:
+      - file: two_site_problem_1.tex
+        type: default
+    outputs:
+      - file: two_site_problem_1.tex-ParsedLaTeXMagic
+        type: default
+  - name: AssignJobNames
+    command: load
+    phase: finalize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: FindLogFiles
+    command: build
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: LaTeX
+    command: build
+    phase: execute
+    parameters:
+      - two_site_problem_1.tex
+    inputs:
+      - file: two_site_problem_1.tex
+        type: default
+      - file: two_site_problem_1.fls-ParsedFileListing
+        type: default
+      - file: two_site_problem_1.log-ParsedLaTeXLog
+        type: default
+      - file: two_site_problem_1.aux
+        type: default
+      - file: /Users/ahaller/PhD-thesis/thesis/definitions.tex
+        type: default
+      - file: /dev/null
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary3d.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryangles.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.shapes.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadings.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarysnakes.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.shapes.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryshadings.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/keyval.tex
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/base/size10.clo
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/braket/braket.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/marvosym/marvosym.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/ms/everyshi.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/standalone/standalone.cfg
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/standalone/standalone.cls
+        type: default
+      - file: >-
+          /usr/local/texlive/2017/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
+        type: default
+      - file: /usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+        type: default
+      - file: /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt
+        type: default
+      - file: /usr/local/texlive/2017/texmf.cnf
+        type: default
+      - file: Tensors_2.tex
+        type: default
+    outputs:
+      - file: two_site_problem_1.aux
+        type: default
+      - file: two_site_problem_1.fls
+        type: default
+      - file: two_site_problem_1.log
+        type: default
+      - file: two_site_problem_1.synctex.gz
+        type: target
+      - file: two_site_problem_1.pdf
+        type: target
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - two_site_problem_1.aux
+    inputs:
+      - file: two_site_problem_1.aux
+        type: default
+    outputs:
+      - file: two_site_problem_1.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseFileListing
+    command: build
+    phase: execute
+    parameters:
+      - two_site_problem_1.fls
+    inputs:
+      - file: two_site_problem_1.fls
+        type: default
+    outputs:
+      - file: two_site_problem_1.fls-ParsedFileListing
+        type: default
+  - name: ParseLaTeXLog
+    command: build
+    phase: execute
+    parameters:
+      - two_site_problem_1.log
+    inputs:
+      - file: two_site_problem_1.log
+        type: default
+    outputs:
+      - file: two_site_problem_1.log-ParsedLaTeXLog
+        type: default
+  - name: LogProducedTargets
+    command: build
+    phase: finalize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: CheckForMissingBuildRule
+    command: build
+    phase: finalize
+    parameters:
+      - two_site_problem_1.tex
+    inputs:
+      - file: two_site_problem_1.tex
+        type: default
+    outputs: []
+  - name: FindLogFiles
+    command: log
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: ReportLogMessages
+    command: log
+    phase: execute
+    parameters:
+      - two_site_problem_1.log-ParsedLaTeXLog
+    inputs:
+      - file: two_site_problem_1.log-ParsedLaTeXLog
+        type: default
+    outputs: []
+  - name: ParseLaTeXLog
+    command: log
+    phase: execute
+    parameters:
+      - two_site_problem_1.log
+    inputs:
+      - file: two_site_problem_1.log
+        type: default
+    outputs:
+      - file: two_site_problem_1.log-ParsedLaTeXLog
+        type: default
+  - name: SaveCache
+    command: save
+    phase: execute
+    parameters: []
+    inputs: []
+    outputs: []

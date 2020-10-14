@@ -48,14 +48,15 @@
             \draw ($(1)+(0.75,0)$) coordinate (1) -- ++(0,0.25);
         }
 
-        % \node at ($(1)+(0.525,-0.025)$) {$\dots$};
+        % \node at ($(1)+(0.525,0.025)$) {$\dots$};
 
         \coordinate (1) at ($(1)+(0.75,0)$);
         \coordinate (1) at ($(1)+(0.75,0)$);
         % \node at ($(1)+(1.025,.025)$) {$\dots$};
         \coordinate (1) at ($(1)+(0.75,0)$);
 
-        \draw ($(1)+(-1.5,0.025)$)--++(1.5,0);
+        % \draw ($(1)+(-1.5,0.025)$)--++(.15,0);
+        % \draw ($(1)+(-0.,0.025)$)--++(-.15,0);
         \draw ($(1)+(0.5,0.025)$)--++(1,0);
 
         \draw ($(1)+(-1.5,0.025)+(0,.25)$)--++(1.5,0);
@@ -86,19 +87,19 @@
             \tTens{gray}{0.25}{0.2}{(0,0)}
         \end{scope}
 
-        \draw ($(cc)+(0.25,0)$) coordinate (1) -- ++(0,0.275);
-        \coordinate (tp) at ($(cc)+(0.25,0)$);
-        \begin{scope}[rotate=-90,shift=(tp)]
-            \tTens{red}{0.25}{0.2}{(0,0)}
-        \end{scope}
+        \draw ($(cc)+(0.25,0.05)$) coordinate (1) -- ++(0,0.275);
+        % \coordinate (tp) at ($(cc)+(0.25,0)$);
+        % \begin{scope}[rotate=-90,shift=(tp)]
+        %     \tTens{red}{0.25}{0.2}{(0,0)}
+        % \end{scope}
 
         \coordinate (tp) at ($(cc)+(0.75,0)$);
-        \cTens{black}{0.1}{(tp)}
+        % \cTens{black}{0.1}{(tp)}
         \coordinate (tp) at ($(cc)+(1.25,0)$);
-        \draw ($(tp)+(0.,0)$) coordinate (1) -- ++(0,0.275);
-        \begin{scope}[rotate=90,shift=(tp)]
-            \tTens{blue}{0.25}{0.2}{(0,0)}
-        \end{scope}
+        \draw ($(tp)+(0.,0.05)$) coordinate (1) -- ++(0,0.275);
+        % \begin{scope}[rotate=90,shift=(tp)]
+        %     \tTens{blue}{0.25}{0.2}{(0,0)}
+        % \end{scope}
     \end{scope}
 
     \node (cc) at (0,0) {};
@@ -106,19 +107,19 @@
     \draw ($(cc)+(-1.5,0)$)--++(1,0);
 
     \coordinate (1) at ($(cc)+(-2,-.125)$);
-    \node[below,yshift=-.175cm] at ($(1)+(.5,1)$) {$1$};
+    % \node[below,yshift=-.175cm] at ($(1)+(.5,1)$) {$1$};
     \draw ($(1)+(0.5,.1)$) coordinate (1) -- ++(0,-0.25);
     \foreach \y in {1}{
         \draw ($(1)+(0.75,0)$) coordinate (1) -- ++(0,-0.25);
     }
-    \node[below,yshift=0.725cm] at (1) {$2$};
+    % \node[below,yshift=0.725cm] at (1) {$2$};
 
     \node at ($(1)+(0.525,-0.225)$) {$\dots$};
 
     \coordinate (1) at ($(1)+(0.75,0)$);
     \coordinate (1) at ($(1)+(0.75,0)$);
-    \node[below,yshift=-.175cm] at ($(1)+(-.5,.9)$) {${\ell}$};
-    \node[below,yshift=-.175cm] at ($(1)+(+.5,.9)$) {${\ell+1}$};
+    % \node[below,yshift=-.175cm] at ($(1)+(-.5,.9)$) {${\ell}$};
+    % \node[below,yshift=-.175cm] at ($(1)+(+.5,.9)$) {${\ell+1}$};
     \node at ($(1)+(1.025,-.225)$) {$\dots$};
     \coordinate (1) at ($(1)+(0.75,0)$);
 
@@ -129,8 +130,8 @@
     \foreach \y in {1,2}{
         \draw ($(1)+(0.75,0)$) coordinate (1) -- ++(0,-0.25);
     }
-    \node[below,yshift=.725cm] at ($(1)+(-.75,0)$) {${L-1}$};
-    \node[below,yshift=.725cm] at (1) {${L}$};
+    % \node[below,yshift=.725cm] at ($(1)+(-.75,0)$) {${L-1}$};
+    % \node[below,yshift=.725cm] at (1) {${L}$};
 
 
     \coordinate (tp) at ($(cc)+(-1.5,0)$);
@@ -170,25 +171,28 @@
     \end{scope}
 
     \draw ($(cc)+(0.25,0)$) coordinate (1) -- ++(0,-0.275);
+    \coordinate (tp) at ($(cc)+(0.75,0)$);
+    % \begin{scope}[rotate=-90,shift=(tp)]
+    %     \rTens{green}{0.2}{1.2}{(0,0)}
+    % \end{scope}
     \coordinate (tp) at ($(cc)+(0.25,0)$);
-    \begin{scope}[rotate=-90,shift=(tp)]
-        \tTens{gray}{0.25}{0.2}{(0,0)}
-    \end{scope}
     \coordinate (tp) at ($(tp)+(0,-.25)$);
     \begin{scope}[rotate=-90,shift=(tp)]
         \rTens{gray}{0.2}{0.2}{(0,0)}
     \end{scope}
 
     \coordinate (tp) at ($(cc)+(0.75,0)$);
-    \cTens{gray}{0.1}{(tp)}
+    % \cTens{black}{0.1}{(tp)}
     \coordinate (tp) at ($(cc)+(1.25,0)$);
     \draw ($(tp)+(0.,0)$) coordinate (1) -- ++(0,-0.275);
-    \begin{scope}[rotate=90,shift=(tp)]
-        \tTens{gray}{0.25}{0.2}{(0,0)}
-    \end{scope}
     \coordinate (tp) at ($(tp)+(0,-.25)$);
     \begin{scope}[rotate=-90,shift=(tp)]
         \rTens{gray}{0.2}{0.2}{(0,0)}
+    \end{scope}
+
+    \coordinate (tp) at ($(cc)+(0.75,0)$);
+    \begin{scope}[rotate=-90,shift=(tp)]
+        \rTens{green}{0.2}{1.2}{(0,0)}
     \end{scope}
 \end{tikzpicture}
 
