@@ -10,17 +10,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The analytical treatment as presented in the previous chapter relies on a heavy line of approximations (which are sometimes very hard to justify on a rigorous level).
 One of the most crucial consequences is that quantitative deviations occur if the interactions are comparable to the kinetic bandwidth.
-This not only restricts heavily the strict validity region of the effective field theory, it sometimes even contradicts the relevancy predictions of the RG.
-For instance, the spin-$1/2$ XXZ chain shows a sine-Gordon term with $\beta=4$, relevant for $K<1/2$.
-Such small Luttinger parameter requires a very strong nearest neighbor interactions compatible with the system's bandwidth.
-Naturally, we expect quantitative deviations from the Luttinger liquid predictions in such regions and must rely on numerical tools to resolve the microscopic details of these strongly correlated phases of matter.
+This restricts heavily the validity region of the low-energy effective field theory of a particular model.
+To make an example, a sine-Gordon term with $\beta=4$ is encountered in the effective low-energy field theory of the spin-$1/2$ XXZ chain and the interaction will be relevant in the RG sense for $K<1/2$.
+However, such a small Luttinger parameter requires very strong nearest neighbor interactions in real systems that are compatible with the system's bandwidth, which thus implicitly breaks the assumptions to derive the effective low-energy field theory itself.
+Although the field theoretic description might not break down entirely, heavy quantitative deviations from the Luttinger liquid predictions of the effective coupling parameters are to be expected.
+This motivates the use of numerical tools to verify the analytic predictions in the strongly interacting cases.
 In this chapter, I will provide the essentials to get acquainted with the concepts of tensor networks, in particular with matrix product states (MPS).
 \\
 
 First, I give a basic introduction to tensor networks and explain the intuitive concept of renormalization through a truncation of the auxiliary dimension of these structures.
 Second, I review the concept of ``area laws'' -- a statement about the structure of quantum correlations of gapped and short-ranged Hamiltonians -- and connect it to the properties of tensor networks.
 I will then present renormalization strategies which provide variational search algorithms to target ground (and low-lying excited) states and continue by presenting a simple yet effective time-evolution algorithm in the framework of MPS.
-As a conclusion, I describe the exploit of abelian symmetries in the numerical techniques which in general reduces the overall computational complexity.
+As a conclusion, I review the exploit of abelian symmetries in the numerical techniques which in general reduces the overall computational complexity.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,8 +202,9 @@ in which at each step the three gray tensors are contracted before performing th
 This particular decomposition of a generic quantum state, i.e.
 \begin{align}
     C^{i_1,i_2,\dots,i_L} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+    \label{eq:mixed_canonical_form}
 \end{align}
-is called the canonical form of an MPS.
+is called the (mixed) canonical form of an MPS.
 In other words, it represents the Schmidt decomposition of the state $\ket{\psi}$ in the subspaces $\HS_{A(\ell)}$ and $\HS_{B(\ell)}$ spanned by the first $\ell$ and last $L-\ell$ quantum numbers i.e.
 \begin{align}
     \ket\psi = \sum_{\bm i} C^{\bm i}\ket{\bm i} = \sum_{k}s_{k}(\ell)\ket{\psi_{A(\ell),k}}
@@ -220,18 +222,39 @@ in which the transformed states $\ket{\psi_{A/B,k}}$ are given by the SVD-decomp
     {V^\dag}^{i_{\ell+1}}_{k,k_{\ell+1}} {V^\dag}^{i_{\ell+2}}_{k_{\ell+1},k_{\ell+2}}\dots {V^\dag}^{i_L}_{k_{L-1}}\ket{i_{\ell+1},\dots,i_L}
     =
     \prod_{k=\ell+1}^L V^{\dag[i_k]}\ket{i_{\ell+1},\dots,i_L}.
+    \label{eq:bipartition_orthonormal_basis}
 \end{align}
-Please note that I used the sum convention for convenience.
+In \cref{eq:bipartition_orthonormal_basis} I conveniently use the sum convention.
+Note that the position of the central matrix in \cref{eq:mixed_canonical_form} is not fixed to the center of the chain.
+It can be moved arbitrarily to the right (left) by a sequence of singular value decompositions
+\begin{align}
+    \Lambda(\ell) V^{\dag[i_{\ell+1}]}V^{\dag[i_{\ell+2}]} &= U^{[i_{\ell+1}]}\Lambda(\ell+1) \tilde V^{\dag[i_{\ell+1}]}
+    \equiv
+    &\includegraphics[valign=c]{figures/fMPS_3_1.pdf}
+    =
+    \includegraphics[valign=c]{figures/growing_5.pdf},
+    \\
+    U^{[i_{\ell-1}]}U^{[i_{\ell}]}\Lambda(\ell) &= \tilde U^{[i_{\ell-1}]}\Lambda(\ell-1) \tilde V^{\dag[i_{\ell}]}
+    \equiv
+    &\includegraphics[valign=c]{figures/fMPS_4_1.pdf}
+    =
+    \includegraphics[valign=c]{figures/growing_5.pdf}.
+\end{align}
 It is now obvious that (i) any quantum state can be decomposed into an MPS, (ii) that each MPS can be brought into the canonical form and (iii) that MPS have a large gauge degree of freedom.
 Point (iii) is clear from the fact that one may sandwich infinitely many identities in the MPS (each written as a product of two unitary matrices) which may in general rotate the colored isometry tensors, but leave the overall state invariant.
-\\
-
-
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reduced density matrix and Rényi entropy}
+\label{sec:reduced_density_matrix_and_renyi_entropy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 To understand the influence of the compression scheme, consider the way a generic density matrix is expressed in terms of a canonical MPS:
 \begin{align}
     \hat\rho = \ket{\psi}\bra{\psi} = \sum_{k,k'}s_ks_{k'}\ket{\psi_{A,k},\psi_{B,k}}\bra{\psi_{A,k'},\psi_{B,k'}}.
 \end{align}
-Now imagine to compute the reduced density matrix of a bipartition formed by a block $A(\ell)$ of the first $\ell$ quantum numbers and a block $B(\ell)$ of the remaining ones (same as before).
+Now imagine to compute the reduced density matrix of a bipartition formed by a block $A(\ell)$ of the first $\ell$ quantum numbers and a block $B(\ell)$ of the remaining ones.
 A trace over the complement states of the partition $A/B$ gives the reduced density matrix in block $A/B$, i.e.
 \begin{align}
     \hat\rho_A = \tr_B(\hat\rho)
@@ -289,8 +312,78 @@ The derivation of the limit is infrequently presented in the literature, but str
 \end{align}
 In conclusion, using MPS techniques in the canonical form provides immediate access to the information content of a given bipartition.
 Note that the maximum entropy of an MPS is always restricted by the bond dimension $m$, i.e. $S_1(\ell)<\log(m)$.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scaling relations of the entanglement entropy}
+\label{sec:scaling_relations_of_the_entanglement_entropy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+All of the discussion so far would not be very exciting for a wholehearted physicist, were it not for its close relation to quantum entanglement.
+The phenomenon was firstly noted in $1935$ by Albert Einstein, Boris Podolsky, and Nathan Rosen~\cite{EPR1935}, also Erwin Schrödinger~\cite{Schrdinger1935,Schrdinger1936}, describing what is famously known as the EPR paradox~\cite{Reid2009}.
+At its heart, it describes a group of particles interacting such that the quantum state of each individual particle cannot be described independently of the state of the others in the group.
+The paradox part in the aforementioned works is described by quantum measurements performed on individual particles, which leads to irreversible collapses of the wave function and an alteration of the original quantum state of the other particles in the group.
+Surprisingly, the phenomenon is independent of the distance between the particles and forms thus a unique form of correlations exclusively present in quantum systems.
 \\
 
+To make an example, consider the two-particle pure state $\ket{\psi}=\frac1{\sqrt2}\brlr{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}$ and the two particles being localized at two distant spacial positions.
+In case we prepare a projective measurement of the first particle being in the $\uparrow$-state, the probability of the outcome is obviously $1/2$ and we end up with a collapsed post-measurement state of the form $\ket{\tilde\psi} = \ket{\uparrow\downarrow}$.
+At the time of the measurement, the second particle collapses to the perfectly correlated alignment, and it does so immediately, independent on the spacial distance between the two parties.
+A subsequent measurement of the second particle will thus yield $\downarrow$ with probability $1$.
+Note that this instantaneous action does not violate causality since the outcome of the first measurement is random and as such cannot be used to transmit information.
+With this example in mind, let us now encapsulate the definition of $N$-partite separable and entangled for states with $N$ individual particles.
+\\
+
+A state $\ket{\psi}$ is called $N$-partite separable iff. it can be written as a product of $N$ subsystems~\cite{Horodecki2009}
+\begin{align}
+    \ket{\psi} = \ket{\psi_1}\otimes\ket{\psi_2}\otimes\dots\otimes\ket{\psi_N}.
+    \label{eq:separable_states}
+\end{align}
+Note that this expression is fundamentally different from the coherent superposition of exponentially many state vectors encountered in generic states (compare to ~\cref{eq:generic_state}).
+As such, we call a state entangled, if it cannot be decomposed according to~\cref{eq:separable_states}.
+The earlier example of a bipartite system is an element of the Bell basis, which are sometimes called ERP states
+\begin{align}
+    \ket{\psi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}}
+    \quad
+    \ket{\phi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\uparrow}\pm\ket{\downarrow\downarrow}}
+\end{align}
+and they all have remarkable properties, first recognized by Schrödinger -- if one measures only one of the states, one finds it with equal probability in either $\ket{0}$ or $\ket{1}$.
+As such, they give no information about the subsystems, whereas they are still pure and thus reveal full information about the global system.
+The Bell states are special cases of bipartite maximally entangled states~\cite{Horodecki2009} and as such great examples to explore the entropic manifestation of entanglement.
+In particular, it has been shown that the von Neumann entropy of a subsystem can be greater than the entropy of the global system iff. the state is entangled~\cite{Horodecki1994}.
+The inequality for separable states can thus be expressed as $S(B|A)=S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
+As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities.
+The discussions of entangled states breaking the positivity of $S(A|B)$ reach far beyond the present aim of this introduction \cite{Horodecki2006}, and I simply conclude here that the von Neumann entropy is a useful scalar measure of bipartite entanglement.
+\\
+
+Coming back to the connection to MPS with finite bond dimension, we now know that the upper bound restriction of the entropy limits the available entanglement of the approximation.
+This, in turn, does not provide an explanation why such an approximation should not ``go wrong quickly'' in a sense that the important properties of the approximated state are lost, even if the bond dimension is large.
+Incidentally, at the time DMRG was introduced by Steven White~\cite{White1992}, the success of the renormalization scheme remained a mystery.
+Some insights were concluded by the derivation of universal scaling laws of the entropy provided e.g. by Calabrese and Cardy in 2004~\cite{Calabrese2004} in proximity of a quantum critical point.
+In 2007, Hastings published his famous proof of the area law for one-dimensional quantum systems~\cite{Hastings2007}.
+In its essence, it provides an upper bound to the von Neumann entropy for gapped and local (i.e. no long-ranged interactions) Hamiltonians scaling as the area ($\equiv$ a constant) of one-dimensional systems.
+Essentially, the works can be summarized by the following two statements~\cite{Eisert2010}:
+Consider a block of $1,2,\dots,\ell$ particles with internal dimension $D$, the entanglement entropy of the physically relevant part (i.e. the low-energy subspace of $\HS$) scales as
+\begin{align}
+    S_1(\ell) &= \frac c{3b}\log[d(\ell)],\text{ if the system is critical}\\
+    S_1(\ell) &= c_0\xi\log\brlr{6\xi}\log D2^{6\xi\log D},\text{ if the system is local and gapped with $\Delta E>0$}
+\end{align}
+in which $c_0$ is a constant of order one, $\xi=\max(2v/\Delta E,\xi_C)$ is the correlation length, $v$ the velocity of sound, $\xi_C$ of order one and $d(\ell)$ encodes the size of the block.
+For periodic ($b=1$) and open ($b=2$) boundary conditions, $d(\ell)$ is the chord distance encoding the length of a semi-circle
+\begin{align}
+    d(\ell) = \left|\frac L\pi\sin(\pi/L\ell)\right|.
+\end{align}
+The main messages is that, for gapped systems, physically relevant states live in the low-entangled subspace of the full Hilbert space.
+This implies that the MPS Ansatz is an optimal choice to target the low-lying excitations of the full many body Hilbert space, which, in turn, follow an area law of entanglement.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Matrix product operators and expectation values}
+\label{sec:matrix_product_operators_and_expectation_values}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 Let us now understand the action of operators in the basis of MPS.
 Consider a local operator acting on site $q$, which can be written in general as $\hat o_q = \sum_{i_q',i_q''}o_{i_q',i_q''}\ket{i_q'}\bra{i_q''}$.
 Its action on the canonical form of an MPS can be expressed as
@@ -325,6 +418,7 @@ They have the following representations
     \quad
     \hat Z = \ket{\uparrow}\bra{\uparrow} - \ket{\downarrow}\bra{\downarrow}.
 \end{align}
+The additional subscript $i$ denotes an isolated action of $\hat X_i/\hat Y_i/\hat Z_i$ on the $i$'th spin of the system.
 Note that the Hamiltonian can be recast into a product of bulk $i\neq1,L$ operators of the form
 \begin{align}
     \hat W^{[i]} =
@@ -387,36 +481,46 @@ such that the global Hamiltonian is given by the product
 Since $\hat W$ contains a set of local operators which each have an MPO representation, the above operator expression acting on a state $\ket\psi$ is nothing but tensor contraction in which the local rank-$2$ tensors representing the action of the spin operators are promoted to a rank-$4$ MPO $W$ containing the matrix elements of $\hat W$.
 In particular, one obtains
 \begin{align}
-    W =
+    W^{[i]} =
     \begin{pmatrix}
-        \mathbb 1 & X & Z \\
-        0 & 0 & X \\
+        \mathbb 1 & X_i & Z_i \\
+        0 & 0 & X_i \\
         0 & 0 & \mathbb 1
     \end{pmatrix}
     ,
     \quad
-    X =
+    X_i =
     \begin{pmatrix}
         0 & 1 \\
         1 & 0
     \end{pmatrix}
     ,
     \quad
-    Y =
+    Y_i =
     \begin{pmatrix}
         0 & -\ri \\
         \ri & 0
     \end{pmatrix}
     ,
     \quad
-    Z =
+    Z_i =
     \begin{pmatrix}
         1 & 0 \\
         0 & -1
     \end{pmatrix}
-    .
 \end{align}
+for the bulk $i\neq 1,L$ and a straightforward representation of the boundary tensors.
 The MPO representation $W$ of the Hamiltonian $\hat H$ is very versatile -- any Hamiltonian can be recast into a set of matrix product operators that are upper triangular, even if the interactions are long-ranged or spacially dependent, e.g. in the case of disorder.
+Note that the MPO form is not limited to spin systems due to the famous Jordan-Wigner transformation.
+It is defined in terms of the ladder operators with matrix representations $\hat\sigma^\pm = \frac12(\hat X\pm\ri \hat Y)$, i.e.
+\begin{align}
+    \hat a_i^\pdag = \brlr{\prod_{j<i}-\hat Z}\hat\sigma^-_i,
+    \qquad
+    \hat a_i^\dag = \brlr{\prod_{j<i}-\hat Z}\hat\sigma^+_i.
+\end{align}
+This way, the fermionic creation and annihilation operators are represented by spin ladder operators.
+To restore the anticommutation relations of fermions, the additional phase string is required.
+Note that the presence of the string of $\hat Z$'s in general imposes long-ranged interactions in two-dimensional systems, such that a direct application of the Jordan-Wigner transformation is primarily used in (quasi) one-dimensional systems~\cite{Franchini2017}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -490,7 +594,9 @@ In particular, one performs the sequence
     \equiv
     \includegraphics[valign=c]{figures/growing_4_4.pdf}
     =
-    \includegraphics[valign=c]{figures/growing_5.pdf}.
+    \includegraphics[valign=c]{figures/growing_5.pdf}
+    \equiv
+    U^{[i_\ell]} \Lambda V^{\dag[i_{\ell+1}]}.
 \end{align}
 Note that the standard eigenvalue problem in \cref{eq:MPS_optimization} is promoted to a generalized eigenvalue problem if we would not rely on the normalized and canonical form of the MPS~\cite{Silvi2019}.
 The aim now is to find the optimal vectors $v({\ell,\ell+1})$ for each site, which can be achieved in an iterative manner by the growing and finite MPS algorithm.
@@ -514,13 +620,12 @@ A minimal example of the growing MPS algorithm is formalized as follows:
     % Note that the two green tensors can also be understood as rank-$3$ tensors in which the additional horizontal link has dimension $1$.
     \item Use the generalized singular value decomposition depicted in \cref{eq:SVD_generalized} to decouple the two quantum numbers into a product of two isometries and a matrix $\Lambda$ containing the spectral values
     \begin{align}
-        v(1,2) &= U^{[i_1]}\Lambda V^{\dag[i_{L}]},
+        f^{-1}\circ v(1,2) &= U^{[i_1]}\Lambda V^{\dag[i_{L}]},
         \\
         \includegraphics[valign=c]{figures/two_site_problem_2.pdf}
         &=
         \includegraphics[valign=c]{figures/two_site_problem_2_decomp.pdf}.
     \end{align}
-    Apply the compression of the tensor by keeping only the $m$ largest singular values, corresponding to the bond dimension.
     Renormalize the truncated matrix $\Lambda$ such that $\tr(\Lambda^2)=1$.
     \item Grow the size of the MPS from $2n$ to $2n+2$ sites by replacing the central matrix $\Lambda$ with a rank-$4$ tensor of fitting dimensions
     \begin{align}
@@ -543,13 +648,14 @@ A minimal example of the growing MPS algorithm is formalized as follows:
     \end{align}
     \item Use the generalized singular value decomposition to decouple the two quantum numbers into a product of two isometries and a matrix $\Lambda$ containing the spectral values
     \begin{align}
-        v(n+1,n+2) &= U^{[i_{n+1}]}\Lambda V^{\dag[i_{L-n}]},
+        f^{-1}\circ v(n+1,n+2) &= U^{[i_{n+1}]}\Lambda V^{\dag[i_{L-n}]},
         \\
         \includegraphics[valign=c]{figures/growing_4_4.pdf}
         &=
         \includegraphics[valign=c]{figures/growing_5.pdf}.
     \end{align}
-    Increase $n\rightarrow n+1$. Stop if $n=L/2$, else go back to step 4.
+    Apply the compression scheme by keeping at most the $m$ largest singular values and renormalize the truncated matrix $\Lambda$.
+    Increase $n\rightarrow n+1$. Go to step 4 or stop if $n=L/2$.
 \end{enumerate}
 The common application of the growing algorithm is two-fold.
 It can be used naively to approximate the central tensors of a fully translationally invariant chain by sending $L\gg2$ to very large values.
@@ -561,11 +667,11 @@ This is due to the intrinsically finite structure of the MPS in the growing algo
 \\
 
 One viable option is to approximate the (infinite) environments to the left and right of the central tensors with the dominant eigenstates of the transfer matrices.
-The corresponding algorithm is then called infinite boundary conditioned MPS~\cite{phien2012} or variational uniform MPS (VUMPS)~\cite{zaunerstauber2018}.
+The corresponding algorithm is then called infinite boundary conditioned MPS~\cite{Phien2012} or variational uniform MPS (VUMPS)~\cite{ZaunerStauber2018}.
 In our works, we were mostly interested in the simulation of finite systems and I omit the description of such an implementation.
 \\
 
-The second application concerns the MPS obtained after $L/2$ steps -- it can serve as a trial state for a finite system of length $L$, which is then refined by the second algorithm, finite MPS:
+The second application concerns the MPS obtained after $L/2$ steps -- it can serve as a trial state for a finite system of length $L$, which is refined by the finite MPS algorithm:
 \begin{enumerate}
     \item Set $n=1$. Start with a trial MPS in the canonical form (e.g. acquired by the growing algorithm) and transform the MPS such that the $\Lambda$ matrix is between sites $1$ and $2$, i.e.
     \begin{align}
@@ -573,20 +679,32 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
     \end{align}
     \item Compute the lowest energy vector $v(n,n+1)$ according to \cref{eq:MPS_optimization} and decompose it to two isometries and a matrix $\Lambda$ containing the singular values
     \begin{align}
-        v(n,n+1) \equiv U^{[i_n]}\Lambda(n) V^{\dag[i_{n+1}]}
+        f^{-1}\circ v(n,n+1) &= U^{[i_n]}\Lambda(n) V^{\dag[i_{n+1}]}\\
+        \includegraphics[valign=c]{figures/growing_4_4.pdf}
+        &=
+        \includegraphics[valign=c]{figures/growing_5.pdf}
         .
     \end{align}
+    Apply the compression scheme by keeping at most the $m$ largest singular values and renormalize the truncated matrix $\Lambda$.
     Proceed then with step $3$ (sweeping to the right) or $4$ (sweeping to the left).
     \item If $n=L-1$ continue with 4. Shift the matrix $\Lambda(n)$ to the next site by decomposing it to
     \begin{align}
-        \Lambda(n) V^{\dag[i_{n+1}]} V^{\dag[i_{n+2}]} \rightarrow U^{[i_{n+1}]}\Lambda(n+1)\tilde V^{\dag[i_{n+2}]}
+        \Lambda(n) V^{\dag[i_{n+1}]} V^{\dag[i_{n+2}]} &= U^{[i_{n+1}]}\Lambda(n+1)\tilde V^{\dag[i_{n+2}]}
+        \\
+        \includegraphics[valign=c]{figures/fMPS_3_1.pdf}
+        &=
+        \includegraphics[valign=c]{figures/growing_5.pdf}
         .
     \end{align}
     Increase $n\rightarrow n+1$ and go back to step 2.
     This is called sweeping from left to right.
     \item If $n=1$ continue with 3. Shift the matrix $\Lambda(n)$ to the previous site by decomposing it to
     \begin{align}
-        U^{[i_{n-1}]}U^{[i_n]}\Lambda(n) \rightarrow \tilde U^{[i_{n-1}]}\Lambda(n-1) V^{\dag[i_n]}
+        U^{[i_{n-1}]}U^{[i_n]}\Lambda(n) &= \tilde U^{[i_{n-1}]}\Lambda(n-1) V^{\dag[i_n]}
+        \\
+        \includegraphics[valign=c]{figures/fMPS_4_1.pdf}
+        &=
+        \includegraphics[valign=c]{figures/growing_5.pdf}
         .
     \end{align}
     Decrease $n\rightarrow n-1$ and go back to step 2.
@@ -603,8 +721,8 @@ For cases in which the MPS is equivalent to an eigenstate of the full Hamiltonia
 \begin{align}
     \varepsilon(m) = \sqrt{\braket{\psi(m)|\hat H^2|\psi(m)} - \braket{\psi(m)|\hat H|\psi(m)}^2}\geq 0.
 \end{align}
-The indication of $m$ is reminiscent of the fact that in general, $\varepsilon$ depends on the bond dimension of the MPS.
-It can then be checked that the variance converges to $0$ by performing a so-called bond dimension scaling analysis.
+The indication of the dependence on $m$ is reminiscent of the fact that $\varepsilon$ depends on the bond dimension of the MPS.
+It can then be checked that the variance converges to machine precision by performing a so-called bond dimension scaling analysis~\cite{Hubig2018}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -613,84 +731,38 @@ It can then be checked that the variance converges to $0$ by performing a so-cal
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
+There are several well-established methods used to simulate the time evolution of an initial MPS~\cite{Paeckel2019} and here I will focus on the time-dependent variational principle (TDVP).
+The crucial difference to other algorithms is that it utilizes a backward evolution of the singular values in order to project the tensor onto its tangent space.
+This way it aligns the variational trajectory to the tangent space of the MPS, leading to a particularly robust and efficient implementation compared to other algorithms~\cite{Haegeman2011}.
+In addition, TDVP of a trial MPS in imaginary time is known to be identical to traditional DMRG/finite MPS, which leads to a unified framework for the time evolution and optimization of matrix product states~\cite{Haegeman2016}.
+\\
+
+Before I introduce the algorithm, we need a couple of prerequisites.
+The projector $\hat P_{T\ket\psi}$ onto the tangent space of the MPS of $\ket\psi$ for a single site is written as
+\begin{align}
+    \hat P_{T\ket\psi} = \sum_{\ell=1}^L \hat P_{A(\ell)}\mathbb1_\ell \hat P_{B(\ell+1)} - \sum_{\ell=1}^{L-1}\hat P_L(\ell)\hat P_R(\ell+1)
+\end{align}
+in which $\hat P_{A/B(\ell)}$ are the corresponding projections onto the vectors of $\ket\psi$ forming the partition $A/B(\ell)$ of the first/last $\ell$ quantum numbers.
+Due to the gauge degree of freedom of the MPS we can always choose the tensors of partition $A/B$ left/right orthogonal, and as such find the trivial matrix representations of $P_{A(\ell)/B(\ell)}=\mathbb 1$.
+Let me make this point more clear in the following set of equations:
+\begin{align}
+    \includegraphics[valign=c]{figures/tangent_space_projection_1.pdf}
+    =
+    \includegraphics[valign=c]{figures/tangent_space_projection_2.pdf}
+\end{align}
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Entanglement and the area law}
-\label{sec:entanglement_and_the_area_law}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-All of the discussion so far would not be very exciting for a wholehearted physicist, were it not for its close relation to quantum entanglement.
-The phenomenon was firstly noted in $1935$ by Albert Einstein, Boris Podolsky, and Nathan Rosen~\cite{EPR1935}, also Erwin Schrödinger~\cite{Schrdinger1935,Schrdinger1936}, describing what is famously known as the EPR paradox~\cite{Reid2009}.
-At its heart, it describes a group of particles interacting such that the quantum state of each individual particle cannot be described independently of the state of the others in the group.
-The paradox part in the aforementioned works is described by quantum measurements performed on individual particles, which leads to irreversible collapses of the wave function and an alteration of the original quantum state of the other particles in the group.
-Surprisingly, the phenomenon is independent of the distance between the particles and forms thus a unique form of correlations exclusively present in quantum systems.
-\\
-
-To make an example, consider the two-particle pure state $\ket{\psi}=\frac1{\sqrt2}\brlr{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}$ and the two particles being localized at two distant spacial positions.
-In case we prepare a projective measurement of the first particle being in the $\uparrow$-state, the probability of the outcome is obviously $1/2$ and we end up with a collapsed post-measurement state of the form $\ket{\tilde\psi} = \ket{\uparrow\downarrow}$.
-At the time of the measurement, the second particle collapses to the perfectly correlated alignment, and it does so immediately, independent on the spacial distance between the two parties.
-A subsequent measurement of the second particle will thus yield $\downarrow$ with probability $1$.
-Note that this instantaneous action does not violate causality since the outcome of the first measurement is random and as such cannot be used to transmit information.
-With this example in mind, let us now encapsulate the definition of $N$-partite separable and entangled for states with $N$ individual particles.
-\\
-
-A state $\ket{\psi}$ is called $N$-partite separable iff. it can be written as a product of $N$ subsystems~\cite{Horodecki2009}
-\begin{align}
-    \ket{\psi} = \ket{\psi_1}\otimes\ket{\psi_2}\otimes\dots\otimes\ket{\psi_N}.
-    \label{eq:separable_states}
-\end{align}
-Note that this expression is fundamentally different from the coherent superposition of exponentially many state vectors encountered in generic states (compare to ~\cref{eq:generic_state}).
-As such, we call a state entangled, if it cannot be decomposed according to~\cref{eq:separable_states}.
-The earlier example of a bipartite system is an element of the Bell basis, which are sometimes called ERP states
-\begin{align}
-    \ket{\psi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}}
-    \quad
-    \ket{\phi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\uparrow}\pm\ket{\downarrow\downarrow}}
-\end{align}
-and they all have remarkable properties, first recognized by Schrödinger -- if one measures only one of the states, one finds it with equal probability in either $\ket{0}$ or $\ket{1}$.
-As such, they give no information about the subsystems, whereas they are still pure and thus reveal full information about the global system.
-The Bell states are special cases of bipartite maximally entangled states~\cite{Horodecki2009} and as such great examples to explore the entropic manifestation of entanglement.
-In particular, it has been shown that the von Neumann entropy of a subsystem can be greater than the entropy of the global system iff. the state is entangled~\cite{Horodecki1994}.
-The inequality for separable states can thus be expressed as $S(B|A)=S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
-As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities.
-The discussions of entangled states breaking the positivity of $S(A|B)$ reach far beyond the present aim of this introduction \cite{Horodecki2006}, and I simply conclude here that the von Neumann entropy is a useful scalar measure of bipartite entanglement.
-\\
-
-Coming back to the connection to MPS with finite bond dimension, we now know that the upper bound restriction of the entropy limits the available entanglement of the approximation.
-This, in turn, does not provide an explanation why such an approximation should not ``go wrong quickly'' in a sense that the important properties of the approximated state are lost, even if the bond dimension is large.
-Incidentally, at the time DMRG was introduced by Steven White~\cite{White1992}, the success of the renormalization scheme remained a mystery.
-Some insights were concluded by the derivation of universal scaling laws of the entropy provided e.g. by Calabrese and Cardy in 2004~\cite{Calabrese2004} in proximity of a quantum critical point.
-In 2007, Hastings published his famous proof of the area law for one-dimensional quantum systems~\cite{Hastings2007}.
-In its essence, it provides an upper bound to the von Neumann entropy for gapped and local (i.e. no long-ranged interactions) Hamiltonians scaling as the area ($\equiv$ a constant) of one-dimensional systems.
-Essentially, the works can be summarized by the following two statements~\cite{Eisert2010}:
-Consider a block of $1,2,\dots,\ell$ particles with internal dimension $D$, the entanglement entropy scales as
-\begin{align}
-    S_1(\ell) &= \frac c{3b}\log[d(\ell)],\text{ if the system is critical}\\
-    S_1(\ell) &= c_0\xi\log\brlr{6\xi}\log D2^{6\xi\log D},\text{ if the system is local and gapped $\Delta E>0$}
-\end{align}
-in which $c_0$ is a constant of order one, $\xi=\max(2v/\Delta E,\xi_C)$ is the correlation length, $v$ the velocity of sound, $\xi_C$ of order one and $d(\ell)$ encodes the size of the block.
-For periodic ($b=1$) and open ($b=2$) boundary conditions, $d(\ell)$ is the chord distance encoding the length of a semi-circle
-\begin{align}
-    d(\ell) = \left|\frac L\pi\sin(\pi/L\ell)\right|.
-\end{align}
-
-% It has been until 1995 that the von Neumann entropy has been understood as the scalar value counting the number of quantum bits needed to transmit quantum states emitted by a statistical source~\cite{Schumacher1995}.
-
-% The multiplication of the two coefficient functions is nothing but a tensor contraction of the legs $\bm q_B$.
-% In particular, we may write
-% \begin{align}
-%     \sum_{\bm q_B}C(\bm i_A,\bm q_B)C^*(\bm j_A,\bm q_B)
-%     \equiv
-%     \includegraphics[valign=c]{figures/arbitrary_reduced_density_matrix_decomposed.pdf}.
-% \end{align}
-% Note that in the above, I conveniently used the canonical form of the MPS.
-% As such, one may explore the isometry condition in \cref{eq:isometries}, resulting in the particularly appealing result
-% \begin{align}
-%     \sum_{\bm q_B}C(\bm i_A,\bm q_B)C^*(\bm j_A,\bm q_B)
-%     \equiv
-%     \includegraphics[valign=c]{figures/arbitrary_reduced_density_matrix_decomposed_simplified.pdf}.
-% \end{align}
-% Note that the isometrized canonical form allows to simplify the number of required contractions significantly, and
-% \begin{align}
-%     \sum_{\bm i_A, \bm j_A}\sum_{\bm q_B}C(\bm i_A,\bm q_B)C^*(\bm j_A,\bm q_B)\ket{\bm i_A}\bra{\bm j_A} = \sum_{\bm i'_A, \bm j'_A} S_k \ket{\bm i'_A}\bra{\bm j'_A}
-% \end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Finite temperature}
+\label{sec:finite_temperature}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exploiting symmetries}
+\label{sec:exploiting_symmetries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
