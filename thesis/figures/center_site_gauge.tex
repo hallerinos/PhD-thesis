@@ -36,65 +36,64 @@
 
 
 \begin{tikzpicture}
+
     \node (cc) at (0,0) {};
-
-    \coordinate (tp) at ($(cc)$);
-
-    % \draw (tp) -- ++(0.75,0);
-    % \draw (tp) -- ++(0,-0.25);
-    % \begin{scope}[rotate=-90,shift=(tp)]
-    %     \tTens{red}{0.25}{0.2}{(0,0)}
-    % \end{scope}
-    %
-    % \coordinate (tp) at ($(tp)+(0.75,0)$);
-    % \draw (tp) -- ++(+0.2,0);
-    % \draw (tp) -- ++(0,-0.25);
-    % \begin{scope}[rotate=-90,shift=(tp)]
-    %     \tTens{red}{0.25}{0.2}{(0,0)}
-    % \end{scope}
-    %
-    % \coordinate (ptp) at (tp);
-    % \coordinate (tp) at ($(tp)+(1,0)$);
-    % \node[align=right] at ($0.5*(ptp)+0.5*(tp)$) {$\hdots$};
-    % \draw (tp) -- ++(-0.2,0);
-    \draw (tp) -- ++(0.75,0);
+    \coordinate (tp) at ($(cc)+(0.,0)$);
     \draw (tp) -- ++(0,-0.25) node[below] {$i_1$};
+    \draw (tp) -- ++(0.5,0);
+    % \draw (tp) -- ++(-0.25,0);
     \begin{scope}[rotate=-90,shift=(tp)]
-        \tTens{red}{0.25}{0.2}{(0,0)}
+        \tTens{gray}{0.25}{0.2}{(0,0)}
     \end{scope}
 
-    \coordinate (tp) at ($(tp)+(0.75,0)$);
-    % \draw ($(tp)+(-0.25,0)$) -- ++(0,-0.2);
-    % \draw ($(tp)+(+0.25,0)$) -- ++(0,-0.2);
-    \draw (tp) -- ++(0.75,0);
-    \cTens{black}{0.1}{(tp)}
-
-    \coordinate (tp) at ($(tp)+(0.75,0)$);
-    \draw (tp) -- ++(+0.75,0);
+    \coordinate (tp) at ($(tp)+(0.5,0)$);
     \draw (tp) -- ++(0,-0.25) node[below] {$i_2$};
-    \begin{scope}[rotate=90,shift=(tp)]
-        \tTens{blue}{0.25}{0.2}{(0,0)}
+    \draw (tp) -- ++(0.25,0);
+    \begin{scope}[rotate=-90,shift=(tp)]
+        \tTens{gray}{0.25}{0.2}{(0,0)}
     \end{scope}
 
-    \coordinate (tp) at ($(tp)+(0.75,0)$);
-    \draw (tp) -- ++(0,-0.25) node[below] {$i_3$};
-    \draw (tp) -- ++(0.2,0.0);
+    \coordinate (tp) at ($(tp)+(0.5,0)$);
+    \node at (tp) {$\hdots$};
+
+    \coordinate (tp) at ($(tp)+(0.5,0)$);
+    \draw (tp) -- ++(0,-0.25) node[below] {$i_{\ell-1}$};
+    \draw (tp) -- ++(-0.25,0);
+    \draw (tp) -- ++(0.5,0);
+    \begin{scope}[rotate=-90,shift=(tp)]
+        \tTens{gray}{0.25}{0.2}{(0,0)}
+    \end{scope}
+
+    \coordinate (tp) at ($(tp)+(0.5,0)$);
+    \draw (tp) -- ++(0,-0.25) node[below] {$i_\ell$};
+    \draw (tp) -- ++(0.5,0);
+    \begin{scope}[rotate=-90,shift=(tp)]
+        \rTens{green}{0.2}{0.2}{(0,0)}
+    \end{scope}
+
+    \coordinate (tp) at ($(tp)+(0.5,0)$);
+    \draw (tp) -- ++(0,-0.25) node[below] {$i_{\ell+1}$};
+    % \draw (tp) -- ++(-0.25,0);
+    \draw (tp) -- ++(0.25,0);
     \begin{scope}[rotate=90,shift=(tp)]
         \tTens{gray}{0.25}{0.2}{(0,0)}
     \end{scope}
 
-    \coordinate (ptp) at (tp);
-    \coordinate (tp) at ($(tp)+(1,0)$);
-    \node[align=right] at ($0.5*(ptp)+0.5*(tp)$) {$\hdots$};
-    \draw (tp) -- ++(-0.2,0);
-    \draw (tp) -- ++(0.75,0);
+    \coordinate (tp) at ($(tp)+(0.5,0)$);
+    \node at (tp) {$\hdots$};
+
+    \coordinate (tp) at ($(tp)+(0.5,0)$);
     \draw (tp) -- ++(0,-0.25) node[below] {$i_{L-1}$};
+    \draw (tp) -- ++(-0.25,0);
+    \draw (tp) -- ++(0.5,0);
     \begin{scope}[rotate=90,shift=(tp)]
         \tTens{gray}{0.25}{0.2}{(0,0)}
     \end{scope}
 
-    \coordinate (tp) at ($(tp)+(0.75,0)$);
+    \coordinate (tp) at ($(tp)+(0.5,0)$);
     \draw (tp) -- ++(0,-0.25) node[below] {$i_L$};
+    \draw (tp) -- ++(-0.25,0);
+    % \draw (tp) -- ++(0.5,0);
     \begin{scope}[rotate=90,shift=(tp)]
         \tTens{gray}{0.25}{0.2}{(0,0)}
     \end{scope}
