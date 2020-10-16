@@ -8,6 +8,7 @@
 \label{sec:matrix_product_states}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\todo{Intro to be rewritten entirely}
 The analytical treatment as presented in the previous chapter relies on a heavy line of approximations (which are sometimes very hard to justify on a rigorous level).
 One of the most crucial consequences is that quantitative deviations occur if the interactions are comparable to the kinetic bandwidth.
 This restricts heavily the validity region of the low-energy effective field theory of a particular model.
@@ -181,13 +182,12 @@ By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ ten
 \begin{align}
     C(i_1,i_2,\dots,i_L) \rightarrow C^{i_1,i_2,\dots,i_L} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
 \end{align}
-To account for the fact that the indices $\bm i$ are not fixed to specific values, I denote the dependence of the rank-$L$ tensor $C$ with square brackets.
-To be more precise, if we fix the values for the quantum numbers $i_1,\dots,i_L$, the above equation is simply a scalar value.
-This allows to apply the generalized SVD in a sequential manner:
+To account for the fact that the indices $\bm i$ are not fixed to specific values, I will from now on denote the dependence of the tensor $C$ on the quantum numbers with square brackets, i.e $C^{[i_1,i_2,\dots,i_L]}$.
+I now proceed by applying the generalized SVD in a sequential manner:
 Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single $\Lambda$ matrix in between two arbitrary leg positions $\ell,\ell+1$.
 The necessary decomposition sequence is most easily reformulated in graphical notation
 \begin{align}
-    C^{i_1,i_2,\dots,i_L} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}
+    C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}
     =
     \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_1.pdf}
     \\
@@ -203,13 +203,13 @@ The necessary decomposition sequence is most easily reformulated in graphical no
 in which at each step the three gray tensors are contracted before performing the next SVD.
 This particular decomposition of a generic quantum state, i.e.
 \begin{align}
-    C^{i_1,i_2,\dots,i_L} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+    C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
     \label{eq:mixed_canonical_form}
 \end{align}
 is called the (mixed) canonical form of an MPS.
 In other words, it represents the Schmidt decomposition of the state $\ket{\psi}$ in the subspaces $\HS_{A(\ell)}$ and $\HS_{B(\ell)}$ spanned by the first $\ell$ and last $L-\ell$ quantum numbers i.e.
 \begin{align}
-    \ket\psi = \sum_{\bm i} C^{\bm i}\ket{\bm i} = \sum_{k}s_{k}(\ell)\ket{\psi_{A(\ell),k}}
+    \ket\psi = \sum_{\bm i} C^{[\bm i]}\ket{\bm i} = \sum_{k}s_{k}(\ell)\ket{\psi_{A(\ell),k}}
     \ket{\psi_{B(\ell),k}}
     \label{eq:schmidt_decomposition}
 \end{align}
@@ -217,18 +217,17 @@ in which the transformed states $\ket{\psi_{A/B,k}}$ are given by the SVD-decomp
 \begin{align}
     \ket{\psi_{A(\ell),k}}
     &=
-    U^{i_1}_{k_1} U^{i_2}_{k_1,k_2}U^{i_3}_{k_2,k_3}\dots U^{i_\ell}_{k_{\ell-1},k}\ket{i_1,i_2,i_3,\dots,i_j}
+    U^{[i_1]}_{k_1} U^{[i_2]}_{k_1,k_2}U^{[i_3]}_{k_2,k_3}\dots U^{[i_\ell]}_{k_{\ell-1},k}\ket{i_1,i_2,i_3,\dots,i_j}
     =\prod_{k=1}^\ell U^{[i_k]}\ket{i_1,\dots,i_\ell},\\
     %
     \ket{\psi_{B(\ell),k}}
     &=
-    {V^\dag}^{i_{\ell+1}}_{k,k_{\ell+1}} {V^\dag}^{i_{\ell+2}}_{k_{\ell+1},k_{\ell+2}}\dots {V^\dag}^{i_L}_{k_{L-1}}\ket{i_{\ell+1},\dots,i_L}
+    {V^\dag}^{[i_{\ell+1}]}_{k,k_{\ell+1}} {V^\dag}^{[i_{\ell+2}]}_{k_{\ell+1},k_{\ell+2}}\dots {V^\dag}^{[i_L]}_{k_{L-1}}\ket{i_{\ell+1},\dots,i_L}
     =
     \prod_{k=\ell+1}^L V^{\dag[i_k]}\ket{i_{\ell+1},\dots,i_L}.
     \label{eq:bipartition_orthonormal_basis}
 \end{align}
 In the two expressions above, I conveniently use the sum convention.
-Additionally, from now on I use the convention that an object $T^{[i_1,\dots,i_n]}$ is a tensor which depends on the collection of physical quantum numbers $\bm i$.
 Note that the position of the central matrix in \cref{eq:mixed_canonical_form} is not fixed to the center of the chain.
 It can be moved arbitrarily to the right (left) by a sequence of singular value decompositions
 \begin{align}
@@ -632,7 +631,7 @@ In particular, one performs the sequence
     U^{[i_\ell]} \Lambda V^{\dag[i_{\ell+1}]}.
 \end{align}
 Note that the standard eigenvalue problem in \cref{eq:MPS_optimization} is promoted to a generalized eigenvalue problem if we would not rely on the normalized and canonical form of the MPS~\cite{Silvi2019}.
-The aim now is to find the globally optimal vectors ${\bm A}_C$ for each site, which can be achieved in an iterative manner by the growing and finite MPS algorithm.
+The aim now is to find the globally optimal vectors ${\bm A}_C$ for each site, which can be achieved in an iterative manner by the growing and DMRG algorithm.
 \\
 
 A minimal example of the growing MPS algorithm is formalized as follows:
@@ -705,7 +704,7 @@ The corresponding algorithm is then called infinite boundary conditioned MPS~\ci
 In our works, we were mostly interested in the simulation of finite systems and I omit the description of such an implementation.
 \\
 
-The second application concerns the MPS obtained after $L/2$ steps -- it can serve as a trial state for a finite system of length $L$, which is refined by the finite MPS algorithm:
+The second application concerns the MPS obtained after $L/2$ steps -- it can serve as a trial state for a finite system of length $L$, which is refined by the DMRG algorithm:
 \begin{enumerate}
     \item Set $n=1$. Start with a trial MPS in the canonical form (e.g. acquired by the growing algorithm) and transform the MPS such that the $\Lambda$ matrix is between sites $1$ and $2$, i.e.
     \begin{align}
@@ -744,7 +743,7 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
     Absorb $\tilde U$ in $U^{[i_{n-1}]}$, then decrease $n\rightarrow n-1$ and go back to step 2.
     This concludes a single sweeping step from right to left.
 \end{enumerate}
-The finite MPS optimization is usually performed in so-called ``sweeps'', i.e. a full sweeping cycle from left to right is done for each site $n=1,2,\dots,L-1$, after which a full sweeping cycle from right to left $n=L-1,L-2,\dots,1$ is applied.
+The DMRG optimization is usually performed in so-called ``sweeps'', i.e. a full sweeping cycle from left to right is done for each site $n=1,2,\dots,L-1$, after which a full sweeping cycle from right to left $n=L-1,L-2,\dots,1$ is applied.
 Iteratively optimizing the local tensors leads to a variational trajectory in the family of MPS with bond dimension $m$.
 \\
 
@@ -762,6 +761,13 @@ It is defined as
     \varepsilon_\rho(m) = \sup_{\ell}\sum_{k=m}^\infty s_k(\ell)
 \end{align}
 in which $s_k(\ell)$ denotes the $k$'th singular value of the mixed-canonical representation of the MPS.
+\\
+
+The presented algorithm can actually be implemented in a more efficient way by fixing the internal bond dimension from the start, e.g. through the growing algorithm and using a single-site tensor $A_C$ as the variational center, similarly to the time-evolution method which I introduce in the next section.
+Compared to two-site DMRG, the dimensionality of the eigenvalue problem $A_C$ is reduced by a factor $D$, leading to a speed-up of at least $\mathcal O(D)$ per iteration~\cite{White2005}.
+Although the overall optimization is then computationally more favorable, this leads to drawback of the single-site DMRG algorithm: the inaccessibility of the larger portion of singular values and as such the lack of the discarded weight $\varepsilon_\rho(m)$\footnote{This drawback evolves to a major disadvantage when exploiting symmetries in the tensor network, since single-site DMRG does not vary the established symmetry sectors of the MPS.}.
+An elegant solution for the resolution of this issue is the subspace expansion~\cite{Hubig2015}, featuring a flexible interpolation between single-site and two-site DMRG.
+This concept of reducing the variational space can be taken even further by the optimization of the local link tensors only~\cite{Fernandez2020}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -773,7 +779,7 @@ in which $s_k(\ell)$ denotes the $k$'th singular value of the mixed-canonical re
 There are several well-established methods used to simulate the time evolution of an initial MPS~\cite{Paeckel2019} and here I will focus on the time-dependent variational principle (TDVP).
 The crucial difference to other algorithms is that it utilizes a backward evolution of the singular values in order to project the tensor onto its tangent space.
 This way it aligns the variational trajectory to the tangent space of the MPS, leading to a particularly robust and efficient implementation compared to other algorithms~\cite{Haegeman2011}.
-In addition, TDVP of a trial MPS in imaginary time is known to be identical to traditional DMRG/finite MPS, which leads to a unified framework for the time evolution and optimization of matrix product states~\cite{Haegeman2016}.
+In addition, TDVP of a trial MPS in imaginary time is known to be identical to traditional DMRG, which leads to a unified framework for the time evolution and optimization of matrix product states~\cite{Haegeman2016}.
 \\
 
 Before I introduce the algorithm, we need a couple of prerequisites.
@@ -885,10 +891,11 @@ The full TDVP algorithm is then depicted as follows:
     \item If $n=L$, continue with 4. Absorb the matrix $C(n)$ into the next tensor to create $A_C^{i_{n+1}}=C(n)V^{\dag[i_{n+1}]}$. Increase $n\rightarrow n+1$ and continue with 1.
     \item If $n=1$, continue with 3. Absorb the matrix $C(n)$ into the previous tensor to create $A_C^{i_{n-1}}=U^{[i_{n-1}]}C(n)$. Decrease $n\rightarrow n-1$ and continue with 1.
 \end{enumerate}
-Similarly to finite MPS, TDVP is performed in completed sequences of full sweeping cycles $n=1,2,\dots,L$ and then $n=L,L-1,\dots,1$.
+Similarly to DMRG, TDVP is performed in completed sequences of full sweeping cycles $n=1,2,\dots,L$ and then $n=L,L-1,\dots,1$.
+The only difference to single-site DMRG is that
 After one sweeping from left to right cycle ($n=1,2,\dots,L$), the MPS is integrated from time $t$ to $t+\Delta t/2$ with a local integration error of $\mathcal O(\Delta t^2)$.
-Completing the left to right sequence ($n=L,L-1,\dots,1$) then constitutes to composing the integration with its adjoint, resulting in a second-order symmetric method~\cite{Haegeman2016}.
-A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after a full sweeping cycle, and the error of the integration is more favorable $\mathcal O(\Delta t^3)$.
+Completing the left to right sequence ($n=L,L-1,\dots,1$) then constitutes to composing the integration with its adjoint, resulting in a second-order symmetric method.
+A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after a full sweeping cycle, and the error of the integration is more favorable $\mathcal O(\Delta t^3)$~\cite{Haegeman2016}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -897,6 +904,7 @@ A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
+\todo{Mention it although not used up to now? Unsure...}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -905,3 +913,4 @@ A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
+\todo{Very short explanation with reference to Silvi's bible}
