@@ -48,7 +48,6 @@ In general, the symmetric $N$-particle state vector is an element of the $N$-par
     \label{eq:symmetric_many_body_state}
 \end{align}
 In the above equation, we assume ordered quantum numbers (e.g. increasing positions along a wire, or increasing energies), denote the total number of particles with quantum number $\alpha$ as $n_\alpha$ and $\sign{P}$ the sign of the permutation $P\in S^N$ of the permutation group [$\sign{P}=\pm1$ if the permutation is even/odd].
-\\
 
 The representation in the ordered expression of \cref{eq:symmetric_many_body_state} is not particularly compact since equal values of $\alpha$ may appear $n_\alpha$ times in the $N$-letter long ket -- the occupation number representation removes this redundancy.
 The states in this representation are then given by
@@ -65,7 +64,6 @@ The full Fock space $\FS$ is defined as a direct sum of all vector spaces with f
     \FS = \bigoplus_{N=0}^\infty \FS^N
 \end{align}
 including the one-dimensional vacuum space commonly denoted by $\{\ket{0}\}=\FS^0$.
-\\
 
 Let us now impose a linear map $a^\dag_i:\FS\rightarrow\FS$ connecting the individual subsets through
 \begin{align}
@@ -162,7 +160,6 @@ This is commonly highlighted through a bracket notation of the continuous quantu
 Let us start with a general operator acting on a single particle of the full $N$-particle state (usually dubbed one-body operator).
 Familiar examples are for example the momentum or the position operator $\hat x_i$, $\hat p_i$ acting on the $i$th particle, or compositions of those like single particle potentials $V(\hat x_i)$.
 It is thus not surprizing that the general expression of such operators can be given in terms of the particle creation and annihilation operators we introduced in \cref{sec:creation_and_annihilation_operators}.
-\\
 
 A one-body operator $\hat o$ diagonal in an arbitrary single-particle basis $\{\alpha\}$ ($\hat o = \sum_\alpha o_{\alpha}\ket{\alpha}\bra{\alpha}$) is trivially extended to the $N$-particle states written in the same basis
 \begin{align}
@@ -258,7 +255,6 @@ However, this is not true as is clear from the momentum operator being $\hat{\bf
 The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bf k}}$ is only an eigenstate of momentum if the potential is constant and thus $\nabla V_{ae}=0$.
 Derivation of the effective potential $V_{ae}$ for real materials and analytic solutions of the Bloch weights $u$ are often quite involved and not of particular interest for this thesis (for more details, see~\cite{AshcroftMermin1978,Czycholl2016}).
 Moreover, the introduction of tightly bound systems will make clear that a full knowledge of $u$ is not necessary to characterize the spectrum of such systems.
-\\
 
 However, to get an idea of the form of the Bloch functions, let us solve the Schrödinger equation of a particle moving along one-dimension in the potential
 \begin{align}
@@ -356,7 +352,6 @@ If we assume bound states between the potential wells $0<E<V_0$, the signs becom
 \end{align}
 The right-hand-side of \cref{eq:kronig_penney_transcendental_equation_approx_bound} is in general not bound to the interval $[-1,+1]$ spanned by $\cos(ak)$ and establishes values of $\alpha$ (thus, the square-root of the energy $E$) for which no (real) momentum exists (see \cref{fig:kronig_penney_dispersion} (a)).
 Such energies are called forbidden and realize a first understanding of band-gaps induced by the nonzero lattice potential $V_0>0$.
-\\
 
 If $P=0$, we are left with the energy-momentum relation of free electrons $k=\alpha$ and thus $E_0={\hbar^2k^2}/({2m})$.
 If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $f$, which are given by the dominating term and yield discretized energies
@@ -367,7 +362,6 @@ If we approach $P\rightarrow\infty$, the allowed energies are formed by the root
 spanned by integer numbers ($n_b=1,2,\dots$).
 The intermediate regimes $0<P<\infty$ can be solved by numerical evaluation of \cref{eq:kronig_penney_transcendental_equation_approx_bound} and are plotted in \cref{fig:kronig_penney_dispersion} (a).
 Straightforward evaluation of $\arccos(f)$ yields the so-called ``reduced zone scheme'' displayed in \cref{fig:kronig_penney_dispersion} (b).
-\\
 
 To get an analytic understanding of the wave functions in the above limit, let's focus on the region without potential (i) [remember that one is interested in the limit $b\rightarrow0$]
 \begin{align}
@@ -460,7 +454,6 @@ The systems considered here are those of tightly bound constituents to the latti
 Such types can be found in traditional solid state scenarios where the nuclei are well separated beyond the typical Bohr radius of the valence electrons, in setups of ultracold atoms trapped in optical lattices, in optical waveguides or polaritons.
 In \cref{part:results}, I will mostly cover theoretical aspects of tight binding models which can be experimentally realized in a variety of different setups.
 For this reason, it will be useful to review briefly how these models are motivated in general from a more traditional solid state aspect, and how they can be understood in the more modern approach of second quantization.
-\\
 
 \begin{figure}
     \centering
@@ -489,7 +482,6 @@ For this purpose, let us consider a cosine periodic potential
 \end{align}
 which yields a particular easy (a tridiagonal Toeplitz) matrix equation for the Bloch vectors presented in \cref{eq:periodic_lattices_numerics}.
 To obtain the Wannier functions, we gauge every Bloch function to be purely real at $x=0$, resulting in the examples displayed in \cref{fig:tight_binding_wanniers}.
-\\
 
 The existence of localized Wannier states is translated to the language of second quantization by the notion that transformations between a Bloch and Wannier basis are always unitary.
 Hence, annihilation and creation operators of Wannier and Bloch states are set in relation by
@@ -529,7 +521,6 @@ For instance, one-dimensional lattices with single atom unit cells and lattice s
 \end{align}
 Note that this equation is consistent with the Kronig-Penney dispersion relation in the tight-binding limit, presented in \cref{eq:kronig_penney_tight_binding_dispersion}.
 In higher dimensions, the evaluation of the dispersion relation may become lengthy, but remains always analytic.
-\\
 
 Oftentimes, a single-band approximation is established to fix (and drop) the band index $\alpha$.
 This situation is achieved in case the bottom band is sufficiently separated from the second (e.g. through a strong on-site lattice potential).
@@ -598,7 +589,6 @@ Close to the Fermi energy $\varepsilon_F\coloneqq\varepsilon_{\pm k_F}$, we can 
 \end{align}
 which implies a restriction of $q$ to a small window $|q|<\Gamma\ll m\varepsilon_F$ beyond which \cref{eq:dispersion_linearization} is considered invalid.
 Note the introduction of the so-called right and left operators $c_{R/L,q}$ which annihilate particles propagating to the left/right with Fermi velocity $\pm v_F=\hbar k_F/m$.
-\\
 
 For the next part, it will be convenient to understand the meaning of the local density in momentum space, i.e.
 \begin{align}
@@ -630,7 +620,6 @@ which is then used to find the local density
 \end{align}
 The first two terms correspond to the $q\approx0$ part of the density, and scattering occurs on the same side of the dispersion relation.
 The last two terms scatter right with left movers and transfer particles from one side to the other, which appear at $q\approx2k_F$.
-\\
 
 We now turn to an arbitrary two-body interaction of the form~\cref{eq:two_point_interaction} which reads
 \begin{align}
@@ -885,7 +874,6 @@ The last exponential can be understood as a (Grassmann) coherent state composed 
 %     \label{eq:LL_fields_correlations}
 % \end{align}
 % as derived from Green's functions of the massless Klein-Gordon theory~\cite{AltlandSimons2010}.
-\\
 
 Lastly, I want to stress that the results presented here are actually independent of the original starting point, i.e. \cref{eq:hamiltonian_free_particles}.
 The only microscopic parameter entering in the final theory is $v_F$, which can be replaced by arbitrary group velocities evaluated on the Fermi surface $v_F=(\partial_k\varepsilon_k)_{k=k_F}$.
@@ -1108,7 +1096,6 @@ This implies that the two vertex operators decay asymptotically (i.e. $a\ll r=|x
 \end{align}
 The constant $A$ is given by the cutoffs and, under the assumptions made, evaluates to $A = \log(\sqrt{L/a})$.
 Since the field $\theta$ is dual to $\phi$, all equations exploited for $\phi$ apply for $\theta$ aswell.
-\\
 
 Note that here we are dealing with a non-interacting theory only -- and we would like to implement the interactions encountered in \cref{sec:tomonaga_LL,sec:LL_with_spin}.
 Surprisingly, the interactions $g_4$ and $g_2$ only rescale the fields $\phi'=\phi/\sqrt K$ and $\theta'=\theta\sqrt K$.
@@ -1135,7 +1122,6 @@ It is called peculiar in a sense that it does not involve any spontaneous symmet
 Traditionally, the BKT transition was first encountered in 2D classical systems, but by know it is well known that (1+1)D quantum systems are represented by partition functions which correspond to 2D classical systems.
 This provides proof that one-dimensional quantum systems fall in the same universality class as their classical analogs in two spacial dimensions.
 Although interesting to carry out in its full glory, the emergence of the sine-Gordon type field theory from a 2D classical model requires a rather involved massage of the classical partition function, and I refer to~\cite{AltlandSimons2010} for details on the derivation.
-\\
 
 I now proceed by explaining the basic renormalization group (RG) analysis of the sine-Gordon model.
 This section is widely adapted from~\cite{Gogolin2004}, which is probably the most useful advanced literature in the field of bosonization.
@@ -1151,7 +1137,6 @@ The idea of renormalization is to let the system flow towards larger distances b
 The final step is then to recover the original size of the momentum shell by a rescaling of lengthscales.
 For technical convenience, it is best to assume a circular cutoff constraint $|{\bf k}|<\Lambda\sim2\pi/a$.
 If the model is of a sine-Gordon type, the effective model will have the same form as the original one (up to a rescaled set of coupling constants), from which the so-called ``RG-flow equations'' are derived.
-\\
 
 Let's start by splitting the fields into the aforementioned slow and fast components, in which the ``fast'' components are contained in an infinitesimal momentum shell $\rd\Lambda=\Lambda-\Lambda'$
 \begin{align}
@@ -1178,7 +1163,6 @@ The analytic evaluation of the expectation on the right hand side requires furth
 \end{align}
 in which $\braket{F^2}_{\rm conn.} = \braket{F^2}-\braket{F}^2$ denotes the connected part of the correlation.
 The renormalization group approach carried out in the following is thus reliable for small renormalized couplings $g\ll \frac u{2\pi K}$.
-\\
 
 The first order term can be rewritten as
 \begin{align}
@@ -1230,7 +1214,6 @@ Since the energy gap for an excitation is proportional to the size of the coupli
 \begin{align}
     \Delta(0) = \Delta^*\re^{-l^*} \approx \Delta^*\brlr{\frac{g(0)}{\Delta^*}}^{1/(2-D_g)}.
 \end{align}
-\\
 Now for the second order correction -- the first term in the connected correlator evaluates to
 \begin{align}
     \braket{S^2_I[\phi_{\Lambda'}+h]}=\frac{g^2}2\re^{-\beta^2\braket{h^2}}\int\rd^2x\rd^2x'
@@ -1253,7 +1236,7 @@ For convenience, let me proceed with the assumption that the two-point correlati
         \cos\commutator{\beta\phi_{\Lambda'}({\bf x})-\beta\phi_{\Lambda'}({\bf x'})}\anticommutator{1+\frac{K\beta^2}2C(|{\bf x}-{\bf x'}|)\rd l}
     \right).
 \end{align}
-The disconnected part of the correlation function is easily evaluated using the identity $2\cos(a)\cos(b)=\cos(a+b)+\cos(a-b)$ and $(1-\alpha\rd l)^2 = 1-2\alpha\rd l + O(\rd l^2)$ and reads
+The disconnected part of the correlation function is evaluated using the identity $2\cos(a)\cos(b)=\cos(a+b)+\cos(a-b)$ and $(1-\alpha\rd l)^2 = 1-2\alpha\rd l + O(\rd l^2)$ and reads
 \begin{align}
     \braket{S_I[\phi_{\Lambda'}+h]}_h^2
     = g^2\brlr{1 - \frac{K\beta^2}4\rd l}^2\int\rd^2x\rd^2x'\cos(\beta \phi_{\Lambda'}({\bf x}))\cos(\beta \phi_{\Lambda'}({\bf x'}))
@@ -1342,7 +1325,6 @@ leading to the modified function $C_n$ which depends on the smoothness $n$, i.e.
 For the special case $n=2$, the integral of the $h$-fields evaluates to $C_2(r)=\frac K2 \Lambda r K_1(\Lambda r)$ that decays exponentially fast (see \cref{fig:rg_cutoff}(c)).
 In particular, the function follows the asymptotic decay $z K_1(z) \sim \sqrt{\pi z/2}\exp(-z)$ and is already negligible for $z=1$, i.e. $K_1(1)\approx0.0062$.
 Therefore, the integration of $C_2(r)$ can be confined to a small interval $r<\xi$ in which $\xi\sim2\pi/\Lambda=a$ is a small length scale comparable with the lattice spacing $a$.
-\\
 
 In order to utilize the confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bf R} = 1/2({\bf x}+{\bf x'})$ and ${\bf r} = {\bf x}-{\bf x'}$.
 The integral can then be rewritten to
@@ -1377,7 +1359,6 @@ Note that this term generation is continuous, and to account for it, we should s
 \end{align}
 The first-order corrections of the Euclidian action then yield a coupled system of differential equations in which the amplitudes of less relevant operators depend on those of more relevant ones (but {\it not} vice-versa).
 Note that this allows for a practical and well-justified simplification of dropping the sum in \cref{eq:sine_gordon_full}, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
-\\
 
 The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part after the harmonic approximation (neglecting the constant which renormalizes the free energy)
 \begin{align}

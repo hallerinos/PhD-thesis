@@ -17,7 +17,6 @@ However, such a small Luttinger parameter requires very strong nearest neighbor 
 Although the field theoretic description might not break down entirely, heavy quantitative deviations from the Luttinger liquid predictions of the effective coupling parameters are to be expected.
 This motivates the use of numerical tools to verify the analytic predictions in the strongly interacting cases.
 In this chapter, I will provide the essentials to get acquainted with the concepts of tensor networks, in particular with matrix product states (MPS).
-\\
 
 First, I give a basic introduction to tensor networks and explain the intuitive concept of renormalization through a truncation of the auxiliary dimension of these structures.
 Second, I review the concept of ``area laws'' -- a statement about the structure of quantum correlations of gapped and short-ranged Hamiltonians -- and connect it to the properties of tensor networks.
@@ -118,7 +117,6 @@ In particular, the sequence of identities reads
 \end{align}
 in which $f^{-1}$ denotes the inverse of the tensor reshaping / leg fusion, and Einstein notation implies the tensor contraction contraction with summed index $k$.
 In the equations above, it is assumed that the applied SVD is compact: $\Lambda$ is a square and diagonal matrix containing the nonzero singular values, such that $\Lambda_{ij}\equiv s_i\delta_{ij}$.
-\\
 
 To get acquainted with the use of tensors in a more practical sense, let us aim to understand some of the described concepts in the context of two-dimensional pictures.
 If we assume the picture to be rasterized in an equidistant manner using square pixels, the RGB-entries of the pixel can be collected in a 3D array of the form
@@ -131,7 +129,6 @@ There exist three different bipartitions: (a) $P_{(y,x),c}$, (b) $P_{(y,c),x}$ a
 (b) and (c) are equivalent up to a transposition of the original object, therefore leaving two truly different decompositions, (a) and (b).
 The bipartition (a) targets a decomposition between $(y,x)$ and $c$ whereas (b) targets a decomposition between $y$ and $(x,c)$.
 Strategy (a) thus aims to truncate the color degree of freedom, which is not very useful due to the low dimensionality of the $c$ leg (there are only $3$ nonzero singular values to begin with), such that I will focus entirely on the decomposition of (b).
-\\
 
 \begin{figure}
     \centering
@@ -168,7 +165,6 @@ which allows for a high compression in case of a large and dense matrix $M$.
 To give an example, I present the impact of compression in \cref{fig:svd_image_compression}.
 Panel (a) denotes an uncompressed picture, the singular values of the digital picture presented in (b), and the result of keeping $250$ singular values as an approximation to the full picture, presented in (c).
 The approximated picture yields a compression rate of roughly $19\%$, and visible differences to the original are negligible (if you look closely, the compressed figure appears to have some ``noise'' in the nice color gradient of the sky).
-\\
 
 The depicted compression scheme can actually be applied to quantum states.
 Recall that any state can be expressed by a set of $L$ good quantum numbers, such that
@@ -285,7 +281,6 @@ The threshold $m$ is thus directly related to approximating the reduced density 
 Please note that $s_k\equiv s_k(\ell)$ refers to the $k$'th singular value of a particular bipartition $A(\ell)/B(\ell)$, which considers the first/last $\ell/L-\ell$ quantum numbers.
 % Therefore, it can be appropriate to denote this dependence also in the spectral values if needed, i.e. $s_k = s_k(\ell)$.
 If we keep the $m$ largest singular values $s_k(\ell)$, $k\in\{1,2,\dots,m\}$ for any block size $\ell$, $m$ is a global property of MPS called the bond dimension.
-\\
 
 Density matrices are naturally related to the generalized Gibbs entropy for quantum states
 \begin{align}
@@ -333,7 +328,6 @@ The phenomenon was firstly noted in $1935$ by Albert Einstein, Boris Podolsky, a
 At its heart, it describes a group of particles interacting such that the quantum state of each individual particle cannot be described independently of the state of the others in the group.
 The paradox part in the aforementioned works is described by quantum measurements performed on individual particles, which leads to irreversible collapses of the wave function and an alteration of the original quantum state of the other particles in the group.
 Surprisingly, the phenomenon is independent of the distance between the particles and forms thus a unique form of correlations exclusively present in quantum systems.
-\\
 
 To make an example, consider the two-particle pure state $\ket{\psi}=\frac1{\sqrt2}\brlr{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}$ and the two particles being localized at two distant spacial positions.
 In case we prepare a projective measurement of the first particle being in the $\uparrow$-state, the probability of the outcome is obviously $1/2$ and we end up with a collapsed post-measurement state of the form $\ket{\tilde\psi} = \ket{\uparrow\downarrow}$.
@@ -341,7 +335,6 @@ At the time of the measurement, the second particle collapses to the perfectly c
 A subsequent measurement of the second particle will thus yield $\downarrow$ with probability $1$.
 Note that this instantaneous action does not violate causality since the outcome of the first measurement is random and as such cannot be used to transmit information.
 With this example in mind, let us now encapsulate the definition of $N$-partite separable and entangled for states with $N$ individual particles.
-\\
 
 A state $\ket{\psi}$ is called $N$-partite separable iff. it can be written as a product of $N$ subsystems~\cite{Horodecki2009}
 \begin{align}
@@ -363,7 +356,6 @@ In particular, it has been shown that the von Neumann entropy of a subsystem can
 The inequality for separable states can thus be expressed as $S(B|A)=S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
 As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities.
 The discussions of entangled states breaking the positivity of $S(A|B)$ reach far beyond the present aim of this introduction \cite{Horodecki2006}, and I simply conclude here that the von Neumann entropy is a useful scalar measure of bipartite entanglement.
-\\
 
 Coming back to the connection to MPS with finite bond dimension, we now know that the upper bound restriction of the entropy limits the available entanglement of the approximation.
 This, in turn, does not provide an explanation why such an approximation should not ``go wrong quickly'' in a sense that the important properties of the approximated state are lost, even if the bond dimension is large.
@@ -408,7 +400,6 @@ In particular, it acts as a contraction between the $o$-matrix and the $q$'th ve
 Therefore, we can represent any local operator as a rank-$2$ tensor composed by the matrix elements of $\hat o$.
 The same reasoning applies for operators acting on $p$ sites -- they are represented by rank-$2p$ tensors containing the entries of the matrix elements, contracted with the $p$ corresponding vertical links of the $C$-tensor.
 Such an object is then called matrix product operator (MPO) which allow the efficient representation of generic Hamiltonians.
-\\
 
 The derivation of the MPO representation of a given Hamiltonian is actually straightforward, since it is the typically a sum of products of local operators, which, as we now know, each have a MPO representation.
 Consider for example the Ising model
@@ -540,7 +531,6 @@ In it's essence, it is a numerical optimization scheme targetting the low energy
 Nowadays, it is understood as an MPS Ansatz of the trial wavefunction in which at each iteration a few local tensors (in most cases one or two) are variationally optimized.
 For the numerical simulations employed in all of our articles, I implemented two optimization schemes, which are then combined to find an optimal MPS approximation for finite systems.
 The first one is the growing algorithm (sometimes dubbed iDMRG), which is most useful to construct the trial wavefunction of the second scheme, namely traditional DMRG reformulated in the language of MPS~\cite{Schollwoeck2011,Silvi2019}.
-\\
 
 Consider the way the energy expectation value is written in the MPS language: it is a sandwich of the product of $W$ tensors (the local MPO representing the Hamiltonian) with the trial wavefunction.
 To find the groundstate, we extremize the energy
@@ -625,7 +615,6 @@ In particular, one performs the sequence
 \end{align}
 Note that the standard eigenvalue problem in \cref{eq:MPS_optimization} is promoted to a generalized eigenvalue problem if we would not rely on the normalized and canonical form of the MPS~\cite{Silvi2019}.
 The aim now is to find the globally optimal vectors ${\bm A}_C$ for each site, which can be achieved in an iterative manner by the growing and DMRG algorithm.
-\\
 
 A minimal example of the growing MPS algorithm is formalized as follows:
 \begin{enumerate}
@@ -690,12 +679,10 @@ This approach however requires the state to be fully translationally invariant o
 A workaround of this issue is to relax the insertion of two sites in the center of the MPS to arbitrary many.
 However, the convergence to the best thermodynamic MPS state is never achieved.
 This is due to the intrinsically finite structure of the MPS in the growing algorithm which breaks translational symmetry at every step, and another Ansatz is required.
-\\
 
 One viable option is to approximate the (infinite) environments to the left and right of the central tensors with the dominant eigenstates of the transfer matrices.
 The corresponding algorithm is then called infinite boundary conditioned MPS~\cite{Phien2012} or variational uniform MPS (VUMPS)~\cite{ZaunerStauber2018}.
 In our works, we were mostly interested in the simulation of finite systems and I omit the description of such an implementation.
-\\
 
 The second application concerns the MPS obtained after $L/2$ steps -- it can serve as a trial state for a finite system of length $L$, which is refined by the DMRG algorithm:
 \begin{enumerate}
@@ -738,7 +725,6 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
 \end{enumerate}
 The DMRG optimization is usually performed in so-called ``sweeps'', i.e. a full sweeping cycle from left to right is done for each site $n=1,2,\dots,L-1$, after which a full sweeping cycle from right to left $n=L-1,L-2,\dots,1$ is applied.
 Iteratively optimizing the local tensors leads to a variational trajectory in the family of MPS with bond dimension $m$.
-\\
 
 The error to an exact eigenstate of the Hamiltonian can be estimated in a straightforward manner by computing the variance of the approximation.
 For cases in which the MPS is equivalent to an eigenstate of the full Hamiltonian, the variance will reduce to $0$. In general, however, the approximation is not a true eigenstate of the Hamiltonian and as such we arrive at
@@ -754,7 +740,6 @@ It is defined as
     \varepsilon_\rho(m) = \sup_{\ell}\sum_{k=m}^\infty s_k(\ell)
 \end{align}
 in which $s_k(\ell)$ denotes the $k$'th singular value of the mixed-canonical representation of the MPS.
-\\
 
 The presented algorithm can actually be implemented in a more efficient way by fixing the internal bond dimension from the start, e.g. through the growing algorithm and using a single-site tensor $A_C$ as the variational center, similarly to the time-evolution method which I introduce in the next section.
 Compared to two-site DMRG, the dimensionality of the eigenvalue problem $A_C$ is reduced by a factor $D$, leading to a speed-up of at least $\mathcal O(D)$ per iteration~\cite{White2005}.
@@ -773,7 +758,6 @@ There are several well-established methods used to simulate the time evolution o
 The crucial difference to other algorithms is that it utilizes a backward evolution of the singular values in order to project the tensor onto its tangent space.
 This way it aligns the variational trajectory to the tangent space of the MPS, leading to a particularly robust and efficient implementation compared to other algorithms~\cite{Haegeman2011}.
 In addition, TDVP of a trial MPS in imaginary time is known to be identical to traditional DMRG, which leads to a unified framework for the time evolution and optimization of matrix product states~\cite{Haegeman2016}.
-\\
 
 Before I introduce the algorithm, we need a couple of prerequisites.
 First, the MPS will be written in the mixed canonical gauge with a tensor $A_C$ (matrix $C$) which is not an isometry, i.e.
@@ -871,7 +855,6 @@ The integration is then performed explicitly for the vector/matrix expressions o
 \end{align}
 Note that for each local integration of $A_C$, the corresponding matrix $C$ is evolved backwards in time.
 Exponentials of matrices are readily computed with the Lanczos method, which is part of the ARPACK package~\cite{Lehoucq1998}.
-\\
 
 The full TDVP algorithm is then depicted as follows:
 \begin{enumerate}
@@ -880,7 +863,7 @@ The full TDVP algorithm is then depicted as follows:
         C^{[i_1,i_2,i_3,\dots,i_{L-1},i_L]}= A_C^{[i_1]}\brlr{\prod_{k=2}^LV^{\dag[i_k]}}\equiv\includegraphics[valign=c]{figures/right_canonical_gauge.pdf}.
     \end{align}
     \item Evolve $A_C^{[i_n]}$ according to \cref{eq:TDVP_integration_AC} and factorize it to $A_C^{[i_n]} = U^{[i_n]}C(n)$.
-    Backevolve $C(n)$ according to \cref{eq:TDVP_integration_C}, then continue with step 3. (sweeping from left to right) or 4. (sweeping from right to left).
+    Back-evolve $C(n)$ according to \cref{eq:TDVP_integration_C}, then continue with step 3. (sweeping from left to right) or 4. (sweeping from right to left).
     \item If $n=L$, continue with 4. Absorb the matrix $C(n)$ into the next tensor to create $A_C^{i_{n+1}}=C(n)V^{\dag[i_{n+1}]}$. Increase $n\rightarrow n+1$ and continue with 1.
     \item If $n=1$, continue with 3. Absorb the matrix $C(n)$ into the previous tensor to create $A_C^{i_{n-1}}=U^{[i_{n-1}]}C(n)$. Decrease $n\rightarrow n-1$ and continue with 1.
 \end{enumerate}
@@ -889,6 +872,7 @@ The only difference to single-site DMRG is that
 After one sweeping from left to right cycle ($n=1,2,\dots,L$), the MPS is integrated from time $t$ to $t+\Delta t/2$ with a local integration error of $\mathcal O(\Delta t^2)$.
 Completing the left to right sequence ($n=L,L-1,\dots,1$) then constitutes to composing the integration with its adjoint, resulting in a second-order symmetric method.
 A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after a full sweeping cycle, and the error of the integration is more favorable $\mathcal O(\Delta t^3)$~\cite{Haegeman2016}.
+Similarly to two-site DMRG, the TDVP algorithm can be easily implemented by time-evolving a two-site instead of a single-site tensor $A_C^{[i_\ell]}\rightarrow A_C^{[i_\ell,i_{\ell+1}]}$ and the center matrix is promoted to a single-site tensor $C^{[i_\ell]}$~\cite{Haegeman2016}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -897,7 +881,6 @@ A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-\todo{Mention it although not used up to now? Unsure...}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
