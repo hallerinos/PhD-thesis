@@ -1,6 +1,38 @@
 %!TEX root = thesis.tex
 %%%%%%%%%%%%%%%%%%%%%
 
-\chapter*{Motivation}
+\chapter*{Introduction}
 % \chaptermark{Custom chapter mark}
-\label{ch:motivation}
+\label{ch:introduction}
+As an undergraduate student studying elementary physics, I always thought of quantum particles as plain waves living in the differential-geometric world of ``first quan\-ti\-zation'' which (at least for me) is both beautiful and frustrating at the same time as the task of solving the most simple problems may become quite involved, if not even impossible.
+The modern approach is not a straightforward attempt to solve the real-space wave function by integrating a given Schrödinger equation, it rather sticks to an alternative representation in the algebraic world of ``second quantization'' where the action of operators dictates all physical consequences.
+I must admit that I find the nomenclature of ``first'' and ``second'' somewhat confusing, as there is no such thing as two consecutive ways of quantization -- it's just two alternative and consistent ways of describing the same theory.
+Ultimately, I've learned to accept this issue as a result of chronology: the original formulation of quantum mechanics is commonly called first quantization, in which the (motion of the) particle is quantized and possible electromagnetic fields or potentials are considered classical, wheres quantized fields have been formulated in the language of second quantization.
+However, as we will see soon, the advantage of second quantization manifests itself in a simpler and more efficient way to describe many-body systems such that its development can be seen as the first major cornerstone in the emergence of quantum field theory.
+\\
+
+Independent of the formulation, be it first or second, all quantum theories require certain basic concepts:
+all quantum states are represented by state vectors $\{|q\rangle\}$ forming a complete basis of the Hilbert space and observables are defined through Hermitian operators acting on that space.
+The states are given through a set of good quantum numbers $q$, e.g. $(n,l,m)$ associated with the total energy, angular momentum and its projection along the primary axis for the electron of hydrogen.
+\\
+
+The first chapter of this thesis ``On the quantization of motion and fields'' reviews these basic concepts in more detail.
+I will also illustrate the treatment of perturbations on top of a quadratic/non-interacting Hamiltonian which is a crucial tool in the understanding of quantum matter.
+This becomes particularly clear in the concept of Luttinger liquids as a first example of a quantum field theory satisfying the algebra of a quantum harmonic oscillator.
+The key in Luttinger liquids is that the effective theory describing intrinsically interacting microscopic models remains quadratic at the operator level, and as such effectively non-interacting.
+This is a universal feature and also the limitation of perturbation theory in general, which is build upon the assumption that the single-particle basis provides the necessary ingredient.
+In order to treat higher-order interactions analytically, I then introduce the concept of renormalization group theory, which provides a platform to study if and when the single-particle basis must be exchanged in favor of the collective many-body basis dictated by the interactions.
+One major drawback is that renormalization group theory relies on many simplifications along the way to make the calculation amendable, and microscopic details of the model are often lost in the approximations.
+In such cases, solid quantitative predictions are hard to provide analytically, such that numerical tools become essential.
+\\
+
+A simple-minded and brute force calculation of a full solution scales exponentially with the number of constituents, such that exact diagonalization of interacting models is limited to small system sizes (e.g. $\sim 20$ sites for interacting spin-1/2 models in typical studies).
+This stresses the need for more efficient numerical techniques in the study of non-perturbative regimes which cannot be amended analytically.
+In this thesis, I mainly use matrix product states (MPS), which is why I devoted a chapter highlighting the basic ideas and providing the essential algorithms to tackle almost any microscopic model at hand.
+\\
+
+Perhaps the most interesting behavior of quantum many-body physics is that of so-called emergent phenomena -- e.g. the appearance of quasi-particles which extend the canonical statistical properties of fermions and bosons in low dimensions, or the presence of robust quasi-particles at the boundaries of a topological insulator.
+In order to perceive a basic overview in this topic, I conclude the introduction with a review on the classification of non-interacting topological matter and finish with some general statements on interacting topological insulators.
+\\
+
+\todo{Add the intro for the actual research and make connections with the concepts above...}

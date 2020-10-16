@@ -59,6 +59,7 @@
     \coordinate (tp) at ($(tp)+(0.5,0)$);
     \draw (tp) -- ++(0,-0.25);
     \draw (tp) -- ++(-0.25,0);
+    \draw (tp) -- ++(0.5,0);
     \begin{scope}[rotate=-90,shift=(tp)]
         \tTens{gray}{0.25}{0.2}{(0,0)}
     \end{scope}
@@ -66,7 +67,7 @@
     \coordinate (tp) at ($(tp)+(0.5,0)$);
     \draw[green] (tp) -- ++(0,-0.25);
     \draw[green] (tp) -- ++(0,0.5);
-    \draw (tp) -- ++(-0.5,0);
+    % \draw (tp) -- ++(-0.5,0);
     \begin{scope}[rotate=-90,shift=(tp)]
         \tTens{green}{0.25}{0.2}{(0,0)}
     \end{scope}

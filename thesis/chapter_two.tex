@@ -8,9 +8,9 @@
 \label{sec:matrix_product_states}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\todo{Intro to be rewritten entirely}
-The analytical treatment as presented in the previous chapter relies on a heavy line of approximations (which are sometimes very hard to justify on a rigorous level).
-One of the most crucial consequences is that quantitative deviations occur if the interactions are comparable to the kinetic bandwidth.
+\todo{Rewrite intro eventually and connect to part 2}
+The analytical treatment presented in the previous chapter relies on a heavy line of approximations (which are sometimes very hard to justify on a rigorous level).
+One of the most crucial consequence of these simplifications is that quantitative deviations occur if the interactions are comparable to the kinetic bandwidth.
 This restricts heavily the validity region of the low-energy effective field theory of a particular model.
 To make an example, a sine-Gordon term with $\beta=4$ is encountered in the effective low-energy field theory of the spin-$1/2$ XXZ chain and the interaction will be relevant in the RG sense for $K<1/2$.
 However, such a small Luttinger parameter requires very strong nearest neighbor interactions in real systems that are compatible with the system's bandwidth, which thus implicitly breaks the assumptions to derive the effective low-energy field theory itself.
@@ -180,37 +180,37 @@ and the collection of all $\ket{i_1,i_2,\dots,i_L}$ form a complete and orthonor
 Note that the $L$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $L$ and the dimension of the quantum numbers $i_j$.
 By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}
 \begin{align}
-    C(i_1,i_2,\dots,i_L) \rightarrow C^{i_1,i_2,\dots,i_L} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
+    C(i_1,i_2,\dots,i_L) \rightarrow C^{[i_1,i_2,\dots,i_L]} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
 \end{align}
-To account for the fact that the indices $\bm i$ are not fixed to specific values, I will from now on denote the dependence of the tensor $C$ on the quantum numbers with square brackets, i.e $C^{[i_1,i_2,\dots,i_L]}$.
+To account for the fact that the indices ${\bm i} = i_1,i_2,\dots,i_L$ are not fixed to specific values here, I will from now on denote the dependence of the tensor $C$ on the set of quantum numbers with square brackets.
 I now proceed by applying the generalized SVD in a sequential manner:
-Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single $\Lambda$ matrix in between two arbitrary leg positions $\ell,\ell+1$.
-The necessary decomposition sequence is most easily reformulated in graphical notation
+Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single matrix in between two arbitrary leg positions $\ell,\ell+1$.
+The decomposition sequence is easily reformulated in graphical notation
 \begin{align}
-    C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}
+    C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf},
     =
-    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_1.pdf}
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_1.pdf},
     \\
     =
-    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_2.pdf}
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_2.pdf},
     \\
     =
-    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_3.pdf}
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_3.pdf},
     \\
-    =\includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+    =\includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf},
     \label{eq:move_the_lambda_matrix}
 \end{align}
 in which at each step the three gray tensors are contracted before performing the next SVD.
 This particular decomposition of a generic quantum state, i.e.
 \begin{align}
-    C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf}
+    C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf},
     \label{eq:mixed_canonical_form}
 \end{align}
 is called the (mixed) canonical form of an MPS.
 In other words, it represents the Schmidt decomposition of the state $\ket{\psi}$ in the subspaces $\HS_{A(\ell)}$ and $\HS_{B(\ell)}$ spanned by the first $\ell$ and last $L-\ell$ quantum numbers i.e.
 \begin{align}
     \ket\psi = \sum_{\bm i} C^{[\bm i]}\ket{\bm i} = \sum_{k}s_{k}(\ell)\ket{\psi_{A(\ell),k}}
-    \ket{\psi_{B(\ell),k}}
+    \ket{\psi_{B(\ell),k}},
     \label{eq:schmidt_decomposition}
 \end{align}
 in which the transformed states $\ket{\psi_{A/B,k}}$ are given by the SVD-decomposed coefficient tensor
@@ -456,7 +456,7 @@ Note that the Hamiltonian can be recast into a product of bulk $\ell\neq1,L$ ope
         0 & 0 & \hat{\mathbb 1}_\ell\\
     \end{pmatrix}
 \end{align}
-representing a set of local operators acting locally on a single site.
+representing a set of local operators acting locally on a single site $\ell$.
 The multiplication of the $\hat W_\ell$ matrix operators does not yield the desired result immediately, which is readily solved by a slight modification of the boundary operators
 \begin{align}
     \hat W_1 =
@@ -487,17 +487,10 @@ The multiplication of the $\hat W_\ell$ matrix operators does not yield the desi
         \hat Z_L\\
         \hat X_L\\
         \hat{\mathbb 1}_L\\
-    \end{pmatrix}
+    \end{pmatrix},
     \label{eq:boundary_W}
 \end{align}
-such that the global Hamiltonian is given by the product
-% \begin{align}
-%     \hat X_i\hat X_{i+1} + \hat Z_i + \hat Z_{i+1} = \hat W_l \hat W_i \hat W_{i+1} \hat W_r
-% \end{align}
-% and as such
-\begin{align}
-    \hat H = \prod_{\ell=1}^{L}\hat W_{\ell}.
-\end{align}
+such that the global Hamiltonian is given by the product $\hat H = \prod_{\ell=1}^{L}\hat W_{\ell}$.
 Since $\hat W_\ell$ contains a set of local operators which each have an MPO representation, the action of the Hamiltonian on a state $\ket\psi$ can be understood as a product of rank-$4$ tensors $W^{[i_\ell',i_\ell]}$ containing the matrix elements of $\hat W_{\ell}$.
 In particular, one obtains the following tensorial representation, acting on a single site $\ell\neq1,L$ of the bulk
 \begin{align}
@@ -509,7 +502,7 @@ In particular, one obtains the following tensorial representation, acting on a s
     \end{pmatrix}
     .
 \end{align}
-It is straightforward to introduce two additional rank-$3$ boundary tensors, in equivalence to \cref{eq:boundary_W}
+It is straightforward to introduce two additional boundary tensors, in equivalence to \cref{eq:boundary_W}
 \begin{align}
     W^{[i_1',i_1]} =
     \begin{pmatrix}
@@ -523,7 +516,7 @@ It is straightforward to introduce two additional rank-$3$ boundary tensors, in 
          \delta_{i_L',i_L}
     \end{pmatrix}.
 \end{align}
-The MPO representation $W$ of the Hamiltonian $\hat H$ is versatile -- any Hamiltonian can be recast into a set of matrix product operators that are upper triangular, even if the interactions are long-ranged or spacially dependent, e.g. in the case of disorder.
+The MPO representation $W$ of the Hamiltonian $\hat H$ is quite versatile -- any Hamiltonian can be recast into a set of matrix product operators that are upper triangular (or lower triangular), even if the interactions are long-ranged or spatially dependent, e.g. in the case of disorder.
 Note that the MPO form is not limited to spin systems due to the famous Jordan-Wigner transformation.
 It is defined in terms of the ladder operators with matrix representations $\hat\sigma^\pm = \frac12(\hat X\pm\ri \hat Y)$, i.e.
 \begin{align}
@@ -579,11 +572,11 @@ Diagrammatically, the two conditions exactly correspond to the two graphical con
 \begin{align}
     \includegraphics[valign=c]{figures/left_isometry_tensor.pdf}
     =
-    \includegraphics[valign=c]{figures/identity_tensor_left.pdf},
+    \includegraphics[valign=c]{figures/identity_tensor_left.pdf}\,,
     \quad
     \includegraphics[valign=c]{figures/right_isometry_tensor.pdf}
     =
-    \includegraphics[valign=c]{figures/identity_tensor_right.pdf}.
+    \includegraphics[valign=c]{figures/identity_tensor_right.pdf}\,.
     \label{eq:isometry_tensors_diagram}
 \end{align}
 To cast \cref{eq:lagrangian_multiplier} into a variational problem for the tensors at position $\ell$ and $\ell+1$, it is convenient to use the graphical notation
@@ -613,7 +606,7 @@ One arrives at the tensorial expression
 \end{align}
 This can be better understood after reshaping $U^{[i_\ell]}\Lambda(\ell) V^{\dag[i_{\ell+1}]}$ (the red, black and blue tensors in \cref{eq:lagrangian_multiplier_graphical_2}) to a vector ${\bm A}_C^{[i_\ell,i_{\ell+1}]}=f\circ U^{[i_\ell]}\Lambda V^{\dag[i_{\ell+1}]}$ of dimension $m^2D^2$, in which $f$ denotes the reshaping.
 The contracted network of grey tensors should then be reshaped to a matrix $\bm H_{\rm eff.}^{[i_\ell',i_{\ell+1}',i_\ell,i_{\ell+1}]}$ of dimension $m^2D^2\times m^2D^2$.
-The applied gradient then simply corresponds to $\nabla_{\bm A_C}$ and the tensorial expression in \cref{eq:lagrangian_multiplier_graphical_2} reduces to
+The earlier applied gradient then simply corresponds to $\nabla_{\bm A_C}$ and the tensorial expression in \cref{eq:lagrangian_multiplier_graphical_2} reduces to
 \begin{align}
     \bm H_{\rm eff.}^{[i_\ell',i_{\ell+1}',i_\ell,i_{\ell+1}]}{\bm A}_C^{[i_\ell,i_{\ell+1}]} = \lambda_\psi {\bm A}_C^{[i_\ell',i_{\ell+1}']}.
     \label{eq:MPS_optimization}
