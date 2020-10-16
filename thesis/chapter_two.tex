@@ -228,7 +228,7 @@ in which the transformed states $\ket{\psi_{A/B,k}}$ are given by the SVD-decomp
     \label{eq:bipartition_orthonormal_basis}
 \end{align}
 In the two expressions above, I conveniently use the sum convention.
-Additionally, from now on I use the convention that an object $T^{[i_1,\dots,i_n]}$ is a rank-$(n+2)$ tensor with two auxiliary (horizontal) links which depends on the collection of some physical quantum numbers $\bm i$.
+Additionally, from now on I use the convention that an object $T^{[i_1,\dots,i_n]}$ is a tensor which depends on the collection of physical quantum numbers $\bm i$.
 Note that the position of the central matrix in \cref{eq:mixed_canonical_form} is not fixed to the center of the chain.
 It can be moved arbitrarily to the right (left) by a sequence of singular value decompositions
 \begin{align}
@@ -236,13 +236,13 @@ It can be moved arbitrarily to the right (left) by a sequence of singular value 
     \equiv
     \includegraphics[valign=c]{figures/fMPS_3_1.pdf}
     =
-    \includegraphics[valign=c]{figures/growing_5.pdf},
+    \includegraphics[valign=c]{figures/fMPS_3_2.pdf},
     \\
     U^{[i_{\ell-1}]}U^{[i_{\ell}]}\Lambda(\ell) &= \tilde U^{[i_{\ell-1}]}\Lambda(\ell-1) \tilde V^{\dag[i_{\ell}]}
     \equiv
     \includegraphics[valign=c]{figures/fMPS_4_1.pdf}
     =
-    \includegraphics[valign=c]{figures/growing_5.pdf}.
+    \includegraphics[valign=c]{figures/fMPS_4_2.pdf}.
 \end{align}
 Due to its fundamental importance for the remaining section, I will from now on use the notation
 \begin{align}
@@ -510,8 +510,21 @@ In particular, one obtains the following tensorial representation, acting on a s
     \end{pmatrix}
     .
 \end{align}
-It is straightforward to introduce two additional rank-$3$ boundary tensors, in equivalence to \cref{eq:boundary_W}.
-The MPO representation $W$ of the Hamiltonian $\hat H$ is very versatile -- any Hamiltonian can be recast into a set of matrix product operators that are upper triangular, even if the interactions are long-ranged or spacially dependent, e.g. in the case of disorder.
+It is straightforward to introduce two additional rank-$3$ boundary tensors, in equivalence to \cref{eq:boundary_W}
+\begin{align}
+    W^{[i_1',i_1]} =
+    \begin{pmatrix}
+        \delta_{i_1',i_1} & X_{i_1',i_1} & Z_{i_1',i_1}
+    \end{pmatrix}
+    ,\quad
+    W^{[i_L',i_L]} =
+    \begin{pmatrix}
+         Z_{i_L',i_L} \\
+         X_{i_L',i_L} \\
+         \delta_{i_L',i_L}
+    \end{pmatrix}.
+\end{align}
+The MPO representation $W$ of the Hamiltonian $\hat H$ is versatile -- any Hamiltonian can be recast into a set of matrix product operators that are upper triangular, even if the interactions are long-ranged or spacially dependent, e.g. in the case of disorder.
 Note that the MPO form is not limited to spin systems due to the famous Jordan-Wigner transformation.
 It is defined in terms of the ladder operators with matrix representations $\hat\sigma^\pm = \frac12(\hat X\pm\ri \hat Y)$, i.e.
 \begin{align}
@@ -696,9 +709,9 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
 \begin{enumerate}
     \item Set $n=1$. Start with a trial MPS in the canonical form (e.g. acquired by the growing algorithm) and transform the MPS such that the $\Lambda$ matrix is between sites $1$ and $2$, i.e.
     \begin{align}
-        C^{i_1,i_2,i_3,\dots,i_{L-1},i_L} \equiv \includegraphics[valign=c]{figures/fMPS_1.pdf}.
+        \includegraphics[valign=c]{figures/fMPS_1.pdf}.
     \end{align}
-    \item Compute the new lowest energy vector $\bm A_C$ according to \cref{eq:MPS_optimization}\footnote{Note that at the system's boundaries, ${\bm A}_C$ is effectively a rank-$3$ tensors and one of the isometries will be of rank-$2$.} and decompose it to two isometries and a matrix $\Lambda$ containing the singular values
+    \item Compute the new lowest energy vector $\bm A_C$ according to \cref{eq:MPS_optimization}\footnote{At the system's boundaries, ${\bm A}_C$ is effectively a rank-$3$ tensors and one of the isometries will be of rank-$2$.} and decompose it to two isometries and a matrix $\Lambda$ containing the singular values
     \begin{align}
         f^{-1}\circ \bm A_C^{[i_{n},i_{n+1}]} &= U^{[i_n]}\Lambda(n) V^{\dag[i_{n+1}]}\\
         \includegraphics[valign=c]{figures/growing_4_4.pdf}
@@ -710,33 +723,31 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
     Proceed then with step $3$ (sweeping from left to the right) or step $4$ (sweeping from right to the left).
     \item If $n=L-1$ continue with step 4. Shift the matrix $\Lambda(n)$ to the next site by the decomposition
     \begin{align}
-        \Lambda(n) V^{\dag[i_{n+1}]} V^{\dag[i_{n+2}]} &= U^{[i_{n+1}]}\Lambda(n+1)\tilde V^{\dag[i_{n+2}]}
+        \Lambda(n) V^{\dag[i_{n+1}]} V^{\dag[i_{n+2}]} &= U^{[i_{n+1}]}\Lambda(n+1) \tilde V^\dag V^{\dag[i_{n+2}]}
         \\
         \includegraphics[valign=c]{figures/fMPS_3_1.pdf}
         &=
-        \includegraphics[valign=c]{figures/growing_5.pdf}
+        \includegraphics[valign=c]{figures/fMPS_3_2.pdf}
         .
     \end{align}
-    Increase $n\rightarrow n+1$ and go back to step 2.
-    This is called sweeping from left to right.
+    Absorb $\tilde V^\dag$ in $V^{\dag[i_{n+2}]}$, then increase $n\rightarrow n+1$ and go back to step 2.
+    This concludes a single sweeping step from left to right.
     \item If $n=1$ continue with step 3. Shift the matrix $\Lambda(n)$ to the previous site by the decomposition
     \begin{align}
-        U^{[i_{n-1}]}U^{[i_n]}\Lambda(n) &= \tilde U^{[i_{n-1}]}\Lambda(n-1) V^{\dag[i_n]}
+        U^{[i_{n-1}]}U^{[i_n]}\Lambda(n) &= U^{[i_{n-1}]}\tilde U\Lambda(n-1) V^{\dag[i_n]}
         \\
         \includegraphics[valign=c]{figures/fMPS_4_1.pdf}
         &=
-        \includegraphics[valign=c]{figures/growing_5.pdf}
+        \includegraphics[valign=c]{figures/fMPS_4_2.pdf}
         .
     \end{align}
-    Decrease $n\rightarrow n-1$ and go back to step 2.
-    This is called sweeping from right to the left.
+    Absorb $\tilde U$ in $U^{[i_{n-1}]}$, then decrease $n\rightarrow n-1$ and go back to step 2.
+    This concludes a single sweeping step from right to left.
 \end{enumerate}
 The finite MPS optimization is usually performed in so-called ``sweeps'', i.e. a full sweeping cycle from left to right is done for each site $n=1,2,\dots,L-1$, after which a full sweeping cycle from right to left $n=L-1,L-2,\dots,1$ is applied.
 Iteratively optimizing the local tensors leads to a variational trajectory in the family of MPS with bond dimension $m$.
 \\
 
-As usual, the precise representatives of global extrema in optimization schemes remain unknown and its always possible to be trapped inside of local minima.
-In such cases, viable estimates of the error are needed.
 The error to an exact eigenstate of the Hamiltonian can be estimated in a straightforward manner by computing the variance of the approximation.
 For cases in which the MPS is equivalent to an eigenstate of the full Hamiltonian, the variance will reduce to $0$. In general, however, the approximation is not a true eigenstate of the Hamiltonian and as such we arrive at
 \begin{align}
@@ -768,7 +779,7 @@ In addition, TDVP of a trial MPS in imaginary time is known to be identical to t
 Before I introduce the algorithm, we need a couple of prerequisites.
 First, the MPS will be written in the mixed canonical gauge with a tensor $A_C$ (matrix $C$) which is not an isometry, i.e.
 \begin{align}
-    C^{i_1,i_2,\dots,i_\ell,\dots,i_L} &= \brlr{\prod_{k=1}^{\ell-1} U^{[i_k]}} A_C^{[i_\ell]} \brlr{\prod_{k=\ell+1}^{L} V^{\dag[i_k]}}
+    C^{[i_1,i_2,\dots,i_\ell,\dots,i_L]} &= \brlr{\prod_{k=1}^{\ell-1} U^{[i_k]}} A_C^{[i_\ell]} \brlr{\prod_{k=\ell+1}^{L} V^{\dag[i_k]}}
     \equiv
     &\includegraphics[valign=c]{figures/center_site_gauge.pdf},
     \\
@@ -814,23 +825,24 @@ In the gauge chosen for $\ket\psi$, the action of the tangent space projector on
 \end{align}
 where the tensors at site $\ell$ are highlighted in green.
 Note that the two terms correspond to a projection onto the reduced density matrices of the isometric bipartition spanned by the central tensor and matrix, respectively.
-The first term corresponds to all MPS which differ at most by one tensor from $\ket\psi$ and the second removes all of those which are identical to $\ket\psi$.
+The first term corresponds to the projection onto all MPS which differ at most by a local tensor from $\ket\psi$ and the second removes all of those which are identical to $\ket\psi$.
 Therefore, it is trivial to see that $\braket{\psi|\hat P_{T\ket\psi}|\psi}=0$.
 Time evolution can now be understood as an orthogonal projection of the evolved state onto the tangent space of the corresponding MPS manifold~\cite{Haegeman2011}
 \begin{align}
     \frac{\rd\ket\psi}{\rd t} = -\ri \hat P_{T\ket\psi}\hat H\ket\psi.
     \label{eq:MPS_time_evolution}
 \end{align}
-By writing the action of $\hat P_{T\ket\psi}$ onto $\hat H\ket\psi$ explicitly, it is clear that the right hand side of \cref{eq:MPS_time_evolution} reduces to a sum of single-site contributions.
+By writing the action of $\hat P_{T\ket\psi}$ onto $\hat H\ket\psi$ explicitly, it is clear that the right-hand-side of \cref{eq:MPS_time_evolution} reduces to a sum of single-site contributions.
 The authors of~\cite{Haegeman2016} demonstrated that the full integration of the problem can be approximated with a decoupled set of differential equations for the individual single-site contributions, which can be integrated exactly.
-In particular, they derive the differential equations of the single-site terms through two assumptions.
-(i) The state $\ket\psi$ is encoded by an MPS $\ket\psi_{A_C^{[i_\ell]}}$ (or $\ket\psi_{C(\ell)}$) in which the time-dependence is captured locally in $A_C$ (or $C$).
-(ii) By inspection
+The derivation relies on the assumption that the state $\ket\psi$ is encoded by an MPS in which the time-dependence is captured in $A_C^{[i_\ell]}$ (or $C(\ell)$).
+One can thus identify a set of $2L-1$ independent differential equations
 \begin{align}
-    \frac{\rd\ket\psi_{A_C^{[i_\ell]}}}{\rd t} = -\ri \hat P_{A(\ell-1)}\hat {\mathbb1}_\ell \hat P_{B(\ell+1)}\ket\psi_{A_C^{[i_\ell]}},
-    \frac{\rd\ket\psi_{C(\ell)}}{\rd t} = -\ri \hat P_{A(\ell)} \hat P_{B(\ell+1)}\ket\psi_{C(\ell)}.
+    \frac{\rd\ket\psi}{\rd t} = -\ri \hat P_{A(\ell-1)}\hat {\mathbb1}_\ell \hat P_{B(\ell+1)}\hat H\ket\psi
+    ,\quad
+    \frac{\rd\ket\psi}{\rd t} = -\ri \hat P_{A(\ell)} \hat P_{B(\ell+1)}\hat H\ket\psi
+    .
 \end{align}
-In particular, they assume that for each partition $\ell$, the time-dependence is captured by $A_C^{[i_\ell]}(t)$ or $C(\ell,t)$ and trace out the stationary isometries, resulting in a set of differential equations
+By tracing out the stationary isometries, one obtains the differential equations for the tensors
 \begin{align}
     {\dot A}_C^{[i_\ell']} = +\ri H_{\rm eff.}^{[i_\ell',i_\ell]} A_C^{[i_\ell]},
     \quad
@@ -840,29 +852,43 @@ In particular, they assume that for each partition $\ell$, the time-dependence i
 The tensors $H_{\rm eff.}$ and $K_{\rm eff.}$ are given through the contractions
 \begin{align}
     H_{\rm eff.}^{[i_\ell',i_\ell]}
-    \equiv
+    &\equiv
+    \includegraphics[valign=c]{figures/Heff_1.pdf}\
+    ,
     \\
     K_{\rm eff.}(\ell)
-    \equiv
+    &\equiv
+    \includegraphics[valign=c]{figures/Keff_1.pdf}\
     ,
 \end{align}
 for which the site $\ell$ is again highlighted in green.
-The integration is then performed explicitly for the vectorial/matrix expressions of \cref{eq:MPS_time_evolution_center} (denoted by bold symbols), and one arrives at
+The integration is then performed explicitly for the vector/matrix expressions of \cref{eq:MPS_time_evolution_center} (denoted by bold symbols), and one arrives at
 \begin{align}
-    {\bm A}_C^{[i_\ell']}(t) = \re^{-\ri {\bm H}_{\rm eff.}^{i_\ell',i_\ell}} {\bm A}_C^{[i_\ell]}(t=0),
-    \quad
-    {{\bm C}}(\ell,t) = \re^{+\ri {\bm K}_{\rm eff.}(\ell)} {\bm C}(\ell,t=0).
+    {\bm A}_C^{[i_\ell']}(t) &= \re^{-\ri t{\bm H}_{\rm eff.}^{i_\ell',i_\ell}} {\bm A}_C^{[i_\ell]}(t=0),
+    \label{eq:TDVP_integration_AC}
+    \\
+    {{\bm C}}(\ell,t) &= \re^{+\ri t{\bm K}_{\rm eff.}(\ell)} {\bm C}(\ell,t=0).
+    \label{eq:TDVP_integration_C}
 \end{align}
-It is to be noted that for each local integration of $A_C$, the corresponding matrix $C$ is evolved backwards in time.
+Note that for each local integration of $A_C$, the corresponding matrix $C$ is evolved backwards in time.
+Exponentials of matrices are readily computed with the Lanczos method, which is part of the ARPACK package~\cite{Lehoucq1998}.
 \\
 
 The full TDVP algorithm is then depicted as follows:
 \begin{enumerate}
-    \item Set $n=1$. Start with an MPS in the right-canonical form, i.e.
+    \item Set $n=1$ and choose a small integration timestep $\Delta t/2$. Start with an MPS in the right-canonical form, i.e.
     \begin{align}
-        C^{[i_1,i_2,\dots,i_L]}\equiv
+        C^{[i_1,i_2,i_3,\dots,i_{L-1},i_L]}= A_C^{[i_1]}\brlr{\prod_{k=2}^LV^{\dag[i_k]}}\equiv\includegraphics[valign=c]{figures/right_canonical_gauge.pdf}.
     \end{align}
+    \item Evolve $A_C^{[i_n]}$ according to \cref{eq:TDVP_integration_AC} and factorize it to $A_C^{[i_n]} = U^{[i_n]}C(n)$.
+    Backevolve $C(n)$ according to \cref{eq:TDVP_integration_C}, then continue with step 3. (sweeping from left to right) or 4. (sweeping from right to left).
+    \item If $n=L$, continue with 4. Absorb the matrix $C(n)$ into the next tensor to create $A_C^{i_{n+1}}=C(n)V^{\dag[i_{n+1}]}$. Increase $n\rightarrow n+1$ and continue with 1.
+    \item If $n=1$, continue with 3. Absorb the matrix $C(n)$ into the previous tensor to create $A_C^{i_{n-1}}=U^{[i_{n-1}]}C(n)$. Decrease $n\rightarrow n-1$ and continue with 1.
 \end{enumerate}
+Similarly to finite MPS, TDVP is performed in completed sequences of full sweeping cycles $n=1,2,\dots,L$ and then $n=L,L-1,\dots,1$.
+After one sweeping from left to right cycle ($n=1,2,\dots,L$), the MPS is integrated from time $t$ to $t+\Delta t/2$ with a local integration error of $\mathcal O(\Delta t^2)$.
+Completing the left to right sequence ($n=L,L-1,\dots,1$) then constitutes to composing the integration with its adjoint, resulting in a second-order symmetric method~\cite{Haegeman2016}.
+A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after a full sweeping cycle, and the error of the integration is more favorable $\mathcal O(\Delta t^3)$.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

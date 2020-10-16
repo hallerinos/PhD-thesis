@@ -72,7 +72,7 @@ options:
   $PATH: /Library/TeX/texbin
 files:
   dicy-instance.yaml-ParsedYAML:
-    timeStamp: 2020-10-13T16:44:02.358Z
+    timeStamp: 2020-10-15T15:08:35.484Z
     jobNames: []
     value:
       severity: info
@@ -132,20 +132,20 @@ files:
       $PATH: /Library/TeX/texbin
     type: ParsedYAML
   thesis.tex:
-    timeStamp: 2020-10-11T12:25:16.500Z
+    timeStamp: 2020-10-15T14:18:08.497Z
     jobNames: []
-    hash: FG8UsZGbvNgQEVR4oCl3m/NWr81dWSvRn4p3XH3AAkk=
+    hash: x1XdomT9qwJq6m7JW5uFlj+YFm4pxe9YG0k6ltiI4ic=
     type: LaTeX
     subType: svmono
   /Users/ahaller/Library/Application Support/dicy/config.yaml:
-    timeStamp: 2020-10-13T16:44:02.370Z
+    timeStamp: 2020-10-15T15:08:09.969Z
     jobNames: []
     type: YAML
   x.y-Nil:
     jobNames: []
     type: Nil
   thesis.fls-ParsedFileListing:
-    timeStamp: 2020-10-13T16:44:48.152Z
+    timeStamp: 2020-10-15T16:16:11.896Z
     jobNames: []
     value:
       messages: []
@@ -501,6 +501,8 @@ files:
         - figures/BKT_RG_flow2.png
         - figures/BKT_RG_flow3.png
         - figures/ComplexContraction1.pdf
+        - figures/Heff_1.pdf
+        - figures/Keff_1.pdf
         - figures/MatrixMultiplication.pdf
         - figures/MatrixTrace.pdf
         - figures/SVD_compressed.png
@@ -513,10 +515,16 @@ files:
         - figures/arbitrary_wavefunction_partially_decomposed_3.pdf
         - figures/beach_singular_values.png
         - figures/bigsvd.pdf
+        - figures/center_site_gauge.pdf
+        - figures/center_site_gauge_2.pdf
         - figures/connected_fock_space_bosons.pdf
         - figures/connected_fock_space_fermions.pdf
         - figures/cutoff_function.png
         - figures/fMPS_1.pdf
+        - figures/fMPS_3_1.pdf
+        - figures/fMPS_3_2.pdf
+        - figures/fMPS_4_1.pdf
+        - figures/fMPS_4_2.pdf
         - figures/g1.pdf
         - figures/g13.pdf
         - figures/g2.pdf
@@ -528,6 +536,8 @@ files:
         - figures/growing_4_3.pdf
         - figures/growing_4_4.pdf
         - figures/growing_5.pdf
+        - figures/identity_tensor_left.pdf
+        - figures/identity_tensor_right.pdf
         - figures/kronig_penney_dispersion_1.png
         - figures/kronig_penney_dispersion_2.png
         - figures/kronig_penney_potential.png
@@ -538,19 +548,24 @@ files:
         - figures/lagrangian_multiplier_equation_4.pdf
         - figures/left_identity.pdf
         - figures/left_isometry.pdf
+        - figures/left_isometry_tensor.pdf
         - figures/matrix.pdf
         - figures/rankntensor.pdf
         - figures/rankntensor_decomposed.pdf
         - figures/reshaping.pdf
         - figures/rg_correlations.png
         - figures/rg_correlations_log.png
+        - figures/right_canonical_gauge.pdf
         - figures/right_identity.pdf
         - figures/right_isometry.pdf
+        - figures/right_isometry_tensor.pdf
         - figures/svd.pdf
         - figures/svd_mmat.pdf
         - figures/svd_smat.pdf
         - figures/svd_umat.pdf
         - figures/svd_vmat.pdf
+        - figures/tangent_space_projection_1.pdf
+        - figures/tangent_space_projection_2.pdf
         - figures/tensor_picture.pdf
         - figures/two_site_problem_1.pdf
         - figures/two_site_problem_2.pdf
@@ -565,8 +580,6 @@ files:
         - introduction.tex
         - part_general.aux
         - part_general.tex
-        - part_results.aux
-        - part_results.tex
         - svmono.cls
         - thesis.aux
         - thesis.bbl
@@ -580,7 +593,6 @@ files:
         - dedication.aux
         - introduction.aux
         - part_general.aux
-        - part_results.aux
         - thesis.aux
         - thesis.idx
         - thesis.log
@@ -591,7 +603,7 @@ files:
       calls: []
     type: ParsedFileListing
   thesis.log-ParsedLaTeXLog:
-    timeStamp: 2020-10-13T16:52:20.988Z
+    timeStamp: 2020-10-15T16:40:34.328Z
     jobNames: []
     value:
       messages:
@@ -3495,8 +3507,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 37
-              end: 37
+              start: 38
+              end: 38
           log:
             file: thesis.log
             range:
@@ -3511,8 +3523,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 37
-              end: 37
+              start: 38
+              end: 38
           log:
             file: thesis.log
             range:
@@ -3527,13 +3539,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 43
-              end: 43
+              start: 44
+              end: 44
           log:
             file: thesis.log
             range:
-              start: 1694
-              end: 1695
+              start: 1693
+              end: 1694
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3543,13 +3555,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 43
-              end: 43
+              start: 44
+              end: 44
           log:
             file: thesis.log
             range:
-              start: 1698
-              end: 1699
+              start: 1697
+              end: 1698
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3559,13 +3571,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 49
-              end: 49
+              start: 50
+              end: 50
           log:
             file: thesis.log
             range:
-              start: 1703
-              end: 1705
+              start: 1702
+              end: 1704
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3575,13 +3587,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 67
-              end: 67
+              start: 68
+              end: 68
           log:
             file: thesis.log
             range:
-              start: 1709
-              end: 1710
+              start: 1708
+              end: 1709
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3591,13 +3603,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 67
-              end: 67
+              start: 68
+              end: 68
           log:
             file: thesis.log
             range:
-              start: 1714
-              end: 1715
+              start: 1713
+              end: 1714
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3607,13 +3619,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 67
-              end: 67
+              start: 68
+              end: 68
           log:
             file: thesis.log
             range:
-              start: 1719
-              end: 1720
+              start: 1718
+              end: 1719
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3623,13 +3635,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 67
-              end: 67
+              start: 68
+              end: 68
           log:
             file: thesis.log
             range:
-              start: 1724
-              end: 1725
+              start: 1723
+              end: 1724
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3639,13 +3651,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 67
-              end: 67
+              start: 68
+              end: 68
           log:
             file: thesis.log
             range:
-              start: 1728
-              end: 1729
+              start: 1727
+              end: 1728
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3655,13 +3667,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 67
-              end: 67
+              start: 68
+              end: 68
           log:
             file: thesis.log
             range:
-              start: 1732
-              end: 1733
+              start: 1731
+              end: 1732
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3671,13 +3683,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 67
-              end: 67
+              start: 68
+              end: 68
           log:
             file: thesis.log
             range:
-              start: 1736
-              end: 1737
+              start: 1735
+              end: 1736
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3687,13 +3699,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 67
-              end: 67
+              start: 68
+              end: 68
           log:
             file: thesis.log
             range:
-              start: 1740
-              end: 1741
+              start: 1739
+              end: 1740
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3701,22 +3713,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 74
-              end: 74
-          log:
-            file: thesis.log
-            range:
-              start: 1745
-              end: 1746
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: 'figures/svd.pdf used Requested size: 62.99619pt x 11.38048pt.'
-          source:
-            file: chapter_two.tex
-            range:
-              start: 74
-              end: 74
+              start: 75
+              end: 75
           log:
             file: thesis.log
             range:
@@ -3725,17 +3723,31 @@ files:
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
+          text: 'figures/svd.pdf used Requested size: 62.99619pt x 11.38048pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 75
+              end: 75
+          log:
+            file: thesis.log
+            range:
+              start: 1755
+              end: 1756
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
           text: 'figures/matrix.pdf used Requested size: 23.16145pt x 11.38048pt.'
           source:
             file: chapter_two.tex
             range:
-              start: 74
-              end: 74
+              start: 75
+              end: 75
           log:
             file: thesis.log
             range:
-              start: 1754
-              end: 1755
+              start: 1759
+              end: 1760
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3743,13 +3755,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 74
-              end: 74
+              start: 75
+              end: 75
           log:
             file: thesis.log
             range:
-              start: 1758
-              end: 1759
+              start: 1763
+              end: 1764
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -3759,8 +3771,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 116
-              end: 116
+              start: 117
+              end: 117
           log:
             file: thesis.log
             range:
@@ -3773,8 +3785,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 116
-              end: 116
+              start: 117
+              end: 117
           log:
             file: thesis.log
             range:
@@ -3787,8 +3799,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 116
-              end: 116
+              start: 117
+              end: 117
           log:
             file: thesis.log
             range:
@@ -3803,8 +3815,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 116
-              end: 116
+              start: 117
+              end: 117
           log:
             file: thesis.log
             range:
@@ -3819,8 +3831,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 116
-              end: 116
+              start: 117
+              end: 117
           log:
             file: thesis.log
             range:
@@ -3833,8 +3845,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 116
-              end: 116
+              start: 117
+              end: 117
           log:
             file: thesis.log
             range:
@@ -3847,8 +3859,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 116
-              end: 116
+              start: 117
+              end: 117
           log:
             file: thesis.log
             range:
@@ -3863,8 +3875,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 116
-              end: 116
+              start: 117
+              end: 117
           log:
             file: thesis.log
             range:
@@ -3879,8 +3891,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 125
-              end: 125
+              start: 126
+              end: 126
           log:
             file: thesis.log
             range:
@@ -3895,8 +3907,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 125
-              end: 125
+              start: 126
+              end: 126
           log:
             file: thesis.log
             range:
@@ -3911,8 +3923,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 136
-              end: 136
+              start: 137
+              end: 137
           log:
             file: thesis.log
             range:
@@ -3927,8 +3939,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 138
-              end: 138
+              start: 139
+              end: 139
           log:
             file: thesis.log
             range:
@@ -3943,8 +3955,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 140
-              end: 140
+              start: 141
+              end: 141
           log:
             file: thesis.log
             range:
@@ -3957,8 +3969,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 159
-              end: 159
+              start: 160
+              end: 160
           log:
             file: thesis.log
             range:
@@ -3971,8 +3983,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 159
-              end: 159
+              start: 160
+              end: 160
           log:
             file: thesis.log
             range:
@@ -3985,8 +3997,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 159
-              end: 159
+              start: 160
+              end: 160
           log:
             file: thesis.log
             range:
@@ -3999,8 +4011,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 159
-              end: 159
+              start: 160
+              end: 160
           log:
             file: thesis.log
             range:
@@ -4013,8 +4025,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 159
-              end: 159
+              start: 160
+              end: 160
           log:
             file: thesis.log
             range:
@@ -4027,8 +4039,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 159
-              end: 159
+              start: 160
+              end: 160
           log:
             file: thesis.log
             range:
@@ -4041,8 +4053,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 159
-              end: 159
+              start: 160
+              end: 160
           log:
             file: thesis.log
             range:
@@ -4055,8 +4067,8 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 159
-              end: 159
+              start: 160
+              end: 160
           log:
             file: thesis.log
             range:
@@ -4071,13 +4083,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 182
-              end: 182
+              start: 183
+              end: 183
           log:
             file: thesis.log
             range:
-              start: 1894
-              end: 1896
+              start: 1893
+              end: 1895
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4087,13 +4099,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 182
-              end: 182
+              start: 183
+              end: 183
           log:
             file: thesis.log
             range:
-              start: 1899
-              end: 1901
+              start: 1898
+              end: 1900
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4103,13 +4115,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 199
-              end: 199
+              start: 202
+              end: 202
           log:
             file: thesis.log
             range:
-              start: 1904
-              end: 1906
+              start: 1903
+              end: 1905
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4121,8 +4133,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 1913
-              end: 1915
+              start: 1912
+              end: 1914
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4134,8 +4146,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 1922
-              end: 1924
+              start: 1921
+              end: 1923
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4147,8 +4159,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 1931
-              end: 1933
+              start: 1930
+              end: 1932
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4158,13 +4170,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 199
-              end: 199
+              start: 202
+              end: 202
           log:
             file: thesis.log
             range:
-              start: 1939
-              end: 1941
+              start: 1938
+              end: 1940
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4174,13 +4186,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 199
-              end: 199
+              start: 202
+              end: 202
           log:
             file: thesis.log
             range:
-              start: 1944
-              end: 1946
+              start: 1943
+              end: 1945
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4192,8 +4204,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 1950
-              end: 1952
+              start: 1949
+              end: 1951
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4205,8 +4217,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 1956
-              end: 1958
+              start: 1955
+              end: 1957
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4218,8 +4230,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 1962
-              end: 1964
+              start: 1961
+              end: 1963
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4229,13 +4241,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 199
-              end: 199
+              start: 202
+              end: 202
           log:
             file: thesis.log
             range:
-              start: 1967
-              end: 1969
+              start: 1966
+              end: 1968
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4245,13 +4257,13 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 204
-              end: 204
+              start: 208
+              end: 208
           log:
             file: thesis.log
             range:
-              start: 1972
-              end: 1974
+              start: 1971
+              end: 1973
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4261,26 +4273,125 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 204
-              end: 204
+              start: 208
+              end: 208
           log:
             file: thesis.log
             range:
-              start: 1977
-              end: 1979
+              start: 1976
+              end: 1978
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
-          text: >-
-            figures/arbitrary_wavefunction_decomposed_decolorized. Requested
-            size: 143.38432pt x 25.34561pt.
+          text: 'figures/fMPS_3_1.pdf used Requested size: 43.07883pt x 10.86957pt.'
           source:
             file: chapter_two.tex
+            range:
+              start: 246
+              end: 246
+          log:
+            file: thesis.log
+            range:
+              start: 1988
+              end: 1989
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_3_2.pdf used Requested size: 52.83725pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 246
+              end: 246
+          log:
+            file: thesis.log
+            range:
+              start: 1993
+              end: 1994
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_4_1.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 246
+              end: 246
+          log:
+            file: thesis.log
+            range:
+              start: 1998
+              end: 1999
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_4_2.pdf used Requested size: 57.30493pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 246
+              end: 246
+          log:
+            file: thesis.log
+            range:
+              start: 2003
+              end: 2004
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_3_1.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 246
+              end: 246
+          log:
+            file: thesis.log
+            range:
+              start: 2007
+              end: 2008
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_3_2.pdf used Requested size: 52.83725pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 246
+              end: 246
           log:
             file: thesis.log
             range:
               start: 2011
-              end: 2013
+              end: 2012
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_4_1.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 246
+              end: 246
+          log:
+            file: thesis.log
+            range:
+              start: 2015
+              end: 2016
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_4_2.pdf used Requested size: 57.30493pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 246
+              end: 246
+          log:
+            file: thesis.log
+            range:
+              start: 2019
+              end: 2020
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4292,287 +4403,192 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2017
-              end: 2019
+              start: 2059
+              end: 2061
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/lagrangian_multiplier_equation_1.pdf used Requested size:
-            140.60594pt x 37.5pt.
+            figures/arbitrary_wavefunction_decomposed_decolorized. Requested
+            size: 143.38432pt x 25.34561pt.
           source:
             file: chapter_two.tex
-            range:
-              start: 464
-              end: 464
           log:
             file: thesis.log
             range:
-              start: 2024
-              end: 2026
+              start: 2065
+              end: 2067
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/lagrangian_multiplier_equation_2.pdf used Requested size:
-            140.60594pt x 37.5pt.
+            figures/left_isometry_tensor.pdf used Requested size: 14.6266pt x
+            21.33965pt.
           source:
             file: chapter_two.tex
             range:
-              start: 464
-              end: 464
+              start: 589
+              end: 589
           log:
             file: thesis.log
             range:
-              start: 2031
-              end: 2033
+              start: 2071
+              end: 2073
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/lagrangian_multiplier_equation_1.pdf used Requested size:
-            140.60594pt x 37.5pt.
+            figures/identity_tensor_left.pdf used Requested size: 7.51303pt x
+            14.6266pt.
           source:
             file: chapter_two.tex
             range:
-              start: 464
-              end: 464
+              start: 589
+              end: 589
           log:
             file: thesis.log
             range:
-              start: 2036
-              end: 2038
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: >-
-            figures/lagrangian_multiplier_equation_2.pdf used Requested size:
-            140.60594pt x 37.5pt.
-          source:
-            file: chapter_two.tex
-            range:
-              start: 464
-              end: 464
-          log:
-            file: thesis.log
-            range:
-              start: 2041
-              end: 2043
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: >-
-            figures/lagrangian_multiplier_equation_3.pdf used Requested size:
-            140.60594pt x 37.5pt.
-          source:
-            file: chapter_two.tex
-            range:
-              start: 478
-              end: 478
-          log:
-            file: thesis.log
-            range:
-              start: 2048
-              end: 2050
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: >-
-            figures/lagrangian_multiplier_equation_4.pdf used Requested size:
-            43.07883pt x 10.86957pt.
-          source:
-            file: chapter_two.tex
-            range:
-              start: 478
-              end: 478
-          log:
-            file: thesis.log
-            range:
-              start: 2056
-              end: 2058
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: >-
-            figures/lagrangian_multiplier_equation_3.pdf used Requested size:
-            140.60594pt x 37.5pt.
-          source:
-            file: chapter_two.tex
-            range:
-              start: 478
-              end: 478
-          log:
-            file: thesis.log
-            range:
-              start: 2061
-              end: 2063
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: >-
-            figures/lagrangian_multiplier_equation_4.pdf used Requested size:
-            43.07883pt x 10.86957pt.
-          source:
-            file: chapter_two.tex
-            range:
-              start: 478
-              end: 478
-          log:
-            file: thesis.log
-            range:
-              start: 2066
-              end: 2068
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: >-
-            figures/growing_4_4.pdf used Requested size: 43.07883pt x
-            10.15791pt.
-          source:
-            file: chapter_two.tex
-            range:
-              start: 494
-              end: 494
-          log:
-            file: thesis.log
-            range:
-              start: 2078
+              start: 2077
               end: 2079
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
-          text: 'figures/growing_5.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          text: >-
+            figures/right_isometry_tensor.pdf used Requested size: 14.6266pt x
+            21.33965pt.
           source:
             file: chapter_two.tex
             range:
-              start: 494
-              end: 494
+              start: 589
+              end: 589
           log:
             file: thesis.log
             range:
               start: 2083
-              end: 2084
+              end: 2085
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/growing_4_4.pdf used Requested size: 43.07883pt x
-            10.15791pt.
+            figures/identity_tensor_right.pdf used Requested size: 7.51303pt x
+            14.6266pt.
           source:
             file: chapter_two.tex
             range:
-              start: 494
-              end: 494
+              start: 589
+              end: 589
           log:
             file: thesis.log
             range:
-              start: 2087
-              end: 2088
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: 'figures/growing_5.pdf used Requested size: 43.07883pt x 10.86957pt.'
-          source:
-            file: chapter_two.tex
-            range:
-              start: 494
-              end: 494
-          log:
-            file: thesis.log
-            range:
-              start: 2091
-              end: 2092
+              start: 2089
+              end: 2091
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/two_site_problem_1.pdf used Requested size: 34.14247pt x
-            15.84816pt.
+            figures/left_isometry_tensor.pdf used Requested size: 14.6266pt x
+            21.33965pt.
           source:
             file: chapter_two.tex
             range:
-              start: 512
-              end: 512
+              start: 589
+              end: 589
           log:
             file: thesis.log
             range:
-              start: 2101
-              end: 2103
+              start: 2094
+              end: 2096
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/two_site_problem_2.pdf used Requested size: 34.14247pt x
-            10.15791pt.
+            figures/identity_tensor_left.pdf used Requested size: 7.51303pt x
+            14.6266pt.
           source:
             file: chapter_two.tex
             range:
-              start: 512
-              end: 512
+              start: 589
+              end: 589
           log:
             file: thesis.log
             range:
-              start: 2107
-              end: 2109
+              start: 2099
+              end: 2101
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/two_site_problem_1.pdf used Requested size: 34.14247pt x
-            15.84816pt.
+            figures/right_isometry_tensor.pdf used Requested size: 14.6266pt x
+            21.33965pt.
           source:
             file: chapter_two.tex
             range:
-              start: 512
-              end: 512
+              start: 589
+              end: 589
           log:
             file: thesis.log
             range:
-              start: 2112
-              end: 2114
+              start: 2104
+              end: 2106
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/two_site_problem_2.pdf used Requested size: 34.14247pt x
-            10.15791pt.
+            figures/identity_tensor_right.pdf used Requested size: 7.51303pt x
+            14.6266pt.
           source:
             file: chapter_two.tex
             range:
-              start: 512
-              end: 512
+              start: 589
+              end: 589
           log:
             file: thesis.log
             range:
-              start: 2117
-              end: 2119
+              start: 2109
+              end: 2111
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/two_site_problem_2.pdf used Requested size: 34.14247pt x
-            10.15791pt.
+            figures/lagrangian_multiplier_equation_1.pdf used Requested size:
+            140.60594pt x 37.5pt.
           source:
             file: chapter_two.tex
             range:
-              start: 522
-              end: 522
+              start: 599
+              end: 599
           log:
             file: thesis.log
             range:
-              start: 2122
-              end: 2124
+              start: 2116
+              end: 2118
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/two_site_problem_2_decomp.pdf used Requested size:
-            34.63026pt x 10.86957pt.
+            figures/lagrangian_multiplier_equation_2.pdf used Requested size:
+            140.60594pt x 37.5pt.
           source:
             file: chapter_two.tex
             range:
-              start: 522
-              end: 522
+              start: 599
+              end: 599
+          log:
+            file: thesis.log
+            range:
+              start: 2123
+              end: 2125
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/lagrangian_multiplier_equation_1.pdf used Requested size:
+            140.60594pt x 37.5pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 599
+              end: 599
           log:
             file: thesis.log
             range:
@@ -4582,13 +4598,13 @@ files:
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/two_site_problem_2.pdf used Requested size: 34.14247pt x
-            10.15791pt.
+            figures/lagrangian_multiplier_equation_2.pdf used Requested size:
+            140.60594pt x 37.5pt.
           source:
             file: chapter_two.tex
             range:
-              start: 522
-              end: 522
+              start: 599
+              end: 599
           log:
             file: thesis.log
             range:
@@ -4598,90 +4614,66 @@ files:
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/two_site_problem_2_decomp.pdf used Requested size:
-            34.63026pt x 10.86957pt.
+            figures/lagrangian_multiplier_equation_3.pdf used Requested size:
+            140.60594pt x 37.5pt.
           source:
             file: chapter_two.tex
             range:
-              start: 522
-              end: 522
+              start: 614
+              end: 614
           log:
             file: thesis.log
             range:
-              start: 2138
-              end: 2140
+              start: 2140
+              end: 2142
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
-          text: 'figures/growing_4_1.pdf used Requested size: 148.4412pt x 11.1737pt.'
+          text: >-
+            figures/lagrangian_multiplier_equation_4.pdf used Requested size:
+            43.07883pt x 10.86957pt.
           source:
             file: chapter_two.tex
             range:
-              start: 534
-              end: 534
+              start: 614
+              end: 614
           log:
             file: thesis.log
             range:
-              start: 2144
-              end: 2145
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: 'figures/growing_4_2.pdf used Requested size: 148.4412pt x 11.1737pt.'
-          source:
-            file: chapter_two.tex
-            range:
-              start: 534
-              end: 534
-          log:
-            file: thesis.log
-            range:
-              start: 2149
+              start: 2148
               end: 2150
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
-          text: 'figures/growing_4_1.pdf used Requested size: 148.4412pt x 11.1737pt.'
+          text: >-
+            figures/lagrangian_multiplier_equation_3.pdf used Requested size:
+            140.60594pt x 37.5pt.
           source:
             file: chapter_two.tex
             range:
-              start: 534
-              end: 534
+              start: 614
+              end: 614
           log:
             file: thesis.log
             range:
               start: 2153
-              end: 2154
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: 'figures/growing_4_2.pdf used Requested size: 148.4412pt x 11.1737pt.'
-          source:
-            file: chapter_two.tex
-            range:
-              start: 534
-              end: 534
-          log:
-            file: thesis.log
-            range:
-              start: 2157
-              end: 2158
+              end: 2155
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
           text: >-
-            figures/growing_4_3.pdf used Requested size: 133.72726pt x
-            21.33965pt.
+            figures/lagrangian_multiplier_equation_4.pdf used Requested size:
+            43.07883pt x 10.86957pt.
           source:
             file: chapter_two.tex
             range:
-              start: 543
-              end: 543
+              start: 614
+              end: 614
           log:
             file: thesis.log
             range:
-              start: 2162
-              end: 2163
+              start: 2158
+              end: 2160
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4691,56 +4683,22 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 543
-              end: 543
+              start: 633
+              end: 633
           log:
             file: thesis.log
             range:
-              start: 2166
-              end: 2167
+              start: 2173
+              end: 2174
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
-          text: >-
-            figures/growing_4_3.pdf used Requested size: 133.72726pt x
-            21.33965pt.
+          text: 'figures/growing_5.pdf used Requested size: 43.07883pt x 10.86957pt.'
           source:
             file: chapter_two.tex
             range:
-              start: 543
-              end: 543
-          log:
-            file: thesis.log
-            range:
-              start: 2170
-              end: 2171
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: >-
-            figures/growing_4_4.pdf used Requested size: 43.07883pt x
-            10.15791pt.
-          source:
-            file: chapter_two.tex
-            range:
-              start: 543
-              end: 543
-          log:
-            file: thesis.log
-            range:
-              start: 2174
-              end: 2175
-        - severity: info
-          name: pdfTeX
-          category: Package pdftex.def
-          text: >-
-            figures/growing_4_4.pdf used Requested size: 43.07883pt x
-            10.15791pt.
-          source:
-            file: chapter_two.tex
-            range:
-              start: 551
-              end: 551
+              start: 633
+              end: 633
           log:
             file: thesis.log
             range:
@@ -4749,17 +4707,233 @@ files:
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
-          text: 'figures/growing_5.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          text: >-
+            figures/growing_4_4.pdf used Requested size: 43.07883pt x
+            10.15791pt.
           source:
             file: chapter_two.tex
             range:
-              start: 551
-              end: 551
+              start: 633
+              end: 633
           log:
             file: thesis.log
             range:
               start: 2182
               end: 2183
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/growing_5.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 633
+              end: 633
+          log:
+            file: thesis.log
+            range:
+              start: 2186
+              end: 2187
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/two_site_problem_1.pdf used Requested size: 34.14247pt x
+            15.84816pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 651
+              end: 651
+          log:
+            file: thesis.log
+            range:
+              start: 2196
+              end: 2198
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/two_site_problem_2.pdf used Requested size: 34.14247pt x
+            10.15791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 651
+              end: 651
+          log:
+            file: thesis.log
+            range:
+              start: 2202
+              end: 2204
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/two_site_problem_1.pdf used Requested size: 34.14247pt x
+            15.84816pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 651
+              end: 651
+          log:
+            file: thesis.log
+            range:
+              start: 2207
+              end: 2209
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/two_site_problem_2.pdf used Requested size: 34.14247pt x
+            10.15791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 651
+              end: 651
+          log:
+            file: thesis.log
+            range:
+              start: 2212
+              end: 2214
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/two_site_problem_2.pdf used Requested size: 34.14247pt x
+            10.15791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 661
+              end: 661
+          log:
+            file: thesis.log
+            range:
+              start: 2217
+              end: 2219
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/two_site_problem_2_decomp.pdf used Requested size:
+            34.63026pt x 10.86957pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 661
+              end: 661
+          log:
+            file: thesis.log
+            range:
+              start: 2223
+              end: 2225
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/two_site_problem_2.pdf used Requested size: 34.14247pt x
+            10.15791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 661
+              end: 661
+          log:
+            file: thesis.log
+            range:
+              start: 2228
+              end: 2230
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/two_site_problem_2_decomp.pdf used Requested size:
+            34.63026pt x 10.86957pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 661
+              end: 661
+          log:
+            file: thesis.log
+            range:
+              start: 2233
+              end: 2235
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/growing_4_1.pdf used Requested size: 148.4412pt x 11.1737pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 672
+              end: 672
+          log:
+            file: thesis.log
+            range:
+              start: 2239
+              end: 2240
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/growing_4_2.pdf used Requested size: 148.4412pt x 11.1737pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 672
+              end: 672
+          log:
+            file: thesis.log
+            range:
+              start: 2244
+              end: 2245
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/growing_4_1.pdf used Requested size: 148.4412pt x 11.1737pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 672
+              end: 672
+          log:
+            file: thesis.log
+            range:
+              start: 2248
+              end: 2249
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/growing_4_2.pdf used Requested size: 148.4412pt x 11.1737pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 672
+              end: 672
+          log:
+            file: thesis.log
+            range:
+              start: 2252
+              end: 2253
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/growing_4_3.pdf used Requested size: 133.72726pt x
+            21.33965pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 682
+              end: 682
+          log:
+            file: thesis.log
+            range:
+              start: 2257
+              end: 2258
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4769,13 +4943,61 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 551
-              end: 551
+              start: 682
+              end: 682
           log:
             file: thesis.log
             range:
-              start: 2186
-              end: 2187
+              start: 2261
+              end: 2262
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/growing_4_3.pdf used Requested size: 133.72726pt x
+            21.33965pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 682
+              end: 682
+          log:
+            file: thesis.log
+            range:
+              start: 2265
+              end: 2266
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/growing_4_4.pdf used Requested size: 43.07883pt x
+            10.15791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 682
+              end: 682
+          log:
+            file: thesis.log
+            range:
+              start: 2269
+              end: 2270
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/growing_4_4.pdf used Requested size: 43.07883pt x
+            10.15791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 690
+              end: 690
+          log:
+            file: thesis.log
+            range:
+              start: 2273
+              end: 2274
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
@@ -4783,41 +5005,459 @@ files:
           source:
             file: chapter_two.tex
             range:
-              start: 551
-              end: 551
+              start: 690
+              end: 690
           log:
             file: thesis.log
             range:
-              start: 2190
-              end: 2191
+              start: 2277
+              end: 2278
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
-          text: 'figures/fMPS_1.pdf used Requested size: 129.1582pt x 26.76791pt.'
+          text: >-
+            figures/growing_4_4.pdf used Requested size: 43.07883pt x
+            10.15791pt.
           source:
             file: chapter_two.tex
             range:
-              start: 573
-              end: 573
+              start: 690
+              end: 690
           log:
             file: thesis.log
             range:
-              start: 2211
-              end: 2212
+              start: 2281
+              end: 2282
         - severity: info
           name: pdfTeX
           category: Package pdftex.def
-          text: 'figures/fMPS_1.pdf used Requested size: 129.1582pt x 26.76791pt.'
+          text: 'figures/growing_5.pdf used Requested size: 43.07883pt x 10.86957pt.'
           source:
             file: chapter_two.tex
             range:
-              start: 573
-              end: 573
+              start: 690
+              end: 690
           log:
             file: thesis.log
             range:
-              start: 2215
-              end: 2216
+              start: 2285
+              end: 2286
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_1.pdf used Requested size: 100.70497pt x 26.76791pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 713
+              end: 713
+          log:
+            file: thesis.log
+            range:
+              start: 2306
+              end: 2307
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_1.pdf used Requested size: 100.70497pt x 26.76791pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 713
+              end: 713
+          log:
+            file: thesis.log
+            range:
+              start: 2310
+              end: 2311
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/growing_4_4.pdf used Requested size: 43.07883pt x
+            10.15791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 721
+              end: 721
+          log:
+            file: thesis.log
+            range:
+              start: 2314
+              end: 2315
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/growing_5.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 721
+              end: 721
+          log:
+            file: thesis.log
+            range:
+              start: 2318
+              end: 2319
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/growing_4_4.pdf used Requested size: 43.07883pt x
+            10.15791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 721
+              end: 721
+          log:
+            file: thesis.log
+            range:
+              start: 2322
+              end: 2323
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/growing_5.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 721
+              end: 721
+          log:
+            file: thesis.log
+            range:
+              start: 2326
+              end: 2327
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_3_1.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 732
+              end: 732
+          log:
+            file: thesis.log
+            range:
+              start: 2330
+              end: 2331
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_3_2.pdf used Requested size: 52.83725pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 732
+              end: 732
+          log:
+            file: thesis.log
+            range:
+              start: 2334
+              end: 2335
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_3_1.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 732
+              end: 732
+          log:
+            file: thesis.log
+            range:
+              start: 2338
+              end: 2339
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_3_2.pdf used Requested size: 52.83725pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 732
+              end: 732
+          log:
+            file: thesis.log
+            range:
+              start: 2342
+              end: 2343
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_4_1.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 743
+              end: 743
+          log:
+            file: thesis.log
+            range:
+              start: 2347
+              end: 2348
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_4_2.pdf used Requested size: 57.30493pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 743
+              end: 743
+          log:
+            file: thesis.log
+            range:
+              start: 2351
+              end: 2352
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_4_1.pdf used Requested size: 43.07883pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 743
+              end: 743
+          log:
+            file: thesis.log
+            range:
+              start: 2355
+              end: 2356
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/fMPS_4_2.pdf used Requested size: 57.30493pt x 10.86957pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 743
+              end: 743
+          log:
+            file: thesis.log
+            range:
+              start: 2359
+              end: 2360
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/center_site_gauge.pdf used Requested size: 129.1582pt x
+            26.76791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 790
+              end: 790
+          log:
+            file: thesis.log
+            range:
+              start: 2374
+              end: 2375
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/center_site_gauge_2.pdf used Requested size: 129.1582pt x
+            26.76791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 790
+              end: 790
+          log:
+            file: thesis.log
+            range:
+              start: 2379
+              end: 2381
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/center_site_gauge.pdf used Requested size: 129.1582pt x
+            26.76791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 790
+              end: 790
+          log:
+            file: thesis.log
+            range:
+              start: 2384
+              end: 2385
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/center_site_gauge_2.pdf used Requested size: 129.1582pt x
+            26.76791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 790
+              end: 790
+          log:
+            file: thesis.log
+            range:
+              start: 2388
+              end: 2390
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/tangent_space_projection_1.pdf used Requested size:
+            105.76184pt x 28.85272pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 825
+              end: 825
+          log:
+            file: thesis.log
+            range:
+              start: 2394
+              end: 2396
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/tangent_space_projection_2.pdf used Requested size:
+            119.98897pt x 28.85272pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 825
+              end: 825
+          log:
+            file: thesis.log
+            range:
+              start: 2400
+              end: 2402
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/tangent_space_projection_1.pdf used Requested size:
+            105.76184pt x 28.85272pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 825
+              end: 825
+          log:
+            file: thesis.log
+            range:
+              start: 2405
+              end: 2407
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/tangent_space_projection_2.pdf used Requested size:
+            119.98897pt x 28.85272pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 825
+              end: 825
+          log:
+            file: thesis.log
+            range:
+              start: 2410
+              end: 2412
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/Heff_1.pdf used Requested size: 126.61371pt x 42.1353pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 863
+              end: 863
+          log:
+            file: thesis.log
+            range:
+              start: 2416
+              end: 2417
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/Keff_1.pdf used Requested size: 126.61371pt x 21.94792pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 863
+              end: 863
+          log:
+            file: thesis.log
+            range:
+              start: 2421
+              end: 2422
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/Heff_1.pdf used Requested size: 126.61371pt x 42.1353pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 863
+              end: 863
+          log:
+            file: thesis.log
+            range:
+              start: 2425
+              end: 2426
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figures/Keff_1.pdf used Requested size: 126.61371pt x 21.94792pt.'
+          source:
+            file: chapter_two.tex
+            range:
+              start: 863
+              end: 863
+          log:
+            file: thesis.log
+            range:
+              start: 2429
+              end: 2430
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/right_canonical_gauge.pdf used Requested size: 86.47885pt x
+            26.76791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 882
+              end: 882
+          log:
+            file: thesis.log
+            range:
+              start: 2442
+              end: 2444
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: >-
+            figures/right_canonical_gauge.pdf used Requested size: 86.47885pt x
+            26.76791pt.
+          source:
+            file: chapter_two.tex
+            range:
+              start: 882
+              end: 882
+          log:
+            file: thesis.log
+            range:
+              start: 2447
+              end: 2449
         - severity: info
           name: pdfTeX
           category: Package atveryend
@@ -4830,8 +5470,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2276
-              end: 2276
+              start: 2481
+              end: 2481
         - severity: info
           name: pdfTeX
           category: Package atveryend
@@ -4844,8 +5484,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2277
-              end: 2277
+              start: 2482
+              end: 2482
         - severity: info
           name: pdfTeX
           category: Package atveryend
@@ -4858,8 +5498,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2284
-              end: 2284
+              start: 2488
+              end: 2488
         - severity: info
           name: pdfTeX
           category: Package atveryend
@@ -4872,21 +5512,21 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2285
-              end: 2285
+              start: 2489
+              end: 2489
         - severity: info
           name: pdfTeX
           category: Package rerunfilecheck
           text: >-
             File `thesis.out' has not changed. Checksum:
-            C1D423CF8241E1F8C8483C530BF6B92A;1173.
+            6B9EA32F35B62B62D89DD4E8EBB069C9;1457.
           source:
             file: thesis.tex
           log:
             file: thesis.log
             range:
-              start: 2286
-              end: 2287
+              start: 2490
+              end: 2491
         - severity: warning
           name: pdfTeX
           category: LaTeX Font
@@ -4896,8 +5536,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2289
-              end: 2290
+              start: 2493
+              end: 2494
         - severity: warning
           name: pdfTeX
           category: LaTeX
@@ -4907,8 +5547,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2293
-              end: 2293
+              start: 2497
+              end: 2497
         - severity: warning
           name: pdfTeX
           category: LaTeX
@@ -4918,8 +5558,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2296
-              end: 2296
+              start: 2500
+              end: 2500
         - severity: info
           name: pdfTeX
           category: Package atveryend
@@ -4932,8 +5572,8 @@ files:
           log:
             file: thesis.log
             range:
-              start: 2298
-              end: 2298
+              start: 2502
+              end: 2502
       inputs: []
       outputs:
         - thesis.pdf
@@ -4977,7 +5617,7 @@ files:
       calls: []
     type: ParsedMakeIndexLog
   thesis.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-10-13T16:44:48.130Z
+    timeStamp: 2020-10-15T16:16:11.839Z
     jobNames: []
     value:
       commands:
@@ -5011,7 +5651,6 @@ files:
         - '@input'
         - '@input'
         - '@input'
-        - '@input'
         - bibdata
         - bibcite
         - bibcite
@@ -5031,6 +5670,11 @@ files:
         - bibcite
         - bibcite
         - '@writefile'
+        - bibcite
+        - bibcite
+        - bibcite
+        - bibcite
+        - bibcite
         - bibcite
         - bibcite
         - bibcite
@@ -5843,9 +6487,9 @@ files:
     hash: FbeeE6hJDlmbyxJyN5sJOFRjC0fLq4MCdq1Da/DPuUk=
     type: TeX
   chapter_two.tex:
-    timeStamp: 2020-10-13T16:55:22.808Z
+    timeStamp: 2020-10-15T16:43:06.320Z
     jobNames: []
-    hash: KqbzITKusNPXjHqvpohv9bqlHzsDnQpYJIc57KDBstc=
+    hash: DEqIN7NSU+m1WB04P/ltQBur1KAgoJ19LF7iQskB8hk=
     type: TeX
   dedication.tex:
     timeStamp: 2020-10-06T10:26:09.793Z
@@ -6540,7 +7184,7 @@ files:
         - setcounter
     type: ParsedLaTeXAuxilary
   chapter_two.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-10-13T16:54:29.068Z
+    timeStamp: 2020-10-15T16:40:34.331Z
     jobNames: []
     value:
       commands:
@@ -6573,6 +7217,38 @@ files:
         - newlabel
         - newlabel
         - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
+        - '@writefile'
+        - newlabel
+        - newlabel
+        - citation
+        - citation
+        - citation
+        - citation
+        - citation
+        - citation
+        - citation
+        - citation
+        - '@writefile'
+        - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
+        - citation
+        - citation
+        - citation
+        - citation
+        - '@writefile'
+        - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
+        - citation
         - citation
         - citation
         - citation
@@ -6588,12 +7264,15 @@ files:
         - newlabel
         - newlabel
         - newlabel
-        - citation
         - newlabel
         - newlabel
         - newlabel
         - newlabel
         - citation
+        - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
         - citation
         - citation
         - citation
@@ -6603,18 +7282,25 @@ files:
         - '@writefile'
         - newlabel
         - newlabel
+        - citation
+        - citation
+        - citation
+        - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
+        - citation
+        - citation
+        - newlabel
+        - newlabel
+        - newlabel
+        - newlabel
         - '@writefile'
         - newlabel
         - newlabel
+        - '@writefile'
         - newlabel
         - newlabel
-        - citation
-        - citation
-        - citation
-        - citation
-        - citation
-        - citation
-        - citation
         - '@setckpt'
         - setcounter
         - setcounter
@@ -6942,11 +7628,11 @@ files:
     jobNames: []
     type: ParsedBibTeXLog
   thesis.thm:
-    timeStamp: 2020-10-13T16:55:26.026Z
+    timeStamp: 2020-10-15T16:43:09.327Z
     jobNames: []
     hash: 47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
   thesis.blg-ParsedBibTeXLog:
-    timeStamp: 2020-10-11T12:25:21.153Z
+    timeStamp: 2020-10-15T14:50:48.508Z
     jobNames: []
     value:
       messages:
@@ -6956,11 +7642,19 @@ files:
           log:
             file: thesis.blg
             range:
+              start: 17
+              end: 17
+        - severity: warning
+          name: BibTeX
+          text: 'to sort, need author or key in KronigPenney1931'
+          log:
+            file: thesis.blg
+            range:
               start: 18
               end: 18
         - severity: warning
           name: BibTeX
-          text: 'to sort, need author or key in KronigPenney1931'
+          text: empty author in KronigPenney1931
           log:
             file: thesis.blg
             range:
@@ -6968,20 +7662,12 @@ files:
               end: 19
         - severity: warning
           name: BibTeX
-          text: empty author in KronigPenney1931
+          text: empty author in AshcroftMermin1978
           log:
             file: thesis.blg
             range:
               start: 20
               end: 20
-        - severity: warning
-          name: BibTeX
-          text: empty author in AshcroftMermin1978
-          log:
-            file: thesis.blg
-            range:
-              start: 21
-              end: 21
       inputs:
         - thesis.aux
         - /usr/local/texlive/2017/texmf-dist/bibtex/bst/din1505/abbrvdin.bst
@@ -6991,7 +7677,6 @@ files:
         - part_general.aux
         - chapter_one.aux
         - chapter_two.aux
-        - part_results.aux
         - biblio.bib
       outputs: []
       calls: []
@@ -7001,9 +7686,9 @@ files:
     jobNames: []
     type: BibTeXStyle
   biblio.bib:
-    timeStamp: 2020-10-13T12:38:25.470Z
+    timeStamp: 2020-10-15T14:18:08.471Z
     jobNames: []
-    hash: 3Lme9AvgUya3wM4WBTfcIDtWSKB9EOKfxqyEae5dFCs=
+    hash: mmXMOlrg+qErgqmSlhk2FYps7NolUR1rL0+02VMYX5A=
     type: BibTeXFile
   /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmti8.tfm:
     timeStamp: 2016-11-25T18:31:41.000Z
@@ -7155,73 +7840,73 @@ files:
     hash: WPaiWUzLIhMVIUsjn/ScO04PTwKWWCrnEJOSNNd5Hk0=
     type: PortableDocumentFormat
   figures/growing_4_1.pdf:
-    timeStamp: 2020-10-13T15:48:46.921Z
+    timeStamp: 2020-10-15T14:18:08.486Z
     jobNames: []
-    hash: 6x4a9+fwZRz5JcISMflGdybjO0vvR/Csn2JGtsohFFM=
+    hash: OzkPaYkgVZWTCR1GE6RfA5dE9tr7ci9L3eZZdwfsVIs=
     type: PortableDocumentFormat
   figures/growing_4_2.pdf:
-    timeStamp: 2020-10-13T15:48:58.381Z
+    timeStamp: 2020-10-15T14:18:08.488Z
     jobNames: []
-    hash: lp4lzGXajzbaoWEjJzFA6MMqBEnAt8oe4Q8JcNtviUM=
+    hash: Y6x4KUEGi/tCmPZhkCHuM3QZ4iIANNKxV/CLIgauWSQ=
     type: PortableDocumentFormat
   figures/fMPS_1.pdf:
-    timeStamp: 2020-10-13T16:09:27.663Z
+    timeStamp: 2020-10-15T15:55:30.291Z
     jobNames: []
-    hash: 6UnBX82sFdolb9ZXzUiLnHdUn+/19QISYlbIXyLSy64=
+    hash: eViWp2+ItBxVtMXwzEtY54gzfmjV5ywAGjqw9V2R/FY=
     type: PortableDocumentFormat
   thesis.aux:
-    timeStamp: 2020-10-13T16:55:26.034Z
+    timeStamp: 2020-10-15T16:43:09.328Z
     jobNames: []
-    hash: 7ZZQvLrgKkLMdvvsuXqkze7CFVxlfmi3sL5QcLHk8oQ=
+    hash: bH/EeAo54QL3S8SzNhi39Y4ptaV3P2fGqGgLeCUmmao=
     type: LaTeXAuxilary
   thesis.fls:
-    timeStamp: 2020-10-13T16:55:26.196Z
+    timeStamp: 2020-10-15T16:43:09.467Z
     jobNames: []
-    hash: 0J9W5yuRCEu//xDQxfLVjeDyip4HNwYnrsOAE2TyrbM=
+    hash: 5b1UZ2+3uoTeeVUO3Cb9Pq9MuZiJlPgEF2XMQffmSRc=
     type: FileListing
   thesis.log:
-    timeStamp: 2020-10-13T16:55:26.230Z
+    timeStamp: 2020-10-15T16:43:09.493Z
     jobNames: []
-    hash: U8rchtQ/qWTOGFUlZ2u7sKxbPSPcHuQix6rs+I1eNGM=
+    hash: NOs0YMvaS99SO45fA0FszI95uRda16PtGker7zBbwDA=
     type: LaTeXLog
     subType: pdfTeX
   thesis.synctex.gz:
-    timeStamp: 2020-10-13T16:55:26.230Z
+    timeStamp: 2020-10-15T16:43:09.492Z
     jobNames: []
-    hash: 9pb82y5Gqfn0tqiXIqA7qElGgysWhSf+lTZsDlgGA9A=
+    hash: IXS1cmNNhO/O1jWtpMuFaQc+4DgrdAwMmKmWm2Zkmu8=
     type: SyncTeX
   thesis.pdf:
-    timeStamp: 2020-10-13T16:55:26.224Z
+    timeStamp: 2020-10-15T16:43:09.487Z
     jobNames: []
-    hash: Cf8DQJOMUs+zSIbsQZXVzMzZD3o1R6Lb4vhm0tgk4nM=
+    hash: QtI058fBFIMQ3jmTmABg8J4De+bptzpuEFesGPhN9Rs=
     type: PortableDocumentFormat
   acknowledgement.aux:
-    timeStamp: 2020-10-13T16:55:25.328Z
+    timeStamp: 2020-10-15T16:43:08.452Z
     jobNames: []
     hash: RX4z0VE0XQbhD6pX2wi4x092+v8w6T0itxs9b8cxH3s=
     type: LaTeXAuxilary
   chapter_one.aux:
-    timeStamp: 2020-10-13T16:55:25.726Z
+    timeStamp: 2020-10-15T16:43:08.970Z
     jobNames: []
     hash: oF8YPo3tVpKs9IsUrKD77mUuuqm73ha7RbypFNej0P0=
     type: LaTeXAuxilary
   chapter_two.aux:
-    timeStamp: 2020-10-13T16:55:26.000Z
+    timeStamp: 2020-10-15T16:43:09.300Z
     jobNames: []
-    hash: 2KKuYmAuqPI0YsKASh9BvqVcGeJlUzHqbnyTD5tg4q0=
+    hash: rU5tMeIjZnT4cMBEuGoiUZqJyXnBkYnZehZL7yMcCmU=
     type: LaTeXAuxilary
   dedication.aux:
-    timeStamp: 2020-10-13T16:55:25.325Z
+    timeStamp: 2020-10-15T16:43:08.448Z
     jobNames: []
     hash: 4eVREzDCYIrtZd7YaRukl985fsV9lTwCcQ4NwtUQlGY=
     type: LaTeXAuxilary
   introduction.aux:
-    timeStamp: 2020-10-13T16:55:25.342Z
+    timeStamp: 2020-10-15T16:43:08.472Z
     jobNames: []
     hash: iIqTupRqGEegGHywJudZ2WIhKz5eZzi+BxynubMoIUM=
     type: LaTeXAuxilary
   part_general.aux:
-    timeStamp: 2020-10-13T16:55:25.344Z
+    timeStamp: 2020-10-15T16:43:08.476Z
     jobNames: []
     hash: 6Lrh4GZaLm3jHr+HBhdXJdnSWV/8YvxWVoSUuVYRApA=
     type: LaTeXAuxilary
@@ -7231,40 +7916,115 @@ files:
     hash: l1nRVRVc4HU4jaD/LXsEO/mTwJanHWTuU9Hv7vExUxI=
     type: LaTeXAuxilary
   thesis.out:
-    timeStamp: 2020-10-13T16:55:26.042Z
+    timeStamp: 2020-10-15T16:43:09.337Z
     jobNames: []
-    hash: MTkVWzRo0humP9eWw6nMttMc7r65hMaJOCcJA6LoUVY=
+    hash: PfbOjxmI/eES5pSm4J/PssLKBmc3emfSCpgKrOjEuPI=
     type: OUT
   thesis.idx:
-    timeStamp: 2020-10-13T16:55:25.097Z
+    timeStamp: 2020-10-15T16:43:08.179Z
     jobNames: []
     hash: 47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
     type: IndexControlFile
   thesis.toc:
-    timeStamp: 2020-10-13T16:55:26.042Z
+    timeStamp: 2020-10-15T16:43:09.337Z
     jobNames: []
-    hash: G2TixzSuw6VawAMz1hSEQMcYIAQBN/JyjPcdZ6V1kGI=
+    hash: X0sNlkZE85YqNQcwVuRpMuSM+tV3Y87tT33353obMOw=
     type: TableOfContents
   thesis.ind:
-    timeStamp: 2020-10-13T16:55:24.238Z
+    timeStamp: 2020-10-15T15:08:36.659Z
     jobNames: []
     hash: 47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
     type: Index
   thesis.ilg:
-    timeStamp: 2020-10-13T16:55:24.239Z
+    timeStamp: 2020-10-15T15:08:36.664Z
     jobNames: []
     hash: 0yGuKTC3KGDhxrV/c1YBi6JtRhFwN4fHryYqKxEPab4=
     type: MakeIndexLog
   thesis.bbl:
-    timeStamp: 2020-10-13T16:55:24.450Z
+    timeStamp: 2020-10-15T16:43:07.422Z
     jobNames: []
-    hash: i0wzMd0L0F/mw3izdF6f8c7SmC1bdWwmUM9ok70nB4o=
+    hash: QFAQWtkEZtT4c1IwAJJ8caffGZQeGH2j9KWi7Q48C4w=
   thesis.blg:
-    timeStamp: 2020-10-13T16:55:24.450Z
+    timeStamp: 2020-10-15T16:43:07.423Z
     jobNames: []
-    hash: JRLPoyzY6TK7njNDKNyAQIFdEM9bfipRzzmOl++QztA=
+    hash: NzcXNImK4lst2WGpCSku9QWZvI4iAn22d3rB6wvm/4Q=
     type: BibTeXLog
     subType: BibTeX
+  figures/center_site_gauge.pdf:
+    timeStamp: 2020-10-15T14:18:08.480Z
+    jobNames: []
+    hash: kqanpjJkzd5mk6TqGVGVo68sh9Jka2Sm7TDWQzwUHmQ=
+    type: PortableDocumentFormat
+  figures/center_site_gauge_2.pdf:
+    timeStamp: 2020-10-15T14:18:08.481Z
+    jobNames: []
+    hash: Uio7N+yDDBWIblRzUm9T8D9ugVY63FawoMyNG6FijMk=
+    type: PortableDocumentFormat
+  figures/fMPS_3_1.pdf:
+    timeStamp: 2020-10-15T15:53:57.227Z
+    jobNames: []
+    hash: r1/gtc3EumgfUf6iXmR0KIdXFbjtl+PPShTzOo/RhGc=
+    type: PortableDocumentFormat
+  figures/fMPS_4_1.pdf:
+    timeStamp: 2020-10-15T15:52:47.515Z
+    jobNames: []
+    hash: 4vbcwdBGKGz3jBQ03siI5PvsKoZPDZ88leuzUyiJO9E=
+    type: PortableDocumentFormat
+  figures/identity_tensor_left.pdf:
+    timeStamp: 2020-10-15T14:18:08.489Z
+    jobNames: []
+    hash: TaQtUNrs3Ey4cnCgdFOdoCZnB5w/fSBJFiOiRAKeVYg=
+    type: PortableDocumentFormat
+  figures/identity_tensor_right.pdf:
+    timeStamp: 2020-10-15T14:18:08.490Z
+    jobNames: []
+    hash: KRF2Je8WuboHzUEic/ovFKNDYXODUj7fgqcabW6WYxI=
+    type: PortableDocumentFormat
+  figures/left_isometry_tensor.pdf:
+    timeStamp: 2020-10-15T14:18:08.491Z
+    jobNames: []
+    hash: IQwON87jxNSWInTtWpNkgtJt/JxztZhpmCSwe/THMBI=
+    type: PortableDocumentFormat
+  figures/right_isometry_tensor.pdf:
+    timeStamp: 2020-10-15T14:18:08.493Z
+    jobNames: []
+    hash: zuE9umTJhyn3odauU/RK7ezTu28u3a4V0mzV6uE6kgI=
+    type: PortableDocumentFormat
+  figures/tangent_space_projection_1.pdf:
+    timeStamp: 2020-10-15T15:08:33.148Z
+    jobNames: []
+    hash: soXIiFSX64X3LVebEcpCIOlpCCXDwImac4ZM/j7GOow=
+    type: PortableDocumentFormat
+  figures/tangent_space_projection_2.pdf:
+    timeStamp: 2020-10-15T14:18:08.495Z
+    jobNames: []
+    hash: CdWhfFzk9h8NJ0lzJ8/gnxjpc1n0q9QbkSHy6x4RNOc=
+    type: PortableDocumentFormat
+  figures/Heff_1.pdf:
+    timeStamp: 2020-10-15T15:37:42.451Z
+    jobNames: []
+    hash: tr3Yn7AWUGlkPmdchn6P3KT0K5TBXNw3NJsKqhl4gyw=
+    type: PortableDocumentFormat
+  figures/Keff_1.pdf:
+    timeStamp: 2020-10-15T15:42:36.429Z
+    jobNames: []
+    hash: QGeXkEL9wLSPpEtLfvZEqLIFtg9fOW1vwsWh7cWFHFQ=
+    type: PortableDocumentFormat
+  figures/right_canonical_gauge.pdf:
+    timeStamp: 2020-10-15T15:45:32.218Z
+    jobNames: []
+    hash: NL58OOjgL2ozJekfbFKIroZ4M+U2KJIpOuSBIbqhdms=
+    type: PortableDocumentFormat
+  figures/fMPS_3_2.pdf:
+    timeStamp: 2020-10-15T15:54:08.034Z
+    jobNames: []
+    hash: EvI+WY+vo0Qfyl/mJTsXLoxILRJEjI9UfsTORV8hsgg=
+    type: PortableDocumentFormat
+  figures/fMPS_4_2.pdf:
+    timeStamp: 2020-10-15T15:53:11.669Z
+    jobNames: []
+    hash: DdwmzeaR0ia2ttqVxnKJFn2NLjt3ElnQt2uc3XrZCAI=
+    type: PortableDocumentFormat
 rules:
   - name: ApplyOptions
     command: load
@@ -8097,6 +8857,36 @@ rules:
         type: default
       - file: thesis.bbl
         type: default
+      - file: figures/center_site_gauge.pdf
+        type: default
+      - file: figures/center_site_gauge_2.pdf
+        type: default
+      - file: figures/fMPS_3_1.pdf
+        type: default
+      - file: figures/fMPS_4_1.pdf
+        type: default
+      - file: figures/identity_tensor_left.pdf
+        type: default
+      - file: figures/identity_tensor_right.pdf
+        type: default
+      - file: figures/left_isometry_tensor.pdf
+        type: default
+      - file: figures/right_isometry_tensor.pdf
+        type: default
+      - file: figures/tangent_space_projection_1.pdf
+        type: default
+      - file: figures/tangent_space_projection_2.pdf
+        type: default
+      - file: figures/Heff_1.pdf
+        type: default
+      - file: figures/Keff_1.pdf
+        type: default
+      - file: figures/right_canonical_gauge.pdf
+        type: default
+      - file: figures/fMPS_3_2.pdf
+        type: default
+      - file: figures/fMPS_4_2.pdf
+        type: default
     outputs:
       - file: thesis.thm
         type: default
@@ -8374,6 +9164,22 @@ rules:
       - file: thesis.log-ParsedLaTeXLog
         type: default
       - file: thesis.blg-ParsedBibTeXLog
+        type: default
+      - file: /usr/local/texlive/2017/texmf-dist/bibtex/bst/din1505/abbrvdin.bst
+        type: default
+      - file: dedication.aux
+        type: default
+      - file: acknowledgement.aux
+        type: default
+      - file: introduction.aux
+        type: default
+      - file: part_general.aux
+        type: default
+      - file: chapter_one.aux
+        type: default
+      - file: chapter_two.aux
+        type: default
+      - file: biblio.bib
         type: default
     outputs:
       - file: thesis.bbl

@@ -1,5 +1,5 @@
 version: 0.12.2
-filePath: fMPS_1.tex
+filePath: fMPS_4_2.tex
 options:
   $BIBINPUTS:
     - $ROOTDIR
@@ -72,7 +72,7 @@ options:
   $PATH: /Library/TeX/texbin
 files:
   dicy-instance.yaml-ParsedYAML:
-    timeStamp: 2020-10-15T15:55:17.278Z
+    timeStamp: 2020-10-15T15:51:47.170Z
     jobNames: []
     value:
       severity: info
@@ -80,16 +80,16 @@ files:
   dicy.yaml-ParsedYAML:
     jobNames: []
     type: ParsedYAML
-  fMPS_1.yaml-ParsedYAML:
+  fMPS_4_2.yaml-ParsedYAML:
     jobNames: []
     type: ParsedYAML
-  fMPS_1.tex-ParsedLaTeXMagic:
-    timeStamp: 2020-10-13T15:47:07.097Z
+  fMPS_4_2.tex-ParsedLaTeXMagic:
+    timeStamp: 2020-10-15T15:51:47.202Z
     jobNames: []
     value: {}
     type: ParsedLaTeXMagic
   /Users/ahaller/Library/Application Support/dicy/config.yaml-ParsedYAML:
-    timeStamp: 2020-10-13T15:47:07.096Z
+    timeStamp: 2020-10-15T15:51:47.201Z
     jobNames: []
     value:
       synctex: true
@@ -131,10 +131,10 @@ files:
       intermediatePostScript: false
       $PATH: /Library/TeX/texbin
     type: ParsedYAML
-  fMPS_1.tex:
-    timeStamp: 2020-10-15T15:55:29.179Z
+  fMPS_4_2.tex:
+    timeStamp: 2020-10-15T15:53:10.889Z
     jobNames: []
-    hash: N9AAEupKrQbhc856MyO0gzMNEst8vViZ2c0RFzwyq6I=
+    hash: 4Mf7UdAdHNF0xQxiAgrWYYa2XLolQUJsG3gnpsGiWmM=
     type: LaTeX
     subType: standalone
   /Users/ahaller/Library/Application Support/dicy/config.yaml:
@@ -144,25 +144,14 @@ files:
   x.y-Nil:
     jobNames: []
     type: Nil
-  fMPS_1.fls-ParsedFileListing:
-    timeStamp: 2020-10-13T16:09:27.679Z
+  fMPS_4_2.fls-ParsedFileListing:
+    timeStamp: 2020-10-15T15:51:47.861Z
     jobNames: []
     value:
       messages: []
       inputs:
         - /Users/ahaller/PhD-thesis/thesis/definitions.tex
         - /dev/null
-        - /usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map
-        - >-
-          /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-        - >-
-          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-        - >-
-          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-        - >-
-          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
-        - >-
-          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
         - /usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
         - /usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
         - /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
@@ -361,20 +350,19 @@ files:
         - /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
         - /usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
         - /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
-        - /usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map
         - /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt
         - /usr/local/texlive/2017/texmf.cnf
         - Tensors_2.tex
-        - fMPS_1.aux
-        - fMPS_1.tex
+        - fMPS_4_2.aux
+        - fMPS_4_2.tex
       outputs:
-        - fMPS_1.aux
-        - fMPS_1.log
-        - fMPS_1.pdf
+        - fMPS_4_2.aux
+        - fMPS_4_2.log
+        - fMPS_4_2.pdf
       calls: []
     type: ParsedFileListing
-  fMPS_1.log-ParsedLaTeXLog:
-    timeStamp: 2020-10-13T15:47:09.773Z
+  fMPS_4_2.log-ParsedLaTeXLog:
+    timeStamp: 2020-10-15T15:51:48.655Z
     jobNames: []
     value:
       messages:
@@ -385,7 +373,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 14
               end: 14
@@ -397,7 +385,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 15
               end: 15
@@ -407,7 +395,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 17
               end: 17
@@ -417,7 +405,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 19
               end: 19
@@ -427,7 +415,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 21
               end: 21
@@ -437,7 +425,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/ms/everyshi.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 65
               end: 65
@@ -448,7 +436,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.te
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 68
               end: 68
@@ -459,7 +447,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 70
               end: 70
@@ -469,7 +457,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 73
               end: 73
@@ -479,7 +467,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 75
               end: 75
@@ -489,7 +477,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 77
               end: 77
@@ -503,7 +491,7 @@ files:
               start: 99
               end: 99
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 81
               end: 81
@@ -514,7 +502,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 85
               end: 85
@@ -525,7 +513,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 87
               end: 87
@@ -535,7 +523,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 144
               end: 144
@@ -549,7 +537,7 @@ files:
               start: 225
               end: 225
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 148
               end: 148
@@ -563,7 +551,7 @@ files:
               start: 1348
               end: 1348
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 149
               end: 149
@@ -577,7 +565,7 @@ files:
               start: 1352
               end: 1352
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 150
               end: 150
@@ -591,7 +579,7 @@ files:
               start: 1364
               end: 1364
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 151
               end: 151
@@ -605,7 +593,7 @@ files:
               start: 1366
               end: 1366
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 152
               end: 152
@@ -619,7 +607,7 @@ files:
               start: 1367
               end: 1367
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 153
               end: 153
@@ -633,7 +621,7 @@ files:
               start: 1368
               end: 1368
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 154
               end: 154
@@ -647,7 +635,7 @@ files:
               start: 1369
               end: 1369
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 155
               end: 155
@@ -661,7 +649,7 @@ files:
               start: 1370
               end: 1370
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 156
               end: 156
@@ -675,7 +663,7 @@ files:
               start: 1371
               end: 1371
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 157
               end: 157
@@ -686,7 +674,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 298
               end: 298
@@ -697,7 +685,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 304
               end: 304
@@ -708,7 +696,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 311
               end: 311
@@ -719,7 +707,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 320
               end: 320
@@ -729,7 +717,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 359
               end: 359
@@ -746,7 +734,7 @@ files:
               start: 14
               end: 14
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 425
               end: 426
@@ -756,7 +744,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 442
               end: 442
@@ -766,7 +754,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 446
               end: 446
@@ -776,7 +764,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 452
               end: 452
@@ -786,7 +774,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 455
               end: 455
@@ -800,7 +788,7 @@ files:
               start: 213
               end: 213
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 458
               end: 458
@@ -814,7 +802,7 @@ files:
               start: 375
               end: 375
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 461
               end: 461
@@ -828,7 +816,7 @@ files:
               start: 472
               end: 472
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 464
               end: 464
@@ -842,7 +830,7 @@ files:
               start: 475
               end: 475
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 465
               end: 465
@@ -856,7 +844,7 @@ files:
               start: 596
               end: 596
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 466
               end: 466
@@ -870,7 +858,7 @@ files:
               start: 712
               end: 712
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 470
               end: 470
@@ -884,7 +872,7 @@ files:
               start: 713
               end: 713
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 471
               end: 471
@@ -898,7 +886,7 @@ files:
               start: 2817
               end: 2817
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 492
               end: 492
@@ -912,7 +900,7 @@ files:
               start: 2818
               end: 2818
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 493
               end: 493
@@ -922,7 +910,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/marvosym/marvosym.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 495
               end: 495
@@ -931,12 +919,12 @@ files:
           category: LaTeX Font
           text: Checking defaults for OML/cmm/m/it ... okay
           source:
-            file: fMPS_1.tex
+            file: fMPS_4_2.tex
             range:
               start: 5
               end: 5
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 500
               end: 501
@@ -945,12 +933,12 @@ files:
           category: LaTeX Font
           text: Checking defaults for T1/cmr/m/n ... okay
           source:
-            file: fMPS_1.tex
+            file: fMPS_4_2.tex
             range:
               start: 5
               end: 5
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 502
               end: 503
@@ -959,12 +947,12 @@ files:
           category: LaTeX Font
           text: Checking defaults for OT1/cmr/m/n ... okay
           source:
-            file: fMPS_1.tex
+            file: fMPS_4_2.tex
             range:
               start: 5
               end: 5
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 504
               end: 505
@@ -973,12 +961,12 @@ files:
           category: LaTeX Font
           text: Checking defaults for OMS/cmsy/m/n ... okay
           source:
-            file: fMPS_1.tex
+            file: fMPS_4_2.tex
             range:
               start: 5
               end: 5
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 506
               end: 507
@@ -987,12 +975,12 @@ files:
           category: LaTeX Font
           text: Checking defaults for OMX/cmex/m/n ... okay
           source:
-            file: fMPS_1.tex
+            file: fMPS_4_2.tex
             range:
               start: 5
               end: 5
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 508
               end: 509
@@ -1001,12 +989,12 @@ files:
           category: LaTeX Font
           text: Checking defaults for U/cmr/m/n ... okay
           source:
-            file: fMPS_1.tex
+            file: fMPS_4_2.tex
             range:
               start: 5
               end: 5
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 510
               end: 511
@@ -1019,7 +1007,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 527
               end: 528
@@ -1031,7 +1019,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 529
               end: 529
@@ -1043,7 +1031,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 530
               end: 530
@@ -1055,7 +1043,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 531
               end: 531
@@ -1067,7 +1055,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 532
               end: 532
@@ -1078,7 +1066,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 534
               end: 534
@@ -1088,7 +1076,7 @@ files:
           source:
             file: /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 536
               end: 536
@@ -1099,7 +1087,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 538
               end: 538
@@ -1110,7 +1098,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 540
               end: 540
@@ -1121,7 +1109,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 542
               end: 542
@@ -1132,7 +1120,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 544
               end: 544
@@ -1147,7 +1135,7 @@ files:
             file: >-
               /usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 545
               end: 548
@@ -1162,7 +1150,7 @@ files:
               start: 438
               end: 438
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 550
               end: 551
@@ -1180,43 +1168,43 @@ files:
               start: 456
               end: 456
           log:
-            file: fMPS_1.log
+            file: fMPS_4_2.log
             range:
               start: 552
               end: 555
       inputs: []
       outputs:
-        - fMPS_1.pdf
+        - fMPS_4_2.pdf
       calls: []
     type: ParsedLaTeXLog
-  fMPS_1.aux:
-    timeStamp: 2020-10-15T15:55:30.245Z
+  fMPS_4_2.aux:
+    timeStamp: 2020-10-15T15:53:11.668Z
     jobNames: []
     hash: M0WgdaIvs7vARWeh5WYO0CQNU/WIH0WKIjTc1Cp40zU=
     type: LaTeXAuxilary
-  fMPS_1.fls:
-    timeStamp: 2020-10-15T15:55:30.261Z
+  fMPS_4_2.fls:
+    timeStamp: 2020-10-15T15:53:11.668Z
     jobNames: []
-    hash: 0icJwF+hkSCZ8qKd/A+M6zbldoBdppOwMZGx9G5fZzM=
+    hash: hTtocBeWbuPKaxaklpTY4kYRQymsgeM/c5qnBdgjV6s=
     type: FileListing
-  fMPS_1.log:
-    timeStamp: 2020-10-15T15:55:30.292Z
+  fMPS_4_2.log:
+    timeStamp: 2020-10-15T15:53:11.670Z
     jobNames: []
-    hash: QpJ4zzkcja4Onyxv4vda1C9HOQCMO/zhHhNt7Ba+nak=
+    hash: gsBpJMz4KyR2hZbqoD54MBti44r+9OALqbHwka208tI=
     type: LaTeXLog
     subType: pdfTeX
-  fMPS_1.synctex.gz:
-    timeStamp: 2020-10-15T15:55:30.291Z
+  fMPS_4_2.synctex.gz:
+    timeStamp: 2020-10-15T15:53:11.669Z
     jobNames: []
-    hash: EgdMVQf0jYdbuAGe5V2TIcqSQhmVrgLYiq1nFkPOOTA=
+    hash: bq0liVknJ/81/D3T7O9E43DBww8CDLDNM8ef0xhV89Y=
     type: SyncTeX
-  fMPS_1.pdf:
-    timeStamp: 2020-10-15T15:55:30.291Z
+  fMPS_4_2.pdf:
+    timeStamp: 2020-10-15T15:53:11.669Z
     jobNames: []
-    hash: eViWp2+ItBxVtMXwzEtY54gzfmjV5ywAGjqw9V2R/FY=
+    hash: DdwmzeaR0ia2ttqVxnKJFn2NLjt3ElnQt2uc3XrZCAI=
     type: PortableDocumentFormat
-  fMPS_1.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-10-13T15:47:08.420Z
+  fMPS_4_2.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-10-15T15:51:47.854Z
     jobNames: []
     value:
       commands:
@@ -1227,16 +1215,7 @@ files:
     jobNames: []
     type: TeX
   /dev/null:
-    timeStamp: 2020-10-15T15:55:20.034Z
-    jobNames: []
-  /usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map:
-    timeStamp: 2016-11-25T18:31:10.000Z
-    jobNames: []
-  /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm:
-    timeStamp: 2016-11-25T18:31:38.000Z
-    jobNames: []
-  /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb:
-    timeStamp: 2016-11-25T18:32:13.000Z
+    timeStamp: 2020-10-15T15:52:49.654Z
     jobNames: []
   /usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii:
     timeStamp: 2016-11-25T18:33:26.000Z
@@ -1706,9 +1685,6 @@ files:
   /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf:
     timeStamp: 2017-05-06T16:23:44.000Z
     jobNames: []
-  /usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map:
-    timeStamp: 2017-05-24T02:37:52.000Z
-    jobNames: []
   /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt:
     timeStamp: 2017-09-28T13:52:35.625Z
     jobNames: []
@@ -1720,15 +1696,6 @@ files:
     jobNames: []
     hash: ieQz+OdxU87933wLpCoKe1sqq2hWvd3CLJ2zvZNg47c=
     type: TeX
-  /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb:
-    timeStamp: 2016-11-25T18:32:13.000Z
-    jobNames: []
-  /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb:
-    timeStamp: 2016-11-25T18:32:13.000Z
-    jobNames: []
-  /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb:
-    timeStamp: 2016-11-25T18:32:13.000Z
-    jobNames: []
 rules:
   - name: ApplyOptions
     command: load
@@ -1737,9 +1704,9 @@ rules:
     inputs:
       - file: dicy.yaml-ParsedYAML
         type: default
-      - file: fMPS_1.yaml-ParsedYAML
+      - file: fMPS_4_2.yaml-ParsedYAML
         type: default
-      - file: fMPS_1.tex-ParsedLaTeXMagic
+      - file: fMPS_4_2.tex-ParsedLaTeXMagic
         type: default
       - file: dicy-instance.yaml-ParsedYAML
         type: default
@@ -1765,9 +1732,9 @@ rules:
     inputs:
       - file: dicy.yaml-ParsedYAML
         type: default
-      - file: fMPS_1.yaml-ParsedYAML
+      - file: fMPS_4_2.yaml-ParsedYAML
         type: default
-      - file: fMPS_1.tex-ParsedLaTeXMagic
+      - file: fMPS_4_2.tex-ParsedLaTeXMagic
         type: default
       - file: dicy-instance.yaml-ParsedYAML
         type: default
@@ -1788,12 +1755,12 @@ rules:
     command: load
     phase: execute
     parameters:
-      - fMPS_1.tex
+      - fMPS_4_2.tex
     inputs:
-      - file: fMPS_1.tex
+      - file: fMPS_4_2.tex
         type: default
     outputs:
-      - file: fMPS_1.tex-ParsedLaTeXMagic
+      - file: fMPS_4_2.tex-ParsedLaTeXMagic
         type: default
   - name: AssignJobNames
     command: load
@@ -1811,27 +1778,19 @@ rules:
     command: build
     phase: execute
     parameters:
-      - fMPS_1.tex
+      - fMPS_4_2.tex
     inputs:
-      - file: fMPS_1.tex
+      - file: fMPS_4_2.tex
         type: default
-      - file: fMPS_1.fls-ParsedFileListing
+      - file: fMPS_4_2.fls-ParsedFileListing
         type: default
-      - file: fMPS_1.log-ParsedLaTeXLog
+      - file: fMPS_4_2.log-ParsedLaTeXLog
         type: default
-      - file: fMPS_1.aux
+      - file: fMPS_4_2.aux
         type: default
       - file: /Users/ahaller/PhD-thesis/thesis/definitions.tex
         type: default
       - file: /dev/null
-        type: default
-      - file: /usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map
-        type: default
-      - file: >-
-          /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-        type: default
-      - file: >-
-          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
         type: default
       - file: /usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
         type: default
@@ -2151,66 +2110,55 @@ rules:
         type: default
       - file: /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
         type: default
-      - file: /usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-        type: default
       - file: /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt
         type: default
       - file: /usr/local/texlive/2017/texmf.cnf
         type: default
       - file: Tensors_2.tex
         type: default
-      - file: >-
-          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
-        type: default
-      - file: >-
-          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-        type: default
-      - file: >-
-          /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-        type: default
     outputs:
-      - file: fMPS_1.aux
+      - file: fMPS_4_2.aux
         type: default
-      - file: fMPS_1.fls
+      - file: fMPS_4_2.fls
         type: default
-      - file: fMPS_1.log
+      - file: fMPS_4_2.log
         type: default
-      - file: fMPS_1.synctex.gz
+      - file: fMPS_4_2.synctex.gz
         type: target
-      - file: fMPS_1.pdf
+      - file: fMPS_4_2.pdf
         type: target
   - name: ParseLaTeXAuxilary
     command: build
     phase: execute
     parameters:
-      - fMPS_1.aux
+      - fMPS_4_2.aux
     inputs:
-      - file: fMPS_1.aux
+      - file: fMPS_4_2.aux
         type: default
     outputs:
-      - file: fMPS_1.aux-ParsedLaTeXAuxilary
+      - file: fMPS_4_2.aux-ParsedLaTeXAuxilary
         type: default
   - name: ParseFileListing
     command: build
     phase: execute
     parameters:
-      - fMPS_1.fls
+      - fMPS_4_2.fls
     inputs:
-      - file: fMPS_1.fls
+      - file: fMPS_4_2.fls
         type: default
     outputs:
-      - file: fMPS_1.fls-ParsedFileListing
+      - file: fMPS_4_2.fls-ParsedFileListing
         type: default
   - name: ParseLaTeXLog
     command: build
     phase: execute
     parameters:
-      - fMPS_1.log
+      - fMPS_4_2.log
     inputs:
-      - file: fMPS_1.log
+      - file: fMPS_4_2.log
         type: default
     outputs:
-      - file: fMPS_1.log-ParsedLaTeXLog
+      - file: fMPS_4_2.log-ParsedLaTeXLog
         type: default
   - name: LogProducedTargets
     command: build
@@ -2222,9 +2170,9 @@ rules:
     command: build
     phase: finalize
     parameters:
-      - fMPS_1.tex
+      - fMPS_4_2.tex
     inputs:
-      - file: fMPS_1.tex
+      - file: fMPS_4_2.tex
         type: default
     outputs: []
   - name: FindLogFiles
@@ -2237,21 +2185,21 @@ rules:
     command: log
     phase: execute
     parameters:
-      - fMPS_1.log-ParsedLaTeXLog
+      - fMPS_4_2.log-ParsedLaTeXLog
     inputs:
-      - file: fMPS_1.log-ParsedLaTeXLog
+      - file: fMPS_4_2.log-ParsedLaTeXLog
         type: default
     outputs: []
   - name: ParseLaTeXLog
     command: log
     phase: execute
     parameters:
-      - fMPS_1.log
+      - fMPS_4_2.log
     inputs:
-      - file: fMPS_1.log
+      - file: fMPS_4_2.log
         type: default
     outputs:
-      - file: fMPS_1.log-ParsedLaTeXLog
+      - file: fMPS_4_2.log-ParsedLaTeXLog
         type: default
   - name: SaveCache
     command: save
