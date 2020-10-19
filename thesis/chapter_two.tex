@@ -881,6 +881,27 @@ Similarly to two-site DMRG, the TDVP algorithm can be easily implemented by time
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
+By definition, MPS can only present pure quantum states which have the generic form of~\cref{eq:generic_state}.
+In order to represent some mixed state, it is therefore necessary to implement an additional ingredient like minimally entangled typical thermal states (METTS) or matrix product purification schemes~\cite{Binder2015}.
+The purification scheme is the most straightforward method, as it implements auxiliary degrees of freedom which act as thermofield doublet states~\cite{Barnett1987}.
+In particular, the Hilbert space will be doubled $\HS = \HS_p\otimes\HS_a$, in which $\HS_p$ and $\HS_a$ denote the physical and auxiliary space.
+The density matrix of the thermal system is then a trace of the pure density matrix with respect to the auxiliary states, i.e.
+\begin{align}
+    \hat\rho = \tr_a\ket\psi\bra\psi.
+\end{align}
+In infinite temperature systems, the density matrix is the identity and such states can be constructed as a product state of maximally entangled states between physical and auxiliary subspace.
+For instance, in the Hubbard model at filling $N$, a canonical infinite-temperature state is $\ket{\psi_0}=\hat C^{\dag N}\ket0$~\cite{Barthel2016} with
+\begin{align}
+    \hat C^\dag = \sum_{j=1}^L c^\dag_{j,\uparrow,p}c^\dag_{j,\uparrow,a} + c^\dag_{j,\downarrow,p}c^\dag_{j,\downarrow,a}.
+\end{align}
+To obtain a finite-temperature state at $\beta\neq0$, the initial state can then be time-evolved along the imaginary axis over a range $\beta/2$~\cite{Barnett1987}, i.e.
+\begin{align}
+    \hat\rho(\beta) \propto \tr_a\brlr{\re^{-\frac\beta2\hat H}\ket{\psi_0}\bra{\psi_0}\re^{\frac\beta2\hat H}}.
+\end{align}
+The constant is readily fixed by normalizing the purified state after tracing the auxiliary degrees of freedom.
+Note that the trace of the auxiliary states leads to an additional gauge degree of freedom.
+In particular, the application of any unitary gate onto the ancilla subspace will leave the physical state untouched.
+This opens up the possibility to explore ``minimal entanglement'' gauges, resulting in particularly efficient tensor network schemes~\cite{Barthel2013,Hauschild2018}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -889,5 +910,90 @@ Similarly to two-site DMRG, the TDVP algorithm can be easily implemented by time
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-\todo{Very short explanation with reference to Silvi's bible}
-\todo{Concluding remarks and refer to the works}
+The existence of symmetries implies a corresponding conserved quantity according to the Noether theorem from 1918.
+This in general allows to decouple a full problem into simpler sub-problems, such as solving a translationally invariant quadratic Hamiltonian for each conserved quantity (crystal momentum) in Fourier space.
+
+In computational physics, they open up the possibility to implement the preservation of such conserved quantities in an exact manner, which typically leads to a significant overall speed-up.
+One of the most prominent conserved quantity is the preservation of the number of particles $N$ in closed quantum systems.
+Implementing the preservation of $N$ in MPS allows to immediately select a target Fock space $\FS^N$ without the need of scanning a chemical potential.
+
+In quantum mechanis, symmetry elements $g$ of a group $G$ are typically unitary and stationary representations, i.e. they satisfy the commutation
+\begin{align}
+    \commutator{U(g),\hat H} = 0\ \forall g\in G.
+\end{align}
+As a consequence there exists an eigenbasis of $\hat H$ such that the corresponding energy eigenstates belong to the subspace of a single irreducible representation (irrep)\footnote{An irrep of a group is a group representation which maps only trivial subspaces of the full vector space into itself and, in this sense, is indecomposable into ``smaller'' pieces.}.
+One such example would be a quantum state of the form $\ket{\psi_{\alpha,\beta,\gamma}}$ which satisfy $\hat H\ket{\psi_{\alpha,\beta,\gamma}} = E_{\alpha,\gamma}\ket{\psi_{\alpha,\beta,\gamma}}$.
+The index $\alpha$ labels the primary quantum number (or sector, or charge), and therefore the subspace spanned by a single irreducible representation.
+The second index $\beta$ labels the contributing states to this subspace (secondary quantum number), and $E$ does not depend on that as a consequence of Schur's lemma.
+The last index $\gamma$ represents all remaining information not captured by the primary quantum number $\alpha$ (symmetry degeneracy label)~\cite{Silvi2019}.
+
+A representation of a symmetry group element acts onto the quantum states as
+\begin{align}
+    U(g)\ket{\psi_{\alpha,\beta,\gamma}} = \sum_{\beta'}W^{\alpha}_{\beta,\beta'}(g)\ket{\psi_{\alpha,\beta',\gamma}}
+\end{align}
+in which $W^\alpha(g)$ is the $\alpha$-irrep matrix of the group element $g$.
+The representation of symmetries are called Abelian when $\commutator{U(g),U(g')}=0$ and non-Abelian when ($\commutator{U(g),U(g')}\neq0$).
+Although an implementation of the latter is certainly possible, the former are computationally way easier to handle.
+For example, the simple fusion rules in typical Abelian symmetries like particle number conservation ($\alpha\oplus\alpha'=\alpha+\alpha'$) generalize to Clebsch-Gordan coefficients in the case of $SU(2)$ leading to a significant development overhead~\cite{Schmoll2020}.
+Abelian symmetries in general have one-dimensional irreps, and as such are of the form
+\begin{align}
+    W^\alpha(g) = \re^{\ri\varphi_\alpha(g)}
+\end{align}
+in which the phase $\varphi$ depends on the primary quantum number and the group element itself, and a secondary quantum number does not emerge~\cite{Silvi2019}.
+The symmetric Hamiltonian is thus block diagonal in the $\alpha$ sectors without further constraints.
+For instance, the continuous planar rotation group, denoted by $U(1)$, is the symmetry group related to the conservation laws of integer quantities like the total number of particles.
+In this case, the irrep label $\alpha\in\mathds Z$, the element $g\in[0,2\pi)$, compositions are additive $g\circ g' = {(g+g')\mod 2\pi}$, and $\varphi_\alpha(g) = g\alpha$.
+For later use, I also define the inverse irrep $\alpha^\dag=-\alpha$.
+Other examples of typical symmetry groups and their corresponding description is listed in~\cite{Silvi2019}.
+
+From the different classes of symmetries, pointwise symmetries are particularly efficient in the framework of tensor networks.
+As the name suggests, the global representation of a pointwise symmetry satisfies $U(g)=\bigotimes_i V_i(g)$ and is composed of local representations $V_i(g)$ of the group element $g$ acting on site $i$.
+There are two main symmetries which are pointwise, (i) global pointwise and (ii) lattice gauge symmetries.
+The former (i) are described by local elements $V_i(g)$ which are nontrivial for every site, and they are usually uniform such that $V_i(g)=V(g)$.
+The latter (ii) have nontrivial support for a restricted number of sites and are a powerful tool for the simulation of lattice gauge models~\cite{Banuls2014,Buyens2015}.
+
+The locality of pointwise symmetries can be exploited by implementing a tensor network which remains invariant under the action of the symmetry.
+This can be achieved by two elementary building blocks, symmetric links (i) and symmetric tensors (ii).
+To implement (i), the legs of the tensor are promoted to symmetric links by the association of the irrep label $\alpha$ to each leg index value $i$.
+Index values with the same $\alpha$ are counted by the degeneracy number $\gamma$.
+It is thus possible to generate a bijection between the leg index value $i$ and symmetric link tuple $(\alpha,\gamma)$.
+To simplify notation, I will drop the indication of the bijection, and replace the occurrence of the leg index value with the symmetric link tuple, i.e. $i\equiv(\alpha,\gamma)$.
+This way, symmetric links associate a specific unitary representation of the group $G$, and each tuple $(\alpha,\gamma)$ labels a specific irrep.
+
+A tensor $T$ is called Abelian symmetric if it is invariant under the simultaneous application of $W_i(g)$ associated to the symmetric links $r$, i.e.
+\begin{align}
+    T^{[(\alpha_1,\gamma_1),\dots,(\alpha_n,\gamma_n)]} = T^{[(\alpha_1,\gamma_1),\dots,(\alpha_n,\gamma_n)]}\prod_{r=1}^n{\re^{\ri \varphi_{\alpha_r}(g)}}.
+    \label{eq:symmetric_tensor}
+\end{align}
+In conclusion, the tensor $T$ is symmetric if nonzero elements exist where the string of charges satisfies $\prod_r {e^{\ri\varphi_{\alpha_r}(g)}} = 1$.
+This condition can be brought to the more convenient computational rule $\sum_r\alpha_r = 0$, which suggests the use of a structural tensor~\cite{Silvi2019}
+\begin{align}
+    S^{[\alpha_1,\dots,\alpha_n]} = \delta_{0,\sum_r\alpha_r}.
+\end{align}
+In particular, the full symmetric tensor can then be decomposed to a product of the structural tensor and a degeneracy tensor
+\begin{align}
+    T^{[(\alpha_1,\gamma_1),\dots,(\alpha_n,\gamma_n)]} = S^{[\alpha_1,\dots,\alpha_n]} R^{[\gamma_1,\dots,\gamma_n]}.
+\end{align}
+The number of elements in $T$ is thus given by the product of elements in $R$ and $S$, which is typically much lower than the number of elements in the non-symmetric version~\cite{Silvi2019}.
+
+It is, as usual, quite convenient to convey the equations to the graphical notation.
+To satisfy \cref{eq:symmetric_tensor}, the amount of negative charges must compensate the positive charges.
+For example, a rank-$3$ symmetric tensor would be of the form
+\begin{align}
+    T^{[i_1,i_2,i_3]} \equiv T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]}
+\end{align}
+Let us, for convenience, consider only three different quantum numbers $\alpha_1>0$, $\alpha_2>0$ and $\alpha_3$, for which the tensor decomposes to
+\begin{align}
+    T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]} = \delta_{\alpha_3,-\alpha_1-\alpha_2} R^{[\gamma_1,\gamma_2,\gamma_3]}.
+\end{align}
+It is thus a necessity that $\alpha_3$ entirely compensates the sum of charges $\alpha_1$ and $\alpha_2$.
+This can be depicted through a set of ``incoming'' and ``outgoing'' arrows with respect to $T$ representing the structural tensor $S$, i.e.
+\begin{align}
+    T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]} \equiv \includegraphics[valign=c]{figures/symmetric_tensor_example.pdf}
+    =
+    \includegraphics[valign=c]{figures/symmetric_tensor_example_2.pdf}
+    \times
+    \includegraphics[valign=c]{figures/symmetric_tensor_example_3.pdf}.
+\end{align}
+All of the algorithms introduced in this chapter are compatible with the use of symmetric tensors, and can be promoted to symmetric algorithms in a straightforward manner.
+For a careful implementation guide, I refer to the detailed steps in~\cite{Silvi2019}.
