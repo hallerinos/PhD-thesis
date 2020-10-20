@@ -28,12 +28,12 @@ These particle ``braidings'' can be understood as logical gates that make up the
 One of the major advantages of using these quasiparticles compared to other approaches is their incredible robustness against perturbations in the bulk of the material.
 The foundation for the existence of such a class of quasiparticles is commonly accepted to be topological order: a certain long-range ordered pattern of quantum entanglement.
 One example of a topologically ordered state would be the Moore-Read state~\cite{Moore1991,Read1996} which has a large wave-function overlap with the fractional quantum Hall state at filling factor $\nu=5/2$~\cite{Storni2010}.
-Since fractional quantum Hall states are intrinsically strongly interacting quantum many body systems, analytic attempts are particularly involved and quantitative statements like those in~\cite{Storni2010} are based on exact diagonalization of small systems or numerical simulations in general.
+Since fractional quantum Hall states are strongly correlated quantum many body systems, analytic attempts are particularly involved and quantitative statements like those in~\cite{Storni2010} are based on exact diagonalization of small systems or numerical simulations in general.
 
 The ``trivial'' cousins of topologically ordered phases of matter are symmetry protected topological phases of matter which do not show long-range entanglement.
 The fascination of this topic is -- similar to true topologically ordered phases -- based on the geometric ground state degeneracy and exponential localization of the interface excitations.
 One famous example of such a system is a topological insulator, having an insulating bulk with conducting surface states which are protected by symmetry.
-The nature of topological insulators is effectively non-interacting, which makes them particularly easy to treat using standard band theory.
+The nature of topological insulators based on band theory is intrinsically non-interacting, which makes them particularly easy to treat using standard band theory.
 This lead to the full classification of symmetry protected topological phases, famously known as the periodic table of topological insulators and superconductors~\cite{Altland1997,Kitaev2009}.
 Laboratory experiments based on theoretical predictions remained an exception, until the recent strive of synthetic quantum matter:
 engineered systems in which the interactions between constituents are tunable to obtain effectively single-particle and even strongly correlated states of matter.
@@ -48,35 +48,15 @@ One of the most prominent examples are ultracold atoms trapped in optical lattic
 %
 A general goal in condensed matter physics is the unambiguous characterization of different phases of matter.
 The classification of topological insulators is possible within the band theory of solids: neglecting interactions and exploiting translational symmetry of crystals defines a periodicity in crystal-momentum space, which I already exploited excessively in \cref{ch:the_quantization_of_motion_and_fields}.
-Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch states $\ket{u_s(\bm k)}$ defined in a single unit-cell consisting of $s$ individual constituents.
+Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch states $\ket{\psi_s(\bm k)}=\re^{\ri\bm k}\ket{u_s(\bm k)}$ defined in a single unit-cell consisting of $s$ individual constituents.
 Each Bloch state is an eigenstate of the Bloch Hamiltonian $\hat H(\bm k)$ which can be represented as a $\bm k$-dependent matrix $H(\bm k)$.
 Its ordered spectrum $\varepsilon_s(\bm k)$ define what is known as the band structure.
-
 For insulators, a finite energy gap $\Delta$ separates the occupied valence band states from the empty conduction band states.
+Lattice translation symmetry implies the identity $H(\bm k + \bm G) = H(\bm k)$ for any reciprocal lattice vector $\bm G$, which defines the crystal momentum in the periodic Brillouin zone with $\bm k\equiv \bm k+\bm G$, which has the topology of a torus.
+An insulating band structure can thus be viewed as a mapping between the torus to the space of Bloch Hamiltonians with a finite energy gap~\cite{Kane2013}.
+
 Two systems I, II are called topologically equivalent, if their corresponding Bloch Hamiltonians $H_{\rm I}$, $H_{\rm II}$ can be continuously deformed without closing the energy gap.
 Otherwise put, for topologically equivalent phases, there exists a parameter path $\gamma(t)$ adiabatically changing the Hamiltonian $H_{\gamma(t)}$ which connects the two phases $H_{\gamma(0)}=H_{\rm I}$ and $H_{\gamma(1)}=H_{\rm II}$ in such a way that the band gap does not vanish along the path, i.e. $\Delta_{\gamma(t)}\neq0$.
-In this sense, there exist topologically inequivalent classes of insulators which cannot be distinguished by looking at their energy spectra alone.
-
-Let me clarify the above statement by giving a quick example.
-Consider the following one-dimensional Bloch Hamiltonian
-\begin{align}
-    H_0(k)
-    =
-    \begin{pmatrix}
-        0 & J+J'\re^{\ri k}\\
-        J+J'\re^{\ri k} & 0
-    \end{pmatrix}
-\end{align}
-with positive couplings $J,J'\leq0$.
-The $2\times2$ matrix can be easily diagonalized and yields the following band dispersion
-\begin{align}
-    \varepsilon_{\pm}(k) = \pm \sqrt{|J+J'\re^{\ri k}|^2} = \sqrt{J^2+J'^2+2JJ'\cos(k)}.
-\end{align}
-The valence/conduction band shows a maximum/minimum at $k=\pi$, which leads to the band gap $\Delta = 2\left|J-J'\right|$.
-As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and, for reasons which are clear in the next sections, I call $J>J'$ the TRI and $J<J'$ the TOI phase.
-Within each of those phases, all Hamiltonians are topologically equivalent, which is trivially satisfied by the definition of a smooth path which linearly interpolates the different values of the couplings.
-
-In contrast, the two different phases cannot be connected by a path which preserves the band gap, as any parameter path necessarily needs to cross $J=J'$, which is the critical point with $\Delta=0$.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,8 +65,39 @@ In contrast, the two different phases cannot be connected by a path which preser
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-Probably the most paradigmatic model to access the field of topological insulators is the Su-Schrieffer-Heeger (SSH) chain.
-Originally, it has been introduced
+Let me clarify the statements of the previous chapter by giving a quick example.
+Consider the following one-dimensional Bloch Hamiltonian, corresponding to the Su-Schrieffer-Heeger model
+\begin{align}
+    H(k)
+    =
+    \begin{pmatrix}
+        0 & J+J'\re^{\ri k}\\
+        J+J'\re^{\ri k} & 0
+    \end{pmatrix}
+\end{align}
+in which the couplings $J,J'\leq0$ are assumed positive.
+The $2\times2$ matrix can be easily diagonalized and yields the following band dispersion
+\begin{align}
+    \varepsilon_{\pm}(k) = \pm \sqrt{|J+J'\re^{\ri k}|^2} = \sqrt{J^2+J'^2+2JJ'\cos(k)}.
+\end{align}
+The valence/conduction band shows a maximum/minimum at $k=\pi$, which leads to the band gap $\Delta = 2\left|J-J'\right|$.
+As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and, for reasons which are clear in the next sections, I call $J>J'$ the TRI and $J<J'$ the TOI phase.
+Within each of those phases, all Hamiltonians are topologically equivalent, which is trivially satisfied by the definition of a smooth path which linearly interpolates the different values of the couplings.
+It is even possible to define a family of Hamiltonians according to
+\begin{align}
+    H_{\gamma(t)}(k) =
+    \begin{pmatrix}
+        \sin(\pi t) & 1-t + t\re^{\ri k} \\
+        1-t + t\re^{\ri k} & -\sin(\pi t)
+    \end{pmatrix}
+    \label{eq:hamiltonian_path}
+\end{align}
+in which, incidentally, $H_{\gamma(0)}$ is of the TRI and $H_{\gamma(1)}$ is of the TOI kind.
+The spectrum of $H_{\gamma(t)}(k)$ is readily solved and evaluates to $\varepsilon_\pm(k,t)=\pm\sqrt{1-2(1-t)t+2(1-t)t\cos k+\sin(\pi t)}$.
+It is easy to show that $\Delta_{\gamma(t)}\geq0$ for $0\leq t\leq1$, which demonstrates that TOI and TRI phases are, indeed, topologically equivalent.
+However, if we require to keep $H_{\gamma(t)}$ entirely off-diagonal and symmetric (we will see later that this preserves chiral symmetry), an adiabatic deformation like \cref{eq:hamiltonian_path} does not exist and in order to evolve from a TOI to a TRI state, the band gap $\Delta$ necessarily vanishes at the critical point $J=J'$.
+
+In conclusion, TOI and TRI states are topologically distinct under the assumption that a certain symmetry must be preserved at all times.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
