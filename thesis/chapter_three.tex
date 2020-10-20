@@ -1,3 +1,5 @@
+%!TEX root = thesis.tex
+%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,10 +10,83 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
+Interestingly, the meaning of the term ``topology'' changes with the research focus of the scientist.
+For instance, chemists quite often understand topology as the geometric configuration of a molecule and biologists talk about the topology of knotted proteins.
+A condensed matter physicist typically classifies certain structures, e.g. insulating materials or magnetic whirls, with the concepts of topological invariants~\cite{topocondmat}.
+This approach is closely related to one of the most fundamental invariants in the mathematical branch of topology: the genus of a manifold which can be thought of as the ``number of holes''.
+This number is known not to change under smooth deformations.
+Consider the following three ``manifolds'', i.e. a donut, a coffee mug and a pretzel.
+It may be delicate to do, but one could simply stretch and massage the donut to obtain a mug without ``cutting'' and ``glueing'', which is a necessity to go from donut to pretzel.
+The ``stretching'' can be understood as smooth deformation, and as a consequence the two shapes have the same genus.
+However ``cutting'' and ``glueing'' is something very sudden and irreversible, which changes the genus of the manifold.
+The idea of explaining phenomena in quantum states of matter such as the quantum Hall effect or superfluid phase transitions using the mathematical concepts of topology was established by David J. Thouless, F. Duncan M. Haldane and J. Michael Kosterlitz and resulted in the 2016 Nobel prize~\cite{NP2016}.
+
+Exploring, engineering and probing topological quantum matter, in my perspective, is still one of the most exciting research areas.
+It is not only a delicate challenge due to the interdisciplinary methods that have been developed in the past decades, it is also highly relevant for its technical applications.
+For instance, a so-called topological quantum computer exploits the rich exchange rules of exotic quasiparticles called anyons, which exist at the interfaces of topological quantum matter~\cite{Freedman2002}.
+These particle ``braidings'' can be understood as logical gates that make up the processing unit of a hypothetical computer.
+One of the major advantages of using these quasiparticles compared to other approaches is their incredible robustness against perturbations in the bulk of the material.
+The foundation for the existence of such a class of quasiparticles is commonly accepted to be topological order: a certain long-range ordered pattern of quantum entanglement.
+One example of a topologically ordered state would be the Moore-Read state~\cite{Moore1991,Read1996} which has a large wave-function overlap with the fractional quantum Hall state at filling factor $\nu=5/2$~\cite{Storni2010}.
+Since fractional quantum Hall states are intrinsically strongly interacting quantum many body systems, analytic attempts are particularly involved and quantitative statements like those in~\cite{Storni2010} are based on exact diagonalization of small systems or numerical simulations in general.
+
+The ``trivial'' cousins of topologically ordered phases of matter are symmetry protected topological phases of matter which do not show long-range entanglement.
+The fascination of this topic is -- similar to true topologically ordered phases -- based on the geometric ground state degeneracy and exponential localization of the interface excitations.
+One famous example of such a system is a topological insulator, having an insulating bulk with conducting surface states which are protected by symmetry.
+The nature of topological insulators is effectively non-interacting, which makes them particularly easy to treat using standard band theory.
+This lead to the full classification of symmetry protected topological phases, famously known as the periodic table of topological insulators and superconductors~\cite{Altland1997,Kitaev2009}.
+Laboratory experiments based on theoretical predictions remained an exception, until the recent strive of synthetic quantum matter:
+engineered systems in which the interactions between constituents are tunable to obtain effectively single-particle and even strongly correlated states of matter.
+One of the most prominent examples are ultracold atoms trapped in optical lattices, which provide all kinds of ingredients theoreticians like to play with: magnetic fields~\cite{Lin2009}, spin-orbit coupling~\cite{Lin2011}, mixed particle statistics~\cite{Ferrari2002}, quantum simulation~\cite{Mazza2012} and $4+1$D laboratory experiments using the concept of synthetic dimensions~\cite{Lohse2018}, just to name a few.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Topological band theory}
+\label{sec:topological_band_theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+A general goal in condensed matter physics is the unambiguous characterization of different phases of matter.
+The classification of topological insulators is possible within the band theory of solids: neglecting interactions and exploiting translational symmetry of crystals defines a periodicity in crystal-momentum space, which I already exploited excessively in \cref{ch:the_quantization_of_motion_and_fields}.
+Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch states $\ket{u_s(\bm k)}$ defined in a single unit-cell consisting of $s$ individual constituents.
+Each Bloch state is an eigenstate of the Bloch Hamiltonian $\hat H(\bm k)$ which can be represented as a $\bm k$-dependent matrix $H(\bm k)$.
+Its ordered spectrum $\varepsilon_s(\bm k)$ define what is known as the band structure.
+
+For insulators, a finite energy gap $\Delta$ separates the occupied valence band states from the empty conduction band states.
+Two systems I, II are called topologically equivalent, if their corresponding Bloch Hamiltonians $H_{\rm I}$, $H_{\rm II}$ can be continuously deformed without closing the energy gap.
+Otherwise put, for topologically equivalent phases, there exists a parameter path $\gamma(t)$ adiabatically changing the Hamiltonian $H_{\gamma(t)}$ which connects the two phases $H_{\gamma(0)}=H_{\rm I}$ and $H_{\gamma(1)}=H_{\rm II}$ in such a way that the band gap does not vanish along the path, i.e. $\Delta_{\gamma(t)}\neq0$.
+In this sense, there exist topologically inequivalent classes of insulators which cannot be distinguished by looking at their energy spectra alone.
+
+Let me clarify the above statement by giving a quick example.
+Consider the following one-dimensional Bloch Hamiltonian
+\begin{align}
+    H_0(k)
+    =
+    \begin{pmatrix}
+        0 & J+J'\re^{\ri k}\\
+        J+J'\re^{\ri k} & 0
+    \end{pmatrix}
+\end{align}
+with positive couplings $J,J'\leq0$.
+The $2\times2$ matrix can be easily diagonalized and yields the following band dispersion
+\begin{align}
+    \varepsilon_{\pm}(k) = \pm \sqrt{|J+J'\re^{\ri k}|^2} = \sqrt{J^2+J'^2+2JJ'\cos(k)}.
+\end{align}
+The valence/conduction band shows a maximum/minimum at $k=\pi$, which leads to the band gap $\Delta = 2\left|J-J'\right|$.
+As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and, for reasons which are clear in the next sections, I call $J>J'$ the TRI and $J<J'$ the TOI phase.
+Within each of those phases, all Hamiltonians are topologically equivalent, which is trivially satisfied by the definition of a smooth path which linearly interpolates the different values of the couplings.
+
+In contrast, the two different phases cannot be connected by a path which preserves the band gap, as any parameter path necessarily needs to cross $J=J'$, which is the critical point with $\Delta=0$.
+%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Su-Schrieffer-Heeger chain}
 \label{sec:the_SSH_chain}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+Probably the most paradigmatic model to access the field of topological insulators is the Su-Schrieffer-Heeger (SSH) chain.
+Originally, it has been introduced
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,10 +95,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
+%
+%
 %%%%%%%%%%%%%%%%%%%%%
 \section{Zak phase}
 \label{sec:zak_phase}
 %%%%%%%%%%%%%%%%%%%%%
+%
+%
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,7 +111,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
+%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Symmetry protected topological phases}
+\section{Symmetry-protected topological phases}
 \label{sec:symmetry_protected_topological_phases}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
