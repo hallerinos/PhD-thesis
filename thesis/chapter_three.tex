@@ -50,7 +50,7 @@ One of the most prominent examples are ultracold atoms trapped in optical lattic
 %
 To make the food example in the introduction more rigorous, the Gauss-Bonnet theorem is a beautiful statement on the integral of the Gaussian curvature $K$ over a surface $S$ which defines the Euler characteristic~\cite{Nakahara1990}
 \begin{align}
-    \chi = \frac1{2\pi}\int_S K\rd A.
+    \chi = \frac1{2\pi}\int_S {\bm K}\rd {\bm S}.
 \end{align}
 For instance, the Euler characteristic of a three-dimensional sphere of radius $R$ evaluates to
 \begin{align}
@@ -58,7 +58,7 @@ For instance, the Euler characteristic of a three-dimensional sphere of radius $
 \end{align}
 since $K=1/r^2$ in spherical coordinates.
 In general, the Euler characteristic is quantized, independent of smooth deformations of the surface $S$ and relates to the genus $g$ (``number of holes'') by $\chi=2-2g$.
-The topological invariants which we encounter in the next sections are similar, although they characterize more abstract objects.
+The topological invariants encountered in the next sections are similar, although they characterize more abstract objects.
 
 The classification of topological insulators is possible within the band theory of solids: neglecting interactions and exploiting translational symmetry of crystals defines a periodicity in crystal-momentum space, which I already exploited excessively in \cref{ch:the_quantization_of_motion_and_fields}.
 Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch states $\ket{\psi_s(\bm k)}=\re^{\ri\bm k}\ket{u_s(\bm k)}$ defined in a single unit-cell consisting of $s$ individual constituents.
@@ -68,10 +68,51 @@ For insulators, a finite energy gap $\Delta$ separates the occupied valence band
 Lattice translation symmetry implies the identity $H(\bm k + \bm G) = H(\bm k)$ for any reciprocal lattice vector $\bm G$, which defines the crystal momentum in the periodic Brillouin zone with $\bm k\equiv \bm k+\bm G$, which has the topology of a torus.
 An insulating band structure can thus be viewed as a mapping between the torus to the space of Bloch Hamiltonians with a finite energy gap~\cite{Kane2013}.
 
-Two systems I, II are called topologically equivalent, if their corresponding Bloch Hamiltonians $H_{\rm I}$, $H_{\rm II}$ can be continuously deformed without closing the energy gap.
-Otherwise put, for topologically equivalent phases, there exists a parameter path $\gamma(t)$ adiabatically changing the Hamiltonian $H_{\gamma(t)}$ which connects the two phases $H_{\gamma(0)}=H_{\rm I}$ and $H_{\gamma(1)}=H_{\rm II}$ in such a way that the band gap does not vanish along the path, i.e. $\Delta_{\gamma(t)}\neq0$.
+Two systems I, II are called topologically equivalent, if their corresponding Bloch Hamiltonians $H_{\rm I}$, $H_{\rm II}$ can be adiabatically deformed without closing the energy gap.
+Otherwise put, for topologically equivalent phases, there exists a parameter path $\gamma(t)$ adiabatically changing the Hamiltonian $H_{\gamma(t)}$ which connects the two phases $H_{\gamma(0)}=H_{\rm I}$ and $H_{\gamma(1)}=H_{\rm II}$ in such a way that the band gap $\Delta_{\gamma(t)}\neq0$ does not vanish along the path.
+Consider now the special case of an interface where the crystal smoothly interpolates between two distinct topological phases.
+Somewhere along the path the gap necessarily vanishes to not violate the assumption, which implies the presence of zero-energy states spacially localized around the gap-closing point.
+This interplay between bulk and surface is a ubiquitous phenomenon in topological insulators called the bulk-boundary correspondence.
 
-\todo{Currently working on this...}
+One of the key concepts in topological band theory is the Berry phase, arising due to the intrinsic phase ambiguity of quantum states:
+\begin{align}
+    \ket{u(\bm k)}\rightarrow \re^{\ri \varphi(\bm k)}\ket{u(\bm k)}.
+    \label{eq:equivalent_states}
+\end{align}
+By defining the Berry connection (sometimes called Berry potential) as $\bm A(\bm k) = -\ri \braket{u(\bm k)|\nabla_{\bm k}|u(\bm k)}$, the transformation of $\bm A$ under the gauge transformation \cref{eq:equivalent_states} is similar to the electromagnetic vector potential, i.e.
+\begin{align}
+    \bm A \rightarrow {\bm A} + \nabla_{\bm k}\varphi(\bm k).
+\end{align}
+This shows that $\bm A$ is not gauge invariant, but the analog of a magnetic flux must be.
+For a closed loop $C$ that forms the boundary of a surface $S$ spanned in Fourier $\bm k$-space, the Berry phase is thus defined as the integral
+\begin{align}
+    \gamma(C) = \oint_C{\bm A}\rd \bm k.
+\end{align}
+It might be useful to grasp the Berry phase for a generic $2\times 2$ Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
+\begin{align}
+    H(\bm k) = \bm d(\bm k) \bm\sigma =
+    \begin{pmatrix}
+        d_z & d_x - \ri d_y \\
+        d_x + \ri d_y & -d_z
+    \end{pmatrix}.
+\end{align}
+which has the energy dispersion $\varepsilon_\pm = \pm |\bm d|$.
+A term proportional to the identity, i.e. $d_0\mathbb 1$, can be safely ignored as the eigenvectors do not depend on it.
+I was shown by Berry that for a loop $C$ the accumulated phase is given by
+\begin{align}
+    \gamma(C) = \frac12\Omega(C)
+\end{align}
+in which $\Omega(C)$ is the solid angle subtended by the path $C$ formed by $\hat {\bm d}$ from the degeneracy at $\varepsilon=0$~\cite{Berry1984}.
+When $C$ corresponds to a $2\pi n$ rotation of $\hat{\bm d}$ in a plane, the Berry phase is thus $\pi n$.
+This defines an integer-valued topological invariant called the Chern number~\cite{Nakahara1990}
+\begin{align}
+    n = \frac1{2\pi}\int_S {\bm F} \rd{\bm S}
+\end{align}
+in which the Berry curvature ${\bm F}$ is identified through Stoke's theorem.
+For a three-dimensional parameter space, it is simply $\bm F = \nabla_{\bm k}\times{\bm A}$.
+The quantization of the Chern number extends well beyond the two-band model and is ultimately based on Stoke's theorem.
+In particular, it follows from the fact that for a loop $C$, the ``inside'' of $C$ is a bit ambiguous, and by reducing the inside of the closed loop to a surface integral, both equations necessarily agree up to a multiple of $2\pi$, in which the multiple is given by the amount of times $C$ loops around the surface of $S$.
+\todo{Arrived here...}
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
