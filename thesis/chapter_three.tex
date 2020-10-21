@@ -32,12 +32,14 @@ Since fractional quantum Hall states are strongly correlated quantum many body s
 
 The ``trivial'' cousins of topologically ordered phases of matter are symmetry protected topological phases of matter which do not show long-range entanglement.
 The fascination of this topic is -- similar to true topologically ordered phases -- based on the geometric ground state degeneracy and exponential localization of the interface excitations.
-One famous example of such a system is a topological insulator, having an insulating bulk with conducting surface states which are protected by symmetry.
-The nature of topological insulators based on band theory is intrinsically non-interacting, which makes them particularly easy to treat using standard band theory.
+One famous example of such a system is a topological insulator, which, like an ordinary insulator, has a bulk energy gap separating the valence from the conduction band.
+Unlike ordinary insulators, it hosts gapless surface states which are protected by symmetry.
+The nature of topological insulators can be understood by simple non-interacting models, which makes the topic analytically amendable using standard band theory.
 This lead to the full classification of symmetry protected topological phases, famously known as the periodic table of topological insulators and superconductors~\cite{Altland1997,Kitaev2009}.
+
 Laboratory experiments based on theoretical predictions remained an exception, until the recent strive of synthetic quantum matter:
 engineered systems in which the interactions between constituents are tunable to obtain effectively single-particle and even strongly correlated states of matter.
-One of the most prominent examples are ultracold atoms trapped in optical lattices, which provide all kinds of ingredients theoreticians like to play with: magnetic fields~\cite{Lin2009}, spin-orbit coupling~\cite{Lin2011}, mixed particle statistics~\cite{Ferrari2002}, quantum simulation~\cite{Mazza2012} and $4+1$D laboratory experiments using the concept of synthetic dimensions~\cite{Lohse2018}, just to name a few.
+One of the most prominent examples are ultracold atoms trapped in optical lattices, which provide all kinds of ingredients theoreticians like to play with: magnetic fields~\cite{Lin2009}, spin-orbit coupling~\cite{Lin2011}, mixed particle statistics~\cite{Ferrari2002}, quantum simulation~\cite{Mazza2012} and even the realization of $4$ independent spacial coordinates exploiting the concept of synthetic dimensions~\cite{Lohse2018}, just to name a few.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,7 +48,18 @@ One of the most prominent examples are ultracold atoms trapped in optical lattic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-A general goal in condensed matter physics is the unambiguous characterization of different phases of matter.
+To make the food example in the introduction more rigorous, the Gauss-Bonnet theorem is a beautiful statement on the integral of the Gaussian curvature $K$ over a surface $S$ which defines the Euler characteristic~\cite{Nakahara1990}
+\begin{align}
+    \chi = \frac1{2\pi}\int_S K\rd A.
+\end{align}
+For instance, the Euler characteristic of a three-dimensional sphere of radius $R$ evaluates to
+\begin{align}
+    \chi_{S^3} = \frac1{2\pi}\int_0^R\rd r\int_0^{2\pi}\rd\phi \int_0^\pi\rd\theta K r^2\sin\theta = 2,
+\end{align}
+since $K=1/r^2$ in spherical coordinates.
+In general, the Euler characteristic is quantized, independent of smooth deformations of the surface $S$ and relates to the genus $g$ (``number of holes'') by $\chi=2-2g$.
+The topological invariants which we encounter in the next sections are similar, although they characterize more abstract objects.
+
 The classification of topological insulators is possible within the band theory of solids: neglecting interactions and exploiting translational symmetry of crystals defines a periodicity in crystal-momentum space, which I already exploited excessively in \cref{ch:the_quantization_of_motion_and_fields}.
 Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch states $\ket{\psi_s(\bm k)}=\re^{\ri\bm k}\ket{u_s(\bm k)}$ defined in a single unit-cell consisting of $s$ individual constituents.
 Each Bloch state is an eigenstate of the Bloch Hamiltonian $\hat H(\bm k)$ which can be represented as a $\bm k$-dependent matrix $H(\bm k)$.
