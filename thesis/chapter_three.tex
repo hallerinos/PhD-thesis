@@ -51,6 +51,7 @@ One of the most prominent examples are ultracold atoms trapped in optical lattic
 To make the food example in the introduction more rigorous, the Gauss-Bonnet theorem is a beautiful statement on the integral of the Gaussian curvature $K$ over a surface $S$ which defines the Euler characteristic~\cite{Nakahara1990}
 \begin{align}
     \chi = \frac1{2\pi}\int_S {\bm K}\rd {\bm S}.
+    \label{eq:gauss_bonnet_theorem}
 \end{align}
 For instance, the Euler characteristic of a three-dimensional sphere of radius $R$ evaluates to
 \begin{align}
@@ -74,45 +75,100 @@ Consider now the special case of an interface where the crystal smoothly interpo
 Somewhere along the path the gap necessarily vanishes to not violate the assumption, which implies the presence of zero-energy states spacially localized around the gap-closing point.
 This interplay between bulk and surface is a ubiquitous phenomenon in topological insulators called the bulk-boundary correspondence.
 
-One of the key concepts in topological band theory is the Berry phase, arising due to the intrinsic phase ambiguity of quantum states:
+One of the key concepts in topological band theory is the Berry phase, for which the construction arises from the intrinsic phase ambiguity of quantum states.
+Let me quickly recap the main results of the original work, presented in~\cite{Berry1984}.
+Imagine a particle evolving along a closed path ${\bm r}(t)$ in an adiabatic way such that the evolution of the state follows Schrödinger's equation
 \begin{align}
-    \ket{u(\bm k)}\rightarrow \re^{\ri \varphi(\bm k)}\ket{u(\bm k)}.
-    \label{eq:equivalent_states}
+    \hat H(\bm r)\ket{\psi(\bm r(t))} = \ri\hbar\frac{\partial}{\partial t}\ket{\psi({\bm r(t)})},
+    \label{eq:time_evolution}
 \end{align}
-By defining the Berry connection (sometimes called Berry potential) as $\bm A(\bm k) = -\ri \braket{u(\bm k)|\nabla_{\bm k}|u(\bm k)}$, the transformation of $\bm A$ under the gauge transformation \cref{eq:equivalent_states} is similar to the electromagnetic vector potential, i.e.
+and denote $\ket{n(\bm r)}$ the eigenstates with energies $\varepsilon_n(\bm r)$.
+If the initial state is an eigenstate $\ket{n(\bm r(0))}$, it will evolve according to $\hat H$ and result in $\ket{n(\bm r(t))}=\re^{-\ri/\hbar\int_0^t \varepsilon_n(\bm r(t))\rd t'}\ket{n(\bm r(0))}$.
+However, the eigenvalue equations do not relate the phases of $\ket{n(\bm r)}$ at different $\bm r$, and any (smooth) choice is allowed.
+A state with ``arbitrary'' phase can thus be written as
 \begin{align}
-    \bm A \rightarrow {\bm A} + \nabla_{\bm k}\varphi(\bm k).
+    \ket{\psi(t)} = \re^{-\ri\gamma_n(t)}\ket{n(\bm r(t))}.
+    \label{eq:strange_gauge}
 \end{align}
-This shows that $\bm A$ is not gauge invariant, but the analog of a magnetic flux must be.
-For a closed loop $C$ that forms the boundary of a surface $S$ spanned in Fourier $\bm k$-space, the Berry phase is thus defined as the integral
+Although $\gamma$ is, in general, non-integrable, the phase is not allowed to fluctuate randomly in time, which is specified by direct substitution of \cref{eq:strange_gauge} in \cref{eq:time_evolution}
 \begin{align}
-    \gamma(C) = \oint_C{\bm A}\rd \bm k.
+    \dot\gamma_n(t) = \varepsilon_n(\bm r(t))/\hbar -\ri \braket{n({\bm r(t)})|\bm\nabla n({\bm r(t)})} \dot{\bm r}(t).
+    \label{eq:phase_evolution}
 \end{align}
-It might be useful to grasp the Berry phase for a generic $2\times 2$ Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
+By defining the Berry connection (sometimes called Berry potential) $\bm A_n(\bm R) = -\ri \braket{n(\bm R)|\bm\nabla n(\bm R)}$, the allowed phase change of $\ket\psi$ around a closed loop $C$ in $\bm r$-space is thus given by
 \begin{align}
-    H(\bm k) = \bm d(\bm k) \bm\sigma =
+    \ket{\psi(T)} = \re^{-\ri \gamma_n(C)}\re^{-\ri/\hbar\int_0^T\varepsilon_n(\bm r(t))dt}\ket{\psi(0)},
+    \quad
+    \gamma_n(C) = \oint_C{\bm A_n}\rd \bm r.
+    \label{eq:phase_change}
+\end{align}
+Note the transformation of $\bm A_n$ under the gauge transformation $\ket{n(\bm r)}\rightarrow\re^{\ri\mu(\bm r)}\ket{n(\bm r)}$, i.e.
+\begin{align}
+    \bm A \rightarrow {\bm A} + \bm\nabla\mu(\bm r),
+\end{align}
+which is similar to the electromagnetic vector potential.
+Normalization of the state implies that $\bm\nabla \braket{n|n} = \braket{\bm\nabla n|n} + \braket{n|\bm\nabla n} = 0$, which shows that $\braket{n|\bm\nabla n}$ is imaginary and thus ${\bm A_n}$ real-valued.
+This also demonstrates that $\bm A_n$ is indeed not gauge invariant, but the analog of a magnetic flux must be.
+In particular, we can derive the Berry flux by rewriting $\gamma_n(C)$ using Stokes's theorem (here it is assumed that $\bm r\in\mathds R^3$ for simplicity, a discussion follows later),
+\begin{align}
+    \gamma_n(C) = -\ri\int_S\rd{\bm S}{\bm\nabla}\times{\bm A_n} = -\ri\int_S\rd{\bm S} \sum_{m\neq n}\braket{\bm\nabla n|m}\times\braket{m|\bm\nabla n}
+    \label{eq:berry_phase_stokes_theorem}
+\end{align}
+in which $\rd{\bm S}$ denotes the area element in ${\bm r}$-space, the surface $S$ is spanned by the closed contour $C$, and the excluded terms are justified by $\bm A$ being imaginary.
+The off-diagonal matrix elements are given by the eigenvalue equation and result to $\braket{m|{\bm\nabla} n} = \braket{m|\bm\nabla\hat H|n}/(\varepsilon_n-\varepsilon_m)$ ($m\neq n$).
+It is thus possible to define the equivalent of a magnetic field, called Berry curvature
+\begin{align}
+    \bm F_n = -\ri\sum_{m\neq n}\braket{n|\bm\nabla\hat H|m}\times\braket{m|\bm\nabla\hat H|n}/(\varepsilon_m-\varepsilon_n)^2
+\end{align}
+such that we arrive at the beautiful result
+\begin{align}
+    \gamma_n(C) = \oint_C{\bm A_n}\rd \bm r = \int_S {\bm F_n} \rd{\bm S}.
+\end{align}
+
+To understand the general equations, let me compute the Berry phase for a generic $2\times 2$ Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
+\begin{align}
+    H(\bm d(\bm k)) = \bm d(\bm k) \bm\sigma = \varepsilon(\bm k) \hat{\bm d}(\bm k)\bm\sigma
+    =
+    \varepsilon(\bm k)
     \begin{pmatrix}
-        d_z & d_x - \ri d_y \\
-        d_x + \ri d_y & -d_z
-    \end{pmatrix}.
+        \hat d_z & \hat d_x - \ri \hat d_y \\
+        \hat d_x + \ri \hat d_y & -\hat d_z
+    \end{pmatrix},
+    \label{eq:arbitrary_2by2}
 \end{align}
-which has the energy dispersion $\varepsilon_\pm = \pm |\bm d|$.
+in which $\hat{\bm d}={\bm d}/|\bm d|$ is a vector of unit norm and $\varepsilon_\pm = \pm\varepsilon = \pm|\bm d|$ spans the energy dispersion.
 A term proportional to the identity, i.e. $d_0\mathbb 1$, can be safely ignored as the eigenvectors do not depend on it.
-I was shown by Berry that for a loop $C$ the accumulated phase is given by
+For completeness, the eigenvectors are given by
 \begin{align}
-    \gamma(C) = \frac12\Omega(C)
+    \ket{\pm} = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        \pm \sqrt{1 \pm \hat d_z}\re^{+\ri\vartheta/2}\\
+        \phantom\pm\sqrt{1 \mp \hat d_z}\re^{-\ri\vartheta/2}
+    \end{pmatrix}
+    ,
+    \quad
+    \vartheta = \arg(\hat d_x-\ri \hat d_y).
 \end{align}
-in which $\Omega(C)$ is the solid angle subtended by the path $C$ formed by $\hat {\bm d}$ from the degeneracy at $\varepsilon=0$~\cite{Berry1984}.
-When $C$ corresponds to a $2\pi n$ rotation of $\hat{\bm d}$ in a plane, the Berry phase is thus $\pi n$.
-This defines an integer-valued topological invariant called the Chern number~\cite{Nakahara1990}
+Note that the parameter space is entirely spanned by $\bm d$, and \cref{eq:arbitrary_2by2} has the property $\bm\nabla\hat H \equiv \bm\nabla_{\bm d}\hat H = \bm\sigma$, such that the Berry curvature evaluates to ${\bm F}_+ = \frac12\bm d/d^3=\frac12\hat{\bm d}/d^2$\footnote{A temporary rotation to align $\bm d$ with $\sigma_z$ simplifies the computation a lot.}.
+The final integration then yields the following fundamental result
 \begin{align}
-    n = \frac1{2\pi}\int_S {\bm F} \rd{\bm S}
+    \gamma_{\pm}(C) = \pm\frac12\Omega(C),
 \end{align}
-in which the Berry curvature ${\bm F}$ is identified through Stoke's theorem.
-For a three-dimensional parameter space, it is simply $\bm F = \nabla_{\bm k}\times{\bm A}$.
-The quantization of the Chern number extends well beyond the two-band model and is ultimately based on Stoke's theorem.
-In particular, it follows from the fact that for a loop $C$, the ``inside'' of $C$ is a bit ambiguous, and by reducing the inside of the closed loop to a surface integral, both equations necessarily agree up to a multiple of $2\pi$, in which the multiple is given by the amount of times $C$ loops around the surface of $S$.
-\todo{Arrived here...}
+with $\Omega(C)$ the solid angle subtended by the path $C$ formed by $\hat {\bm d}$ from the degeneracy at $\varepsilon=0$~\cite{Berry1984}.
+Note that the two bands have opposite Berry phases, and in general $\sum_n\gamma_n(C)=0$ must vanish.
+If $C$ corresponds to a $2\pi q$ rotation of $\hat{\bm d}$ in a plane, the Berry phase is thus $\pm\pi q$.
+
+This defines an integer-valued topological invariant known as the Chern number~\cite{Nakahara1990}
+\begin{align}
+    \chi_n = \frac1{2\pi}\int_S {\bm F_n} \rd{\bm S}
+\end{align}
+which has a stunning similarity to the Euler characteristic \cref{eq:gauss_bonnet_theorem}.
+$\bm F_n$ can thus be viewed as a curvature with similarities to the Gaussian curvature $K$, and the quantization of the Chern number extends well beyond the two-band model.
+In particular, it follows from the fact that for a loop $C$, the ``inside'' of $C$ is a bit ambiguous, and by reducing the inside of the closed loop to a surface integral, both equations necessarily agree up to a multiple of $2\pi$, in which the multiple $q$ is given by the amount of times $C$ loops around the surface $S$.
+
+In parameter spaces of other than $3$ dimensions, Stoke's theorem cannot be employed to transform the loop integral in \cref{eq:berry_phase_stokes_theorem}.
+The generalization, however, transforms \cref{eq:phase_change} into the surface integral of a $2$-form bounded by $C$.
+For example, the two-dimensional Berry connection integral results in $\gamma_n(C) = \int_S\rd r_1\rd r_2 \brlr{\partial_{r_1}{\bm A}_{n,r2} - \partial_{r_2}{\bm A}_{n,r1}}$.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,9 +177,8 @@ In particular, it follows from the fact that for a loop $C$, the ``inside'' of $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-\todo{Properly introduce the model... this was copied from another section and belongs better here...}
-Let me clarify the statements of the previous chapter by giving a quick example.
-Consider the following one-dimensional Bloch Hamiltonian, corresponding to the Su-Schrieffer-Heeger model
+Let me clarify the previous statements by giving a pedagogical example.
+Consider the following one-dimensional Bloch Hamiltonian, corresponding to the Su-Schrieffer-Heeger model~\cite{Heeger1988}
 \begin{align}
     H(k)
     =
