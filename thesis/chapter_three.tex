@@ -273,7 +273,7 @@ The matrix $h$ is quite sparse and has only alternating off-diagonal elements
         \vdots & \vdots & \vdots & \vdots & \ddots
     \end{pmatrix},
 \end{align}
-which makes an analytic treatment not too difficult, even if the entries are spacially dependent~\cite{Asbth2016}.
+which makes an analytic treatment not too difficult, even if the entries are spacially dependent~\cite{Asboth2016}.
 An exact boundary mode can be found by evaluating $hv:L=0$, with a vector $v_L = (a_0,b_0,a_1,b_1,\dots)^T$, resulting in the set of equations
 \begin{align}
     J b_0 = 0,
@@ -300,10 +300,121 @@ This then yields ``state hybredization'', a pair of orthogonal eigenstates with 
 Therefore, the hybredized states are still exponentially localized boundary modes and of ``almost'' zero energy with an exponential splitting in the system size.
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Symmetry-protected topological phases}
-\label{sec:symmetry_protected_topological_phases}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Periodic table of topological insulators}
+\label{sec:Periodic_table_of_topological_insulators}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-\todo{arrived here...}
+Let us consider an arbitrary non-interacting system of fermions, described by the Hamiltonian
+\begin{align}
+    \hat H = \sum_{i,j}c^\dag_{i}H_{ij}c^\pdag_j = {\bm c}^\dag H {\bm c}^\pdag
+\end{align}
+with a matrix $H$ dictating possible transition events.
+As before, we denote the collection of the fermionic ladder operators as $\bm c$.
+Note that $i,j$ are generic index labels -- i.e. it may represent a combination of the position $x$ and additional ``internal quantum numbers'' $i\equiv(x,\alpha,\beta,\dots)$ such as the sublattice index of the SSH model.
+The system is invariant under a (unitary) symmetry transformation $\hat U$, if it acts on the fermionic annihilation operators as a linear map
+\begin{align}
+    {\bm c}\rightarrow {\bm c}' = \hat U {\bm c} \hat U^{-1} = U {\bm c},
+\end{align}
+such that $\hat U$ commutes with the Hamiltonian while preserving the anticommutation relations
+\begin{align}
+    \commutator{\hat U,\hat H} = 0
+    \rightarrow
+    U^\dag H = H U
+    ,
+    \quad
+    \hat U\anticommutator{c_i,c_j}\hat U^{-1}
+    \rightarrow
+    U^\dag U = \mathbb1.
+\end{align}
+Focussing on the Altland-Zirnbauer classification, I consider here on-site symmetries only~\cite{Altland1997}.
+On-site symmetries, as the name suggests, only act on the ``internal'' degrees of freedom, such that they can be factorized $\hat U=\prod_x\hat V_x$ with the same $\hat V_x$ on all lattice positions.
+Please note that $x\neq i$, such that $\hat V_x$ acts nontrivially on the ``internal dimension'' of the tuple $i\equiv(x,\alpha,\beta,\dots)$.
+
+{\it 1. Time reversal symmetry} Note that anti-unitary transformations can be written as a composition of complex conjugation and a unitary transformation, such that the action of time reversal can be written as\footnote{Note that $c\rightarrow c^\dag$ in \cref{eq:time_reversal_symmetry} would be an equally valid choice, but, as we see later, can be treated as a combination of time reversal and particle hole symmetry.}
+\begin{align}
+    \hat T c_i \hat T^{-1} = {U_T}_{ij} c_j
+    ,\quad
+    \hat T\ri\hat T^{-1}=-\ri
+    ,\quad
+    {U_T}^\dag H^* U_T = H.
+    \label{eq:time_reversal_symmetry}
+\end{align}
+Applying the Hamiltonian transformation twice results in the condition
+\begin{align}
+    H = {U_T}^\dag ({U_T}^\dag H^* U_T)^* U_T = ({U_T}^*U_T)^\dag H ({U_T}^* U_T)
+\end{align}
+such that ${U_T}^* U_T = \re^{\ri\alpha}\mathbb1$.
+Since $U_T$ is a unitary matrix, it satisfies ${U_T}^*={U_T}^\dag\re^{\ri\alpha}$ (and equally ${{U_T}^\dag}^* = U_T\re^{\ri\alpha}$) and as such $({U_T}^\dag U_T)^* = \re^{-\ri2\alpha}\mathbb1$ for which $\alpha\in\pi\mathds Z$.
+This implies that
+\begin{align}
+    \hat T^2 c_i \hat T^{-2} = {U_T}_{ij}^*{U_T}_{jk} c_k = \re^{\ri\alpha}c_i
+\end{align}
+maps to itself up to a possible sign.
+Since $\hat T$ is on-site, a generic $n$-body operator $\hat O$ transforms to $\hat T^2\hat O \hat T^{-2} = \re^{\ri\alpha n}\hat O$ and as such
+\begin{align}
+    \hat T^2 = (\pm 1)^{\hat N}\Leftrightarrow {U_T}^* {U_T} = \pm\mathbb1,
+\end{align}
+with $\hat N = \sum_i c^\dag_i c^\pdag_i$.
+In case of $\hat T^2=-1$ (e.g. for systems with an odd number of electrons), this then yields the famous Kramers degeneracy of the eigenvalues~\cite{Schwabl2007}.
+
+{\it 2. Particle-hole symmetry} is unitary and relates creation to annihilation operators, i.e.
+\begin{align}
+    \hat C c_i \hat C^{-1} = {U_C}^*_{ij} c^\dag_j
+    ,\quad
+    {U_C}^\dag H^* {U_C} = -H
+    .
+\end{align}
+Such systems are characterized by off-diagonal quadratic Hamiltonians $\tr H=0$.
+Repetition of the previous computation yields
+\begin{align}
+    \hat C^2 = (\pm1)^{\hat N}
+    \Leftrightarrow
+    {U_C}^* {U_C} = \pm 1.
+\end{align}
+
+{\it 3. Chiral symmetry} is the combination of $\hat T$ with $\hat C$ to a so-called chiral symmetry
+\begin{align}
+    \hat S = \hat T \hat C.
+\end{align}
+This leads to a situation in which both time reversal and particle-hole symmetry do not hold, but chiral symmetry is satisfied.
+One finds
+\begin{align}
+    \hat S c_i \hat S^{-1} = (U_CU_T)_{ij}c^\dag_j
+    ,\quad
+    {U_S}^\dag H {U_S} = -H
+    ,\quad
+    {U_S} = {U_C}^* {U_T}^*
+\end{align}
+in which, contrary to the other two symmetries, $U_S^2=\re^{\ri\alpha}\mathbb1$.
+This leaves a phase ambiguity, which is fixed by $U_S\rightarrow U_S\re^{\ri\alpha/2}$ such that the eigenvalues of the chiral operator are gauged to $\pm1$.
+
+We are now in shape to discuss the general symmetry classification of non-interacting systems.
+We obtained so far
+\begin{align}
+    \begin{array}{l l l l }
+        & T^{-1}HT = +H
+        ,\quad
+        & T = U_T\mathcal K
+        ,\quad
+        & U_T^*U_T = \pm\mathbb1,\\
+        %
+        & C^{-1}HC = -H
+        ,\quad
+        & C = U_C\mathcal K
+        ,\quad
+        & U_C^*U_C = \pm\mathbb1,\\
+        %
+        & S^{-1}HS = -H
+        ,\quad
+        & S = U_S
+        ,\qquad
+        & U_S^2 = \mathbb1.
+    \end{array}
+\end{align}
+In particular, this set of symmetries is exhaustive and spans the ten possible behaviors of the Hamiltonian~\cite{Chiu2016}:
+(i) $H$ is not time reversal invariant, denoted by $T=0$, (ii) $H$ is time reversal invariant and $T$ squares to $+\mathbb1$ in which case we write $T=+1$ and (iii) $H$ is time reversal invariant and $T$ squares to $-1$, denoted by $T=-1$.
+There are three equivalent ways to characterize the behavior of $H$ under the particle hole symmetry.
+Since $\hat S = \hat C\hat T$ in eight of the nine previous possibilities the outcome of chiral symmetry is implied.
+However, the Hamiltonian can (or cannot) be chiral invariant in the absence of $C$ and $T$ symmetry, such that there are ten distinct symmetry classes.
