@@ -413,8 +413,35 @@ We obtained so far
         & U_S^2 = \mathbb1.
     \end{array}
 \end{align}
-In particular, this set of symmetries is exhaustive and spans the ten possible behaviors of the Hamiltonian~\cite{Chiu2016}:
-(i) $H$ is not time reversal invariant, denoted by $T=0$, (ii) $H$ is time reversal invariant and $T$ squares to $+\mathbb1$ in which case we write $T=+1$ and (iii) $H$ is time reversal invariant and $T$ squares to $-1$, denoted by $T=-1$.
+In particular, this set of symmetries is exhaustive and spans the ten possible behaviors of the Hamiltonian~\cite{Chiu2016} which are presented in \cref{tab:symmetry_classes}.
+Consider the case of time reversal invariance, there are three distinct classes:
+(i) $H$ is not time reversal invariant, denoted by $T=0$, (ii) $H$ is time reversal invariant and $T$ squares to $+\mathbb1$ in which case we write $T=+$ and (iii) $H$ is time reversal invariant and $T$ squares to $-$, denoted by $T=-$~\cite{Chiu2016}.
 There are three equivalent ways to characterize the behavior of $H$ under the particle hole symmetry.
 Since $\hat S = \hat C\hat T$ in eight of the nine previous possibilities the outcome of chiral symmetry is implied.
 However, the Hamiltonian can (or cannot) be chiral invariant in the absence of $C$ and $T$ symmetry, such that there are ten distinct symmetry classes.
+\begin{table}
+    \centering
+
+    \addtolength{\tabcolsep}{0.25cm}
+    \renewcommand{\arraystretch}{1.25} % 1 standard
+    \begin{tabular}{l | c c c | l l l l l l l l l}
+        \hline\hline
+        Class   & $T$ & $C$ & $S$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$\\
+        \hline
+        A       & $0$ & $0$ & $0$ & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   \\
+        AIII    & $0$ & $0$ & $+$ &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               \\
+        \hline
+        AI      & $+$ & $0$ & $0$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   \\
+        BDI     & $+$ & $+$ & $+$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ \\
+        D       & $0$ & $+$ & $0$ & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ \\
+        DIII    & $-$ & $+$ & $+$ &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               \\
+        AII     & $-$ & $0$ & $0$ & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  \\
+        CII     & $-$ & $-$ & $+$ &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               \\
+        C       & $0$ & $-$ & $0$ &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               \\
+        CI      & $+$ & $-$ & $+$ &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               \\
+        \hline\hline
+    \end{tabular}
+    \addtolength{\tabcolsep}{-0.25cm}
+    \label{tab:symmetry_classes}
+    \caption{The ten symmetry classes of topological insulators and superconductors, sorted by time reversal, particle-hole and chiral symmetry~\cite{Altland1997}, and to which values the unitary transformation of the symmetry squares to. A $0$ indicates the absence of symmetry while $\pm$ represents the outcome of the squared symmetry transformation (see text above). The mathematical sets indicate if a topological insulator / superconductor exists in a given space dimension ($0$ to $8$) and which values the topological invariant assumes.}
+\end{table}
