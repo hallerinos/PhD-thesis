@@ -739,9 +739,9 @@ In case of a finite bond dimension analysis, $\varepsilon_H(m)$ serves as a meas
 Alternatively, the discarded weight of the singular values can serve as a measure of the error.
 It is defined as
 \begin{align}
-    \varepsilon_\rho(m) = \sup_{\ell}\sum_{k=m}^\infty s_k(\ell)
+    \varepsilon_\rho(m) = 1 - \sup_{\ell}\sum_{k=m}^\infty s_k^2(\ell)
 \end{align}
-in which $s_k(\ell)$ denotes the $k$'th singular value of the mixed-canonical representation of the MPS.
+in which $s_k(\ell)$ denotes the $k$'th singular value of the mixed-canonical representation of the MPS after the optimization and just before the application of the compression scheme (i.e., before the truncation and renormalization of the singular values).
 
 The presented algorithm can actually be implemented in a more efficient way by fixing the internal bond dimension from the start, e.g. through the growing algorithm and using a single-site tensor $A_C$ as the variational center, similarly to the time-evolution method which I introduce in the next section.
 Compared to two-site DMRG, the dimensionality of the eigenvalue problem $A_C$ is reduced by a factor $D$, leading to a speed-up of at least $\mathcal O(D)$ per iteration~\cite{White2005}.
