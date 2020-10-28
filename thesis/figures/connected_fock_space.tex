@@ -41,8 +41,8 @@
 
 \foreach \x in {0,...,\numOfSites} {
  	\node at (\x,0) {$\FS^{\x}$};
- 	\draw[->, out=45, in=135] (\x+.1, 0.2) to node[pos=.5,above] {$a^\dag$} (\x+0.9, 0.2);
- 	\draw[<-, out=-45, in=-135] (\x-.9, -0.2) to node[pos=.5,below] {$a$} (\x-.1, -0.2);
+ 	\draw[->, out=45, in=135] (\x+.1, 0.2) to node[pos=.5,above] {$\hat a^\dag$} (\x+0.9, 0.2);
+ 	\draw[<-, out=-45, in=-135] (\x-.9, -0.2) to node[pos=.5,below] {$\hat a$} (\x-.1, -0.2);
 }
 \node at (-1,0) {0};
 \node at (\numOfSites+1,0) {\dots};

@@ -73,7 +73,7 @@ Lattice translation symmetry implies the identity $H(\bm k + \bm G) = H(\bm k)$ 
 An insulating band structure can thus be viewed as a mapping between the torus to the space of Bloch Hamiltonians with a finite energy gap~\cite{Kane2013}.
 
 Two systems I, II are called topologically equivalent, if their corresponding Bloch Hamiltonians $H_{\rm I}$, $H_{\rm II}$ can be adiabatically deformed without closing the energy gap.
-Otherwise put, for topologically equivalent phases, there exists a parameter path adiabatically changing the Hamiltonian $H_{t}$ which connects the two phases $H_{0}=H_{\rm I}$ and $H_{1}=H_{\rm II}$ in such a way that the band gap $\Delta_{t}\neq0$ does not vanish along the path.
+Otherwise put, for topologically equivalent phases, there exists a parameter path adiabatically changing the Hamiltonian $H({t})$ which connects the two phases $H({0})=H_{\rm I}$ and $H({1})=H_{\rm II}$ in such a way that the band gap $\Delta(t)\neq0$ does not vanish along the path.
 Consider now the special case of an interface where the crystal smoothly interpolates between two distinct topological phases.
 Somewhere along the path the gap necessarily vanishes to not violate the assumption, which implies the presence of zero-energy states spacially localized around the gap-closing point.
 This interplay between bulk and surface is a ubiquitous phenomenon in topological insulators called the bulk-boundary correspondence.
@@ -191,8 +191,8 @@ Consider the following one-dimensional Bloch Hamiltonian, corresponding to the S
     H_0(k)
     =
     \begin{pmatrix}
-        0 & J+J'\re^{\ri k}\\
-        J+J'\re^{-\ri k} & 0
+        0 & J+J'\re^{-\ri k}\\
+        J+J'\re^{\ri k} & 0
     \end{pmatrix}
 \end{align}
 in which the couplings $J,J'\geq0$ are assumed positive.
@@ -200,42 +200,79 @@ The Hamiltonian falls under the category in \ref{eq:arbitrary_2by2}, and I ident
 \begin{align}
     H_0(k) = {\bm d}{\bm\sigma},
     \quad
-    {\bm d}_x = J+J'\cos(k),
+    d_x = J+J'\cos(k),
     \quad
-    {\bm d}_y = J'\sin(k),
+    d_y = J'\sin(k),
     \quad
-    {\bm d}_z = 0.
+    d_z = 0.
 \end{align}
+Examples of the band dispersion $\varepsilon_\pm(k))\pm\sqrt{J^2+J'^2+2JJ'\cos(k)}$ for different values of the couplings are plotted in \cref{fig:ssh_dispersion}
+\begin{figure}[ht]
+    \centering
+    \includegraphics{figures/ssh_dispersion_0.png}
+    \includegraphics{figures/cropped_ssh_dispersion_1.png}
+    \includegraphics{figures/cropped_ssh_dispersion_2.png}
+    \includegraphics{figures/cropped_ssh_dispersion_3.png}
+    \caption{Dimensionless band dispersion $\tilde\varepsilon_\pm(k)=\varepsilon_\pm(k)/|J+J'|$ of the SSH model for different real and positive couplings $J'/J$. The band gap $\Delta=|J-J'|$ closes at the point $J'/J=1$ and the (dimensionless) dispersion itself is symmetric with respect to $J'/J\rightarrow J/J'$.}
+    \label{fig:ssh_dispersion}
+\end{figure}
 Let us explore more the topological equivalency I detailed in the previous section.
 The valence/conduction band shows a maximum/minimum at $k=\pi$, which leads to the band gap $\Delta = 2\left|J-J'\right|$.
 As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and, for reasons which are clear in the next sections, I call $J>J'$ the TRI and $J<J'$ the TOI phase.
 Within each of those phases, all Hamiltonians are topologically equivalent, which is trivially satisfied by the definition of a smooth path which linearly interpolates the different values of the couplings.
 It is also possible to define a family of Hamiltonians according to
 \begin{align}
-    H_{t}(k) =
+    H(t,k) =
     \begin{pmatrix}
-        \sin(\pi t) & 1-t + t\re^{\ri k} \\
+        \sin(\pi t) & 1-t + t\re^{-\ri k} \\
         1-t + t\re^{\ri k} & -\sin(\pi t)
-    \end{pmatrix}
+    \end{pmatrix},
     \label{eq:hamiltonian_path}
 \end{align}
-in which, incidentally, $H_0$ is of the TRI and $H_1$ is of the TOI kind.
-The spectrum of $H_{t}(k)$ is readily solved and evaluates to $\varepsilon_\pm(k,t)=\pm\sqrt{1-2(1-t)t+2(1-t)t\cos k+\sin(\pi t)}$.
-It is easy to show that $\Delta_{t}\geq0$ for $0\leq t\leq1$, which demonstrates that TOI and TRI phases are, indeed, topologically equivalent.
+which is equivalent to the Bloch vector
+\begin{align}
+    d_x(t,k) = (1-t)+t\cos(k),
+    \quad
+    d_y(t,k) = t\sin(k),
+    \quad
+    d_z(t,k) = \sin(\pi t),
+\end{align}
+for which $H(0,k)$ is of the TRI and $H(1,k)$ is of the TOI kind.
+In \cref{fig:ssh_deformed}, the path of the normalized Bloch vector $\hat{\bm d}(k)$ is depicted.
+If we allow the deformation along the $z$-axis, the cycle that is drawn in the TOI phase can be smoothly deformed to a point without closing the bulk gap.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_000.jpg}
+    \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_125.jpg}
+    \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_250.jpg}
+    \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_500.jpg}
+    \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_750.jpg}
+    \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_825.jpg}
+    \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t1_000.jpg}
+    \caption{Depicted paths of $\hat{\bm d}(t,k)={\bm d}/|{\bm d}|$ (see text) as it wraps around the Brillouin zone $k\in(0,2\pi]$ for different $t\in\{0,1/8,1/4,1/2,3/4,7/8,1\}$ (from left to right). The solid angle of $2\pi$ spanned in the TOI phase (i.e. $t=1$) can be smoothly deformed to the trivial case in the TRI phase (i.e. $t=0$).}
+    \label{fig:ssh_deformed}
+\end{figure}
+The spectrum of $H(t,k)$ is readily solved and evaluates to $\varepsilon_\pm(k,t)=\pm\sqrt{1-2(1-t)t+2(1-t)t\cos k+\sin(\pi t)}$.
+It is easy to see that $\Delta({t})\geq0$ for $0\leq t\leq1$, which demonstrates that TOI and TRI phases are, indeed, topologically equivalent.
 
 This statement can be geometrically understood by the fact that the single-valued parametrization $\bm d(k)$ generates an arc of a circle or a full circle on the Bloch sphere.
-In other words, the surface $S$ spanned by $C$ never wraps around the degeneracy, which is the source of ${\bm F}_n$.
+In other words, the surface $S$ spanned by $C$ (the white path in \cref{fig:ssh_deformed}) never encapsulates the degeneracy, which is the source of ${\bm F}_n$.
 As a consequence, $\gamma_n(C)$ is not quantized and adiabatic deformations like \cref{eq:hamiltonian_path} are possible to effectively remove the degeneracy from the surface integral, smoothly connecting all nonzero geometric phases to the trivial one.
 
-If, however, we require to keep $H_{t}$ entirely off-diagonal and symmetric, an adiabatic deformation like \cref{eq:hamiltonian_path} does not exist and in order to evolve from a TOI to a TRI state, the band gap $\Delta$ necessarily vanishes at the critical point $J=J'$.
-The Berry phase of such a system can be either $\pi\mathds Z$, depending if the path $C$ spanned by $\hat{\bm d}$ loops around the degeneracy or if $\hat{\bm d}$ retraces itself and so defines no surface.
-By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from the surface integral (which would indeed require a deformation along ${\bm d}_z$).
-This justifies yet another topological index, called the winding number, in the equivalence classes of Hamiltonians which respect the imposed symmetry.
-It is defined as the Berry phase divided $\pi$, i.e.
+If, however, we require to keep $H(t,k)$ entirely off-diagonal and symmetric, an adiabatic deformation like \cref{eq:hamiltonian_path} with a term $\bm d_z\neq0$ does not exist.
+As a consequence, any adiabatic deformation from a TOI to a TRI Hamiltonian necessarily crosses the critical point $J=J'$ for which the bulk gap vanishes.
+The Berry phase of such a system is an element of $\pi\mathds Z$, depending on the path $C$ spanned by $\hat{\bm d}$ defining a surface or not.
+By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral (which would indeed require a deformation along $\hat {\bm d}_z$), and as a consequence the Berry phase is quantized.
+This justifies another topological index, called the winding number, which corresponds to quantized values only in the equivalence classes of Hamiltonians which respect the imposed symmetry.
+It equals to the Berry phase divided $\pi$, i.e.
 \begin{align}
-    \mathcal W = |\gamma_n(C)/\pi|.
+    \mathcal W = |\gamma_n(C)/\pi|,
 \end{align}
-Since the winding counts the number of circles which $\hat{\bm d}$ performs while passing through the Brillouin zone, it can be straightforwardly defined as
+or, equivalently, to the solid angle spanned by $\hat{\bm d}$ divided $2\pi$, i.e.
+\begin{align}
+    \mathcal W = \frac1{2\pi}\int\rd k\brlr{\hat{\bm d}\times\partial_k\hat{\bm d}}_z.
+\end{align}
+Since the winding counts the number of circles which $\hat{\bm d}$ performs around the origin while passing through the Brillouin zone, it is equal to
 \begin{align}
     \mathcal W = \frac{1}{2\pi}\int\rd k \arg(\hat{\bm d}_x - \ri \hat{\bm d}_y)
     =
@@ -243,11 +280,21 @@ Since the winding counts the number of circles which $\hat{\bm d}$ performs whil
     =
     \frac{1}{4\pi\ri} \tr\int\rd k \sigma_z g^{-1}\partial_k g,
 \end{align}
-in which $g(k)=G(k,\omega=0)$ is the propagator\footnote{The expression with the propagator naturally extends to interacting one-dimensional systems, as shown in~\cite{Gurarie2011}. This is particularly important for our work~\todo{[REF]}.}.
-The winding number can most easily read-out by close observation of ${\bm d}$, which either traverses around the degeneracy at the origin, or not.
-This will then translate to $\hat{\bm d}$ drawing circles around the Bloch sphere, or retracing itself, thus spanning no surface.
+in which $g(k)=G(k,\omega=0)$ is the propagator at zero frequency.
+
+The winding number can most easily read-out by close observation of the unnormalized Bloch vector ${\bm d}$, which either traverses around the degeneracy at the origin, or not.
+This will then translate to $\hat{\bm d}$ drawing circles around the Bloch sphere, or retracing itself, thus spanning no surface (compare to \cref{fig:ssh_winding_easy}).
 In particular, the former will be achieved if $J<J'$ ($\mathcal W=1$), while the latter occurs for $J>J'$ ($\mathcal W=0$).
 From now on, I call a phase with nonzero winding number the topological insulator (TOI) and the other trivial insulator (TRI).
+\begin{figure}[ht]
+    \centering
+    \includegraphics{figures/ssh_unnormalized_winding_2.png}
+    \includegraphics{figures/ssh_unnormalized_winding_3.png}
+    \includegraphics{figures/ssh_unnormalized_winding_4.png}
+    \includegraphics{figures/ssh_unnormalized_winding_6.png}
+    \caption{The path in $x,y$ plane spanned by the unnormalized Bloch vector $\bm d$, compared with the path of $\hat{\bm d}$ drawn on the Bloch sphere for different values of $J'/J$. The path drawn by $\bm d$ either traverses around the origin or not, resulting in a path spanning a nonzero surface area or a path which retraces itself thus spanning no surface.}
+    \label{fig:ssh_winding_easy}
+\end{figure}
 
 To understand the emergence of edge modes, we must obviously introduce an interface of some sort.
 First of all, let me Fourier-transform the Bloch Hamiltonian to find the representation in real space, i.e.
