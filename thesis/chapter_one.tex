@@ -449,6 +449,8 @@ Clearly, strongly confined potentials such as delta functions are particularly b
 \section{Tight binding systems}
 \label{sec:tight_binding_systems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 The systems considered here are those of tightly bound constituents to the lattice centers.
 Such types can be found in traditional solid state scenarios where the nuclei are well separated beyond the typical Bohr radius of the valence electrons, in setups of ultracold atoms trapped in optical lattices, in optical waveguides or polaritons.
 In all our works, we cover theoretical aspects of interacting tight binding models which can be experimentally realized in a variety of different setups.
@@ -546,7 +548,14 @@ In summary, we are at liberty to slightly simplify the notation and arrive at th
     \label{eq:hubbard_hamiltonian}
 \end{align}
 The operator $\hat a_{i,s}$ annihilates a Wannier state of flavor $s$, localized around the $i$'th lattice position.
-\todo{Write something about the possibility of complex hopping elements}
+
+In the above derivation, I do not comment on the nature of $t$ which can be assumed to be real for traditional Hubbard models.
+If, however, the geometry of the tight binding approximation is sufficiently complex, i.e. if the matrix $T$ spans a higher dimensional lattice, complex transition amplitudes give rise to nontrivial fluxes penetrating the lattice which may alter the underlying physics.
+One example for a $2$D system with complex tunneling elements is the Harper-Hofstadter model~\cite{Hofstadter1976}, realized by artificial gauge fields induced by laser-assisted tunnelings in ultracold atomic lattice systems~\cite{Aidelsburger2016}.
+The nonzero fluxes in this model mimic the effect of charged particles moving in a magnetic field, based on Peierl's substitution~\cite{Peierls1933}.
+A more simplified explanation compared to the original work by Rudolf Peierls is based on the infamous Feynman lecture series, book III chapter 21~\cite{feynmanlecturesonline} and adopted from~\cite{WikiPeierls}.
+\todo{Wrap up Peierl's substitution here.}
+
 Perhaps the most successful description of electrons in solids is band theory -- based on screened many-body interactions described by effective one-body potentials.
 This results in a form of \cref{eq:hubbard_hamiltonian} without density-density interactions such that a diagonalization of the hopping matrix $T$ solves the problem.
 However, due to its intrinsic single-particle character, band theory cannot reliably capture truly many-body features such as band magnetism or Mott-to-metal-insulator transitions.
