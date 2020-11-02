@@ -59,20 +59,20 @@ If the surface is implicitly described by the regular kernel of a function $f(x,
 \end{align}
 For instance, a three-dimensional sphere of radius $r$ can be described implicitly by $f=\sum_{i=1}^3 x_i^2 - r^2$ and has as such a uniform Gaussian curvature $K=1/r^2$ with Euler characteristic
 \begin{align}
-    \chi_{S^3} = \frac1{2\pi}\int_0^R\rd r\int_0^{2\pi}\rd\phi \int_0^\pi\rd\theta K r^2\sin\theta = 2.
+    \chi_{S^2} = \frac1{2\pi}\int_0^{2\pi}\rd\phi \int_0^\pi\rd\theta K r^2\sin\theta = 2.
 \end{align}
 In general, the Euler characteristic is quantized, independent of smooth deformations of the surface $S$ and relates to the genus $g$ (``number of holes'') by $\chi=2-2g$~\cite{Nakahara1990}.
 The topological invariants encountered in the next sections are similar, although they characterize more abstract objects.
 
 The classification of topological insulators is possible within the band theory of solids: neglecting interactions and exploiting translational symmetry of crystals defines a periodicity in crystal-momentum space, which I already exploited excessively in \cref{ch:the_quantization_of_motion_and_fields}.
-Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch states $\ket{\psi_s(\bm k)}=\re^{\ri\bm k}\ket{u_s(\bm k)}$ defined in a single unit-cell consisting of $s$ individual constituents.
-Each Bloch state is an eigenstate of the Bloch Hamiltonian $\hat H(\bm k)$ which can be represented as a $\bm k$-dependent matrix $H(\bm k)$.
+Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch states defined in a single unit-cell consisting of $s$ individual constituents.
+Each Bloch state is an eigenstate of the Bloch Hamiltonian $\hat H(\bm k)$ which can be represented as a $\bm k$-dependent $s\times s$ matrix $H(\bm k)$.
 Its ordered spectrum $\varepsilon_s(\bm k)$ define what is known as the band structure.
 For insulators, a finite energy gap $\Delta$ separates the occupied valence band states from the empty conduction band states.
 Lattice translation symmetry implies the identity $H(\bm k + \bm G) = H(\bm k)$ for any reciprocal lattice vector $\bm G$, which defines the crystal momentum in the periodic Brillouin zone with $\bm k\equiv \bm k+\bm G$, which has the topology of a torus.
-An insulating band structure can thus be viewed as a mapping between the torus to the space of Bloch Hamiltonians with a finite energy gap~\cite{Kane2013}.
+An insulating band structure can thus be viewed as a mapping from the torus to the space of Bloch Hamiltonians with a finite energy gap~\cite{Kane2013}.
 
-Two systems I, II are called topologically equivalent, if their corresponding Bloch Hamiltonians $H_{\rm I}$, $H_{\rm II}$ can be adiabatically deformed without closing the energy gap.
+Two systems I, II are called topologically equivalent, if their corresponding Bloch Hamiltonians $H_{\rm I}$, $H_{\rm II}$ can be adiabatically connected without closing the energy gap.
 Otherwise put, for topologically equivalent phases, there exists a parameter path adiabatically changing the Hamiltonian $H({t})$ which connects the two phases $H({0})=H_{\rm I}$ and $H({1})=H_{\rm II}$ in such a way that the band gap $\Delta(t)\neq0$ does not vanish along the path.
 Consider now the special case of an interface where the crystal smoothly interpolates between two distinct topological phases.
 Somewhere along the path the gap necessarily vanishes to not violate the assumption, which implies the presence of zero-energy states spacially localized around the gap-closing point.
@@ -98,11 +98,11 @@ Although $\gamma$ is, in general, non-integrable, the phase is not allowed to fl
     \dot\gamma_n(t) = \varepsilon_n(\bm r(t))/\hbar -\ri \braket{n({\bm r(t)})|\bm\nabla n({\bm r(t)})} \dot{\bm r}(t).
     \label{eq:phase_evolution}
 \end{align}
-By defining the Berry connection (sometimes called Berry potential) $\bm A_n(\bm R) = -\ri \braket{n(\bm R)|\bm\nabla n(\bm R)}$, the allowed phase change of $\ket\psi$ around a closed loop $C$ in $\bm r$-space is thus given by
+By defining the Berry connection (sometimes called Berry potential) $\bm A_n(\bm r) = -\ri \braket{n(\bm r)|\bm\nabla n(\bm r)}$, the allowed phase change of $\ket\psi$ around a closed loop $C$ in $\bm r$-space is thus given by
 \begin{align}
     \ket{\psi(T)} = \re^{-\ri \gamma_n(C)}\re^{-\ri/\hbar\int_0^T\varepsilon_n(\bm r(t))dt}\ket{\psi(0)},
     \quad
-    \gamma_n(C) = \oint_C{\bm A_n}\rd \bm r.
+    \gamma_n(C) = \oint_C{\bm A_n}\cdot\rd \bm r.
     \label{eq:phase_change}
 \end{align}
 Note the transformation of $\bm A_n$ under the gauge transformation $\ket{n(\bm r)}\rightarrow\re^{\ri\mu(\bm r)}\ket{n(\bm r)}$, i.e.
@@ -114,7 +114,7 @@ Normalization of the state implies that $\bm\nabla \braket{n|n} = \braket{\bm\na
 This also demonstrates that $\bm A_n$ is indeed not gauge invariant, but the analog of a magnetic flux must be.
 In particular, we can derive the Berry flux by rewriting $\gamma_n(C)$ using Stokes's theorem (here it is assumed that $\bm r\in\mathds R^3$ for simplicity, a discussion follows later),
 \begin{align}
-    \gamma_n(C) = \int_S\rd{\bm S}{\bm\nabla}\times{\bm A_n} = -\ri\int_S\rd{\bm S} \sum_{m\neq n}\braket{\bm\nabla n|m}\times\braket{m|\bm\nabla n}
+    \gamma_n(C) = \int_S{\bm\nabla}\times{\bm A_n}\cdot\rd{\bm S} = -\ri\sum_{m\neq n}\int_S\braket{\bm\nabla n|m}\times\braket{m|\bm\nabla n}\cdot \rd{\bm S}
     \label{eq:berry_phase_stokes_theorem}
 \end{align}
 in which $\rd{\bm S}$ denotes the area element in ${\bm r}$-space, the surface $S$ is spanned by the closed contour $C$, and the excluded terms are justified by $\bm A$ being imaginary.
@@ -125,17 +125,17 @@ It is thus possible to define the equivalent of a magnetic field, called Berry c
 \end{align}
 such that we arrive at the beautiful result
 \begin{align}
-    \gamma_n(C) = \oint_C{\bm A_n}\rd \bm r = \int_S {\bm F_n} \rd{\bm S}.
+    \gamma_n(C) = \oint_C{\bm A_n}\cdot\rd \bm r = \int_S {\bm F_n}\cdot\rd{\bm S}.
 \end{align}
 
 To understand the general equations, let me compute the Berry phase for a generic $2\times 2$ Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
 \begin{align}
-    H(\bm d(\bm k)) = \bm d(\bm k) \bm\sigma = \varepsilon(\bm k) \hat{\bm d}(\bm k)\bm\sigma
+    H(\bm d(\bm k)) = \bm d(\bm k)\cdot\bm\sigma = \varepsilon(\bm k) \hat{\bm d}(\bm k)\cdot\bm\sigma
     =
     \varepsilon(\bm k)
     \begin{pmatrix}
-        \hat{\bm d}_z & \hat{\bm d}_x - \ri \hat{\bm d}_y \\
-        \hat{\bm d}_x + \ri \hat{\bm d}_y & -\hat{\bm d}_z
+        \hat{d}_z & \hat{d}_x - \ri \hat{d}_y \\
+        \hat{d}_x + \ri \hat{d}_y & -\hat{d}_z
     \end{pmatrix},
     \label{eq:arbitrary_2by2}
 \end{align}
@@ -145,15 +145,15 @@ They are normalized vectors of the Bloch sphere and can be parametrized as
 \begin{align}
     \ket{\pm} = \frac{1}{\sqrt{2}}
     \begin{pmatrix}
-        \pm \sqrt{1 \pm \hat{\bm d}_z}\re^{+\ri\vartheta/2}\\
-        \phantom\pm\sqrt{1 \mp \hat{\bm d}_z}\re^{-\ri\vartheta/2}
+        \pm \sqrt{1 \pm \hat{d}_z}\re^{+\ri\vartheta/2}\\
+        \phantom\pm\sqrt{1 \mp \hat{d}_z}\re^{-\ri\vartheta/2}
     \end{pmatrix}
     ,
     \quad
-    \vartheta = \arg(\hat{\bm d}_x-\ri \hat{\bm d}_y).
+    \vartheta = \arg(\hat{d}_x-\ri \hat{d}_y).
 \end{align}
 Note that the explored parameter space is entirely spanned by the entries of the vector $\bm d$, and as such the Hamiltonian in \cref{eq:arbitrary_2by2} has the property that $\bm\nabla\hat H \equiv \bm\nabla_{\bm d}\hat H = \bm\sigma$.
-The local Berry curvature evaluates to ${\bm F}_+ = \frac12\bm d/d^3=\frac12\hat{\bm d}/d^2$\footnote{A temporary rotation to align $\bm d$ with $\sigma_z$ simplifies the computation a lot.}.
+The local Berry curvature evaluates to ${\bm F}_+ = \frac12\bm d/d^3=\frac12\hat{\bm d}/d^2$.
 Note that the curvature has the form of a point source with strength $1/2$ located at the degeneracy $\bm d=0$.
 The surface integral then yields the following fundamental result
 \begin{align}
@@ -166,7 +166,7 @@ In case $\bm d$ covers the full Bloch sphere, the Berry phase corresponds to $2\
 
 If the full Bloch sphere is covered (i.e. the surface $S$ is required to be closed), an integer-valued topological invariant known as the Chern number can be defined~\cite{Nakahara1990}
 \begin{align}
-    \chi_n = \frac1{2\pi}\int_S {\bm F_n} \rd{\bm S}.
+    \chi_n = \frac1{2\pi}\int_S {\bm F_n}\cdot\rd{\bm S}.
     \label{eq:chern_number}
 \end{align}
 In particular, the integer-valuedness of $\chi_n$ follows from the fact that for a loop $C$, the ``inside'' of $C$ is a bit ambiguous -- by reducing the inside of the loop to a surface integral, the equations necessarily agree modulo $2\pi$.
@@ -198,7 +198,7 @@ Consider the following one-dimensional Bloch Hamiltonian, corresponding to the S
 in which the couplings $J,J'\geq0$ are assumed positive.
 The Hamiltonian falls under the category in \ref{eq:arbitrary_2by2}, and I identify
 \begin{align}
-    H_0(k) = {\bm d}{\bm\sigma},
+    H_0(k) = {\bm d}\cdot{\bm\sigma},
     \quad
     d_x = J+J'\cos(k),
     \quad
@@ -216,6 +216,7 @@ Examples of the band dispersion $\varepsilon_\pm(k))\pm\sqrt{J^2+J'^2+2JJ'\cos(k
     \caption{Dimensionless band dispersion $\tilde\varepsilon_\pm(k)=\varepsilon_\pm(k)/|J+J'|$ of the SSH model for different real and positive couplings $J'/J$. The band gap $\Delta=|J-J'|$ closes at the point $J'/J=1$ and the (dimensionless) dispersion itself is symmetric with respect to $J'/J\rightarrow J/J'$.}
     \label{fig:ssh_dispersion}
 \end{figure}
+
 Let us explore more the topological equivalency I detailed in the previous section.
 The valence/conduction band shows a maximum/minimum at $k=\pi$, which leads to the band gap $\Delta = 2\left|J-J'\right|$.
 As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and, for reasons which are clear in the next sections, I call $J>J'$ the TRI and $J<J'$ the TOI phase.
@@ -238,8 +239,10 @@ which is equivalent to the Bloch vector
     d_z(t,k) = \sin(\pi t),
 \end{align}
 for which $H(0,k)$ is of the TRI and $H(1,k)$ is of the TOI kind.
-In \cref{fig:ssh_deformed}, the path of the normalized Bloch vector $\hat{\bm d}(k)$ is depicted.
+In \cref{fig:ssh_deformed}, the path of the normalized Bloch vector $\hat{\bm d}(t,k)$ is depicted.
 If we allow the deformation along the $z$-axis, the cycle that is drawn in the TOI phase can be smoothly deformed to a point without closing the bulk gap.
+The spectrum of $H(t,k)$ is readily solved and evaluates to $\varepsilon_\pm(k,t)=\pm\sqrt{1-2(1-t)t+2(1-t)t\cos k+\sin(\pi t)}$.
+It is easy to see that $\Delta({t})\geq0$ for $0\leq t\leq1$, which demonstrates that TOI and TRI phases are, indeed, topologically equivalent.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_000.jpg}
@@ -252,17 +255,15 @@ If we allow the deformation along the $z$-axis, the cycle that is drawn in the T
     \caption{Depicted paths of $\hat{\bm d}(t,k)={\bm d}/|{\bm d}|$ (see text) as it wraps around the Brillouin zone $k\in(0,2\pi]$ for different $t\in\{0,1/8,1/4,1/2,3/4,7/8,1\}$ (from left to right). The solid angle of $2\pi$ spanned in the TOI phase (i.e. $t=1$) can be smoothly deformed to the trivial case in the TRI phase (i.e. $t=0$).}
     \label{fig:ssh_deformed}
 \end{figure}
-The spectrum of $H(t,k)$ is readily solved and evaluates to $\varepsilon_\pm(k,t)=\pm\sqrt{1-2(1-t)t+2(1-t)t\cos k+\sin(\pi t)}$.
-It is easy to see that $\Delta({t})\geq0$ for $0\leq t\leq1$, which demonstrates that TOI and TRI phases are, indeed, topologically equivalent.
 
 This statement can be geometrically understood by the fact that the single-valued parametrization $\bm d(k)$ generates an arc of a circle or a full circle on the Bloch sphere.
 In other words, the surface $S$ spanned by $C$ (the white path in \cref{fig:ssh_deformed}) never encapsulates the degeneracy, which is the source of ${\bm F}_n$.
 As a consequence, $\gamma_n(C)$ is not quantized and adiabatic deformations like \cref{eq:hamiltonian_path} are possible to effectively remove the degeneracy from the surface integral, smoothly connecting all nonzero geometric phases to the trivial one.
 
-If, however, we require to keep $H(t,k)$ entirely off-diagonal and symmetric, an adiabatic deformation like \cref{eq:hamiltonian_path} with a term $\bm d_z\neq0$ does not exist.
+If, however, we require to keep $H(t,k)$ entirely off-diagonal and symmetric, an adiabatic deformation like \cref{eq:hamiltonian_path} with a term $d_z\neq0$ does not exist.
 As a consequence, any adiabatic deformation from a TOI to a TRI Hamiltonian necessarily crosses the critical point $J=J'$ for which the bulk gap vanishes.
 The Berry phase of such a system is an element of $\pi\mathds Z$, depending on the path $C$ spanned by $\hat{\bm d}$ defining a surface or not.
-By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral (which would indeed require a deformation along $\hat {\bm d}_z$), and as a consequence the Berry phase is quantized.
+By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral (which would indeed require a deformation along $\hat {d}_z$), and as a consequence the Berry phase is quantized.
 This justifies another topological index, called the winding number, which corresponds to quantized values only in the equivalence classes of Hamiltonians which respect the imposed symmetry.
 It equals to the Berry phase divided $\pi$, i.e.
 \begin{align}
@@ -324,7 +325,7 @@ The matrix $h$ is quite sparse and has only alternating off-diagonal elements
     \end{pmatrix},
 \end{align}
 which makes an analytic treatment not too difficult, even if the entries are spacially dependent~\cite{Asboth2016}.
-An exact boundary mode can be found by evaluating $hv:L=0$, with a vector $v_L = (a_0,b_0,a_1,b_1,\dots)^T$, resulting in the set of equations
+An exact boundary mode can be found by evaluating $hv_L=0$, with a vector $v_L = (a_0,b_0,a_1,b_1,\dots)^T$, resulting in the set of equations
 \begin{align}
     J b_0 = 0,
     \quad
@@ -346,14 +347,14 @@ Similarly to $v_L$, $v_R$ is exponentially localized at the right interface, has
 Thus, the two modes share exactly no overlap $v_L^T v_R = 0$.
 However, the two modes are not eigenstates of the Hamiltonian since each one slightly violates the boundary conditions $b_0=0$ and $a_N=0$.
 Note that $v_{L/R}^T h v_{L/R} = 0$ and $v_{L/R}^T h v_{R/L} = (1-w^{-1})^{-1}\re^{-(N-1)/\log w}\re^{\pm\varphi}$ with some phase $\varphi$.
-This then yields ``state hybredization'', a pair of orthogonal eigenstates with energy $\pm(1-w^{-1})^{-1}\re^{-(N-1)/\log w}$ which read $v_\pm = 1/\sqrt2(v_L \pm v_R\re^{\pm\varphi})$.
-Therefore, the hybredized states are still exponentially localized boundary modes and of ``almost'' zero energy with an exponential splitting in the system size.
+This then yields ``state hybridization'', a pair of orthogonal eigenstates with energy $\pm(1-w^{-1})^{-1}\re^{-(N-1)/\log w}$ which read $v_\pm = 1/\sqrt2(v_L \pm v_R\re^{\pm\varphi})$.
+Therefore, the hybridized states are still exponentially localized boundary modes and of ``almost'' zero energy with an exponential splitting in the system size.
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Periodic table of topological insulators}
-\label{sec:Periodic_table_of_topological_insulators}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Periodic table of topological insulators and superconductors}
+\label{sec:Periodic_table_of_topological_insulators_and_superconductors}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 Let us consider an arbitrary non-interacting system of fermions, described by the Hamiltonian
@@ -474,7 +475,8 @@ However, the Hamiltonian can (or cannot) be chiral invariant in the absence of $
 For gapped Hamiltonians, the topological distinction is through adiabatic deformations of the phase diagram by smoothly changing its parameters.
 If two quantum systems can be smoothly deformed into each other without closing the gap, they are called topologically equivalent.
 Trivial insulators (TRI) are then such phases which are adiabatically connected to an atomic insulator.
-All the other equivalence classes are by definition not adiabatically connected to the atomic insulator and thus called topological insulators (TOI).
+All the other equivalence classes are by definition not adiabatically connected to the atomic insulator and thus called topological insulators (TOI) or topological superconductors.
+Since the latter will not play a role for this thesis, I spare the introduction of an abbreviation do not dive into the topic of superconductivity here.
 To use notation of the previous paragraphs, I decouple the space from the internal dimension, i.e. $H_{ij}=H_{q_1,q_2}(\bm x,\bm x')$ and consider translational invariant systems such that $H_{q_1,q_2}(\bm x,\bm x')=H_{q_1,q_2}(\bm x-\bm x')$.
 It is then particularly convenient to use the Bloch Hamiltonian description ($c_q(\bm x)=\sum_{\bm k}\exp(i\bm k\bm x)c_q(\bm k)$), such that the previous Hamiltonian results to
 \begin{align}

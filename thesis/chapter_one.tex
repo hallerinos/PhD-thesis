@@ -23,11 +23,12 @@ The single particle wave function $\Psi_\alpha(r)$ of a quantum state occupying 
 \begin{align}
     \Psi_\alpha(r) \coloneqq \braket{r|\alpha}.
 \end{align}
+\todo{Comment on the overcompleteness of the $r$-states, or not?}
 It is is thus understood as the coefficients for the basis transform $\ket{\alpha}\rightarrow\ket{r}$, i.e.
 \begin{align}
     \ket{\alpha} = \int{\rm d}{r}\, \Psi_\alpha(r) \ket{r}.
 \end{align}
-According to the basic postulate of quantum mechanics, the two-particle wave function with quantum numbers $\alpha_1$ and $\alpha_2$ is given by the (anti-) symmetrized product
+According to the basic postulate of quantum mechanics, the wave function of two indistinguishable particles with quantum numbers $\alpha_1$ and $\alpha_2$ is given by the (anti-) symmetrized product
 \begin{align}
     \Psi_{\alpha_1,\alpha_2,\nu}(r_1,r_2) = \frac1{\sqrt2}\left(\braket{r_1|\alpha_1}\braket{r_2|\alpha_2} + \nu\braket{r_2|\alpha_1}\braket{r_1|\alpha_2}\right),
 \end{align}
@@ -52,7 +53,7 @@ The states in this representation are then given by
 \begin{align}
     \ket{n_1, n_2, \dots}_\nu = \ket{\underbrace{\alpha_1,\alpha_1,\dots,\alpha_1}_{n_1}, \underbrace{\alpha_2, \alpha_2,\dots, \alpha_2}_{n_2}, \alpha_3, \dots}
 \end{align}
-and they span the space $\FS^N$ of the symmetrized $N$-particle states $\sum_{i} n_i = N$.
+and they span the space $\FS^N$ of the (anti-) symmetrized $N$-particle states $\sum_{i} n_i = N$.
 Thus, the subset $\FS^N\subset \HS^N$ contains all $N$-particle states which transform according to the basic postulate of quantum mechanics such that any physical state $\ket{\Psi}\in\HS^N$ can be written as a linear superposition of the Fock states
 \begin{align}
     \ket{\Psi}_\nu = \sum_{\sum_i n_i = N}C(n_1,n_2,\dots)\ket{n_1,n_2,\dots}_\nu.
@@ -133,15 +134,15 @@ and the anticommutator through curly braces
 \begin{align}
     \anticommutator{\hat A,\hat B}\coloneqq\commutator{\hat A,\hat B}_- = \hat A\hat B + \hat B\hat A.
 \end{align}
-Let me also provide a useful expression to evaluate the commutation relation of operator products recursively
-\begin{align}
-    \commutator{\hat A, \hat B \hat C}_\pm
-    &= \hat A\hat B\hat C \mp \hat B\hat C\hat A + \hat B\hat A\hat C - \hat B\hat A\hat C
-    \\
-    &= \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\hat C\hat A \mp \hat B\hat A\hat C
-    = \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\commutator{\hat A,\hat C}.
-    \label{eq:recursive_commutation}
-\end{align}
+% Let me also provide a useful expression to evaluate the commutation relation of operator products recursively
+% \begin{align}
+%     \commutator{\hat A, \hat B \hat C}_\pm
+%     &= \hat A\hat B\hat C \mp \hat B\hat C\hat A + \hat B\hat A\hat C - \hat B\hat A\hat C
+%     \\
+%     &= \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\hat C\hat A \mp \hat B\hat A\hat C
+%     = \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\commutator{\hat A,\hat C}.
+%     \label{eq:recursive_commutation}
+% \end{align}
 In many cases, the sets of quantum numbers are continuous (e.g. position $x$) and as such a sum in \cref{eq:creation_annihilation_basis_rotation} is promoted to an integral expression:
 \begin{align}
     \hat a(x) = \sum_\alpha \braket{x | \alpha} \hat a_\alpha,
@@ -149,6 +150,8 @@ In many cases, the sets of quantum numbers are continuous (e.g. position $x$) an
     \hat a_\alpha = \int{\rd x} \braket{\alpha | x} \hat a(x).
 \end{align}
 This is commonly highlighted through a bracket notation of the continuous quantum number.
+In conclusion, using the Fock state representation automatically assures the (anti-) symmetric properties of many-body quantum states in real space.
+It provides thus an ideal basis for analytical and numerical simulations of many-body states of matter.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -178,7 +181,7 @@ It is now straightforward to introduce generic $2$-body operators $\hat O_2$
 in which the expectation value reads $O_{\alpha,\beta,\gamma,\delta}\coloneqq \braket{\alpha,\beta | \hat o | \gamma,\delta}$.
 For example, a generic two-point interaction $\hat V\ket{r_1,\dots,r_N}=1/2\sum_{n\neq m}V(r_n-r_m)\ket{r_1,\dots,r_N}$ in continuous space takes the second quantized form
 \begin{align}
-    \hat V = \frac12\int{\rd^d r}\int{\rd^d r'}V({\bf r}-{\bf r'})\hat a^\dag({\bf r})\hat a^\dag({\bf r'})\hat a^\pdag({\bf r'})\hat a^\pdag({\bf r}).
+    \hat V = \frac12\int{\rd^d r}\int{\rd^d r'}V({\bm r}-{\bm r'})\hat a^\dag({\bm r})\hat a^\dag({\bm r'})\hat a^\pdag({\bm r'})\hat a^\pdag({\bm r}).
     \label{eq:two_point_interaction}
 \end{align}
 The generalization to generic $M$-body operators is now straightforward
@@ -194,67 +197,67 @@ The generalization to generic $M$-body operators is now straightforward
 To really see when second quantization becomes useful, I go one step back and review basic properties of a single particle moving in a periodic potential which are effectively characterized by a Hamiltonian composed of generic one-body operators of the form of \cref{eq:one_body_operator}.
 In particular, the Hamiltonian considered here reads
 \begin{align}
-    \hat H_0 = \sum_s\int\rd^d r\, \hat a^\dag_s({\bf r})\brlr{\frac{\hat p^2}{2m}+V_{ae}({\bf r})}\hat a_s^\pdag({\bf r})
+    \hat H_0 = \int\rd^d r\, \hat a^\dag({\bm r})\brlr{\frac{\hat{\bm p}^2}{2m}+V_{ae}({\bm r})}\hat a^\pdag({\bm r})
 \end{align}
 % and later impose generic two-body interactions
 % \begin{align}
-%     \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V_{ee}({\bf r}-{\bf r'})a^\dag_s({\bf r})a^\dag_{s'}({\bf r'})a^\pdag_{s'}({\bf r}')a^\pdag_{s}({\bf r})
+%     \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V_{ee}({\bm r}-{\bm r'})a^\dag_s({\bm r})a^\dag_{s'}({\bm r'})a^\pdag_{s'}({\bm r}')a^\pdag_{s}({\bm r})
 % \end{align}
-with operators $\hat a^\pdag_s({\bf r})$ annihilating a particle with flavor $s$ at position $\bf r$.
+with operators $\hat a^\pdag({\bm r})$ annihilating a particle at position $\bm r$.
 The local potential $\hat V_{ae}$ is a collection of $N_a$ local potentials
 \begin{align}
-    V_{ae}({\bf r}) = \sum_{i=1}^{N_a}V_{ae}({\bf R}_i - {\bf r})
+    V_{ae}({\bm r}) = \sum_{i=1}^{N_a}V_{ae}({\bm R}_i - {\bm r})
 \end{align}
-and the value of $V_{ae}$ is determined by the relative distance from the position ${\bf R}_i$.
+and the value of $V_{ae}$ is determined by the relative distance from the position ${\bm R}_i$.
 If the creation operators satisfy the anticommutator algebra in real space
 \begin{align}
-    \anticommutator{\hat a^\pdag_s({\bf r}),\hat a^\dag_{s'}({\bf r'})}=\delta_{s,s'}\delta({\bf r}-{\bf r'}),
+    \anticommutator{\hat a^\pdag({\bm r}),\hat a^\dag({\bm r'})}=\delta({\bm r}-{\bm r'}),
 \end{align}
-the Hamiltonian defines a spinful fermionic system embedded in a crystal lattice (e.g. electrons of traditional solid state setups).
-The bare (Bravais) lattice structure in $d$ dimensions is in general spanned by $d$ linearly independent (not necessary mutually perpendicular and normalized) vectors ${\bf x}_i$ and can thus be defined as the set
+the Hamiltonian defines a spinless fermionic system embedded in an arbitrary lattice.
+A regular (Bravais) lattice structure in $d$ dimensions is in general spanned by $d$ linearly independent (not necessary mutually perpendicular and normalized) vectors ${\bm x}_i$ and can thus be defined as the set
 \begin{align}
-    \mathcal{R} = \anticommutator{\sum_{i=1}^d n_i {\bf x}_i,\ n_i\in\mathds Z}.
+    \mathcal{R} = \anticommutator{\sum_{i=1}^d n_i {\bm x}_i,\ n_i\in\mathds Z}.
 \end{align}
-Additional vectors $\{{\bf b}_i\}$ (sometimes called the basis) are used to define the position of the potential minima relative to the points of the Bravais lattice, such that every position in the primitive cell is given by ${\bf R}_j = \sum_i n_i {\bf x}_i + {\bf b}_j$ with integers $n_i\in\mathds Z$.
+Additional vectors $\{{\bm b}_i\}$ (sometimes called the basis) are used to define the position of the potential minima relative to the points of the Bravais lattice, such that every position in the primitive cell is given by ${\bm R}_j = \sum_i n_i {\bm x}_i + {\bm b}_j$ with integers $n_i\in\mathds Z$.
 The beauty of this approach becomes visible as soon as we define the lattice translation operator
 \begin{align}
-    \hat T_{\bf n} : \psi_\alpha({\bf r}) \mapsto \psi_\alpha\brlr{{\bf r}+T_{\bf n}},\ T_{\bf n}\coloneqq\sum_i n_i {\bf x}_i={\bf n}\underline{\bf x}
+    \hat T_{\bm n} : \psi_\alpha({\bm r}) \mapsto \psi_\alpha\brlr{{\bm r}+T_{\bm n}},\ T_{\bm n}\coloneqq\sum_i n_i {\bm x}_i={\bm n}\underline{\bm x}
 \end{align}
-which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bf n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bf x}\coloneqq ({\bf x}_1,\dots,{\bf x}_d)^T$.
-The local potential $V_{ae}({\bf r})$ is per definition invariant under lattice translations, and the two-body interaction $V_{ee}({\bf r}-{\bf r'})$ is clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the eigenfunctions of $\hat H$ as eigenfunctions of $\hat T_{\bf n}$.
-The eigenfunctions of all translation operators $\hat T_{\bf n}$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the vector ${\bf k}$ arise from imposing boundary conditions. For instance, Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bf r}+ L_j{\bf R}_j)=\psi_\alpha({\bf r})$, which confines the allowed values of $k_j$ to integer multiples of $\frac{\bf G_j}{L_j}$ in which $\bf G_j$ is the reciprocal vector of ${\bf R}_j$, i.e. ${\bf G}_j {\bf R}_j = 2\pi/a$.}
+which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bm n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bm x}\coloneqq ({\bm x}_1,\dots,{\bm x}_d)^T$.
+The local potential $V_{ae}({\bm r})$ is per definition invariant under lattice translations, and two-body interactions $V({\bm r}-{\bm r'})$ are clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the eigenfunctions of $\hat H$ as eigenfunctions of $\hat T_{\bm n}$.
+The eigenfunctions of all translation operators $\hat T_{\bm n}$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the vector ${\bm k}$ arise from imposing boundary conditions. For instance, Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bm r}+ L_j{\bm R}_j)=\psi_\alpha({\bm r})$, which confines the allowed values of $k_j$ to integer multiples of $\frac{\bm G_j}{L_j}$ in which $\bm G_j$ is the reciprocal vector of ${\bm R}_j$, i.e. ${\bm G}_j {\bm R}_j = 2\pi/a$.}
 \begin{align}
-    \hat T_{\bf n}\psi_{\alpha}({\bf r}) &= c_{\bf n}\psi_{\alpha}({\bf r})\\
-    c_{{\bf n}_1}c_{{\bf n}_2} &= c_{{\bf n}_1+{\bf n}_2} \Rightarrow c_{\bf n} = \re^{{\bf s}{\bf n}\underline{\bf x}},\ {\bf s}\in\mathds C^d\\
-    1=\int_V\rd^dr\,\abs{\psi_{\alpha}({\bf r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bf n}\psi_{\alpha}({\bf r})}^2 \Rightarrow 1=\abs{c_{\bf n}}^2 \Rightarrow {\bf s}=\ri{\bf k},\ {\bf k}\in\mathds R^d
+    \hat T_{\bm n}\psi_{\alpha}({\bm r}) &= c_{\bm n}\psi_{\alpha}({\bm r})\\
+    c_{{\bm n}_1}c_{{\bm n}_2} &= c_{{\bm n}_1+{\bm n}_2} \Rightarrow c_{\bm n} = \re^{{\bm s}\cdot{\bm n}\underline{\bm x}},\ {\bm s}\in\mathds C^d\\
+    1=\int_V\rd^dr\,\abs{\psi_{\alpha}({\bm r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bm n}\psi_{\alpha}({\bm r})}^2 \Rightarrow 1=\abs{c_{\bm n}}^2 \Rightarrow {\bm s}=\ri{\bm k},\ {\bm k}\in\mathds R^d
 \end{align}
 It is now possible to phrase Bloch's theorem~\cite{Bloch1929}, which states that the eigenfunctions of a particle moving in periodic potentials assume the simple structure
 \begin{align}
-    \psi_\alpha({\bf r}) = \psi_{\alpha{\bf k}}({\bf r}) = \re^{\ri{\bf k}{\bf r}}u_{\alpha{\bf k}}({\bf r}).
+    \psi_\alpha({\bm r}) = \psi_{\alpha{\bm k}}({\bm r}) = \re^{\ri{\bm k}\cdot {\bm r}}u_{\alpha{\bm k}}({\bm r}).
     \label{eq:bloch_theorem}
 \end{align}
-Note that we introduced the translation operators eigenvalue argument $\bf k$ in the list of good quantum numbers.
+Note that we introduced the translation operators eigenvalue argument $\bm k$ in the list of good quantum numbers.
 In particular, $\psi$ is a weighted plane wave in which $u$ inherits the lattice periodicity
 \begin{align}
-    \hat T_{\bf n} u_{\alpha{\bf k}}({\bf r})
+    \hat T_{\bm n} u_{\alpha{\bm k}}({\bm r})
     =
-    \re^{-\ri{\bf k}\brlr{{\bf r}+{\bf n}\underline{\bf x}}}c_{\bf n}\psi_{\alpha{\bf k}}({\bf r})
+    \re^{-\ri{\bm k}\cdot \brlr{{\bm r}+{\bm n}\underline{\bm x}}}c_{\bm n}\psi_{\alpha{\bm k}}({\bm r})
     =
-    \re^{-\ri{\bf k}{\bf r}}\re^{-\ri{\bf k}{\bf n}\underline{\bf x}}c_{\bf n}\psi_{\alpha{\bf k}}({\bf r})
+    \re^{-\ri{\bm k}\cdot {\bm r}}\re^{-\ri{\bm k}\cdot {\bm n}\underline{\bm x}}\re^{\ri{\bm k}\cdot {\bm n}\underline{\bm x}}\psi_{\alpha{\bm k}}({\bm r})
     =
-    u({\bf r}).
+    u_{\alpha{\bm k}}({\bm r}).
 \end{align}
-The particular expression of the weights obviously depends on the potential, and obtaining general solutions becomes a hard task even for simple problems\footnote{Except maybe the trivial scenario $V_{ae}({\bf r})={\rm const.}$ which implies $u=1$ in \cref{eq:bloch_theorem}.}.
-In general, the wave vector $\bf k$ seems to play the same role as the particle momentum $\bf p$ in the Sommerfeld theory of a free particle.
-However, this is not true as is clear from the momentum operator being $\hat{\bf p}=-\ri\hbar\nabla$, and as such
+% The particular expression of the weights obviously depends on the potential, and obtaining general solutions becomes a hard task even for simple problems\footnote{Except maybe the trivial scenario $V_{ae}({\bm r})={\rm const.}$ which implies $u=1$ in \cref{eq:bloch_theorem}.}.
+In general, the wave vector $\bm k$ seems to play the same role as the particle momentum $\bm p$ in the Sommerfeld theory of a free particle.
+However, this is not true as is clear from the momentum operator being $\hat{\bm p}=-\ri\hbar\bm \nabla$, and as such
 \begin{align}
-  \hat{\bf p}\psi_{\alpha{\bf k}}({\bf r}) = \hbar{\bf k}\psi_{\alpha{\bf k}} - \ri\hbar\re^{\ri{\bf k}{\bf r}}\nabla u_{\bf k}(\bf r).
+  \hat{\bm p}\psi_{\alpha{\bm k}}({\bm r}) = \hbar{\bm k}\psi_{\alpha{\bm k}} - \ri\hbar\re^{\ri{\bm k}{\bm r}}\bm\nabla u_{\alpha \bm k}(\bm r).
 \end{align}
-The vector ${\bf k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bf k}}$ is only an eigenstate of momentum if the potential is constant and thus $\nabla V_{ae}=0$.
-Derivation of the effective potential $V_{ae}$ for real materials and analytic solutions of the Bloch weights $u$ are often quite involved and not of particular interest for this thesis (for more details, see~\cite{AshcroftMermin1978,Czycholl2016}).
-Moreover, the introduction of tightly bound systems will make clear that a full knowledge of $u$ is not necessary to characterize the spectrum of such systems.
+The vector ${\bm k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bm k}}$ is only an eigenstate of momentum if the potential is constant and thus $\bm\nabla V_{ae}=0$.
 
-However, to get an idea of the form of the Bloch functions, let us solve the Schrödinger equation of a particle moving along one-dimension in the potential
+As we will see in the next section, the Bloch waves can be used to define a complete set of tightly localized ``Wannier'' states, which allows to work with effective ``tight binding approximations'' in which the coupling parameters of the model are implicitly defined through overlap integrals of the Bloch functions.
+This way, the many-body phases of the effective model can be studied in a more efficient way without the explicit knowledge of the coupling constants.
+Nonetheless, to get an idea of the form of the Bloch functions, let us solve the Schrödinger equation of a particle moving along one-dimension in the potential
 \begin{align}
     V_{ae}(x) = V_0 \Theta\brlr{b-{\rm mod}_{a}\commutator{x+b}},\ V_0,a,b\in\mathds R_+
     \label{eq:kronig_penney_potential}
@@ -264,7 +267,7 @@ This model is called the Kronig-Penney model~\cite{KronigPenney1931} and provide
 \begin{figure}
     \centering
     \includegraphics{figures/kronig_penney_potential.png}
-    \caption{Contour of the periodic potential \cref{eq:kronig_penney_potential}. The shaded region in blue highlights the limits $b\rightarrow0$ and $V_0\rightarrow\infty$ while preserving a finite product $bV_0=P$ at all times.}
+    \caption{Different contours of the periodic potential \cref{eq:kronig_penney_potential} for $P=1/4$. The gray boxes corresponds to the fixed values $V_0=1/3$ and $b=3/4$, while the blue contour highlights the limits $b\rightarrow0$ and $V_0\rightarrow\infty$ while preserving the product $bV_0=P$.}
     \label{fig:kronig_penney_potential}
 \end{figure}
 
@@ -337,7 +340,7 @@ To approximate the right hand side in the aforementioned limits, application of
     \quad
     \sinh(b\beta\tau')\rightarrow b\beta\tau'
 \end{align}
-provides an exact solution of \cref{eq:kronig_penney_transcendental_equation} in the limit of narrow and strong periodic potentials\footnote{This limit is actually equivalent to a potential composed by delta-distributions.}
+provides an exact rewriting of \cref{eq:kronig_penney_transcendental_equation} in the limit of narrow and strong periodic potentials\footnote{This limit is actually equivalent to a potential composed by delta-distributions.}
 \begin{align}
     f(\alpha a) = \cosh(\alpha\tau a) + \tau'^2\frac{P}{\alpha\tau a}\sinh(\alpha\tau a),
     \quad
@@ -349,16 +352,28 @@ If we assume bound states between the potential wells $0<E<V_0$, the signs becom
     f(\alpha a) = \cos(\alpha a) + \frac{P}{\alpha a}\sin(\alpha a).
     \label{eq:kronig_penney_transcendental_equation_approx_bound}
 \end{align}
-The right-hand-side of \cref{eq:kronig_penney_transcendental_equation_approx_bound} is in general not bound to the interval $[-1,+1]$ spanned by $\cos(ak)$ and establishes values of $\alpha$ (thus, the square-root of the energy $E$) for which no (real) momentum exists (see \cref{fig:kronig_penney_dispersion} (a)).
+For nonzero $P$, the right-hand-side of \cref{eq:kronig_penney_transcendental_equation_approx_bound} is not bound to the interval $[-1,+1]$ spanned by $\cos(ak)$ and establishes values of $\alpha$ (thus, the square-root of the energy $E$) for which no (real) momentum exists (see \cref{fig:kronig_penney_dispersion} (a)).
 Such energies are called forbidden and realize a first understanding of band-gaps induced by the nonzero lattice potential $V_0>0$.
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics{figures/kronig_penney_transcendental.png}}
+    \subfigure[]{\includegraphics{figures/kronig_penney_dispersion_2.png}}
+    \subfigure[]{\includegraphics{figures/kronig_penney_dispersion_1.png}}
+    \caption{
+    (a) Plot of the right-hand-side of the transcendental equation. Solutions do not exist in the red regions.
+    (b)-(c) Shapes of the dispersion relation $(\alpha a/\pi)^2$ versus crystal momentum $ka/\pi$ given by \cref{eq:kronig_penney_transcendental_equation_approx_bound}.
+    Different opacity (transparent to colors) represent increasing values of $P\in\{0.1,1,5,20,50,1000\}$.
+    (c) The properties of the wave functions allow to uniquely relate the crystal momentum $ka$ to an energy $\alpha a$ in which the limit of free electrons [i.e. $P\rightarrow0$] is pronounced.}
+    \label{fig:kronig_penney_dispersion}
+\end{figure}
 
 If $P=0$, we are left with the energy-momentum relation of free electrons $k=\alpha$ and thus $E_0={\hbar^2k^2}/({2m})$.
-If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $f$, which are given by the dominating term and yield discretized energies
+If we approach $P\rightarrow\infty$, the allowed energies are formed by the roots of $\sin(\alpha a)$, i.e.
 \begin{align}
-    E_{\infty,n_b}=(\hbar n_b\pi)^2/(2ma^2)
+    E_{\infty,n_b}=(\hbar n_b\pi)^2/(2ma^2),
     \label{eq:kronig_penney_energy_tb}
 \end{align}
-spanned by integer numbers ($n_b=1,2,\dots$).
+for which the level spacing is given by the squares of integer numbers ($n_b=1,2,\dots$).
 The intermediate regimes $0<P<\infty$ can be solved by numerical evaluation of \cref{eq:kronig_penney_transcendental_equation_approx_bound} and are plotted in \cref{fig:kronig_penney_dispersion} (a).
 Straightforward evaluation of $\arccos(f)$ yields the so-called ``reduced zone scheme'' displayed in \cref{fig:kronig_penney_dispersion} (b).
 
@@ -376,12 +391,15 @@ in which the prefactors are related by\footnote{An additional constraint for $AA
     A' = -A\frac{1-\re^{\ri(\alpha-k)a)}}{1-\re^{-\ri(\alpha+k)a}}.
     \label{eq:kronig_penney_constants}
 \end{align}
+
 Starting from \cref{eq:kronig_penney_transcendental_equation_approx_bound}, we see that for any solution $\alpha a$ satisfying $f(\alpha a)=\cos(k a)$ there are an infinite number of symmetric points in momentum space which fulfill the same equation, i.e. (a) $ka + 2n\pi$ and (b) $-ka+2n\pi$.
 Close inspection of \cref{eq:kronig_penney_wavefunctions,eq:kronig_penney_constants} reveals that a transformation according to (a) leaves the wave function invariant, while (b) maps it to the solutions of $-ka$, $-\alpha a$.
+
 In other words, (a) is merely a shift by a unit reciprocal vector and (b) flips the direction of the propagating wave, hence establishes a mirror symmetry at the $ka=0$ axis which is a consequence of the system being invariant under time-reversal.
 The properties (a) and (b) allow to define the ``unfolding'' of the reduced zone scheme:
 without loss of generality, a crystal momentum $n_b\pi\leq ka<(n_b+1)\pi$ can be uniquely connected to an energy value $n_b\pi\leq \alpha a<(n_b+1)\pi$ by introducing a band index $(n_b=0,1,\dots)$.
 Here, the limit of free particles ($P=0$) is readily restored, since \cref{eq:kronig_penney_constants} vanishes for $\alpha a = ka$ (except for the special points $ka=n_b\pi$).
+
 At the special points, \cref{eq:kronig_penney_constants} is actually ill defined and evaluates to the two viable solutions $A'=\pm A$, which can be understood from the two non-commuting limits
 \begin{align}
     -\lim_{\alpha a \searrow n_b\pi}\frac{1-\re^{\ri(\alpha a-n_b\pi))}}{1-\re^{-\ri(\alpha a+n_b\pi)}}
@@ -401,18 +419,6 @@ At the special points, \cref{eq:kronig_penney_constants} is actually ill defined
 The two allowed eigenfunctions are standing waves $\propto \cos(kx),\sin(kx)$.
 By reformulating the special points in terms of the particles de Broglie wavelength $\lambda=2\pi/k$, the formation of standing waves can be understood as a residual effect of (constructive) Bragg reflection on a periodic grid structure.
 Standing waves are obtained if the particle's de Broglie wavelength and the spacing of the potential satisfy $2a=n_b\lambda$.
-\begin{figure}
-    \centering
-    \subfigure[]{\includegraphics{figures/kronig_penney_transcendental.png}}
-    \subfigure[]{\includegraphics{figures/kronig_penney_dispersion_2.png}}
-    \subfigure[]{\includegraphics{figures/kronig_penney_dispersion_1.png}}
-    \caption{
-    (a) Plot of the right-hand-side of the transcendental equation. Solutions do not exist in the red regions.
-    (b)-(c) Shapes of the dispersion relation $(\alpha a/\pi)^2$ versus crystal momentum $ka/\pi$ given by \cref{eq:kronig_penney_transcendental_equation_approx_bound}.
-    Different opacity (transparent to colors) represent increasing values of $P\in\{0.1,1,5,20,50,1000\}$.
-    (c) The properties of the wave functions allow to uniquely relate the crystal momentum $ka$ to an energy $\alpha a$ in which the limit of free electrons [i.e. $P\rightarrow0$] is pronounced.}
-    \label{fig:kronig_penney_dispersion}
-\end{figure}
 
 In the limit $P\rightarrow\infty$, the energy $E_{\infty,n_b}$ assumes the discrete values in \cref{eq:kronig_penney_energy_tb} resulting in motionless eigenstates -- the resulting waves are tightly bound to the potential minimum.
 If we relax this limit a bit, i.e. $P\gg 1$, a reasonable approximation of the lowest band curvature is obtained by a first order Taylor series of \cref{eq:kronig_penney_transcendental_equation_approx_bound} resulting in the typical dispersion relation for tight binding systems, i.e.
@@ -424,25 +430,26 @@ If we relax this limit a bit, i.e. $P\gg 1$, a reasonable approximation of the l
     t_1 = -\frac{\pi^2\hbar^4}{a^3 m^2 bV_0}.
     \label{eq:kronig_penney_tight_binding_dispersion}
 \end{align}
+This concludes the pedagogic recap of the Kronig-Penney model, and I proceed by giving a more generic recipe to solve arbitrary periodic potentials.
 
-A way to numerically solve generic potentials is obtained by expanding the Schrödinger equation in reciprocal space through the following identities\footnote{The reciprocal space provides a way to Fourier-transform as the functions $\re^{\ri {\bf G r}}$ form a basis on the primitive cell of the real lattice over the square-integrable functions. In particular, the functions satisfy the orthogonality equation $\delta_{\bf G, G'}=\frac1{\Omega}\int\rd^dr\,\re^{\ri({\bf G-G'}){\bf r}}$.}
+In order to tackle generic potentials, let us expand the Schrödinger equation in reciprocal space through the following identities\footnote{The reciprocal space provides a way to Fourier-transform as the functions $\re^{\ri {\bm G r}}$ form a basis on the primitive cell of the real lattice over the square-integrable functions. In particular, the functions satisfy the orthogonality equation $\delta_{\bm G, G'}=\frac1{\Omega}\int\rd^dr\,\re^{\ri({\bm G-G'}){\bm r}}$.}
 \begin{align}
-    V_{ae}({\bf r}) = \sum_{\bf G}V_{ae}{}_{\bf G}\re^{\ri {\bf G r}},
+    V_{ae}({\bm r}) = \sum_{\bm G}V_{ae}{}_{\bm G}\re^{\ri {\bm G r}},
     \quad
-    V_{ae}{}_{\bf G} = \frac1{V}\int\rd^dr\,V_{ae}({\bf r}){\bf G}\re^{-\ri {\bf G r}},
+    V_{ae}{}_{\bm G} = \frac1{V}\int\rd^dr\,V_{ae}({\bm r})\re^{-\ri {\bm G r}},
     \\
-    u_{n{\bf k}}({\bf r}) = \sum_{\bf G}u_{n{\bf k}}({\bf r}){}_{\bf G}\re^{\ri {\bf G r}},
+    u_{n{\bm k}}({\bm r}) = \sum_{\bm G}u_{n{\bm k}}({\bm r}){}_{\bm G}\re^{\ri {\bm G r}},
     \quad
-    u_{n{\bf k}}({\bf r}){}_{\bf G} = \frac1{V}\int\rd^dr\,u_{n{\bf k}}({\bf r})\re^{-\ri {\bf G r}},
+    u_{n{\bm k}}{}_{\bm G} = \frac1{V}\int\rd^dr\,u_{n{\bm k}}({\bm r})\re^{-\ri {\bm G r}},
 \end{align}
 in which $V$ is the volume of the primitive unit cell.
-Straightforward evaluation yields the algebraic eigenvalue problem for the unknown functions $u_{n{\bf k}}{}_{\bf G}$
+Straightforward evaluation yields the algebraic eigenvalue problem for the unknown functions $u_{n{\bm k}}{}_{\bm G}$
 \begin{align}
-    \frac{\hbar^2}{2m}({\bf G}+{\bf k})^2u_{n{\bf k}}{}_{\bf G}+\sum_{\bf G'}V_{ae}{}_{\bf G-G'}u_{n{\bf k}}{}_{\bf G'} = E_{n{\bf k}}.
+    \frac{\hbar^2}{2m}({\bm G}+{\bm k})^2u_{n{\bm k}}{}_{\bm G}+\sum_{\bm G'}V_{ae}{}_{\bm G-\bm G'}u_{n{\bm k}}{}_{\bm G'} = E_{n{\bm k}}.
     \label{eq:periodic_lattices_numerics}
 \end{align}
-The dimension of the linear equation is infinite due to the sum over all reciprocal lattice vectors and has to be truncated if one wants to solve the equation numerically [the convergence of such a truncation has to be carefully checked for a serious investigation].
-Clearly, strongly confined potentials such as delta functions are particularly bad candidates to solve numerically through evaluation of \cref{eq:periodic_lattices_numerics} because the resulting matrix equation will not be sparse and any truncation will result in a significant error.
+The dimension of the linear equation is infinite due to the sum over all reciprocal lattice vectors and has to be truncated if one wants to solve the equation numerically (the convergence of such a truncation has to be carefully checked for a serious investigation).
+Clearly, strongly confined potentials such as delta functions studied in the Kronig-Penney model are particularly bad candidates to solve numerically through evaluation of \cref{eq:periodic_lattices_numerics} because the resulting matrix equation will not be sparse and any truncation will result in a significant error.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -468,10 +475,10 @@ For this reason, it will be useful to review briefly how these models are motiva
     \label{fig:tight_binding_wanniers}
 \end{figure}
 
-For this purpose, we assume the problem of the single-particle Hamiltonian $\hat H_0$ to be fully solved, such that the Bloch states $\psi_{\alpha{\bf k}}$ are determined, diagonalize $\hat H_0$ and have energy eigenvalues $\varepsilon_{\alpha{\bf k}}$.
+For this purpose, we assume the problem of the single-particle Hamiltonian $\hat H_0$ to be fully solved, such that the Bloch states $\psi_{\alpha{\bm k}}$ are determined, diagonalize $\hat H_0$ and have energy eigenvalues $\varepsilon_{\alpha{\bm k}}$.
 This allows to introduce the Wannier basis -- a localized basis composed of the Bloch states and defined as
 \begin{align}
-    \ket{w_{\alpha{\bf R}}} = \frac1{\sqrt N}\sum_{\bf k}\re^{-\ri{\bf k}{\bf R}}\ket{\psi_{\alpha{\bf k}}}.
+    \ket{w_{\alpha{\bm R}}} = \frac1{\sqrt N}\sum_{\bm k}\re^{-\ri{\bm k}{\bm R}}\ket{\psi_{\alpha{\bm k}}}.
     \label{eq:wannier_states}
 \end{align}
 Note that every momentum-resolved Bloch function can be multiplied with a complex phase without changing its properties.
@@ -487,74 +494,131 @@ To obtain the Wannier functions, we gauge every Bloch function to be purely real
 The existence of localized Wannier states is translated to the language of second quantization by the notion that transformations between a Bloch and Wannier basis are always unitary.
 Hence, annihilation and creation operators of Wannier and Bloch states are set in relation by
 \begin{align}
-    \hat a^\dag_{\alpha{\bf R}s} = \frac1{\sqrt N}\sum_{\bf k}\re^{-\ri{\bf k}{\bf R}}\hat a^\dag_{\alpha{\bf k}s},
+    \hat a^\dag_{\alpha{\bm R}} = \frac1{\sqrt N}\sum_{\bm k}\re^{-\ri{\bm k}{\bm R}}\hat a^\dag_{\alpha{\bm k}},
     \quad
-    \hat a^\dag_{\alpha{\bf k}s} = \frac1{\sqrt N}\sum_{\bf R}\re^{+\ri{\bf k}{\bf R}}\hat a^\dag_{\alpha{\bf R}s}.
+    \hat a^\dag_{\alpha{\bm k}} = \frac1{\sqrt N}\sum_{\bm R}\re^{+\ri{\bm k}{\bm R}}\hat a^\dag_{\alpha{\bm R}}.
     \label{eq:wannier_states_2}
 \end{align}
-Since the non-interacting Hamiltonian is diagonal in the Bloch basis, the Bloch basis are eigenfunctions with energies $\varepsilon_{\alpha{\bf k}} = \int\rd^dr\, \psi_{\alpha{\bf k}}^* \hat H_0 \psi_{\alpha{\bf k}}$.
+Since the non-interacting Hamiltonian is diagonal in the Bloch basis, the Bloch basis are eigenfunctions with energies $\varepsilon_{\alpha{\bm k}} = \int\rd^dr\, \psi_{\alpha{\bm k}}^* \hat H_0 \psi_{\alpha{\bm k}} = \frac1N\sum_{\bm R,\bm R'}\re^{\ri\bm k(\bm R'-\bm R)}\int\rd^dr\, w_{\alpha{\bm R}}^* \hat H_0 w_{\alpha{\bm R'}}$.
 In particular, the Hamiltonian is readily cast into the localized basis according to
 \begin{align}
     \hat H_0
     =
-    \sum_{{\bf k},s}\varepsilon_{\alpha{\bf k}}\hat a^\dag_{\alpha{\bf k}s}\hat a^\pdag_{\alpha{\bf k}s}
+    \varepsilon_{\alpha{\bm k}}\hat a^\dag_{\alpha{\bm k}}\hat a^\pdag_{\alpha{\bm k}}
     \overset{\text{\cref{eq:wannier_states_2}}}{=}
-    \frac1N\sum_{\bf R, R', k}
-    \re^{\ri{\bf k}\brlr{{\bf R}-{\bf R'}}}
-    \varepsilon_{\alpha{\bf k}}
-    \hat a^\dag_{\alpha{\bf R}s}\hat a^\pdag_{\alpha{\bf R'}s}
+    \frac1N
+    \re^{\ri{\bm k}\brlr{{\bm R}-{\bm R'}}}
+    \varepsilon_{\alpha{\bm k}}
+    \hat a^\dag_{\alpha{\bm R}}\hat a^\pdag_{\alpha{\bm R'}}
     =
-    \sum_{i, j}T_{\alpha,i,j}
-    \hat a^\dag_{\alpha{\bf R}_is}\hat a^\pdag_{\alpha{\bf R}_js}.
+    T_{\alpha,i,j}
+    \hat a^\dag_{\alpha{\bm R}_i}\hat a^\pdag_{\alpha{\bm R}_j},
     \label{eq:tight_binding_hamiltonian}
 \end{align}
+for which I conveniently use the sum convention.
 The matrix $T_{\alpha}$ contains all amplitudes of transition processes between two lattice centers, to be determined through the dispersion relation of the $\alpha$-band
 \begin{align}
-    T_{\alpha,i,j} \coloneqq \frac1N\sum_{\bf k}\re^{\ri{\bf k}\brlr{{\bf R}_i-{\bf R}_j}}\varepsilon_{\alpha{\bf k}}.
+    T_{\alpha,i,j} \coloneqq \frac1N\sum_{\bm k}\re^{\ri{\bm k}\brlr{{\bm R}_i-{\bm R}_j}}\varepsilon_{\alpha{\bm k}} = \frac1N\sum_{\bm k}\re^{\ri{\bm k}\brlr{{\bm R}_i-{\bm R}_j}}\int\rd^dr\, \psi_{\alpha{\bm k}}^* \hat H_0 \psi_{\alpha{\bm k}}.
 \end{align}
 On an abstract level, the tight binding Hamiltonian denotes quantum particles hopping between lattice sites, connected through the matrix elements $T_{\alpha,i,j}$.
-Without quantitative computations of the transition probabilities, we can fix the matrix to $T_{\alpha,i,j}=\sum_rt_{\alpha,r}\delta_{i-r,j} + \hc$ with some constants $t_{\alpha,r}$.
-The relation \cref{eq:tight_binding_hamiltonian} has strong implications on the analytic form of the dispersion relation $\varepsilon_{\alpha{\bf k}}$ -- it is fully determined through the geometry of the crystal lattice.
+Without quantitative computations of the transition probabilities, we can fix the matrix to $T_{\alpha,i,j}=\sum_rt_{\alpha r}\delta_{i-r,j} + \hc$ with some constants $t_{\alpha r}$.
+The relation \cref{eq:tight_binding_hamiltonian} has strong implications on the analytic form of the dispersion relation $\varepsilon_{\alpha{\bm k}}$ -- it is fully determined through the geometry of the crystal lattice.
 For instance, one-dimensional lattices with single atom unit cells and lattice spacing $a$ have the particularly easy solution
 \begin{align}
-    \varepsilon_{\alpha k} = \sum_r 2t_r\cos(r ka).
+    \varepsilon_{\alpha k} = \sum_r 2t_{\alpha r}\cos(r ka).
     \label{eq:1D_tight_binding_dispersion}
 \end{align}
 Note that this equation is consistent with the Kronig-Penney dispersion relation in the tight-binding limit, presented in \cref{eq:kronig_penney_tight_binding_dispersion}.
 In higher dimensions, the evaluation of the dispersion relation may become lengthy, but remains always analytic.
 
 Oftentimes, a single-band approximation is established to fix (and drop) the band index $\alpha$.
-This situation is achieved in case the bottom band is sufficiently separated from the second (e.g. through a strong on-site lattice potential).
-A corresponding two-body interaction $\hat V_{ee}$ in the single-band approximation reads
+This situation is achieved in case the bottom band is sufficiently separated from the second (e.g. through a strong on-site lattice potential $V_0$).
+In the Kronig-Penney model, this corresponds to $V_0\gg \hbar^2/(mab)$ with particle mass $m$, lattice constant $a$ and potential width $b$.
+
+A corresponding two-body interaction $\hat V$ in the single-band approximation reads
 \begin{align}
-    \hat V_{ee} = \frac12\sum_{i,i',j,j'}\sum_{s,s'}V_{i,i',j,j'}\hat a^\dag_{{\bf R}_is}\hat a^\dag_{{\bf R}_{i'}s'}\hat a^\pdag_{{\bf R}_js'}\hat a^\pdag_{{\bf R}_{j'}s}.
+    \hat V = \frac12\sum_{i,i',j,j'}V_{i,i',j,j'}\hat a^\dag_{{\bm R}_i}\hat a^\dag_{{\bm R}_{i'}}\hat a^\pdag_{{\bm R}_j}\hat a^\pdag_{{\bm R}_{j'}}.
 \end{align}
 The matrix elements of the interaction are given by the integral expressions
 \begin{align}
-    V_{i,i',j,j'} = \int\rd^dr\int\rd^dr'\,w^*_{{\bf R}_i}({\bf r})w^*_{{\bf R}_{i'}}({\bf r}')w_{{\bf R}_j}({\bf r}')w_{{\bf R}_{j'}}({\bf r})V_{ee}({\bf r-r'}).
+    V_{i,i',j,j'} = \int\rd^dr\int\rd^dr'\,w^*_{{\bm R}_i}({\bm r})w^*_{{\bm R}_{i'}}({\bm r}')w_{{\bm R}_j}({\bm r}')w_{{\bm R}_{j'}}({\bm r})V({\bm r-\bm r'}).
     \label{eq:two_body_interaction_transition_rates}
 \end{align}
 The explicit determination of the matrix elements requires knowledge of the form of the Wannier states which, for real materials, is an active field of research on its own.
 However, these states are localized and as such the transition rate integrals are short-ranged in most cases.
-For this reason, it is sufficient to account for transitions and interactions up to nearest neighbors
+In one dimension, it is sufficient to account for transitions and interactions up to nearest neighbors
 \begin{align}
-    T_{i,j} \approx \mu\delta_{i,j} + t\delta_{i-1,j}+t^*\delta_{i+1,j},
+    T_{i,j} \approx t_0\delta_{i,j} + t_1\delta_{i-1,j}+t_1^*\delta_{i+1,j},
     \quad
     V_{i,i',j,j'} \approx U\delta_{i,j'}\delta_{i',j}\delta_{i,i'} + V\delta_{i,j'}\delta_{i',j}(\delta_{i-1,i'}+\delta_{i+1,i'}).
 \end{align}
-In summary, we are at liberty to slightly simplify the notation and arrive at the family of Hubbard-type models, written in second quantization
+Note that in case the particle has some flavor (e.g. spin), the kinetic terms of $\hat H_0$ typically act in a diagonal manner.
+On the contrary, the two-body interaction allows for both intra-flavor and inter-flavor scattering processes.
+In summary, we are at liberty to slightly simplify the notation and arrive at the family of single-orbital Hubbard-type models, written in second quantization
 \begin{align}
-    \hat H_{\rm Hubbard} = \sum_{i,s}\brlr{t \hat a^\dag_{i,s}\hat a^\pdag_{j+1,s} + \hc} + \frac U2\sum_{i,s,s'}\hat n_{i,s}\hat n_{i,s'} + V\sum_{i,s,s'}\hat n_{i,s}\hat n_{i+1,s'}.
+    \hat H_{\rm Hubbard} = \sum_{i,s}\brlr{t_1 \hat a^\dag_{i,s}\hat a^\pdag_{j+1,s} + \hc} + \frac U2\sum_{i,s,s'}\hat n_{i,s}\hat n_{i,s'} + V\sum_{i,s,s'}\hat n_{i,s}\hat n_{i+1,s'}.
     \label{eq:hubbard_hamiltonian}
 \end{align}
 The operator $\hat a_{i,s}$ annihilates a Wannier state of flavor $s$, localized around the $i$'th lattice position.
+In most cases, $t_1 = -t$ with $t>0$, which is also physically motivated to confine the minimum of the dispersion to $k=0$.
+In particular, the validity of the single-band approximation for real materials requires small interaction amplitudes compared to the band gap between the first and second Bloch band.
+Note further that the limitation of a single band naturally fails do describe orbital-selective Mott transitions which require at least two inequivalent bands~\cite{Anisimov2002,vanDongen2005}.
 
-In the above derivation, I do not comment on the nature of $t$ which can be assumed to be real for traditional Hubbard models.
-If, however, the geometry of the tight binding approximation is sufficiently complex, i.e. if the matrix $T$ spans a higher dimensional lattice, complex transition amplitudes give rise to nontrivial fluxes penetrating the lattice which may alter the underlying physics.
-One example for a $2$D system with complex tunneling elements is the Harper-Hofstadter model~\cite{Hofstadter1976}, realized by artificial gauge fields induced by laser-assisted tunnelings in ultracold atomic lattice systems~\cite{Aidelsburger2016}.
-The nonzero fluxes in this model mimic the effect of charged particles moving in a magnetic field, based on Peierl's substitution~\cite{Peierls1933}.
-A more simplified explanation compared to the original work by Rudolf Peierls is based on the infamous Feynman lecture series, book III chapter 21~\cite{feynmanlecturesonline} and adopted from~\cite{WikiPeierls}.
-\todo{Wrap up Peierl's substitution here.}
+If the matrix $T$ spans a higher dimensional lattice, complex transition amplitudes can give rise to nontrivial fluxes penetrating the lattice which may alter the underlying physics.
+In particular, the famously quoted Peierl's substitution approximates the effect of a uniform magnetic field, in which case the Hamiltonian follows the principle of minimal coupling
+\begin{align}
+    \hat H_0 = \frac{\hat{\bm p}^2}{2m}+V_{ae}(\bm r)\rightarrow \frac{\brlr{\hat{\bm p} - q\bm A(\bm r)}^2}{2m}+V_{ae}(\bm r),
+\end{align}
+and $q$ denotes the electric charge of the particle.
+Consider now the rescaled Wannier functions
+\begin{align}
+    w'_{\alpha\bm R} = \re^{\ri\frac q\hbar G_{\bm R}}w_{\alpha\bm R},
+    \quad
+    \psi'_{\alpha\bm k} = \frac1N\sum_{\bm R}\re^{\ri\bm k\bm R}w'_{\alpha\bm R}
+\end{align}
+in which $G_{\bm R}(\bm r) = \int_{\bm R}^{\bm r}\bm A(\bm r')\cdot\rd \bm r'$ is a lattice-position and position dependent phase.
+In certain situtation, this provides a neat substitution to treat the troublesome $\hat{\bm p}\bm A$ term.
+In fact, $\bm\nabla G_{\bm R}(\bm r) = \bm A(\bm r) + \int_0^1\rd\lambda\lambda (\bm r-\bm R)\times\bm B(\bm R+\lambda(\bm r-\bm R))$ with magnetic field $\bm B=\bm\nabla\times\bm A$~\cite{Luttinger1951}.
+To observe the influence of the magnetic field, the transition elements between different Wannier states have to be computed.
+In particular, I begin with
+\begin{align}
+    \varepsilon_{\alpha\bm k}
+    =
+    \frac1N\sum_{\bm R,\bm R'}\re^{\ri\bm k(\bm R'-\bm R)}
+    \int\rd^d r
+        w_{\alpha\bm R}^*
+        \re^{-\ri\frac q\hbar\int_{\bm R}^{\bm r}\bm A(\bm r')\cdot\rd \bm r'}
+        \brlr{\frac{\brlr{\hat{\bm p}-q\bm A}^2}{2m}+V_{ae}}
+        w_{\alpha \bm R'}
+        \re^{\ri\frac q\hbar\int_{\bm R'}^{\bm r}\bm A(\bm r')\cdot\rd \bm r'}
+    \\
+    =
+    \frac1N\sum_{\bm R,\bm R'}\re^{-\ri\frac q\hbar\int_{\bm R}^{\bm R'}\bm A(\bm r')\cdot\rd \bm r'}\re^{\ri\bm k(\bm R'-\bm R)}
+    \int\rd^d r
+        \re^{\ri\frac q\hbar\Phi_{\bm R,\bm R'}(\bm r)}
+        w_{\alpha\bm R}^*
+        \brlr{\frac{\brlr{\hat{\bm p}-q\bm A+q\bm\nabla G_{\bm R'}}^2}{2m}+V_{ae}}
+        w_{\alpha \bm R'}
+\end{align}
+in which $\Phi_{\bm R,\bm R'}(\bm r) = \oint_{R'\rightarrow r\rightarrow R}\bm A(\bm r')\cdot\rd \bm r'$ is the flux through the plaquette spanned by $\bm R, \bm R'$ and $\bm r$.
+Now the locality of the Wannier functions is exploited, and the variation of the vector potential on the atomic scale is such that $\nabla G_{\bm R'}(\bm r)\approx\bm A(\bm r)$, which leads to
+\begin{align}
+    \varepsilon_{\alpha\bm k}
+    \approx
+    \frac1N\sum_{\bm R,\bm R'}\re^{\ri\frac q\hbar\int_{\bm R'}^{\bm R}\bm A(\bm r')\cdot\rd \bm r'}\re^{\ri\bm k(\bm R'-\bm R)}
+    \int\rd^d r
+        \re^{\ri\frac q\hbar\Phi_{\bm R,\bm R'}(\bm r)}
+        w_{\alpha\bm R}^*
+        \hat H_0
+        w_{\alpha \bm R'}
+    .
+\end{align}
+The transition elements are thus dressed with a complex phase and result to
+\begin{align}
+    T_{\alpha,i,j}'\approx\re^{\ri\frac q\hbar\int_{\bm R_j}^{\bm R_i}\bm A(\bm r')\cdot\rd\bm r'}T_{\alpha,i,j}.
+\end{align}
+The transition elements correspond to the change in the Berry phase on the lattice scale~(see \cref{ch:topological_phases_of_matter}).
+Note that the amplitude of transitions are altered as well, which must be considered in the implementation of real experiments.
 
 Perhaps the most successful description of electrons in solids is band theory -- based on screened many-body interactions described by effective one-body potentials.
 This results in a form of \cref{eq:hubbard_hamiltonian} without density-density interactions such that a diagonalization of the hopping matrix $T$ solves the problem.
@@ -562,6 +626,7 @@ However, due to its intrinsic single-particle character, band theory cannot reli
 This motivates the study of Hubbard-type models: despite being a brutal simplification of the true two-body interaction, they are the easiest systems that provide an explanation of such interaction-driven features.
 Although its apparent innocence, there is no universal treatment of Hubbard models in general.
 In one spacial dimension, the Hamiltonian can be solved analytically and thus falls in the category of being ``integrable''~\cite{Essler2005}.
+\todoil{Is this true for all number of flavors?}
 In general, integrability is a quite fragile property and even slight perturbations will break it.
 The models we study in the next chapters, albeit closely related to the one-dimensional Hubbard model, do not categorize as integrable due to the presence of additional terms that break some of its fundamental symmetries (e.g. the conservation of the particle flavor).
 This motivates the use of alternative methods to study the properties of interacting tight binding models.
@@ -573,7 +638,9 @@ One of the most prominent and useful analytic concepts in one dimension is the t
 \label{sec:tomonaga_LL}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Luttinger liquids provide a viable tool to study the low-temperature properties of many systems in one and two dimensions.
-I start by giving a basic overview on the mapping from spinless fermions to particle-hole excitations in the vicinity of the Fermi points before I introduce the more general formulas for spinful models.
+This method is often referred to as Abelian bosonization and provides a mechanism to decouple interacting fermions in terms of noninteracting bosonic degrees of freedom.
+I start by giving a basic overview of the mapping from spinless fermions to bosonic particle-hole excitations in the vicinity of the Fermi points before I introduce the more general formulas for spinful models.
+
 We are interested in building an effective model in one dimension capturing the relevant degrees of freedom at low temperatures.
 With that purpose, let us start with the free fermionic 1D Hamiltonian $\hat H_0$ denoted by the following (diagonal) representation in momentum space
 \begin{align}
@@ -604,8 +671,8 @@ For the next part, it will be convenient to understand the meaning of the local 
     \hat n(x) = \hat c^\dag_x \hat c^\pdag_x = \frac1L\sum_{k,q}\re^{-\ri x q}\hat c^\dag_{k+q}\hat c^\pdag_{k}.
     \label{eq:local_density}
 \end{align}
-$\hat n(x)$ thus creates a superposition of particle-hole pairs with characteristic wavelength $q^{-1}$.
-The number of particle-hole pairs can be counted through the operator
+$\hat n(x)$ thus creates a superposition of particle-hole plane waves with characteristic wavelength $q^{-1}$.
+The bare creation of particle-hole pairs is defined through the density operator
 \begin{align}
     \hat \rho_{-q}\coloneqq \sum_k \hat c^\dag_{k-q}\hat c^\pdag_{k}.
 \end{align}
@@ -648,7 +715,7 @@ We now turn to an arbitrary two-body interaction of the form~\cref{eq:two_point_
 The last term is just a constant $\mu = \frac N{2L}\sum_qV(q)$ and can thus be neglected.
 By imposing that relevant contributions act close to the Fermi energy involving only momenta in the interval $|k|\in\{k_F\pm\Gamma\}$, we can split the sum in two contributions, one involving scattering processes at small and the other scattering at large momenta
 \begin{align}
-    \hat V \approx \frac1{2L}\sum_{q\approx0}V(q)\hat\rho_{q}\hat\rho^\dag_{q} + \sum_{q\approx2k_F}V(q)\hat\rho_{q}\hat\rho^\dag_{q}.
+    \hat V \approx \frac1{2L}\brlr{\sum_{q\approx0}V(q)\hat\rho_{q}\hat\rho^\dag_{q} + \sum_{q\approx2k_F}V(q)\hat\rho_{q}\hat\rho^\dag_{q}}.
 \end{align}
 For a later study, it is important to note that the amplitude of the two different $q\approx0$ processes, denoted by $V(q\approx0)$, is equal and independent of the form of the interaction.
 A full classification of hypothetical scattering processes is given in~\cref{fig:scattering_processes}.
@@ -887,8 +954,10 @@ The last exponential can be understood as a (Grassmann) coherent state composed 
 Lastly, I want to stress that the results presented here are actually independent of the original starting point, i.e. \cref{eq:hamiltonian_free_particles}.
 The only microscopic parameter entering in the final theory is $v_F$, which can be replaced by arbitrary group velocities evaluated on the Fermi surface $v_F=(\partial_k\varepsilon_k)_{k=k_F}$.
 Significant deviations are then expected in case of flat bands (to be more precise, in case of strong interactions comparable with the bandwidth of the kinetic Hamiltonian), in which case all scattering processes of \cref{fig:scattering_processes} have to be accounted for.
+An attempt which takes into account such curvature effects solves many of the related issues~\cite{Imambekov2009}.
+
 On a practical level, the evaluation of all scattering processes is a tough task and regularly neglected in the vast literature on the theoretical research of one-dimensional models, which then leads to expected quantitative deviations.
-However, on a qualitative viewpoint, the neglected scatterings (whenever they are irrelevant in a sense of not opening energy gaps) are widely accepted to change only the effective couplings such that physical consequences predicted from the Luttinger liquid theory [like the asymptotic decay of correlation functions] remain valid.
+However, on a qualitative viewpoint, the neglected scatterings (whenever they are irrelevant in a sense of not opening energy gaps, see \cref{sec:renormalization_group_theory}) are widely accepted to change only the effective couplings such that physical consequences predicted from the Luttinger liquid theory (like the asymptotic decay of correlation functions) remain valid.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -900,7 +969,7 @@ For spinful systems, we must first require that the kinetic Hamiltonian is fully
     \hat H_0 = \hat H_{0,\uparrow}+\hat H_{0,\downarrow}
     = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau,s\in\{\uparrow,\downarrow\}}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s},
 \end{align}
-which allows to introduce a pair of conjugate fields $(\hat \phi_s,\hat \theta_s)$ for each spin flavor $s$.
+which allows to introduce a pair of conjugate fields $(\hat \phi_s,\hat \theta_s)$ for each spin flavor $s$\footnote{In our research, the spin conservation is explicitly broken in most cases.}.
 The scattering processes $g_4$ and $g_2$ can be generalized in a straightforward manner, and we achieve
 \begin{align}
   \hat V \approx
@@ -917,7 +986,9 @@ To account for the scattering among different spins, it is customary to write th
 \begin{align}
     \hat f_+=\frac1{\sqrt2}\brlr{\hat f_\uparrow + \hat f_\downarrow},
     \quad
-    \hat f_-=\frac1{\sqrt2}\brlr{\hat f_\uparrow - \hat f_\downarrow}.
+    \hat f_-=\frac1{\sqrt2}\brlr{\hat f_\uparrow - \hat f_\downarrow},
+    \quad
+    f\in\{\theta,\phi\}.
 \end{align}
 This rotation is trivial on the level of the kinetic Hamiltonian and
 \begin{align}
@@ -975,6 +1046,10 @@ with coupling constants
     s\in\{+,-\}.
 \end{align}
 The first observation regards $g_{1\perp}=0$: the Hamiltonian separates into two independent sectors, namely those of charge and spin excitations propagating with different velocities.
+This is famously known as spin-charge separation and a feature of all one-dimensional metallic systems.
+In particular, it describes the fractionalization of particles into two distinct quasiparticles, called spinons with zero charge and spin 1/2 and chargons with charge minus one and no spin.
+As is clear from the discussion above, the two sectors remain independent and therefore move with different velocities~\cite{Tomonaga1950,Luttinger1963,Haldane1981,Kim2006}.
+
 The second regards the presence of a non-quadratic term for $g_{1\perp}\neq0$.
 Terms of the type
 \begin{align}
@@ -984,31 +1059,30 @@ are called sine-Gordon terms of the field $\hat f$ and potentially relevant for 
 The ``relevancy'' of such terms is determined by its flow under Wilsonian renormalization group theory which I am going to introduce in the next sections.
 In particular, if $g$ is large enough (depending on $\beta$), it drives the system to an ordered phase by ``pinning'' its argument's eigenvalues to semiclassical minima $\beta f=(2n+1)\pi$.
 In the context of \cref{eq:ll_hamiltonian_spin}, it opens a gap in the spin sector and establishes an ordered spin density associated to the argument of $\hat O_{\rm sG}$.
+
+This motivates the further study of such terms, and in order to tackle it it will be beneficial to move into the realm of path integrals and renormalization group theory.
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Massless Klein-Gordon fields}
-\label{sec:massless_Klein-Gordon_fields}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-For simplicity, we will here neglect again the spin index and focus on properties of the non-interacting Luttinger liquid \cref{eq:ll_hamiltonian} at $K=1$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Properties of spinless fields and their correlations}
+\label{sec:properties_of_spinless_fields_and_their_correlations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Earlier we saw that the spin conservation leads to a pair of two decoupled sectors in one-dimensional systems.
+In order to access correlation functions, the two sectors can be treated independently, therefore we focus first on properties of the non-interacting spinless Luttinger liquid at $K=1$.
 The Lagrangian density of the free $\phi$-field is given by ($\hbar=1$)
 \begin{align}
     L = \int\frac{\rd x}{2\pi}\frac{(\partial_t\phi)^2}{u}-u(\partial_x\phi)^2
     \label{eq:kg_lagrangian}
 \end{align}
 in which $u$ is a velocity.
-We can check that this is indeed true by verifying that the Hamiltonian results from the basic Legendre transformation
-\begin{align}
-    H = \frac{\partial L}{\partial(\partial_t\phi)}\partial_t\phi - L = \int\frac{\rd x}{2\pi}\, \brlr{uK\pi^2 + \frac uK(\partial_x\phi)^2},
-\end{align}
-from which the equations of motion reduce to
+The equations of motion reduce to
 \begin{align}
     \partial_t\frac{\partial L}{\partial\pi}+\partial_x\frac{\partial L}{\partial(\partial_x\phi)} = 0,
     \quad
     \partial_t^2\phi  = u^2\partial_x^2\phi.
     \label{eq:KG_equations_of_motion}
 \end{align}
-We can impose the conjugate field to $\phi$ which, not surprisingly, is the original field $\pi=\partial_x\theta$ that must satisfy
+The conjugate field to $\phi$ is, not surprisingly, the original field $\pi=\partial_x\theta$ which satisfies
 \begin{align}
     u\partial_x\theta=\partial_t\phi,
     \quad
@@ -1029,8 +1103,8 @@ which satisfy the following equation
     0.
 \end{align}
 The two fields $\varphi_{R/L}$ are thus chiral and depend on $t\mp ux$, respectively.
-In summary, the two fields are dual to each other and the Lagrangian of each field is set into relation by \cref{eq:KG_equations_of_motion}.
-Lastly, the equation of motion can be recast in a continuity equation of a closed system through the identification of a density $\pi\rho=-\partial_x\phi$ and current $\pi j = \partial_t\phi$
+They are dual to each other and the Lagrangian of each field is set into relation by \cref{eq:KG_equations_of_motion}.
+Lastly, the equation of motion can be recast in a continuity equation of a closed system through the identification of a density $\pi\rho=-\partial_x\phi$ and current $\pi j = \partial_t\phi$, i.e.
 \begin{align}
     \partial_t^2 \theta - u^2\partial_x^2 \theta = 0,
     \quad
@@ -1040,44 +1114,45 @@ Lastly, the equation of motion can be recast in a continuity equation of a close
     \Rightarrow
     \partial_t \rho(x) + \partial_x  j = 0.
 \end{align}
+\todo{Path integral!!!}
 To compute correlation functions, we now move to imaginary time $\tau=\ri t$, resulting in the action
 \begin{align}
     S = -\frac1{2\pi}\int\rd\tau\rd x\brlr{ \frac{(\partial_\tau\phi)^2}u + u(\partial_x\phi)^2}
 \end{align}
-and the definition of the partition function in the path integral formalism which is readily recast into frequency and momentum space (using the notation ${\bf k}=(\omega, k)$)
+and the definition of the partition function in the path integral formalism which is readily recast into frequency and momentum space (using the notation ${\bm k}=(\omega, k)$)
 \begin{align}
-    Z_\phi = \int\rD_\phi \re^{-S[\phi]} = \int\rD_\phi \exp\brlr{-\int\frac{\rd k\rd\omega}{2\pi}\phi(-{\bf k})\commutator{\frac{w^2+(uk)^2}{u}}\phi({\bf k})}
+    Z_\phi = \int\rD_\phi \re^{-S[\phi]} = \int\rD_\phi \exp\brlr{-\int\frac{\rd k\rd\omega}{2\pi}\phi(-{\bm k})\commutator{\frac{w^2+(uk)^2}{u}}\phi({\bm k})}
 \end{align}
-With the definition of $G^{-1}({\bf k})=\frac{\omega^2+(uk)^2}{2\pi}$ and an additional source term $-\int\rd^2k\eta(-{\bf k})\phi({\bf k})$, the partition function is transformed to
+With the definition of $G^{-1}({\bm k})=\frac{\omega^2+(uk)^2}{2\pi}$ and an additional source term $-\int\rd^2k\eta(-{\bm k})\phi({\bm k})$, the partition function is transformed to
 \begin{align}
-    Z_\phi[\eta] = \int\rD_\phi \exp\brlr{-\frac12\int\rd k\rd\omega\phi(-{\bf k})G^{-1}({\bf k})\phi({\bf k}) -\int\rd k\rd\omega\eta(-{\bf k})\phi({\bf k})},
+    Z_\phi[\eta] = \int\rD_\phi \exp\brlr{-\frac12\int\rd k\rd\omega\phi(-{\bm k})G^{-1}({\bm k})\phi({\bm k}) -\int\rd k\rd\omega\eta(-{\bm k})\phi({\bm k})},
 \end{align}
 such that correlation functions are directly given by the functional derivative
 \begin{align}
-    \braket{\phi({\bf k})\phi(-{\bf k})}=\frac{\delta^2}{\delta(\eta({\bf k}))\delta(\eta(-{\bf k}))}\frac{Z[\eta]}{Z[0]}\Bigg|_{\eta=0},
+    \braket{\phi({\bm k})\phi(-{\bm k})}=\frac{\delta^2}{\delta(\eta({\bm k}))\delta(\eta(-{\bm k}))}\frac{Z[\eta]}{Z[0]}\Bigg|_{\eta=0},
 \end{align}
 in which I conveniently use the notion of expectation values for the functionals
 \begin{align}
     \braket{F[\phi]} = \braket{F[\phi]}_\phi = Z_\phi^{-1}\int\rD\phi\re^{-S[\phi]}F[\phi].
 \end{align}
-In particular, the completion of the square leads to the new field $f=\phi({\bf k})+G({\bf k})\eta({\bf k})$ and the following partition function
+In particular, the completion of the square leads to the new field $f=\phi({\bm k})+G({\bm k})\eta({\bm k})$ and the following partition function
 \begin{align}
-    Z_\phi[\eta] = \int\rD_{f}\exp\brlr{-\frac12\int\rd k\rd\omega f({\bf k})G^{-1}({\bf k})f(-{\bf k}) + \frac12\int\rd k\rd\omega\eta({\bf k})\eta(-{\bf k})G({\bf k})}
+    Z_\phi[\eta] = \int\rD_{f}\exp\brlr{-\frac12\int\rd k\rd\omega f({\bm k})G^{-1}({\bm k})f(-{\bm k}) + \frac12\int\rd k\rd\omega\eta({\bm k})\eta(-{\bm k})G({\bm k})}
 \end{align}
 from which we deduce the Hubbard-Stratonovich transformation which allows to establish an equality between correlations and the Green's function
 \begin{align}
-    Z_\phi[\eta]/Z_\phi = \re^{\frac12\int\rd k\rd\omega \eta({\bf k})\eta(-{\bf k})G(k)}
+    Z_\phi[\eta]/Z_\phi = \re^{\frac12\int\rd k\rd\omega \eta({\bm k})\eta(-{\bm k})G(k)}
     = \re^{\frac12\int\rd x\rd\tau\rd x'\rd\tau' \eta(x,\tau)\eta(x',\tau')G(x,\tau,x',\tau')}
     \label{eq:KG_hubbard_stratonovich_equality}\\
-    \Rightarrow \braket{\phi({\bf k})\phi(-{\bf k})} = G({\bf k}),
+    \Rightarrow \braket{\phi({\bm k})\phi(-{\bm k})} = G({\bm k}),
     \quad
     \braket{\phi(x,\tau)\phi(x',\tau')} = G(x,\tau,x',\tau').
     \label{eq:KG_greens_functions_equality}
 \end{align}
-A subsequent Fourier transformation, combined with the definition of the polar coordinates ${\bf p}=(\omega/u,-k)$, ${\bf r} = (u(\tau-\tau'), x-x')$, $r = \sqrt{(x-x')^2+u^2(\tau-\tau'^2)}$ yields an analytic expression of the correlation function
+A subsequent Fourier transformation, combined with the definition of the polar coordinates ${\bm p}=(\omega/u,-k)$, ${\bm r} = (u(\tau-\tau'), x-x')$, $r = \sqrt{(x-x')^2+u^2(\tau-\tau'^2)}$ yields an analytic expression of the correlation function
 \begin{align}
     \braket{\phi(x,\tau)\phi(x',\tau')}
-    = \int\frac{\rd k\rd\omega}{4\pi^2}G({\bf k})\re^{\ri\omega(\tau-\tau')-\ri k(x-x')}
+    = \int\frac{\rd k\rd\omega}{4\pi^2}G({\bm k})\re^{\ri\omega(\tau-\tau')-\ri k(x-x')}
     = \int_0^\infty\rd pp\int_0^{2\pi}\frac{\rd\alpha}{4\pi}\frac{\re^{\ri pr\cos\alpha}}{p^2}
     \\
     = \int_0^\infty\rd p\frac{J_0(pr)}{2p}
@@ -1144,23 +1219,23 @@ in which the (density) field $\phi$ is considered.
 The theory is then put on a lattice assuming the Fourier transform of the field is defined in the Brillouin zone, which connects the long wavelength with the small crystal momentum components of $\phi$.
 The idea of renormalization is to let the system flow towards larger distances by sequentially integrating the short-distance (fast) components of the fields by partial path integration and representing the result in terms of an effective model for the long-wavelength field.
 The final step is then to recover the original size of the momentum shell by a rescaling of lengthscales.
-For technical convenience, it is best to assume a circular cutoff constraint $|{\bf k}|<\Lambda\sim2\pi/a$.
+For technical convenience, it is best to assume a circular cutoff constraint $|{\bm k}|<\Lambda\sim2\pi/a$.
 If the model is of a sine-Gordon type, the effective model will have the same form as the original one (up to a rescaled set of coupling constants), from which the so-called ``RG-flow equations'' are derived.
 
 Let's start by splitting the fields into the aforementioned slow and fast components, in which the ``fast'' components are contained in an infinitesimal momentum shell $\rd\Lambda=\Lambda-\Lambda'$
 \begin{align}
-    \phi_\Lambda({\bf x}) = \phi_{\Lambda'}({\bf x}) + h({\bf x}),
+    \phi_\Lambda({\bm x}) = \phi_{\Lambda'}({\bm x}) + h({\bm x}),
     \quad
-    \phi_{\Lambda'}({\bf x})\coloneqq\frac1{\sqrt L}\sum_{k<\Lambda'}\re^{\ri {\bf k}{\bf x}}\phi_{\bf k},
+    \phi_{\Lambda'}({\bm x})\coloneqq\frac1{\sqrt L}\sum_{k<\Lambda'}\re^{\ri {\bm k}{\bm x}}\phi_{\bm k},
     \quad
-    h({\bf x}) \coloneqq \frac1{\sqrt L}\sum_{\Lambda'<k<\Lambda}\re^{\ri {\bf k}{\bf x}}\phi_{\bf k}.
+    h({\bm x}) \coloneqq \frac1{\sqrt L}\sum_{\Lambda'<k<\Lambda}\re^{\ri {\bm k}{\bm x}}\phi_{\bm k}.
 \end{align}
 We will see shortly, that instead of using $\rd\Lambda$ as a measure of the flow it is more useful to consider the quantity $\brlr{\Lambda'/\Lambda}^\alpha=1-\alpha\frac{\rd\Lambda}\Lambda + O(\rd\Lambda^2) = 1-\alpha\rd l + O(\rd l^2)$ with $\rd l =\frac{\rd\Lambda}\Lambda = \rd\log\Lambda$.
 The Klein-Gordon part of the Euclidian action is linear under such decomposition and therefore
 \begin{align}
     Z_\Lambda
-    = \int\rD\phi_{\Lambda'}\rD h \re^{-S_0[\phi_{\Lambda'}]-S_0[h]-S_I[\phi_{\Lambda'}({\bf x}) + h({\bf x})]}
-    = Z_h\int\rD\phi_{\Lambda'}\re^{-S_0[\phi_{\Lambda'}]}\braket{\re^{-S_I[\phi_{\Lambda'}({\bf x}) + h({\bf x})]}},
+    = \int\rD\phi_{\Lambda'}\rD h \re^{-S_0[\phi_{\Lambda'}]-S_0[h]-S_I[\phi_{\Lambda'}({\bm x}) + h({\bm x})]}
+    = Z_h\int\rD\phi_{\Lambda'}\re^{-S_0[\phi_{\Lambda'}]}\braket{\re^{-S_I[\phi_{\Lambda'}({\bm x}) + h({\bm x})]}},
 \end{align}
 which results in the definition of an effective action
 \begin{align}
@@ -1191,9 +1266,9 @@ This way, we can easily expand the expectation value from above to
     \\
     = g\brlr{1 - \frac{K\beta^2}4\rd l}\int\rd^2x\cos(\beta \phi_{\Lambda'}).
 \end{align}
-As a next step, we would like to recover the size of the original momentum shell by $|{\bf k}|\rightarrow |{\bf k}'|=\frac{\Lambda}{\Lambda'}|{\bf k}| = (1+\rd l)|{\bf k}|+O(\rd l^2)$.
-In order to preserve the Fourier transform, it is a necessity to keep the dot product ${\bf k'}{\bf x'}$ invariant under the flow $\rd l$.
-Therefore, space-time must be rescaled in the opposite manner to crystal momentum, i.e. $|{\bf x}|\rightarrow|{\bf x'}|=(1-\rd l)|{\bf x}|$.
+As a next step, we would like to recover the size of the original momentum shell by $|{\bm k}|\rightarrow |{\bm k}'|=\frac{\Lambda}{\Lambda'}|{\bm k}| = (1+\rd l)|{\bm k}|+O(\rd l^2)$.
+In order to preserve the Fourier transform, it is a necessity to keep the dot product ${\bm k'}{\bm x'}$ invariant under the flow $\rd l$.
+Therefore, space-time must be rescaled in the opposite manner to crystal momentum, i.e. $|{\bm x}|\rightarrow|{\bm x'}|=(1-\rd l)|{\bm x}|$.
 From this line of reasoning, differentials are transformed according to the equality
 \begin{align}
     \rd^2x = \rd^2 x'(1-\rd l)^{-2} = \rd^2 x'(1+2\rd l) + O(\rd l^2).
@@ -1227,59 +1302,59 @@ Now for the second order correction -- the first term in the connected correlato
 \begin{align}
     \braket{S^2_I[\phi_{\Lambda'}+h]}=\frac{g^2}2\re^{-\beta^2\braket{h^2}}\int\rd^2x\rd^2x'
     \left(
-        \cos\commutator{\phi_{\Lambda'}({\bf x})+\phi_{\Lambda'}({\bf x'})}\re^{-\beta^2\braket{h({\bf x})h({\bf x'})}}
+        \cos\commutator{\phi_{\Lambda'}({\bm x})+\phi_{\Lambda'}({\bm x'})}\re^{-\beta^2\braket{h({\bm x})h({\bm x'})}}
         \right.\\
         \left.+
-        \cos\commutator{\phi_{\Lambda'}({\bf x})-\phi_{\Lambda'}({\bf x'})}\re^{+\beta^2\braket{h({\bf x})h({\bf x'})}}
+        \cos\commutator{\phi_{\Lambda'}({\bm x})-\phi_{\Lambda'}({\bm x'})}\re^{+\beta^2\braket{h({\bm x})h({\bm x'})}}
     \right)
     \label{eq:second_order_rg_term1}
 \end{align}
 and contains the decaying two-point correlations of the $h$-fields.
-For convenience, let me proceed with the assumption that the two-point correlations are of the form $\braket{h({\bf x})h({\bf x'})} = \frac K2 C(r=|{\bf x}-{\bf x'}|)\rd l$ such that the action is rewritten to
+For convenience, let me proceed with the assumption that the two-point correlations are of the form $\braket{h({\bm x})h({\bm x'})} = \frac K2 C(r=|{\bm x}-{\bm x'}|)\rd l$ such that the action is rewritten to
 \begin{align}
     \braket{S^2_I[\phi_{\Lambda'}+h]}=\frac{g^2}2\brlr{1 - \frac{K\beta^2}2\rd l}\int\rd^2x\rd^2x'
     \left(
-        \cos\commutator{\beta\phi_{\Lambda'}({\bf x})+\beta\phi_{\Lambda'}({\bf x'})}\anticommutator{1-\frac{K\beta^2}2C(|{\bf x}-{\bf x'}|)\rd l}
+        \cos\commutator{\beta\phi_{\Lambda'}({\bm x})+\beta\phi_{\Lambda'}({\bm x'})}\anticommutator{1-\frac{K\beta^2}2C(|{\bm x}-{\bm x'}|)\rd l}
         \right.\\
         \left.+
-        \cos\commutator{\beta\phi_{\Lambda'}({\bf x})-\beta\phi_{\Lambda'}({\bf x'})}\anticommutator{1+\frac{K\beta^2}2C(|{\bf x}-{\bf x'}|)\rd l}
+        \cos\commutator{\beta\phi_{\Lambda'}({\bm x})-\beta\phi_{\Lambda'}({\bm x'})}\anticommutator{1+\frac{K\beta^2}2C(|{\bm x}-{\bm x'}|)\rd l}
     \right).
 \end{align}
 The disconnected part of the correlation function is evaluated using the identity $2\cos(a)\cos(b)=\cos(a+b)+\cos(a-b)$ and $(1-\alpha\rd l)^2 = 1-2\alpha\rd l + O(\rd l^2)$ and reads
 \begin{align}
     \braket{S_I[\phi_{\Lambda'}+h]}_h^2
-    = g^2\brlr{1 - \frac{K\beta^2}4\rd l}^2\int\rd^2x\rd^2x'\cos(\beta \phi_{\Lambda'}({\bf x}))\cos(\beta \phi_{\Lambda'}({\bf x'}))
+    = g^2\brlr{1 - \frac{K\beta^2}4\rd l}^2\int\rd^2x\rd^2x'\cos(\beta \phi_{\Lambda'}({\bm x}))\cos(\beta \phi_{\Lambda'}({\bm x'}))
     \\
     = \frac{g^2}2\brlr{1 - \frac{K\beta^2}2\rd l}\int\rd^2x\rd^2x'
         \left(
-            \cos\commutator{\beta \phi_{\Lambda'}({\bf x})+\beta \phi_{\Lambda'}({\bf x'})}
+            \cos\commutator{\beta \phi_{\Lambda'}({\bm x})+\beta \phi_{\Lambda'}({\bm x'})}
             +
-            \cos\commutator{\beta \phi_{\Lambda'}({\bf x})-\beta \phi_{\Lambda'}({\bf x'})}
+            \cos\commutator{\beta \phi_{\Lambda'}({\bm x})-\beta \phi_{\Lambda'}({\bm x'})}
         \right).
 \end{align}
 Therefore, the $C$-independent terms cancel in the connected part of the correlation function and the final result is
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}} = \frac{g^2K\beta^2}8\rd l\int\rd^2x\rd^2x'
-    C(|{\bf x}-{\bf x'}|)
+    C(|{\bm x}-{\bm x'}|)
     \left(
-        \cos\commutator{\beta\phi_{\Lambda'}({\bf x})+\beta\phi_{\Lambda'}({\bf x'})}
+        \cos\commutator{\beta\phi_{\Lambda'}({\bm x})+\beta\phi_{\Lambda'}({\bm x'})}
         \right.
         \\
         \left.-
-        \cos\commutator{\beta\phi_{\Lambda'}({\bf x})-\beta\phi_{\Lambda'}({\bf x'})}
+        \cos\commutator{\beta\phi_{\Lambda'}({\bm x})-\beta\phi_{\Lambda'}({\bm x'})}
     \right)
     % \\
     % \approx
     % \frac{\gamma g^2K\beta^2}8\rd l\int\rd^2x
     % \left(
-    %     \cos\commutator{2\beta\phi_{\Lambda'}({\bf x})}
+    %     \cos\commutator{2\beta\phi_{\Lambda'}({\bm x})}
     %     % \right.\\
     %     % \left.
-    %     -\cos\commutator{\beta\partial_{\bf x}\phi_{\Lambda'}({\bf x})}
+    %     -\cos\commutator{\beta\partial_{\bm x}\phi_{\Lambda'}({\bm x})}
     % \right).
     % \label{eq:RG_second_order_approximation_1}
 \end{align}
-% In case $C(|{\bf x}-{\bf x'}|)$ is sufficiently short-ranged, the arguments in the $\cos$ of \cref{eq:rg_int_1,eq:rg_int_2} can be approximated as indicated in \cref{eq:RG_second_order_approximation_1} using a non-universal constant $\gamma$.
+% In case $C(|{\bm x}-{\bm x'}|)$ is sufficiently short-ranged, the arguments in the $\cos$ of \cref{eq:rg_int_1,eq:rg_int_2} can be approximated as indicated in \cref{eq:RG_second_order_approximation_1} using a non-universal constant $\gamma$.
 To proceed in solving the integral, the function $C$ needs to be discussed further.
 For the sharp momentum cutoff, one would obtain here $C(r) = J_0(\Lambda r)$ with asymptotic expression $J_0(\Lambda r)\approx\sqrt{2/(\pi \Lambda r)}\cos(\Lambda r-\pi/4)$.
 This function has a long algebraic tail and is thus not a sharp function.
@@ -1297,7 +1372,7 @@ implementing a smooth cutoff around $\Lambda$.
 The sharp situation is recovered for $n\rightarrow\infty$ (see \cref{fig:rg_cutoff}).
 In practice, the integration \cref{eq:rg_hsq} evaluates to the general integral
 \begin{align}
-    \braket{h({\bf x}),h(\bf x')}_h = \frac K2\int_{\Lambda'}^\Lambda\rd p\frac{J_0(p r)}{p} = \frac K2\int_{0}^\Lambda\rd p\frac{J_0(p r)}{p}
+    \braket{h({\bm x}),h(\bm x')}_h = \frac K2\int_{\Lambda'}^\Lambda\rd p\frac{J_0(p r)}{p} = \frac K2\int_{0}^\Lambda\rd p\frac{J_0(p r)}{p}
     -\frac K2\int_{0}^{\Lambda'}\rd p\frac{J_0(p r)}{p}
     \\
     =
@@ -1324,11 +1399,11 @@ leading to the modified function $C_n$ which depends on the smoothness $n$, i.e.
 \end{figure}
 % At this point it is worth mentioning that the correlation functions of the slow fields are
 % \begin{align}
-%     \braket{\phi_\Lambda({\bf x}),\phi_\Lambda(\bf x')} = \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\brlr{\frac1{p^n+\Lambda^n_{\rm min}}-\frac1{p^n+\Lambda^n_{\rm max}}}
+%     \braket{\phi_\Lambda({\bm x}),\phi_\Lambda(\bm x')} = \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\brlr{\frac1{p^n+\Lambda^n_{\rm min}}-\frac1{p^n+\Lambda^n_{\rm max}}}
 % \end{align}
 % which, in case of $n=2$, yield the appealing result
 % \begin{align}
-%     \braket{\phi_\Lambda({\bf x}),\phi_\Lambda(\bf x')} = \frac K2 \brlr{K_0(\Lambda_{\rm min} r) - K_0(\Lambda_{\rm max} r)}.
+%     \braket{\phi_\Lambda({\bm x}),\phi_\Lambda(\bm x')} = \frac K2 \brlr{K_0(\Lambda_{\rm min} r) - K_0(\Lambda_{\rm max} r)}.
 %     \label{eq:rg_slow_fields_approximation}
 % \end{align}
 For the special case $n=2$, the integral of the $h$-fields evaluates to $C_2(r)=\frac K2 \Lambda r K_1(\Lambda r)$ that decays exponentially fast (see \cref{fig:rg_cutoff}(c)).
@@ -1343,7 +1418,7 @@ The asymptotic part of the integral decays algebraically as a function of $\Lamb
 The main weight of the integral resides in $[\Lambda_{\rm min},1/r]$, for which $J_0\approx1$ if the lower cutoff is chosen small enough.
 This then yields the approximated propagator, with the special case $n=2$ used in~\cref{eq:kg_correlations_approximation}.
 
-In order to utilize the confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bf R} = 1/2({\bf x}+{\bf x'})$ and ${\bf r} = {\bf x}-{\bf x'}$.
+In order to utilize the confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bm R} = 1/2({\bm x}+{\bm x'})$ and ${\bm r} = {\bm x}-{\bm x'}$.
 The integral can then be rewritten to
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
@@ -1351,20 +1426,20 @@ The integral can then be rewritten to
     \frac{g^2K\beta^2}8\rd l\int\rd^2R\int\rd^2r
     C_2(r)
     \left(
-        \cos\commutator{\beta\phi_{\Lambda'}({\bf R}+{\bf r})+\beta\phi_{\Lambda'}({\bf R}-{\bf r})}
+        \cos\commutator{\beta\phi_{\Lambda'}({\bm R}+{\bm r})+\beta\phi_{\Lambda'}({\bm R}-{\bm r})}
         \right.
         \label{eq:rg_int_1}\\
         \left.-
-        \cos\commutator{\beta\phi_{\Lambda'}({\bf R}+{\bf r})-\beta\phi_{\Lambda'}({\bf R}-{\bf r})}
+        \cos\commutator{\beta\phi_{\Lambda'}({\bm R}+{\bm r})-\beta\phi_{\Lambda'}({\bm R}-{\bm r})}
     \right)
     \label{eq:rg_int_2}
     \\
     \approx
     \frac{g^2K\beta^2}{8}\rd l\int\rd^2R\rd^2rC_2(r)
     \left(
-        \cos\commutator{2\beta\phi_{\Lambda'}({\bf R})}
+        \cos\commutator{2\beta\phi_{\Lambda'}({\bm R})}
         -
-        \cos\commutator{\beta\partial_{\bf R}\phi_{\Lambda'}({\bf R}){\bf r})}
+        \cos\commutator{\beta\partial_{\bm R}\phi_{\Lambda'}({\bm R}){\bm r})}
     \right).
     \label{eq:rg_int_rel_coords}
 \end{align}
