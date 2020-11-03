@@ -1,13 +1,7 @@
 %!TEX root = thesis.tex
-%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{The quantization of motion and fields}
 \label{ch:the_quantization_of_motion_and_fields}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
 The present chapter is inspired by a number of excellent books and lectures such as~\cite{AshcroftMermin1978,AltlandSimons2010,BruusFlensberg2004,Czycholl2016,FetterWalecka2003,Giamarchi2003,Rizzi2016,Burrello2020} extending the basic aspects of quantum mechanics to a modern way of understanding quantum field theory in general.
 %
 %
@@ -15,6 +9,8 @@ The present chapter is inspired by a number of excellent books and lectures such
 \section{Creation and annihilation operators}
 \label{sec:creation_and_annihilation_operators}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 Consider a complete set of quantum numbers $\{\alpha\}$ which label a normalized set of states $\{\ket{\alpha}\}$ spanning the full Hilbert space $\HS^1$ of a generic single particle system described by the (time-independent) Schrödinger equation
 \begin{align}
     \hat H \ket{\alpha} = \varepsilon_\alpha\ket{\alpha}.
@@ -906,7 +902,7 @@ brings the diagonalized Hamiltonian to the more traditional form
 \end{align}
 In the above, I introduced an effective spring constant through the velocity and lattice spacing $D=mu^2/a^2$.
 In particular, the field $\partial_x\hat\phi$ can be interpreted as the position offset from the quasiparticle's equilibrium position and $\hat\pi$ is its effective momentum.
-Moving to dimensionless units (by imposing $\hbar=c=1$ and requiring a unit mass) and rescaling the fields $\hat\phi\rightarrow \frac1{uK}\hat\phi$, $\hat\pi\rightarrow uK\hat\pi$ results in the standard Luttinger liquid Hamiltonian
+Moving to dimensionless units (by imposing $\hbar=c=1$ and requiring a unit mass) and rescaling the fields $\hat\phi\rightarrow \frac1{\sqrt{uK}}\hat\phi$, $\hat\pi\rightarrow \sqrt{uK}\hat\pi$ results in the standard Luttinger liquid Hamiltonian
 \begin{align}
     \hat H = \int\frac{\rd x}{2\pi}\, \brlr{uK\hat\pi^2 + \frac uK(\partial_x\hat\phi)^2},
     \label{eq:ll_hamiltonian}
@@ -1068,8 +1064,8 @@ This motivates the further study of such terms, and in order to tackle it it wil
 \label{sec:properties_of_spinless_fields_and_their_correlations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Earlier we saw that the spin conservation leads to a pair of two decoupled sectors in one-dimensional systems.
-In order to access correlation functions, the two sectors can be treated independently, therefore we focus first on properties of the non-interacting spinless Luttinger liquid at $K=1$.
-The Lagrangian density of the free $\phi$-field is given by ($\hbar=1$)
+In order to access correlation functions, the two sectors can be treated independently, therefore we focus first on properties of the spinless field and it's correlation.
+The classical Lagrangian of a scalar field $\phi$ is given by ($\hbar=1$)
 \begin{align}
     L = \int\frac{\rd x}{2\pi}\frac{(\partial_t\phi)^2}{u}-u(\partial_x\phi)^2
     \label{eq:kg_lagrangian}
@@ -1114,8 +1110,14 @@ Lastly, the equation of motion can be recast in a continuity equation of a close
     \Rightarrow
     \partial_t \rho(x) + \partial_x  j = 0.
 \end{align}
-\todo{Path integral!!!}
-To compute correlation functions, we now move to imaginary time $\tau=\ri t$, resulting in the action
+
+To compute correlation functions, it is customary to work in the framework of path integrals and I recap it's construction on basis of the non-interacting spinless Luttinger liquid Hamiltonian
+\begin{align}
+    \hat H = \frac{u}{2\pi}\int\rd x\hat\pi^2+(\partial_x\hat\phi)^2,
+\end{align}
+which is the quantum Hamiltonian of the classical Lagrangian~\cref{eq:kg_lagrangian}.
+
+We now move to imaginary time $\tau=\ri t$, resulting in the action
 \begin{align}
     S = -\frac1{2\pi}\int\rd\tau\rd x\brlr{ \frac{(\partial_\tau\phi)^2}u + u(\partial_x\phi)^2}
 \end{align}
