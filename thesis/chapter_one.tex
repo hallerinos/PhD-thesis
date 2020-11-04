@@ -1111,11 +1111,69 @@ Lastly, the equation of motion can be recast in a continuity equation of a close
     \partial_t \rho(x) + \partial_x  j = 0.
 \end{align}
 
-To compute correlation functions, it is customary to work in the framework of path integrals and I recap it's construction on basis of the non-interacting spinless Luttinger liquid Hamiltonian
+To compute correlation functions, it is customary to work in the framework of path integrals (which Feynman invented as a graduate student) and I recap the basic construction on basis of the non-interacting spinless Luttinger liquid Hamiltonian
 \begin{align}
     \hat H = \frac{u}{2\pi}\int\rd x\hat\pi^2+(\partial_x\hat\phi)^2,
 \end{align}
 which is the quantum Hamiltonian of the classical Lagrangian~\cref{eq:kg_lagrangian}.
+In order to have a finite-dimensional and complete basis in terms of the eigenstates, consider the discretized Hamiltonian on a regular lattice $x_j\equiv ja$, $\phi_j\equiv\phi(x_j)$ with lattice constant $a$, i.e.
+\begin{align}
+    \hat H = \frac{ua}{2\pi}\sum_{j}\brlr{\hat\pi_{j}^2+(\hat\phi_{j+1}-\hat\phi_{j})^2/a^2},
+\end{align}
+The goal is to evaluate the so-called time evolution kernel
+\begin{align}
+    \braket{\phi_f|U(t_f,t_i)|\phi_i}=\braket{\phi_f|\re^{-\ri\hat H(t_f-t_i)}|\phi_i}
+\end{align}
+in which $\ket{\phi}$ is the eigenstate of the field operator $\hat\phi_j\ket{\phi}=\phi_j\ket{\phi}$.
+Instead of taking the full exponential, one may split the time integration into $N$ parts
+\begin{align}
+    \re^{-\ri\hat H(t_f-t_i)}=\brlr{\re^{-\ri\hat H\Delta t}}^N
+    ,
+    \quad
+    \Delta t = \frac1N(t_f-t_i)
+    ,
+\end{align}
+and then insert a complete set of states $\mathbb1=\sum_\phi\ket{\phi}\bra{\phi}$ in between each of the factors,
+\begin{align}
+    \braket{\phi_f|U(t_f,t_i)|\phi_i} =
+    \sum_{\{\phi_{N-1},\dots,\phi_1\}}
+    \braket{\phi_f|\re^{-\ri\hat H\Delta t}|\phi_{N-1}}
+    \braket{\phi_{{N-1}}|\re^{-\ri\hat H\Delta t}|\phi_{{N-2}}}
+    \dots
+    \nonumber\\
+    \braket{\phi_{2}|\re^{-\ri\hat H\Delta t}|\phi_{1}}
+    \braket{\phi_{1}|\re^{-\ri\hat H\Delta t}|\phi_i}.
+\end{align}
+The variables $\{\phi_{N-1},\dots,\phi_1\}$ can be viewed as the field configuration at time $t_i+n\Delta t$ and in this sense, the previous expression assumes already an integral over paths.
+Defining the transfer matrix $T_{\phi',\phi}=\braket{\phi'|\re^{-\ri\hat H}|\phi}$, the time evolution kernel assumes
+\begin{align}
+    \braket{\phi_f|U(t_f,t_i)|\phi_i} =
+    \sum_{\{\phi_{N-1},\dots,\phi_1\}}
+    T_{\phi_f,\phi_{{N-1}}}
+    T_{\phi_{{N-1}},\phi_{{N-2}}}
+    \dots
+    T_{\phi_{{2}},\phi_{{1}}}
+    T_{\phi_{{1}},\phi_i}.
+\end{align}
+For the next steps I need the Baker-Campbell-Hausdorff formula
+\begin{align}
+    \re^{\hat A+\hat B} = \re^{\hat A + \hat B + \frac12\commutator{\hat A, \hat B}+\dots}
+\end{align}
+which for a pair of canonically conjugate operators is exact at second order.
+The exponential of the Hamiltonian in the transfer matrices can thus be expanded according to
+\begin{align}
+    \re^{-\ri\hat H\Delta t} = \re^{-\ri\Delta t\frac{ua}{2\pi}\sum_{j}\hat\pi_j^2}\re^{-\ri\Delta t\frac{ua}{2\pi}\sum_{j}\brlr{\hat\phi_{j+1}-\hat\phi_j}^2/a^2}+\mathcal O(\Delta t^2).
+\end{align}
+The error in the above is well under control by taking $N$ sufficiently large, and vanishes in the continuum limit.
+Playing the same game as before, the insertion of $\mathbb1=\sum_\pi\ket{\pi}\bra{\pi}$ in between the two exponentials yields the approximate form of the transfer matrix, i.e.
+\begin{align}
+    T_{\phi',\phi} = \sum_\pi\braket{\phi'|\re^{-\ri\Delta t\frac{ua}{2\pi}\sum_{j}\hat\pi_j^2}\ket{\pi}\bra{\pi}\re^{-\ri\Delta t\frac{ua}{2\pi}\sum_{j}\brlr{\hat\phi_{j+1}-\hat\phi_j}^2/a^2}|\phi} + \mathcal O(\Delta t^2)
+    \\
+    =
+    \sum_\pi\braket{\phi'|\pi}\braket{\pi|\phi}\re^{-\ri\Delta t H} + \mathcal O(\Delta t^2)
+    ,\quad
+    H = \frac{ua}{2\pi}\sum_{j}\brlr{\pi_{j}^2+(\phi_{j+1}-\phi_{j})^2/a^2}
+\end{align}
 
 We now move to imaginary time $\tau=\ri t$, resulting in the action
 \begin{align}
