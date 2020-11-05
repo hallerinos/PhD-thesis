@@ -1174,6 +1174,27 @@ Playing the same game as before, the insertion of $\mathbb1=\sum_\pi\ket{\pi}\br
     ,\quad
     H = \frac{ua}{2\pi}\sum_{j}\brlr{\pi_{j}^2+(\phi_{j+1}-\phi_{j})^2/a^2}
 \end{align}
+It is then possible to use $\braket{\pi|\phi}=\frac1{\sqrt{2\pi}}\re^{-\ri\Pi\phi}$, such that the above results in
+\begin{align}
+    T_{\phi',\phi}
+    =
+    \sum_\pi\frac1{2\pi}\re^{\ri\Pi(\phi'-\phi)}\re^{-\ri\Delta t H} + \mathcal O(\Delta t^2)
+\end{align}
+and the full time evolution kernel evaluates to
+\begin{align}
+    \braket{\phi_N|U(t_N,t_0)|\phi_0} =
+    \sum_{\{\phi_{N-1},\dots,\phi_1\}}\sum_{\{\Pi_{N-1},\dots,\Pi_0\}}\frac1{(2\pi)^{N}}
+    \re^{\ri\Delta t\sum_{n=0}^{N-1}\brlr{\Pi_n\frac{\phi_{n+1}-\phi_n}{\Delta t}-H}},
+\end{align}
+in which I conveniently use $\phi_0/t_0\equiv \phi_i/t_i$ and $\phi_N/t_N\equiv \phi_f/t_f$.
+Taking the continuum $N\rightarrow\infty$, the sum in the exponential becomes a time integration $\Delta t\sum_{n=0}^{N-1}\rightarrow\int\rd t$, the difference in the field configurations a derivative $(\phi_{n+1}-\phi_n)/\Delta t\rightarrow\dot\phi$, and we end up with
+\begin{align}
+    \braket{\phi_f|U(t_i,t_f)|\phi_i} \rightarrow \int_{\phi_i}^{\phi_f}\rD_\phi\int\rD_\Pi
+    \re^{\ri S}
+    ,\quad
+    S = \int_{t_i}^{t_f}\rd t\Pi\dot\phi-H = \int\rd tL.
+\end{align}
+Note that action appears naturally in the exponential, similarly to the in classical mechanics.
 
 We now move to imaginary time $\tau=\ri t$, resulting in the action
 \begin{align}
