@@ -382,10 +382,10 @@ The main messages is that, for gapped systems, physically relevant states live i
 This implies that the MPS Ansatz is an optimal choice to target the low-lying excitations of the full many body Hilbert space, which, in turn, follow an area law of entanglement.
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Matrix product operators and expectation values}
-\label{sec:matrix_product_operators_and_expectation_values}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Matrix product operators}
+\label{sec:matrix_product_operators}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 Let us now understand the action of operators in the basis of MPS.
@@ -518,6 +518,7 @@ It is defined in terms of the ladder operators with matrix representations $\hat
     \hat a_i^\pdag = \brlr{\prod_{j<i}-\hat Z}\hat\sigma^-_i,
     \qquad
     \hat a_i^\dag = \brlr{\prod_{j<i}-\hat Z}\hat\sigma^+_i.
+    \label{eq:jordan_wigner_trafo}
 \end{align}
 This way, the fermionic creation and annihilation operators are represented by spin ladder operators.
 To restore the anticommutation relations of fermions, the additional phase string is required.

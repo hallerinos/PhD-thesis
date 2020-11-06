@@ -26,7 +26,10 @@
 \usepackage{dsfont}
 % \usepackage{microtype}
 \usetikzlibrary{tikzmark}
-\bibliographystyle{abbrvdin}
+
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{biblio.bib}
+% \bibliographystyle{abbrvdin}
 
 \newcommand{\todo}[1]{{\color{cyan} \scshape !!! #1 !!!}}
 \newcommand{\todoil}[1]{{\color{cyan} \scshape #1}}
@@ -78,6 +81,6 @@
 % \backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \printindex
 
-\bibliography{biblio}
+\printbibliography
 
 \end{document}
