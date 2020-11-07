@@ -130,15 +130,15 @@ and the anticommutator through curly braces
 \begin{align}
     \anticommutator{\hat A,\hat B}\coloneqq\commutator{\hat A,\hat B}_- = \hat A\hat B + \hat B\hat A.
 \end{align}
-% Let me also provide a useful expression to evaluate the commutation relation of operator products recursively
-% \begin{align}
-%     \commutator{\hat A, \hat B \hat C}_\pm
-%     &= \hat A\hat B\hat C \mp \hat B\hat C\hat A + \hat B\hat A\hat C - \hat B\hat A\hat C
-%     \\
-%     &= \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\hat C\hat A \mp \hat B\hat A\hat C
-%     = \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\commutator{\hat A,\hat C}.
-%     \label{eq:recursive_commutation}
-% \end{align}
+Let me also provide a useful expression to evaluate the commutation relation of operator products recursively
+\begin{align}
+    \commutator{\hat A, \hat B \hat C}_\pm
+    &= \hat A\hat B\hat C \mp \hat B\hat C\hat A + \hat B\hat A\hat C - \hat B\hat A\hat C
+    \\
+    &= \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\hat C\hat A \mp \hat B\hat A\hat C
+    = \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\commutator{\hat A,\hat C}.
+    \label{eq:recursive_commutation}
+\end{align}
 In many cases, the sets of quantum numbers are continuous (e.g. position $x$) and as such a sum in \cref{eq:creation_annihilation_basis_rotation} is promoted to an integral expression:
 \begin{align}
     \hat a(x) = \sum_\alpha \braket{x | \alpha} \hat a_\alpha,
@@ -815,7 +815,7 @@ Using \cref{eq:canonical_bosonic_operators} results in a familiar expression for
 The interaction, originally quartic in the fermionic degrees of freedom, can be cast into a (quadratic) sum of bosonic operators which are the low-energy excitations of the original model.
 All that is left to do is to cast the kinetic term into this new basis, which is actually a quite lengthy calculation if we were to approach it by brute-force.
 There is an indirect reasoning through Schur's lemma: if two operators $\hat H$ and $\hat H'$ have identical commutation relations with all $\{c^\pdag_\alpha,c^\dag_\alpha\}$, then the two operators are equal up to a chemical potential.
-One can easily verify the commutator of the mover-density with the kinetic Hamiltonian
+One can easily compute the commutator of the mover-density with the kinetic Hamiltonian
 \begin{align}
     \commutator{\hat H_0, \hat\rho_{q,\tau}}
     =
@@ -888,7 +888,10 @@ leading to the identity
     \hat H = \sum_{q>0} u\hbar q \hat B'^\dag_q \hat B'^\pdag_q = \sum_{q>0} \hbar \omega_q \hat B'^\dag_q \hat B'^\pdag_q = \sum_q \hbar  \omega_q \hat b'^\dag_q\hat b'^\pdag_q.
 \end{align}
 Note that we succeeded to rewrite the original problem to a sum of decoupled harmonic oscillators with frequencies $\omega_q\coloneqq u|q|$.
-In particular, assuming two canonically conjugate fields $\commutator{\hat \phi_{k},\hat \pi_{k'}} = \ri\hbar\delta_{k,k'}$, the following substitution of ladder operators, i.e.
+In particular, assuming two conjugate fields $\commutator{\hat \phi_{k},\hat \pi_{k'}} = \ri\pi\hbar\delta_{k,k'}$
+\footnote{
+    The reason for the additional factor $\pi$ comes from the fact that we want to
+}, the following substitution of ladder operators, i.e.
 \begin{align}
     \hat b'_q = \sqrt{\frac{mw_q}{2\pi\hbar}}\brlr{\hat\phi_q + \frac{\ri}{mw_q}\hat\pi_{-q}},
     \quad
@@ -900,7 +903,7 @@ brings the diagonalized Hamiltonian to the more traditional form
     =
     \int\frac{\rd x}{2\pi}\, \brlr{\hat\pi^2/m + {Da^2}(\partial_x\hat\phi)^2}.
 \end{align}
-In the above, I introduced an effective spring constant through the velocity and lattice spacing $D=mu^2/a^2$.
+In the above, I neglected a constant term ($-\sum_q\omega_q/2\pi$) and introduced an effective spring constant through the velocity and lattice spacing $D=mu^2/a^2$.
 
 The field $\partial_x\hat\phi$ can thus be interpreted as the ``position offset'' from the equilibrium, which in this case translates to density fluctuations around the equilibrium density $n=k_F/\pi$.
 $\hat\pi\equiv\hat\pi_\phi$ is the canonical momentum of the density fluctuations, i.e., a charge current (see \cref{sec:properties_of_spinless_fields_and_their_correlations}).
@@ -985,6 +988,8 @@ However, on a qualitative viewpoint, the neglected scatterings (whenever they ar
 \label{sec:properties_of_spinless_fields_and_their_correlations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 For the evaluation of correlation functions and the later employed renormalization group theory presented in \cref{sec:renormalization_group_theory}, it is beneficial to recap shortly the language of path integrals (which Feynman invented as a graduate student).
+During the process of derivation, the Luttinger parameter $K$ is absorbed in the definition of the fields and appears again in the discussion at the end of this section.
+
 The goal is to evaluate the so-called time evolution kernel
 \begin{align}
     U(x_f,x_i,T) = \braket{\phi(x_f,T)|\phi(x_i,t_i=0)}=\braket{\phi_f|\re^{-\ri\hat H T}|\phi_i}
@@ -1000,12 +1005,12 @@ Instead of taking the full exponential, one may split the time integration into 
 \end{align}
 and then insert a complete set of states in between each of the factors, i.e. $\mathbb 1=\int\rd\bm\phi\ket{\bm\phi}\bra{\bm\phi}$
 \footnote{
-    The identity must be understood as a continuum limit of the discretized fields $\hat\phi(x,t)\rightarrow{\hat{\bm\phi}}(t)$ in which the vector $\hat{\bm\phi}=(\hat\phi_1,\hat\phi_2,\dots,\hat\phi_{N_L})^T$ contains the lattice support of the continuum field operator $\hat\phi(x_j,t)=\hat\phi_j(t)$ such that $x_j=ja$ and $a=L/N_L$ (same for $\hat\pi(x,t)\rightarrow\hat{\bm\pi}(t)$).
+    The identity is understood as a continuum limit of the discretized fields $\hat\phi(x,t)\rightarrow{\hat{\bm\phi}}(t)$ in which the vector $\hat{\bm\phi}=(\hat\phi_1,\hat\phi_2,\dots,\hat\phi_{N_L})^T$ contains the lattice support of the continuum field operator $\hat\phi(x_j,t)=\hat\phi_j(t)$ such that $x_j=ja$ and $a=L/N_L$ (same for $\hat\pi(x,t)\rightarrow\hat{\bm\pi}(t)$).
     As such, one obtains a finite set of quantum numbers $\ket{\bm\phi(t)}=\ket{\phi_1(t),\dots,\phi_{N_L}(t)}$ for which each $\ket{\phi_j(t)}$ encodes a ``position'' state and $\ket{\pi_j}$ it's conjugate ``momentum'' state.
-    From this analog picture, and for all practical purposes, one may borrow the identities $\braket{\bm\phi(t)|\bm\pi(t')}=\frac1{2\pi}\exp\brlr{\ri\bm\phi(t)\bm\pi(t')}$ and $\mathbb1=\brlr{\prod_{j=1}^{N_L}\int\rd\phi_j}\ket{\phi_1,\dots,\phi_j}\bra{\phi_1,\dots,\phi_j}=\int\rd\bm\phi\ket{\bm\phi}\bra{\bm\phi}=$ (same for $\hat{\bm\pi}$).
+    From this analog picture, and for all practical purposes, one may borrow the identities $\braket{\bm\phi(t)|\bm\pi(t')}=\frac1{2\pi}\exp\brlr{\ri\bm\phi(t)\cdot\bm\pi(t')}$ and $\mathbb1=\brlr{\prod_{j=1}^{N_L}\int\rd\phi_j}\ket{\phi_1,\dots,\phi_j}\bra{\phi_1,\dots,\phi_j}=\int\rd\bm\phi\ket{\bm\phi}\bra{\bm\phi}=$ (same for $\hat{\bm\pi}$).
     The continuum is then restored at the end of the calculation by the simultaneous limits $a\rightarrow0$ and $N_L\rightarrow\infty$ such that $aN_L=L$ is preserved at all times.
     To keep this in mind, I now proceed by using bold letters in case of explicit discretization of the corresponding continuum field.
-    For a far more rigorous derivation of the functional path integral using coherent state representations, I refer to \cite{AltlandSimons2010}.
+    For a more universal derivation of the many-body path integral using coherent state representations, I refer to \cite{AltlandSimons2010}.
 }.
 The inserion of this set of states then corresponds to unconstrained integrations over smaller time slices of the full time evolution which in this sense already assumes the form of a path integral, i.e.
 \begin{align}
@@ -1036,122 +1041,92 @@ For the next steps I need the Baker-Campbell-Hausdorff formula
 which for a pair of canonically conjugate operators is exact at second order.
 The separability of the Hamiltonian $\hat H = \hat H(\bm\phi,\bm\pi) = \hat H(\bm\phi)+\hat H(\bm\pi)$ is exploited to expand the exponential to
 \begin{align}
-    \re^{-\ri\hat H\Delta t} = \re^{-\ri\Delta t\hat H(\bm\phi)}\re^{-\ri\Delta t\hat H(\bm\pi)}+\mathcal O(\Delta t^2) = \re^{-\ri\Delta t\hat H(\bm\pi)}\re^{-\ri\Delta t\hat H(\bm\phi)}+\mathcal O(\Delta t^2).
+    \re^{-\ri\hat H\Delta t}
+    % = \re^{-\ri\Delta t\hat H(\bm\phi)}\re^{-\ri\Delta t\hat H(\bm\pi)}+\mathcal O(\Delta t^2)
+    = \re^{-\ri\Delta t\hat H(\bm\pi)}\re^{-\ri\Delta t\hat H(\bm\phi)}+\mathcal O(\Delta t^2).
 \end{align}
 The error in the above is well under control by taking $N$ sufficiently large, and vanishes in the continuum limit.
-Playing the same game as before, the insertion of $\mathbb1=\int\rd\bm\pi\ket{\bm\pi}\bra{\bm\pi}$ in between the two exponentials yields the approximate form of the transfer matrix, i.e.
+Insertion of $\mathbb1=\int\rd\bm\pi\ket{\bm\pi}\bra{\bm\pi}$ in between the two exponentials yields the approximate form of the transfer matrix, i.e.
 \begin{align}
     T_{{\bm\phi}',{\bm\phi}} =
     \int\rd\bm\pi
-    \braket{{\bm\phi}'|\re^{-\ri\Delta t\hat H(\frac{\bm\phi+\bm\phi'}2)}\ket{\bm\pi}\bra{\bm\pi}\re^{-\ri\Delta t\hat H(\bm\pi)}|{\bm\phi}} + \mathcal O(\Delta t^2),
+    \braket{{\bm\phi}'|\re^{-\ri\Delta t\hat H(\bm\pi)}\ket{\bm\pi}\bra{\bm\pi}\re^{-\ri\Delta t\hat H(\bm\phi)}|{\bm\phi}} + \mathcal O(\Delta t^2),
     \\
     % =
     % \int\rd\bm\pi\braket{{\bm\phi}'|\bm\pi}\braket{\bm\pi|{\bm\phi}}\re^{-\ri\Delta t H(\frac{\bm\phi+\bm\phi'}2,\bm\pi)} + \mathcal O(\Delta t^2)
     =
-    \int\frac{\rd\bm\pi}{2\pi}\re^{\ri\bm\pi(\bm\phi'-\bm\phi)}\re^{-\ri\Delta t H(\frac{\bm\phi+\bm\phi'}2,\bm\pi)} + \mathcal O(\Delta t^2).
+    \int\frac{\rd\bm\pi}{2\pi}\re^{\ri\bm\pi^T(\bm\phi'-\bm\phi)}\re^{-\ri\Delta t H(\bm\phi,\bm\pi)} + \mathcal O(\Delta t^2).
 \end{align}
-Note that we succeeded to replace the operator form of the Hamiltonian by its scalar eigenvalues, such that the full time evolution kernel evaluates to
+Note that we succeeded to replace the operator form of the Hamiltonian by its scalar eigenvalues, the full time evolution kernel evaluates to
 \begin{align}
     U(x_f,x_i,T) =
-    \int{\rd\{\bm\phi\}}\int{\rd\{\bm\pi\}}
-    \re^{\ri\Delta t\sum_{n=1}^{N}\brlr{\bm\pi_n\frac{\bm\phi_{n}-\bm\phi_{n-1}}{\Delta t}-H(\frac{\bm\phi+\bm\phi'}2,\bm\pi)}},
+    \int_{{\bm\phi_N}_i}^{{\bm\phi_N}_f}
+    {\rd\{\bm\phi\}}\int{\rd\{\bm\pi\}}
+    \re^{\ri\Delta t\sum_{n=1}^{N}\brlr{\bm\pi_n^T\frac{\bm\phi_{n}-\bm\phi_{n-1}}{\Delta t}-H(\bm\phi_{n-1},\bm\pi_n)}},
+    \label{eq:path_integral_pre_integration}
 \end{align}
-in which I conveniently use $\bm\phi_{0/N}\equiv \bm\phi_{i/f}$, $\rd\{\bm\phi\}=\prod_{n=1}^N\rd\bm\phi$ and $\rd\{\bm\pi\}=\prod_{n=1}^N\rd\bm\pi/2\pi$.
-Now we carefully take the continuum limit of the time-slices $N\rightarrow\infty$: the sum in the exponential becomes a time integration $\Delta t\sum_{n=0}^{N-1}\rightarrow\int\rd t$ and the difference in the field configurations a derivative $(\phi_{n+1}-\phi_n)/\Delta t\rightarrow\dot\phi$.
-The result is the astonishing identity
+in which I conveniently use $\bm\phi_{0/N}\equiv \bm\phi_{i/f}$, $\rd\{\bm\phi\}=\prod_{n=1}^N\rd\bm\phi_n$ and $\rd\{\bm\pi\}=\prod_{n=1}^N\rd\bm\pi_n/2\pi$.
+Now I exploit the fact that $H(\bm\phi,\bm\pi)=au/(2\pi)\bm\pi^T\bm\pi + V(\bm\phi)$ is separable in a quadratic kinetic and a potential term, which allows to perform a Gaussian integration of the momentum fields.
+A Gaussian integral of two real vectors $\bm v$, $\bm j$ and a real and invertible matrix $\bm A$ is
 \begin{align}
-    U(x_f,x_i,t) \rightarrow \int_{\bm\phi_i}^{\bm\phi_f}\rD({\bm\phi,\bm\pi})\re^{\ri S(\bm\phi,\bm\pi)}
+    \int\rd\bm v\re^{-\frac12\bm v^T\bm A\bm v + \bm j^T\bm v} = \frac{(2\pi)^{{\rm rank}(\bm A)/2}}{\sqrt{\det\bm A}}\re^{\frac12\bm j^T\bm A^{-1}\bm j}.
+    \label{eq:multi_gaussian}
 \end{align}
-with the definition of the Euclidian action
+The argument of \cref{eq:path_integral_pre_integration} is purely imaginary, and as such the integral is convergent with a regularization $\Delta t\rightarrow\Delta t(1+\ri\epsilon)$ by taking the limit $\epsilon\rightarrow0$.
+More importantly, the (arbitrary!) vector $\bm j$ acts as a ``source'' term to define an expectation value, i.e.
 \begin{align}
-    S = \int_{0}^{t}\rd t\bm\pi\dot{\bm\phi}-H(\bm\phi,\bm\pi) = \int\rd tL(\bm\phi,\dot{\bm\phi})
+    \braket{v_mv_n}\equiv\partial^2_{j_m,j_n}\int\rd\bm v\re^{-\frac12\bm v^T\bm A\bm v + \bm j^T \bm v}\Bigg|_{\bm j=0}
+    =
+    \int\rd\bm v\re^{-\frac12\bm v^T\bm A\bm v}v_mv_n
+    =
+    \frac{(2\pi)^{{\rm rank}(\bm A)/2}}{\sqrt{\det(\bm A)}}A^{-1}_{mn}
+    \label{eq:multi_source}
 \end{align}
-and the integration measure
+Application of \cref{eq:multi_gaussian} and taking the continuum limits yields the path integral
 \begin{align}
-    \int\rD({\bm\phi,\bm\pi}) = \lim_{N\rightarrow\infty}\int\prod_{n=1}^{N-1}\rd\bm\phi_n\int\prod_{n=1}^{N}\frac{\rd\bm\pi_n}{2\pi}.
-\end{align}
-
-The Lagrangian of the Hamiltonian \cref{eq:ll_hamiltonian} is given by
-\begin{align}
-    L = \int\rd x\frac 12\brlr{\frac{(\partial_t\hat\phi)^2}{u'}-u'(\partial_x\hat\phi)^2}
+    U(x_f,x_i,T)
+    =
+    \int_{\phi(x_i)}^{\phi(x_f)}{\rD[\phi]}
+    \re^{\ri\int_0^T\rd tL[\phi,\dot\phi]}
+    ,\quad
+    L = \int\frac{\rd x}{2\pi}\brlr{\frac{(\partial_t\phi)^2}{u}-u(\partial_x\phi)^2}.
     \label{eq:kg_lagrangian}
 \end{align}
-in which, for convenience, $u'=u/\pi$ is a rescaled velocity and $K$ is absorbed in the definition of fields.
-The equations of motion reduce to
-\begin{align}
-    \partial_t\frac{\partial L}{\partial\hat\pi}+\partial_x\frac{\partial L}{\partial(\partial_x\hat\phi)} = 0,
-    \quad
-    \partial_t^2\hat\phi  = {u'}^2\partial_x^2\hat\phi.
-    \label{eq:KG_equations_of_motion}
-\end{align}
-The conjugate field to $\hat\phi$ is, not surprisingly, the original field $\hat\pi_\phi\equiv\hat\pi=\partial_x\hat\theta$ which satisfies
-\begin{align}
-    u'\partial_x\hat\theta=\partial_t\hat\phi,
-    \quad
-    \partial_t\hat\theta=u'\partial_x\hat\phi.
-\end{align}
-This implies that we may define a set of rotated fields
-\begin{align}
-    \varphi_R = \theta-\phi,
-    \quad
-    \varphi_L = \theta+\phi,
-\end{align}
-which satisfy the following equation
-\begin{align}
-    (\partial_t \pm u'\partial_x)\varphi_{R/L}
-    =
-    \partial_t(\theta \mp \phi) \pm u'\partial_x(\theta \mp \phi)
-    =
-    0.
-\end{align}
-The two fields $\varphi_{R/L}$ are thus chiral and depend on $t\mp u'x$, respectively.
-They are dual to each other and the Lagrangian of each field is set into relation by \cref{eq:KG_equations_of_motion}.
-Lastly, the equation of motion can be recast in a continuity equation of a closed system through the identification of a density $\pi\rho=-\partial_x\phi$ and current $\pi j = \partial_t\phi$, i.e.
-\begin{align}
-    \partial_t^2 \theta - {u'}^2\partial_x^2 \theta = 0,
-    \quad
-    \Rightarrow
-    \partial_t\partial_x \phi - \partial_x\partial_t \phi = 0,
-    \quad
-    \Rightarrow
-    \partial_t \rho(x) + \partial_x  j = 0.
-\end{align}
 
-We now move to imaginary time $\tau=\ri t$, resulting in the action
+We now imploy a so-called ``Wick rotation'' $\tau=-\ri t$, resulting in the ``Euclidian'' action
 \begin{align}
-    S = -\frac1{2}\int\rd\tau\rd x\brlr{ \frac{(\partial_\tau\phi)^2}{u'} + u'(\partial_x\phi)^2}
+    S = -\frac1{2\pi}\int\rd\tau\rd x\brlr{ \frac{(\partial_\tau\phi)^2}{u} + u(\partial_x\phi)^2}
 \end{align}
-and the definition of the partition function in the path integral formalism which is readily recast into frequency and momentum space (using the notation ${\bm k}=(\omega, k)$)
+such that the path integral becomes a quantum mechanical partition function
+\footnote{
+    Recall that $Z=\tr(\exp(-\beta \hat H))$, which equals a trace of the time evolution operator at imaginary time $-\ri\beta$, for which the derivation (in the employed case of real and scalar fields) is straightforward.
+}
 \begin{align}
-    Z_\phi = \int\rD_\phi \re^{-S[\phi]} = \int\rD_\phi \exp\brlr{-\int\frac{\rd k\rd\omega}{2\pi}\phi(-{\bm k})\commutator{\frac{w^2+(u'k)^2}{u'}}\phi({\bm k})}
+    Z = \int\rD[\phi]\re^{-S[\phi]}.
 \end{align}
-With the definition of $G^{-1}({\bm k})=\frac{\omega^2+(u'k)^2}{2\pi}$ and an additional source term $-\int\rd^2k\eta(-{\bm k})\phi({\bm k})$, the partition function is transformed to
+The partition function is readily recast into frequency and momentum space (using the notation ${\bm k}=(\omega, k)$)
 \begin{align}
-    Z_\phi[\eta] = \int\rD_\phi \exp\brlr{-\frac12\int\rd k\rd\omega\phi(-{\bm k})G^{-1}({\bm k})\phi({\bm k}) -\int\rd k\rd\omega\eta(-{\bm k})\phi({\bm k})},
+    Z = \int\rD_\phi \re^{-S[\phi]} = \int\rD_\phi \exp\brlr{-\int\frac{\rd k\rd\omega}{2\pi}\phi(-{\bm k})\commutator{\frac{w^2+(uk)^2}{u}}\phi({\bm k})}
 \end{align}
-such that correlation functions are directly given by the functional derivative
+with the definition of the Green's function $G^{-1}({\bm k})=\frac{\omega^2+(uk)^2}{2\pi}$.
+Similarly to \cref{eq:multi_source} an additional source term $-\int\rd^2k\eta(-{\bm k})\phi({\bm k})$ implemented in the partition function, i.e.
 \begin{align}
-    \braket{\phi({\bm k})\phi(-{\bm k})}=\frac{\delta^2}{\delta(\eta({\bm k}))\delta(\eta(-{\bm k}))}\frac{Z[\eta]}{Z[0]}\Bigg|_{\eta=0},
+    Z[\eta] = \int\rD_\phi \exp\brlr{-\frac12\int\rd k\rd\omega\phi(-{\bm k})G^{-1}({\bm k})\phi({\bm k}) -\int\rd k\rd\omega\eta(-{\bm k})\phi({\bm k})},
+    \label{eq:partition_with_source}
 \end{align}
-in which I conveniently use the notion of expectation values for the functionals
+leads to the expectation values defined by a second functional derivative
 \begin{align}
-    \braket{F[\phi]} = \braket{F[\phi]}_\phi = Z_\phi^{-1}\int\rD\phi\re^{-S[\phi]}F[\phi].
+    \braket{\phi({\bm k})\phi(-{\bm k})}=\frac{\delta^2}{\delta(\eta({\bm k}))\delta(\eta(-{\bm k}))}\frac{Z[\eta]}{Z[0]}\Bigg|_{\eta=0}.
 \end{align}
-In particular, the completion of the square leads to the new field $f=\phi({\bm k})+G({\bm k})\eta({\bm k})$ and the following partition function
+Note that we conveniently get rid of the (possibly divergent) constants through $Z[0]^{-1}$.
+In particular, we arrive at
 \begin{align}
-    Z_\phi[\eta] = \int\rD_{f}\exp\brlr{-\frac12\int\rd k\rd\omega f({\bm k})G^{-1}({\bm k})f(-{\bm k}) + \frac12\int\rd k\rd\omega\eta({\bm k})\eta(-{\bm k})G({\bm k})}
-\end{align}
-from which we deduce the Hubbard-Stratonovich transformation which allows to establish an equality between correlations and the Green's function
-\begin{align}
-    Z_\phi[\eta]/Z_\phi = \re^{\frac12\int\rd k\rd\omega \eta({\bm k})\eta(-{\bm k})G(k)}
-    = \re^{\frac12\int\rd x\rd\tau\rd x'\rd\tau' \eta(x,\tau)\eta(x',\tau')G(x,\tau,x',\tau')}
-    \label{eq:KG_hubbard_stratonovich_equality}\\
-    \Rightarrow \braket{\phi({\bm k})\phi(-{\bm k})} = G({\bm k}),
-    \quad
+    \braket{\phi({\bm k})\phi(-{\bm k})} = G({\bm k})
+    ,\quad
     \braket{\phi(x,\tau)\phi(x',\tau')} = G(x,\tau,x',\tau').
     \label{eq:KG_greens_functions_equality}
 \end{align}
-A subsequent Fourier transformation, combined with the definition of the polar coordinates ${\bm p}=(\omega/u,-k)$, ${\bm r} = (u(\tau-\tau'), x-x')$, $r = \sqrt{(x-x')^2+u^2(\tau-\tau'^2)}$ yields an analytic expression of the correlation function
+A subsequent Fourier transformation, combined with the definition of the polar coordinates ${\bm p}=(\omega/u,-k)$, ${\bm r} = (u(\tau-\tau'), x-x')$, $r = \sqrt{(x-x')^2+u^2(\tau-\tau')^2}$ yields an analytic expression of the correlation function
 \begin{align}
     \braket{\phi(x,\tau)\phi(x',\tau')}
     = \int\frac{\rd k\rd\omega}{4\pi^2}G({\bm k})\re^{\ri\omega(\tau-\tau')-\ri k(x-x')}
@@ -1165,44 +1140,34 @@ A subsequent Fourier transformation, combined with the definition of the polar c
     \label{eq:kg_correlations_approximation}
 \end{align}
 with $J_0$ the Bessel function of the first kind.
-The first approximation considers the fact that the Green's function should be the effective description of a system on a lattice which, (luckily) provides physical cutoffs $\Lambda_{\rm max} = 2\pi/a$ and $\Lambda_{\rm min} = 2\pi/L$.
-The second approximation considers a smooth upper momentum cutoff rather than the sharp lattice limit, discussed in more detail in \cref{sec:renormalization_group_theory}.
+The first approximation considers the fact that the Green's function should be the effective description of a system on a lattice which, provides momentum cutoffs $\Lambda_{\rm max} = 2\pi/a$ and $\Lambda_{\rm min} = 2\pi/L$.
+The second approximation considers a smooth upper momentum cutoff rather than the sharp lattice limit, which is discussed in more detail in \cref{sec:renormalization_group_theory}.
 Let us now simplify by focussing on equal-time correlations only [e.g. by setting $\eta(x,\tau)=\eta(x)\delta(\tau-\tau_0)$].
-Through the substitution $\eta(x) = \ri\sum_{k}b_k\delta(x-x_k)$ in \cref{eq:KG_hubbard_stratonovich_equality}, we arrive at the appealing result
+Through the substitution $\eta(x) = \ri\sum_{k}b_k\delta(x-x_k)$ in \cref{eq:partition_with_source}, we arrive at the appealing result
 \begin{align}
     \braket{\re^{\ri\sum_kb_k\phi(x_k)}} = \re^{-\frac12\sum_{k,k'}b_kb_{k'}G(x_k,x_{k'})} = \re^{-\frac12\sum_{k,k'}b_kb_{k'}\braket{\phi(x_k)\phi(x_{k'})}}.
     \label{eq:expectation_value_exponential_fields}
 \end{align}
-This implies that the two vertex operators decay asymptotically (i.e. $a\ll r=|x-x'|\ll L$) as
-\begin{align}
-    \braket{\re^{\ri a\phi(x) - \ri b\phi(x')}}
-    = \re^{ab\braket{\phi(x)\phi(x')}}\re^{-\frac12[a^2\braket{\phi(x)^2}+b^2\braket{\phi(x')^2}]}
-    \approx A\re^{-\frac{ab}2\log(|x-x'|)}
-    = \frac A{|x-x'|^{\frac{ab}2}}.
-\end{align}
-The constant $A$ is given by the cutoffs and, under the assumptions made, evaluates to $A = \log(\sqrt{L/a})$.
-Since the field $\theta$ is dual to $\phi$, all equations exploited for $\phi$ apply for $\theta$ aswell.
 
-Note that here we are dealing with a non-interacting theory only -- and we would like to implement the interactions encountered in \cref{sec:tomonaga_LL,sec:LL_with_spin}.
-Surprisingly, the interactions $g_4$ and $g_2$ only rescale the fields $\phi'=\phi/\sqrt K$ and $\theta'=\theta\sqrt K$.
-Note that this transformation leaves the Lagrangian intrinsically non-interacting in terms of the rescaled fields, but it correctly parametrizes the interactions according to \cref{eq:ll_hamiltonian}.
-In particular, one obtains
+To make the statements valid for the interacting theory, only the fields must be rescaled $\phi\rightarrow\phi/\sqrt K$ and $\theta\rightarrow\theta\sqrt K$, i.e.
 \begin{align}
-    \hat H' = \int\frac{\rd x}{2\pi}\, \brlr{u\hat\pi'^2 + u(\partial_x\hat\phi')^2} = \int\frac{\rd x}{2\pi}\, \brlr{uK\hat\pi^2 + \frac uK(\partial_x\hat\phi)^2}.
+    \frac1K\braket{\phi(x)\phi(x')} = \braket{\phi'(x)\phi'(x')} \approx -\frac12\log(|x-x'|).
+    \label{eq:greens_1}
 \end{align}
-Therefore, the expectation values of the ``interacting'' theory in terms of the fields $\phi$ and $\theta$ are obtained by the expectation values of the free Klein-Gordon fields, leading to the set of identities
+Since the $\theta$ field is dual to the $\phi$ field, an equivalent calculation leads to
 \begin{align}
-    \frac1K\braket{\phi(x)\phi(x')} = \braket{\phi'(x)\phi'(x')} \approx -\frac12\log(|x-x'|),\\
-    \quad
     K\braket{\theta(x)\theta(x')} = \braket{\theta'(x)\theta'(x')} \approx -\frac12\log(|x-x'|).
+    \label{eq:greens_2}
 \end{align}
+
+I thus arrived at the asymptotic approximations for the Green's function in \cref{eq:greens_1,eq:greens_2} and a general formula to evaluate all kinds of vertex operators in \cref{eq:expectation_value_exponential_fields}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Luttinger liquids with spin}
 \label{sec:LL_with_spin}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-For spinful systems, we must first require that the kinetic Hamiltonian is fully decoupled, i.e.
+To proceed further to the case of spinful models, we require that the kinetic Hamiltonian is decoupled into two independent spin sectors, i.e.
 \begin{align}
     \hat H_0 = \hat H_{0,\uparrow}+\hat H_{0,\downarrow}
     = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau,s\in\{\uparrow,\downarrow\}}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s},
@@ -1474,7 +1439,17 @@ In particular, the momentum integration can be rewritten as
     \label{eq:integral_cutoff}
 \end{align}
 implementing a smooth cutoff around $\Lambda$.
-The sharp situation is recovered for $n\rightarrow\infty$ (see \cref{fig:rg_cutoff}).
+The sharp situation is recovered for $n\rightarrow\infty$ (see \cref{fig:rg_cutoff})
+\footnote{
+    Without going into full detail, the smooth cutoff is the key ingredient to find the logarithmic expression of the propagator, with the general result
+    \begin{align}
+        \int_{\Lambda_{\rm min}}^{\Lambda_{\rm max}}\rd p\frac{J_0(pr)}{2p}\rightarrow\int_{\Lambda_{\rm min}}^{\infty}\rd p\frac{J_0(pr)}{2p}f_n(p,\Lambda_{\rm max})\approx-\frac14\log\brlr{\frac{(\Lambda_{\rm max}^{-n}+r^n)^{\frac 2n}}{\Lambda_{\rm min}^{-2}}}.
+    \end{align}
+    In the above approximation, one first splits the integral into two parts, one ranging from the lower cutoff $\Lambda_{\rm min}$ to $1/r$, and the second from $1/r$ to infinity.
+    The asymptotic part of the integral decays algebraically as a function of $\Lambda_{\rm max}r$, it thus bears a small weight of the full integral and vanishes in the limit $\Lambda_{\rm max}\rightarrow\infty$.
+    The main weight of the integral resides in $[\Lambda_{\rm min},1/r]$, for which $J_0\approx1$ if the lower cutoff is chosen small enough.
+    This then yields the approximated propagator, with the special case $n=2$ used in~\cref{eq:kg_correlations_approximation}.
+}.
 In practice, the integration \cref{eq:rg_hsq} evaluates to the general integral
 \begin{align}
     \braket{h({\bm x}),h(\bm x')}_h = \frac K2\int_{\Lambda'}^\Lambda\rd p\frac{J_0(p r)}{p} = \frac K2\int_{0}^\Lambda\rd p\frac{J_0(p r)}{p}
@@ -1514,14 +1489,6 @@ leading to the modified function $C_n$ which depends on the smoothness $n$, i.e.
 For the special case $n=2$, the integral of the $h$-fields evaluates to $C_2(r)=\frac K2 \Lambda r K_1(\Lambda r)$ that decays exponentially fast (see \cref{fig:rg_cutoff}(c)).
 In particular, the function follows the asymptotic decay $z K_1(z) \sim \sqrt{\pi z/2}\exp(-z)$ and is already negligible for $z=1$, i.e. $K_1(1)\approx0.0062$.
 Therefore, the integration of $C_2(r)$ can be confined to a small interval $r<\xi$ in which $\xi\sim2\pi/\Lambda=a$ is a small length scale comparable with the lattice spacing $a$.
-Without going into full detail, the smooth cutoff is the key ingredient to find the logarithmic expression of the propagator, with the general result
-\begin{align}
-    \int_{\Lambda_{\rm min}}^{\Lambda_{\rm max}}\rd p\frac{J_0(pr)}{2p}\rightarrow\int_{\Lambda_{\rm min}}^{\infty}\rd p\frac{J_0(pr)}{2p}f_n(p,\Lambda_{\rm max})\approx-\frac14\log\brlr{\frac{(\Lambda_{\rm max}^{-n}+r^n)^{\frac 2n}}{\Lambda_{\rm min}^{-2}}}.
-\end{align}
-In the above approximation, one first splits the integral into two parts, one ranging from the lower cutoff $\Lambda_{\rm min}$ to $1/r$, and the second from $1/r$ to infinity.
-The asymptotic part of the integral decays algebraically as a function of $\Lambda_{\rm max}r$, it thus bears a small weight of the full integral and vanishes in the limit $\Lambda_{\rm max}\rightarrow\infty$.
-The main weight of the integral resides in $[\Lambda_{\rm min},1/r]$, for which $J_0\approx1$ if the lower cutoff is chosen small enough.
-This then yields the approximated propagator, with the special case $n=2$ used in~\cref{eq:kg_correlations_approximation}.
 
 In order to utilize the confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bm R} = 1/2({\bm x}+{\bm x'})$ and ${\bm r} = {\bm x}-{\bm x'}$.
 The integral can then be rewritten to
@@ -1548,16 +1515,14 @@ The integral can then be rewritten to
     \right).
     \label{eq:rg_int_rel_coords}
 \end{align}
-The $\cos$ term in \cref{eq:rg_int_1} did not exist in the original Hamiltonian -- it is a new sine-Gordon type interaction with higher scaling dimension $D_h = K\beta^2$.
-Note that this term generation is continuous, and to account for it, we should start from a more generic interaction containing all the higher harmonics, i.e.
-\begin{align}
-    S_{I'} = S_I + \sum_{j=1}^\infty g_j\int\rd x\rd\tau\cos(2j\beta\phi).
-    \label{eq:sine_gordon_full}
-\end{align}
-The first-order corrections of the Euclidian action then yield a coupled system of differential equations in which the amplitudes of less relevant operators depend on those of more relevant ones (but {\it not} vice-versa).
-Note that this allows for a practical and well-justified simplification of dropping the sum in \cref{eq:sine_gordon_full}, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
+The $\cos$ term in \cref{eq:rg_int_1} did not exist in the original Hamiltonian -- it is a new sine-Gordon type interaction with higher scaling dimension $D_h = K\beta^2$
+\footnote{
+    Note that this term generation is continuous, and to account for it, we should start from a more generic interaction containing all the higher harmonics, i.e. $S_{I'} = S_I + \sum_{j=1}^\infty g_j\int\rd x\rd\tau\cos(2j\beta\phi)$.
+    The first-order corrections of the Euclidian action then yield a coupled system of differential equations in which the amplitudes of less relevant operators depend on those of more relevant ones (but {\it not} vice-versa).
+    This allows for a practical and well-justified simplification of dropping the sum in the previous expression, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
+}.
 
-The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part after the harmonic approximation (neglecting the constant which renormalizes the free energy)
+The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part after the harmonic approximation in polar coordinates $\bm r=(u(\tau-\tau'),x-x')^T$ and $r=\sqrt{(x-x')^2+u^2(\tau-\tau')^2}$
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
     \approx
