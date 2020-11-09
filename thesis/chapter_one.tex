@@ -19,7 +19,7 @@ The single particle wave function $\Psi_\alpha(r)$ of a quantum state occupying 
 \begin{align}
     \Psi_\alpha(r) \coloneqq \braket{r|\alpha}.
 \end{align}
-\todo{Comment on the overcompleteness of the $r$-states, or not?}
+\todoil{Comment already on the overcompleteness of the $r$-states, or not?}
 It is is thus understood as the coefficients for the basis transform $\ket{\alpha}\rightarrow\ket{r}$, i.e.
 \begin{align}
     \ket{\alpha} = \int{\rm d}{r}\, \Psi_\alpha(r) \ket{r}.
@@ -622,7 +622,7 @@ However, due to its intrinsic single-particle character, band theory cannot reli
 This motivates the study of Hubbard-type models: despite being a brutal simplification of the true two-body interaction, they are the easiest systems that provide an explanation of such interaction-driven features.
 Although its apparent innocence, there is no universal treatment of Hubbard models in general.
 In one spacial dimension, the Hamiltonian can be solved analytically and thus falls in the category of being ``integrable''~\cite{Essler2005}.
-\todoil{Is this true for all number of flavors?}
+\todoil{Is this true for all number of flavors? Check!}
 In general, integrability is a quite fragile property and even slight perturbations will break it.
 The models we study in the next chapters, albeit closely related to the one-dimensional Hubbard model, do not categorize as integrable due to the presence of additional terms that break some of its fundamental symmetries (e.g. the conservation of the particle flavor).
 This motivates the use of alternative methods to study the properties of interacting tight binding models.
@@ -1082,13 +1082,13 @@ Consider the derivative $\partial_{j_m}\partial_{j_n}|_{\bm j=0}$ acting on the 
     =
     \frac{(2\pi)^{{\rm rank}(\bm A)/2}}{\sqrt{\det(\bm A)}}A^{-1}_{mn}
     \\
-    \rightarrow \braket{v_mv_n}\equiv A_{mn}^{-1}.
+    \longrightarrow \braket{v_mv_n}\equiv (2\pi)^{-{\rm rank}(\bm A)/2}\sqrt{\det(\bm A)}\int\rd\bm v\re^{-\frac12\bm v^T\bm A\bm v}v_mv_n = A_{mn}^{-1}.
     \label{eq:multi_source}
 \end{align}
 This suggests an interpretation of the Gaussian weight as a probability distribution.
 Iteration of the differentiation operation four times yields $\braket{v_mv_nv_qv_p}=A^{-1}_{mn}A^{-1}_{qp}+A^{-1}_{mq}A^{-1}_{np}+A^{-1}_{mp}A^{-1}_{nq}$ and in general one obtains the general formula
 \begin{align}
-    \braket{v_{i_1}v_{i_2}\dots v_{i_{2n}}} = 
+    \braket{v_{i_1}v_{i_2}\dots v_{i_{2n}}} =
     \sum_{\tiny\begin{array}{c}\text{pairings of}\\ \{i_1,\dots,i_{2n}\}\end{array}}
     A^{-1}_{i_{k_1}i_{k_2}}\dots A^{-1}_{i_{k_{2n-1}}i_{k_{2n}}}.
 \end{align}
@@ -1100,12 +1100,15 @@ Therefore, the natural generalization becomes
     (\det A)^{-1/2}\re^{\frac12\int\rd x\rd x' j(x) A^{-1}(x,x')j(x')}.
     \label{eq:field_source}
 \end{align}
-The determinant is to be understood as the product of all eigenvalues of the operator $A$.
-Although the constant of proportionality $(2\pi)^N$ is formally divergent in the continuum limit, it does not affect the definition of averages obtained from derivatives of the integrals, i.e.
+Before we proceed, I must first comment a bit about the form of \cref{eq:field_source}.
+When the variables entering the Gaussian integration were discrete, the interpretation of the determinant was straightforward.
+In the present case, one must interpret $A$ as a Hermitian operator with an infinite set of eigenvalues, and $\det A$ accounts the product over this infinite set.
+Although the constant of proportionality $(2\pi)^{{\rm rank}(\bm A)/2}$ is formally divergent in the continuum limit, it does not affect the averages (by definition), i.e.
 \begin{align}
     \braket{v(x)v(x')} = A^{-1}(x,x').
 \end{align}
-Application of \cref{eq:multi_gaussian} and taking the continuum limits yields the path integral
+
+Finally, application of \cref{eq:multi_gaussian} on \cref{eq:path_integral_pre_integration} and then taking the continuum limits yields the path integral
 \begin{align}
     U(x_f,x_i,T)
     =
@@ -1115,17 +1118,17 @@ Application of \cref{eq:multi_gaussian} and taking the continuum limits yields t
     L = \int\frac{\rd x}{2\pi}\brlr{\frac{(\partial_t\phi)^2}{u}-u(\partial_x\phi)^2}.
     \label{eq:kg_lagrangian}
 \end{align}
-In which the (possibly divergent) terms arising from the explicit Gaussian integration are absorbed into the definition of $\rD$.
+Since constants of proportionality do not enter in the expectation values by definition, they are absorbed into the definition of $\rD$ (which is given implitly here).
+The integration is intended over all paths through the classical coordinate space spanned by $\phi$ which begin and end at the same initial and final points $\phi_i$ and $\phi_f$, respectively.
+Each path is weighted by the corresponding classical action -- note the absence of hats which would denote a quantum mechanical operator.
+However, quantum mechanics is still at full presence, as the integration is not restricted to solutions of the classical equations of motion.
 
-We now imploy a so-called ``Wick rotation'' $\tau=-\ri t$, resulting in the ``Euclidian'' action
+The standard definition of the partition function is given as $Z=\tr(\exp(-\beta \hat H))$, and the trace amounts to a summation over all possible configurations of the system.
+This makes apparent the interpretation of $t=-\ri \beta$, resulting in the ``Euclidian'' action such that the path integral becomes a quantum mechanical partition function
 \begin{align}
-    S = -\frac1{2\pi}\int\rd\tau\rd x\brlr{ \frac{(\partial_\tau\phi)^2}{u} + u(\partial_x\phi)^2}
-\end{align}
-such that the path integral becomes a quantum mechanical partition function\footnote{
-    Recall that $Z=\tr(\exp(-\beta \hat H))$, which equals a trace of the time evolution operator at imaginary time $-\ri\beta$, for which the derivation (in the employed case of real and scalar fields) is straightforward.
-}
-\begin{align}
-    Z = \int\rD[\phi]\re^{-S[\phi]}.
+    Z = \tr(\exp(-\beta \hat H)) = \int\rD[\phi]\re^{-S[\phi]}
+    ,\quad
+    S = -\frac1{2\pi}\int\rd\tau\rd x\brlr{ \frac{(\partial_\tau\phi)^2}{u} + u(\partial_x\phi)^2}.
 \end{align}
 The partition function is readily recast into frequency and momentum space (using the notation ${\bm k}=(\omega, k)$).
 In addition, I introduce an additional source term similar to \cref{eq:field_source}, i.e.
@@ -1281,20 +1284,18 @@ This motivates the further study of such terms, using renormalization group theo
 In \cref{sec:LL_with_spin}, I motivated an interaction $\hat O_{\rm sG}$ which is typically encountered in field theories that may drive the non-interacting system to a different phase of matter.
 On a practical level, it is commonly used to describe a peculiar quantum phase transition from a gapless to a gapped system called Berezinskii-Kosterlitz-Thouless (BKT) transition.
 It is called peculiar in a sense that it does not involve any spontaneous symmetry breaking and can thus be considered as the example of a topological phase transition.
-Traditionally, the BKT transition was first encountered in 2D classical systems, but by now it is well known that (1+1)D quantum systems are represented by partition functions which correspond to 2D classical systems (see also end of \cref{sec:properties_of_real_scalar_fields_and_their_correlations}).
-This provides proof that one-dimensional quantum systems fall in the same universality class as their classical analogs in two spacial dimensions.
+Traditionally, the BKT transition was first encountered in 2D classical systems, but due to the close analogy between (1+1)D quantum field theories and classical statistical mechanics in two spacial dimensions, it appears naturally in one-dimensional quantum systems aswell.
 Although interesting to carry out in full glory, the emergence of the sine-Gordon type field theory from a 2D classical model requires a rather involved treatment of the classical partition function, and I refer to~\cite{AltlandSimons2010} for details on the derivation.
 
-I now proceed by explaining the basic renormalization group (RG) analysis of the sine-Gordon model.
-This section is widely adapted from~\cite{Gogolin2004}, which is probably the most useful advanced literature in the field of bosonization.
-The action of the sine-Gordon model reads $S = S_0 + S_I$ with the two terms
+I now proceed by explaining the basic renormalization group (RG) analysis of the sine-Gordon model, based on~\cite{Gogolin2004}.
+The action of the sine-Gordon model reads $S = S_0 + S_I$, with
 \begin{align}
-    S_0 = \frac1{2\pi}\int\rd x\rd\tau\brlr{\frac1{uK}(\partial_\tau\phi)^2 + \frac uK (\partial_x\phi)^2},
-    \quad
+    S_0 = \frac1{2\pi}\int\rd x\rd\tau\brlr{\frac1{uK}(\partial_\tau\phi)^2 + \frac uK (\partial_x\phi)^2}
+    ,\quad
     S_I = g\int\rd x\rd\tau\cos(\beta\phi)
+    .
 \end{align}
-in which the (density) field $\phi$ is considered.
-The theory is then put on a lattice assuming the Fourier transform of the field is defined in the Brillouin zone, which connects the long wavelength with the small crystal momentum components of $\phi$.
+Remember that the action resulted as a continuum limit of a lattice model with well defined Brillouin zone, which connects the long wavelength with the small crystal momentum components of $\phi$.
 The idea of renormalization is to let the system flow towards larger distances by sequentially integrating the short-distance (fast) components of the fields by partial path integration and representing the result in terms of an effective model for the long-wavelength field.
 The final step is then to recover the original size of the momentum shell by a rescaling of lengthscales.
 For technical convenience, it is best to assume a circular cutoff constraint $|{\bm k}|<\Lambda\sim2\pi/a$.
@@ -1323,7 +1324,7 @@ The analytic evaluation of the expectation on the right hand side requires furth
 \begin{align}
     S^{(2)}_{\rm eff}[\phi_{\Lambda'}] = S_0[\phi_{\Lambda'}] + \braket{S_I[\phi_{\Lambda'}+h]}_h - \frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}} + O(g^3)
 \end{align}
-in which $\braket{F^2}_{\rm conn.} = \braket{F^2}-\braket{F}^2$ denotes the connected part of the correlation.
+in which $\braket{F^2}_{\rm conn.} = \braket{F^2}-\braket{F}^2$ denotes the ``connected'' part of the expectation value.
 The renormalization group approach carried out in the following is thus reliable for small renormalized couplings $g\ll \frac u{2\pi K}$.
 
 The first order term can be rewritten as
@@ -1376,7 +1377,7 @@ Due to the perturbative character of this study, one must however consider that 
 An upper stop value for the flow $l^*$ is thus given by $g^*=g(l^*)=\Delta^*$ and one may assume that the system is driven sufficiently away from the Luttinger liquid critical point, which is characterized by the scale invariant action $S_0$.
 Since the momentum shell evolves according to $\rd\log\Lambda=\rd l$, the related energy length scales flow in the same direction to first order in $\rd l$, i.e. $\rd\log\Delta = \rd l$.
 A viable estimate of the energy gap before the RG flow is therefore given by the back-evolved gap according to $\Delta(0)=\re^{-l}\Delta(l)$.
-\todoil{Missing assumptions according to Matteo?}
+\todoil{Some missing assumptions according to Matteo? Check!}
 Since the energy gap for an excitation is proportional to the size of the coupling of the relevant interaction, the conclusion of this discussion is
 \begin{align}
     \Delta(0) = \Delta^*\re^{-l^*} \approx \Delta^*\brlr{\frac{g(0)}{\Delta^*}}^{1/(2-D_g)}.
@@ -1438,11 +1439,12 @@ Therefore, the $C$-independent terms cancel in the connected part of the correla
     % \label{eq:RG_second_order_approximation_1}
 \end{align}
 % In case $C(|{\bm x}-{\bm x'}|)$ is sufficiently short-ranged, the arguments in the $\cos$ of \cref{eq:rg_int_1,eq:rg_int_2} can be approximated as indicated in \cref{eq:RG_second_order_approximation_1} using a non-universal constant $\gamma$.
-    
+
 To proceed in solving the integral, the function $C$ needs to be discussed further.
 For the sharp momentum cutoff, one would obtain here $C(r) = J_0(\Lambda r)$ with asymptotic expression $J_0(\Lambda r)\approx\sqrt{2/(\pi \Lambda r)}\cos(\Lambda r-\pi/4)$.
-This function has a long algebraic tail and is thus not a sharp function.
+This function has a long algebraic tail and is thus not a sharp function (see also \cref{fig:rg_cutoff}).
 The origin of this long tail resides in the choice of the momentum cutoff in the integration scheme.
+Recall that we aim to integrate infinitesimal shell of the large momenta, which allows a certain degree of freedom in the choice of the shell itself.
 In particular, the momentum integration can be rewritten as
 \begin{align}
     \int_{0}^{\Lambda}\rd p \rightarrow \int_{0}^\infty\rd p f_n(p,\Lambda),
@@ -1504,7 +1506,7 @@ For the special case $n=2$, the integral of the $h$-fields evaluates to $C_2(r)=
 In particular, the function follows the asymptotic decay $z K_1(z) \sim \sqrt{\pi z/2}\exp(-z)$ and is already negligible for $z=1$, i.e. $K_1(1)\approx0.0062$.
 Therefore, the integration of $C_2(r)$ can be confined to a small interval $r<\xi$ in which $\xi\sim2\pi/\Lambda=a$ is a small length scale comparable with the lattice spacing $a$.
 
-In order to utilize the confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bm R} = 1/2({\bm x}+{\bm x'})$ and ${\bm r} = {\bm x}-{\bm x'}$.
+In order to utilize the strong confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bm R} = 1/2({\bm x}+{\bm x'})$ and ${\bm r} = {\bm x}-{\bm x'}$.
 The integral can then be rewritten to
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
@@ -1529,13 +1531,14 @@ The integral can then be rewritten to
     \right).
     \label{eq:rg_int_rel_coords}
 \end{align}
-The $\cos$ term in \cref{eq:rg_int_1} did not exist in the original Hamiltonian\footnote{
+
+The first $\cos$ term (\cref{eq:rg_int_1}) did not exist in the original Hamiltonian\footnote{
     Note that this term generation is continuous, and to account for it, we should start from a more generic interaction containing all the higher harmonics, i.e. $S_{I'} = S_I + \sum_{j=1}^\infty g_j\int\rd x\rd\tau\cos(2j\beta\phi)$.
     The first-order corrections of the Euclidian action then yield a coupled system of differential equations in which the amplitudes of less relevant operators depend on those of more relevant ones (but {\it not} vice-versa).
     This allows for a practical and well-justified simplification of dropping the sum in the previous expression, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
-} -- it is a new sine-Gordon type interaction with higher scaling dimension $D_h = K\beta^2$.
-
-The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part after the harmonic approximation in polar coordinates $r=\sqrt{(x-x')^2+u^2(\tau-\tau')^2}$
+} -- it is a new sine-Gordon type interaction with larger scaling dimension $D_h = K\beta^2$ compared to $D_g=K\beta^2/4$.
+The operator associated to $h$ is thus less relevant than the original term and can be disregarded.
+The second $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part, i.e.
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
     \approx
@@ -1543,6 +1546,7 @@ The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadrati
     \tau\phi_{\Lambda'})^2+(\partial_x\phi_{\Lambda'})^2.
     \label{eq:RG_second_order_approximation}
 \end{align}
+In the above, I neglect a constant and gave for implicit the harmonic approximation and integration of $\bm r=\bm r(r,\phi)$ with $r=\sqrt{(x-x')^2+u^2(\tau-\tau')^2}$ in polar coordinates.
 The constant $\xi^4/u^2$ is determined by the cutoff of the integrals over the relative coordinates, and $\xi\sim1/a$ is on the order of the lattice spacing.
 In summary, we obtain the effective action
 \begin{align}

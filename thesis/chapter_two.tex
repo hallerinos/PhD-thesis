@@ -14,7 +14,7 @@ The analytical treatment presented in the previous chapter relies on a heavy lin
 One of the most crucial consequence of these simplifications is that quantitative deviations occur if the interactions are comparable to the kinetic bandwidth.
 This restricts heavily the validity region of the low-energy effective field theory of a particular model.
 To make an example, a sine-Gordon term with $\beta=4$ is encountered in the effective low-energy field theory of the spin-$1/2$ XXZ chain and the interaction will be relevant in the RG sense for $K<1/2$.
-Such a small Luttinger parameter typically requires very strong nearest neighbor interactions that are compatible with the system's bandwidth, which thus implicitly breaks the assumptions to derive the effective low-energy field theory itself.
+Such a small Luttinger parameter typically requires very strong nearest neighbor interactions that are compatible with the system's bandwidth\footnote{The XXZ model is integrable and the phase transition occurs when all couplings are equal to each other.}, which thus implicitly breaks the assumptions to derive the effective low-energy field theory itself.
 Although the field theoretic description might not break down entirely, heavy quantitative deviations from the Luttinger liquid predictions of the effective coupling parameters are to be expected.
 This motivates the use of numerical tools to verify the analytic predictions in the strongly interacting cases.
 In this chapter, I will provide the essentials to get acquainted with the concepts of tensor networks, in particular with matrix product states (MPS).
@@ -49,7 +49,7 @@ One easy example is a trace of many matrices, which can be sketched as a circle 
 \end{align}
 For more complex contractions containing tensors of higher ranks, it is important to optimize the sequence of contractions to reduce the overall computational cost to a minimum.
 For instance, in \cref{fig:contraction_sequences} two different sequences of contractions obviously result in the same outcome, but the overall complexity class is different.
-Assume each leg has dimension $m$, then sequence $S_1$ is $O(m^4)$ whereas sequence $S_2$ is $O(m^4)$.
+Assume each leg has dimension $m$, then sequence $S_1$ is $O(m^4)$ whereas sequence $S_2$ is $O(m^5)$.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/ComplexContraction1.pdf}
@@ -79,7 +79,7 @@ The SVD of a normal matrix $M$ can be recast to the graphical notation
     \equiv M = U \Lambda V^\dag \equiv
     \includegraphics[valign=c]{figures/svd.pdf}\,.
 \end{align}
-Let me now introduce probably the most important decomposition applied in tensor networks -- the generalized version of the SVD for rank $n$ tensors:
+Let me now introduce probably the most important decomposition applied in tensor networks -- the generalized version of the SVD for rank $n$ tensors\footnote{For tensor network experts, do not confuse with the higher order SVD (HOSVD) or Tucker decomposition.}:
 (i) the rank $n$ array has to be reduced to a rank $2$ object, i.e. a matrix.
 This transformation (which must be a bijection) is commonly called tensor reshaping and is understood in graphical notation as a fusion of multiple tensor legs.
 (ii) The matrix then is decomposed through a standard SVD, followed by (iii) the restoration of the original rank $n$ object through the inverse reshaping applied in step (i).
@@ -208,7 +208,7 @@ This particular decomposition of a generic quantum state, i.e.
     C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf},
     \label{eq:mixed_canonical_form}
 \end{align}
-is called the (mixed) canonical form of an MPS.
+is called the (mixed) canonical form of an MPS\footnote{You could even perform the sequence \cref{eq:move_the_lambda_matrix} by leaving the Schmidt weights on every link, thus obtaining another canonical form -- the so-called $\Gamma-\lambda$ form~\cite{Vidal2007,Orus2008}.}.
 In other words, it represents the Schmidt decomposition of the state $\ket{\psi}$ in the subspaces $\HS_{A(\ell)}$ and $\HS_{B(\ell)}$ spanned by the first $\ell$ and last $L-\ell$ quantum numbers i.e.
 \begin{align}
     \ket\psi = \sum_{\bm i} C^{[\bm i]}\ket{\bm i} = \sum_{k}s_{k}(\ell)\ket{\psi_{A(\ell),k}}
@@ -260,9 +260,9 @@ Point (iii) is clear from the fact that one may sandwich infinitely many identit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-To understand the influence of the compression scheme, consider the way a generic density matrix is expressed in terms of a canonical MPS:
+To understand the influence of the compression scheme, consider the density matrix of a MPS in canonical form:
 \begin{align}
-    \hat\rho = \ket{\psi}\bra{\psi} = \sum_{k,k'}s_ks_{k'}\ket{\psi_{A,k},\psi_{B,k}}\bra{\psi_{A,k'},\psi_{B,k'}}.
+    \hat\rho = \sum_{k,k'}s_ks_{k'}\ket{\psi_{A,k},\psi_{B,k}}\bra{\psi_{A,k'},\psi_{B,k'}}.
 \end{align}
 Now imagine to compute the reduced density matrix of a bipartition formed by a block $A(\ell)$ of the first $\ell$ quantum numbers and a block $B(\ell)$ of the remaining ones.
 A trace over the complement states of the partition $A/B$ gives the reduced density matrix in block $A/B$, i.e.
@@ -294,23 +294,23 @@ Density matrices are naturally related to the generalized Gibbs entropy for quan
 \end{align}
 which is a straightforward measure for the shared information between the bipartition, in information theory perspectives often called Shannon entropy of communication.
 In this context, $-\log(s^2_k)$ is understood as the information content (or surprisal) of the Schmidt state, and $S_1$ is simply the expectation value of surprisal.
-Such definition is readily understood from an experimentalist's point of view: measuring a state of very low spectral weight are surprizing, whereas likely quantum states bear a low surprise.
+Such a definition is understood intuitively: measuring a state of very low probability is surprizing, whereas likely quantum states bear a low surprise.
 In a quantum physics audience, the entropy $S_1$ is commonly referred to as von Neumann entropy, and I denote it as $S_1$ because of its relation to the Rényi entropy -- a generalized version of the Shannon entropy
 \begin{align}
-    S_\alpha(\ell) = \frac{1}{1-\alpha}\tr\log\rho^\alpha_A
+    S_\alpha(\ell) = \frac{1}{1-\alpha}\log\tr\rho^\alpha_A
 \end{align}
 in the limit $\alpha\rightarrow1$.
 The derivation of the limit is infrequently presented in the literature, but straightforward by using the Schmidt decomposition and L'Hôpital's rule
 \begin{align}
     S_1(\ell)
     =
-    \lim_{\alpha\rightarrow1}\frac1{1-\alpha}\tr\log\hat\rho_A^\alpha
+    \lim_{\alpha\rightarrow1}\frac1{1-\alpha}\log\tr\hat\rho_A^\alpha
     =
     -\lim_{\alpha\rightarrow1}\partial_\alpha\log\sum_k s_k^{2\alpha}
     =
     -\lim_{\alpha\rightarrow1}\frac{\sum_k\partial_\alpha s_k^{2\alpha}}{\sum_k s_k^{2\alpha}}
     =
-    -\lim_{\alpha\rightarrow1}\sum_k \re^{\alpha\log s_k^2}
+    -\lim_{\alpha\rightarrow1}\sum_k \partial_{\alpha}\re^{\alpha\log s_k^2}
     \\
     =
     -\lim_{\alpha\rightarrow1}\sum_k \re^{\alpha\log s_k^2}\log s_k^2
@@ -330,7 +330,7 @@ Note that the maximum entropy of an MPS is always restricted by the bond dimensi
 %
 %
 All of the discussion so far would not be very exciting for a wholehearted physicist, were it not for its close relation to quantum entanglement.
-The phenomenon was firstly noted in $1935$ by Albert Einstein, Boris Podolsky, and Nathan Rosen~\cite{EPR1935}, also Erwin Schrödinger~\cite{Schrdinger1935,Schrdinger1936}, describing what is famously known as the EPR paradox~\cite{Reid2009}.
+The phenomenon was firstly noted in $1935$ by Albert Einstein, Boris Podolsky, and Nathan Rosen~\cite{EPR1935}, also by Erwin Schrödinger~\cite{Schrdinger1935,Schrdinger1936}, describing what is famously known as the EPR paradox~\cite{Reid2009}.
 At its heart, it describes a group of particles interacting such that the quantum state of each individual particle cannot be described independently of the state of the others in the group.
 The paradox part in the aforementioned works is described by quantum measurements performed on individual particles, which leads to irreversible collapses of the wave function and an alteration of the original quantum state of the other particles in the group.
 Surprisingly, the phenomenon is independent of the distance between the particles and forms thus a unique form of correlations exclusively present in quantum systems.
@@ -339,7 +339,7 @@ To make an example, consider the two-particle pure state $\ket{\psi}=\frac1{\sqr
 In case we prepare a projective measurement of the first particle being in the $\uparrow$-state, the probability of the outcome is obviously $1/2$ and we end up with a collapsed post-measurement state of the form $\ket{\tilde\psi} = \ket{\uparrow\downarrow}$.
 At the time of the measurement, the second particle collapses to the perfectly correlated alignment, and it does so immediately, independent on the spacial distance between the two parties.
 A subsequent measurement of the second particle will thus yield $\downarrow$ with probability $1$.
-Note that this instantaneous action does not violate causality since the outcome of the first measurement is random and as such cannot be used to transmit information.
+Note that this instantaneous action does not violate causality since the outcome of the first measurement is random and as such cannot be used to transmit information\footnote{I.e., until the outcome of the first measurement is communicated, the density matrix of the second spin is the identity.}.
 With this example in mind, let us now encapsulate the definition of $N$-partite separable and entangled for states with $N$ individual particles.
 
 A state $\ket{\psi}$ is called $N$-partite separable iff. it can be written as a product of $N$ subsystems~\cite{Horodecki2009}
@@ -348,7 +348,7 @@ A state $\ket{\psi}$ is called $N$-partite separable iff. it can be written as a
     \label{eq:separable_states}
 \end{align}
 Note that this expression is fundamentally different from the coherent superposition of exponentially many state vectors encountered in generic states (compare to ~\cref{eq:generic_state}).
-As such, we call a state entangled, if it cannot be decomposed according to~\cref{eq:separable_states}.
+As such, we call a state $N$-partite entangled, if it cannot be decomposed according to~\cref{eq:separable_states}.
 The earlier example of a bipartite system is an element of the Bell basis, which are sometimes called ERP states
 \begin{align}
     \ket{\psi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}}
@@ -358,10 +358,13 @@ The earlier example of a bipartite system is an element of the Bell basis, which
 and they all have remarkable properties, first recognized by Schrödinger -- if one measures only one of the states, one finds it with equal probability in either $\ket{0}$ or $\ket{1}$.
 As such, they give no information about the subsystems, whereas they are still pure and thus reveal full information about the global system.
 The Bell states are special cases of bipartite maximally entangled states~\cite{Horodecki2009} and as such great examples to explore the entropic manifestation of entanglement.
+
 In particular, it has been shown that the von Neumann entropy of a subsystem can be greater than the entropy of the global system iff. the state is entangled~\cite{Horodecki1994}.
-The inequality for separable states can thus be expressed as $S(B|A)=S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
+The inequality for separable states can thus be expressed as $S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
 As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities.
-The discussions of entangled states breaking the positivity of $S(A|B)$ reach far beyond the present aim of this introduction \cite{Horodecki2006}, and I simply conclude here that the von Neumann entropy is a useful scalar measure of bipartite entanglement.
+Note that the reduced density matriy of the Bell states is $\hat\rho_{A/B}=\frac12\mathbb1$ and as such $S_1=\log2$ which provides an upper limit for this two-partite system.
+In general, a maximally entangled $N$-partite state with internal dimension $D$ assumes the upper limit of the entropy $S_1(\ell)=\log(D^{\min(\ell,N-\ell)})$.
+The discussions of entangled states breaking the positivity of $S(\hat\rho)-S(\hat\rho_{A/B})$ reach far beyond the present aim of this introduction \cite{Horodecki2006}, and I simply conclude here that the von Neumann entropy is a useful scalar measure of bipartite entanglement.
 
 Coming back to the connection to MPS with finite bond dimension, we now know that the upper bound restriction of the entropy limits the available entanglement of the approximation.
 This, in turn, does not provide an explanation why such an approximation should not ``go wrong quickly'' in a sense that the important properties of the approximated state are lost, even if the bond dimension is large.
@@ -370,18 +373,22 @@ Some insights were concluded by the derivation of universal scaling laws of the 
 In 2007, Hastings published his famous proof of the area law for one-dimensional quantum systems~\cite{Hastings2007}.
 In its essence, it provides an upper bound to the von Neumann entropy for gapped and local (i.e. no long-ranged interactions) Hamiltonians scaling as the area ($\equiv$ a constant) of one-dimensional systems.
 Essentially, the works can be summarized by the following two statements~\cite{Eisert2010}:
-Consider a block of $1,2,\dots,\ell$ particles with internal dimension $D$, the entanglement entropy of the physically relevant part (i.e. the low-energy subspace of $\HS$) scales as
+Consider a block of $1,2,\dots,\ell$ sites with internal dimension $D$, the entanglement entropy of the physically relevant part (i.e. the low-energy subspace of $\HS$) scales as
 \begin{align}
-    S_1(\ell) &= \frac c{3b}\log[d(\ell)],\text{ if the system is critical}\\
-    S_1(\ell) &= c_0\xi\log\brlr{6\xi}\log D2^{6\xi\log D},\text{ if the system is local and gapped with $\Delta E>0$}
+    S_1(\ell) &= \frac c{3b}\log[d(\ell)],\text{ if the system is gapless}\\
+    S_1(\ell) &= c_0\xi\log\brlr{6\xi}\log(D2^{6\xi\log D}),\text{ if the system is local and gapped with $\Delta E>0$}
 \end{align}
 in which $c_0$ is a constant of order one, $\xi=\max(2v/\Delta E,\xi_C)$ is the correlation length, $v$ the velocity of sound, $\xi_C$ of order one and $d(\ell)$ encodes the size of the block.
-For periodic ($b=1$) and open ($b=2$) boundary conditions, $d(\ell)$ is the chord distance encoding the length of a semi-circle
+For periodic ($b=1$) and open ($b=2$) boundary conditions \todoil{Matteo asked if there is any other case available... Check!}, $d(\ell)$ is the chord distance encoding the length of a semi-circle
 \begin{align}
     d(\ell) = \left|\frac L\pi\sin(\pi/L\ell)\right|.
 \end{align}
-The main messages is that, for gapped systems, physically relevant states live in the low-entangled subspace of the full Hilbert space.
+The main message is that, for gapped systems, physically relevant states live in the low-entangled subspace of the full Hilbert space.
 This implies that the MPS Ansatz is an optimal choice to target the low-lying excitations of the full many body Hilbert space, which, in turn, follow an area law of entanglement.
+
+The generalization of MPS to higher dimensional lattices are called projected entangled pair states (PEPS), which, like the MPS, have the area law already built into their very construction~\cite{Eisert2010}.
+In particular, they satisfy $S(\rho_A)=\mathcal O(|\partial A|)$ in which $\partial A$ denotes the boundary area of any subset $A$ of lattice sites.
+Such area laws have been proven for free gapped bosonic and fermionic models in $D>1$
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
