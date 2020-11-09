@@ -1073,13 +1073,16 @@ A Gaussian integral of two real vectors $\bm v$, $\bm j$ and a real and invertib
     \label{eq:multi_gaussian}
 \end{align}
 The argument of \cref{eq:path_integral_pre_integration} is purely imaginary, and as such the integral is convergent with a regularization $\Delta t\rightarrow\Delta t(1+\ri\epsilon)$ by taking the limit $\epsilon\rightarrow0$.
-More importantly, the (arbitrary!) vector $\bm j$ acts as a ``source'' term to define an expectation value, i.e.
+More importantly, the (arbitrary!) vector $\bm j$ acts as a ``source'' term to define an expectation value.
+Consider the derivative $\partial_{j_m}\partial_{j_n}|_{\bm j=0}$ acting on the gaussian, it will pull the $m,n$ component of $\bm A^{-1}$ up to an overall constant, i.e.
 \begin{align}
-    \braket{v_mv_n}\equiv\partial^2_{j_m,j_n}\int\rd\bm v\re^{-\frac12\bm v^T\bm A\bm v + \bm j^T \bm v}\Bigg|_{\bm j=0}
+    \partial^2_{j_m,j_n}\int\rd\bm v\re^{-\frac12\bm v^T\bm A\bm v + \bm j^T \bm v}\Bigg|_{\bm j=0}
     =
     \int\rd\bm v\re^{-\frac12\bm v^T\bm A\bm v}v_mv_n
     =
     \frac{(2\pi)^{{\rm rank}(\bm A)/2}}{\sqrt{\det(\bm A)}}A^{-1}_{mn}
+    \\
+    \rightarrow \braket{v_mv_n}\equiv A_{mn}^{-1}.
     \label{eq:multi_source}
 \end{align}
 Application of \cref{eq:multi_gaussian} and taking the continuum limits yields the path integral
@@ -1522,7 +1525,7 @@ The $\cos$ term in \cref{eq:rg_int_1} did not exist in the original Hamiltonian 
     This allows for a practical and well-justified simplification of dropping the sum in the previous expression, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
 }.
 
-The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part after the harmonic approximation in polar coordinates $\bm r=(u(\tau-\tau'),x-x')^T$ and $r=\sqrt{(x-x')^2+u^2(\tau-\tau')^2}$
+The $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part after the harmonic approximation in polar coordinates $r=\sqrt{(x-x')^2+u^2(\tau-\tau')^2}$
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
     \approx
@@ -1591,4 +1594,4 @@ This is the ``relevant'' case, since the dominance of $y$ is determined by the i
     \label{fig:bkt_flow_equations}
 \end{figure}
 
-\todo{Reference to the research}
+\todo{Reference to the research and comment on other models aswell}
