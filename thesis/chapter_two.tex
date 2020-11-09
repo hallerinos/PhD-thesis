@@ -10,12 +10,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-\todo{Rewrite intro eventually and connect to part 2}
 The analytical treatment presented in the previous chapter relies on a heavy line of approximations (which are sometimes very hard to justify on a rigorous level).
 One of the most crucial consequence of these simplifications is that quantitative deviations occur if the interactions are comparable to the kinetic bandwidth.
 This restricts heavily the validity region of the low-energy effective field theory of a particular model.
 To make an example, a sine-Gordon term with $\beta=4$ is encountered in the effective low-energy field theory of the spin-$1/2$ XXZ chain and the interaction will be relevant in the RG sense for $K<1/2$.
-However, such a small Luttinger parameter requires very strong nearest neighbor interactions in real systems that are compatible with the system's bandwidth, which thus implicitly breaks the assumptions to derive the effective low-energy field theory itself.
+Such a small Luttinger parameter typically requires very strong nearest neighbor interactions that are compatible with the system's bandwidth, which thus implicitly breaks the assumptions to derive the effective low-energy field theory itself.
 Although the field theoretic description might not break down entirely, heavy quantitative deviations from the Luttinger liquid predictions of the effective coupling parameters are to be expected.
 This motivates the use of numerical tools to verify the analytic predictions in the strongly interacting cases.
 In this chapter, I will provide the essentials to get acquainted with the concepts of tensor networks, in particular with matrix product states (MPS).
@@ -33,7 +32,9 @@ As a conclusion, I review the exploit of abelian symmetries in the numerical tec
 %
 %
 A tensor is a collection of complex numbers in multidimensional arrays.
-Its rank is given by the number of indices: for instance, scalar values are of rank zero, vectors of rank one and matrices of rank two.
+Its rank is given by the number of indices: for instance, scalar values are of rank zero, vectors of rank one and matrices of rank two\footnote{
+    Note that the rank of a tensor differs from the usual understanding of a rank in terms of the image space dimensions.
+}.
 Tensor networks are in general contractions of many tensors and as such it is customary to define graphical representations which display its fundamental structure, i.e. its rank.
 The most common convention is to represent a tensor object as a circle, triangle, hourglass or rectangle with as many legs as the tensor has indices.
 It is then easy to sketch the tensor contraction of a simple matrix-matrix multiplication as
@@ -55,6 +56,7 @@ Assume each leg has dimension $m$, then sequence $S_1$ is $O(m^4)$ whereas seque
     \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $1$ requires less multiplications compared to $2$ and is thus less prone to numerical truncation errors.}
     \label{fig:contraction_sequences}
 \end{figure}
+
 A triangle representation may make sense to indicate a tensor being an isometry.
 For instance, consider the two isometries $U$, $V^\dag$ of a generic singular value decomposition (SVD) $M = U \Lambda V^\dag$: they contain the left- and right-singular vectors of $M$ and are thus semi-unitaries, i.e.
 \begin{align}
