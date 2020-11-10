@@ -35,18 +35,18 @@
 \definecolor{green}{rgb}{0.2039215686, 0.662745098, 0.3176470588}
 
 
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.6]
  \node at (-0.25,1.75) {};
  \node at (2,-0.75) {};
  \draw (0.866025403784439,0.5) circle (1);
  \node at (0,0) {
-  \begin{tikzpicture}[remember picture,overlay]
-   \node (A) at (0,0) {A};
-   \node (B) at (0.866025403784439,-0.5) {B};
-   \node (C) at (1.73205080756888,0) {C};
-   \node (D) at (1.73205080756888,1) {D};
-   \node (E) at (0.866025403784439,1.5) {E};
-   \node (F) at (0,1) {F};
+  \begin{tikzpicture}[remember picture,overlay,scale=0.6]
+   \coordinate (A) at (0,0);
+   \coordinate (B) at (0.866025403784439,-0.5);
+   \coordinate (C) at (1.73205080756888,0);
+   \coordinate (D) at (1.73205080756888,1);
+   \coordinate (E) at (0.866025403784439,1.5);
+   \coordinate (F) at (0,1);
    \cTens{gray}{0.2}{(A)}
    \cTens{gray}{0.2}{(B)}
    \cTens{gray}{0.2}{(C)}

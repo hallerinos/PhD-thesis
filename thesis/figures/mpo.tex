@@ -1,0 +1,51 @@
+\documentclass[tikz]{standalone} % border={left bottom right top}
+\input{./Tensors_2.tex}
+\input{../definitions.tex}
+\usepackage{braket}
+\begin{document}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth'
+}
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc/.style={
+      start angle=0, end angle=360,radius=0.4
+    }
+  }
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc2/.style={
+      start angle=0, end angle=360,radius=0.2
+    }
+  }
+
+\definecolor{blue}{rgb}{0.2745098039, 0.5333333333, 0.9450980392}
+\definecolor{red}{rgb}{0.9176470588, 0.2588235294, 0.2078431373}
+\definecolor{yellos}{rgb}{0.9764705882, 0.7333333333, 0.1764705882}
+\definecolor{green}{rgb}{0.2039215686, 0.662745098, 0.3176470588}
+
+
+\begin{tikzpicture}
+    \node (cc) at (0,0) {};
+    \coordinate (tp) at ($(cc)+(0,0)$);
+    \draw ($(tp)+(0.,0)$) coordinate (1) -- ++(0,-0.275) node[below] {$i_\ell'$};
+    \draw ($(tp)+(0.,0)$) coordinate (1) -- ++(0,0.275) node[above] {$i_\ell$};
+    \draw ($(tp)+(0.,0)$) coordinate (1) -- ++(-0.275,0);
+    \draw ($(tp)+(0.,0)$) coordinate (1) -- ++(0.275,0);
+    \begin{scope}[rotate=90,shift=(tp)]
+        \rTens{gray}{0.2}{0.2}{(0,0)}
+    \end{scope}
+\end{tikzpicture}
+
+
+\end{document}

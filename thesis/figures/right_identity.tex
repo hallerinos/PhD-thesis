@@ -36,9 +36,9 @@
 
 
 \begin{tikzpicture}
-    \node (rw1) at (0,-1) {};
-    \node (rw2) at (0,0) {};
-    \draw (rw1) -- ++(-.5,0) -- ++(0.,1) -- ++(rw2);
+    \coordinate (rw1) at (0,-.5);
+    \coordinate (rw2) at (0,0);
+    \draw (rw1) -- ++(-.25,0) -- ++(0.,.5) -- ++(.25,0);
     % \draw (rw1) -- ++(.5,0);
     % \draw (rw2) -- ++(.5,0);
     % \begin{scope}[rotate=-90,shift=(rw2)]

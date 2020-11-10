@@ -36,19 +36,20 @@
 
 
 \begin{tikzpicture}
-    \node (rw1) at (0,0) {};
-    \node (rw2) at (1.2,0) {};
-    \node (rw3) at (0.6,0) {};
-    \draw ($(rw1)+(0.2,0)$)--($(rw2)+(-0.2,0)$);
-    \draw ($(rw1)+(-0.5,0)$)--($(rw1)+(-0.2,0)$);
-    \draw ($(rw2)+(0.5,0)$)--($(rw2)+(0.2,0)$);
+    \coordinate (rw1) at (0,0);
+    \coordinate (rw2) at (.7,0);
+    \coordinate (rw3) at (0.35,0);
+    \draw ($(rw1)+(-.25,0)$)--($(rw2)+(.25,0)$);
     \begin{scope}[rotate=-90,shift=(rw1)]
-        \tTens{gray}{0.4}{0.4}{(0,0)}
+        \tTens{gray}{0.2}{0.2}{(0,0)}
     \end{scope}
     \begin{scope}[rotate=90,shift=(rw2)]
-        \tTens{gray}{0.4}{0.4}{(0,0)}
+        \tTens{gray}{0.2}{0.2}{(0,0)}
     \end{scope}
-    \cTens{gray}{0.2}{(rw3)}
+    \cTens{gray}{0.1}{(rw3)}
+    \node[above] at (rw1) {$U_\pdag^\pdag$};
+    \node[below] at (rw3) {$\Lambda_\pdag^\pdag$};
+    \node[above] at (rw2) {$V^\dag_\pdag$};
 \end{tikzpicture}
 
 

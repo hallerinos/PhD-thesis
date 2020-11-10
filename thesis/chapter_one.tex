@@ -19,7 +19,7 @@ The single particle wave function $\Psi_\alpha(r)$ of a quantum state occupying 
 \begin{align}
     \Psi_\alpha(r) \coloneqq \braket{r|\alpha}.
 \end{align}
-\todoil{Comment already on the overcompleteness of the $r$-states, or not?}
+% \todoil{Comment already on the overcompleteness of the $r$-states, or not?}
 It is is thus understood as the coefficients for the basis transform $\ket{\alpha}\rightarrow\ket{r}$, i.e.
 \begin{align}
     \ket{\alpha} = \int{\rm d}{r}\, \Psi_\alpha(r) \ket{r}.
@@ -622,7 +622,7 @@ However, due to its intrinsic single-particle character, band theory cannot reli
 This motivates the study of Hubbard-type models: despite being a brutal simplification of the true two-body interaction, they are the easiest systems that provide an explanation of such interaction-driven features.
 Although its apparent innocence, there is no universal treatment of Hubbard models in general.
 In one spacial dimension, the Hamiltonian can be solved analytically and thus falls in the category of being ``integrable''~\cite{Essler2005}.
-\todoil{Is this true for all number of flavors? Check!}
+\todoil{Is this true for all number of flavors?}
 In general, integrability is a quite fragile property and even slight perturbations will break it.
 The models we study in the next chapters, albeit closely related to the one-dimensional Hubbard model, do not categorize as integrable due to the presence of additional terms that break some of its fundamental symmetries (e.g. the conservation of the particle flavor).
 This motivates the use of alternative methods to study the properties of interacting tight binding models.
@@ -1377,7 +1377,7 @@ Due to the perturbative character of this study, one must however consider that 
 An upper stop value for the flow $l^*$ is thus given by $g^*=g(l^*)=\Delta^*$ and one may assume that the system is driven sufficiently away from the Luttinger liquid critical point, which is characterized by the scale invariant action $S_0$.
 Since the momentum shell evolves according to $\rd\log\Lambda=\rd l$, the related energy length scales flow in the same direction to first order in $\rd l$, i.e. $\rd\log\Delta = \rd l$.
 A viable estimate of the energy gap before the RG flow is therefore given by the back-evolved gap according to $\Delta(0)=\re^{-l}\Delta(l)$.
-\todoil{Some missing assumptions according to Matteo? Check!}
+\todoil{Maybe some missing assumptions?}
 Since the energy gap for an excitation is proportional to the size of the coupling of the relevant interaction, the conclusion of this discussion is
 \begin{align}
     \Delta(0) = \Delta^*\re^{-l^*} \approx \Delta^*\brlr{\frac{g(0)}{\Delta^*}}^{1/(2-D_g)}.

@@ -72,6 +72,7 @@ The previous equation can thus be recast to
     V^\dag V^\pdag \equiv \includegraphics[valign=c]{figures/left_isometry.pdf} = \includegraphics[valign=c]{figures/left_identity.pdf}\,.
     \label{eq:isometries}
 \end{align}
+Although the two pictures represent the same multiplication at the present stage, a distinction of the two will be useful in the context of canonical MPS.
 A simple squared unitary matrix is orthogonal with respect to both left/right multiplication with its adjoint and as such can be represented as a hourglass.
 The SVD of a normal matrix $M$ can be recast to the graphical notation
 \begin{align}
@@ -172,6 +173,10 @@ To give an example, I present the impact of compression in \cref{fig:svd_image_c
 Panel (a) denotes an uncompressed picture, the singular values of the digital picture presented in (b), and the result of keeping $250$ singular values as an approximation to the full picture, presented in (c).
 The approximated picture yields a compression rate of roughly $19\%$, and visible differences to the original are negligible (if you look closely, the compressed figure appears to have some ``noise'' in the nice color gradient of the sky).
 
+In a second example consider a fraction of the Mandelbrot set embedded in Gaussian noise presented in \cref{fig:svd_image_compression_mandelbrot}.
+The visualization aims to compare the original picture for different levels of noise (panels (b) and (d-f)) with the approximation (panels (c) and (g-i)) in which the 100 smallest Schmidt values are kept (indicated by the black grid line in panel (a)).
+The distribution of the spectral values is controlled by the fraction of random noise mixed into the picture: the decay is weaker for a larger fraction of noise\footnote{The spectral properties of random matrices are well-known, beautifully summarized through the Wigner ``semicircle'' distribution~\cite{Wigner1958OnTD}.}, causing a larger truncation error in the approximation, which ultimately leads to significant deviations to the original contour details and overall color.
+
 The depicted compression scheme can actually be applied to quantum states.
 Recall that any state can be expressed by a set of $L$ good quantum numbers, such that
 \begin{align}
@@ -180,10 +185,33 @@ Recall that any state can be expressed by a set of $L$ good quantum numbers, suc
 \end{align}
 and the collection of all $\ket{i_1,i_2,\dots,i_L}$ form a complete and orthonormal basis.
 Note that the $L$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $L$ and the dimension of the quantum numbers $i_j$.
-By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}
+By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}, i.e.
 \begin{align}
     C(i_1,i_2,\dots,i_L) \rightarrow C^{[i_1,i_2,\dots,i_L]} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
 \end{align}
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics{figures/mandelbrot_svds.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/mandelbrot_noise_original1.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/mandelbrot_noise_approx1.png}}
+    \\
+    \subfigure[]{\includegraphics{figures/mandelbrot_noise_original4.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/mandelbrot_noise_original5.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/mandelbrot_noise_original6.png}}
+    \\
+    \subfigure[]{\includegraphics{figures/mandelbrot_noise_approx4.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/mandelbrot_noise_approx5.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/mandelbrot_noise_approx6.png}}
+    \caption{(a) SVD of an image of a portion of the Mandelbrot set, mixed with different levels of white noise (black to bright gray: $0$, $0.2$, $0.4$ and $0.8$), plotted in panels (b,d-f).
+    The original picture shows a fast decay of the Schmidt values compared to the higher noise levels, leading to a reasonable approximation (compare panel (b) with panel (c)). The amount of noise alters the algebraic decay of the Schmidt values, ultimately resulting in a larger error, and more noticeable deviations to the original picture (compare panels (d-f) with panels (g-i)). The number of Schmidt values kept in the approximations is fixed to $100$.}
+    \label{fig:svd_image_compression_mandelbrot}
+\end{figure}
 To account for the fact that the indices ${\bm i} = i_1,i_2,\dots,i_L$ are not fixed to specific values here, I will from now on denote the dependence of the tensor $C$ on the set of quantum numbers with square brackets.
 I now proceed by applying the generalized SVD in a sequential manner:
 Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single matrix in between two arbitrary leg positions $\ell,\ell+1$.
@@ -208,7 +236,7 @@ This particular decomposition of a generic quantum state, i.e.
     C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf},
     \label{eq:mixed_canonical_form}
 \end{align}
-is called the (mixed) canonical form of an MPS\footnote{You could even perform the sequence \cref{eq:move_the_lambda_matrix} by leaving the Schmidt weights on every link, thus obtaining another canonical form -- the so-called $\Gamma-\lambda$ form~\cite{Vidal2007,Orus2008}.}.
+is called the (mixed) canonical form of an MPS\footnote{One could even perform the sequence \cref{eq:move_the_lambda_matrix} by leaving the Schmidt weights on every link, thus obtaining another canonical form -- the so-called $\Gamma-\lambda$ form~\cite{Vidal2007,Orus2008}.}.
 In other words, it represents the Schmidt decomposition of the state $\ket{\psi}$ in the subspaces $\HS_{A(\ell)}$ and $\HS_{B(\ell)}$ spanned by the first $\ell$ and last $L-\ell$ quantum numbers i.e.
 \begin{align}
     \ket\psi = \sum_{\bm i} C^{[\bm i]}\ket{\bm i} = \sum_{k}s_{k}(\ell)\ket{\psi_{A(\ell),k}}
@@ -260,7 +288,7 @@ Point (iii) is clear from the fact that one may sandwich infinitely many identit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-To understand the influence of the compression scheme, consider the density matrix of a MPS in canonical form:
+To understand the influence of the compression scheme, consider the density matrix of an MPS in canonical form:
 \begin{align}
     \hat\rho = \sum_{k,k'}s_ks_{k'}\ket{\psi_{A,k},\psi_{B,k}}\bra{\psi_{A,k'},\psi_{B,k'}}.
 \end{align}
@@ -339,7 +367,7 @@ To make an example, consider the two-particle pure state $\ket{\psi}=\frac1{\sqr
 In case we prepare a projective measurement of the first particle being in the $\uparrow$-state, the probability of the outcome is obviously $1/2$ and we end up with a collapsed post-measurement state of the form $\ket{\tilde\psi} = \ket{\uparrow\downarrow}$.
 At the time of the measurement, the second particle collapses to the perfectly correlated alignment, and it does so immediately, independent on the spacial distance between the two parties.
 A subsequent measurement of the second particle will thus yield $\downarrow$ with probability $1$.
-Note that this instantaneous action does not violate causality since the outcome of the first measurement is random and as such cannot be used to transmit information\footnote{I.e., until the outcome of the first measurement is communicated, the density matrix of the second spin is the identity.}.
+Note that this instantaneous action does not violate causality since the outcome of the first measurement is random and as such cannot be used to transmit information\footnote{Until the outcome of the first measurement is communicated, the density matrix of the second spin is that of a mixed state, i.e. $1/2$ times the identity.}.
 With this example in mind, let us now encapsulate the definition of $N$-partite separable and entangled for states with $N$ individual particles.
 
 A state $\ket{\psi}$ is called $N$-partite separable iff. it can be written as a product of $N$ subsystems~\cite{Horodecki2009}
@@ -361,10 +389,11 @@ The Bell states are special cases of bipartite maximally entangled states~\cite{
 
 In particular, it has been shown that the von Neumann entropy of a subsystem can be greater than the entropy of the global system iff. the state is entangled~\cite{Horodecki1994}.
 The inequality for separable states can thus be expressed as $S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
-As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities.
+As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities~\cite{Horodecki2006}.
 Note that the reduced density matriy of the Bell states is $\hat\rho_{A/B}=\frac12\mathbb1$ and as such $S_1=\log2$ which provides an upper limit for this two-partite system.
-In general, a maximally entangled $N$-partite state with internal dimension $D$ assumes the upper limit of the entropy $S_1(\ell)=\log(D^{\min(\ell,N-\ell)})$.
-The discussions of entangled states breaking the positivity of $S(\hat\rho)-S(\hat\rho_{A/B})$ reach far beyond the present aim of this introduction \cite{Horodecki2006}, and I simply conclude here that the von Neumann entropy is a useful scalar measure of bipartite entanglement.
+In general, a maximally entangled $N$-partite pure state is maximally entangled if the reduced density matrix is proportional to the identity.
+Assuming the local internal dimension is $D$, it assumes the upper bound of the entropy $S_1(\ell)=\ell\log(D)$.
+On the contrary, a product state has vanishing entropy.
 
 Coming back to the connection to MPS with finite bond dimension, we now know that the upper bound restriction of the entropy limits the available entanglement of the approximation.
 This, in turn, does not provide an explanation why such an approximation should not ``go wrong quickly'' in a sense that the important properties of the approximated state are lost, even if the bond dimension is large.
@@ -388,7 +417,7 @@ This implies that the MPS Ansatz is an optimal choice to target the low-lying ex
 
 The generalization of MPS to higher dimensional lattices are called projected entangled pair states (PEPS), which, like the MPS, have the area law already built into their very construction.
 In particular, they satisfy $S(\rho_A)=\mathcal O(|\partial A|)$ in which $\partial A$ denotes the boundary area of any subset $A$ of lattice sites.
-Such area laws have been proven for free gapped bosonic and fermionic models in $D>1$~\cite{Eisert2010}, but the premises for the violation of an area law remain a topic of controversy
+Although a general proof as in the case of 1D gapped Hamiltonians is presently not established, area laws have been proven for non-interacting and gapped models (both bosonic and fermionic), and have also been checked vor various strongly correlated interacting systems~\cite{Eisert2010,Laflorencie2016}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -408,13 +437,12 @@ Its action on the canonical form of an MPS can be expressed as
 and we note that it leaves the overall form of the MPS invariant.
 In particular, it acts as a contraction between the $o$-matrix and the $q$'th vertical leg of the $C$-tensor, according to
 \begin{align}
-    \tilde C^{i_1,i_2,\dots,i_L} = \sum_{i_q'}o_{i_q,i_q'}C^{i_1,i_2,\dots,i_q',\dots,i_L}.
+    \tilde C^{i_1,i_2,\dots,i_q,i_{q+1},\dots,i_{L-1},i_L} = \sum_{i_q'}o_{i_q,i_q'}C^{i_1,i_2,\dots,i_q',i_{q+1},\dots,i_{L-1},i_L}\equiv\includegraphics[valign=c]{figures/operator_mps.pdf}.
 \end{align}
 Therefore, we can represent any local operator as a rank-$2$ tensor composed by the matrix elements of $\hat o$.
 The same reasoning applies for operators acting on $p$ sites -- they are represented by rank-$2p$ tensors containing the entries of the matrix elements, contracted with the $p$ corresponding vertical links of the $C$-tensor.
-Such an object is then called matrix product operator (MPO) which allow the efficient representation of generic Hamiltonians.
 
-The derivation of the MPO representation of a given Hamiltonian is actually straightforward, since it is the typically a sum of products of local operators, which, as we now know, each have a MPO representation.
+The most straightforward example of a matrix product operator is given through the Hamiltonian, and the derivation straightforward.
 Consider for example the Ising model
 \begin{align}
     \hat H = \hat H_{h} + \hat H_{J},
@@ -455,8 +483,8 @@ Note that the Hamiltonian can be recast into a product of bulk $\ell\neq1,L$ ope
 \begin{align}
     \hat W_\ell =
     \begin{pmatrix}
-        \hat{\mathbb 1}_\ell & \hat X_\ell & \hat Z_\ell\\
-         0 & 0 & \hat X_\ell\\
+        \hat{\mathbb 1}_\ell & \hat X_\ell & h \hat Z_\ell\\
+         0 & 0 & J \hat X_\ell\\
         0 & 0 & \hat{\mathbb 1}_\ell\\
     \end{pmatrix}
 \end{align}
@@ -468,28 +496,28 @@ The multiplication of the $\hat W_\ell$ matrix operators does not yield the desi
         1 & 0 & 0
     \end{pmatrix}
     \begin{pmatrix}
-        \hat{\mathbb 1}_1 & \hat X_1 & \hat Z_1\\
-        0 & 0 & \hat X_1\\
+        \hat{\mathbb 1}_1 & \hat X_1 & h \hat Z_1\\
+        0 & 0 & J \hat X_1\\
         0 & 0 & \hat{\mathbb 1}_1\\
     \end{pmatrix}
     =
     \begin{pmatrix}
-        \hat{\mathbb 1}_1 & \hat X_1 & \hat Z_1
+        \hat{\mathbb 1}_1 & \hat X_1 & h \hat Z_1
     \end{pmatrix}
     ,
     \quad
     \hat W_L =
     \begin{pmatrix}
-        \hat{\mathbb 1}_L & \hat X_L & \hat Z_L\\
-        0 & 0 & \hat X_L\\
+        \hat{\mathbb 1}_L & \hat X_L & h \hat Z_L\\
+        0 & 0 & J \hat X_L\\
         0 & 0 & \hat{\mathbb 1}_L\\
     \end{pmatrix}
     \begin{pmatrix}
         0 \\ 0 \\ 1
     \end{pmatrix}
     \begin{pmatrix}
-        \hat Z_L\\
-        \hat X_L\\
+        h \hat Z_L\\
+        J \hat X_L\\
         \hat{\mathbb 1}_L\\
     \end{pmatrix},
     \label{eq:boundary_W}
@@ -500,25 +528,28 @@ In particular, one obtains the following tensorial representation, acting on a s
 \begin{align}
     W^{[i_\ell',i_\ell]} =
     \begin{pmatrix}
-        \delta_{i_\ell',i_\ell} & X_{i_\ell',i_\ell} & Z_{i_\ell',i_\ell} \\
-        0 & 0 & X_{i_\ell',i_\ell} \\
+        \delta_{i_\ell',i_\ell} & X_{i_\ell',i_\ell} & h Z_{i_\ell',i_\ell} \\
+        0 & 0 & J X_{i_\ell',i_\ell} \\
         0 & 0 & \delta_{i_\ell',i_\ell}
     \end{pmatrix}
+    \equiv\includegraphics[valign=c]{figures/mpo.pdf}
     .
 \end{align}
 It is straightforward to introduce two additional boundary tensors, in equivalence to \cref{eq:boundary_W}
 \begin{align}
     W^{[i_1',i_1]} =
     \begin{pmatrix}
-        \delta_{i_1',i_1} & X_{i_1',i_1} & Z_{i_1',i_1}
+        \delta_{i_1',i_1} & X_{i_1',i_1} & h Z_{i_1',i_1}
     \end{pmatrix}
+    \equiv\includegraphics[valign=c]{figures/mpo_left.pdf}
     ,\quad
     W^{[i_L',i_L]} =
     \begin{pmatrix}
-         Z_{i_L',i_L} \\
-         X_{i_L',i_L} \\
+         h Z_{i_L',i_L} \\
+         J X_{i_L',i_L} \\
          \delta_{i_L',i_L}
-    \end{pmatrix}.
+    \end{pmatrix}
+    \equiv\includegraphics[valign=c]{figures/mpo_right.pdf}.
 \end{align}
 The MPO representation $W$ of the Hamiltonian $\hat H$ is quite versatile -- any Hamiltonian can be recast into a set of matrix product operators that are upper triangular (or lower triangular), even if the interactions are long-ranged or spatially dependent, e.g. in the case of disorder.
 Note that the MPO form is not limited to spin systems due to the famous Jordan-Wigner transformation.
@@ -531,7 +562,7 @@ It is defined in terms of the ladder operators with matrix representations $\hat
 \end{align}
 This way, the fermionic creation and annihilation operators are represented by spin ladder operators.
 To restore the anticommutation relations of fermions, the additional phase string is required.
-Note that the presence of the string of $\hat Z$'s in general imposes long-ranged interactions in two-dimensional systems, such that a direct application of the Jordan-Wigner transformation is primarily used in (quasi) one-dimensional systems~\cite{Franchini2017}.
+Note that the presence of the string of $\hat Z$'s in general imposes long-ranged interactions in two-dimensional systems, such that a direct application of the Jordan-Wigner transformation is primarily used in (quasi) one-dimensional systems~\cite{Franchini2017}\footnote{For higher-dimensional lattices, the Bravyi-Kitaev mapping may be more suited~\cite{Bravyi2002}.}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -594,7 +625,9 @@ To cast \cref{eq:lagrangian_multiplier} into a variational problem for the tenso
     \label{eq:lagrangian_multiplier_graphical}
 \end{align}
 In the above, I use square tensors to denote the local MPOs of the Hamiltonian.
-I now proceed by the application of a gradient on both sides of \cref{eq:lagrangian_multiplier}, in which I derive with respect to the entries of the contraction of the red, black and blue tensor, i.e.
+The aim is now to optimize all tensors in order to extremize \cref{eq:lagrangian_multiplier_graphical}.
+To obtain something feasible, I now derive an equation which considers a local optimization of the two colored tensors.
+This is achieved by the application of a gradient on both sides of \cref{eq:lagrangian_multiplier}, in which I derive with respect to the entries of the contraction of the red, black and blue tensor, i.e.
 \begin{align}
     \nabla(\ell,\ell+1)_{kn}\equiv\frac\partial{\partial\brlr{U^{i_\ell}_{k,l}S_l V^{\dag i_{\ell+1}}_{l,n}}^*}.
 \end{align}
@@ -615,7 +648,8 @@ The earlier applied gradient then simply corresponds to $\nabla_{\bm A_C}$ and t
     \bm H_{\rm eff.}^{[i_\ell',i_{\ell+1}',i_\ell,i_{\ell+1}]}{\bm A}_C^{[i_\ell,i_{\ell+1}]} = \lambda_\psi {\bm A}_C^{[i_\ell',i_{\ell+1}']}.
     \label{eq:MPS_optimization}
 \end{align}
-It is now obvious that (i) the Lagrange multiplier $\lambda_\psi$ corresponds to the energy of the MPS and (ii) the equations span a standard eigenvalue problem for the vector $\bm A_C$ which can be solved efficiently for the end of the spectrum with libraries like ARPACK~\cite{Lehoucq1998}.
+It is now obvious that (i) the Lagrange multiplier $\lambda_\psi$ corresponds to the energy of the MPS and (ii) the equations span a standard eigenvalue problem for the vector $\bm A_C$ which can be solved efficiently for the end of the spectrum with sparse eigenvalue solvers based on an iterative matrix-vector multiplication.
+This is achieved by, e.g. the Arnoldi algorithm~\cite{Arnoldi1951}, implemented in open-source libraries like ARPACK~\cite{Lehoucq1998}.
 After the optimal low-energy vector is computed, it must be reshaped back to a tensor, and then decomposed through the generalized SVD to obtain the original canonical form of the MPS.
 In particular, one performs the sequence
 \begin{align}
@@ -766,10 +800,9 @@ This concept of reducing the variational space can be taken even further by the 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-There are several well-established methods used to simulate the time evolution of an initial MPS~\cite{Paeckel2019} and here I will focus on the time-dependent variational principle (TDVP).
-The crucial difference to other algorithms is that it utilizes a backward evolution of the singular values in order to project the tensor onto its tangent space.
-This way it aligns the variational trajectory to the tangent space of the MPS, leading to a particularly robust and efficient implementation compared to other algorithms~\cite{Haegeman2011}.
-In addition, TDVP of a trial MPS in imaginary time is known to be identical to traditional DMRG, which leads to a unified framework for the time evolution and optimization of matrix product states~\cite{Haegeman2016}.
+There are several well-established methods used to simulate the time evolution of an initial MPS~\cite{Paeckel2019} and here I will focus on the time-dependent variational principle (TDVP), mostly because it is easily formalized in the established MPO and MPS terminology\footnote{The crucial difference to other time-evolution algorithms is that it utilizes a backward evolution of the singular values in order to project the tensor onto its tangent space.
+This way it aligns the variational trajectory to the tangent space of the MPS, leading to a particularly robust and efficient implementation compared to other algorithms~\cite{Haegeman2011}.}.
+In the limit of infinite imaginary time, TDVP is known to be identical to traditional DMRG, which leads to a unified framework for the time evolution and optimization of matrix product states~\cite{Haegeman2016}.
 
 Before I introduce the algorithm, we need a couple of prerequisites.
 First, the MPS will be written in the mixed canonical gauge with a tensor $A_C$ (matrix $C$) which is not an isometry, i.e.
@@ -807,7 +840,7 @@ The projector $\hat P_{T\ket\psi}$ onto the tangent space of the MPS of $\ket\ps
 \begin{align}
     \hat P_{T\ket\psi} = \sum_{\ell=1}^L \hat P_{A(\ell-1)}\hat{\mathbb1}_\ell \hat P_{B(\ell+1)} - \sum_{\ell=1}^{L-1}\hat P_{A(\ell)} \hat P_{B(\ell+1)}
 \end{align}
-in which $\hat P_{A/B(\ell)}$ are the corresponding projections onto the vectors of $\ket\psi$ forming the partition $A/B(\ell)$ of the first/last $\ell$ quantum numbers.
+in which $\hat P_{A/B(\ell)}$ are the corresponding projections onto the vectors of $\ket\psi$ forming the partition $A/B(\ell)$ of the first/last $\ell$ quantum numbers\footnote{Note that I conveniently use the convention $\hat P_{A(0)}=\hat P_{B(L+1)}=1$.}.
 In the gauge chosen for $\ket\psi$, the action of the tangent space projector onto the MPS representation of $\ket \psi$ can be written as a sum of rank-$2L$ tensors of the form
 \begin{align}
     P_{T\ket\psi}
@@ -837,7 +870,7 @@ One can thus identify a set of $2L-1$ independent differential equations
     \frac{\rd\ket\psi}{\rd t} = -\ri \hat P_{A(\ell)} \hat P_{B(\ell+1)}\hat H\ket\psi
     .
 \end{align}
-By tracing out the stationary isometries, one obtains the differential equations for the tensors
+Multiplication with $\bra{\psi}$ from the left then yields the differential equations for the local tensors
 \begin{align}
     {\dot A}_C^{[i_\ell']} = +\ri H_{\rm eff.}^{[i_\ell',i_\ell]} A_C^{[i_\ell]},
     \quad
@@ -893,8 +926,8 @@ Similarly to two-site DMRG, the TDVP algorithm can be easily implemented by time
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-By definition, MPS can only present pure quantum states which have the generic form of~\cref{eq:generic_state}.
-In order to represent some mixed state, it is therefore necessary to implement an additional ingredient like minimally entangled typical thermal states (METTS) or matrix product purification schemes~\cite{Binder2015}.
+By definition, MPS can only represent pure quantum states which have the generic form of~\cref{eq:generic_state}.
+In order to represent some mixed state, it is therefore necessary to implement an additional ingredient like matrix product density operators (MPDO) minimally entangled typical thermal states (METTS) or matrix product purification schemes~\cite{Binder2015}.
 The purification scheme is the most straightforward method, as it implements auxiliary degrees of freedom which act as thermofield doublet states~\cite{Barnett1987}.
 In particular, the Hilbert space will be doubled $\HS = \HS_p\otimes\HS_a$, in which $\HS_p$ and $\HS_a$ denote the physical and auxiliary space.
 The density matrix of the thermal system is then a trace of the pure density matrix with respect to the auxiliary states, i.e.
@@ -913,7 +946,7 @@ To obtain a finite-temperature state at $\beta\neq0$, the initial state can then
 The constant is readily fixed by normalizing the purified state after tracing the auxiliary degrees of freedom.
 Note that the trace of the auxiliary states leads to an additional gauge degree of freedom.
 In particular, the application of any unitary gate onto the ancilla subspace will leave the physical state untouched.
-This opens up the possibility to explore ``minimal entanglement'' gauges, resulting in particularly efficient tensor network schemes~\cite{Barthel2013,Hauschild2018}.
+This opens up the possibility to explore ``minimal entanglement'' gauges, resulting in particularly efficient tensor network schemes~\cite{Barthel2013,Hauschild2018,Wolff2020}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -923,11 +956,11 @@ This opens up the possibility to explore ``minimal entanglement'' gauges, result
 %
 %
 The existence of symmetries implies a corresponding conserved quantity according to the Noether theorem from 1918.
-This in general allows to decouple a full problem into simpler sub-problems, such as solving a translationally invariant quadratic Hamiltonian for each conserved quantity (crystal momentum) in Fourier space.
+This in general allows to decouple a full problem into simpler sub-problems, such as solving a translationally invariant quadratic Hamiltonian for each value of the conserved quantity (crystal momentum) in Fourier space.
 
-In computational physics, they open up the possibility to implement the preservation of such conserved quantities in an exact manner, which typically leads to a significant overall speed-up.
-One of the most prominent conserved quantity is the preservation of the number of particles $N$ in closed quantum systems.
-Implementing the preservation of $N$ in MPS allows to immediately select a target Fock space $\FS^N$ without the need of scanning a chemical potential.
+In computational physics, this opens up the possibility to implement the preservation of conservation laws, which typically leads to a significant overall speed-up and better convergence.
+Take for instance the preservation of the number of particles $N$ in closed quantum systems.
+Implementing the preservation of $N$ in MPS allows to immediately select a target Fock space $\FS^N$ without the need of scanning a chemical potential in the full many-body Hilbert space.
 
 In quantum mechanis, symmetry elements $g$ of a group $G$ are typically unitary and stationary representations, i.e. they satisfy the commutation
 \begin{align}
@@ -956,13 +989,14 @@ The symmetric Hamiltonian is thus block diagonal in the $\alpha$ sectors without
 For instance, the continuous planar rotation group, denoted by $U(1)$, is the symmetry group related to the conservation laws of integer quantities like the total number of particles.
 In this case, the irrep label $\alpha\in\mathds Z$, the element $g\in[0,2\pi)$, compositions are additive $g\circ g' = {(g+g')\mod 2\pi}$, and $\varphi_\alpha(g) = g\alpha$.
 For later use, I also define the inverse irrep $\alpha^\dag=-\alpha$.
-Other examples of typical symmetry groups and their corresponding description is listed in~\cite{Silvi2019}.
+Other examples of typical symmetry groups and their corresponding description listed in~\cite{Silvi2019}.
 
 From the different classes of symmetries, pointwise symmetries are particularly efficient in the framework of tensor networks.
 As the name suggests, the global representation of a pointwise symmetry satisfies $U(g)=\bigotimes_i V_i(g)$ and is composed of local representations $V_i(g)$ of the group element $g$ acting on site $i$.
-There are two main symmetries which are pointwise, (i) global pointwise and (ii) lattice gauge symmetries.
+There are two main families of symmetries which are pointwise, (i) global pointwise and (ii) lattice gauge symmetries.
 The former (i) are described by local elements $V_i(g)$ which are nontrivial for every site, and they are usually uniform such that $V_i(g)=V(g)$.
 The latter (ii) have nontrivial support for a restricted number of sites and are a powerful tool for the simulation of lattice gauge models~\cite{Banuls2014,Buyens2015}.
+We focus here on the first one only.
 
 The locality of pointwise symmetries can be exploited by implementing a tensor network which remains invariant under the action of the symmetry.
 This can be achieved by two elementary building blocks, symmetric links (i) and symmetric tensors (ii).
@@ -971,6 +1005,8 @@ Index values with the same $\alpha$ are counted by the degeneracy number $\gamma
 It is thus possible to generate a bijection between the leg index value $i$ and symmetric link tuple $(\alpha,\gamma)$.
 To simplify notation, I will drop the indication of the bijection, and replace the occurrence of the leg index value with the symmetric link tuple, i.e. $i\equiv(\alpha,\gamma)$.
 This way, symmetric links associate a specific unitary representation of the group $G$, and each tuple $(\alpha,\gamma)$ labels a specific irrep.
+
+\todoil{Invariant states decompose into invariant tensors.}
 
 A tensor $T$ is called Abelian symmetric if it is invariant under the simultaneous application of $W_i(g)$ associated to the symmetric links $r$, i.e.
 \begin{align}
@@ -1009,4 +1045,3 @@ This can be depicted through a set of ``incoming'' and ``outgoing'' arrows with 
 \end{align}
 All of the algorithms introduced in this chapter are compatible with the use of symmetric tensors, and can be promoted to symmetric algorithms in a straightforward manner.
 For a careful implementation guide, I refer to the detailed steps in~\cite{Silvi2019}.
-\todo{Concluding remarks and reference to the research}
