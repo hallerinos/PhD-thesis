@@ -2,9 +2,25 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \chapter*{Introduction}
-% \chaptermark{Custom chapter mark}
-\label{ch:introduction}
-\todoil{Write general introduction: In this thesis, we do this and that...}
+In this thesis, we investigate the effects of interactions on several different quasi one-dimensional ladder models of fermions and bosons.
+Hereby, we use a number of different basic ingredients which are motivated from the ``building blocks'' of ultracold optical lattice systems such as complex tunneling amplitudes, diagonal cross hopings and tunable repulsive interactions.
+
+In fermionic systems, we found a possibility to {\it enhance} the zero frequency component of the conductivity at zero temperature (a.k.a. the Drude weight) by repulsive density-density interactions (see \cref{drude_increased1}).
+The enhancement of this quantity under repulsive interactions is contradicting the ``common wisdom'' for one-dimensional quantum which should always show a decreasing Drude weight.
+The ``loophole'' is given through the quasi one-dimensional extension of our ladder, which allows to generate spin-orbit coupling and, ultimately, an imbalance between forward- and backscattering processes, resulting in a flexible way of tuning the Drude weight.
+Our results are therefore interesting for the modification of transport properties in setups of ultracold atoms.
+
+We study the emergence of helical liquids by repulsive interactions (see \cref{one_half1,integer1}) and density-assisted hoppings (see \cref{chiral1}).
+In general, such phases result from commensurabilities between particle density and flux, and share many similarities to the phases encountered in the Quantum Hall effect.
+In this sense, some of the quasi one-dimensional helical phases can be interpreted as the predecessor of topological order, thus sometimmes dubbed pretopological, if they have a natural extension to 2D.
+For fermions (see \cref{one_half1}), we study the emergence of an exotic phase located at particle filling factor $\nu=1/2$ which naturally extends to a fractional Quantum Hall phase, i.e. the bosonic $K=8$ state.
+We then also study a similar phase in a ladder of hard-core bosons (see \cref{integer1}), located at filling factor $\nu=1$.
+In both cases, we derive the phase diagram through renormalization group theory calculations and test our hypotheses through matrix product state simulations.
+Our work provide a hallmark in the analysis of such systems, extending the semiclassical approximations typically being made in similar studies.
+
+A natural task in the context of topological insulators considers the measurement of the topological invariant, which is typically a hard task for experiments.
+For chiral symmetric systems, we propose a dynamical protocol based on the mean chiral displacement which provides a tomography of the topological index (see \cref{mcd1}).
+We furthermore provide a basic experimental blueprint in order to implement our proposition.
 
 As an undergraduate student studying elementary physics, I always thought of quantum particles as plain waves living in the differential-geometric world of ``first quan\-ti\-zation'' which (at least for me) is both beautiful and frustrating at the same time as the task of solving the most simple problems may become quite involved, if not even impossible.
 The modern approach is not a straightforward attempt to solve the real-space wave function by integrating a given Schrödinger equation, it rather sticks to an alternative representation in the algebraic world of ``second quantization'' where the action of operators dictates all physical consequences.
@@ -16,18 +32,34 @@ Independent of the formulation, be it first or second, all quantum theories requ
 all quantum states are represented by state vectors $\{|q\rangle\}$ forming a complete basis of the Hilbert space and observables are defined through Hermitian operators acting on that space.
 The states are given through a set of good quantum numbers $q$, e.g. $(n,l,m)$ associated with the total energy, angular momentum and its projection along the primary axis for the electron of hydrogen.
 
-The first chapter of this thesis ``On the quantization of motion and fields'' reviews these basic concepts in more detail.
-I will also illustrate the treatment of perturbations on top of a quadratic/non-interacting Hamiltonian which is a crucial tool in the understanding of quantum matter.
-This becomes particularly clear in the concept of Luttinger liquids as a first example of a quantum field theory satisfying the algebra of a quantum harmonic oscillator.
+The very first chapter of this thesis reviews these basic concepts in more detail.
+The first sections, i.e. \cref{sec:creation_and_annihilation_operators,sec:representation_of_generic_operators,sec:periodic_potentials,sec:tight_binding_systems}, are aimed to guide undergraduate students which are new in the field of condensed matter.
+To become familar with the basics, I review the tight binding approximation in \cref{sec:tight_binding_systems}, derived from the Kronig-Penney model in the strong potential limit (see \cref{sec:periodic_potentials}).
+I then illustrate the treatment of interactions on top of a quadratic/non-interacting Hamiltonian which is a crucial tool in the understanding of quantum matter.
+This becomes particularly easy in the concept of Luttinger liquids (see \cref{sec:tomonaga_LL}) as a first example of a quantum field theory satisfying the algebra of a quantum harmonic oscillator.
 The key in Luttinger liquids is that the effective theory describing intrinsically interacting microscopic models remains quadratic at the operator level, and as such effectively non-interacting.
-This is a universal feature and also the limitation of perturbation theory in general, which is build upon the assumption that the single-particle basis provides the necessary ingredient.
-In order to treat higher-order interactions analytically, I then introduce the concept of renormalization group theory, which provides a platform to study if and when the single-particle basis must be exchanged in favor of the collective many-body basis dictated by the interactions.
+I then use the formalism of path integrals (see \cref{sec:properties_of_real_scalar_fields_and_their_correlations}) to derive analytic expressions of the correlation functions.
+A common interaction which potentially melts the Luttinger liquid phase is a sine-Gordon term, which I derive in \cref{sec:LL_with_spin}.
+In order to treat such higher-order interactions analytically, I introduce the concept of renormalization group theory (see \cref{sec:renormalization_group_theory}), which provides a platform to study if and when the single-particle basis must be exchanged in favor of the collective many-body basis dictated by the interactions.
 One major drawback is that renormalization group theory relies on many simplifications along the way to make the calculation amendable, and microscopic details of the model are often lost in the approximations.
 In such cases, solid quantitative predictions are hard to provide analytically, such that numerical tools become essential.
 
 A simple-minded and brute force calculation of a full solution scales exponentially with the number of constituents, such that exact diagonalization of interacting models is limited to small system sizes (e.g. $\sim 20$ sites for interacting spin-1/2 models in typical studies).
 This stresses the need for more efficient numerical techniques in the study of non-perturbative regimes which cannot be amended analytically.
-In this thesis, I mainly use matrix product states (MPS), which is why I devoted a chapter highlighting the basic ideas and providing the essential algorithms to tackle almost any microscopic model at hand.
+In this thesis, I mainly use matrix product states (MPS), and I illustrate the main concepts in \cref{ch:matrix_product_states}.
+In \cref{sec:tensor_networks,sec:reduced_density_matrix_and_renyi_entropy}, I begin with a general introduction into the field of tensor networks and MPS.
+A general discussion of scaling relations of the entanglement entropy is used to explain the effectivity of the MPS Ansatz (see \cref{sec:scaling_relations_of_the_entanglement_entropy}).
+As a natural extension to MPS, I then introduce matrix product operators (MPO) in \cref{sec:matrix_product_operators} which are most useful to express the Hamiltonian, and to calculate observables in general.
+After the preliminary introductions, I introduce the basic strategy to approximate ground states based on an MPS Ansatz in \cref{sec:variational_ground_state_search}.
+This algorithm is quite similar to the (imaginary) time evolution presented in \cref{sec:time_evolution}, which can also be used to simulate finite temperature systems, presented in \cref{sec:finite_temperature}.
+I conclude the chapter by a basic introduction into symmetry invariant MPS formulations, discussed in \cref{sec:exploiting_symmetries}.
 
 Perhaps the most interesting behavior of quantum many-body physics is that of so-called emergent phenomena -- e.g. the appearance of quasi-particles which extend the canonical statistical properties of fermions and bosons in low dimensions, or the presence of robust quasi-particles at the boundaries of a topological insulator.
-In order to perceive a basic overview in this topic, I conclude the introduction with a review on the classification of non-interacting topological matter and finish with some general statements on interacting topological insulators.
+In order to perceive a basic overview in this topic, I review the classification of non-interacting topological matter in \cref{ch:topological_phases_of_matter}.
+The key concept for the full classification is based on topological band theory, presented in \cref{sec:topological_band_theory}, a genuinely non-interacting formulation of symmetry protected topological phases of matter.
+The notion of the topological index arises from the Berry phase and the Berry connection, and I recap the original paper.
+As an example, the Su-Schrieffer-Heeger chain is then explored in \cref{sec:the_SSH_chain} to apply the introduced concepts.
+I conclude the third chapter by explaining the classification of topological insulators and superconductors in \cref{sec:Periodic_table_of_topological_insulators_and_superconductors}.
+
+In \cref{part:results}, I first summarize my original contributions to our published works, which are then presented in a chronological manner.
+I conclude this thesis with a summary and perspectives.
