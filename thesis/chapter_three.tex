@@ -12,28 +12,28 @@
 %
 Interestingly, the meaning of the term ``topology'' changes with the research focus of the scientist.
 For instance, chemists quite often understand topology as the geometric configuration of a molecule and biologists talk about the topology of knotted proteins.
-A condensed matter physicist typically classifies certain structures, e.g. insulating materials or magnetic whirls, with the concepts of topological invariants~\cite{topocondmat}.
+A condensed matter physicist typically classifies certain structures, e.g. insulating materials or magnetic whirls, with the concepts of topological invariants.
 This approach is closely related to one of the most fundamental invariants in the mathematical branch of topology: the genus of a manifold which can be thought of as the ``number of holes''.
 This number is known not to change under smooth deformations.
 Consider the following three ``manifolds'', i.e. a donut, a coffee mug and a pretzel.
 It may be delicate to do, but one could simply stretch and massage the donut to obtain a mug without ``cutting'' and ``glueing'', which is a necessity to go from donut to pretzel.
 The ``stretching'' can be understood as smooth deformation, and as a consequence the two shapes have the same genus.
 However ``cutting'' and ``glueing'' is something very sudden and irreversible, which changes the genus of the manifold.
-The idea of explaining phenomena in quantum states of matter such as the quantum Hall effect or superfluid phase transitions using the mathematical concepts of topology was established by David J. Thouless, F. Duncan M. Haldane and J. Michael Kosterlitz and resulted in the 2016 Nobel prize~\cite{NP2016}.
+The idea of explaining phenomena in quantum states of matter such as the quantum Hall effect or superfluid phase transitions using the mathematical concepts of topology was established, among others, by David J. Thouless, F. Duncan M. Haldane and J. Michael Kosterlitz and resulted in the 2016 Nobel prize~\cite{NP2016}.
 
 Exploring, engineering and probing topological quantum matter, in my perspective, is still one of the most exciting research areas.
 It is not only a delicate challenge due to the interdisciplinary methods that have been developed in the past decades, it is also highly relevant for its technical applications.
-For instance, a so-called topological quantum computer exploits the rich exchange rules of exotic quasiparticles called anyons, which exist at the interfaces of topological quantum matter~\cite{Freedman2002}.
-These particle ``braidings'' can be understood as logical gates that make up the processing unit of a hypothetical computer.
-One of the major advantages of using these quasiparticles compared to other approaches is their incredible robustness against perturbations in the bulk of the material.
+For instance, a so-called topological quantum computer is forseen to exploit the rich exchange rules of exotic quasiparticles called anyons, which are located at the defects of topological quantum matter~\cite{Freedman2002}.
+The controlled particle exchange, called ``braiding'', can be understood as logical gates that make up the processing unit of a hypothetical computer.
+One of the major advantages of using these quasiparticles compared to other approaches is their robustness against perturbations in the bulk of the material.
 The foundation for the existence of such a class of quasiparticles is commonly accepted to be topological order: a certain long-range ordered pattern of quantum entanglement.
 One example of a topologically ordered state would be the Moore-Read state~\cite{Moore1991,Read1996} which has a large wave-function overlap with the fractional quantum Hall state at filling factor $\nu=5/2$~\cite{Storni2010}.
 Since fractional quantum Hall states are strongly correlated quantum many body systems, analytic attempts are particularly involved and quantitative statements like those in~\cite{Storni2010} are based on exact diagonalization of small systems or numerical simulations in general.
 
 The ``trivial'' cousins of topologically ordered phases of matter are symmetry protected topological phases of matter which do not show long-range entanglement.
-The fascination of this topic is -- similar to true topologically ordered phases -- based on the geometric ground state degeneracy and exponential localization of the interface excitations.
-One famous example of such a system is a topological insulator, which, like an ordinary insulator, has a bulk energy gap separating the valence from the conduction band.
-Unlike ordinary insulators, it hosts gapless surface states which are protected by symmetry.
+The fascination of this topic is -- similar to true topologically ordered phases -- based on ground state degeneracy and exponential localization of the interface excitations.
+One famous example of such a system is a symmetry-protected topological insulator, which, like an ordinary insulator, has a bulk energy gap separating the valence from the conduction band.
+Unlike ordinary insulators, it hosts gapless surface states which are protected by a set of symmetry constraints.
 The nature of topological insulators can be understood by simple non-interacting models, which makes the topic analytically amendable using standard band theory.
 This lead to the full classification of symmetry protected topological phases, famously known as the periodic table of topological insulators and superconductors~\cite{Altland1997,Kitaev2009}.
 
@@ -53,7 +53,7 @@ To make the food example in the introduction more rigorous, the Gauss-Bonnet the
     \chi = \frac1{2\pi}\int_S K\rd S.
     \label{eq:gauss_bonnet_theorem}
 \end{align}
-If the surface is implicitly described by the regular kernel of a function $f(x,y,z)$, $K$ is defined through the Hesse matrix $H_f$ and gradient $\bm\nabla$ of $f$~\cite{Goldman2005}
+If the surface is implicitly described by the regular kernel of a function $f(x,y,z)$, $K$ is defined through the Hesse matrix ${H_f}_{i,j}=\frac{\partial^2 f}{\partial_{x_i}\partial_{x_j}}$ and gradient $\bm\nabla$ of $f$~\cite{Goldman2005}
 \begin{align}
     K = \frac{\bm\nabla f^T H_f^\dag \bm\nabla f}{|\bm\nabla f|^4}.
 \end{align}
@@ -61,10 +61,10 @@ For instance, a three-dimensional sphere of radius $r$ can be described implicit
 \begin{align}
     \chi_{S^2} = \frac1{2\pi}\int_0^{2\pi}\rd\phi \int_0^\pi\rd\theta K r^2\sin\theta = 2.
 \end{align}
-In general, the Euler characteristic is quantized, independent of smooth deformations of the surface $S$ and relates to the genus $g$ (``number of holes'') by $\chi=2-2g$~\cite{Nakahara1990}.
+In general, the Gauss-Bonnet theorem states that the Euler characteristic is quantized, independent of smooth deformations of the surface $S$, and relates to the genus $g$ (``number of holes'') by $\chi=2-2g$~\cite{Nakahara1990}.
 The topological invariants encountered in the next sections are similar, although they characterize more abstract objects.
 
-The classification of topological insulators is possible within the band theory of solids: neglecting interactions and exploiting translational symmetry of crystals defines a periodicity in crystal-momentum space, which I already exploited excessively in \cref{ch:the_quantization_of_motion_and_fields}.
+The classification of topological insulators is possible within the band theory of solids: neglecting interactions and exploiting translational symmetry of crystals defines a periodicity in crystal-momentum space, which I already illustrated in \cref{ch:the_quantization_of_motion_and_fields}.
 Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch states defined in a single unit-cell consisting of $s$ individual constituents.
 Each Bloch state is an eigenstate of the Bloch Hamiltonian $\hat H(\bm k)$ which can be represented as a $\bm k$-dependent $s\times s$ matrix $H(\bm k)$.
 Its ordered spectrum $\varepsilon_s(\bm k)$ define what is known as the band structure.
@@ -72,11 +72,11 @@ For insulators, a finite energy gap $\Delta$ separates the occupied valence band
 Lattice translation symmetry implies the identity $H(\bm k + \bm G) = H(\bm k)$ for any reciprocal lattice vector $\bm G$, which defines the crystal momentum in the periodic Brillouin zone with $\bm k\equiv \bm k+\bm G$, which has the topology of a torus.
 An insulating band structure can thus be viewed as a mapping from the torus to the space of Bloch Hamiltonians with a finite energy gap~\cite{Kane2013}.
 
-Two systems I, II are called topologically equivalent, if their corresponding Bloch Hamiltonians $H_{\rm I}$, $H_{\rm II}$ can be adiabatically connected without closing the energy gap.
-Otherwise put, for topologically equivalent phases, there exists a parameter path adiabatically changing the Hamiltonian $H({t})$ which connects the two phases $H({0})=H_{\rm I}$ and $H({1})=H_{\rm II}$ in such a way that the band gap $\Delta(t)\neq0$ does not vanish along the path.
-Consider now the special case of an interface where the crystal smoothly interpolates between two distinct topological phases.
-Somewhere along the path the gap necessarily vanishes to not violate the assumption, which implies the presence of zero-energy states spacially localized around the gap-closing point.
-This interplay between bulk and surface is a ubiquitous phenomenon in topological insulators called the bulk-boundary correspondence.
+Two insulating systems are called adiabatically equivalent (or adiabatically connected), if their corresponding Hamiltonians can be adiabatically connected without closing the energy gap.
+Consider the special case of an interface where the crystal smoothly interpolates between two distinct insulating phases.
+Somewhere along the path the gap necessarily vanishes to not violate the assumption, which implies the presence of zero-energy modes spacially localized around the degeneracy.
+This interplay between bulk and surface is a ubiquitous phenomenon called the bulk-boundary correspondence.
+The key question I seek to answer in the remaining chapter is: can we find and characterize all equivalence classes of Hamiltonians which are generated from these statements?
 
 One of the key concepts in topological band theory is the Berry phase, for which the construction arises from the intrinsic phase ambiguity of quantum states.
 Let me quickly recap the main results of the original work, presented in~\cite{Berry1984}.
@@ -100,8 +100,9 @@ Although $\gamma$ is, in general, non-integrable, the phase is not allowed to fl
 \end{align}
 By defining the Berry connection (sometimes called Berry potential) $\bm A_n(\bm r) = -\ri \braket{n(\bm r)|\bm\nabla n(\bm r)}$, the allowed phase change of $\ket\psi$ around a closed loop $C$ in $\bm r$-space is thus given by
 \begin{align}
-    \ket{\psi(T)} = \re^{-\ri \gamma_n(C)}\re^{-\ri/\hbar\int_0^T\varepsilon_n(\bm r(t))dt}\ket{\psi(0)},
-    \quad
+    \ket{\psi(T)} = \re^{-\ri \gamma_n(C)}\re^{-\ri/\hbar\int_0^T\varepsilon_n(\bm r(t))dt}\ket{\psi(0)}
+    ,\quad
+    \\
     \gamma_n(C) = \oint_C{\bm A_n}\cdot\rd \bm r.
     \label{eq:phase_change}
 \end{align}
@@ -117,8 +118,8 @@ In particular, we can derive the Berry flux by rewriting $\gamma_n(C)$ using Sto
     \gamma_n(C) = \int_S{\bm\nabla}\times{\bm A_n}\cdot\rd{\bm S} = -\ri\sum_{m\neq n}\int_S\braket{\bm\nabla n|m}\times\braket{m|\bm\nabla n}\cdot \rd{\bm S}
     \label{eq:berry_phase_stokes_theorem}
 \end{align}
-in which $\rd{\bm S}$ denotes the area element in ${\bm r}$-space, the surface $S$ is spanned by the closed contour $C$, and the excluded terms are justified by $\bm A$ being imaginary.
-The off-diagonal matrix elements are given by the eigenvalue equation and result to $\braket{m|{\bm\nabla} n} = \braket{m|\bm\nabla\hat H|n}/(\varepsilon_n-\varepsilon_m)$ ($m\neq n$).
+in which $\rd{\bm S}$ denotes the area element in ${\bm r}$-space, the surface $S$ is spanned by the closed contour $C$, and the excluded terms are justified by $\bm A$ being real-valued.
+The off-diagonal matrix elements are given by $\braket{m|{\bm\nabla} n} = \braket{m|\bm\nabla\hat H|n}/(\varepsilon_n-\varepsilon_m)$ ($m\neq n$).
 It is thus possible to define the equivalent of a magnetic field, called Berry curvature
 \begin{align}
     \bm F_n = -\ri\sum_{m\neq n}\braket{n|\bm\nabla\hat H|m}\times\braket{m|\bm\nabla\hat H|n}/(\varepsilon_m-\varepsilon_n)^2
@@ -126,9 +127,16 @@ It is thus possible to define the equivalent of a magnetic field, called Berry c
 such that we arrive at the beautiful result
 \begin{align}
     \gamma_n(C) = \oint_C{\bm A_n}\cdot\rd \bm r = \int_S {\bm F_n}\cdot\rd{\bm S}.
+    \label{eq:berry_phase_stokes_theorem_2}
 \end{align}
+Note that the final equations derived here, in particular \cref{eq:phase_change} depend on the path $C$ only.
+Starting from an $n$-variable parametrization, $C$ is then promoted from a one-dimensional to an $n$-dimensional path\footnote{
+    The fundamental generalization of Stokes' theorem is the Stokes-Cartan theorem.
+    It states that the integral of a differential form $\omega$ over the surface $\partial M$ of an (orientable) manifold $M$ is equivalent to the integral of the exterior derivative $\rd\omega$ over the full manifold $M$, i.e. $\int_{\partial M}\omega = \int_M\rd\omega$.
+    The definitions of a differential form $\omega$, it's exterior derivative $\rd\omega$ and the surface of an orientable manifold $\partial M$ are found in many textbooks, e.g.~\cite{Nakahara1990}.
+}.
 
-To understand the general equations, let me compute the Berry phase for a generic $2\times 2$ Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
+To apply the general equations in a solid-state context, let me now take for granted a generic $2\times 2$ Bloch Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
 \begin{align}
     H(\bm d(\bm k)) = \bm d(\bm k)\cdot\bm\sigma = \varepsilon(\bm k) \hat{\bm d}(\bm k)\cdot\bm\sigma
     =
@@ -140,6 +148,9 @@ To understand the general equations, let me compute the Berry phase for a generi
     \label{eq:arbitrary_2by2}
 \end{align}
 in which $\hat{\bm d}={\bm d}/|\bm d|$ is a vector of unit norm and $\varepsilon_\pm = \pm\varepsilon = \pm|\bm d|$ spans the energy dispersion.
+This is the generic Hamiltonian of a translationally invariant tight binding model of a two-site unit cell in arbitrary dimensions $d$.
+Note that the path is thus promoted naturally from a one-dimensional to a $d$-dimensional parametrization $C=C(\bm k)$.
+For a more concrete example, I refer to the one-dimensional Su-Schrieffer-Heeger chain studied in \cref{sec:the_SSH_chain}.
 A term proportional to the identity, i.e. $d_0\mathbb 1$, can be safely ignored as the eigenvectors do not depend on it.
 They are normalized vectors of the Bloch sphere and can be parametrized as
 \begin{align}
@@ -154,7 +165,7 @@ They are normalized vectors of the Bloch sphere and can be parametrized as
 \end{align}
 Note that the explored parameter space is entirely spanned by the entries of the vector $\bm d$, and as such the Hamiltonian in \cref{eq:arbitrary_2by2} has the property that $\bm\nabla\hat H \equiv \bm\nabla_{\bm d}\hat H = \bm\sigma$.
 The local Berry curvature evaluates to ${\bm F}_+ = \frac12\bm d/d^3=\frac12\hat{\bm d}/d^2$.
-Note that the curvature has the form of a point source with strength $1/2$ located at the degeneracy $\bm d=0$.
+Note that the curvature has the form of a point source with strength $1/2$ located at the degeneracy located at $\bm d=0$.
 The surface integral then yields the following fundamental result
 \begin{align}
     \gamma_{\pm}(C) = \pm\frac12\Omega(C),
@@ -174,9 +185,9 @@ Therefore, the Berry curvature integrated over a closed surface must be an eleme
 Note that \cref{eq:chern_number} shares the same fundamental expression as the Euler characteristic in \cref{eq:gauss_bonnet_theorem}.
 $\bm F_n$ can thus be understood as a curvature with similarities to a Gaussian one, and as such the quantization of the Chern number naturally extends well beyond the two-band model.
 
-In parameter spaces of other than $3$ dimensions, Stoke's theorem cannot be employed to transform the loop integral in \cref{eq:berry_phase_stokes_theorem}.
-The generalization, however, transforms \cref{eq:phase_change} into the surface integral of a $2$-form bounded by $C$.
-For example, the two-dimensional Berry connection integral results in $\gamma_n(C) = \int_S\rd r_1\rd r_2 \brlr{\partial_{r_1}{\bm A}_{n,r2} - \partial_{r_2}{\bm A}_{n,r1}}$.
+% In parameter spaces of other than $3$ dimensions, Stoke's theorem cannot be employed to transform the loop integral in \cref{eq:berry_phase_stokes_theorem}.
+% The generalization, however, transforms \cref{eq:phase_change} into the surface integral of a $2$-form bounded by $C$.
+% For example, the two-dimensional Berry connection integral results in $\gamma_n(C) = \int_S\rd r_1\rd r_2 \brlr{\partial_{r_1}{\bm A}_{n,r2} - \partial_{r_2}{\bm A}_{n,r1}}$.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -206,7 +217,7 @@ The Hamiltonian falls under the category in \ref{eq:arbitrary_2by2}, and I ident
     \quad
     d_z = 0.
 \end{align}
-Examples of the band dispersion $\varepsilon_\pm(k))\pm\sqrt{J^2+J'^2+2JJ'\cos(k)}$ for different values of the couplings are plotted in \cref{fig:ssh_dispersion}
+Examples of the band dispersion $\varepsilon_\pm(k)=\pm\sqrt{J^2+J'^2+2JJ'\cos(k)}$ for different values of the couplings are plotted in \cref{fig:ssh_dispersion}
 \begin{figure}[ht]
     \centering
     \includegraphics{figures/ssh_dispersion_0.png}
@@ -280,6 +291,7 @@ Since the winding counts the number of circles which $\hat{\bm d}$ performs arou
     \frac{1}{4\pi\ri} \tr\int\rd k \sigma_z H^{-1}\partial_k H
     =
     \frac{1}{4\pi\ri} \tr\int\rd k \sigma_z g^{-1}\partial_k g,
+    \label{eq:winding_number}
 \end{align}
 in which $g(k)=G(k,\omega=0)$ is the propagator at zero frequency.
 
@@ -335,17 +347,17 @@ An exact boundary mode can be found by evaluating $hv_L=0$, with a vector $v_L =
 \end{align}
 Defining $w=J'/J$, the solution reveals an exponentially localized zero energy mode which has no support on sublattice $B$, i.e.
 \begin{align}
-    a_k=(-w)^{1-k} a_0 \rightarrow |a_k| = \re^{-(k-1)/\log w}|a_0|,
+    a_k=(-w)^{-k} a_0 \rightarrow |a_k| = \re^{-k/\log w}|a_0|,
     \quad
     b_k = 0.
     \label{eq:boundary_mode}
 \end{align}
-It is also transparent that the state generated by the vector $v_L$ would violate normalization in the TRI phase ($w<1$) and is thus allowed to exist only if the geometric series is convergent, such that $a_0 = (1-w^{-1})^{-1/2}$.
+It is also transparent that the state generated by the vector $v_L$ would violate normalization in the TRI phase ($w<1$) and is thus allowed to exist only if the geometric series is convergent.
 
 In case of a finite crystal with $N$ sites, a similar reasoning reveals the existence of two such boundary modes, generated by the vectors $v_L$ and $v_R$.
 Similarly to $v_L$, $v_R$ is exponentially localized at the right interface, has no support on sublattice $A$ and decays exponentially into the bulk.
 Thus, the two modes share exactly no overlap $v_L^T v_R = 0$.
-However, the two modes are not eigenstates of the Hamiltonian since each one slightly violates the boundary conditions $b_0=0$ and $a_N=0$.
+However, the two modes are not eigenstates of the Hamiltonian since each one slightly violates the boundary conditions.
 Note that $v_{L/R}^T h v_{L/R} = 0$ and $v_{L/R}^T h v_{R/L} = (1-w^{-1})^{-1}\re^{-(N-1)/\log w}\re^{\pm\varphi}$ with some phase $\varphi$.
 This then yields ``state hybridization'', a pair of orthogonal eigenstates with energy $\pm(1-w^{-1})^{-1}\re^{-(N-1)/\log w}$ which read $v_\pm = 1/\sqrt2(v_L \pm v_R\re^{\pm\varphi})$.
 Therefore, the hybridized states are still exponentially localized boundary modes and of ``almost'' zero energy with an exponential splitting in the system size.
@@ -362,7 +374,7 @@ Let us consider an arbitrary non-interacting system of fermions, described by th
     \hat H = \sum_{i,j}c^\dag_{i}H_{ij}c^\pdag_j = {\bm c}^\dag H {\bm c}^\pdag
 \end{align}
 with a matrix $H$ dictating possible transition events.
-As before, we denote the collection of the fermionic ladder operators as $\bm c$.
+As before, we denote the collection of the fermionic operators as $\bm c$.
 Note that $i,j$ are generic index labels -- i.e. it may represent a combination of the position $\bm x$ and additional ``internal quantum numbers'' $i\equiv(\bm x,q)$ such as the sublattice index of the SSH model for which $q\in \{A,B\}$.
 The system is invariant under a (unitary) symmetry transformation $\hat U$, if it acts on the fermionic annihilation operators as a linear map
 \begin{align}
@@ -379,7 +391,7 @@ such that $\hat U$ commutes with the Hamiltonian while preserving the anticommut
     \rightarrow
     U^\dag U = \mathbb1.
 \end{align}
-Focussing on the Altland-Zirnbauer classification, I consider here on-site symmetries only~\cite{Altland1997}.
+Focussing on the so-called ``Altland-Zirnbauer'' classification scheme, I consider here on-site symmetries only~\cite{Altland1997}.
 On-site symmetries, as the name suggests, only act on the ``internal'' degrees of freedom, such that they can be factorized $\hat U=\prod_{\bm x}\hat V_{\bm x}$ with the same $\hat V_{\bm x}$ on all lattice positions.
 Please note that ${\bm x}\neq i$, such that $\hat V_{\bm x}$ acts nontrivially on the ``internal dimension'' of the tuple $i\equiv({\bm x},q)$.
 
@@ -396,7 +408,7 @@ Applying the Hamiltonian transformation twice results in the condition
 \begin{align}
     H = {U_T}^\dag ({U_T}^\dag H^* U_T)^* U_T = ({U_T}^*U_T)^\dag H ({U_T}^* U_T)
 \end{align}
-such that ${U_T}^* U_T = \re^{\ri\alpha}\mathbb1$.
+such that ${U_T}^* U_T = \re^{\ri\alpha}\mathbb1$\todoil{Which statement do I miss to arrive here?}.
 Since $U_T$ is a unitary matrix, it satisfies ${U_T}^*={U_T}^\dag\re^{\ri\alpha}$ (and equally ${{U_T}^\dag}^* = U_T\re^{\ri\alpha}$) and as such $({U_T}^\dag U_T)^* = \re^{-\ri2\alpha}\mathbb1$ for which $\alpha\in\pi\mathds Z$.
 This implies that
 \begin{align}
@@ -429,7 +441,7 @@ Repetition of the previous computation yields
 \begin{align}
     \hat S = \hat T \hat C.
 \end{align}
-This leads to a situation in which both time reversal and particle-hole symmetry do not hold, but chiral symmetry is satisfied.
+This may lead to a situation in which both time reversal and particle-hole symmetry do not hold, but chiral symmetry is satisfied.
 One finds
 \begin{align}
     \hat S c_i \hat S^{-1} = (U_CU_T)_{ij}c^\dag_j
@@ -441,7 +453,7 @@ One finds
 in which, contrary to the other two symmetries, $U_S^2=\re^{\ri\alpha}\mathbb1$.
 This leaves a phase ambiguity, which is fixed by $U_S\rightarrow U_S\re^{\ri\alpha/2}$ such that the eigenvalues of the chiral operator are gauged to $\pm1$.
 
-We are now in shape to discuss the general symmetry classification of non-interacting systems.
+The established terminology allows to discuss the general symmetry classification of non-interacting systems.
 We obtained so far
 \begin{align}
     \begin{array}{l l l l }
@@ -475,8 +487,7 @@ However, the Hamiltonian can (or cannot) be chiral invariant in the absence of $
 For gapped Hamiltonians, the topological distinction is through adiabatic deformations of the phase diagram by smoothly changing its parameters.
 If two quantum systems can be smoothly deformed into each other without closing the gap, they are called topologically equivalent.
 Trivial insulators (TRI) are then such phases which are adiabatically connected to an atomic insulator.
-All the other equivalence classes are by definition not adiabatically connected to the atomic insulator and thus called topological insulators (TOI) or topological superconductors.
-Since the latter will not play a role for this thesis, I spare the introduction of an abbreviation do not dive into the topic of superconductivity here.
+All the other equivalence classes are by definition not adiabatically connected to the atomic insulator and thus called topological insulators (TOI)\footnote{The concepts illustrated in this section hold equally for Bogoliubov-de Gennes Hamiltonians, which describe the mean-field theory of a conventional superconductor. Such systems, however, do not make much contact to our published articles, which is why I decided to avoid their notion at this point. Instead, I refer the interested reader to the nice online course \cite{topocondmat}.}.
 To use notation of the previous paragraphs, I decouple the space from the internal dimension, i.e. $H_{ij}=H_{q_1,q_2}(\bm x,\bm x')$ and consider translational invariant systems such that $H_{q_1,q_2}(\bm x,\bm x')=H_{q_1,q_2}(\bm x-\bm x')$.
 It is then particularly convenient to use the Bloch Hamiltonian description ($c_q(\bm x)=\sum_{\bm k}\exp(i\bm k\bm x)c_q(\bm k)$), such that the previous Hamiltonian results to
 \begin{align}
@@ -500,20 +511,13 @@ By close inspection of \cref{eq:symmetry_real_space}, the action of the symmetri
         %
         & SH(\bm k)S^{-1} = -H(\bm k)
         ,\quad
-        & S = U_S
+        & S = U_S = U_C U^*_T
         ,\qquad
         & U_S^2 = \mathbb1.
     \end{array}
     \label{eq:symmetry_momentum_space}
 \end{align}
-The result of the classification is called the periodic table of topological insulators and superconductors~\cite{Kitaev2009,Qi2008,Ryu2010,Schnyder2008} and presented in \cref{tab:symmetry_classes}.
-It is based on a classification of the matrix $\exp(-\ri t H)$.
-For instance, $T=C=S=0$ imposes no additional constraint and the classifying space of the symmetry space $A$ is that of generic unitary matrices of size $N$, i.e. $U(N)$.
-This connects to a fundamental work on symmetric space from 1926 by Élie Cartan, and the ten Hamiltonian equivalence classes are in one-to-one correspondence with the ten large families of symmetric spaces~\cite{Heinzner2005}.
-The diagonal structure and periodicity of the topological index in \cref{tab:symmetry_classes} corresponds to the Bott clock, which forms a recursive and periodic sequence for the symmetry classes.
-In particular, one period of the sequence for the real matrices corresponds to AI$\rightarrow$BDI$\rightarrow$D$\rightarrow$DIII$\rightarrow$AII$\rightarrow$CII$\rightarrow$C$\rightarrow$CI$\rightarrow$AI, in which ``$\rightarrow$'' increases the spacial dimension by one.
-The complex matrices form a self-contained cycle A$\rightarrow$AIII$\rightarrow$A.
-
+The result of the classification is called the periodic table of topological insulators (and superconductors)~\cite{Kitaev2009,Qi2008,Ryu2010,Schnyder2008} and presented in \cref{tab:symmetry_classes}.
 \begin{table}
     \centering
     \addtolength{\tabcolsep}{0.25cm}
@@ -540,4 +544,16 @@ The complex matrices form a self-contained cycle A$\rightarrow$AIII$\rightarrow$
     \label{tab:symmetry_classes}
 \end{table}
 
+\todoil{This paragraph comes too short and imprecise.}
+It is based on a classification of the vector space of the matrix $\exp(-\ri t H)$, constrained by the presence (or absence) of the symmetries defined by \cref{eq:symmetry_momentum_space}.
+For instance, $T=C=S=0$ imposes no additional constraint and the classifying space of the symmetry space $A$ is that of generic unitary matrices of size $N$, i.e. $U(N)$.
+This connects to a fundamental work on symmetric space from 1926 by Élie Cartan, and the ten Hamiltonian equivalence classes are in one-to-one correspondence with the ten large families of symmetric spaces~\cite{Heinzner2005}.
+The diagonal structure and periodicity of the topological index in \cref{tab:symmetry_classes} corresponds to the Bott clock, which forms a recursive and periodic sequence for the symmetry classes.
+In particular, one period of the sequence for the real matrices corresponds to AI$\rightarrow$BDI$\rightarrow$D$\rightarrow$DIII$\rightarrow$AII$\rightarrow$CII$\rightarrow$C$\rightarrow$CI$\rightarrow$AI, in which ``$\rightarrow$'' increases the spacial dimension by one.
+The complex matrices form a self-contained cycle A$\rightarrow$AIII$\rightarrow$A.
 For a more detailed discussion of the classification of topological insulators and general formulas of their topological index, I refer to a selection of reviews~\cite{Hasan2010,Chiu2016,Cooper2019}.
+
+Our work in \cref{mcd1} does not build up on the classification of topological phases, but aims to provide a simple tool to extract the topological index, i.e. the winding number of quasi one-dimensional systems.
+As is apparent in \cref{eq:winding_number}, a straightforward measurement of the invariant requires a full tomography of the momentum eigenstates, which is hard to do on a practical level.
+We propose a scheme which performs the momentum integration implicitly in real space, and does not require a full tomography of the states.
+It relies on a dynamical measurement of the density distribution followed by a local quench, which can be readily implemented in systems of atoms trapped in optical lattices.

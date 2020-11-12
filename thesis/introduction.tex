@@ -3,24 +3,31 @@
 
 \chapter*{Introduction}
 In this thesis, we investigate the effects of interactions on several different quasi one-dimensional ladder models of fermions and bosons.
-Hereby, we use a number of different basic ingredients which are motivated from the ``building blocks'' of ultracold optical lattice systems such as complex tunneling amplitudes, diagonal cross hopings and tunable repulsive interactions.
+Our models are motivated from the ``building blocks'' of state-of-the-art experiments such as those employed in the framework of ultracold atoms trapped in optical lattices: complex tunneling amplitudes, diagonal cross hopings and tunable repulsive interactions.
 
-In fermionic systems, we found a possibility to {\it enhance} the zero frequency component of the conductivity at zero temperature (a.k.a. the Drude weight) by repulsive density-density interactions (see \cref{drude_increased1}).
+Taken the customary terminology for granted, let me start by a brief summary of the new results we established during the period of this thesis, presented in \cref{part:results}.
+The analytic and numeric methods employed in our works build up on the theory chapters illustrated in \cref{part:theory}.
+
+In fermionic systems, we found a possibility to flexibly tune the zero frequency component of the conductivity at zero temperature (a.k.a. the Drude weight) by repulsive density-density interactions (see \cref{drude_increased1}).
 The enhancement of this quantity under repulsive interactions is contradicting the ``common wisdom'' for one-dimensional quantum which should always show a decreasing Drude weight.
-The ``loophole'' is given through the quasi one-dimensional extension of our ladder, which allows to generate spin-orbit coupling and, ultimately, an imbalance between forward- and backscattering processes, resulting in a flexible way of tuning the Drude weight.
-Our results are therefore interesting for the modification of transport properties in setups of ultracold atoms.
+The ``loophole'' is given through the slim 2D extension of our ladder, which allows to generate pseudospin polarized band structures which, ultimately, lead to the mentioned effects on the Drude weight.
+Our results are therefore interesting for the modification of transport properties of coupled-wire systems in general.
+The analytic concepts necessary to comprehend this paper are illustrated in \cref{sec:periodic_potentials,sec:tight_binding_systems,sec:tomonaga_LL,sec:LL_with_spin}.
+In addition, we use matrix product state (MPS) simulations, which are presented in \cref{ch:matrix_product_states}.
 
-We study the emergence of helical liquids by repulsive interactions (see \cref{one_half1,integer1}) and density-assisted hoppings (see \cref{chiral1}).
+We study the emergence of so-called helical liquids by repulsive interactions (see \cref{one_half1,integer1}) and density-assisted hoppings (see \cref{chiral1}).
 In general, such phases result from commensurabilities between particle density and flux, and share many similarities to the phases encountered in the Quantum Hall effect.
 In this sense, some of the quasi one-dimensional helical phases can be interpreted as the predecessor of topological order, thus sometimmes dubbed pretopological, if they have a natural extension to 2D.
 For fermions (see \cref{one_half1}), we study the emergence of an exotic phase located at particle filling factor $\nu=1/2$ which naturally extends to a fractional Quantum Hall phase, i.e. the bosonic $K=8$ state.
 We then also study a similar phase in a ladder of hard-core bosons (see \cref{integer1}), located at filling factor $\nu=1$.
-In both cases, we derive the phase diagram through renormalization group theory calculations and test our hypotheses through matrix product state simulations.
-Our work provide a hallmark in the analysis of such systems, extending the semiclassical approximations typically being made in similar studies.
+In both cases, we derive the phase diagram through renormalization group (RG) theory calculations and test our hypotheses through MPS simulations.
+The introduction to the path integral formalism and RG is found in \cref{sec:properties_of_real_scalar_fields_and_their_correlations,sec:renormalization_group_theory}.
 
 A natural task in the context of topological insulators considers the measurement of the topological invariant, which is typically a hard task for experiments.
 For chiral symmetric systems, we propose a dynamical protocol based on the mean chiral displacement which provides a tomography of the topological index (see \cref{mcd1}).
 We furthermore provide a basic experimental blueprint in order to implement our proposition.
+On the analytic side, we rely on standard band theory and test our hypotheses with MPS simulations.
+The introduction to topological phases of matter in general is found in \cref{ch:topological_phases_of_matter}.
 
 As an undergraduate student studying elementary physics, I always thought of quantum particles as plain waves living in the differential-geometric world of ``first quan\-ti\-zation'' which (at least for me) is both beautiful and frustrating at the same time as the task of solving the most simple problems may become quite involved, if not even impossible.
 The modern approach is not a straightforward attempt to solve the real-space wave function by integrating a given Schrödinger equation, it rather sticks to an alternative representation in the algebraic world of ``second quantization'' where the action of operators dictates all physical consequences.
@@ -32,7 +39,7 @@ Independent of the formulation, be it first or second, all quantum theories requ
 all quantum states are represented by state vectors $\{|q\rangle\}$ forming a complete basis of the Hilbert space and observables are defined through Hermitian operators acting on that space.
 The states are given through a set of good quantum numbers $q$, e.g. $(n,l,m)$ associated with the total energy, angular momentum and its projection along the primary axis for the electron of hydrogen.
 
-The very first chapter of this thesis reviews these basic concepts in more detail.
+In \cref{part:theory}, I review these concepts in more detail.
 The first sections, i.e. \cref{sec:creation_and_annihilation_operators,sec:representation_of_generic_operators,sec:periodic_potentials,sec:tight_binding_systems}, are aimed to guide undergraduate students which are new in the field of condensed matter.
 To become familar with the basics, I review the tight binding approximation in \cref{sec:tight_binding_systems}, derived from the Kronig-Penney model in the strong potential limit (see \cref{sec:periodic_potentials}).
 I then illustrate the treatment of interactions on top of a quadratic/non-interacting Hamiltonian which is a crucial tool in the understanding of quantum matter.
@@ -62,4 +69,6 @@ As an example, the Su-Schrieffer-Heeger chain is then explored in \cref{sec:the_
 I conclude the third chapter by explaining the classification of topological insulators and superconductors in \cref{sec:Periodic_table_of_topological_insulators_and_superconductors}.
 
 In \cref{part:results}, I first summarize my original contributions to our published works, which are then presented in a chronological manner.
+In particular,
+
 I conclude this thesis with a summary and perspectives.
