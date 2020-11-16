@@ -1,12 +1,16 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!TEX root = thesis.tex
-%%%%%%%%%%%%%%%%%%%%%
-
+%!TeX spellcheck = en-US,en-DE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 \chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+%
 In this thesis, we investigate the effects of interactions on several different quasi one-dimensional ladder models of fermions and bosons.
-Our models are motivated from the ``building blocks'' of state-of-the-art experiments such as those employed in the framework of ultracold atoms trapped in optical lattices: complex tunneling amplitudes, diagonal cross hopings and tunable repulsive interactions.
+Our models are motivated from the ``building blocks'' of state-of-the-art experiments such as those employed in the framework of ultracold atoms trapped in optical lattices: complex tunneling amplitudes, diagonal cross hoppings and tunable (repulsive/attractive) interactions.
 
 Taken the customary terminology for granted, let me start by a brief summary of the new results we established during the period of this thesis, presented in \cref{part:results}.
-The analytic and numeric methods employed in our works build up on the theory chapters illustrated in \cref{part:theory}.
+The analytical and numerical methods employed in our works build up on the theoretical concepts illustrated in \cref{part:theory}.
 
 In fermionic systems, we found a possibility to flexibly tune the zero frequency component of the conductivity at zero temperature (a.k.a. the Drude weight) by repulsive density-density interactions (see \cref{drude_increased1}).
 The enhancement of this quantity under repulsive interactions is contradicting the ``common wisdom'' for one-dimensional quantum which should always show a decreasing Drude weight.
@@ -16,15 +20,15 @@ The analytic concepts necessary to comprehend this paper are illustrated in \cre
 In addition, we use matrix product state (MPS) simulations, which are presented in \cref{ch:matrix_product_states}.
 
 We study the emergence of so-called helical liquids by repulsive interactions (see \cref{one_half1,integer1}) and density-assisted hoppings (see \cref{chiral1}).
-In general, such phases result from commensurabilities between particle density and flux, and share many similarities to the phases encountered in the Quantum Hall effect.
-In this sense, some of the quasi one-dimensional helical phases can be interpreted as the predecessor of topological order, thus sometimmes dubbed pretopological, if they have a natural extension to 2D.
+In general, such phases result from a commensurability between particle density and flux, and share many similarities to the phases encountered in the Quantum Hall effect.
+In this sense, some of the quasi one-dimensional helical phases can be interpreted as the predecessor of topological order, thus sometimes dubbed pre-topological, if they have a natural extension to 2D.
 For fermions (see \cref{one_half1}), we study the emergence of an exotic phase located at particle filling factor $\nu=1/2$ which naturally extends to a fractional Quantum Hall phase, i.e. the bosonic $K=8$ state.
 We then also study a similar phase in a ladder of hard-core bosons (see \cref{integer1}), located at filling factor $\nu=1$.
 In both cases, we derive the phase diagram through renormalization group (RG) theory calculations and test our hypotheses through MPS simulations.
 The introduction to the path integral formalism and RG is found in \cref{sec:properties_of_real_scalar_fields_and_their_correlations,sec:renormalization_group_theory}.
 
-A natural task in the context of topological insulators considers the measurement of the topological invariant, which is typically a hard task for experiments.
-For chiral symmetric systems, we propose a dynamical protocol based on the mean chiral displacement which provides a tomography of the topological index (see \cref{mcd1}).
+A natural quest in the context of topological insulators concerns the measurement of the topological invariant, especially in the case of interacting systems, where a priori it does not amount to a band dispersion quantity.
+For chiral symmetric systems, we propose a simple dynamical protocol based on the mean chiral displacement which provides a tomography of the topological index (see \cref{mcd1}).
 We furthermore provide a basic experimental blueprint in order to implement our proposition.
 On the analytic side, we rely on standard band theory and test our hypotheses with MPS simulations.
 The introduction to topological phases of matter in general is found in \cref{ch:topological_phases_of_matter}.
@@ -47,9 +51,10 @@ This becomes particularly easy in the concept of Luttinger liquids (see \cref{se
 The key in Luttinger liquids is that the effective theory describing intrinsically interacting microscopic models remains quadratic at the operator level, and as such effectively non-interacting.
 I then use the formalism of path integrals (see \cref{sec:properties_of_real_scalar_fields_and_their_correlations}) to derive analytic expressions of the correlation functions.
 A common interaction which potentially melts the Luttinger liquid phase is a sine-Gordon term, which I derive in \cref{sec:LL_with_spin}.
-In order to treat such higher-order interactions analytically, I introduce the concept of renormalization group theory (see \cref{sec:renormalization_group_theory}), which provides a platform to study if and when the single-particle basis must be exchanged in favor of the collective many-body basis dictated by the interactions.
+In order to treat such higher-order interactions analytically, I introduce the concept of renormalization group theory (see \cref{sec:renormalization_group_theory}), which provides a platform to study if and when the Luttinger liquid basis must be exchanged in favor of the collective many-body basis dictated by the interactions.
 One major drawback is that renormalization group theory relies on many simplifications along the way to make the calculation amendable, and microscopic details of the model are often lost in the approximations.
-In such cases, solid quantitative predictions are hard to provide analytically, such that numerical tools become essential.
+These details are exchanged in favor of ``universality'', an effective theory which describes the physical properties of a family of different microscopic models at long scales.
+In this framework, it is thus not intended to provide quantitative predictions for the microscopic theories, such that numerical tools become essential.
 
 A simple-minded and brute force calculation of a full solution scales exponentially with the number of constituents, such that exact diagonalization of interacting models is limited to small system sizes (e.g. $\sim 20$ sites for interacting spin-1/2 models in typical studies).
 This stresses the need for more efficient numerical techniques in the study of non-perturbative regimes which cannot be amended analytically.
@@ -68,5 +73,5 @@ The notion of the topological index arises from the Berry phase and the Berry co
 As an example, the Su-Schrieffer-Heeger chain is then explored in \cref{sec:the_SSH_chain} to apply the introduced concepts.
 I conclude the third chapter by explaining the classification of topological insulators and superconductors in \cref{sec:Periodic_table_of_topological_insulators_and_superconductors}.
 
-In \cref{part:results}, I summarize my original contributions to our published works, which are then presented in a chronological manner during the period of my PhD.
+In \cref{part:results}, I summarize my original contributions to our published works, which are then presented in a thematic manner.
 This thesis is concluded by a summary and perspectives about interesting future directions.
