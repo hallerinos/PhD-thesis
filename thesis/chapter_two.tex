@@ -144,8 +144,14 @@ Strategy (a) thus aims to truncate the color degree of freedom, which is not ver
     \subfigure[]{\includegraphics{figures/beach_singular_values.png}}
     \hfil
     \subfigure[]{\includegraphics{figures/SVD_compressed.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/SVD_compressed2.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/SVD_compressed3.png}}
+    \hfil
+    \subfigure[]{\includegraphics{figures/SVD_compressed4.png}}
     \caption{(a) Uncompressed picture of Castelsardo (Sardinia, IT).
-    The digital picture consists of $n_y\times n_x=3024\times2276$ pixels. (b) Singular values of the matrix $P_{i,(jc)}$ representing the picture. (c) Keeping the $250$ largest singular values still yields a good approximation of the uncompressed picture and requires only $19.3\%$ of the original storage space.}
+    The digital picture consists of $n_y\times n_x=3024\times2276$ pixels. (b) Singular values of the matrix $P_{i,(jc)}$ representing the picture. (c) Keeping the $m\equiv260$ largest singular values still yields a good approximation of the uncompressed picture and requires only $20\%$ of the original storage space. Panels (d)-(f) visualize the impact of progressively lowering $m$ (later we will call this quantity the ``bond dimension''): while details are still visible in picture (d), they gradually disappear in panel (e) until even the dominant shapes become unrecognizable in figure (f).}
     \label{fig:svd_image_compression}
 \end{figure}
 If the singular/spectral values are ordered, a truncation of the $\Lambda$ matrix neglects subdominant left and right eigenvectors of the original object and as such approximates the original matrix.
@@ -170,25 +176,13 @@ In total, we thus arrive at a compression rate
 \end{align}
 which allows for a high compression in case of a large and dense matrix $M$.
 To give an example, I present the impact of compression in \cref{fig:svd_image_compression}.
-Panel (a) denotes an uncompressed picture, the singular values of the digital picture presented in (b), and the result of keeping $250$ singular values as an approximation to the full picture, presented in (c).
-The approximated picture yields a compression rate of roughly $19\%$, and visible differences to the original are negligible (if you look closely, the compressed figure appears to have some ``noise'' in the nice color gradient of the sky).
+Panel (a) denotes an uncompressed picture, the singular values of the digital picture presented in (b), and the result of keeping $m=260$ singular values as an approximation to the full picture, presented in (c).
+The impact of gradually decreasing the value of $m$ is visualized in panels (d) - (f).
 
-In a second example consider a fraction of the Mandelbrot set embedded in Gaussian noise presented in \cref{fig:svd_image_compression_mandelbrot}.
+In a second example, I consider a fraction of the Mandelbrot set embedded in Gaussian noise presented in \cref{fig:svd_image_compression_mandelbrot}.
 The visualization aims to compare the original picture for different levels of noise (panels (b) and (d-f)) with the approximation (panels (c) and (g-i)) in which the 100 smallest Schmidt values are kept (indicated by the black grid line in panel (a)).
 The distribution of the spectral values is controlled by the fraction of random noise mixed into the picture: the decay is weaker for a larger fraction of noise\footnote{The spectral properties of random matrices are well-known, beautifully summarized through the Wigner ``semicircle'' distribution~\cite{Wigner1958OnTD}.}, causing a larger truncation error in the approximation, which ultimately leads to significant deviations to the original contour details and overall color.
 
-The depicted compression scheme can actually be applied to quantum states.
-Recall that any state can be expressed by a set of $L$ good quantum numbers, such that
-\begin{align}
-    \ket{\psi} = \sum_{i_1,i_2,\dots,i_L}C({i_1,i_2,\dots,i_L})\ket{i_1,i_2,\dots,i_L}
-    \label{eq:generic_state}
-\end{align}
-and the collection of all $\ket{i_1,i_2,\dots,i_L}$ form a complete and orthonormal basis.
-Note that the $L$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $L$ and the dimension of the quantum numbers $i_j$.
-By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}, i.e.
-\begin{align}
-    C(i_1,i_2,\dots,i_L) \rightarrow C^{[i_1,i_2,\dots,i_L]} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
-\end{align}
 \begin{figure}
     \centering
     \subfigure[]{\includegraphics{figures/mandelbrot_svds.png}}
@@ -212,6 +206,19 @@ By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ ten
     The original picture shows a fast decay of the Schmidt values compared to the higher noise levels, leading to a reasonable approximation (compare panel (b) with panel (c)). The amount of noise alters the algebraic decay of the Schmidt values, ultimately resulting in a larger error, and more noticeable deviations to the original picture (compare panels (d-f) with panels (g-i)). The number of Schmidt values kept in the approximations is fixed to $100$.}
     \label{fig:svd_image_compression_mandelbrot}
 \end{figure}
+
+The depicted compression scheme can actually be applied to quantum states.
+Recall that any state can be expressed by a set of $L$ good quantum numbers, such that
+\begin{align}
+    \ket{\psi} = \sum_{i_1,i_2,\dots,i_L}C({i_1,i_2,\dots,i_L})\ket{i_1,i_2,\dots,i_L}
+    \label{eq:generic_state}
+\end{align}
+and the collection of all $\ket{i_1,i_2,\dots,i_L}$ form a complete and orthonormal basis.
+Note that the $L$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $L$ and the dimension of the quantum numbers $i_j$.
+By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}, i.e.
+\begin{align}
+    C(i_1,i_2,\dots,i_L) \rightarrow C^{[i_1,i_2,\dots,i_L]} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
+\end{align}
 To account for the fact that the indices ${\bm i} = i_1,i_2,\dots,i_L$ are not fixed to specific values here, I will from now on denote the dependence of the tensor $C$ on the set of quantum numbers with square brackets.
 I now proceed by applying the generalized SVD in a sequential manner:
 Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single matrix in between two arbitrary leg positions $\ell,\ell+1$.
@@ -402,17 +409,23 @@ Some insights were concluded by the derivation of universal scaling laws of the 
 In 2007, Hastings published his famous proof of the area law for one-dimensional quantum systems~\cite{Hastings2007}.
 In its essence, it provides an upper bound to the von Neumann entropy for gapped and local (i.e. no long-ranged interactions) Hamiltonians scaling as the area ($\equiv$ a constant) of one-dimensional systems.
 Essentially, the works can be summarized by the following two statements~\cite{Eisert2010}:
-Consider a block of $1,2,\dots,\ell$ sites with internal dimension $D$, the entanglement entropy of the physically relevant part (i.e. the low-energy subspace of $\HS$) scales as
+Consider a block of $1,2,\dots,\ell$ sites in a system of $N$ sites in total, then the entanglement entropy of the physically relevant part (i.e. the low-energy/temperature subspace of $\HS$) scales as
 \begin{align}
-    S_1(\ell) &= \frac c{3b}\log[d(\ell)],\text{ if the system is gapless}\\
-    S_1(\ell) &= c_0\xi\log\brlr{6\xi}\log(D2^{6\xi\log D}),\text{ if the system is local and gapped with $\Delta E>0$}
+    S_1(\ell) &=
+    \frac c{3b}
+    \left\{
+    \begin{array}{l}
+        \log[d(\ell)],\text{ if the system is gapless, and if $N\gg\ell\gg 1$,}\\[0.25cm]
+        \log[\xi/a],\,\text{ if the correlation length $\xi$ is finite, and if $N\gg\ell\gg\xi/a$.}
+    \end{array}
+    \right.
+    \label{eq:entropy_scaling}
 \end{align}
-in which $c_0$ is a constant of order one, $\xi=\max(2v/\Delta E,\xi_C)$ is the correlation length, $v$ the velocity of sound, $\xi_C$ of order one and $d(\ell)$ encodes the size of the block.
-For periodic ($b=1$) and open ($b=2$) boundary conditions \todoil{Matteo asked if there is any other case available... Check!}, $d(\ell)$ is the chord distance encoding the length of a semi-circle
+In the above, $b$ encodes periodic ($b=1$) and open ($b=2$) boundary conditions, $c$ is the central charge of the conformal field theory (in a fermionic model, it corresponds to the number of Fermi momenta) and $d(\ell)$ is the ``chord distance'', which describes the length of a semi-circle
 \begin{align}
-    d(\ell) = \left|\frac L\pi\sin(\pi/L\ell)\right|.
+    d(\ell) = \left|\frac{N}{\pi}\sin(\pi\ell/N)\right|.
 \end{align}
-The main message is that, for gapped systems, physically relevant states live in the low-entangled subspace of the full Hilbert space.
+The main message of \cref{eq:entropy_scaling} is that, for gapped systems, physically relevant states live in the low-entangled subspace of the full Hilbert space.
 This implies that the MPS Ansatz is an optimal choice to target the low-lying excitations of the full many body Hilbert space, which, in turn, follow an area law of entanglement.
 
 The generalization of MPS to higher dimensional lattices are called projected entangled pair states (PEPS), which, like the MPS, have the area law already built into their very construction.
@@ -479,9 +492,15 @@ in which $X/Y/Z$ are the spin-1/2 Pauli matrices
     \end{pmatrix}.
 \end{align}
 The additional subscript $\ell$ denotes an isolated action of $\hat X_\ell/\hat Y_\ell/\hat Z_\ell$ on the $\ell$'th spin of the system.
-Note that the Hamiltonian can be recast into a product of bulk $\ell\neq1,L$ operators of the form
+
+Note that the Hamiltonian can be recast into a product of operators according to
 \begin{align}
-    \hat W_\ell =
+    \hat H = \hat W_1\brlr{\prod_{\ell=2}^{L-1}\hat W_{\ell}}\hat W_L,
+\end{align}
+in which I conveniently use a set of bulk $\hat W_{\ell\neq1,L}$, and two additional boundary operators $\hat W_1$, $\hat W_L$.
+The bulk operators have the form
+\begin{align}
+    \hat W_{\ell\neq1,L} =
     \begin{pmatrix}
         \hat{\mathbb 1}_\ell & \hat X_\ell & h \hat Z_\ell\\
          0 & 0 & J \hat X_\ell\\
@@ -489,7 +508,7 @@ Note that the Hamiltonian can be recast into a product of bulk $\ell\neq1,L$ ope
     \end{pmatrix}
 \end{align}
 representing a set of local operators acting locally on a single site $\ell$.
-The multiplication of the $\hat W_\ell$ matrix operators does not yield the desired result immediately, which is readily solved by a slight modification of the boundary operators
+Similarly, the boundary operators are given by
 \begin{align}
     \hat W_1 =
     \begin{pmatrix}
@@ -519,11 +538,10 @@ The multiplication of the $\hat W_\ell$ matrix operators does not yield the desi
         h \hat Z_L\\
         J \hat X_L\\
         \hat{\mathbb 1}_L\\
-    \end{pmatrix},
+    \end{pmatrix}.
     \label{eq:boundary_W}
 \end{align}
-such that the global Hamiltonian is given by the product $\hat H = \prod_{\ell=1}^{L}\hat W_{\ell}$.
-Since $\hat W_\ell$ contains a set of local operators which each have an MPO representation, the action of the Hamiltonian on a state $\ket\psi$ can be understood as a product of rank-$4$ tensors $W^{[i_\ell',i_\ell]}$ containing the matrix elements of $\hat W_{\ell}$.
+Since $\hat W_\ell$ spans a matrix with entries composed of local operators, which each have an MPO representation, the action of the Hamiltonian on a state $\ket\psi$ can be understood as a product of rank-$4$ tensors $W^{[i_\ell',i_\ell]}$ containing the matrix elements of $\hat W_{\ell}$.
 In particular, one obtains the following tensorial representation, acting on a single site $\ell\neq1,L$ of the bulk
 \begin{align}
     W^{[i_\ell',i_\ell]} =
@@ -551,7 +569,7 @@ It is straightforward to introduce two additional boundary tensors, in equivalen
     \end{pmatrix}
     \equiv\includegraphics[valign=c]{figures/mpo_right.pdf}.
 \end{align}
-The MPO representation $W$ of the Hamiltonian $\hat H$ is quite versatile -- any Hamiltonian can be recast into a set of matrix product operators that are upper triangular (or lower triangular), even if the interactions are long-ranged or spatially dependent, e.g. in the case of disorder.
+The MPO representation of the Hamiltonian is quite versatile -- any Hamiltonian can be recast into a set of matrix product operators that are upper triangular (or lower triangular), even if the interactions are long-ranged or spatially dependent, e.g. in the case of disorder.
 Note that the MPO form is not limited to spin systems due to the famous Jordan-Wigner transformation.
 It is defined in terms of the ladder operators with matrix representations $\hat\sigma^\pm = \frac12(\hat X\pm\ri \hat Y)$, i.e.
 \begin{align}
@@ -661,7 +679,7 @@ In particular, one performs the sequence
     \equiv
     U^{[i_\ell]} \Lambda V^{\dag[i_{\ell+1}]}.
 \end{align}
-Note that the standard eigenvalue problem in \cref{eq:MPS_optimization} is promoted to a generalized eigenvalue problem if we would not rely on the normalized and canonical form of the MPS~\cite{Silvi2019}.
+Note that the standard eigenvalue problem in \cref{eq:MPS_optimization} is ``downgraded'' to a generalized eigenvalue problem if we would not rely on the normalized and canonical form of the MPS~\cite{Silvi2019}.
 The aim now is to find the globally optimal vectors ${\bm A}_C$ for each site, which can be achieved in an iterative manner by the growing and DMRG algorithm.
 
 A minimal example of the growing MPS algorithm is formalized as follows:
@@ -679,7 +697,7 @@ A minimal example of the growing MPS algorithm is formalized as follows:
     \end{align}
     in which the green tensor represents ${\bm A}_C$ and the two grey rank-$3$ tensors correspond to the boundary MPOs of the Hamiltonian.
     % Note that the two green tensors can also be understood as rank-$3$ tensors in which the additional horizontal link has dimension $1$.
-    \item Use the generalized singular value decomposition depicted in \cref{eq:SVD_generalized} to decouple the two quantum numbers into a product of two isometries and a matrix $\Lambda$ containing the spectral values
+    \item Use the generalized singular value decomposition depicted in \cref{eq:SVD_generalized} to decouple the two-site tensor into a product of two isometries and a matrix $\Lambda$ containing the spectral values
     \begin{align}
         f^{-1}\circ {\bm A}_C^{[i_1',i_2']} &= U^{[i_1']}\Lambda V^{\dag[i_{L}']},
         \\
@@ -999,14 +1017,14 @@ The latter (ii) have nontrivial support for a restricted number of sites and are
 We focus here on the first one only.
 
 The locality of pointwise symmetries can be exploited by implementing a tensor network which remains invariant under the action of the symmetry.
-This can be achieved by two elementary building blocks, symmetric links (i) and symmetric tensors (ii).
+It is then straightforward to conclude that any MPS build from the ``symmetric tensors'' is also invariant under the action of the symmetry~\cite{Singh2010}.
+But the reverse is also true, as a generic symmetry invariant state decomposes into the symmetric tensor network formulation~\cite{Singh2013}.
+This framework can be established by two elementary building blocks, namely symmetric links (i) and symmetric tensors (ii).
 To implement (i), the legs of the tensor are promoted to symmetric links by the association of the irrep label $\alpha$ to each leg index value $i$.
 Index values with the same $\alpha$ are counted by the degeneracy number $\gamma$.
 It is thus possible to generate a bijection between the leg index value $i$ and symmetric link tuple $(\alpha,\gamma)$.
 To simplify notation, I will drop the indication of the bijection, and replace the occurrence of the leg index value with the symmetric link tuple, i.e. $i\equiv(\alpha,\gamma)$.
 This way, symmetric links associate a specific unitary representation of the group $G$, and each tuple $(\alpha,\gamma)$ labels a specific irrep.
-
-\todoil{Invariant states decompose into invariant tensors.}
 
 A tensor $T$ is called Abelian symmetric if it is invariant under the simultaneous application of $W_i(g)$ associated to the symmetric links $r$, i.e.
 \begin{align}

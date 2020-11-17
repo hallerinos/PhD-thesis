@@ -27,7 +27,7 @@ For instance, a so-called topological quantum computer is forseen to exploit the
 The controlled particle exchange, called ``braiding'', can be understood as logical gates that make up the processing unit of a hypothetical computer.
 One of the major advantages of using these quasiparticles compared to other approaches is their robustness against perturbations in the bulk of the material.
 The foundation for the existence of such a class of quasiparticles is commonly accepted to be topological order: a certain long-range ordered pattern of quantum entanglement.
-One example of a topologically ordered state would be the Moore-Read state~\cite{Moore1991,Read1996} which has a large wave-function overlap with the fractional quantum Hall state at filling factor $\nu=5/2$~\cite{Storni2010}.
+One example of a topologically ordered state would be the Moore-Read state~\cite{Moore1991,Read1996} (to be precise, the ``Antipfaffian'' state defined in~\cite{Levin2007,Lee2007}) which has a large wave-function overlap with the fractional quantum Hall state at filling factor $\nu=5/2$~\cite{Storni2010,Rezayi2017}\footnote{The statement only serves as a streamline here, as the analytic form of the experimentally observed $\nu=5/2$ quantum Hall state is actually still an open debate~\cite{Simon2020}.}.
 Since fractional quantum Hall states are strongly correlated quantum many body systems, analytic attempts are particularly involved and quantitative statements like those in~\cite{Storni2010} are based on exact diagonalization of small systems or numerical simulations in general.
 
 The ``trivial'' cousins of topologically ordered phases of matter are symmetry protected topological phases of matter which do not show long-range entanglement.
@@ -39,7 +39,7 @@ This lead to the full classification of symmetry protected topological phases, f
 
 Laboratory experiments based on theoretical predictions remained an exception, until the recent strive of synthetic quantum matter:
 engineered systems in which the interactions between constituents are tunable to obtain effectively single-particle and even strongly correlated states of matter.
-One of the most prominent examples are ultracold atoms trapped in optical lattices, which provide all kinds of ingredients theoreticians like to play with: magnetic fields~\cite{Lin2009}, spin-orbit coupling~\cite{Lin2011}, mixed particle statistics~\cite{Ferrari2002}, quantum simulation~\cite{Mazza2012} and even the realization of $4$ independent spacial coordinates exploiting the concept of synthetic dimensions~\cite{Lohse2018}, just to name a few.
+One of the most prominent examples are ultracold atoms trapped in optical lattices, which provide all kinds of fundamental ``ingredients'' theoreticians like to exploit: magnetic fields~\cite{Lin2009}, spin-orbit coupling~\cite{Lin2011}, mixed particle statistics~\cite{Ferrari2002}, quantum simulators~\cite{Mazza2012} and even the realization of $4$ independent spacial coordinates exploiting the concept of synthetic dimensions~\cite{Lohse2018}, just to name a few.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,7 +80,7 @@ The key question I seek to answer in the remaining chapter is: can we find and c
 
 One of the key concepts in topological band theory is the Berry phase, for which the construction arises from the intrinsic phase ambiguity of quantum states.
 Let me quickly recap the main results of the original work, presented in~\cite{Berry1984}.
-Imagine a particle evolving along a closed path ${\bm r}(t)$ in an adiabatic way such that the evolution of the state follows Schrödinger's equation
+Imagine a particle evolving along a closed path ${\bm r}(t)$ in an adiabatic way such that the evolution of the state follows Schrödinger's equation\footnote{Note that, in this spirit, $\bm r(t)$ enters in the wavefunction as a parameter and thus changes independently of \cref{eq:time_evolution}.}
 \begin{align}
     \hat H(\bm r)\ket{\psi(\bm r(t))} = \ri\hbar\frac{\partial}{\partial t}\ket{\psi({\bm r(t)})},
     \label{eq:time_evolution}
@@ -180,10 +180,11 @@ If the full Bloch sphere is covered (i.e. the surface $S$ is required to be clos
     \chi_n = \frac1{2\pi}\int_S {\bm F_n}\cdot\rd{\bm S}.
     \label{eq:chern_number}
 \end{align}
-In particular, the integer-valuedness of $\chi_n$ follows from the fact that for a loop $C$, the ``inside'' of $C$ is a bit ambiguous -- by reducing the inside of the loop to a surface integral, the equations necessarily agree modulo $2\pi$.
-Therefore, the Berry curvature integrated over a closed surface must be an element of $2\pi \mathds Z$.
+% In particular, the integer-valuedness of $\chi_n$ follows from the fact that for a loop $C$, the ``inside'' of $C$ is a bit ambiguous -- by reducing the inside of the loop to a surface integral, the equations necessarily agree modulo $2\pi$.
+% Therefore, the Berry curvature integrated over a closed surface must be an element of $2\pi \mathds Z$.
 Note that \cref{eq:chern_number} shares the same fundamental expression as the Euler characteristic in \cref{eq:gauss_bonnet_theorem}.
-$\bm F_n$ can thus be understood as a curvature with similarities to a Gaussian one, and as such the quantization of the Chern number naturally extends well beyond the two-band model.
+$\bm F_n$ can thus be understood as a curvature with similarities to a Gaussian one.
+Therefore, the Berry curvature integrated over a closed surface must be an element of $2\pi \mathds Z$, and the quantization of the Chern number naturally extends well beyond the two-band model.
 
 % In parameter spaces of other than $3$ dimensions, Stoke's theorem cannot be employed to transform the loop integral in \cref{eq:berry_phase_stokes_theorem}.
 % The generalization, however, transforms \cref{eq:phase_change} into the surface integral of a $2$-form bounded by $C$.
@@ -484,7 +485,33 @@ There are three equivalent ways to characterize the behavior of $H$ under the pa
 Since $\hat S = \hat C\hat T$ in eight of the nine previous possibilities the outcome of chiral symmetry is implied.
 However, the Hamiltonian can (or cannot) be chiral invariant in the absence of $C$ and $T$ symmetry, such that there are ten distinct symmetry classes.
 
-For gapped Hamiltonians, the topological distinction is through adiabatic deformations of the phase diagram by smoothly changing its parameters.
+\begin{table}
+    \centering
+    \addtolength{\tabcolsep}{0.25cm}
+    \renewcommand{\arraystretch}{1.25} % 1 standard
+    \begin{tabular}{l | c c c | l l l l l l l l l}
+        \hline\hline
+        Class   & $T$ & $C$ & $S$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$\\
+        \hline
+        A       & $0$ & $0$ & $0$ & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   \\
+        AIII    & $0$ & $0$ & $+$ &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               \\
+        \hline
+        AI      & $+$ & $0$ & $0$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   \\
+        BDI     & $+$ & $+$ & $+$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ \\
+        D       & $0$ & $+$ & $0$ & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ \\
+        DIII    & $-$ & $+$ & $+$ &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               \\
+        AII     & $-$ & $0$ & $0$ & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  \\
+        CII     & $-$ & $-$ & $+$ &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               \\
+        C       & $0$ & $-$ & $0$ &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               \\
+        CI      & $+$ & $-$ & $+$ &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               \\
+        \hline\hline
+    \end{tabular}
+    \addtolength{\tabcolsep}{-0.25cm}
+    \caption{The ten symmetry classes of topological insulators and superconductors, sorted by time reversal, particle-hole and chiral symmetry~\cite{Altland1997}, and to which values the unitary transformation of the symmetry squares to. A ``$0$'' indicates absence of the corresponding symmetry while $\pm$ represents the outcome of the squared symmetry transformation (see text). The sets $\mathds Z$, $\mathds Z_2$ and $2\mathds Z$ indicate the existence of topological insulators / superconductors for the corresponding Hamiltonian equivalence class defined in a given space dimension (presented from $0$ to $8$) and which values the topological invariant can assume (integer numbers $\mathds Z$, two distinct numbers $\mathds Z_2$ and even integer numbers $2\mathds Z$).}
+    \label{tab:symmetry_classes}
+\end{table}
+
+Coming back to the adiabatic principle for gapped Hamiltonians, the topological distinction is defined through smooth deformations of the phase diagram by changing its parameters.
 If two quantum systems can be smoothly deformed into each other without closing the gap, they are called topologically equivalent.
 Trivial insulators (TRI) are then such phases which are adiabatically connected to an atomic insulator.
 All the other equivalence classes are by definition not adiabatically connected to the atomic insulator and thus called topological insulators (TOI)\footnote{The concepts illustrated in this section hold equally for Bogoliubov-de Gennes Hamiltonians, which describe the mean-field theory of a conventional superconductor. Such systems, however, do not make much contact to our published articles, which is why I decided to avoid their notion at this point. Instead, I refer the interested reader to the nice online course \cite{topocondmat}.}.
@@ -518,33 +545,8 @@ By close inspection of \cref{eq:symmetry_real_space}, the action of the symmetri
     \label{eq:symmetry_momentum_space}
 \end{align}
 The result of the classification is called the periodic table of topological insulators (and superconductors)~\cite{Kitaev2009,Qi2008,Ryu2010,Schnyder2008} and presented in \cref{tab:symmetry_classes}.
-\begin{table}
-    \centering
-    \addtolength{\tabcolsep}{0.25cm}
-    \renewcommand{\arraystretch}{1.25} % 1 standard
-    \begin{tabular}{l | c c c | l l l l l l l l l}
-        \hline\hline
-        Class   & $T$ & $C$ & $S$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$\\
-        \hline
-        A       & $0$ & $0$ & $0$ & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   \\
-        AIII    & $0$ & $0$ & $+$ &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               & $\mathds Z$   &               \\
-        \hline
-        AI      & $+$ & $0$ & $0$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   \\
-        BDI     & $+$ & $+$ & $+$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ \\
-        D       & $0$ & $+$ & $0$ & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ \\
-        DIII    & $-$ & $+$ & $+$ &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  &               \\
-        AII     & $-$ & $0$ & $0$ & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               & $2\mathds Z$  \\
-        CII     & $-$ & $-$ & $+$ &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               &               \\
-        C       & $0$ & $-$ & $0$ &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               &               \\
-        CI      & $+$ & $-$ & $+$ &               &               &               & $2\mathds Z$  &               & $\mathds Z_2$ & $\mathds Z_2$ & $\mathds Z$   &               \\
-        \hline\hline
-    \end{tabular}
-    \addtolength{\tabcolsep}{-0.25cm}
-    \caption{The ten symmetry classes of topological insulators and superconductors, sorted by time reversal, particle-hole and chiral symmetry~\cite{Altland1997}, and to which values the unitary transformation of the symmetry squares to. A ``$0$'' indicates absence of the corresponding symmetry while $\pm$ represents the outcome of the squared symmetry transformation (see text). The sets $\mathds Z$, $\mathds Z_2$ and $2\mathds Z$ indicate the existence of topological insulators / superconductors for the corresponding Hamiltonian equivalence class defined in a given space dimension (presented from $0$ to $8$) and which values the topological invariant can assume (integer numbers $\mathds Z$, two distinct numbers $\mathds Z_2$ and even integer numbers $2\mathds Z$).}
-    \label{tab:symmetry_classes}
-\end{table}
 
-\todoil{This paragraph comes too short and imprecise.}
+\todoil{Unfortunately, this paragraph comes too short and imprecise. Reformulate.}
 It is based on a classification of the vector space of the matrix $\exp(-\ri t H)$, constrained by the presence (or absence) of the symmetries defined by \cref{eq:symmetry_momentum_space}.
 For instance, $T=C=S=0$ imposes no additional constraint and the classifying space of the symmetry space $A$ is that of generic unitary matrices of size $N$, i.e. $U(N)$.
 This connects to a fundamental work on symmetric space from 1926 by Élie Cartan, and the ten Hamiltonian equivalence classes are in one-to-one correspondence with the ten large families of symmetric spaces~\cite{Heinzner2005}.
@@ -553,7 +555,16 @@ In particular, one period of the sequence for the real matrices corresponds to A
 The complex matrices form a self-contained cycle A$\rightarrow$AIII$\rightarrow$A.
 For a more detailed discussion of the classification of topological insulators and general formulas of their topological index, I refer to a selection of reviews~\cite{Hasan2010,Chiu2016,Cooper2019}.
 
-Our work in \cref{mcd1} does not build up on the classification of topological phases, but aims to provide a simple tool to extract the topological index, i.e. the winding number of quasi one-dimensional systems.
-As is apparent in \cref{eq:winding_number}, a straightforward measurement of the invariant requires a full tomography of the momentum eigenstates, which is hard to do on a practical level.
-We propose a scheme which performs the momentum integration implicitly in real space, and does not require a full tomography of the states.
-It relies on a dynamical measurement of the density distribution followed by a local quench, which can be readily implemented in systems of atoms trapped in optical lattices.
+Although the prescription in terms of Bloch bands breaks down for interacting systems in general, the corresponding many-body definition of winding numbers, e.g.
+\begin{align}
+    \mathcal W = \frac{1}{4\pi\ri} \tr\int\rd k \sigma_z g^{-1}\partial_k g,
+    \label{eq:winding_number_greens}
+\end{align}
+extends well beyond the single-particle theory employed in this chapter~\cite{Gurarie2011,Manmana2012}.
+As is apparent in \cref{eq:winding_number} and \cref{eq:winding_number_greens}, a straightforward measurement of the invariant requires a tomography of the momentum eigenstates / the Green's function.
+In general, this is a hard task for experiments.
+In case of ultracold atoms, the extraction of the Zak phase can however be realized using a combination of Bloch oscillations and Ramsey interferometry~\cite{Atala2013}.
+A similar approach can be used to measure single-particle Green's functions~\cite{Knap2013,Zeiher2016}.
+
+Our work in \cref{mcd1} provides a simpler tool to probe the winding number of interacting quasi one-dimensional systems.
+The scheme relies on a dynamical measurement of the density distribution followed by a local quench, which can be readily implemented in many platforms of synthetic quantum matter.

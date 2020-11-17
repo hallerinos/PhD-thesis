@@ -769,6 +769,7 @@ I make one important remark on the Umklapp scattering of spinless fermions, that
     =
     -\sum_{k,k',q}V(k'-k+q)\hat c^\dag_{k+q,\tau}\hat c^\dag_{k'-q,\overline\tau}\hat c^\pdag_{k',\overline\tau}\hat c^\pdag_{k,\tau}
     \approx -V(2k_F)\sum_q\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}.
+    \label{eq:umklapp_backscattering_equivalence}
 \end{align}
 This proofs that Umklapp terms are up to a sign equivalent to backscattering terms in case of indiscernible particles.
 Interestingly, the $2k_F$ components of forward scatterings can be reordered in the same manner\footnote{This is interesting because one is inclined to neglect the $2k_F$ forward scattering processes at first sight. The reordering demonstrates that $q\approx0$ are equivalent to $2k_F$ scatterings such that both have to be accounted for on equal grounds.}, such that we find the identity $g_4 = g_2 \approx V(0)-V(2k_F)$.
@@ -1160,7 +1161,7 @@ In addition, I introduce an additional source term similar to \cref{eq:field_sou
     \label{eq:full_partition_function}
 \end{align}
 with the definition of the Green's function $G^{-1}({\bm k})=\frac{\omega^2+(uk)^2}{2\pi}$.
-We arrive at
+One arrives at
 \begin{align}
     \braket{\phi({\bm k})\phi(-{\bm k})} = G({\bm k})
     ,\quad
@@ -1200,13 +1201,13 @@ Since the $\theta$ field is dual to the $\phi$ field, an equivalent calculation 
 \section{Luttinger liquids with spin}
 \label{sec:LL_with_spin}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To proceed further to the case of spinful models, we require that the kinetic Hamiltonian is decoupled into two independent spin sectors, i.e.
+To proceed further to the case of spinful models, the kinetic Hamiltonian is assumed to be decoupled, i.e.
 \begin{align}
     \hat H_0 = \hat H_{0,\uparrow}+\hat H_{0,\downarrow}
     = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau\in\{L,R\},s\in\{\uparrow,\downarrow\}}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s},
 \end{align}
-which allows to introduce a pair of conjugate fields $(\hat \phi_s,\hat \pi_s)$ for each spin flavor $s$\footnote{In our research, the spin conservation is explicitly broken in most cases.}.
-The scattering processes $g_4$ and $g_2$ can be generalized in a straightforward manner, and we achieve
+which allows to introduce a pair of conjugate fields $(\hat \phi_s,\hat \pi_s)$ for each spin flavor $s$\footnote{In our research, the spin conservation is explicitly broken in most cases. The analytic treatment employed in \cref{one_half1,integer1,chiral1} starts from a decoupled system and regards the study of emergent terms resulting from (perturbative) coupling the two subsystems in the presence of interactions.}.
+The scattering processes $g_4$ and $g_2$ can be generalized in a straightforward manner, and the interaction is approximated with
 \begin{align}
   \hat V \approx
   \sum_{q,\tau,s}
@@ -1253,8 +1254,8 @@ In the spinful scenario, it is necessary to distinguish between intra-spin and i
   [g_{i\parallel}-g_{i\perp}]\hat\rho^\pdag_{q,\tau,-}\hat\rho^\dag_{q,\tau,-}
   }.
 \end{align}
-In case of the Umklapp terms, one needs to be a bit more careful.
-While the inter-spin Umklapp terms are again equivalent to backscattering terms (up to a sign), the $g_{1\perp}$ term will be
+The Umklapp terms require special attention in this case:
+While the inter-spin terms are again equivalent to backscattering terms (up to a sign, see \cref{eq:umklapp_backscattering_equivalence}), the $g_{1\perp}$ term is
 \begin{align}
     g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\hat c^\dag_{L,s}(x)\hat c^\pdag_{R,s}(x)\hat c^\dag_{R,\overline s}(x)\hat c^\dag_{L,\overline s}(x)
     =
@@ -1527,7 +1528,7 @@ leading to the modified function $C_n$ which depends on the smoothness $n$, i.e.
 % \end{align}
 For the special case $n=2$, the integral of the $h$-fields evaluates to $C_2(r)=\Lambda r K_1(\Lambda r)$ that decays exponentially fast (see \cref{fig:rg_cutoff}(c)).
 In particular, the function follows the asymptotic decay $z K_1(z) \sim \sqrt{\pi z/2}\exp(-z)$ and is already negligible for $z=1$, i.e. $K_1(1)\approx0.0062$.
-Therefore, the integration of $C_2(r)$ can be confined to a small interval $r<\xi$ in which $\xi\sim2\pi/\Lambda=a$ is a small length scale comparable with the lattice spacing $a$.
+Therefore, the integration of $C_2(r)$ can be confined to a small interval $r<\alpha$ in which $\alpha\sim2\pi/\Lambda=a$ is a small length scale comparable with the lattice spacing $a$.
 
 In order to utilize the strong confinement of $C_2$, it is beneficial to introduce relative coordinates ${\bm R} = 1/2({\bm x}+{\bm x'})$ and ${\bm r} = {\bm x}-{\bm x'}$.
 The integral can then be rewritten to
@@ -1565,32 +1566,32 @@ The second $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the q
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
     \approx
-    \frac{\xi^4 g^2K\beta^4}{16u^2}\rd l\int\rd x\rd\tau\frac1{u^2}(\partial_
+    \frac{\alpha^4 g^2K\beta^4}{16u^2}\rd l\int\rd x\rd\tau\frac1{u^2}(\partial_
     \tau\phi_{\Lambda'})^2+(\partial_x\phi_{\Lambda'})^2.
     \label{eq:RG_second_order_approximation}
 \end{align}
 In the above, I neglect a constant and gave for implicit the harmonic approximation and integration of $\bm r$ with $r=\sqrt{(x-x')^2+u^2(\tau-\tau')^2}$ in polar coordinates.
-The constant $\xi^4/u^2$ is determined by the cutoff of the integrals over the relative coordinates, and $\xi=\mathcal O(a)$ is on the order of the lattice spacing.
+The constant $\alpha^4/u^2$ is determined by the cutoff of the integrals over the relative coordinates, and $\alpha=\mathcal O(a)$ is on the order of the lattice spacing.
 In summary, we obtain the effective action
 \begin{align}
     S_{\rm eff}^{(2)}[\phi_\Lambda] = \frac1{2\pi}\int\rd\brlr{ x\rd\tau\frac{1}{uK'}(\partial_\tau\phi_\Lambda)^2 + \frac{u}{K'}(\partial_x\phi_\Lambda)^2} +  g'\int\rd^2 x\cos(\beta\phi_\Lambda),
 \end{align}
 which is self-similar to the original action up to the renormalized couplings
 \begin{align}
-    \frac1{uK'}=\frac1{uK}+\frac{\xi^4 g^2 K\beta^4\pi}{8 u^4}\rd l,
+    \frac1{uK'}=\frac1{uK}+\frac{\alpha^4 g^2 K\beta^4\pi}{8 u^4}\rd l,
     \quad
-    \frac u{K'}=\frac u{K}+\frac{\xi^4 g^2 K\beta^4\pi}{8u^2}\rd l,
+    \frac u{K'}=\frac u{K}+\frac{\alpha^4 g^2 K\beta^4\pi}{8u^2}\rd l,
     \quad
     g' = g\brlr{1 + \commutator{2-\frac{\beta^2 K}4}\rd l},
     \\
     \Rightarrow
-    K' = \brlr{\commutator{\frac{1}{uK}+\frac{\xi^4 g K\beta^4\pi}{8u^4}}\commutator{\frac{u}{K}+\frac{\xi^4 g K\beta^4\pi}{8u^2}}}^{-1/2}
+    K' = \brlr{\commutator{\frac{1}{uK}+\frac{\alpha^4 g K\beta^4\pi}{8u^4}}\commutator{\frac{u}{K}+\frac{\alpha^4 g K\beta^4\pi}{8u^2}}}^{-1/2}
     =
-    K-\frac{\pi \xi^4 \beta^4 g^2 K^3}{8u^2}\rd l + O(\rd l^2).
+    K-\frac{\pi \alpha^4 \beta^4 g^2 K^3}{8u^2}\rd l + O(\rd l^2).
 \end{align}
 In summary, this concludes the derivation of the so-called RG flow which is described by the system of differential equations we just derived
 \begin{align}
-    \frac{\rd K}{\rd l} = -\frac{\pi \xi^4 \beta^4 g^2 K^3}{8u^2},
+    \frac{\rd K}{\rd l} = -\frac{\pi \alpha^4 \beta^4 g^2 K^3}{8u^2},
     \quad
     \frac{\rd g}{\rd l} = g\brlr{2-\frac{\beta^2K}4}.
 \end{align}
@@ -1600,7 +1601,7 @@ It is beneficial to define the flow equations close to the critical point, e.g. 
 \begin{align}
     x = \frac{\beta^2 K}4 - 2,
     \quad
-    y = 4g\sqrt{\frac{\pi\xi^4}{u^2}},
+    y = 4g\sqrt{\frac{\pi\alpha^4}{u^2}},
 \end{align}
 which dictate the modified RG equations
 \begin{align}
@@ -1615,11 +1616,14 @@ In particular, we obtain four scenarios (assuming positive couplings $y>0$ in ge
 
 (i) If $x>0$, and $y<x$, the system flows towards $y=0$ and a finite value of $x$ upon which the flow ends.
 This is a situation in which the interaction is irrelevant and the coupling vanishes.
-Note that although the interaction is irrelevant and as such the system remains in a Luttinger liquid phase, it ``renormalizes'' the effective Luttinger liquid parameter during the flow.
+Note that a vanishing coupling $y$ implies that the flow ends, and the system thus assumes a fix point.
+Although the interaction is irrelevant and as such the system remains in a Luttinger liquid phase, it ``renormalizes'' the effective Luttinger liquid parameter during the flow.
+The effective interaction is then given by the final value of $x$ (thus $K$) at which the flow terminates.
 
 (ii) If $x>0$ and $y=x$ (taken in proximity of $x$ and $y$ small), the trajectory follows a critical BKT line to the fix point $x=y=0$.
+The effective Luttinger parameter assumes the ``marginal'' value $K=8/\beta^2$ for which the scaling dimension $D_g=2$.
 
-(iii) In case of $y>|x|$, the coupling $y$ flows towards infinite, independently on the value of $x$.
+(iii) In case of $y>|x|$, the coupling $y$ first flows towards smaller couplings, but then towards infinite $y$, independently on the value of $x$.
 This corresponds to a case in which the interaction becomes dominating.
 The Luttinger liquid description breaks down and the system ends up in a gapped phase, characterized by the interaction.
 
@@ -1635,10 +1639,38 @@ The dominance of $y$ is entirely determined by the initial value of $x$, and eve
     \label{fig:bkt_flow_equations}
 \end{figure}
 
+To characterize the trajectories of the flow chart, one must notice that $x\rd x = y\rd y$ which describes the solutions $c = x^2-y^2$ with $c$ constant.
+The conserved quantity $c$ thus describes hyperbolas cutting the $x$ and $y$ axis for $c>0$ and $c<0$, respectively (cf. \cref{fig:bkt_flow_equations} (b)).
+We focus now on the critical line $c=0, x>0$ separating relevant and irrelevant $y$.
+Assume now that the microscopic Hamiltonian is described by an internal parameter $\lambda>0$ which drives the system to the BKT critical line at $\lambda_c$.
+Assume further that $y$ is irrelevant for $\lambda<\lambda_c$, and relevant for $\lambda>\lambda_c$.
+There are two cases:
+
+(a) For $c>0$ and $x>0$, $y$ is irrelevant and the trajectory flows to the fix point at $x_{\rm eff} = \lim_{l\rightarrow\infty} x(l)$ and $y=0$.
+We can thus linearize $c=b^2(\lambda_c-\lambda)$ in the vicinity of the critical line, in which $\lambda$ encodes an internal parameter of the microscopic Hamiltonian that drives the phase transition.
+Correlations of the fields $\phi/\theta$ still decay logarithmically and the coupling is being renormalized to the asymptotic value $K_{\rm eff} = \frac4{\beta^2}\brlr{b\sqrt{\lambda_c-\lambda}+2}$, which describes a square-root singularity close to the critical point.
+
+(b) For $c<0$ and $x>0$, $y$ is relevant and pins the field configuration to the semiclassical minima of the sine-Gordon interaction.
+The differential equation can be recast to
+\begin{align}
+    \frac{\rd x}{\rd l} = -y^2 = c-x^2 = -(|c|+x^2)
+    \Rightarrow
+    \int_{x(0)}^{x(l)}\rd x(x^2+|c|)^{-1} = -l
+    .
+\end{align}
+The solution is thus given by $x(l) = \sqrt{|c|}\tan(\arctan(x(0)/\sqrt{|c|})-l\sqrt{|c|})$ and the integration must be terminated when $|x(l^*)|\sim 1$ (for which the perturbative calculation is invalid), i.e.
+\begin{align}
+    l^*=\frac{\pi}{2\sqrt{|c|}}+\frac{\arctan\brlr{\frac{x(0)}{\sqrt{|c|}}}}{\sqrt{|c|}}\approx \frac{\pi}{2b\sqrt{\lambda-\lambda_c}}.
+\end{align}
+An estimate of the correlation length in the system after the RG flow is then given by
+\begin{align}
+    \xi\propto a(l^*) = a\re^{l^*} = a\re^{\frac{\pi}{2b\sqrt{\lambda-\lambda_c}}},
+\end{align}
+in which $a\equiv a(0)$ is the lattice spacing.
+Any attempt to numerically simulate systems close to situation (a) thus requires system lengths in excess of the exponentially divergent correlation length\footnote{In case of matrix product states, which I depict in \cref{ch:matrix_product_states}, the limitation is based on the Ansatz itself, which is efficient for systems with a short correlation length only.}.
+
 In particular in \cref{one_half1,integer1}, we encounter various types of sine-Gordon terms embedded in a two-component Luttinger liquid.
 Among those which are potentially relevant, we characterize the phase diagram by a second order RG analysis equivalent to the example detailed in this section.
 In general, the resulting RG equations are not the simple two-variable BKT equations and they form a higher dimensional flow chart.
 We thus rely on numerical integration of coupled differential equations through Runge-Kutta methods to determine the relevancy of operators.
 For more quantitative estimates, we use matrix product state simulations, which will be the main topic of the next chapter.
-
-\todoil{Maybe discuss divergent correlation length close to the critical line to argue why numerics has a hard time.}
