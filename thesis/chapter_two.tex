@@ -787,6 +787,12 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
     Absorb $\tilde U$ in $U^{[i_{n-1}]}$, then decrease $n\rightarrow n-1$ and go back to step 2.
     This concludes a single sweeping step from right to left.
 \end{enumerate}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=6cm]{figures/dmrg_flow_chart.pdf}
+    \caption{Flow chart of usual two-site DMRG. After a trial MPS is put in canonical form, the tensor optimization is performed in ``sweeps'': the optimization of all local tensors performed sequentially from left to right, followed by the optimization of all local tensors from right to left.}
+    \label{fig:DMRG_flow_chart}
+\end{figure}
 The DMRG optimization is usually performed in so-called ``sweeps'', i.e. a full sweeping cycle from left to right is done for each site $n=1,2,\dots,L-1$, after which a full sweeping cycle from right to left $n=L-1,L-2,\dots,1$ is applied.
 Iteratively optimizing the local tensors leads to a variational trajectory in the family of MPS with bond dimension $m$.
 
@@ -930,12 +936,18 @@ The full TDVP algorithm is then depicted as follows:
     \item If $n=L$, continue with 4. Absorb the matrix $C(n)$ into the next tensor to create $A_C^{i_{n+1}}=C(n)V^{\dag[i_{n+1}]}$. Increase $n\rightarrow n+1$ and continue with 1.
     \item If $n=1$, continue with 3. Absorb the matrix $C(n)$ into the previous tensor to create $A_C^{i_{n-1}}=U^{[i_{n-1}]}C(n)$. Decrease $n\rightarrow n-1$ and continue with 1.
 \end{enumerate}
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[height=6cm]{figures/tdvp_flow_chart.pdf}
+%     \caption{Flow chart of usual single-site TDVP. After a trial MPS is put in canonical form, the local evolution is performed in ``sweeps'', i.e. a full integration from left to right, followed by a full integration from right to left. The simulation after $N$ sweeps approximates the (imaginary) time-evolution of the state at $t=N\Delta t$.}
+%     \label{fig:TDVP_flow_chart}
+% \end{figure}
 Similarly to DMRG, TDVP is performed in completed sequences of full sweeping cycles $n=1,2,\dots,L$ and then $n=L,L-1,\dots,1$.
-The only difference to single-site DMRG is that
 After one sweeping from left to right cycle ($n=1,2,\dots,L$), the MPS is integrated from time $t$ to $t+\Delta t/2$ with a local integration error of $\mathcal O(\Delta t^2)$.
 Completing the left to right sequence ($n=L,L-1,\dots,1$) then constitutes to composing the integration with its adjoint, resulting in a second-order symmetric method.
 A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after a full sweeping cycle, and the error of the integration is more favorable $\mathcal O(\Delta t^3)$~\cite{Haegeman2016}.
 Similarly to two-site DMRG, the TDVP algorithm can be easily implemented by time-evolving a two-site instead of a single-site tensor $A_C^{[i_\ell]}\rightarrow A_C^{[i_\ell,i_{\ell+1}]}$ and the center matrix is promoted to a single-site tensor $C^{[i_\ell]}$~\cite{Haegeman2016}.
+The flow chart of two-site TDVP is equivalent to \cref{fig:DMRG_flow_chart}.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
