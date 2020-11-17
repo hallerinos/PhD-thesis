@@ -377,7 +377,7 @@ A state $\ket{\psi}$ is called $N$-partite separable iff. it can be written as a
 \end{align}
 Note that this expression is fundamentally different from the coherent superposition of exponentially many state vectors encountered in generic states (compare to ~\cref{eq:generic_state}).
 As such, we call a state $N$-partite entangled, if it cannot be decomposed according to~\cref{eq:separable_states}.
-The earlier example of a bipartite system is an element of the Bell basis, which are sometimes called ERP states
+The earlier example of a bipartite system is an element of the Bell basis, which are sometimes called EPR states
 \begin{align}
     \ket{\psi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}}
     \quad
@@ -783,7 +783,7 @@ In case of a finite bond dimension analysis, $\varepsilon_H(m)$ serves as a meas
 Alternatively, the discarded weight of the singular values can serve as a measure of the error.
 It is defined as
 \begin{align}
-    \varepsilon_\rho(m) = 1 - \sup_{\ell}\sum_{k=m}^\infty s_k^2(\ell)
+    \varepsilon_\rho(m) = \sup_{\ell}\sum_{k=m+1}^\infty s_k^2(\ell)
 \end{align}
 in which $s_k(\ell)$ denotes the $k$'th singular value of the mixed-canonical representation of the MPS after the optimization and just before the application of the compression scheme (i.e., before the truncation and renormalization of the singular values).
 
@@ -870,7 +870,7 @@ One can thus identify a set of $2L-1$ independent differential equations
     \frac{\rd\ket\psi}{\rd t} = -\ri \hat P_{A(\ell)} \hat P_{B(\ell+1)}\hat H\ket\psi
     .
 \end{align}
-Multiplication with $\bra{\psi}$ from the left then yields the differential equations for the local tensors
+A slight modification then yields the differential equations for the local tensors
 \begin{align}
     {\dot A}_C^{[i_\ell']} = +\ri H_{\rm eff.}^{[i_\ell',i_\ell]} A_C^{[i_\ell]},
     \quad
@@ -1030,11 +1030,11 @@ For example, a rank-$3$ symmetric tensor would be of the form
 \begin{align}
     T^{[i_1,i_2,i_3]} \equiv T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]}
 \end{align}
-Let us, for convenience, consider only three different quantum numbers $\alpha_1>0$, $\alpha_2>0$ and $\alpha_3$, for which the tensor decomposes to
+Let us, for convenience, consider only three different quantum numbers $\alpha_1\geq0$, $\alpha_2\geq0$ and $\alpha_3\leq0$, for which the tensor decomposes to
 \begin{align}
-    T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]} = \delta_{\alpha_3,-\alpha_1-\alpha_2} R^{[\gamma_1,\gamma_2,\gamma_3]}.
+    T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]} = \delta_{\alpha_1+\alpha_2,-\alpha_3} R^{[\gamma_1,\gamma_2,\gamma_3]}.
 \end{align}
-It is thus a necessity that $\alpha_3$ entirely compensates the sum of charges $\alpha_1$ and $\alpha_2$.
+It is thus a necessity that $\alpha_3$ compensates the sum of charges $\alpha_1$ and $\alpha_2$.
 This can be depicted through a set of ``incoming'' and ``outgoing'' arrows with respect to $T$ representing the structural tensor $S$, i.e.
 \begin{align}
     T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]} \equiv \includegraphics[valign=c]{figures/symmetric_tensor_example.pdf}
