@@ -595,7 +595,7 @@ Nowadays, it is understood as an MPS Ansatz of the trial wavefunction in which a
 For the numerical simulations employed in all of our articles, I implemented two optimization schemes, which are then combined to find an optimal MPS approximation for finite systems.
 The first one is the growing algorithm (sometimes dubbed iDMRG), which is most useful to construct the trial wavefunction of the second scheme, namely traditional DMRG reformulated in the language of MPS~\cite{Schollwoeck2011,Silvi2019}.
 
-Consider the way the energy expectation value is written in the MPS language: it is a sandwich of the product of $W$ tensors (the local MPO representing the Hamiltonian) with the trial wavefunction.
+Consider the way the energy expectation value is written in the MPS language: it is a sandwich of the product of $W$ tensors (the local MPO representing the Hamiltonian) with the trial MPS, and it's conjugate.
 To find the groundstate, we extremize the energy
 \begin{align}
     E = \min_{\ket{\psi}}\braket{\psi |\hat H | \psi}
@@ -985,7 +985,7 @@ This opens up the possibility to explore ``minimal entanglement'' gauges, result
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-The existence of symmetries implies a corresponding conserved quantity according to the Noether theorem from 1918.
+The existence of symmetries implies a corresponding conserved quantity according to the Noether theorem from 1918~\cite{Noether1971}.
 This in general allows to decouple a full problem into simpler sub-problems, such as solving a translationally invariant quadratic Hamiltonian for each value of the conserved quantity (crystal momentum) in Fourier space.
 
 In computational physics, this opens up the possibility to implement the preservation of conservation laws, which typically leads to a significant overall speed-up and better convergence.

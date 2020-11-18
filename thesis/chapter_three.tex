@@ -15,7 +15,7 @@ For instance, chemists quite often understand topology as the geometric configur
 A condensed matter physicist typically classifies certain structures, e.g. insulating materials or magnetic whirls, with the concepts of topological invariants.
 This approach is closely related to one of the most fundamental invariants in the mathematical branch of topology: the genus of a manifold which can be thought of as the ``number of holes''.
 This number is known not to change under smooth deformations.
-Consider the following three ``manifolds'', i.e. a donut, a coffee mug and a pretzel.
+Consider the following three ``manifolds'': a donut, a coffee mug and a pretzel.
 It may be delicate to do, but one could simply stretch and massage the donut to obtain a mug without ``cutting'' and ``glueing'', which is a necessity to go from donut to pretzel.
 The ``stretching'' can be understood as smooth deformation, and as a consequence the two shapes have the same genus.
 However ``cutting'' and ``glueing'' is something very sudden and irreversible, which changes the genus of the manifold.
@@ -376,7 +376,7 @@ Let us consider an arbitrary non-interacting system of fermions, described by th
 \end{align}
 with a matrix $H$ dictating possible transition events.
 As before, we denote the collection of the fermionic operators as $\bm c$.
-Note that $i,j$ are generic index labels -- i.e. it may represent a combination of the position $\bm x$ and additional ``internal quantum numbers'' $i\equiv(\bm x,q)$ such as the sublattice index of the SSH model for which $q\in \{A,B\}$.
+Note that $i,j$ are generic index labels -- i.e. it may represent a combination of the position $\bm x_i$ and additional ``internal quantum numbers'' $i\coloneqq(\bm x_i,q_i)$ such as the sublattice index of the SSH model for which $q_i\in \{A,B\}$.
 The system is invariant under a (unitary) symmetry transformation $\hat U$, if it acts on the fermionic annihilation operators as a linear map
 \begin{align}
     {\bm c}\rightarrow {\bm c}' = \hat U {\bm c} \hat U^{-1} = U {\bm c},
@@ -394,7 +394,7 @@ such that $\hat U$ commutes with the Hamiltonian while preserving the anticommut
 \end{align}
 Focussing on the so-called ``Altland-Zirnbauer'' classification scheme, I consider here on-site symmetries only~\cite{Altland1997}.
 On-site symmetries, as the name suggests, only act on the ``internal'' degrees of freedom, such that they can be factorized $\hat U=\prod_{\bm x}\hat V_{\bm x}$ with the same $\hat V_{\bm x}$ on all lattice positions.
-Please note that ${\bm x}\neq i$, such that $\hat V_{\bm x}$ acts nontrivially on the ``internal dimension'' of the tuple $i\equiv({\bm x},q)$.
+Please note that $\hat V_{\bm x}$ acts nontrivially only on the ``internal dimension''.
 
 {\it 1. Time reversal symmetry} Note that anti-unitary transformations can be written as a composition of complex conjugation and a unitary transformation, such that the action of time reversal can be written as\footnote{Note that $c\rightarrow c^\dag$ in \cref{eq:time_reversal_symmetry} would be an equally valid choice, but, as we see later, can be treated as a combination of time reversal and particle hole symmetry.}
 \begin{align}
@@ -405,11 +405,11 @@ Please note that ${\bm x}\neq i$, such that $\hat V_{\bm x}$ acts nontrivially o
     {U_T}^\dag H^* U_T = H.
     \label{eq:time_reversal_symmetry}
 \end{align}
-Applying the Hamiltonian transformation twice results in the condition
+Applying the transformation twice results in the condition
 \begin{align}
-    H = {U_T}^\dag ({U_T}^\dag H^* U_T)^* U_T = ({U_T}^*U_T)^\dag H ({U_T}^* U_T)
+    H = {U_T}^\dag ({U_T}^\dag H^* U_T)^* U_T = ({U_T}^*U_T)^\dag H ({U_T}^* U_T).
 \end{align}
-such that ${U_T}^* U_T = \re^{\ri\alpha}\mathbb1$\todoil{Which statement do I miss to arrive here?}.
+Since the first quantized Hamiltonian runs over an irreducible representation space, ${U_T}^* U_T = \re^{\ri\alpha}\mathbb1$ due to Shur's lemma~\cite{Chiu2016}.
 Since $U_T$ is a unitary matrix, it satisfies ${U_T}^*={U_T}^\dag\re^{\ri\alpha}$ (and equally ${{U_T}^\dag}^* = U_T\re^{\ri\alpha}$) and as such $({U_T}^\dag U_T)^* = \re^{-\ri2\alpha}\mathbb1$ for which $\alpha\in\pi\mathds Z$.
 This implies that
 \begin{align}
@@ -546,13 +546,13 @@ By close inspection of \cref{eq:symmetry_real_space}, the action of the symmetri
 \end{align}
 The result of the classification is called the periodic table of topological insulators (and superconductors)~\cite{Kitaev2009,Qi2008,Ryu2010,Schnyder2008} and presented in \cref{tab:symmetry_classes}.
 
-\todoil{Unfortunately, this paragraph comes too short and imprecise. Reformulate.}
+% \todoil{Unfortunately, this paragraph comes too short and imprecise. Reformulate.}
 It is based on a classification of the vector space of the matrix $\exp(-\ri t H)$, constrained by the presence (or absence) of the symmetries defined by \cref{eq:symmetry_momentum_space}.
 For instance, $T=C=S=0$ imposes no additional constraint and the classifying space of the symmetry space $A$ is that of generic unitary matrices of size $N$, i.e. $U(N)$.
 This connects to a fundamental work on symmetric space from 1926 by Élie Cartan, and the ten Hamiltonian equivalence classes are in one-to-one correspondence with the ten large families of symmetric spaces~\cite{Heinzner2005}.
-The diagonal structure and periodicity of the topological index in \cref{tab:symmetry_classes} corresponds to the Bott clock, which forms a recursive and periodic sequence for the symmetry classes.
-In particular, one period of the sequence for the real matrices corresponds to AI$\rightarrow$BDI$\rightarrow$D$\rightarrow$DIII$\rightarrow$AII$\rightarrow$CII$\rightarrow$C$\rightarrow$CI$\rightarrow$AI, in which ``$\rightarrow$'' increases the spacial dimension by one.
-The complex matrices form a self-contained cycle A$\rightarrow$AIII$\rightarrow$A.
+% The diagonal structure and periodicity of the topological index in \cref{tab:symmetry_classes} corresponds to the Bott clock, which forms a recursive and periodic sequence for the symmetry classes.
+% In particular, one period of the sequence for the real matrices corresponds to AI$\rightarrow$BDI$\rightarrow$D$\rightarrow$DIII$\rightarrow$AII$\rightarrow$CII$\rightarrow$C$\rightarrow$CI$\rightarrow$AI, in which ``$\rightarrow$'' increases the spacial dimension by one.
+% The complex matrices form a self-contained cycle A$\rightarrow$AIII$\rightarrow$A.
 For a more detailed discussion of the classification of topological insulators and general formulas of their topological index, I refer to a selection of reviews~\cite{Hasan2010,Chiu2016,Cooper2019}.
 
 Although the prescription in terms of Bloch bands breaks down for interacting systems in general, the corresponding many-body definition of winding numbers, e.g.
