@@ -741,7 +741,7 @@ A full classification of hypothetical scattering processes is given in~\cref{fig
     \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g1.pdf}}
     \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g13.pdf}}
     \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g22.pdf}}
-    \caption{Relevant scattering processes of a generic density-density interaction in one-dimensional quantum systems. (a)/(b) The depicted scattering is commonly referred to as ``forward scattering'' $g_4$ process ($4$ right/left operators, $q\approx0$), (c) as ``backscattering'' $g_2$ process (containing $2$ pairs of right and left operators, $q\approx0$) and (d) as ``Umklapp'' process $g_1$ with momentum transfer $q\approx 2k_F$. Other possible scatterings like the ones depicted in (e) and (f) require the existence of high-energy excitations and are thus exponentially suppressed at low temperatures.}
+    \caption{Relevant scattering processes of a generic density-density interaction in one-dimensional quantum systems. (a)/(b) The depicted scattering is commonly referred to as ``forward scattering'' $g_4$ process ($4$ right/left operators, $q\approx0$), (c) as ``backscattering'' $g_2$ process (containing $2$ pairs of right and left operators, $q\approx0$) and (d) as $g_1$ process with momentum transfer $q\approx 2k_F$. Other possible scatterings like the ones depicted in (e) and (f) require the existence of high-energy excitations and are thus exponentially suppressed at low temperatures.}
     \label{fig:scattering_processes}
 \end{figure}
 This simple argumentation allows to consider only the most relevant processes at low temperatures/energies, i.e. those presented in panels (a) - (d).
@@ -753,12 +753,12 @@ backscattering
 \begin{align}
     g_2\sum_{k,k',q}\hat c^\dag_{k+q,\tau}\hat c^\dag_{k'-q,\overline\tau}\hat c^\pdag_{k',\overline\tau}\hat c^\pdag_{k,\tau} = g_2\sum_q \hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}
 \end{align}
-and Umklapp scattering
+and $g_1$ scattering
 \begin{align}
     g_1\sum_{k,k',q} \hat c^\dag_{k+q,\tau}\hat c^\dag_{k'-q,\overline\tau}\hat c^\pdag_{k',\tau}\hat c^\pdag_{k,\overline\tau}.
 \end{align}
 Note that we are safely discarding possible constants on the right hand side of the previous equations.
-The Umklapp scattering of spinless fermions can be rewritten according to
+The $g_1$ scattering of spinless fermions can be rewritten according to
 \begin{align}
     \sum_{k,k',q}V(q)
     \hat c^\dag_{k+q,\tau}\hat c^\dag_{k'-q,\overline\tau}\hat c^\pdag_{k',\tau}\hat c^\pdag_{k,\overline\tau}
@@ -771,7 +771,7 @@ The Umklapp scattering of spinless fermions can be rewritten according to
     \approx -V(2k_F)\sum_q\hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau},
     \label{eq:umklapp_backscattering_equivalence}
 \end{align}
-which proofs that Umklapp terms are up to a sign equivalent to backscattering terms in case of indiscernible particles.
+which proofs that $g_1$ terms are up to a sign equivalent to backscattering terms in case of indiscernible particles.
 Interestingly, the $2k_F$ components of forward scatterings can be reordered in the same manner\footnote{This is interesting because one is inclined to neglect the $2k_F$ forward scattering processes at first sight. The reordering demonstrates that $q\approx0$ are equivalent to $2k_F$ scatterings such that both have to be accounted for on equal grounds.}, such that we find the identity $g_4 = g_2 \approx V(0)-V(2k_F)$.
 % Umklapp terms cannot be expressed in the density operators of the moving modes $\hat\rho_{q,\tau}$ and, for this reason, are discarded here\footnote{Later, we will see that the Umklapp term in the spinless case are ``marginal'' and can be disregarded under certain conditions.}.
 Other processes like those depicted in \cref{fig:scattering_processes} (e) and (f) require the existence of high-energy excitations and can thus be neglected for the effective low temperature theory developed here.
@@ -1256,7 +1256,7 @@ In the spinful scenario, it is necessary to distinguish between intra-spin and i
   [g_{i\parallel}-g_{i\perp}]\hat\rho^\pdag_{q,\tau,-}\hat\rho^\dag_{q,\tau,-}
   }.
 \end{align}
-The Umklapp terms require special attention in this case:
+The $g_1$ terms require special attention in this case:
 While the inter-spin terms are again equivalent to backscattering terms (up to a sign, see \cref{eq:umklapp_backscattering_equivalence}), the $g_{1\perp}$ term is
 \begin{align}
     g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\hat c^\dag_{L,s}(x)\hat c^\pdag_{R,s}(x)\hat c^\dag_{R,\overline s}(x)\hat c^\dag_{L,\overline s}(x)
@@ -1409,7 +1409,7 @@ in which $a(l)$ is the renormalized lattice spacing, which naturally scales like
 In conclusion, the energy gap associated with the correlation length $\xi^{-1}$ scales like the momentum shell itself, i.e. $\Delta(l)\propto\xi(l)^{-1}\propto\re^{-l}$.
 By combining the solutions $\Delta^*$ with $g^*$, one can thus estimate the size of the gap induced by the relevant sine-Gordon operator~\cite{Gogolin2004}, i.e.
 \begin{align}
-    {\Delta^*}\propto\re^{-l^*}=\brlr{\frac{g(0)}{g^*}}^{1/(2-D_g)}.
+    {\Delta^*}\propto\re^{-l^*}=\brlr{\frac{g_0}{g^*}}^{1/(2-D_g)}.
 \end{align}
 Note that the estimate is given in arbitrary units and as such makes no quantitative prediction.
 Instead, it predicts a qualitative behavior -- the smaller the scaling dimension $D_g$ the larger the related gap will be.
