@@ -1859,33 +1859,33 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 
 \def\@maketitle{\newpage
  \null
- \vskip 2em                 % Vertical space above title.
-\begingroup
+ \centering
+ \vskip 2cm                 % Vertical space above title.
+ \begingroup
   \def\and{\unskip, }
   \parindent=\z@
   \pretolerance=10000
-  \rightskip=\z@ \@plus 3cm
-  {\LARGE                   % each author set in \LARGE
-   \lineskip .5em
-   \@author
-   \par}%
-  \vskip 2cm                % Vertical space after author.
+  % \rightskip=\z@ \@plus 3cm
   {\LARGE\scshape\@title \par}%     % Title set in \Huge size.
-  \vskip 1cm                % Vertical space after title.
+  \vskip 2cm                % Vertical space after title.
   \if!\@subtitle!\else
    {\large\ignorespaces\@subtitle \par}
-   \vskip 1cm                % Vertical space after subtitle.
+   \vskip 2cm                % Vertical space after subtitle.
   \fi
+  {\large
+   submitted by\\[0.25cm]
+   \lineskip .5em
+   \@author\\[0.25cm]
+   born in Trier-Ehrang
+  }
+  \vfill
+  Mainz, \@date
+  %
   % \if!\@date!\else
   %   {\@date}%          % Date set in \large size.
   %   \par
   %   \vskip 1.5em               % Vertical space after date.
   % \fi
- \vfill
- % {\Large Springer Nature\par}
-%\vskip 5\p@
-%\large
- Johannes Gutenberg-Universität Mainz, \@date
 %  Hong\thinspace Kong\enspace London\\
 %  Milan\enspace Paris\enspace Tokyo\par
 \endgroup}
