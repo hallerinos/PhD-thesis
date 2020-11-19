@@ -651,9 +651,10 @@ One of the most prominent and useful analytic concepts in one dimension is the t
 \section{Tomonaga-Luttinger liquids}
 \label{sec:tomonaga_LL}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Luttinger liquids provide a viable tool to study the low-temperature properties of many systems in one and two dimensions.
-The method is often referred to as Abelian bosonization and provides a mechanism to decouple interacting fermions in terms of non-interacting bosonic degrees of freedom.
-I start by giving a basic overview of the mapping from spinless fermions to bosonic particle-hole excitations in the vicinity of the Fermi points before I introduce the more general formulas for spinful models.
+Tomonaga-Luttinger liquids are gapless interacting states of matter appearing in many one-dimensional quantum systems.
+Their understanding was formalized at the beginning of the '80s by Duncan Haldane~\cite{Haldane1981} through the application of a technique called Abelian bosonization.
+It was understood that the low-lying excitations of these fermionic interacting models can be approximated with free bosons.
+In this section, I give a basic overview of the mapping from spinless fermions to bosonic particle-hole excitations in the vicinity of the Fermi points.
 
 The main interest here is to achieve an effective model in one dimension capturing the relevant degrees of freedom at low temperatures and low energies.
 For that purpose, let me start with the free fermionic 1D Hamiltonian $\hat H_0$ denoted by the following (diagonal) representation in momentum space
@@ -668,13 +669,13 @@ with dispersion relation $\varepsilon_k =\frac{k^2}{2m}$ depicted in \cref{fig:1
     \caption{Quadratic dispersion relation with approximations close to the Fermi energy $\varepsilon_F$.}
     \label{fig:1D_quadratic_dispersion}
 \end{figure}
-Close to the Fermi energy $\varepsilon_F\coloneqq\varepsilon_{\pm k_F}$, we can approximate the free dispersion and obtain a system of two different species
+Close to the Fermi energy $\varepsilon_F\coloneqq\varepsilon_{\pm k_F}$, one may linearize the free dispersion to obtain a system of two different species
 \begin{align}
     \hat H_0
     &\approx \sum_k \hbar^2\brlr{\varepsilon_F \pm \frac{k_F}{m}(k\mp k_F)}\hat n_k
     \\
     &= \sum_q \hbar^2\brlr{\varepsilon_F + \frac{k_F}{m}q\brlr{\hat n_{q+k_F}-\hat n_{q-k_F}}}
-    \approx \sum_{q} v_F \hbar q \brlr{\hat c^\dag_{q,R}\hat c^\pdag_{q,R} - \hat c^\dag_{q,L}\hat c^\pdag_{q,L}}
+    \approx \sum_{q} v_F \hbar q \brlr{\hat c^\dag_{q,R}\hat c^\pdag_{q,R} - \hat c^\dag_{q,L}\hat c^\pdag_{q,L}},
     \label{eq:dispersion_linearization}
 \end{align}
 which implies a restriction of $q$ to a small window $|q|<\Gamma\ll k_F$ beyond which \cref{eq:dispersion_linearization} is considered invalid.
@@ -727,12 +728,12 @@ We now turn to an arbitrary two-body interaction of the form~\cref{eq:two_point_
     \label{eq:two_body_interaction_momentum_space}
 \end{align}
 The last term is just a constant $\mu = \frac N{2L}\sum_qV(q)$ and can thus be neglected.
-By imposing that relevant contributions act close to the Fermi energy involving only momenta in the interval $|k|\in\{k_F\pm\Gamma\}$, we can split the sum in two contributions, one involving scattering processes at small and the other scattering at large momenta
+By imposing that relevant contributions act close to the Fermi energy involving only momenta in the interval $|k|\in[k_F-\Gamma,k_F+\Gamma]$, we can split the sum in two contributions, one involving scattering processes at small and the other scattering at large momenta
 \begin{align}
     \hat V \approx \frac1{2L}\brlr{\sum_{q\approx0}V(q)\hat\rho_{q}\hat\rho^\dag_{q} + \sum_{q\approx2k_F}V(q)\hat\rho_{q}\hat\rho^\dag_{q}}.
 \end{align}
-For the study presented in \cref{drude_increased1}, it is important to note that the amplitude of the two different $q\approx0$ processes, denoted by $V(q\approx0)$, is equal and independent of the form of the interaction.
-A full classification of hypothetical scattering processes is given in~\cref{fig:scattering_processes}.
+% For the study presented in \cref{drude_increased1}, it is important to note that the amplitude of the two different $q\approx0$ processes, denoted by $V(q\approx0)$, is equal and independent of the form of the interaction.
+An intuitive classification of the scattering processes is given in~\cref{fig:scattering_processes}.
 \begin{figure}
     \centering
     \subfigure[]{\includegraphics[width=0.328\textwidth]{figures/g4_right.pdf}}
@@ -880,7 +881,7 @@ The effective low energy Hamiltonian containing kinetic and interaction energy s
     .
     \label{eq:luttinger_hamiltonian_nondiagonal}
 \end{align}
-As a final step, we want to find the spectrum of the previous Hamiltonian through a basis transformation $\hat B_q = T \hat B'_q$\footnote{The matrix coupling the dot product of the operator spinors $\hat B_q$ is independent on the momentum $q$ and as such the basis transformation $T$ will not depend on $q$ as well.} with $\hat B_q = (\hat b_q^\dag, \hat b_{-q})^T$ such that
+As a final step, we want to find the spectrum of the previous Hamiltonian through a basis transformation $\hat B_q = T \hat B'_q$\footnote{The matrix coupling the dot product of the operator spinors $\hat B_q$ is independent on the momentum $q$ and as such the basis transformation $T$ will not depend on $q$ either.} with $\hat B_q = (\hat b_q^\dag, \hat b_{-q})^T$ such that
 \begin{align}
     \hat H = \sum_{q>0}\hbar q\hat B^\dag_q H \hat B^\pdag_q = \sum_{q>0}\hbar q\hat B'^\dag_q T^\dag H T \hat B'^\pdag_q
 \end{align}
@@ -1086,6 +1087,7 @@ The full time evolution kernel then evaluates to
     \label{eq:path_integral_pre_integration}
 \end{align}
 where I conveniently use $\bm\phi_{0/N}\coloneqq \bm\phi_{i/f}$, $\rd\{\bm\phi\}=\prod_{n=1}^{N-1}\rd\bm\phi_n$ and $\rd\{\bm\pi\}=\prod_{n=1}^N\rd\bm\pi_n/2\pi$.
+Note that the argument in the exponential clearly corresponds to a discretized version of the Lagrangian.
 Now I exploit the fact that $H(\bm\phi,\bm\pi)=au/(2\pi)\bm\pi^T\bm\pi + V(\bm\phi)$ is separable in a quadratic kinetic and a potential term, which allows to perform a Gaussian integration of the momentum fields.
 A Gaussian integral of two real vectors $\bm v$, $\bm j$ and a real and invertible matrix $\bm A$ is
 \begin{align}
@@ -1144,11 +1146,11 @@ Each path is weighted by the corresponding classical action -- note the absence 
 However, quantum mechanics is still at full presence, as the integration is not restricted to solutions of the classical equations of motion.
 
 The standard definition of the partition function is given as $Z=\tr(\exp(-\beta \hat H))$, and the trace amounts to a summation over all possible configurations of the system.
-This makes apparent the interpretation of $t=-\ri \beta$, resulting in the ``Euclidian'' action such that the path integral becomes a quantum mechanical partition function
+This makes apparent the interpretation of $t=-\ri \beta$, resulting in the ``Euclidean'' action such that the path integral becomes a quantum mechanical partition function
 \begin{align}
     Z = \tr(\exp(-\beta \hat H)) = \int\rD[\phi]\re^{-S[\phi]}
     ,\quad
-    S = -\frac1{2\pi u}\int\rd\tau\rd x(\partial_\tau\phi)^2 - V(\phi).
+    S = -\int\rd\tau\brlr{\frac1{2\pi u}\int\rd x(\partial_\tau\phi)^2+V(\phi)}.
 \end{align}
 
 We now impose the Luttinger liquid potential, i.e. $V(\phi) = \frac u{2\pi}\int\rd x(\partial_x\phi)^2$, and proceed with the action of the Luttinger liquid, i.e.
@@ -1161,7 +1163,7 @@ In addition, I introduce an additional source term similar to \cref{eq:field_sou
     Z[\eta] = \int\rD_\phi \re^{-S[\phi]} = \int\rD_\phi \exp\brlr{-\int\frac{\rd k\rd\omega}{2\pi}\phi(-{\bm k})\commutator{\frac{w^2+(uk)^2}{u}}\phi({\bm k}) +\int\rd^2k\eta(-{\bm k})\phi({\bm k})},
     \label{eq:full_partition_function}
 \end{align}
-with the definition of the Green's function $G^{-1}({\bm k})=\frac{\omega^2+(uk)^2}{2\pi}$.
+with the definition of the Green's function $G^{-1}({\bm k})=\frac{\omega^2+(uk)^2}{\pi}$.
 One arrives at
 \begin{align}
     \braket{\phi({\bm k})\phi(-{\bm k})} = G({\bm k})
@@ -1259,7 +1261,7 @@ In the spinful scenario, it is necessary to distinguish between intra-spin and i
 The $g_1$ terms require special attention in this case:
 While the inter-spin terms are again equivalent to backscattering terms (up to a sign, see \cref{eq:umklapp_backscattering_equivalence}), the $g_{1\perp}$ term is
 \begin{align}
-    g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\hat c^\dag_{L,s}(x)\hat c^\pdag_{R,s}(x)\hat c^\dag_{R,\overline s}(x)\hat c^\dag_{L,\overline s}(x)
+    g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\hat c^\dag_{L,s}(x)\hat c^\pdag_{R,s}(x)\hat c^\dag_{R,\overline s}(x)\hat c^\pdag_{L,\overline s}(x)
     =
     g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\re^{-2\ri\hat \phi_s(x)}\re^{2\ri\hat \phi_{\overline s}(x)}
     =
@@ -1284,17 +1286,14 @@ with coupling constants
     \quad
     s\in\{+,-\}.
 \end{align}
-The first observation regards $g_{1\perp}=0$: the Hamiltonian separates into two quasi-independent sectors (the overall particle number must still be conserved), namely those of charge and spin excitations propagating with different velocities.
+The first observation regards the separation of the Hamiltonian into two quasi-independent sectors (the overall particle number must still be conserved), namely those of charge and spin excitations propagating with different velocities.
 This is famously known as spin-charge separation and a feature of all one-dimensional metallic systems.
-It describes the fractionalization of particles into two distinct quasiparticles, called spinons with zero charge and spin 1/2 and chargons with charge minus one and no spin.
-As is clear from the discussion above, the two sectors remain independent and therefore move with different velocities~\cite{Tomonaga1950,Luttinger1963,Haldane1981,Kim2006}.
+It describes the fractionalization of particles into two distinct quasiparticles, called spinons with zero charge and spin 1/2 and chargeons with charge minus one and no spin.
+As is clear from the discussion above, the two sectors remain independent and therefore move in general with different velocities~\cite{Tomonaga1950,Luttinger1963,Haldane1981,Kim2006}.
 
-The second observation regards the presence of a non-quadratic term for $g_{1\perp}\neq0$.
-Terms of the type
-\begin{align}
-    \hat O_{\rm sG}(\beta,\hat f) = g\int\rd x\cos(\beta\hat f)
-\end{align}
-are called sine-Gordon terms of the field $\hat f$ and are potentially ``relevant'' for a free Luttinger liquid.
+The second observation regards the presence of a non-quadratic term in the spin sector of the Hamiltonian.
+In general, $\hat O_{\rm sG} = g\int\rd x\cos(\beta\hat f)$
+are called sine-Gordon terms of the field $\hat f$, with $\beta$ an arbitrary number, and are potentially ``relevant'' for a Luttinger liquid~\cite{Giamarchi2003,Gogolin2004,AltlandSimons2010}.
 The ``relevancy'' of such terms is determined by its flow under Wilsonian renormalization group theory which I perform explicitly in \cref{sec:renormalization_group_theory}.
 If $g$ is large enough (depending on $\beta$), it drives the system to an ordered phase by ``pinning'' its argument's eigenvalues to semiclassical minima $\beta f=(2n+1)\pi$.
 In the context of \cref{eq:ll_hamiltonian_spin}, it opens a gap in the spin sector and establishes an ordered spin density associated to the argument of $\hat O_{\rm sG}$.
@@ -1304,7 +1303,7 @@ In the context of \cref{eq:ll_hamiltonian_spin}, it opens a gap in the spin sect
 \section{Renormalization group theory}
 \label{sec:renormalization_group_theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In \cref{sec:LL_with_spin}, I motivated an interaction $\hat O_{\rm sG}$ which is typically encountered in field theories that may drive the non-interacting system to a different phase of matter.
+In \cref{sec:LL_with_spin}, I motivated an interaction $\hat O_{\rm sG}$ which is typically encountered in field theories that may drive the gapless Luttinger liquid to a different phase of matter.
 This interaction is commonly used to describe a particular class of phase transitions from a gapless to a gapped system, called Berezinskii-Kosterlitz-Thouless (BKT) transition.
 It is peculiar in the sense that it does not involve any spontaneous symmetry breaking and can thus be considered as an example of a topological phase transition.
 Traditionally, the BKT transition was first encountered in 2D classical systems, but due to the close analogy between (1+1)D quantum field theories and classical statistical mechanics in two spatial dimensions, it appears naturally in one-dimensional quantum systems as well.
@@ -1398,6 +1397,7 @@ Its solutions are $g(l) = g_0\re^{(2-D_g)l}$, where $g_0\coloneqq g(0)$ is the i
 It is thus evident that the flow of the coupling is fully determined by the scaling dimension: if $D_g>2$, then $g(l)\rightarrow0$ vanishes exponentially fast and the coupling is dubbed ``irrelevant''.
 If however $D_g<2$, then $g(l)\rightarrow\infty$ and the interaction is called ``relevant''.
 Due to the perturbative character of this study, one must however consider that $g(l)$ is not allowed to exceed the initial values of the Gaussian part $g(l)<g^*$ with $g^*=\min(uK,u/K)$.
+This value is thus related to an energy scale of the microscopic system, e.g. the bandwidth of the non-interacting model.
 An upper stop value for the flow $l^*$ is thus given by $g^*\coloneqq g(l^*)$ and one may assume that the system is driven sufficiently away from the Luttinger liquid critical point, characterized by the scale invariant action $S_0$.
 
 An estimate for the scaling of the correlation length is obtained by
@@ -1474,8 +1474,8 @@ Therefore, the $C$-independent terms cancel in the connected part of the correla
 % In case $C(|{\bm x}-{\bm x'}|)$ is sufficiently short-ranged, the arguments in the $\cos$ of \cref{eq:rg_int_1,eq:rg_int_2} can be approximated as indicated in \cref{eq:RG_second_order_approximation_1} using a non-universal constant $\gamma$.
 
 To proceed in solving the integral, the function $C$ needs to be discussed further.
-For a sharp momentum cutoff, one would obtain here $C(r) = J_0(\Lambda r)$ with asymptotic expression $J_0(\Lambda r)\approx\sqrt{2/(\pi \Lambda r)}\cos(\Lambda r-\pi/4)$.
-This function has a long algebraic tail and is thus not a sharp function (see also \cref{fig:rg_cutoff}).
+For a sharp momentum cutoff, one obtains from \cref{eq:kg_correlations_approximation} $C(r) = J_0(\Lambda r)$ with asymptotic expression $J_0(\Lambda r)\approx\sqrt{2/(\pi \Lambda r)}\cos(\Lambda r-\pi/4)$.
+This function has a long algebraic tail and is thus not a sharp function in $r$ (see also \cref{fig:rg_cutoff}).
 The origin of this long tail resides in the choice of the momentum cutoff in the integration scheme.
 Recall that we aim to integrate an infinitesimal shell of large momenta, which allows a certain degree of freedom in the form of the shell itself.
 The momentum integration can be rewritten as
@@ -1499,7 +1499,7 @@ The sharp situation is recovered for $n\rightarrow\infty$ (see \cref{fig:rg_cuto
     % The main weight of the integral resides in $[\Lambda_{\rm min},1/r]$, for which $J_0\approx1$ if the lower cutoff is chosen small enough.
     % This then yields the approximated propagator, with the special case $n=2$ used in~\cref{eq:kg_correlations_approximation}.
 % }.
-In practice, the integration \cref{eq:rg_hsq} evaluates to the general integral
+In practice, the integration of the fast modes in \cref{eq:kg_correlations_approximation} evaluates to
 \begin{align}
     \braket{h({\bm x}),h(\bm x')}_h = \frac K2\int_{\Lambda'}^\Lambda\rd p\frac{J_0(p r)}{p} = \frac K2\int_{0}^\Lambda\rd p\frac{J_0(p r)}{p}
     -\frac K2\int_{0}^{\Lambda'}\rd p\frac{J_0(p r)}{p}
@@ -1508,7 +1508,7 @@ In practice, the integration \cref{eq:rg_hsq} evaluates to the general integral
     \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\brlr{\frac1{p^n+\Lambda'^n}-\frac1{p^n+\Lambda^n}}
     \\
     =
-    \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\frac{n\Lambda^n}{\left(\Lambda^n+p^n\right)^2}\rd l + O(\rd l^2)
+    \frac K2\int_{0}^\infty\rd p J_0(p r)p^{n-1}\frac{n\Lambda^n}{\left(\Lambda^n+p^n\right)^2}\rd l + O(\rd l^2),
     \label{eq:rg_hxhxpr}
 \end{align}
 leading to the modified function $C_n$ which depends on the smoothness $n$, i.e.
@@ -1566,11 +1566,11 @@ The integral can then be rewritten as
 \end{align}
 
 The first $\cos$ term (\cref{eq:rg_int_1}) did not exist in the original Hamiltonian\footnote{
-    Note that this term generation is continuous, and to account for it, we should start from a more generic interaction containing all the higher harmonics, i.e. $S_{I'} = S_I + \sum_{j=1}^\infty g_j\int\rd x\rd\tau\cos(2j\beta\phi)$.
+    Note that this term generation is continuous, and to account for it, we should start from a more generic interaction containing all the higher harmonics, i.e. $S_{I'} = S_I + \sum_{j=1}^\infty \tilde g_j\int\rd x\rd\tau\cos(2j\beta\phi)$.
     The first-order corrections of the Euclidian action then yield a coupled system of differential equations in which the amplitudes of less relevant operators depend on those of more relevant ones (but {\it not} vice-versa).
     This allows for a practical and well-justified simplification of dropping the sum in the previous expression, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
-} -- it is a new sine-Gordon type interaction with larger scaling dimension $D_h = K\beta^2$ compared to $D_g=K\beta^2/4$.
-The operator associated to $h$ is thus less relevant than the original term and can be disregarded.
+} -- it is a new sine-Gordon type interaction with larger scaling dimension $D_{\tilde g} = K\beta^2$ compared to $D_g=K\beta^2/4$.
+The operator associated to $\tilde g$ is thus less relevant than the original term and can be disregarded.
 The second $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part,
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
@@ -1620,7 +1620,7 @@ which dictate the modified RG equations
     \frac{\rd y}{\rd l} = - xy.
 \end{align}
 This set of variables is particularly useful to investigate the equations in proximity of $x=0$.
-Note that $(x+2)^3\approx8$, such that $\rd x/\rd l = -y^2$ and $\rd y/\rd l=-xy$ describes the effective RG flow close to the Luttinger liquid fix point at $x=0$ and $y=0$.
+Note that $(x+2)^3\approx8$, such that $\rd x/\rd l = -y^2$ and $\rd y/\rd l=-xy$ describes the effective RG flow close to the Luttinger liquid fix point at $x=0$ and $y=0$, which are known as the ``Kosterlitz-Thouless equations''~\cite{Kosterlitz1974,Kosterlitz1973}.
 
 \begin{figure}
     \centering
