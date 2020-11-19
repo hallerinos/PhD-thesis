@@ -10,11 +10,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-The analytical treatment presented in the previous chapter relies on a heavy line of approximations (which are sometimes very hard to justify on a rigorous level).
+The analytical treatment presented in the previous chapter relies on a heavy line of approximations.
 One of the most crucial consequence of these simplifications is that quantitative deviations occur if the interactions are comparable to the kinetic bandwidth.
 This restricts heavily the validity region of the low-energy effective field theory of a particular model.
 To make an example, a sine-Gordon term with $\beta=4$ is encountered in the effective low-energy field theory of the spin-$1/2$ XXZ chain and the interaction will be relevant in the RG sense for $K<1/2$.
-Such a small Luttinger parameter typically requires very strong nearest neighbor interactions that are compatible with the system's bandwidth\footnote{The XXZ model is integrable and the phase transition occurs when all couplings are equal to each other.}, which thus implicitly breaks the assumptions to derive the effective low-energy field theory itself.
+Such a small Luttinger parameter typically requires very strong nearest neighbor interactions that are compatible with the system's bandwidth\footnote{The XXZ model is integrable and the phase transition occurs when all couplings are equal to each other.}, which thus implicitly breaks the assumptions to derive the effective low-energy field theory in the first place.
 Although the field theoretic description might not break down entirely, heavy quantitative deviations from the Luttinger liquid predictions of the effective coupling parameters are to be expected.
 This motivates the use of numerical tools to verify the analytic predictions in the strongly interacting cases.
 In this chapter, I will provide the essentials to get acquainted with the concepts of tensor networks, in particular with matrix product states (MPS).
@@ -22,7 +22,7 @@ In this chapter, I will provide the essentials to get acquainted with the concep
 First, I give a basic introduction to tensor networks and explain the intuitive concept of renormalization through a truncation of the auxiliary dimension of these structures.
 Second, I review the concept of ``area laws'' -- a statement about the structure of quantum correlations of gapped and short-ranged Hamiltonians -- and connect it to the properties of tensor networks.
 I will then present renormalization strategies which provide variational search algorithms to target ground (and low-lying excited) states and continue by presenting a simple yet effective time-evolution algorithm in the framework of MPS.
-As a conclusion, I review the exploit of abelian symmetries in the numerical techniques which in general reduces the overall computational complexity.
+As a conclusion, I review the exploit of Abelian symmetries in the numerical techniques which in general reduces the overall computational complexity.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,7 +72,7 @@ The previous equation can thus be recast to
     V^\dag V^\pdag \equiv \includegraphics[valign=c]{figures/left_isometry.pdf} = \includegraphics[valign=c]{figures/left_identity.pdf}\,.
     \label{eq:isometries}
 \end{align}
-Although the two pictures represent the same multiplication at the present stage, a distinction of the two will be useful in the context of canonical MPS.
+Although the two pictures represent the same multiplication at the present stage, a distinction of the two will be useful in the context of canonical MPS at a later point (in particular, in \cref{eq:isometry_tensors_diagram}).
 A simple squared unitary matrix is orthogonal with respect to both left/right multiplication with its adjoint and as such can be represented as a hourglass.
 The SVD of a normal matrix $M$ can be recast to the graphical notation
 \begin{align}
@@ -332,7 +332,7 @@ In this context, $-\log(s^2_k)$ is understood as the information content (or sur
 Such a definition is understood intuitively: measuring a state of very low probability is surprizing, whereas likely quantum states bear a low surprise.
 In a quantum physics audience, the entropy $S_1$ is commonly referred to as von Neumann entropy, and I denote it as $S_1$ because of its relation to the Rényi entropy -- a generalized version of the Shannon entropy
 \begin{align}
-    S_\alpha(\ell) = \frac{1}{1-\alpha}\log\tr\rho^\alpha_A
+    S_\alpha(\ell) = \frac{1}{1-\alpha}\log\tr\hat\rho^\alpha_A
 \end{align}
 in the limit $\alpha\rightarrow1$.
 The derivation of the limit is infrequently presented in the literature, but straightforward by using the Schmidt decomposition and L'Hôpital's rule
@@ -394,9 +394,9 @@ and they all have remarkable properties, first recognized by Schrödinger -- if 
 As such, they give no information about the subsystems, whereas they are still pure and thus reveal full information about the global system.
 The Bell states are special cases of bipartite maximally entangled states~\cite{Horodecki2009} and as such great examples to explore the entropic manifestation of entanglement.
 
-In particular, it has been shown that the von Neumann entropy of a subsystem can be greater than the entropy of the global system iff. the state is entangled~\cite{Horodecki1994}.
-The inequality for separable states can thus be expressed as $S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
-As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities~\cite{Horodecki2006}.
+In particular, the von Neumann entropy of a product state vanishes\footnote{This is actually a consequence of a much more general statement for open quantum systems and mixed states: the entropy of a subsystem can be greater than the entropy of the global system iff. the state is entangled~\cite{Horodecki1994}.
+The inequality for separable states can thus be expressed as $S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix of the mixed state and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
+As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities~\cite{Horodecki2006}.}.
 Note that the reduced density matriy of the Bell states is $\hat\rho_{A/B}=\frac12\mathbb1$ and as such $S_1=\log2$ which provides an upper limit for this two-partite system.
 In general, a maximally entangled $N$-partite pure state is maximally entangled if the reduced density matrix is proportional to the identity.
 Assuming the local internal dimension is $D$, it assumes the upper bound of the entropy $S_1(\ell)=\ell\log(D)$.
@@ -573,9 +573,9 @@ The MPO representation of the Hamiltonian is quite versatile -- any Hamiltonian 
 Note that the MPO form is not limited to spin systems due to the famous Jordan-Wigner transformation.
 It is defined in terms of the ladder operators with matrix representations $\hat\sigma^\pm = \frac12(\hat X\pm\ri \hat Y)$, i.e.
 \begin{align}
-    \hat a_i^\pdag = \brlr{\prod_{j<i}-\hat Z}\hat\sigma^-_i,
+    \hat c_i^\pdag = \brlr{\prod_{j<i}-\hat Z}\hat\sigma^-_i,
     \qquad
-    \hat a_i^\dag = \brlr{\prod_{j<i}-\hat Z}\hat\sigma^+_i.
+    \hat c_i^\dag = \brlr{\prod_{j<i}-\hat Z}\hat\sigma^+_i.
     \label{eq:jordan_wigner_trafo}
 \end{align}
 This way, the fermionic creation and annihilation operators are represented by spin ladder operators.

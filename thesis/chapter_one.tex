@@ -24,14 +24,14 @@ It is is thus understood as the coefficients for the basis transform $\ket{\alph
 \begin{align}
     \ket{\alpha} = \int{\rm d}{r}\, \Psi_\alpha(r) \ket{r}.
 \end{align}
-According to the basic postulate of quantum mechanics, the wave function of two indistinguishable particles with quantum numbers $\alpha_1$ and $\alpha_2$ is given by the (anti-) symmetrized product
+According to the basic postulate of quantum mechanics, the wave function of two indistinguishable particles with quantum numbers $\alpha_1$ and $\alpha_2$ is given by the (anti-)symmetrized product
 \begin{align}
     \Psi_{\alpha_1,\alpha_2,\nu}(r_1,r_2) = \frac1{\sqrt2}\left(\braket{r_1|\alpha_1}\braket{r_2|\alpha_2} + \nu\braket{r_2|\alpha_1}\braket{r_1|\alpha_2}\right),
 \end{align}
 depending on the particle statistics upon exchange of their position, i.e. $\nu=\pm1$ for bosons and fermions, respectively.
 The two-particle wave function can thus be represented by a more simple inner product
 \begin{align}
-    \Psi_{\alpha_1,\alpha_2,\nu}(r_1,r_2) = \left(\bra{r_1}\otimes\bra{r_2}\right)\ket{\alpha_1 \alpha_2}_\nu
+    \Psi_{\alpha_1,\alpha_2,\nu}(r_1,r_2) = \left(\bra{r_1}\otimes\bra{r_2}\right)\ket{\alpha_1 \alpha_2}_\nu,
 \end{align}
 which is given by the (anti-) symmetric Kronecker product
 \begin{align}
@@ -158,14 +158,13 @@ Let us start with a general operator acting on a single particle of the full $N$
 Familiar examples are the momentum or the position operator $\hat x_i$, $\hat p_i$ acting on the $i$th particle, or compositions of these operators like single particle potentials $\hat V(\hat x_i)$.
 It is thus not surprising that the general expression of such operators can be given in terms of the particle creation and annihilation operators we introduced in \cref{sec:creation_and_annihilation_operators}.
 
-A one-body operator $\hat o$ diagonal in an arbitrary single-particle basis $\{\alpha_1\}$ ($\hat o = \sum_{\alpha_1} o_{\alpha_1}\ket{\alpha_1}\bra{\alpha_1}$) is trivially extended to the $N$-particle states written in the same basis
+A one-body operator $\hat o$ diagonal in an arbitrary single-particle basis is trivially extended to the $N$-particle states written in the same basis
 \begin{align}
     \hat O_1
-    = \sum_{\alpha_i} o_{\alpha_i}\hat a^\dag_{\alpha_i}\hat a^\pdag_{\alpha_i}.
+    = \sum_{\alpha} o_{\alpha}\hat n_{\alpha}.
 \end{align}
 This is most easily understood: one-body operators act on only a single entity of the full set of particles, leaving the others untouched.
-In the diagonal basis of $\hat O_1$, the action of $\hat n_{\alpha_i}\coloneqq \hat a^\dag_{\alpha_i}\hat a^\pdag_{\alpha_i}$ just counts the number of particles in the state $\alpha_i$, which is then multiplied with the expectation value of the single-particle operator.
-In a more general basis, the one-body operator transforms according to \cref{eq:creation_annihilation_basis_rotation} resulting in
+In a more general basis, the one-body operator transforms according to \cref{eq:creation_annihilation_basis_rotation}, resulting in
 \begin{align}
     \hat O_1 = \sum_{\alpha, \beta}\braket{\alpha | \hat o | \beta} \hat a^\dag_\alpha \hat a^\pdag_\beta = \sum_{\alpha,\beta}o_{\alpha,\beta}\hat a^\dag_\alpha \hat a^\pdag_\beta.
     \label{eq:one_body_operator}
@@ -201,11 +200,11 @@ In particular, the Hamiltonian considered here reads
 %     \hat V_{ee} = \frac12\sum_{s,s'}\int\rd^dr\int\rd^dr'\,V_{ee}({\bm r}-{\bm r'})a^\dag_s({\bm r})a^\dag_{s'}({\bm r'})a^\pdag_{s'}({\bm r}')a^\pdag_{s}({\bm r})
 % \end{align}
 with operators $\hat a^\pdag({\bm r})$ annihilating a particle at position $\bm r$.
-The local potential $V_{ae}$ is a collection of $N_a$ local potentials
+The local potential $V_{ae}$ is a collection of $N_a$ identical potentials,
 \begin{align}
-    V_{ae}({\bm r}) = \sum_{i=1}^{N_a}v_{ae}({\bm R}_i - {\bm r})
+    V_{ae}({\bm r}) = \sum_{i=1}^{N_a}v_{ae}({\bm R}_i - {\bm r}),
 \end{align}
-and the value of $v_{ae}$ is determined by the relative distance from the position ${\bm R}_i$.
+and the value of $v_{ae}$ is determined by the relative distance from the lattice position ${\bm R}_i$.
 If the creation operators satisfy the anticommutator algebra in real space
 \begin{align}
     \anticommutator{\hat a^\pdag({\bm r}),\hat a^\dag({\bm r'})}=\delta({\bm r}-{\bm r'}),
@@ -215,7 +214,7 @@ A regular (Bravais) lattice structure in $d$ dimensions is in general spanned by
 \begin{align}
     \mathcal{R} = \anticommutator{\sum_{i=1}^d n_i {\bm x}_i,\ n_i\in\mathds Z}.
 \end{align}
-Additional vectors $\{{\bm b}_i\}$ (sometimes called the basis) are used to define the position of the potential minima relative to the points of the Bravais lattice, such that every position in the primitive cell is given by ${\bm R}_j = \sum_i n_i {\bm x}_i + {\bm b}_j$ with integers $n_i\in\mathds Z$.
+% Additional vectors $\{{\bm b}_i\}$ (sometimes called the basis) are used to define the position of the potential minima relative to the points of the Bravais lattice, such that every position in the primitive cell is given by ${\bm R}_j = \sum_i n_i {\bm x}_i + {\bm b}_j$ with integers $n_i\in\mathds Z$.
 The beauty of this approach becomes visible as soon as we define the lattice translation operator
 \begin{align}
     \hat T_{\bm n} : \psi_\alpha({\bm r}) \mapsto \psi_\alpha\brlr{{\bm r}+T_{\bm n}},\ T_{\bm n}\coloneqq\sum_i n_i {\bm x}_i={\bm n}\underline{\bm x}
@@ -281,7 +280,7 @@ In order to read out the Bloch weights I conveniently factor a crystal momentum 
     u_{\beta k}^{\rm (ii)}(x) = B\re^{(\tau'\beta-\ri k) x} + B'\re^{-(\tau'\beta+\ri k) x},
 \end{align}
 with $\hbar^2\alpha^2 = 2m\abs{E}$, $\hbar^2\beta^2 = 2m\abs{(E-V_0)}$, $\tau^2=-\sign{E}$ and $\tau'^2=-\sign{E-V_0}$.
-Plane waves are thus obtained in case of $\tau=\tau'=\ri$ are obtained for $E>V_0$.
+Plane waves are thus obtained in case of $E>V_0$, such that $\tau=\tau'=\ri$.
 The wave functions are supposed to be smooth at the boundaries\footnote{I hereby use the notation of limits from above or below, i.e. $f(0^\pm)=\lim_{\epsilon\rightarrow0}f(\pm\epsilon)$ for $\epsilon>0$.}, which results in
 \begin{align}
     % \psi_{\alpha k}^{\rm (i)}(0^+)=\psi_{\beta k}^{\rm (ii)}(0^-),
@@ -679,7 +678,7 @@ Close to the Fermi energy $\varepsilon_F\coloneqq\varepsilon_{\pm k_F}$, one may
     \label{eq:dispersion_linearization}
 \end{align}
 which implies a restriction of $q$ to a small window $|q|<\Gamma\ll k_F$ beyond which \cref{eq:dispersion_linearization} is considered invalid.
-Note the introduction of the so-called right and left operators $\hat c_{R/L,q}$ which annihilate particles propagating to the left/right with Fermi velocity $\pm v_F=\hbar k_F/m$.
+Note the introduction of the so-called right and left operators $\hat c_{q,R/L}$ which annihilate particles propagating to the left/right with Fermi velocity $\pm v_F=\hbar k_F/m$.
 
 For the next part, it is convenient to investigate the local density in momentum space, i.e.
 \begin{align}
@@ -695,7 +694,7 @@ Note further that $\hat\rho_q^\dag = \hat\rho_{-q}$.
 By confining the theory close to the Fermi points, there are only two different classes of particle-hole excitations with $q\approx 0$ and $q\approx\pm2k_F$.
 The long-wavelength excitations $q\approx0$ are particle-hole pairs of the same species (left or right movers), and excitations of $q\approx\pm2k_F$ are particle-hole pairs of a mixture of the two.
 This implies drastic consequences for the relevant action of operators, which we will see in the following.
-Let us note here that the density operator of the left/right species $\hat\rho_{\tau,q}$, $\tau\in\{L,R\}$ applied to a Fermi sea creates stable particle-hole excitations (i.e. particles and holes propagate with the same velocity $\pm v_F$) and can thus be used to construct a complete basis of the subspace $\FS^N$ -- for this rather dry discussion, I refer to~\cite{vonDelft1998}.
+Note that the density operator of the left/right species $\hat\rho_{\tau,q}$, $\tau\in\{L,R\}$ applied to a Fermi sea creates stable particle-hole excitations (i.e. particles and holes propagate with the same velocity $\pm v_F$) and can thus be used to construct a complete basis of the subspace $\FS^N$ -- for this rather dry discussion, I refer to~\cite{vonDelft1998}.
 The consequences of the approximation in \cref{eq:dispersion_linearization} is easily understood for the single-particle operators
 \begin{align}
     \hat c^\dag_x = \frac1{\sqrt L}\sum_k \re^{-\ri k x}\hat c^\dag_k \approx \frac1{\sqrt L}\sum_{|q|<\Gamma}\re^{-\ri (q+k_F) x}\hat c^\dag_{q,R} + \re^{-\ri (q-k_F) x}\hat c^\dag_{q,L}
@@ -704,7 +703,7 @@ The consequences of the approximation in \cref{eq:dispersion_linearization} is e
 which is then used to find the local density
 \begin{align}
     \hat n(x)
-    &\approx \frac1L\sum_{q,q'}\brlr{\re^{-\ri (q+k_F) x}\hat c^\dag_{R, q} + \re^{\ri (k_F-q) x}\hat c^\dag_{L, q}}\brlr{\re^{\ri (k_F+q') x}\hat c^\pdag_{R, q'} + \re^{-\ri (k_F-q') x}\hat c^\pdag_{L, q'}},
+    &\approx \frac1L\sum_{q,q'}\brlr{\re^{-\ri (q+k_F) x}\hat c^\dag_{q,R} + \re^{\ri (k_F-q) x}\hat c^\dag_{q,L}}\brlr{\re^{\ri (k_F+q') x}\hat c^\pdag_{q',R} + \re^{-\ri (k_F-q') x}\hat c^\pdag_{q',L}},
     \\
     &= \hat \rho_R(x) + \hat \rho_L(x) + \re^{-2\ri k_Fx}\hat c^\dag_{R}(x)\hat c^\pdag_{L}(x) + \re^{2\ri k_Fx}\hat c^\dag_{L}(x)\hat c^\pdag_{R}(x).
     \label{eq:local_density_approximation}
@@ -758,7 +757,7 @@ and $g_1$ scattering
 \begin{align}
     g_1\sum_{k,k',q} \hat c^\dag_{k+q,\tau}\hat c^\dag_{k'-q,\overline\tau}\hat c^\pdag_{k',\tau}\hat c^\pdag_{k,\overline\tau}.
 \end{align}
-Note that we are safely discarding possible constants on the right hand side of the previous equations.
+Note that constants on the right hand side of the previous equations are neglected.
 The $g_1$ scattering of spinless fermions can be rewritten according to
 \begin{align}
     \sum_{k,k',q}V(q)
@@ -834,9 +833,9 @@ Using \cref{eq:canonical_bosonic_operators} results in a familiar expression for
     .
     \label{eq:quadratic_interactions}
 \end{align}
-The interaction, originally quartic in the fermionic degrees of freedom, can be cast into a (quadratic) sum of bosonic operators which are the low-energy excitations of the original model.
-All that is left to do is to cast the kinetic term into this new basis, which is actually a quite lengthy calculation if we were to approach it by brute-force.
-There is an indirect reasoning through Schur's lemma~\cite{schur_neue_1905}: if two operators $\hat H$ and $\hat H'$ have identical commutation relations with all $\{c^\pdag_\alpha,c^\dag_\alpha\}$, then the two operators are equal up to an overall constant, which in this case can be interpreted as a chemical potential.
+The interaction, originally quartic in the fermionic degrees of freedom, can be cast into a sum of bosonic operators which are the low-energy excitations of the original model.
+All that is left to do is to expand the kinetic term into this new basis, which is actually a quite lengthy calculation if we were to approach it by brute-force.
+There is an indirect reasoning through Schur's lemma~\cite{schur_neue_1905}: if two operators $\hat H$ and $\hat H'$ have identical commutation relations with all $\{a^\pdag_\alpha,a^\dag_\alpha\}$, then the two operators are equal up to an overall constant, which in this case can be interpreted as a chemical potential.
 One can easily compute the commutator of the mover-density with the kinetic Hamiltonian
 \begin{align}
     \commutator{\hat H_0, \hat\rho_{q,\tau}}
@@ -881,7 +880,7 @@ The effective low energy Hamiltonian containing kinetic and interaction energy s
     .
     \label{eq:luttinger_hamiltonian_nondiagonal}
 \end{align}
-As a final step, we want to find the spectrum of the previous Hamiltonian through a basis transformation $\hat B_q = T \hat B'_q$\footnote{The matrix coupling the dot product of the operator spinors $\hat B_q$ is independent on the momentum $q$ and as such the basis transformation $T$ will not depend on $q$ either.} with $\hat B_q = (\hat b_q^\dag, \hat b_{-q})^T$ such that
+As a final step, we want to find the spectrum of the previous Hamiltonian through a basis transformation\footnote{The matrix coupling the dot product of the operator spinors $\hat B_q$ is independent on the momentum $q$ and as such the basis transformation $T$ will not depend on $q$ either.} $\hat B_q = T \hat B'_q$ with $\hat B_q = (\hat b_q^\dag, \hat b_{-q})^T$ such that
 \begin{align}
     \hat H = \sum_{q>0}\hbar q\hat B^\dag_q H \hat B^\pdag_q = \sum_{q>0}\hbar q\hat B'^\dag_q T^\dag H T \hat B'^\pdag_q
 \end{align}
@@ -1032,7 +1031,7 @@ and then insert a complete set of states in between each of the factors, i.e. $\
     To keep this in mind, I now proceed by using bold letters in case of explicit discretization of the corresponding continuum field.
     For a more universal derivation of the many-body path integral using coherent state representations, I refer to \cite{AltlandSimons2010}.
 }.
-The insertion of this set of states then corresponds to unconstrained integrations over smaller time slices of the full time evolution which in this sense already assumes the form of a path integral, i.e.
+The insertion of this set of states then corresponds to unconstrained integrations over smaller time slices of the full time evolution, i.e.
 \begin{align}
     U(x_f,x_i,T) =
     \int{\rd{\bm\phi}_{N-1}\rd{\bm\phi}_{N-2}\dots\rd{\bm\phi}_2,\rd{\bm\phi}_1}
@@ -1146,7 +1145,7 @@ Each path is weighted by the corresponding classical action -- note the absence 
 However, quantum mechanics is still at full presence, as the integration is not restricted to solutions of the classical equations of motion.
 
 The standard definition of the partition function is given as $Z=\tr(\exp(-\beta \hat H))$, and the trace amounts to a summation over all possible configurations of the system.
-This makes apparent the interpretation of $t=-\ri \beta$, resulting in the ``Euclidean'' action such that the path integral becomes a quantum mechanical partition function
+This makes apparent the interpretation of $T=-\ri \beta$, resulting in the ``Euclidean'' action such that the path integral becomes a quantum mechanical partition function
 \begin{align}
     Z = \tr(\exp(-\beta \hat H)) = \int\rD[\phi]\re^{-S[\phi]}
     ,\quad
@@ -1211,9 +1210,8 @@ To proceed further to the case of spinful models, the kinetic Hamiltonian is ass
     = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau\in\{L,R\},s\in\{\uparrow,\downarrow\}}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s},
 \end{align}
 which allows to introduce a pair of conjugate fields $(\hat \phi_s,\hat \pi_s)$ for each spin flavor $s$\footnote{In our research, the spin conservation is explicitly broken in most cases. The analytic treatment employed in \cref{one_half1,integer1,chiral1} starts from a decoupled system, which is understood as two independent wires each hosting a Luttinger liquid. We then study the ``most relevant'' emergent terms resulting from (perturbatively) coupling the two wires in the presence of interactions. For the definition of relevant and irrelevant terms, see \cref{sec:renormalization_group_theory}.}.
-The scattering processes $g_4$ and $g_2$ can be generalized in a straightforward manner, and the interaction is approximated with
+The scattering processes $g_4$ and $g_2$ can be generalized in a straightforward manner, and the associated interaction terms are given by
 \begin{align}
-  \hat V \approx
   \sum_{q,\tau,s}
   g_{4\parallel}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s}
   +
