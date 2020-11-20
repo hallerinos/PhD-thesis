@@ -1012,6 +1012,7 @@ The starting point is thus a Hamiltonian that is separable in the fields, i.e. $
 The goal is to evaluate the so-called time evolution kernel
 \begin{align}
     U(x_f,x_i,T) = \braket{\phi(x_f,T)|\phi(x_i,t_i=0)}=\braket{\phi_f|\re^{-\ri\hat H(\hat\phi,\hat\pi) T}|\phi_i}
+    \label{eq:time_evolution_kernel}
 \end{align}
 in which $\ket{\phi}$ is the simultaneous eigenstate of the field operator $\hat\phi(x)\ket{\phi}=\phi(x)\ket{\phi}$.
 Instead of taking the full exponential, one may split the time integration into $N$ parts
@@ -1080,7 +1081,7 @@ Note that we succeeded to replace the operator form of the Hamiltonian by its sc
 The full time evolution kernel then evaluates to
 \begin{align}
     U(x_f,x_i,T) =
-    \int_{{\bm\phi_N}_i}^{{\bm\phi_N}_f}
+    \int
     {\rd\{\bm\phi\}}\int{\rd\{\bm\pi\}}
     \re^{\ri\Delta t\sum_{n=1}^{N}\brlr{\bm\pi_n^T\frac{\bm\phi_{n}-\bm\phi_{n-1}}{\Delta t}-H(\bm\phi_{n-1},\bm\pi_n)}},
     \label{eq:path_integral_pre_integration}
@@ -1137,32 +1138,33 @@ Finally, application of \cref{eq:multi_gaussian} on \cref{eq:path_integral_pre_i
     \re^{\ri\int_0^T\rd tL[\phi,\dot\phi]}
     ,\quad
     L = \int\frac{\rd x}{2\pi u}(\partial_t\phi)^2 - V(\phi).
-    \label{eq:kg_lagrangian}
+    \label{eq:time_evolution_kernel_path_integral}
 \end{align}
 Since constants of proportionality do not enter in the expectation values by definition, they are absorbed into the definition of $\rD$ (which is given implicitly here).
-The integration covers all paths through the classical coordinate space spanned by $\phi$ which begin and end at the same initial and final points $\phi_i$ and $\phi_f$, respectively.
+The integration covers all paths through the classical coordinate space spanned by $\phi$ which begin and end at the same initial and final points $\phi(x_i)$ and $\phi(x_f)$, respectively.
 Each path is weighted by the corresponding classical action -- note the absence of hats which would denote a quantum mechanical operator.
 However, quantum mechanics is still at full presence, as the integration is not restricted to solutions of the classical equations of motion.
 
 The standard definition of the partition function is given as $Z=\tr(\exp(-\beta \hat H))$, and the trace amounts to a summation over all possible configurations of the system.
-This makes apparent the interpretation of $T=-\ri \beta$, resulting in the ``Euclidean'' action such that the path integral becomes a quantum mechanical partition function
+This makes apparent the interpretation of $T=-\ri \beta$ in \cref{eq:time_evolution_kernel}.
+A similar derivation then results in the ``Euclidean'' action such that the path integral becomes a quantum mechanical partition function
 \begin{align}
     Z = \tr(\exp(-\beta \hat H)) = \int\rD[\phi]\re^{-S[\phi]}
     ,\quad
-    S = -\int\rd\tau\brlr{\frac1{2\pi u}\int\rd x(\partial_\tau\phi)^2+V(\phi)}.
+    S = \int\rd\tau\brlr{\frac1{2\pi u}\int\rd x(\partial_\tau\phi)^2+V(\phi)}.
 \end{align}
 
-We now impose the Luttinger liquid potential, i.e. $V(\phi) = \frac u{2\pi}\int\rd x(\partial_x\phi)^2$, and proceed with the action of the Luttinger liquid, i.e.
+We now impose the Luttinger liquid potential $V(\phi) = \frac u{2\pi}\int\rd x(\partial_x\phi)^2$, and proceed with
 \begin{align}
-    S[\phi]=-\frac1{2\pi}\int\rd\tau\rd x\brlr{ \frac{(\partial_\tau\phi)^2}{u} + u(\partial_x\phi)^2}.
+    S[\phi]=\frac1{2\pi}\int\rd\tau\rd x\brlr{ \frac{(\partial_\tau\phi)^2}{u} + u(\partial_x\phi)^2}.
 \end{align}
 The partition function is readily recast into frequency and momentum space (using the notation ${\bm k}=(\omega, k)$).
 In addition, I introduce an additional source term similar to \cref{eq:field_source},
 \begin{align}
-    Z[\eta] = \int\rD_\phi \re^{-S[\phi]} = \int\rD_\phi \exp\brlr{-\int\frac{\rd k\rd\omega}{2\pi}\phi(-{\bm k})\commutator{\frac{w^2+(uk)^2}{u}}\phi({\bm k}) +\int\rd^2k\eta(-{\bm k})\phi({\bm k})},
+    Z[\eta] = \int\rD_\phi \re^{-S[\phi]} = \int\rD_\phi \exp\brlr{-\int\frac{\rd k\rd\omega}{2\pi}\phi(-{\bm k})\commutator{\frac{w^2+(uk)^2}{u}}\phi({\bm k}) +\int\rd k\rd\omega\eta(-{\bm k})\phi({\bm k})},
     \label{eq:full_partition_function}
 \end{align}
-with the definition of the Green's function $G^{-1}({\bm k})=\frac{\omega^2+(uk)^2}{\pi}$.
+with the definition of the Green's function $G^{-1}({\bm k})=\frac{\omega^2+(uk)^2}{\pi u}$.
 One arrives at
 \begin{align}
     \braket{\phi({\bm k})\phi(-{\bm k})} = G({\bm k})
@@ -1188,7 +1190,7 @@ The first approximation considers the fact that the Green's function should be t
 The second approximation considers a smooth upper momentum cutoff rather than the sharp lattice limit, which is discussed in more detail in \cref{sec:renormalization_group_theory}.
 
 To apply the statements for the interacting theory, only the fields must be rescaled $\phi\rightarrow\phi/\sqrt K$ and $\theta\rightarrow\theta\sqrt K$.
-In conclusion, the correlations for the interacting theory satisfy
+In conclusion, the equal-time correlations for the interacting theory satisfy
 \begin{align}
     \frac1K\braket{\phi(x)\phi(x')} = \braket{\phi'(x)\phi'(x')} \approx -\frac12\log(|x-x'|).
     \label{eq:greens_1}
@@ -1204,12 +1206,12 @@ The Lagrangian of the $\theta$ field is the same as for the $\phi$ field, thus t
 \section{Luttinger liquids with spin}
 \label{sec:LL_with_spin}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To proceed further to the case of spinful models, the kinetic Hamiltonian is assumed to be decoupled, i.e.
+To proceed further to the class of Luttinger liquids with (pseudo-)spin degree of freedom, the kinetic Hamiltonian is assumed to be decoupled\footnote{In our research, the spin conservation is explicitly broken in most cases. The analytic treatment employed in \cref{one_half1,integer1,chiral1} starts from a decoupled system, which is understood as two independent wires each hosting a Luttinger liquid. We then study the ``most relevant'' emergent terms resulting from a (perturbative) coupling of the two wires in the presence of interactions. For the definition of relevant and irrelevant terms, see \cref{sec:renormalization_group_theory}.}, i.e.
 \begin{align}
     \hat H_0 = \hat H_{0,\uparrow}+\hat H_{0,\downarrow}
     = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau\in\{L,R\},s\in\{\uparrow,\downarrow\}}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s},
 \end{align}
-which allows to introduce a pair of conjugate fields $(\hat \phi_s,\hat \pi_s)$ for each spin flavor $s$\footnote{In our research, the spin conservation is explicitly broken in most cases. The analytic treatment employed in \cref{one_half1,integer1,chiral1} starts from a decoupled system, which is understood as two independent wires each hosting a Luttinger liquid. We then study the ``most relevant'' emergent terms resulting from (perturbatively) coupling the two wires in the presence of interactions. For the definition of relevant and irrelevant terms, see \cref{sec:renormalization_group_theory}.}.
+which allows to introduce a pair of conjugate fields $(\hat \phi_s,\hat \pi_s)$ for each spin flavor $s$.
 The scattering processes $g_4$ and $g_2$ can be generalized in a straightforward manner, and the associated interaction terms are given by
 \begin{align}
   \sum_{q,\tau,s}
@@ -1223,17 +1225,17 @@ The scattering processes $g_4$ and $g_2$ can be generalized in a straightforward
 \end{align}
 To account for the scattering among different spins, it is customary to write the model in terms of a charge and spin degree of freedom, defined as
 \begin{align}
-    \hat f_+=\frac1{\sqrt2}\brlr{\hat f_\uparrow + \hat f_\downarrow},
+    \hat f_\pm=\frac1{\sqrt2}\brlr{\hat f_\uparrow \pm \hat f_\downarrow},
     \quad
-    \hat f_-=\frac1{\sqrt2}\brlr{\hat f_\uparrow - \hat f_\downarrow},
-    \quad
+    % \hat f_-=\frac1{\sqrt2}\brlr{\hat f_\uparrow - \hat f_\downarrow},
+    % \quad
     f\in\{\theta,\phi\}.
 \end{align}
 This rotation is trivial on the level of the kinetic Hamiltonian and
 \begin{align}
     \hat H_0 = \frac{2\hbar\pi v_F}L\sum_{q>0,\tau,s\in\{+,-\}}\hat\rho^\pdag_{q,\tau,s}\hat\rho^\dag_{q,\tau,s}.
 \end{align}
-Things are different for the forward and backscattering processes $g_{2/4}$.
+Things are different for the forward- and backscattering processes $g_{2/4}$.
 In the spinful scenario, it is necessary to distinguish between intra-spin and inter-spin scattering, such that
 \begin{align}
   \sum_{s\in\{\uparrow,\downarrow\}}
@@ -1256,12 +1258,12 @@ In the spinful scenario, it is necessary to distinguish between intra-spin and i
   [g_{i\parallel}-g_{i\perp}]\hat\rho^\pdag_{q,\tau,-}\hat\rho^\dag_{q,\tau,-}
   }.
 \end{align}
-The $g_1$ terms require special attention in this case:
-While the inter-spin terms are again equivalent to backscattering terms (up to a sign, see \cref{eq:umklapp_backscattering_equivalence}), the $g_{1\perp}$ term is
+The $g_1$ terms require more attention in this case:
+While inter-spin terms $g_{1\parallel}$ are equivalent to backscattering terms (up to a sign, see \cref{eq:umklapp_backscattering_equivalence}), the $g_{1\perp}$ term is resulting in
 \begin{align}
     g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\hat c^\dag_{L,s}(x)\hat c^\pdag_{R,s}(x)\hat c^\dag_{R,\overline s}(x)\hat c^\pdag_{L,\overline s}(x)
     =
-    g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\re^{-2\ri\hat \phi_s(x)}\re^{2\ri\hat \phi_{\overline s}(x)}
+    \frac{g_{1\perp}}{4\pi^2\alpha^2 }\sum_{s\in\{\uparrow,\downarrow\}}\re^{-2\ri\hat \phi_s(x)}\re^{2\ri\hat \phi_{\overline s}(x)}
     =
     \frac{g_{1\perp}}{2\pi^2\alpha^2}\cos(2\sqrt2\hat \phi_-(x))
 \end{align}
@@ -1301,11 +1303,11 @@ In the context of \cref{eq:ll_hamiltonian_spin}, it opens a gap in the spin sect
 \section{Renormalization group theory}
 \label{sec:renormalization_group_theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In \cref{sec:LL_with_spin}, I motivated an interaction $\hat O_{\rm sG}$ which is typically encountered in field theories that may drive the gapless Luttinger liquid to a different phase of matter.
-This interaction is commonly used to describe a particular class of phase transitions from a gapless to a gapped system, called Berezinskii-Kosterlitz-Thouless (BKT) transition.
-It is peculiar in the sense that it does not involve any spontaneous symmetry breaking and can thus be considered as an example of a topological phase transition.
+In \cref{sec:LL_with_spin}, I motivated an interaction $\hat O_{\rm sG}$ which is typically encountered in the effective field theory of (spinful) one-dimensional models that may drive the gapless Luttinger liquid to a different phase of matter.
+This interaction is commonly used to describe a particular class of phase transitions from a gapless to a gapped system, called Berezinskii-Kosterlitz-Thouless (BKT) transitions.
+It is peculiar in the sense that it does not involve any spontaneous symmetry breaking and can thus be considered as an example of a topological phase transition~\cite{AltlandSimons2010}.
 Traditionally, the BKT transition was first encountered in 2D classical systems, but due to the close analogy between (1+1)D quantum field theories and classical statistical mechanics in two spatial dimensions, it appears naturally in one-dimensional quantum systems as well.
-The emergence of the sine-Gordon type field theory from a 2D classical model requires a rather involved treatment of the classical partition function, and I refer to~\cite{AltlandSimons2010} for details on the derivation.
+The emergence of the sine-Gordon type field theory from a 2D classical model requires a rather involved treatment of the classical partition function, and I refer to~\cite{Kosterlitz1974,AltlandSimons2010} for details on the derivation.
 
 I now proceed by explaining the basic renormalization group (RG) analysis of the sine-Gordon model, based on~\cite{Gogolin2004}.
 The action of the sine-Gordon model reads $S = S_0 + S_I$, with
@@ -1315,7 +1317,7 @@ The action of the sine-Gordon model reads $S = S_0 + S_I$, with
     S_I = g\int\rd x\rd\tau\cos(\beta\phi)
     .
 \end{align}
-Remember that the action resulted as the continuum limit of a lattice model with well defined Brillouin zone, which connects the long wavelength with the small crystal momentum components of $\phi$.
+Remember that the action can be thought of the continuum limit of a lattice model with well defined Brillouin zone, which connects the long wavelength with the small crystal momentum components of $\phi$.
 The idea of renormalization is to let the system flow towards larger distances by sequentially integrating the short-distance (fast) components of the fields by partial path integration and representing the result in terms of an effective model for the long-wavelength field.
 The final step is then to recover the original size of the momentum shell by a rescaling of lengthscales.
 For technical convenience, it is best to assume a circular cutoff constraint $|{\bm k}|<\Lambda\sim2\pi/a$.
@@ -1341,11 +1343,11 @@ which results in the definition of an effective action
 \begin{align}
     S_{\rm eff}[\phi_{\Lambda'}] = S_0[\phi_{\Lambda'}] - \log\braket{\re^{-S_I[\phi_{\Lambda'}+h]}}_h.
 \end{align}
-The analytic evaluation of the expectation on the right hand side requires further simplifications -- one prominent possibility is the perturbative expansion
+The analytic evaluation of the expectation on the right hand side requires further simplifications -- one prominent possibility is the perturbative expansion up to second order in the coupling amplitude $g$ of the interaction part of the action,
 \begin{align}
-    S^{(2)}_{\rm eff}[\phi_{\Lambda'}] = S_0[\phi_{\Lambda'}] + \braket{S_I[\phi_{\Lambda'}+h]}_h - \frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}} + O(g^3)
+    S^{(2)}_{\rm eff}[\phi_{\Lambda'}] = S_0[\phi_{\Lambda'}] + \braket{S_I[\phi_{\Lambda'}+h]}_h - \frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}} + O(g^3),
 \end{align}
-in which $\braket{F^2}_{\rm conn.} = \braket{F^2}-\braket{F}^2$ denotes the ``connected'' part of the expectation value.
+in which $\braket{F^2}_{\rm conn.} = \braket{F^2}-\braket{F}^2$ denotes the ``connected'' part of the expectation value~\cite{Gogolin2004}.
 The renormalization group approach carried out in the following is thus reliable for small renormalized couplings $g\ll \frac u{2\pi K}$.
 
 The first order term can be rewritten as
@@ -1604,7 +1606,6 @@ This concludes the derivation of the so-called RG flow which is described by the
     \frac{\rd g}{\rd l} = g\brlr{2-\frac{\beta^2K}4}.
 \end{align}
 Viable estimates are already obtained far from the phase transitions, and the second order approximation provides more insights close to the phase transition at $D_g=2$, in particular at $K=8/\beta^2$.
-Equivalent results are obtained for the dual field by replacing $K\rightarrow K^{-1}$.
 It is beneficial to define the flow equations close to the critical point, e.g. through the parameters
 \begin{align}
     x = \frac{\beta^2 K}4 - 2,
@@ -1638,14 +1639,14 @@ Although the interaction is irrelevant and as such the system remains in a Lutti
 The effective interaction is then given by the final value of $x$ (thus $K$) at which the flow terminates.
 
 (ii) If $x>0$ and $y=x$ (taken in proximity of $x$ and $y$ small), the trajectory follows a critical BKT line to the fix point $x=y=0$.
-The effective Luttinger parameter assumes the ``marginal'' value $K=8/\beta^2$ for which the scaling dimension $D_g=2$.
+The effective Luttinger parameter assumes the ``marginal'' value $K=8/\beta^2$ for which the scaling dimension results to $D_g=2$.
 
 (iii) In case of $y>|x|$, the coupling $y$ first flows towards smaller couplings, but then towards $y\rightarrow\infty$, independently on the value of $x$.
 This corresponds to a case in which the interaction becomes dominating.
-The Luttinger liquid description breaks down and the system ends up in a gapped phase, characterized by the interaction.
+The Luttinger liquid description breaks down and the system ends up in a gapped phase, pinning the field to the semiclassical minima of the interaction.
 
-(iv) For $x<0$ and $y<|x|$, the system flows towards $y\rightarrow\infty$, which is also a gapped phase.
-The dominance of $y$ is entirely determined by the initial value of $x$, and even an infinitesimal interaction amplitude results in the breakdown of the Luttinger liquid description and the formation of an energy gap.
+(iv) For $x<0$ and $y<|x|$, the system flows towards $y\rightarrow\infty$, leading to the same gapped phase as in case (iii).
+The difference is given by the starting point: Contrary to (iii), the dominance of $y$ is entirely determined by the initial value of $x$, and even an infinitesimal interaction amplitude results in the breakdown of the Luttinger liquid description and the formation of an energy gap.
 
 To characterize the trajectories of the flow chart, one must notice that $x\rd x = y\rd y$ in the proximity of $x=0$, which describes the conserved quantity $c = x^2-y^2$.
 The constant $c$ thus describes hyperbolas cutting the $x$ and $y$ axis for $c>0$ and $c<0$, respectively (cf. \cref{fig:bkt_flow_equations} (b)).
@@ -1675,7 +1676,7 @@ Any attempt to realize systems close to the phase transition thus requires syste
 The requirement for numerical techniques is thus two-fold: resolving the phase transition requires excessively long systems, and must capture a divergent correlation length.
 One simulation technique which was successfully applied for such tough systems is the density matrix renormalization group (DMRG) based on matrix product states (MPS), which I formalize in \cref{ch:matrix_product_states}.
 This is to say that the bottleneck of MPS to be efficient is based on simulating systems with a short correlation length (see \cref{sec:scaling_relations_of_the_entanglement_entropy}).
-However, pushing the limits of state-of-the-art MPS algorithms and CPU's overcomes the related issues and allows to extract quantitative results with great success, even if the correlation length is large.
+However, MPS provides a possibility to extrapolate the results to both infinite system sizes and correlation lengths\footnote{To be explicit here, through a finite system size scaling, followed by a finite bond dimension scaling, which controls the effective correlation length captured by the MPS approximation.}, which overcomes the related issues and allows to extract quantitative results with great success, even if the correlation length is large.
 
 In \cref{one_half1,integer1}, we encounter various types of sine-Gordon terms embedded in a two-component Luttinger liquid.
 Among those which are potentially relevant, we characterize the phase diagram by a second order RG analysis equivalent to the example detailed in this section.
