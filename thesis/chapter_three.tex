@@ -39,7 +39,7 @@ This lead to the full classification of symmetry protected topological phases, f
 
 Laboratory experiments based on theoretical predictions remained an exception, until the recent strive of synthetic quantum matter:
 engineered systems in which the interactions between constituents are tunable to obtain effectively single-particle and even strongly correlated states of matter.
-One of the most prominent examples are ultracold atoms trapped in optical lattices, which provide all kinds of fundamental ``ingredients'' theoreticians like to exploit: magnetic fields~\cite{Lin2009}, spin-orbit coupling~\cite{Lin2011}, mixed particle statistics~\cite{Ferrari2002}, quantum simulators~\cite{Mazza2012} and even the realization of $4$ independent spacial coordinates exploiting the concept of synthetic dimensions~\cite{Lohse2018}, just to name a few.
+One of the most prominent examples are ultracold atoms trapped in optical lattices, which provide all kinds of fundamental ``ingredients'' theoreticians like to exploit: magnetic fields~\cite{Lin2009}, spin-orbit coupling~\cite{Lin2011}, mixed particle statistics~\cite{Ferrari2002}, tunable interactions~\cite{Chin2010}, tailored disorder~\cite{Meier2018} and even the realization of $4$ independent spacial coordinates exploiting the concept of synthetic dimensions~\cite{Lohse2018}, just to name a few.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,9 +53,16 @@ To make the food example in the introduction more rigorous, the Gauss-Bonnet the
     \chi = \frac1{2\pi}\int_S K\rd S.
     \label{eq:gauss_bonnet_theorem}
 \end{align}
-If the surface is implicitly described by the regular kernel of a function $f(x,y,z)$, $K$ is defined through the Hesse matrix ${H_f}_{i,j}=\frac{\partial^2 f}{\partial_{x_i}\partial_{x_j}}$ and gradient $\bm\nabla$ of $f$~\cite{Goldman2005}
+If the surface is implicitly described by the regular kernel of a function $f(x,y,z)$, $K$ is defined through the Hesse matrix ${H_f}_{i,j}=\frac{\partial^2 f}{\partial_{x_i}\partial_{x_j}}$ and gradient $\bm\nabla f = (\partial_{x}f,\partial_{y}f,\partial_{z}f)^T$~\cite{Goldman2005}
 \begin{align}
-    K = \frac{\bm\nabla f^T H_f^\dag \bm\nabla f}{|\bm\nabla f|^4}.
+    K = -\frac{
+    \det
+    \begin{pmatrix}
+        H_f & \bm\nabla f \\
+        \bm\nabla f^T & 0
+    \end{pmatrix}
+    }{|\bm\nabla f|^4}
+    .
 \end{align}
 For instance, a three-dimensional sphere of radius $r$ can be described implicitly by $f=\sum_{i=1}^3 x_i^2 - r^2$ and has as such a uniform Gaussian curvature $K=1/r^2$ with Euler characteristic
 \begin{align}
@@ -130,13 +137,13 @@ such that we arrive at the beautiful result
     \label{eq:berry_phase_stokes_theorem_2}
 \end{align}
 Note that the final equations derived here, in particular \cref{eq:phase_change} depend on the path $C$ only.
-Starting from an $n$-variable parametrization, $C$ is then promoted from a one-dimensional to an $n$-dimensional path\footnote{
+Starting from an $n$-variable parametrization, $C$ is then promoted from a one-dimensional to an $n$-dimensional path and $\gamma_n$ to a more general topological invariant, related to the homotopy class of the mapping between parameter and target space of the parametrization\footnote{
     The fundamental generalization of Stokes' theorem is the Stokes-Cartan theorem.
     It states that the integral of a differential form $\omega$ over the surface $\partial M$ of an (orientable) manifold $M$ is equivalent to the integral of the exterior derivative $\rd\omega$ over the full manifold $M$, i.e. $\int_{\partial M}\omega = \int_M\rd\omega$.
     The definitions of a differential form $\omega$, it's exterior derivative $\rd\omega$ and the surface of an orientable manifold $\partial M$ are found in many textbooks, e.g.~\cite{Nakahara1990}.
 }.
 
-To apply the general equations in a solid-state context, let me now take for granted a generic $2\times 2$ Bloch Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
+To apply the general equations in a solid-state context, let me now exploit the previous equations for a generic $2\times 2$ Bloch Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
 \begin{align}
     H(\bm d(\bm k)) = \bm d(\bm k)\cdot\bm\sigma = \varepsilon(\bm k) \hat{\bm d}(\bm k)\cdot\bm\sigma
     =
@@ -173,9 +180,11 @@ The surface integral then yields the following fundamental result
 with $\Omega(C)$ the solid angle subtended by the loop $C$ formed by $\hat {\bm d}$ from the degeneracy at $\bm d=0$~\cite{Berry1984}.
 Note that the two bands have opposite Berry phases, and in general $\sum_n\gamma_n(C)=0$ must vanish.
 For instance, if the loop is a $2\pi$ rotation of $\hat{\bm d}$ in a plane, the Berry phase equals to $\pm\pi$.
-In case $\bm d$ covers the full Bloch sphere, the Berry phase corresponds to $2\pi$ since the solid angle of the unit-sphere is $4\pi$.
+The preservation of $C$ forming a great circle, resulting in the quantization of the Berry phase, can be imposed by a set of symmetry constraints, which we detail in an example in \cref{sec:the_SSH_chain}, and elaborate in more depth in \cref{sec:Periodic_table_of_topological_insulators_and_superconductors}.
+In case the loop is not forming a great circle, however, the Berry phase takes any value and can thus not be used to define an invariant that is uniquely linked to the properties of the phase.
 
-If the full Bloch sphere is covered (i.e. the surface $S$ is required to be closed), an integer-valued topological invariant known as the Chern number can be defined~\cite{Nakahara1990}
+If $\bm d(\bm k)$ covers the full Bloch sphere, the Berry phase corresponds to $2\pi$ since the solid angle of the unit-sphere is $4\pi$.
+In this case, an integer-valued topological invariant known as the Chern number can be defined~\cite{Nakahara1990}
 \begin{align}
     \chi_n = \frac1{2\pi}\int_S {\bm F_n}\cdot\rd{\bm S}.
     \label{eq:chern_number}
@@ -218,6 +227,7 @@ The Hamiltonian falls under the category in \ref{eq:arbitrary_2by2}, and we iden
     \quad
     d_z = 0.
 \end{align}
+Note that in this case, the parametrization of the path $C=C(k)$ spanned by the vector $\hat{\bm d}(k)$ is one-dimensional by definition of $H_0(k)$.
 Examples of the band dispersion $\varepsilon_\pm(k)=\pm\sqrt{J^2+J'^2+2JJ'\cos(k)}$ for different values of the couplings are plotted in \cref{fig:ssh_dispersion}
 \begin{figure}[ht]
     \centering
@@ -315,22 +325,22 @@ From now on, we call a phase with nonzero winding number topological insulator (
 To understand the emergence of edge modes, we must obviously introduce an interface of some sort.
 First of all, let me Fourier-transform the Bloch Hamiltonian to find the representation in real space, i.e.
 \begin{align}
-    H = \sum_x \brlr{J c^\dag_{x,A}c^\pdag_{x,B} + J' c^\dag_{x,B}c^\pdag_{x+1,A}} + \hc,
+    \hat H = \sum_x \brlr{J\hat c^\dag_{x,A}\hat c^\pdag_{x,B} + J' \hat c^\dag_{x,B}\hat c^\pdag_{x+1,A}} + \hc,
 \end{align}
-in which $c_{x,A/B}$ are the annihilators of a spinless fermionic particle at site $x$ and sublattice $A/B$.
+in which $\hat c_{x,A/B}$ are the annihilators of a spinless fermionic particle at site $x$ and sublattice $A/B$.
 An interface which hosts edge states with energy zero, following the logic of the previous section, is readily implemented by two semi-infinite crystals, one with bulk invariant $0$ (e.g. for all negative lattice positions $x<0$), the other with bulk invariant $1$ (for all lattice positions $x\geq0$).
 For convenience, let me here construct this crystal from the two limiting cases (i) $J'=0$ and (ii) $J=0$.
 Note that for such a system, the central $A$ site at position $x=0$ does not contribute to the Hamiltonian and hosts a perfectly localized mode of zero energy.
 Obviously, this edge mode is preserved if we consider the vacuum in region (i).
 Let me thus simplify the hypothetical crystal by replacing the trivial insulator with the vacuum, and proceed by relaxing the constraint $J=0$ to $J'>J$ on the semi-infinite crystal:
 \begin{align}
-    \hat H = \sum_{x\geq0} J c^\dag_{x,A}c^\pdag_{x,B} + J' c^\dag_{x,B}c^\pdag_{x+1,A} + \hc
+    \hat H = \sum_{x\geq0} J \hat c^\dag_{x,A}\hat c^\pdag_{x,B} + J' \hat c^\dag_{x,B}\hat c^\pdag_{x+1,A} + \hc
 \end{align}
 In this case, the presence of an edge zero mode is not particularly obvious and requires further inspection.
-One observation is that the fermionic Hamiltonian can be diagonalized by unitary transformations, which requires only a diagonalization of $\hat H = \bm c^\dag h \bm c$, in which $\bm c=(c_{0,A},c_{0,B},c_{1,A},c_{1,B},\dots)^T$ is the successive vector of all annihilation operators.
-The matrix $h$ is quite sparse and has only alternating off-diagonal elements
+One observation is that the fermionic Hamiltonian can be diagonalized by unitary transformations, which requires only a diagonalization of $\hat H = \hat{\bm c}^\dag H \hat{\bm c}$, in which $\hat{\bm c}=(\hat c_{0,A},\hat c_{0,B},\hat c_{1,A},\hat c_{1,B},\dots)^T$ is the successive vector of all annihilation operators.
+The matrix $H$ is quite sparse and has only alternating off-diagonal elements
 \begin{align}
-    h =
+    H =
     \begin{pmatrix}
         0 & J & 0 & 0 &\dots \\
         J & 0 & J' & 0 & \dots \\
@@ -372,35 +382,37 @@ Therefore, the hybridized states are still exponentially localized boundary mode
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-Let us consider an arbitrary non-interacting system of fermions, described by the Hamiltonian
+Let us consider an arbitrary non-interacting system of fermions, described by the particle-number conserving Hamiltonian
 \begin{align}
-    \hat H = \sum_{i,j}c^\dag_{i}H_{ij}c^\pdag_j = {\bm c}^\dag H {\bm c}^\pdag
+    \hat H = \sum_{i,j}\hat c^\dag_{i}H_{ij}\hat c^\pdag_j = \hat{\bm c}^\dag H \hat{\bm c}^\pdag
 \end{align}
 with a matrix $H$ dictating possible transition events.
-As before, we denote the collection of the fermionic operators as $\bm c$.
+As before, we denote the collection of the fermionic operators as $\hat{\bm c}$.
 Note that $i,j$ are generic index labels -- i.e. it may represent a combination of the position $\bm x_i$ and additional ``internal quantum numbers'' $i\coloneqq(\bm x_i,q_i)$ such as the sublattice index of the SSH model for which $q_i\in \{A,B\}$.
 The system is invariant under a (unitary) symmetry transformation $\hat U$, if it acts on the fermionic annihilation operators as a linear map
 \begin{align}
-    {\bm c}\rightarrow {\bm c}' = \hat U {\bm c} \hat U^{-1} = U {\bm c},
+    \hat{\bm c}\rightarrow \hat{\bm c}' = \hat U \hat{\bm c} \hat U^{-1} = U \hat{\bm c},
 \end{align}
-such that $\hat U$ commutes with the Hamiltonian while preserving the anticommutation relations
+such that the canonical anticommutation relations and $\hat H$ are preserved, i.e.
 \begin{align}
-    \commutator{\hat U,\hat H} = 0
+    \hat U\anticommutator{\hat c_i^\pdag,\hat c_j^\dag}\hat U^{-1}
+    =
+    \anticommutator{\hat c_i^\pdag,\hat c_j^\dag}
     \rightarrow
-    U^\dag H = H U
-    ,
-    \quad
-    \hat U\anticommutator{c_i,c_j}\hat U^{-1}
+    U^\dag U = \mathbb1
+    ,\quad
+    \hat U \hat H \hat U^{-1} = \hat H
     \rightarrow
-    U^\dag U = \mathbb1.
+    U^\dag H U = H
+    .
 \end{align}
 Focussing on the so-called ``Altland-Zirnbauer'' classification scheme, we consider here on-site symmetries only~\cite{Altland1997}.
 On-site symmetries, as the name suggests, only act on the ``internal'' degrees of freedom, such that they can be factorized $\hat U=\prod_{\bm x}\hat V_{\bm x}$ with the same $\hat V_{\bm x}$ on all lattice positions.
 Please note that $\hat V_{\bm x}$ acts nontrivially only on the ``internal dimension''.
 
-{\it 1. Time reversal symmetry} Note that anti-unitary transformations can be written as a composition of complex conjugation and a unitary transformation, such that the action of time reversal can be written as\footnote{Note that $c\rightarrow c^\dag$ in \cref{eq:time_reversal_symmetry} would be an equally valid choice, but, as we see later, can be treated as a combination of time reversal and particle hole symmetry.}
+{\it 1. Time reversal symmetry} Note that anti-unitary transformations can be written as a composition of complex conjugation and a unitary transformation, such that the action of time reversal can be written as\footnote{Note that $\hat c\rightarrow \hat c^\dag$ in \cref{eq:time_reversal_symmetry} would be an equally valid choice, but, as we see later, can be treated as a combination of time reversal and particle hole symmetry.}
 \begin{align}
-    \hat T c_i \hat T^{-1} = {U_T}_{ij} c_j
+    \hat T \hat c_i \hat T^{-1} = {U_T}_{ij} \hat c_j
     ,\quad
     \hat T\ri\hat T^{-1}=-\ri
     ,\quad
@@ -411,23 +423,23 @@ Applying the transformation twice results in the condition
 \begin{align}
     H = {U_T}^\dag ({U_T}^\dag H^* U_T)^* U_T = ({U_T}^*U_T)^\dag H ({U_T}^* U_T).
 \end{align}
-Since the first quantized Hamiltonian runs over an irreducible representation space, ${U_T}^* U_T = \re^{\ri\alpha}\mathbb1$ due to Shur's lemma~\cite{Chiu2016}.
+Since the first quantized Hamiltonian runs over an irreducible representation space, ${U_T}^* U_T = \re^{\ri\alpha}\mathbb1$ due to Schur's lemma~\cite{Chiu2016}.
 Moreover, $U_T$ is a unitary matrix, thus satisfies ${U_T}^*={U_T}^\dag\re^{\ri\alpha}$ (and equally ${{U_T}^\dag}^* = U_T\re^{\ri\alpha}$), and as such $({U_T}^\dag U_T)^* = \re^{-\ri2\alpha}\mathbb1$, for which $\alpha\in\pi\mathds Z$.
 This implies that
 \begin{align}
-    \hat T^2 c_i \hat T^{-2} = {U_T}_{ij}^*{U_T}_{jk} c_k = \re^{\ri\alpha}c_i
+    \hat T^2 \hat c_i \hat T^{-2} = {U_T}_{ij}^*{U_T}_{jk} \hat c_k = \re^{\ri\alpha}\hat c_i
 \end{align}
 maps to itself up to a possible sign.
 Since $\hat T$ is on-site, a generic $n$-body operator $\hat O$ transforms to $\hat T^2\hat O \hat T^{-2} = \re^{\ri\alpha n}\hat O$ and as such
 \begin{align}
     \hat T^2 = (\pm 1)^{\hat N}\Leftrightarrow {U_T}^* {U_T} = \pm\mathbb1,
 \end{align}
-with $\hat N = \sum_i c^\dag_i c^\pdag_i$.
+with $\hat N = \sum_i \hat c^\dag_i \hat c^\pdag_i$.
 In case of $\hat T^2=-1$ (e.g. for systems with an odd number of electrons), this then yields the famous Kramers degeneracy of the eigenvalues~\cite{Schwabl2007}.
 
 {\it 2. Particle-hole symmetry} is unitary and relates creation to annihilation operators, i.e.
 \begin{align}
-    \hat C c_i \hat C^{-1} = {U_C}^*_{ij} c^\dag_j
+    \hat C \hat c_i \hat C^{-1} = {U_C}^*_{ij} \hat c^\dag_j
     ,\quad
     {U_C}^\dag H^* {U_C} = -H
     .
@@ -447,7 +459,7 @@ Repetition of the previous computation yields
 This may lead to a situation in which both time reversal and particle-hole symmetry do not hold, but chiral symmetry is satisfied.
 One finds
 \begin{align}
-    \hat S c_i \hat S^{-1} = (U_CU_T)_{ij}c^\dag_j
+    \hat S \hat c_i \hat S^{-1} = (U_CU_T)_{ij}\hat c^\dag_j
     ,\quad
     {U_S}^\dag H {U_S} = -H
     ,\quad
@@ -474,7 +486,7 @@ We obtained so far
         %
         & S^{-1}HS = -H
         ,\quad
-        & S = U_S
+        & S = U_S = U_C^* U^*_T
         ,\qquad
         & U_S^2 = \mathbb1.
     \end{array}
@@ -515,15 +527,15 @@ However, the Hamiltonian can (or cannot) be chiral invariant in the absence of $
 
 Coming back to the adiabatic principle for gapped Hamiltonians, the topological distinction is defined through smooth deformations of the phase diagram by changing its parameters.
 If two quantum systems can be smoothly deformed into each other without closing the gap, they are called topologically equivalent.
-Trivial insulators (TRI) are then such phases which are adiabatically connected to an atomic insulator.
-All the other equivalence classes are by definition not adiabatically connected to the atomic insulator and thus called topological insulators (TOI)\footnote{The concepts illustrated in this section hold equally for Bogoliubov-de Gennes Hamiltonians, which describe the mean-field theory of a conventional superconductor. Such systems, however, do not make much contact to our published articles, which is why we decided to avoid their notion at this point. Instead, we refer the interested reader to the nice online course \cite{topocondmat}.}.
+Trivial insulators (TRI) are then such phases which are adiabatically connected to an atomic insulator, fully characterized by independent and disconnected unit-cells.
+All the other equivalence classes are by definition not adiabatically connected to the atomic insulator and thus called topological insulators (TOI)\footnote{The concepts illustrated in this section hold equally for Bogoliubov-de Gennes Hamiltonians, which describe the mean-field theory of a conventional superconductor. Such systems, however, do not make much contact to our published articles, which is why we decided to avoid their notion at this point. Instead, we refer the interested reader to~\cite{Chiu2016,Asboth2016} and the online course \cite{topocondmat}.}.
 To use notation of the previous paragraphs, we decouple the space from the internal dimension, i.e. $H_{ij}=H_{q_1,q_2}(\bm x,\bm x')$ and consider translational invariant systems such that $H_{q_1,q_2}(\bm x,\bm x')=H_{q_1,q_2}(\bm x-\bm x')$.
-It is then particularly convenient to use the Bloch Hamiltonian description ($c_q(\bm x)=\sum_{\bm k}\exp(i\bm k\bm x)c_q(\bm k)$), such that the previous Hamiltonian results to
+It is then particularly convenient to use the Bloch Hamiltonian description ($\hat c_q(\bm x)=\sum_{\bm k}\exp(i\bm k\bm x)\hat c_q(\bm k)$), such that the previous Hamiltonian results to
 \begin{align}
-    \hat H = \sum_{\bm k\in {\rm BZ}} c^\dag_q(\bm k) H_{qq'}(\bm k)c^\pdag_{q'}(\bm k),
+    \hat H = \sum_{\bm k\in {\rm BZ}} \hat c^\dag_q(\bm k) H_{qq'}(\bm k)\hat c^\pdag_{q'}(\bm k),
 \end{align}
 with the crystal momentum $\bm k$ defined in the first Brillouin zone (BZ).
-By close inspection of \cref{eq:symmetry_real_space}, the action of the symmetries on the Bloch Hamiltonian are given by
+By close inspection of \cref{eq:symmetry_real_space}, the action of the symmetries on the Bloch Hamiltonian is given by
 \begin{align}
     \begin{array}{l l l l }
         & TH(\bm k)T^{-1} = +H(-\bm k)
@@ -540,7 +552,7 @@ By close inspection of \cref{eq:symmetry_real_space}, the action of the symmetri
         %
         & SH(\bm k)S^{-1} = -H(\bm k)
         ,\quad
-        & S = U_S = U_C U^*_T
+        & S = U_S = U_C^* U^*_T
         ,\qquad
         & U_S^2 = \mathbb1.
     \end{array}
@@ -549,26 +561,26 @@ By close inspection of \cref{eq:symmetry_real_space}, the action of the symmetri
 The result of the classification is called the periodic table of topological insulators (and superconductors)~\cite{Kitaev2009,Qi2008,Ryu2010,Schnyder2008} and presented in \cref{tab:symmetry_classes}.
 
 % \todoil{Unfortunately, this paragraph comes too short and imprecise. Reformulate.}
-It is based on a classification of the vector space of the matrix $\exp(-\ri t H)$, constrained by the presence (or absence) of the symmetries defined by \cref{eq:symmetry_momentum_space}.
+The table is based on a classification of the vector space of the matrix $\exp(-\ri t H)$, constrained by the presence (or absence) of the symmetries defined by \cref{eq:symmetry_momentum_space}.
 For instance, $T=C=S=0$ imposes no additional constraint and the classifying space of the symmetry space $A$ is that of generic unitary matrices of size $N$, i.e. $U(N)$.
 This connects to a fundamental work on symmetric space from 1926 by Élie Cartan, and the ten Hamiltonian equivalence classes are in one-to-one correspondence with the ten large families of symmetric spaces~\cite{Heinzner2005}.
-% The diagonal structure and periodicity of the topological index in \cref{tab:symmetry_classes} corresponds to the Bott clock, which forms a recursive and periodic sequence for the symmetry classes.
-% In particular, one period of the sequence for the real matrices corresponds to AI$\rightarrow$BDI$\rightarrow$D$\rightarrow$DIII$\rightarrow$AII$\rightarrow$CII$\rightarrow$C$\rightarrow$CI$\rightarrow$AI, in which ``$\rightarrow$'' increases the spacial dimension by one.
-% The complex matrices form a self-contained cycle A$\rightarrow$AIII$\rightarrow$A.
+Ultimately, it unveils a diagonal structure of the topological index in \cref{tab:symmetry_classes}, in correspondence to the so-called ``Bott clock'', representing a recursive and periodic sequence for the symmetry classes.
+In order to see this structure, the table is ordered in a particular manner: the first two rows are spanned by the two classes spanned by complex matrices, whereas the remaining rows represent the spaces spanned by real matrices.
+One period of the sequence for the real matrices corresponds to AI$\rightarrow$BDI$\rightarrow$D$\rightarrow$DIII$\rightarrow$AII$\rightarrow$CII$\rightarrow$C$\rightarrow$CI$\rightarrow$AI, in which ``$\rightarrow$'' increases the spacial dimension by one.
+The complex matrices form a self-contained cycle A$\rightarrow$AIII$\rightarrow$A.
 For a more detailed discussion of the classification of topological insulators and general formulas of their topological index, we refer to a selection of reviews~\cite{Hasan2010,Chiu2016,Cooper2019}.
 
-Although the prescription in terms of Bloch bands breaks down for interacting systems in general, the corresponding many-body definition of winding numbers, e.g.
+Although the prescription in terms of Bloch bands breaks down for interacting systems in general, the corresponding many-body definition of topological invariants, e.g. the winding number
 \begin{align}
     \mathcal W = \frac{1}{4\pi\ri} \tr\int\rd k \sigma_z g^{-1}\partial_k g,
     \label{eq:winding_number_greens}
 \end{align}
 extends well beyond the single-particle theory employed in this chapter~\cite{Gurarie2011,Manmana2012}.
-As is apparent in \cref{eq:winding_number} and \cref{eq:winding_number_greens}, a straightforward measurement of the invariant requires a tomography of the momentum eigenstates / the Green's function.
-In general, this is a hard task for experiments.
-In case of ultracold atoms, the extraction of the Zak phase can however be realized using a combination of Bloch oscillations and Ramsey interferometry~\cite{Atala2013}.
-A similar approach can be used to measure single-particle Green's functions~\cite{Knap2013,Zeiher2016}.
+Note that it can become arbitrarily complicated to give an operational recipe to compute the invariants in interacting systems.
+% In case of ultracold atoms, the extraction of the Zak phase can however be realized using a combination of Bloch oscillations and Ramsey interferometry~\cite{Atala2013}.
+% A similar approach can be used to measure single-particle Green's functions~\cite{Knap2013,Zeiher2016}.
 
-Our work in \cref{mcd1} provides a simpler tool to probe the winding number of interacting quasi-one-dimensional systems.
+Our work in \cref{mcd1} provides a simple tool to probe the winding number of interacting quasi-one-dimensional systems with chiral symmetry.
 The scheme relies on a dynamical measurement of the density distribution followed by a local quench, which can be readily implemented in many platforms of synthetic quantum matter.
 
 Now that the theoretical prerequisites have been detailed, we proceed by presenting our works.
