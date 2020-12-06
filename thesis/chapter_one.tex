@@ -5,10 +5,10 @@
 The present chapter is inspired by a number of excellent books and lectures such as~\cite{AshcroftMermin1978,AltlandSimons2010,BruusFlensberg2004,Czycholl2016,FetterWalecka2003,Giamarchi2003,Rizzi2016,Burrello2020} extending the basic aspects of quantum mechanics to a modern way of understanding quantum field theory in general.
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Creation and annihilation operators}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum field theories for condensed matter}
 \label{sec:creation_and_annihilation_operators}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 Consider a complete set of quantum numbers $\{\alpha\}$ which label a normalized set of states $\{\ket{\alpha}\}$ spanning the full Hilbert space $\HS^1$ of a generic single particle system described by the (time-independent) Schrödinger equation
@@ -20,20 +20,20 @@ The single particle wave function $\Psi_\alpha(r)$ of a quantum state occupying 
     \Psi_\alpha(r) \coloneqq \braket{r|\alpha}.
 \end{align}
 % \todoil{Comment already on the overcompleteness of the $r$-states, or not?}
-It is is thus understood as the coefficients for the basis transform $\ket{\alpha}\rightarrow\ket{r}$, i.e.
+It is thus understood as the coefficients for the basis transform $\ket{\alpha}\rightarrow\ket{r}$, i.e.
 \begin{align}
     \ket{\alpha} = \int{\rm d}{r}\, \Psi_\alpha(r) \ket{r}.
 \end{align}
-According to the basic postulate of quantum mechanics, the wave function of two indistinguishable particles with quantum numbers $\alpha_1$ and $\alpha_2$ is given by the (anti-)symmetrized product
+According to the spin-statistics theorem, the wave function of two indistinguishable particles with quantum numbers $\alpha_1$ and $\alpha_2$ is given by the (anti-)symmetrized product
 \begin{align}
     \Psi_{\alpha_1,\alpha_2,\nu}(r_1,r_2) = \frac1{\sqrt2}\left(\braket{r_1|\alpha_1}\braket{r_2|\alpha_2} + \nu\braket{r_2|\alpha_1}\braket{r_1|\alpha_2}\right),
 \end{align}
-depending on the particle statistics upon exchange of their position, i.e. $\nu=\pm1$ for bosons and fermions, respectively.
-The two-particle wave function can thus be represented by a more simple inner product
+depending on the particle statistics upon exchange of their position, i.e. $\nu=+1$ and $\nu=-1$ for bosons and fermions, respectively.
+The two-particle wave function can thus be represented by an inner product
 \begin{align}
     \Psi_{\alpha_1,\alpha_2,\nu}(r_1,r_2) = \left(\bra{r_1}\otimes\bra{r_2}\right)\ket{\alpha_1 \alpha_2}_\nu,
 \end{align}
-which is given by the (anti-) symmetric Kronecker product
+which is given by the (anti-)symmetric Kronecker product
 \begin{align}
     \ket{\alpha_1 \alpha_2}_\nu = \frac1{\sqrt2}\left(\ket{\alpha_1}\otimes\ket{\alpha_2} + \nu\ket{\alpha_2}\otimes\ket{\alpha_1}\right).
 \end{align}
@@ -50,7 +50,7 @@ The states in this representation are then given by
     \ket{n_1, n_2, \dots}_\nu = \ket{\underbrace{\alpha_1,\alpha_1,\dots,\alpha_1}_{n_1}, \underbrace{\alpha_2, \alpha_2,\dots, \alpha_2}_{n_2}, \alpha_3, \dots}
 \end{align}
 and they span the space $\FS^N$ of the (anti-) symmetrized $N$-particle states $\sum_{i} n_i = N$.
-Thus, the subset $\FS^N\subset \HS^N$ contains all $N$-particle states which transform according to the basic postulate of quantum mechanics such that any physical state $\ket{\Psi}\in\HS^N$ can be written as a linear superposition of the Fock states
+Thus, the subset $\FS^N\subset \HS^N$ contains all $N$-particle states satisfying the spin-statistics theorem such that any physical state $\ket{\Psi}\in\HS^N$ can be written as a linear superposition of the Fock states
 \begin{align}
     \ket{\Psi}_\nu = \sum_{\sum_i n_i = N}C(n_1,n_2,\dots)\ket{n_1,n_2,\dots}_\nu.
 \end{align}
