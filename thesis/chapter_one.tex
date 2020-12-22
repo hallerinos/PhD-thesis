@@ -476,13 +476,13 @@ This allows to introduce the Wannier basis -- a localized basis composed of the 
 \end{align}
 Note that every momentum-resolved Bloch function can be multiplied with a complex phase without changing its properties.
 This naturally provides a gauge freedom to optimize the Wannier function's properties -- for instance, the construction of a maximally localized basis~\cite{Marzari2012}.
-Without going into detail about optimizing Wannier functions, we want to present a basic visualization of these localized states.
-For this purpose, let us consider a cosine periodic potential
-\begin{align}
-    V_{ae}(x) = V_0\cos\brlr{\frac{2\pi}a x}
-\end{align}
-which yields a particular easy (a tridiagonal Toeplitz) matrix equation for the Bloch vectors presented in \cref{eq:periodic_lattices_numerics}.
-To obtain the Wannier functions, we gauge every Bloch function to be purely real at $x=0$, resulting in the examples displayed in \cref{fig:tight_binding_wanniers}.
+% Without going into detail about optimizing Wannier functions, we want to present a basic visualization of these localized states.
+% For this purpose, let us consider a cosine periodic potential
+% \begin{align}
+%     V_{ae}(x) = V_0\cos\brlr{\frac{2\pi}a x}
+% \end{align}
+% which yields a particular easy (a tridiagonal Toeplitz) matrix equation for the Bloch vectors presented in \cref{eq:periodic_lattices_numerics}.
+% To obtain the Wannier functions, we gauge every Bloch function to be purely real at $x=0$, resulting in the examples displayed in \cref{fig:tight_binding_wanniers}.
 
 The existence of localized Wannier states is translated to the language of second quantization by the notion that transformations between a Bloch and Wannier basis are always unitary.
 Hence, annihilation and creation operators of Wannier and Bloch states are set in relation by
@@ -1111,7 +1111,7 @@ This suggests an interpretation of the Gaussian weight as a probability distribu
 Iteration of the differentiation operation four times yields $\braket{v_mv_nv_qv_p}=A^{-1}_{mn}A^{-1}_{qp}+A^{-1}_{mq}A^{-1}_{np}+A^{-1}_{mp}A^{-1}_{nq}$ and one obtains the general formula
 \begin{align}
     \braket{v_{i_1}v_{i_2}\dots v_{i_{2n}}} =
-    \sum_{\tiny\begin{array}{c}\text{pairings of}\\ \{i_1,\dots,i_{2n}\}\end{array}}
+    \sum_{\begin{array}{c}\text{pairings of}\\ \{i_1,\dots,i_{2n}\}\end{array}}
     A^{-1}_{i_{k_1}i_{k_2}}\dots A^{-1}_{i_{k_{2n-1}}i_{k_{2n}}}.
 \end{align}
 In the continuum limit, the set $\bm v$ translates to a function $v(x)$ and the matrix $\bm A$ is replaced by the propagator $A(x,x')$.
@@ -1428,6 +1428,7 @@ Now for the second order correction -- the first term in the connected correlato
 \end{align}
 and contains the decaying two-point correlations of the $h$-fields.
 For convenience, let me proceed with the assumption that the two-point correlations are of the form $\braket{h({\bm x})h({\bm x'})} = \frac K2 C(r=|{\bm x}-{\bm x'}|)\rd l$ such that the action is rewritten to
+{\small
 \begin{align}
     \braket{S^2_I[\phi_{\Lambda'}+h]}=\frac{g^2}2\brlr{1 - \frac{K\beta^2}2\rd l}\int\rd^2x\rd^2x'
     \left(
@@ -1437,6 +1438,7 @@ For convenience, let me proceed with the assumption that the two-point correlati
         \cos\commutator{\beta\phi_{\Lambda'}({\bm x})-\beta\phi_{\Lambda'}({\bm x'})}\anticommutator{1+\frac{K\beta^2}2C(|{\bm x}-{\bm x'}|)\rd l}
     \right).
 \end{align}
+}%
 The disconnected part of the correlation function is evaluated using the identity $2\cos(a)\cos(b)=\cos(a+b)+\cos(a-b)$ and $(1-\alpha\rd l)^2 = 1-2\alpha\rd l + O(\rd l^2)$ and reads
 \begin{align}
     \braket{S_I[\phi_{\Lambda'}+h]}_h^2
