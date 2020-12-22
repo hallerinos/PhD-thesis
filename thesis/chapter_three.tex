@@ -19,7 +19,7 @@ Consider the following three ``manifolds'': a donut, a coffee mug and a pretzel.
 It may be delicate to do, but one could simply stretch and massage the donut to obtain a mug without ``cutting'' and ``glueing'', which is a necessity to go from donut to pretzel.
 The ``stretching'' can be understood as smooth deformation, and as a consequence the two shapes have the same genus.
 However ``cutting'' and ``glueing'' is something very sudden and irreversible, which changes the genus of the manifold.
-The idea of explaining phenomena in quantum states of matter such as the quantum Hall effect or superfluid phase transitions using the mathematical concepts of topology was established, among others, by David J. Thouless, F. Duncan M. Haldane and J. Michael Kosterlitz and resulted in the 2016 Nobel prize~\cite{NP2016}.
+The idea of characterizing phases of matter through topological invariants was established, among others, by David J. Thouless, F. Duncan M. Haldane and J. Michael Kosterlitz and resulted in the 2016 Nobel prize~\cite{NP2016}.
 
 Exploring, engineering and probing topological quantum matter is one of the most striving research areas of our present time.
 It is not only a delicate challenge due to the interdisciplinary methods that have been developed in the past decades, it is also highly relevant for its technical applications.
@@ -30,7 +30,7 @@ The foundation for the existence of such a class of quasi-particles is commonly 
 Such states are typically encountered in the context of the (fractional) Quantum Hall effect~\cite{Moore1991,Read1996,Levin2007,Lee2007,Storni2010,Rezayi2017}.
 Since fractional quantum Hall states are strongly correlated quantum many body systems, analytic attempts are particularly involved and quantitative statements like those in~\cite{Storni2010} are based on exact diagonalization of small systems or numerical simulations in general.
 
-The ``trivial'' cousins of topologically ordered phases of matter are symmetry protected topological phases of matter which do possess long-range entanglement.
+The ``trivial'' cousins of topologically ordered phases of matter are symmetry protected topological phases of matter which do not possess long-range entanglement.
 For this reason, MPS simulations provide efficient estimates for the low energy subspace of such systems.
 The fascination of this topic is -- similar to true topologically ordered phases -- based on ground state degeneracy and exponential localization of the interface excitations.
 One famous example of such a system is a symmetry-protected topological insulator, which, like an ordinary insulator, has a bulk energy gap separating the valence from the conduction band.
@@ -55,7 +55,7 @@ If we focus on the special case of closed surfaces only, the theorem states that
     \chi = \frac1{2\pi}\int_S K\rd S\in\mathds Z.
     \label{eq:gauss_bonnet_theorem}
 \end{align}
-If the surface is implicitly described by the regular kernel of a function $f(x_1,x_2,x_3)$, $K$ is defined through the Hesse matrix ${H_f}_{i,j}=\frac{\partial^2 f}{\partial_{x_i}\partial_{x_j}}$ and gradient $\bm\nabla f = (\partial_{x}f,\partial_{y}f,\partial_{z}f)^T$~\cite{Goldman2005}
+If the surface is implicitly described by the regular kernel of a function $f(x_1,x_2,x_3)$, $K$ is defined through the Hesse matrix ${H_f}_{i,j}=\frac{\partial^2 f}{\partial_{x_i}\partial_{x_j}}$ and gradient $\bm\nabla f = (\frac{\partial f}{\partial_{x_1}},\frac{\partial f}{\partial_{x_2}},\frac{\partial f}{\partial_{x_3}})$~\cite{Goldman2005}
 \begin{align}
     K = -\frac{
     \det
@@ -89,12 +89,13 @@ The key question we seek to answer in the remaining chapter is: can we find and 
 
 One of the key concepts in topological band theory is the Berry phase, for which the construction arises from the intrinsic phase ambiguity of quantum states.
 Let us review the main results of the original work, presented in~\cite{Berry1984}.
-Imagine a particle evolving along a closed parameter path ${\bm \lambda}(t)$ in an adiabatic way (here it is assumed that $\bm \lambda\in\mathds R^3$ for simplicity, a discussion follows later) such that the evolution of the state satisfies at all times\footnote{Note that, in this spirit, $\bm \lambda(t)$ enters in the wavefunction as a parameter and thus changes independently of \cref{eq:time_evolution}.}
+Imagine a particle evolving along a closed parameter path ${\bm \lambda}(0)={\bm \lambda}(T)$ in an adiabatic way, implying large $T$, such that the evolution of the state satisfies at all times\footnote{Note that, in this spirit, $\bm \lambda(t)$ enters in the wavefunction as a parameter and thus changes independently of \cref{eq:time_evolution}.}
 \begin{align}
     \hat H(\bm \lambda)\ket{\psi(\bm \lambda)} = \ri\hbar\frac{\partial}{\partial t}\ket{\psi({\bm \lambda})},
     \label{eq:time_evolution}
 \end{align}
 and denote $\ket{n(\bm \lambda)}$ the eigenstates with energies $\varepsilon_n(\bm \lambda)$.
+Let us further assume $\bm \lambda\in\mathds R^3$ for simplicity, a discussion follows later.
 If the initial state is an eigenstate $\ket{n(\bm \lambda(0))}$, it will evolve according to $\hat H$ and result in $\ket{n(\bm \lambda(t))}=\re^{-\ri/\hbar\int_0^t \varepsilon_n(\bm \lambda(t))\rd t'}\ket{n(\bm \lambda(0))}$.
 However, the eigenvalue equations do not relate the phases of $\ket{n(\bm \lambda)}$ at different $\bm \lambda$, and any (smooth) choice is allowed.
 A state with ``arbitrary'' phase can thus be written as
@@ -145,47 +146,47 @@ Starting from an $n$-variable parametrization, $C$ is then promoted from a one-d
     The definitions of a differential form $\omega$, it's exterior derivative $\rd\omega$ and the surface of an orientable manifold $\partial M$ are found in many textbooks, e.g.~\cite{Nakahara1990}.
 }.
 
-To apply the general equations in a solid-state context, let me now exploit the previous equations for a generic $2\times 2$ Bloch Hamiltonian spanned by the vector of Pauli matrices $\bm\sigma$ as
+To apply the general equations in a more practical context, let us exploit the results for a spin-1/2 in a magnetic field $\bm B$, which is described by the following Hamiltonian
 \begin{align}
-    H(\bm d(\bm k)) = \bm d(\bm k)\cdot\bm\sigma = \varepsilon(\bm k) \hat{\bm d}(\bm k)\cdot\bm\sigma
+    H(\bm B) = \kappa\hbar\bm B\cdot\hat{\bm s} = \frac{\kappa\hbar\varepsilon}2 \hat{\bm B}\cdot\bm\sigma
     =
-    \varepsilon(\bm k)
+    \frac{\kappa\hbar\varepsilon}2
     \begin{pmatrix}
-        \hat{d}_z & \hat{d}_x - \ri \hat{d}_y \\
-        \hat{d}_x + \ri \hat{d}_y & -\hat{d}_z
+        \hat{B}_z & \hat{B}_x - \ri \hat{B}_y \\
+        \hat{B}_x + \ri \hat{B}_y & -\hat{B}_z
     \end{pmatrix},
     \label{eq:arbitrary_2by2}
 \end{align}
-in which $\hat{\bm d}={\bm d}/|\bm d|$ is a vector of unit norm and $\varepsilon_\pm = \pm\varepsilon = \pm|\bm d|$ spans the energy dispersion.
-This is the generic Hamiltonian of a translationally invariant tight binding model of a two-site unit cell in arbitrary dimensions $d$.
-Note that the path is thus promoted naturally from a one-dimensional to a $d$-dimensional parametrization $C=C(\bm k)$.
-For a more concrete example, we refer to the one-dimensional Su-Schrieffer-Heeger chain studied in \cref{sec:the_SSH_chain}.
-A term proportional to the identity, i.e. $d_0\mathbb 1$, can be safely ignored as the eigenvectors do not depend on it.
-They are normalized vectors of the Bloch sphere and can be parametrized as
+in which $\kappa$ is a constant involving the gyromagnetic ratio, $\hat{\bm s} = \frac12{\bm \sigma}$ is the vector operator of Pauli matrices, $\hat{\bm B}={\bm B}/|\bm B|$ is a vector of unit norm and $\varepsilon_\pm = \pm\varepsilon = \pm|\bm B|$ spans the energy dispersion.
+
+The eigenvectors lie on the Bloch sphere and can be parametrized as
 \begin{align}
     \ket{\pm} = \frac{1}{\sqrt{2}}
     \begin{pmatrix}
-        \pm \sqrt{1 \pm \hat{d}_z}\re^{+\ri\vartheta/2}\\
-        \phantom\pm\sqrt{1 \mp \hat{d}_z}\re^{-\ri\vartheta/2}
+        \pm \sqrt{1 \pm \hat{B}_z}\re^{+\ri\vartheta/2}\\
+        \phantom\pm\sqrt{1 \mp \hat{B}_z}\re^{-\ri\vartheta/2}
     \end{pmatrix}
     ,
     \quad
-    \vartheta = \arg(\hat{d}_x-\ri \hat{d}_y).
+    \vartheta = \arg(\hat{B}_x-\ri \hat{d}_y).
 \end{align}
-Note that the explored parameter space is entirely spanned by the entries of the vector $\bm d$, and as such the Hamiltonian in \cref{eq:arbitrary_2by2} has the property that $\bm\nabla\hat H \equiv \bm\nabla_{\bm d}\hat H = \bm\sigma$.
-The local Berry curvature evaluates to ${\bm F}_+ = \frac12\bm d/d^3=\frac12\hat{\bm d}/d^2$.
-Note that the curvature has the form of a point source with strength $1/2$ located at the degeneracy located at $\bm d=0$.
+Note that the explored parameter space is entirely spanned by the entries of the vector $\bm B$, and as such the Hamiltonian in \cref{eq:arbitrary_2by2} has the property that $\bm\nabla\hat H \equiv \bm\nabla_{\bm B}\hat H = \kappa\hbar\hat{\bm s}$.
+The local Berry curvature evaluates to ${\bm F}_+ = \frac12\bm B/B^3=\frac12\hat{\bm B}/B^2$.
+Note that the curvature has the form of a point source with strength $1/2$ located at the degeneracy located at $\bm B=0$.
 The surface integral then yields the following fundamental result
 \begin{align}
     \gamma_{\pm}(C) = \pm\frac12\Omega(C),
 \end{align}
-with $\Omega(C)$ the solid angle subtended by the loop $C$ formed by $\hat {\bm d}$ from the degeneracy at $\bm d=0$~\cite{Berry1984}.
-Note that the two bands have opposite Berry phases, and in general $\sum_n\gamma_n(C)=0$ must vanish.
-For instance, if the loop is a $2\pi$ rotation of $\hat{\bm d}$ in a plane, the Berry phase equals to $\pm\pi$.
+with $\Omega(C)$ the solid angle subtended by the loop $C$ formed by $\hat {\bm B}$ from the degeneracy at $\bm B=0$~\cite{Berry1984}.
+
+Note that the two bands have opposite Berry phases, and in general $\sum_n\gamma_n(C)=0$ vanishes.
+For instance, if the loop is a $2\pi$ rotation of $\hat{\bm B}$ in a plane, the Berry phase of the two bands equals to $\pm\pi$.
 The preservation of $C$ forming a great circle, resulting in the quantization of the Berry phase, can be imposed by a set of symmetry constraints, which we detail in an example in \cref{sec:the_SSH_chain}, and elaborate in more depth in \cref{sec:Periodic_table_of_topological_insulators_and_superconductors}.
 In case the loop is not forming a great circle, however, the Berry phase takes any value and can thus not be used to define an invariant that is uniquely linked to the properties of the phase.
 
-If $\bm d(\bm k)$ covers the full Bloch sphere, the Berry phase corresponds to $2\pi$ since the solid angle of the unit-sphere is $4\pi$.
+Incidentally, the Hamiltonian in \cref{eq:arbitrary_2by2} coincides with the one of translationally invariant tight binding models with two-site unit cell (compare with \cref{eq:SSH_momentum_space}).
+In this case, the parameter path is encoded in a ``pseudo magnetic field'', which is a $d$-dimensional parametrization depending on the lattice dimension, geometry and the crystal momentum $\bm B\equiv\bm B(\bm k)$.
+If $\bm B(\bm k)$ covers the full Bloch sphere, the Berry phase corresponds to $2\pi$ since the solid angle of the unit-sphere is $4\pi$.
 In this case, an integer-valued topological invariant known as the Chern number can be defined~\cite{Nakahara1990}
 \begin{align}
     \chi_n = \frac1{2\pi}\int_S {\bm F_n}\cdot\rd{\bm S}.
@@ -209,7 +210,7 @@ Therefore, the Berry curvature integrated over a closed surface must be an eleme
 %
 %
 Let me clarify the previous statements by giving a pedagogical example.
-Consider the following one-dimensional Bloch Hamiltonian, corresponding to the Su-Schrieffer-Heeger model~\cite{Heeger1988}
+Consider the following one-dimensional Bloch Hamiltonian, corresponding to the Su-Schrieffer-Heeger model
 \begin{align}
     H_0(k)
     =
@@ -217,19 +218,22 @@ Consider the following one-dimensional Bloch Hamiltonian, corresponding to the S
         0 & J+J'\re^{-\ri k}\\
         J+J'\re^{\ri k} & 0
     \end{pmatrix}
+    \label{eq:SSH_momentum_space}
 \end{align}
 in which the couplings $J,J'\geq0$ are assumed positive.
-The Hamiltonian falls under the category in \ref{eq:arbitrary_2by2}, and we identify
+It models (among others) electronic properties of (trans-)poly\-acetylene with an even number of carbon atoms, which is the most simple example of a topological insulator.
+For details on the derivation, and a careful reduction of interactions, we refer to~\cite{Heeger1988}.
+The Hamiltonian coincides with the one of a spin-1/2 in a magnetic field (compare with \ref{eq:arbitrary_2by2}), and we identify
 \begin{align}
-    H_0(k) = {\bm d}\cdot{\bm\sigma},
+    H_0(k) = {\bm B}(k)\cdot{\bm\sigma},
     \quad
-    d_x = J+J'\cos(k),
+    B_x(k) = J+J'\cos(k),
     \quad
-    d_y = J'\sin(k),
+    B_y(k) = J'\sin(k),
     \quad
-    d_z = 0.
+    B_z(k) = 0.
 \end{align}
-Note that in this case, the parametrization of the path $C=C(k)$ spanned by the vector $\hat{\bm d}(k)$ is one-dimensional by definition of $H_0(k)$.
+Note that the parametrization of the path $C=C(k)$ spanned by the pseudo magnetic field $\hat{\bm B}(k)$ is one-dimensional.
 Examples of the band dispersion $\varepsilon_\pm(k)=\pm\sqrt{J^2+J'^2+2JJ'\cos(k)}$ for different values of the couplings are plotted in \cref{fig:ssh_dispersion}
 \begin{figure}[ht]
     \centering
@@ -243,7 +247,7 @@ Examples of the band dispersion $\varepsilon_\pm(k)=\pm\sqrt{J^2+J'^2+2JJ'\cos(k
 
 Let us explore more the topological equivalency we detailed in the previous section.
 The valence/conduction band shows a maximum/minimum at $k=\pi$, which leads to the band gap $\Delta = 2\left|J-J'\right|$.
-As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and, for reasons which are clear in the next sections, we call $J>J'$ the TRI and $J<J'$ the TOI phase.
+As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and, for reasons which are explained shortly, we call $J>J'$ trivial insulator (TRI) and $J<J'$ topological insulator (TOI).
 Within each of those phases, all Hamiltonians are topologically equivalent, which is trivially satisfied by the definition of a smooth path which linearly interpolates the different values of the couplings.
 It is also possible to define a family of Hamiltonians according to
 \begin{align}
@@ -256,14 +260,14 @@ It is also possible to define a family of Hamiltonians according to
 \end{align}
 which is equivalent to the Bloch vector
 \begin{align}
-    d_x(t,k) = (1-t)+t\cos(k),
+    B_x(t,k) = (1-t)+t\cos(k),
     \quad
-    d_y(t,k) = t\sin(k),
+    B_y(t,k) = t\sin(k),
     \quad
-    d_z(t,k) = \sin(\pi t),
+    B_z(t,k) = \sin(\pi t),
 \end{align}
 for which $H(0,k)$ is of the TRI and $H(1,k)$ is of the TOI kind.
-In \cref{fig:ssh_deformed}, the path of the normalized Bloch vector $\hat{\bm d}(t,k)$ is depicted.
+In \cref{fig:ssh_deformed}, the path of the normalized Bloch vector $\hat{\bm B}(t,k)$ is depicted.
 If we allow the deformation along the $z$-axis, the cycle that is drawn in the TOI phase can be smoothly deformed to a point without closing the bulk gap.
 The spectrum of $H(t,k)$ is readily solved and evaluates to $\varepsilon_\pm(k,t)=\pm\sqrt{1-2(1-t)t+2(1-t)t\cos k+\sin(\pi t)}$.
 It is easy to see that $\Delta({t})\geq0$ for $0\leq t\leq1$, which demonstrates that TOI and TRI phases are, indeed, topologically equivalent.
@@ -276,32 +280,32 @@ It is easy to see that $\Delta({t})\geq0$ for $0\leq t\leq1$, which demonstrates
     \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_750.jpg}
     \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_825.jpg}
     \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t1_000.jpg}
-    \caption{Depicted paths of $\hat{\bm d}(t,k)={\bm d}/|{\bm d}|$ (see text) as it wraps around the Brillouin zone $k\in(0,2\pi]$ for different $t\in\{0,1/8,1/4,1/2,3/4,7/8,1\}$ (from left to right). The solid angle of $2\pi$ spanned in the TOI phase (i.e. $t=1$) can be smoothly deformed to the trivial case in the TRI phase (i.e. $t=0$).}
+    \caption{Depicted paths of $\hat{\bm B}(t,k)={\bm B}/|{\bm B}|$ (see text) as it wraps around the Brillouin zone $k\in(0,2\pi]$ for different $t\in\{0,1/8,1/4,1/2,3/4,7/8,1\}$ (from left to right). The solid angle of $2\pi$ spanned in the TOI phase (i.e. $t=1$) can be smoothly deformed to the trivial case in the TRI phase (i.e. $t=0$).}
     \label{fig:ssh_deformed}
 \end{figure}
 
-This statement can be geometrically understood by the fact that the single-valued parametrization $\bm d(k)$ generates an arc of a circle or a full circle on the Bloch sphere.
+This statement can be geometrically understood by the fact that the single-valued parametrization $\bm B(k)$ generates an arc of a circle or a full circle on the Bloch sphere.
 In other words, the surface $S$ spanned by $C$ (the white path in \cref{fig:ssh_deformed}) never fully encapsulates the degeneracy, which is the source of ${\bm F}_n$.
 As a consequence, $\gamma_n(C)$ is not quantized and adiabatic deformations like \cref{eq:hamiltonian_path} are possible to effectively remove the degeneracy from the surface integral, smoothly connecting all nonzero geometric phases to the trivial one.
 
-If, however, we require to keep $H(t,k)$ entirely off-diagonal and symmetric, an adiabatic deformation like \cref{eq:hamiltonian_path} with a term $d_z\neq0$ does not exist.
+If, however, we require to keep $H(t,k)$ entirely off-diagonal and symmetric, an adiabatic deformation like \cref{eq:hamiltonian_path} with a term $B_z\neq0$ does not exist.
 As a consequence, any adiabatic deformation from a TOI to a TRI Hamiltonian necessarily crosses the critical point $J=J'$ for which the bulk gap vanishes.
-The Berry phase of such a system is an element of $\pi\mathds Z$, being non-zero iff. the path $C$ spanned by $\hat{\bm d}$ defines a surface.
+The Berry phase of such a system is an element of $\pi\mathds Z$, being non-zero iff. the path $C$ spanned by $\hat{\bm B}$ defines a surface.
 This can again be understood more intuitively from a geometric point of view:
-By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral (which would indeed require a deformation along $\hat {d}_z$), and as a consequence the Berry phase is quantized.
+By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral (which would indeed require a deformation along $\hat {B}_z$), and as a consequence the Berry phase is quantized.
 
 In analogy to the Chern number, this defines a topological index called the winding number, which corresponds to quantized values only in the equivalence classes of Hamiltonians which respect the imposed symmetry.
 It equals to the Berry phase divided $\pi$, i.e.
 \begin{align}
     \mathcal W = |\gamma_n(C)/\pi|,
 \end{align}
-or, equivalently, to the solid angle spanned by $\hat{\bm d}$ divided $2\pi$, i.e.
+or, equivalently, to the solid angle spanned by $\hat{\bm B}$ divided $2\pi$, i.e.
 \begin{align}
-    \mathcal W = \frac1{2\pi}\int\rd k\brlr{\hat{\bm d}\times\partial_k\hat{\bm d}}_z.
+    \mathcal W = \frac1{2\pi}\int\rd k\brlr{\hat{\bm B}\times\partial_k\hat{\bm B}}_z.
 \end{align}
-Since the winding counts the number of circles which $\hat{\bm d}$ performs around the origin while passing through the Brillouin zone, it is equal to
+Since the winding number counts the amount of full circles which $\hat{\bm B}$ performs around the origin while passing through the Brillouin zone, it is equal to
 \begin{align}
-    \mathcal W = \frac{1}{2\pi}\int\rd k \arg(\hat{\bm d}_x - \ri \hat{\bm d}_y)
+    \mathcal W = \frac{1}{2\pi}\int\rd k \arg(\hat{\bm B}_x - \ri \hat{\bm B}_y)
     =
     \frac{1}{4\pi\ri} \tr\int\rd k \sigma_z H^{-1}\partial_k H
     =
@@ -310,8 +314,8 @@ Since the winding counts the number of circles which $\hat{\bm d}$ performs arou
 \end{align}
 in which $g(k)=G(k,\omega=0)$ is the Green's function at zero frequency.
 
-The winding number can most easily read-out by close observation of the unnormalized Bloch vector ${\bm d}$, which either traverses around the degeneracy at the origin, or not.
-This will then translate to $\hat{\bm d}$ drawing circles around the Bloch sphere, or retracing itself, thus spanning no surface (compare to \cref{fig:ssh_winding_easy}).
+The winding number can most easily be identified by close inspection of the unnormalized Bloch vector ${\bm B}$, which either traverses around the degeneracy at the origin, or not.
+This will then translate to $\hat{\bm B}$ drawing circles around the Bloch sphere, or retracing itself, thus spanning no surface (compare to \cref{fig:ssh_winding_easy}).
 In particular, the former will be achieved if $J<J'$ ($\mathcal W=1$), while the latter occurs for $J>J'$ ($\mathcal W=0$).
 From now on, we call a phase with nonzero winding number topological insulator (TOI) and the other trivial insulator (TRI).
 \begin{figure}[ht]
@@ -320,7 +324,7 @@ From now on, we call a phase with nonzero winding number topological insulator (
     \includegraphics{figures/ssh_unnormalized_winding_3.png}
     \includegraphics{figures/ssh_unnormalized_winding_4.png}
     \includegraphics{figures/ssh_unnormalized_winding_6.png}
-    \caption{The path in $x,y$ plane spanned by the unnormalized Bloch vector $\bm d$, compared with the path of $\hat{\bm d}$ drawn on the Bloch sphere for different values of $J'/J$. The path drawn by $\bm d$ either traverses around the origin or not, resulting in a path spanning a nonzero surface area or a path which retraces itself thus spanning no surface.}
+    \caption{The path in $x,y$ plane spanned by the unnormalized Bloch vector $\bm B$, compared with the path of $\hat{\bm B}$ drawn on the Bloch sphere for different values of $J'/J$. The path drawn by $\bm B$ either traverses around the origin or not, resulting in a path spanning a nonzero surface area or a path which retraces itself thus spanning no surface.}
     \label{fig:ssh_winding_easy}
 \end{figure}
 
@@ -373,8 +377,8 @@ In case of a finite crystal with $N$ sites, a similar reasoning reveals the exis
 Similarly to $v_L$, $v_R$ is exponentially localized at the right interface, has no support on sublattice $A$ and decays exponentially into the bulk.
 Thus, the two modes share exactly no overlap $v_L^T v_R = 0$.
 However, the two modes are not exact eigenstates of the Hamiltonian since each one slightly violates the boundary conditions.
-Note that $v_{L/R}^T h v_{L/R} = 0$ and $v_{L/R}^T h v_{R/L} = (1-w^{-1})^{-1}\re^{-(N-1)/\ln w}\re^{\pm\varphi}$ with some phase $\varphi$.
-This then yields ``state hybridization'', a pair of orthogonal eigenstates with energy $\pm(1-w^{-1})^{-1}\re^{-(N-1)/\ln w}$ which read $v_\pm = 1/\sqrt2(v_L \pm v_R\re^{\pm\varphi})$.
+Note that $v_{L/R}^T h v_{L/R} = 0$ and $v_{L/R}^T h v_{R/L} = (1-w^{-1})^{-1}\re^{-(N-1)/\ln w}\re^{\pm\ri\varphi}$ with some phase $\varphi$.
+This then yields ``state hybridization'', a pair of orthogonal eigenstates with energy $\pm(1-w^{-1})^{-1}\re^{-(N-1)/\ln w}$ which read $v_\pm = 1/\sqrt2(v_L \pm v_R\re^{\pm\ri\varphi})$.
 Therefore, the hybridized states are still exponentially localized boundary modes and of ``almost'' zero energy with an exponential splitting in the system size.
 %
 %
