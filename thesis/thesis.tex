@@ -27,9 +27,17 @@
 % \usepackage{microtype}
 \usetikzlibrary{tikzmark}
 
+%% with old LaTeX-Live version
 \usepackage[backend=bibtex]{biblatex}
 \addbibresource{biblio.bib}
 % \bibliographystyle{abbrvdin}
+%%% with newer LaTeX-Live version
+% \usepackage{etoolbox}
+% \cslet{blx@noerroretextools}\empty
+% \usepackage[backend=bibtex]{biblatex}
+% \addbibresource{biblio.bib}
+% % \bibliographystyle{abbrvdin}
+% \usepackage{autonum}
 
 \newcommand{\todo}[1]{{\color{cyan} \scshape !!! #1 !!!}}
 \newcommand{\todoil}[1]{{\color{cyan} \scshape #1}}
