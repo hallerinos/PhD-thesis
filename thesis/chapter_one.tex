@@ -139,7 +139,7 @@ Let me also provide a useful expression to evaluate the commutation relation of 
     = \commutator{\hat A, \hat B}_\pm\hat C \mp \hat B\commutator{\hat A,\hat C}.
     \label{eq:recursive_commutation}
 \end{align}
-In many cases, the sets of quantum numbers are continuous (e.g. position $x$) and as such a sum in \cref{eq:creation_annihilation_basis_rotation} is promoted to an integral expression:
+In cases where the quantum number is continuous (e.g. position $x$) the sum in \cref{eq:creation_annihilation_basis_rotation} is promoted to an integral
 \begin{align}
     \hat a(x) = \sum_\alpha \braket{x | \alpha} \hat a_\alpha,
     \quad
@@ -215,11 +215,11 @@ The beauty of this approach becomes visible as soon as we define the lattice tra
 \end{align}
 which translates every function from one position to a distance parametrized through the $d$-dimensional vector ${\bm n}\in\mathds Z^d$ and the collection of all lattice vectors $\underline{\bm x}\coloneqq ({\bm x}_1,\dots,{\bm x}_d)^T$.
 The local potential $V_{ae}({\bm r})$ is by definition invariant under lattice translations, and two-body interactions $V({\bm r}-{\bm r'})$ are clearly invariant under continuous translations, such that the full Hamiltonian $\hat H$ commutes with the translation operator and we can write the eigenfunctions of $\hat H$ as eigenfunctions of $\hat T_{\bm n}$.
-The eigenfunctions of all translation operators $\hat T_{\bm n}$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the vector ${\bm k}$ arise from imposing boundary conditions. For instance, Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bm r}+ L_j{\bm R}_j)=\psi_\alpha({\bm r})$, which confines the allowed values of $k_j$ to integer multiples of $\frac{\bm G_j}{L_j}$ in which $\bm G_j$ is the reciprocal vector of ${\bm R}_j$, i.e. ${\bm G}_j {\bm R}_j = 2\pi/a$.}
+The eigenfunctions of all translation operators $\hat T_{\bm n}$ are called Bloch waves and have the following properties\footnote{Note here that a further restriction on the values of the vector ${\bm k}$ arise from imposing boundary conditions. For instance, Born-von Karman boundary conditions imply a periodicity after $L_j$ unit translations $\psi_\alpha({\bm r}+ L_j{\bm R}_j)=\psi_\alpha({\bm r})$, confining the allowed values of $k_j$ to integer multiples of $\frac{\bm G_j}{L_j}$ in which $\bm G_j$ is the reciprocal vector of ${\bm R}_j$, i.e. ${\bm G}_j {\bm R}_j = 2\pi/a$.}
 \begin{align}
-    \hat T_{\bm n}\psi_{\alpha}({\bm r}) &= c_{\bm n}\psi_{\alpha}({\bm r})\\
-    c_{{\bm n}_1}c_{{\bm n}_2} &= c_{{\bm n}_1+{\bm n}_2} \Rightarrow c_{\bm n} = \re^{{\bm s}\cdot{\bm n}\underline{\bm x}},\ {\bm s}\in\mathds C^d\\
-    1=\int_V\rd^dr\,\abs{\psi_{\alpha}({\bm r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bm n}\psi_{\alpha}({\bm r})}^2 \Rightarrow 1=\abs{c_{\bm n}}^2 \Rightarrow {\bm s}=\ri{\bm k},\ {\bm k}\in\mathds R^d
+    \hat T_{\bm n}\psi_{\alpha}({\bm r}) &= c_{\bm n}\psi_{\alpha}({\bm r}),\\
+    c_{{\bm n}_1}c_{{\bm n}_2} &= c_{{\bm n}_1+{\bm n}_2} \Rightarrow c_{\bm n} = \re^{{\bm s}\cdot{\bm n}\underline{\bm x}},\ {\bm s}\in\mathds C^d,\\
+    1=\int_V\rd^dr\,\abs{\psi_{\alpha}({\bm r})}^2 &= \int_V\rd^dr\,\abs{\hat T_{\bm n}\psi_{\alpha}({\bm r})}^2 \Rightarrow 1=\abs{c_{\bm n}}^2 \Rightarrow {\bm s}=\ri{\bm k},\ {\bm k}\in\mathds R^d.
 \end{align}
 It is now possible to phrase Bloch's theorem~\cite{Bloch1929}, which states that the eigenfunctions of a particle moving in periodic potentials assume the simple structure
 \begin{align}
@@ -243,7 +243,7 @@ However, this is not true as is clear from the momentum operator being $\hat{\bm
 \begin{align}
   \hat{\bm p}\psi_{\alpha{\bm k}}({\bm r}) = \hbar{\bm k}\psi_{\alpha{\bm k}} - \ri\hbar\re^{\ri{\bm k}{\bm r}}\bm\nabla u_{\alpha \bm k}(\bm r).
 \end{align}
-The vector ${\bm k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bm k}}$ is only an eigenstate of momentum if the potential is constant and thus $\bm\nabla V_{ae}=0$.
+The vector ${\bm k}$ is thus dubbed crystal momentum, remembering the fact that $\psi_{\alpha{\bm k}}$ is only an eigenstate of momentum if the potential is constant, i.e. $\bm\nabla V_{ae}=0$.
 
 As we will see in the next section, Bloch waves can be used to define a complete set of tightly localized ``Wannier'' states that allow to introduce effective ``tight binding'' models in which the coupling parameters of the model are implicitly defined through overlap integrals of the Bloch functions.
 A basic understanding of tight binding approximations from strong periodic potentials is essential, as we rely on such models in all of our works as a starting point to study it's many-body phases.
@@ -528,7 +528,7 @@ Oftentimes, a single-band approximation is established to fix (and drop) the ban
 This situation may be achieved in case the bottom band is sufficiently separated from the second.
 In the Kronig-Penney model, this corresponds to $V_0\gg \hbar^2/(mab)$ with particle mass $m$, lattice constant $a$ and potential width $b$.
 For the emergence and discussion of such an approximation in case of ultracold atoms trapped in optical lattices, we refer to~\cite{Jaksch1998,Bloch2008,Buechler2010,Mazza2012}.
-Note that the single band approximation naturally fails do describe effects like orbital-selective Mott transitions which require at least two inequivalent bands~\cite{Anisimov2002,vanDongen2005}.
+Note that the single band approximation naturally fails to describe effects like orbital-selective Mott transitions which require at least two inequivalent bands~\cite{Anisimov2002,vanDongen2005}.
 
 A corresponding two-body interaction $\hat V$ in the single-band approximation reads
 \begin{align}
@@ -629,10 +629,10 @@ Expanding to first order in $B=|\bm B|$, the transition elements are dressed wit
     T_{\alpha,i,j}'=\re^{\ri\frac q\hbar\int_{\bm R_j}^{\bm R_i}\bm A(\bm r')\cdot\rd\bm r'}T_{\alpha,i,j}+\mathcal O(B).
     \label{eq:peierls_substitution}
 \end{align}
-On a more abstract level, the Peierl's approximation is often implemented and explored as a substitution (thus fully ignoring the error) to study intriguing phases of matter known as topological insulators\footnote{The complex transition elements induce a change of the Berry phase on the lattice scale. For a discussion and implications of this effect, see \cref{ch:topological_phases_of_matter}.}~\cite{Ozawa20192}, but it is important to note that the phase space of these studies is inaccessible by a vector potential, and that other methods like Raman-assisted tunneling~\cite{Garcia2012} must be used to achieve the complex phase modulation of the tunneling elements.
-In general, the amplitudes and complex phases of the transition elements are altered by the outcomes of the integral in~\cref{eq:pre_peierls_approximation}, such that the Peierl's approximation can be invalid even for small magnetic fields~\cite{Alexandrov1991,Julen2014}.
+On a more abstract level, the Peierls approximation is often implemented and explored as a substitution (thus fully ignoring the error) to study intriguing phases of matter known as topological insulators\footnote{The complex transition elements induce a change of the Berry phase on the lattice scale. For a discussion and implications of this effect, see \cref{ch:topological_phases_of_matter}.}~\cite{Ozawa20192}, but it is important to note that the phase space of these studies is inaccessible by a vector potential, and that other methods like Raman-assisted tunneling~\cite{Garcia2012} must be used to achieve the complex phase modulation of the tunneling elements.
+In general, the amplitudes and complex phases of the transition elements are altered by the outcomes of the integral in~\cref{eq:pre_peierls_approximation}, such that the Peierls approximation can be invalid even for small magnetic fields~\cite{Alexandrov1991,Julen2014}.
 
-Perhaps the most successful description of electrons in solids is band theory -- based on screened many-body interactions described by effective one-body potentials.
+One of the most successful description of electrons in solids is band theory -- based on screened many-body interactions described by effective one-body potentials.
 This results in a form of \cref{eq:hubbard_hamiltonian} without density-density interactions such that a diagonalization of the hopping matrix $T$ solves the problem.
 However, due to its intrinsic single-particle character, band theory cannot reliably capture truly many-body features such as band magnetism or Mott-to-metal-insulator transitions.
 This motivates the study of Hubbard-type models: despite being a brutal simplification of the true two-body interaction, they are the simplest systems that provide an explanation of such interaction-driven features.
@@ -642,7 +642,7 @@ In general, Bethe ansatz integrability is a fragile property and even slight per
 The models we study in the next chapters, albeit closely related to the one-dimensional Hubbard model, do not categorize as integrable due to the presence of additional terms that break some of its fundamental symmetries (e.g. the conservation of the particle flavor).
 This motivates the use of alternative methods to study the properties of interacting tight binding models.
 One of the most prominent and useful analytic concepts in one dimension is bosonization, paired with renormalization group theory, which approximates the microscopic model in the low temperature limit.
-In many of our works (see \cref{drude_increased1,chiral1,one_half1,integer1}), we rely on (Abelian) bosonization and perform a renormalization group theory study, which is why we introduce these concepts in more detail in the next sections.
+In many of our works (see \cref{drude_increased1,chiral1,one_half1,integer1}), we rely on (abelian) bosonization and perform a renormalization group theory study, which is why we introduce these concepts in more detail in the next sections.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -650,15 +650,15 @@ In many of our works (see \cref{drude_increased1,chiral1,one_half1,integer1}), w
 \label{sec:tomonaga_LL}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Tomonaga-Luttinger liquids are gapless interacting states of matter appearing in many one-dimensional quantum systems.
-Their understanding was formalized at the beginning of the '80s by Duncan Haldane~\cite{Haldane1981} through the application of a technique called Abelian bosonization.
+Their understanding was formalized at the beginning of the '80s by Duncan Haldane~\cite{Haldane1981} through the application of a technique called abelian bosonization.
 It was understood that the low-lying excitations of these fermionic interacting models can be approximated with free bosons.
 In this section, we give a basic overview of the mapping from spinless fermions to bosonic particle-hole excitations in the vicinity of the Fermi points.
 This mapping can be straightforwardly applied in many different contexts, e.g. in our work in~\cref{drude_increased1}, which characterizes the anomalous zero temperature transport properties of a partially gapped interacting fermionic ladder model.
 
 The main interest here is to achieve an effective model in one dimension capturing the relevant degrees of freedom at low temperatures and low energies.
-For that purpose, let me start with the free fermionic 1D Hamiltonian $\hat H_0$ denoted by the following (diagonal) representation in momentum space
+For that purpose, let us start from the free fermionic 1D Hamiltonian $\hat H_0$ denoted by
 \begin{align}
-    \hat H_0 = \sum_k \frac{(\hbar k)^2}{2m}\hat n_k
+    \hat H_0 = \sum_k \frac{(\hbar k)^2}{2m}\hat n_k,
     \label{eq:hamiltonian_free_particles}
 \end{align}
 with dispersion relation $\varepsilon_k =\frac{k^2}{2m}$ depicted in \cref{fig:1D_quadratic_dispersion}.
@@ -690,7 +690,7 @@ The bare creation of particle-hole pairs is defined through the density operator
 \begin{align}
     \hat \rho_{-q}\coloneqq \sum_k \hat c^\dag_{k-q}\hat c^\pdag_{k}.
 \end{align}
-Note further that $\hat\rho_q^\dag = \hat\rho_{-q}$.
+Note that $\hat\rho_q^\dag = \hat\rho_{-q}$.
 By confining the theory close to the Fermi points, there are only two different classes of particle-hole excitations with $q\approx 0$ and $q\approx\pm2k_F$.
 The long-wavelength excitations $q\approx0$ are particle-hole pairs of the same species (left or right movers), and excitations of $q\approx\pm2k_F$ are particle-hole pairs of a mixture of the two.
 This implies drastic consequences for the relevant action of operators, which we will see in the following.
@@ -924,8 +924,8 @@ brings the diagonalized Hamiltonian to the more traditional form
 \end{align}
 In the above, we neglected a constant term ($-\sum_q\omega_q/2\pi$) and introduced an effective spring constant through the velocity and lattice spacing $D=mu^2/a^2$.
 
-The field $\partial_x\hat\phi$ can thus be interpreted as the ``position offset'' from the equilibrium, which in this case translates to density fluctuations around the equilibrium density $n=k_F/\pi$.
-We thus make the connection
+The field $\partial_x\hat\phi$ can be interpreted as the ``position offset'' from the equilibrium, which in this case translates to density fluctuations around the equilibrium density $n=k_F/\pi$.
+We make the connection
 \begin{align}
     \int\rd x\hat n = \frac1\pi\brlr{k_Fx - \hat\phi(x)},
 \end{align}
@@ -998,7 +998,7 @@ Therefore, the fermi velocity $v_F$ can be replaced by arbitrary group velocitie
 Significant deviations are then expected in case of flat bands (to be more precise, in case of strong interactions comparable with the bandwidth of the kinetic Hamiltonian), in which case all scattering processes of \cref{fig:scattering_processes} have to be considered.
 
 The evaluation of all scattering processes is a tough task and regularly neglected, which then leads to expected quantitative deviations.
-However, from a qualitative viewpoint, the neglected scatterings (whenever they are truly ``irrelevant'' in the sense of not opening energy gaps, see \cref{sec:renormalization_group_theory}) change only the effective couplings such that physical consequences predicted from Abelian bosonization (like the asymptotic decay of correlation functions) remain valid.
+However, from a qualitative viewpoint, the neglected scatterings (whenever they are truly ``irrelevant'' in the sense of not opening energy gaps, see \cref{sec:renormalization_group_theory}) change only the effective couplings such that physical consequences predicted from abelian bosonization (like the asymptotic decay of correlation functions) remain valid.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1320,7 +1320,7 @@ The action of the sine-Gordon model reads $S = S_0 + S_I$, with
 \end{align}
 Remember that the action can be thought of the continuum limit of a lattice model with well defined Brillouin zone, which connects the long wavelength with the small crystal momentum components of $\phi$.
 The idea of renormalization is to let the system flow towards larger distances by sequentially integrating the short-distance (fast) components of the fields by partial path integration and representing the result in terms of an effective model for the long-wavelength field.
-The final step is then to recover the original size of the momentum shell by a rescaling of lengthscales.
+The final step is then to recover the original size of the momentum shell by a rescaling of length scales.
 For technical convenience, it is best to assume a circular cutoff constraint $|{\bm k}|<\Lambda\sim2\pi/a$.
 If the model is of a sine-Gordon type, the effective model will have the same form as the original one (up to a rescaled set of coupling constants and extra ``irrelevant'' terms which tend to disappear), from which the so-called ``RG-flow equations'' are derived.
 
@@ -1334,7 +1334,7 @@ Let's start by splitting the fields into the aforementioned slow and fast compon
 \end{align}
 We will see shortly, that instead of using $\rd\Lambda$ as a measure of the flow it is more useful to consider the quantity $\brlr{\Lambda'/\Lambda}^\alpha=1-\alpha\frac{\rd\Lambda}\Lambda + O(\rd\Lambda^2) = 1-\alpha\rd l + O(\rd l^2)$ with $\rd l =\frac{\rd\Lambda}\Lambda = \rd\ln\Lambda$.
 Note that these definitions imply $\Lambda'=\Lambda\re^{-l}$, such that the momentum shell flows exponentially fast to smaller values.
-The Luttinger liquid part of the Euclidian action is linear under such decomposition and therefore
+The Luttinger liquid part of the Euclidean action is linear under such decomposition and therefore
 \begin{align}
     Z_\Lambda
     = \int\rD\phi_{\Lambda'}\rD h \re^{-S_0[\phi_{\Lambda'}]-S_0[h]-S_I[\phi_{\Lambda'}({\bm x}) + h({\bm x})]}
@@ -1349,7 +1349,7 @@ The analytic evaluation of the expectation on the right hand side requires furth
     S^{(2)}_{\rm eff}[\phi_{\Lambda'}] = S_0[\phi_{\Lambda'}] + \braket{S_I[\phi_{\Lambda'}+h]}_h - \frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}} + O(g^3),
 \end{align}
 in which $\braket{F^2}_{\rm conn.} = \braket{F^2}-\braket{F}^2$ denotes the ``connected'' part of the expectation value~\cite{Gogolin2004}.
-The renormalization group approach carried out in the following is thus reliable for small renormalized couplings $g\ll \frac u{2\pi K}$.
+The renormalization group approach carried out in the following is thus reliable for small couplings $g\ll \frac u{2\pi K}$.
 
 The first order term can be rewritten as
 \begin{align}
@@ -1570,7 +1570,7 @@ The integral can then be rewritten as
 
 The first $\cos$ term (\cref{eq:rg_int_1}) did not exist in the original Hamiltonian\footnote{
     Note that this term generation is continuous, and to account for it, we should start from a more generic interaction containing all the higher harmonics, i.e. $S_{I'} = S_I + \sum_{j=1}^\infty \tilde g_j\int\rd x\rd\tau\cos(2j\beta\phi)$.
-    The first-order corrections of the Euclidian action then yield a coupled system of differential equations in which the amplitudes of less relevant operators depend on those of more relevant ones (but {\it not} vice-versa).
+    The first-order corrections of the Euclidean action then yield a coupled system of differential equations in which the amplitudes of less relevant operators depend on those of more relevant ones (but {\it not} vice-versa).
     This allows for a practical and well-justified simplification of dropping the sum in the previous expression, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
 } -- it is a new sine-Gordon type interaction with larger scaling dimension $D_{\tilde g} = K\beta^2$ compared to $D_g=K\beta^2/4$.
 The operator associated to $\tilde g$ is thus less relevant than the original term and can be disregarded.
