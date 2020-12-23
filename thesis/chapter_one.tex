@@ -552,7 +552,7 @@ On the contrary, the two-body interaction allows for both intra-flavor and inter
 
 We are at liberty to slightly simplify the notation and arrive at the family of single-orbital Hubbard-type models, written in second quantization
 \begin{align}
-    \hat H_{\rm Hubbard} = \sum_{i,s}\brlr{t_1 \hat a^\dag_{i,s}\hat a^\pdag_{j+1,s} + \hc} + \frac U2\sum_{i,s,s'}\hat n_{i,s}\hat n_{i,s'} + V\sum_{i,s,s'}\hat n_{i,s}\hat n_{i+1,s'}.
+    \hat H_{\rm Hubbard} = \sum_{i,s}\brlr{t_1 \hat a^\dag_{i,s}\hat a^\pdag_{j+1,s} + \hc} + U\sum_{i,s,s'}\hat n_{i,s}\hat n_{i,s'} + V\sum_{i,s,s'}\hat n_{i,s}\hat n_{i+1,s'}.
     \label{eq:hubbard_hamiltonian}
 \end{align}
 The operator $\hat a_{i,s}$ annihilates a Wannier state of flavor $s$, localized around the $i$'th lattice position.
@@ -560,7 +560,7 @@ In most cases, $t_1 = -t$ with $t>0$, which is also physically motivated to conf
 The validity of the single-band approximation for real materials requires small interaction amplitudes compared to the band gap between the first and second Bloch band.
 
 If the matrix $T$ defines a lattice grid with loops, complex transition amplitudes give rise to nontrivial fluxes penetrating the lattice which may alter the underlying physics.
-The Peierls' substitution approximates the effect of a uniform magnetic field, in which case the Hamiltonian follows the principle of minimal coupling
+Such a scenario may occur in case of additional magnetic fields, in which case the Hamiltonian follows the principle of minimal coupling
 \begin{align}
     \hat H_0 = \frac{\hat{\bm p}^2}{2m}+V_{ae}(\bm r)\rightarrow \frac{\brlr{\hat{\bm p} - q\bm A(\bm r)}^2}{2m}+V_{ae}(\bm r),
 \end{align}
@@ -637,8 +637,8 @@ This results in a form of \cref{eq:hubbard_hamiltonian} without density-density 
 However, due to its intrinsic single-particle character, band theory cannot reliably capture truly many-body features such as band magnetism or Mott-to-metal-insulator transitions.
 This motivates the study of Hubbard-type models: despite being a brutal simplification of the true two-body interaction, they are the simplest systems that provide an explanation of such interaction-driven features.
 Despite its apparent innocence, there is no universal treatment of Hubbard models in general.
-In one spatial dimension, the Hamiltonian can be solved analytically using the Bethe Ansatz and thus falls in the category of being ``integrable''~\cite{Essler2005}.
-In general, Bethe Ansatz integrability is a fragile property and even slight perturbations will break it.
+In one spatial dimension, the Hamiltonian can be solved analytically using the Bethe ansatz and thus falls in the category of being ``integrable''~\cite{Essler2005}.
+In general, Bethe ansatz integrability is a fragile property and even slight perturbations will break it.
 The models we study in the next chapters, albeit closely related to the one-dimensional Hubbard model, do not categorize as integrable due to the presence of additional terms that break some of its fundamental symmetries (e.g. the conservation of the particle flavor).
 This motivates the use of alternative methods to study the properties of interacting tight binding models.
 One of the most prominent and useful analytic concepts in one dimension is bosonization, paired with renormalization group theory, which approximates the microscopic model in the low temperature limit.
@@ -998,16 +998,17 @@ Therefore, the fermi velocity $v_F$ can be replaced by arbitrary group velocitie
 Significant deviations are then expected in case of flat bands (to be more precise, in case of strong interactions comparable with the bandwidth of the kinetic Hamiltonian), in which case all scattering processes of \cref{fig:scattering_processes} have to be considered.
 
 The evaluation of all scattering processes is a tough task and regularly neglected, which then leads to expected quantitative deviations.
-However, from a qualitative viewpoint, the neglected scatterings (whenever they are irrelevant in the sense of not opening energy gaps, see \cref{sec:renormalization_group_theory}) change only the effective couplings such that physical consequences predicted from the Luttinger liquid theory (like the asymptotic decay of correlation functions) remain valid.
+However, from a qualitative viewpoint, the neglected scatterings (whenever they are truly ``irrelevant'' in the sense of not opening energy gaps, see \cref{sec:renormalization_group_theory}) change only the effective couplings such that physical consequences predicted from Abelian bosonization (like the asymptotic decay of correlation functions) remain valid.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Properties of real scalar fields and their correlations}
 \label{sec:properties_of_real_scalar_fields_and_their_correlations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-For the evaluation of correlation functions and the later employed renormalization group theory presented in \cref{sec:renormalization_group_theory}, it is beneficial to review briefly the language of path integrals.
+Correlation functions are essential to probe many-body phase on a practical level, and we evaluate a number of such observables throughout all of our works.
+For the analytic computation of correlations and the later employed renormalization group theory presented in \cref{sec:renormalization_group_theory}, it is beneficial to first review briefly the language of path integrals.
 During the process of derivation, the Luttinger parameter $K$ is absorbed in the definition of the fields and appears again in the discussion at the end of this section.
-The starting point is thus a Hamiltonian that is separable in the fields, i.e. $\hat H(\hat\phi,\hat\pi) = \hat H(\hat \phi) + \hat H(\hat \pi)$.
+The starting point here is thus a Luttinger liquid Hamiltonian which is separable in the fields, i.e. $\hat H(\hat\phi,\hat\pi) = \hat H(\hat \phi) + \hat H(\hat \pi)$.
 
 The goal is to evaluate the so-called time evolution kernel
 \begin{align}
@@ -1096,7 +1097,7 @@ A Gaussian integral of two real vectors $\bm v$, $\bm j$ and a real and invertib
 \end{align}
 The argument of \cref{eq:path_integral_pre_integration} is purely imaginary, and as such the integral is convergent with a regularization $\Delta t\rightarrow\Delta t(1+\ri\epsilon)$ by taking the limit $\epsilon\rightarrow0$.
 More importantly, the (arbitrary!) vector $\bm j$ acts as a ``source'' term to define an expectation value.
-Consider the derivative $\partial_{j_m}\partial_{j_n}|_{\bm j=0}$ acting on the gaussian, it will pull the $m,n$ component of $\bm A^{-1}$ up to an overall constant, i.e.
+Consider the derivative $\partial_{j_m}\partial_{j_n}|_{\bm j=0}$ acting on the Gaussian, which targets the $m,n$ component of $\bm A^{-1}$ up to an overall constant, i.e.
 \begin{align}
     \partial^2_{j_m,j_n}\int\rd\bm v\re^{-\frac12\bm v^T\bm A\bm v + \bm j^T \bm v}\Bigg|_{\bm j=0}
     =
