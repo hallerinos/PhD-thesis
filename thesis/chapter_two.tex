@@ -14,7 +14,7 @@ The analytical treatment presented in the previous chapter relies on a heavy lin
 One of the most crucial consequences of these simplifications is that quantitative deviations occur if the interactions are comparable to the kinetic bandwidth.
 This restricts heavily the validity region of the low-energy effective field theory of a particular model.
 To make an example, a sine-Gordon term with $\beta=4$ is encountered in the effective low-energy field theory of the spin-$1/2$ XXZ chain and the interaction will be relevant in the RG sense for $K<1/2$.
-Such a small Luttinger parameter typically requires very strong nearest neighbor interactions that are compatible with the system's bandwidth\footnote{The XXZ model is integrable and the phase transition occurs when all couplings are equal to each other.}, which thus implicitly breaks the assumptions to derive the effective low-energy field theory in the first place.
+Such a small Luttinger parameter typically requires very strong nearest neighbor interactions that are compatible with the bandwidth of the system\footnote{The XXZ model is integrable and the phase transition occurs when all couplings are equal to each other.}, which thus implicitly breaks the assumptions to derive the effective low-energy field theory in the first place.
 Although the field theoretic description might not break down entirely, heavy quantitative deviations from the Luttinger liquid predictions of the effective coupling parameters are to be expected.
 This motivates the use of numerical tools to verify the analytic predictions in the strongly interacting cases.
 In this chapter, we will provide the essentials to get acquainted with the concepts of tensor networks, in particular with matrix product states (MPS).
@@ -32,7 +32,7 @@ At the end of the chapter, we explain how temperature and mixed states can be en
 %
 %
 In the context of tensor networks, a tensor is understood as a multidimensional array containing complex elements.
-Its rank is defined as the number of indices: for instance, scalar values are of rank zero, vectors of rank one and matrices of rank two\footnote{
+Its rank is defined as the number of indices: scalar values are of rank zero, vectors of rank one and matrices of rank two\footnote{
     Note that this definition of ``rank'' differs from the usual understanding as image space dimension.
 }.
 Tensor networks are in general contractions of many tensors and as such it is customary to define graphical representations which display its fundamental structure, i.e. its rank.
@@ -53,7 +53,7 @@ Assume each leg has dimension $m$, then sequence $S_1$ is $O(m^4)$ whereas seque
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/ComplexContraction1.pdf}
-    \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $1$ requires less multiplications compared to $2$ and is thus less prone to numerical truncation errors.}
+    \caption{Different complexity classes for the same contraction, but different sequences. Assume each index has dimension $m$, then the green contractions are $O(m^4)$, but red is $O(m^5)$. Hence, sequence $1$ requires less multiplications compared to $2$ and is less prone to numerical truncation errors.}
     \label{fig:contraction_sequences}
 \end{figure}
 
@@ -65,7 +65,7 @@ For instance, consider the two isometries $U$, $V^\dag$ of a generic singular va
     V^\dag V^\pdag = \mathbb1.
 \end{align}
 In graphical notation, the identity matrix is represented as a straight line as it does neither stretch nor rotate the entries of a tensor.
-The previous equation can thus be recast to
+The previous equation can be recast to
 \begin{align}
     U^\dag U^\pdag \equiv \includegraphics[valign=c]{figures/right_isometry.pdf} = \includegraphics[valign=c]{figures/right_identity.pdf}\,,
     \qquad
@@ -156,7 +156,7 @@ Strategy (a) thus aims to truncate the color degree of freedom, which is not ver
 \end{figure}
 If the singular/spectral values are ordered, a truncation of the $\Lambda$ matrix neglects subdominant left and right eigenvectors of the original object and as such approximates the original matrix.
 In case of a subsequent normalization to the original trace, the truncation process can be understood as a compression or tensor renormalization scheme.
-The number of singular values kept in the approximation is thus naturally linked to the accuracy of the numerical renormalization.
+The number of singular values kept in the approximation is naturally linked to the accuracy of the numerical renormalization.
 Assume the picture to be of dimensions $\dim(P)=p_y\times p_x\times 3$, then keeping $m$ singular values implies that we need to store only a fraction of the matrices $U$ and $V^\dag$ to approximate the original picture $P$.
 Assuming that the matrix $M\equiv \{P_{y,(x,c)}\}_{y,x,c}$ is of dimension $n_y=p_y$ times $n_x=3p_x$, the following visualization highlights the SVD
 \begin{align}
@@ -170,7 +170,7 @@ Assuming that the matrix $M\equiv \{P_{y,(x,c)}\}_{y,x,c}$ is of dimension $n_y=
     \label{eq:compression_scheme}
 \end{align}
 If we limit to $m$ spectral values, we only need to store $n_y\cdot m$ elements from $U$, $m$ singular values and $m\cdot n_x$ elements from $V^\dag$.
-In total, we thus arrive at a compression rate
+In total, we arrive at a compression rate
 \begin{align}
     C_m = \frac{(n_x+n_y+1)m}{n_x n_y},
 \end{align}
@@ -214,7 +214,7 @@ Recall that any state can be expressed by a set of $L$ good quantum numbers, suc
     \label{eq:generic_state}
 \end{align}
 and the collection of all $\ket{i_1,i_2,\dots,i_L}$ form a complete and orthonormal basis.
-Note that the $L$-dimensional array $C$ depends on all internal quantum numbers and is thus exponentially large in the system size $L$ and the dimension of the quantum numbers $i_j$.
+Note that the $L$-dimensional array $C$ depends on all internal quantum numbers and is exponentially large in the system size $L$ and the dimension of the quantum numbers $i_j$.
 By the visual conventions, we may imagine the coefficients $C$ as a rank $L$ tensor, similar to the tensor $T$ discussed in \cref{eq:SVD_generalized}, i.e.
 \begin{align}
     C(i_1,i_2,\dots,i_L) \rightarrow C^{[i_1,i_2,\dots,i_L]} \equiv  \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}.
@@ -295,12 +295,12 @@ Point (iii) is clear from the fact that one may sandwich infinitely many identit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-To understand the influence of the compression scheme, consider the density matrix of an MPS in canonical form:
+To understand the influence of the compression scheme, consider the density matrix of an MPS in canonical form
 \begin{align}
     \hat\rho = \sum_{k,k'}s_ks_{k'}\ket{\psi_{A,k},\psi_{B,k}}\bra{\psi_{A,k'},\psi_{B,k'}}.
 \end{align}
-Now imagine to compute the reduced density matrix of a bipartition formed by a block $A(\ell)$ of the first $\ell$ quantum numbers and a block $B(\ell)$ of the remaining ones.
-A trace over the complement states of the partition $A/B$ gives the reduced density matrix in block $A/B$, i.e.
+Imagine a bipartition $A|B$ with $A(\ell)$ formed by the first $1,\dots,\ell$ quantum numbers and $B(\ell)$ containing the remaining ones $\ell+1,\dots,L$ ($L$ denotes the total number of sites).
+A trace over the complement states of one of the partitions gives the reduced density matrix of the block, i.e.
 \begin{align}
     \hat\rho_A = \tr_B(\hat\rho)
     &=
@@ -318,7 +318,7 @@ Note that normalization of the quantum state $\ket\psi$ implies $\tr\rho=\sum_k 
 The reduced density matrix is thus diagonal in the Schmidt decomposition, and solely determined by the spectral values $s_k$.
 Imagine now to approximate the state $\ket\psi$ with a state $\ket{\psi'}$ by limiting the number of different $s_k$ in the bipartition $A,B$ such that the $m$ largest spectral values are kept in $\ket{\psi'}$ and the rest is set to zero.
 Normalization of the state $\ket{\psi'}$ requires that $\sum_{k=1}^m {s'_k}^2$ must be renormalized to unity, which is satisfied if $s_k'=s_k/\sqrt{\sum_{l=1}^m s_l^2}$.
-The threshold $m$ is thus directly related to approximating the reduced density matrix $\hat \rho_{A/B}$ with the $m$ most likely states in the Schmidt decomposition of a given bipartition $A/B$.
+The threshold $m$ is directly related to approximating the reduced density matrix $\hat \rho_{A/B}$ with the $m$ most likely states in the Schmidt decomposition of a given bipartition $A/B$.
 Please note that $s_k\equiv s_k(\ell)$ refers to the $k$'th singular value of a particular bipartition $A(\ell)/B(\ell)$, which considers the first/last $\ell/L-\ell$ quantum numbers.
 % Therefore, it can be appropriate to denote this dependence also in the spectral values if needed, i.e. $s_k = s_k(\ell)$.
 If we keep the $m$ largest singular values $s_k(\ell)$, $k\in\{1,2,\dots,m\}$ for any block size $\ell$, $m$ is a global property of MPS called the bond dimension.
@@ -329,7 +329,7 @@ Density matrices are naturally related to the generalized Gibbs entropy for quan
 \end{align}
 which is a straightforward measure for the shared information between the bipartition, in information theory perspectives often called Shannon entropy of communication.
 In this context, $-\ln(s^2_k)$ is understood as the information content (or surprisal) of the Schmidt state, and $S_1$ is simply the expectation value of surprisal.
-Such a definition is understood intuitively: measuring a state of very low probability is surprizing, whereas likely quantum states bear a low surprise.
+Such a definition is understood intuitively: measuring a state of very low probability is surprising, whereas likely quantum states bear a low surprise.
 In a quantum physics audience, the entropy $S_1$ is commonly referred to as von Neumann entropy, and we denote it as $S_1$ because of its relation to the Rényi entropy -- a generalized version of the Shannon entropy
 \begin{align}
     S_\alpha(\ell) = \frac{1}{1-\alpha}\ln\tr\hat\rho^\alpha_A
@@ -368,7 +368,7 @@ All of the discussion so far would not be very exciting for a wholehearted physi
 The phenomenon was firstly noted in $1935$ by Albert Einstein, Boris Podolsky, and Nathan Rosen~\cite{EPR1935}, also by Erwin Schrödinger~\cite{Schrdinger1935,Schrdinger1936}, describing what is famously known as the EPR paradox~\cite{Reid2009}.
 At its heart, it describes a group of particles interacting such that the quantum state of each individual particle cannot be described independently of the state of the others in the group.
 The paradox part in the aforementioned works is described by quantum measurements performed on individual particles, which leads to irreversible collapses of the wave function and an alteration of the original quantum state of the other particles in the group.
-Surprisingly, the phenomenon is independent of the distance between the particles and forms thus a unique form of correlations exclusively present in quantum systems.
+Surprisingly, the phenomenon is independent of the distance between the particles and forms a unique form of correlations exclusively present in quantum systems.
 
 To make an example, consider the two-particle pure state $\ket{\psi}=\frac1{\sqrt2}\brlr{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}$ and the two particles being localized at two distant spacial positions.
 In case we prepare a projective measurement of the first particle being in the $\uparrow$-state, the probability of the outcome is obviously $1/2$ and we end up with a collapsed post-measurement state of the form $\ket{\tilde\psi} = \ket{\uparrow\downarrow}$.
@@ -384,18 +384,18 @@ A state $\ket{\psi}$ is called $N$-partite separable if and only if it can be wr
 \end{align}
 Note that this expression is fundamentally different from the coherent superposition of exponentially many state vectors encountered in generic states (compare to ~\cref{eq:generic_state}).
 As such, we call a state $N$-partite entangled, if it cannot be decomposed according to~\cref{eq:separable_states}.
-The earlier example of a bipartite system is an element of the Bell basis, which are sometimes called EPR states
+The earlier example of a bipartite system is an element of the Bell basis, which are also called EPR states
 \begin{align}
     \ket{\psi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}}
     \quad
     \ket{\phi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\uparrow}\pm\ket{\downarrow\downarrow}}
 \end{align}
 and they all have remarkable properties, first recognized by Schrödinger -- if one measures only one of the states, one finds it with equal probability in either $\ket{0}$ or $\ket{1}$.
-As such, they give no information about the subsystems, whereas they are still pure and thus reveal full information about the global system.
+As such, the reduced density matrices represent mixed states and reveal no information about the subsystems, although the full state is still pure and therefore fully characterized.
 The Bell states are special cases of bipartite maximally entangled states~\cite{Horodecki2009} and as such great examples to explore the entropic manifestation of entanglement.
 
-In particular, the von Neumann entropy of a product state vanishes\footnote{This is actually a consequence of a much more general statement for open quantum systems and mixed states: the entropy of a subsystem can be greater than the entropy of the global system iff. the state is entangled~\cite{Horodecki1994}.
-The inequality for separable states can thus be expressed as $S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix of the mixed state and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
+In particular, the von Neumann entropy of a product state vanishes\footnote{This is actually a consequence of a much more general statement for open quantum systems and mixed states: the entropy of a subsystem can be greater than the entropy of the global system if and only if the state is entangled~\cite{Horodecki1994}.
+The inequality for separable states can be expressed as $S(\hat\rho)-S(\hat\rho_{A/B})\geq0$ with $\hat\rho$ the density matrix of the mixed state and $\hat\rho_{A/B}$ the reduced density matrix of bipartition $A/B$.
 As such, the von Neumann entropy serves as a scalar separability criteria, in analogy to the Bell inequalities~\cite{Horodecki2006}.}.
 Note that the reduced density matriy of the Bell states is $\hat\rho_{A/B}=\frac12\mathbb1$ and as such $S_1=\ln2$ which provides an upper limit for this two-partite system.
 In general, a maximally entangled $N$-partite pure state is maximally entangled if the reduced density matrix is proportional to the identity.
@@ -407,8 +407,8 @@ This, in turn, does not provide an explanation why such an approximation should 
 Incidentally, at the time DMRG was introduced by Steven White~\cite{White1992}, the success of the renormalization scheme remained a mystery.
 Some insights were concluded by the derivation of universal scaling laws of the entropy provided e.g. by Calabrese and Cardy in 2004~\cite{Calabrese2004} in proximity of a quantum critical point.
 In 2007, Hastings published his famous proof of the area law for one-dimensional quantum systems~\cite{Hastings2007}.
-In its essence, it provides an upper bound to the von Neumann entropy for gapped and local (i.e. no long-ranged interactions) Hamiltonians scaling as the area ($\equiv$ a constant) of one-dimensional systems.
-Essentially, the works can be summarized by the following statement~\cite{Eisert2010}:
+It is a remarkable result concerning the low-energy excitations of gapped and local one-dimensional Hamiltonians, for which the von Neumann entropy scales as the surface area of the bipartition.
+Essentially, the works can be summarized as follows~\cite{Eisert2010}:
 Consider a finite regular lattice of size $N$ and with spacing $a$, and a bipartition $1,2,\dots,\ell$ and $\ell+1,\ell+2,\dots,N$.
 Then the von Neumann entropy of the physically relevant part (i.e. the low-energy/temperature subspace of $\HS$) scales as
 \begin{align}
@@ -456,7 +456,7 @@ In particular, it acts as a contraction between the $o$-matrix and the $q$'th ve
 Therefore, we can represent any local operator as a rank-$2$ tensor composed by the matrix elements of $\hat o$.
 The same reasoning applies for operators acting on $p$ sites -- they are represented by rank-$2p$ tensors containing the entries of the matrix elements, contracted with the $p$ corresponding vertical links of the $C$-tensor.
 
-The most straightforward example of a matrix product operator (MPO) is given through the Hamiltonian, and the derivation straightforward.
+The most straightforward example of a matrix product operator (MPO) is given through the Hamiltonian:
 Consider for example the Ising model
 \begin{align}
     \hat H = \hat H_{h} + \hat H_{J},
@@ -597,7 +597,7 @@ For the numerical simulations employed in all of our articles, we implemented tw
 The first one is the growing algorithm (sometimes dubbed iDMRG), which is most useful to construct the trial wavefunction of the second scheme, namely traditional DMRG reformulated in the language of MPS~\cite{Schollwoeck2011,Silvi2019}.
 
 Consider the way the energy expectation value is written in the MPS language: it is a sandwich of the product of $W$ tensors (the local MPO representing the Hamiltonian) with the trial MPS, and it's conjugate.
-To find the groundstate, we extremize the energy
+To find the ground state, we extremize the energy
 \begin{align}
     E = \min_{\ket{\psi}}\braket{\psi |\hat H | \psi}
 \end{align}
@@ -755,9 +755,9 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
     \begin{align}
         \includegraphics[valign=c]{figures/fMPS_1.pdf}.
     \end{align}
-    \item Compute the new lowest energy vector $\bm A_C$ according to \cref{eq:MPS_optimization}\footnote{At the system's boundaries, ${\bm A}_C$ is effectively a rank-$3$ tensors and one of the isometries will be of rank-$2$.} and decompose it to two isometries and a matrix $\Lambda$ containing the singular values
+    \item Compute the new lowest energy vector $\bm A_C$ according to \cref{eq:MPS_optimization}\footnote{At the boundaries of the system, ${\bm A}_C$ is effectively a rank-$3$ tensor and one of the isometries will necessarily be a rank-$2$ tensor under the decompositions schematized above.} and decompose it to two isometries and a matrix $\Lambda$ containing the singular values
     \begin{align}
-        f^{-1}\circ \bm A_C^{[i_{n},i_{n+1}]} &= U^{[i_n]}\Lambda(n) V^{\dag[i_{n+1}]}\\
+        f^{-1}\circ \bm A_C^{[i_{n},i_{n+1}]} &= U^{[i_n]}\Lambda(n) V^{\dag[i_{n+1}]},\\
         \includegraphics[valign=c]{figures/growing_4_4.pdf}
         &=
         \includegraphics[valign=c]{figures/growing_5.pdf}
@@ -767,7 +767,7 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
     Proceed then with step $3$ (sweeping from left to the right) or step $4$ (sweeping from right to the left).
     \item If $n=L-1$ continue with step 4. Shift the matrix $\Lambda(n)$ to the next site by the decomposition
     \begin{align}
-        \Lambda(n) V^{\dag[i_{n+1}]} V^{\dag[i_{n+2}]} &= U^{[i_{n+1}]}\Lambda(n+1) \tilde V^\dag V^{\dag[i_{n+2}]}
+        \Lambda(n) V^{\dag[i_{n+1}]} V^{\dag[i_{n+2}]} &= U^{[i_{n+1}]}\Lambda(n+1) \tilde V^\dag V^{\dag[i_{n+2}]},
         \\
         \includegraphics[valign=c]{figures/fMPS_3_1.pdf}
         &=
@@ -778,7 +778,7 @@ The second application concerns the MPS obtained after $L/2$ steps -- it can ser
     This concludes a single sweeping step from left to right.
     \item If $n=1$ continue with step 3. Shift the matrix $\Lambda(n)$ to the previous site by the decomposition
     \begin{align}
-        U^{[i_{n-1}]}U^{[i_n]}\Lambda(n) &= U^{[i_{n-1}]}\tilde U\Lambda(n-1) V^{\dag[i_n]}
+        U^{[i_{n-1}]}U^{[i_n]}\Lambda(n) &= U^{[i_{n-1}]}\tilde U\Lambda(n-1) V^{\dag[i_n]},
         \\
         \includegraphics[valign=c]{figures/fMPS_4_1.pdf}
         &=
@@ -888,7 +888,7 @@ Time evolution can now be understood as an orthogonal projection of the evolved 
 By writing the action of $\hat P_{T\ket\psi}$ onto $\hat H\ket\psi$ explicitly, it is clear that the right-hand-side of \cref{eq:MPS_time_evolution} reduces to a sum of single-site contributions.
 The authors of~\cite{Haegeman2016} demonstrated that the full integration of the problem can be approximated with a decoupled set of differential equations for the individual single-site contributions, which can be integrated exactly.
 The derivation relies on the assumption that the state $\ket\psi$ is encoded by an MPS in which the time-dependence is captured in $A_C^{[i_\ell]}$ (or $C(\ell)$).
-One can thus identify a set of $2L-1$ independent differential equations
+One can identify a set of $2L-1$ independent differential equations
 \begin{align}
     \frac{\rd\ket\psi}{\rd t} = -\ri \hat P_{A(\ell-1)}\hat {\mathbb1}_\ell \hat P_{B(\ell+1)}\hat H\ket\psi
     ,\quad
@@ -946,7 +946,7 @@ The full TDVP algorithm is then depicted as follows:
 Similarly to DMRG, TDVP is performed in completed sequences of full sweeping cycles $n=1,2,\dots,L$ and then $n=L,L-1,\dots,1$.
 After one sweeping from left to right cycle ($n=1,2,\dots,L$), the MPS is integrated from time $t$ to $t+\Delta t/2$ with a local integration error of $\mathcal O(\Delta t^2)$.
 Completing the left to right sequence ($n=L,L-1,\dots,1$) then constitutes to composing the integration with its adjoint, resulting in a second-order symmetric method.
-A single integration step from $t\rightarrow t+\Delta t$ is thus achieved after a full sweeping cycle, and the error of the integration is more favorable $\mathcal O(\Delta t^3)$~\cite{Haegeman2016}.
+A single integration step from $t\rightarrow t+\Delta t$ is achieved after a full sweeping cycle, and the error of the integration is more favorable $\mathcal O(\Delta t^3)$~\cite{Haegeman2016}.
 Similarly to two-site DMRG, the TDVP algorithm can be easily implemented by time-evolving a two-site instead of a single-site tensor $A_C^{[i_\ell]}\rightarrow A_C^{[i_\ell,i_{\ell+1}]}$ and the center matrix is promoted to a single-site tensor $C^{[i_\ell]}$~\cite{Haegeman2016}.
 The flow chart of two-site TDVP is equivalent to \cref{fig:DMRG_flow_chart}.
 %
@@ -1035,7 +1035,7 @@ But the reverse is also true, as a generic symmetry invariant state decomposes i
 This framework can be established by two elementary building blocks, namely symmetric links (i) and symmetric tensors (ii).
 To implement (i), the legs of the tensor are promoted to symmetric links by the association of the irrep label $\alpha$ to each leg index value $i$.
 Index values with the same $\alpha$ are counted by the degeneracy number $\gamma$.
-It is thus possible to generate a bijection between the leg index value $i$ and symmetric link tuple $(\alpha,\gamma)$.
+It is possible to generate a bijection between the leg index value $i$ and symmetric link tuple $(\alpha,\gamma)$.
 To simplify notation, we will drop the indication of the bijection, and replace the occurrence of the leg index value with the symmetric link tuple, i.e. $i\equiv(\alpha,\gamma)$.
 This way, symmetric links associate a specific unitary representation of the group $G$, and each tuple $(\alpha,\gamma)$ labels a specific irrep.
 
@@ -1059,13 +1059,13 @@ It is, as usual, quite convenient to convey the equations to the graphical notat
 To satisfy \cref{eq:symmetric_tensor}, the amount of negative charges must compensate the positive charges.
 For example, a rank-$3$ symmetric tensor would be of the form
 \begin{align}
-    T^{[i_1,i_2,i_3]} \equiv T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]}
+    T^{[i_1,i_2,i_3]} \equiv T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]}.
 \end{align}
 Let us, for convenience, consider only three different quantum numbers $\alpha_1\geq0$, $\alpha_2\geq0$ and $\alpha_3\leq0$, for which the tensor decomposes to
 \begin{align}
     T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]} = \delta_{\alpha_1+\alpha_2,-\alpha_3} R^{[\gamma_1,\gamma_2,\gamma_3]}.
 \end{align}
-It is thus a necessity that $\alpha_3$ compensates the sum of charges $\alpha_1$ and $\alpha_2$.
+It is a necessity that $\alpha_3$ compensates the sum of charges $\alpha_1$ and $\alpha_2$.
 This can be depicted through a set of ``incoming'' and ``outgoing'' arrows with respect to $T$ representing the structural tensor $S$, i.e.
 \begin{align}
     T^{[(\alpha_1,\gamma_1),(\alpha_2,\gamma_2),(\alpha_3,\gamma_3)]} \equiv \includegraphics[valign=c]{figures/symmetric_tensor_example.pdf}

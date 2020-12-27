@@ -140,13 +140,13 @@ such that we arrive at the beautiful result
     \label{eq:berry_phase_stokes_theorem_2}
 \end{align}
 Note that the final equations derived here, in particular \cref{eq:phase_change} depend on the path $C$ only.
-Starting from an $n$-variable parametrization, $C$ is then promoted from a one-dimensional to an $n$-dimensional path and $\gamma_n$ to a more general topological invariant, related to the homotopy class of the mapping between parameter and target space of the parametrization\footnote{
+Starting from an $n$-variable parametrization, for which $C$ forms an $n$-dimensional path, $\gamma_n$ can be used to define a more general topological invariant, related to the homotopy class of the mapping between parameter and target space of the parametrization\footnote{
     The fundamental generalization of Stokes' theorem is the Stokes-Cartan theorem.
     It states that the integral of a differential form $\omega$ over the surface $\partial M$ of an (orientable) manifold $M$ is equivalent to the integral of the exterior derivative $\rd\omega$ over the full manifold $M$, i.e. $\int_{\partial M}\omega = \int_M\rd\omega$.
-    The definitions of a differential form $\omega$, it's exterior derivative $\rd\omega$ and the surface of an orientable manifold $\partial M$ are found in many textbooks, e.g.~\cite{Nakahara1990}.
+    The definitions of differential forms $\omega$, exterior derivatives $\rd\omega$ and surfaces of orientable manifolds $\partial M$ are found in many textbooks, e.g.~\cite{Nakahara1990}.
 }.
 
-To apply the general equations in a more practical context, let us exploit the results for a spin-1/2 in a magnetic field $\bm B$, which is described by the following Hamiltonian
+To apply the general equations in a more practical context, let us exploit the results for a spin-1/2 in a magnetic field $\bm B$, described by the following Hamiltonian
 \begin{align}
     H(\bm B) = \kappa\hbar\bm B\cdot\hat{\bm s} = \frac{\kappa\hbar\varepsilon}2 \hat{\bm B}\cdot\bm\sigma
     =
@@ -289,11 +289,11 @@ As a consequence, $\gamma_n(C)$ is not quantized and adiabatic deformations like
 
 If, however, we require to keep $H(t,k)$ entirely off-diagonal and symmetric, an adiabatic deformation like \cref{eq:hamiltonian_path} with a term $B_z\neq0$ does not exist.
 As a consequence, any adiabatic deformation from a TOI to a TRI Hamiltonian necessarily crosses the critical point $J=J'$ for which the bulk gap vanishes.
-The Berry phase of such a system is an element of $\pi\mathds Z$, being non-zero iff. the path $C$ spanned by $\hat{\bm B}$ defines a surface.
+The Berry phase of such a system is an element of $\pi\mathds Z$, being non-zero if and only if the path $C$ spanned by $\hat{\bm B}$ defines a surface.
 This can again be understood more intuitively from a geometric point of view:
-By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral (which would indeed require a deformation along $\hat {B}_z$), and as a consequence the Berry phase is quantized.
+By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral (this indeed requires a deformation along $\hat {B}_z$), and as a consequence the Berry phase is quantized.
 
-In analogy to the Chern number, this defines a topological index called the winding number, which corresponds to quantized values only in the equivalence classes of Hamiltonians which respect the imposed symmetry.
+In analogy to the Chern number, this defines a topological index called the winding number, which corresponds to quantized values only in the equivalence classes of Hamiltonians respecting the imposed symmetry.
 It equals to the Berry phase divided $\pi$, i.e.
 \begin{align}
     \mathcal W = |\gamma_n(C)/\pi|,
@@ -302,7 +302,7 @@ or, equivalently, to the solid angle spanned by $\hat{\bm B}$ divided $2\pi$, i.
 \begin{align}
     \mathcal W = \frac1{2\pi}\int\rd k\brlr{\hat{\bm B}\times\partial_k\hat{\bm B}}_z.
 \end{align}
-Since the winding number counts the amount of full circles which $\hat{\bm B}$ performs around the origin while passing through the Brillouin zone, it is equal to
+Since the winding number counts the amount of full circles $\hat{\bm B}$ performs around the origin while passing through the Brillouin zone, it is equal to
 \begin{align}
     \mathcal W = \frac{1}{2\pi}\int\rd k \arg(\hat{\bm B}_x - \ri \hat{\bm B}_y)
     =
@@ -313,8 +313,8 @@ Since the winding number counts the amount of full circles which $\hat{\bm B}$ p
 \end{align}
 in which $g(k)=G(k,\omega=0)$ is the Green's function at zero frequency.
 
-The winding number can most easily be identified by close inspection of the unnormalized Bloch vector ${\bm B}$, which either traverses around the degeneracy at the origin, or not.
-This will then translate to $\hat{\bm B}$ drawing circles around the Bloch sphere, or retracing itself, thus spanning no surface (compare to \cref{fig:ssh_winding_easy}).
+The winding number can most easily be identified by close inspection of the unnormalized Bloch vector ${\bm B}$, traversing (or not) around the degeneracy.
+This will then translate to $\hat{\bm B}$ drawing circles around the Bloch sphere, or retracing itself, thus spanning no surface (see \cref{fig:ssh_winding_easy} and compare plots with the insets).
 In particular, the former will be achieved if $J<J'$ ($\mathcal W=1$), while the latter occurs for $J>J'$ ($\mathcal W=0$).
 From now on, we call a phase with nonzero winding number topological insulator (TOI) and the other trivial insulator (TRI).
 \begin{figure}[ht]
