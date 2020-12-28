@@ -27,16 +27,16 @@
 % \usepackage{microtype}
 \usetikzlibrary{tikzmark}
 
-% with old LaTeX-Live version
-\usepackage[backend=bibtex]{biblatex}
-\addbibresource{biblio.bib}
-% \bibliographystyle{abbrvdin}
-% % with newer LaTeX-Live version
-% \usepackage{etoolbox}
-% \cslet{blx@noerroretextools}\empty
+% % with old LaTeX-Live version
 % \usepackage[backend=bibtex]{biblatex}
 % \addbibresource{biblio.bib}
-% \usepackage{autonum}
+
+% with newer LaTeX-Live version
+\usepackage{etoolbox}
+\cslet{blx@noerroretextools}\empty
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{biblio.bib}
+\usepackage{autonum}
 
 \usepackage{csquotes}
 

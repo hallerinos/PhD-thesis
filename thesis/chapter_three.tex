@@ -66,7 +66,7 @@ If the surface is implicitly described by the regular kernel of a function $f(x_
     }{|\bm\nabla f|^4}
     .
 \end{align}
-For instance, a three-dimensional sphere of radius $r$ can be described implicitly by $f=\sum_{i=1}^3 x_i^2 - r^2$ and has as such a uniform Gaussian curvature $K=1/r^2$ with Euler characteristic
+For instance, a three-dimensional sphere of radius $r$ can be described implicitly by $f=\sum_{i=1}^3 x_i^2 - r^2$ and has a uniform Gaussian curvature $K=1/r^2$ with Euler characteristic
 \begin{align}
     \chi_{S^2} = \frac1{2\pi}\int_0^{2\pi}\rd\phi \int_0^\pi\rd\theta K r^2\sin\theta = 2.
 \end{align}
@@ -234,7 +234,7 @@ The Hamiltonian coincides with the one of a spin-1/2 in a magnetic field (compar
     B_z(k) = 0.
 \end{align}
 Note that the parametrization of the path $C=C(k)$ spanned by the pseudo magnetic field $\hat{\bm B}(k)$ is one-dimensional.
-Examples of the band dispersion $\varepsilon_\pm(k)=\pm\sqrt{J^2+J'^2+2JJ'\cos(k)}$ for different values of the couplings are plotted in \cref{fig:ssh_dispersion}
+Examples of the band dispersion $\varepsilon_\pm(k)=\pm\sqrt{J^2+J'^2+2JJ'\cos(k)}$ for different values of the couplings are plotted in \cref{fig:ssh_dispersion}.
 \begin{figure}[ht]
     \centering
     \includegraphics{figures/ssh_dispersion_0.png}
@@ -246,9 +246,9 @@ Examples of the band dispersion $\varepsilon_\pm(k)=\pm\sqrt{J^2+J'^2+2JJ'\cos(k
 \end{figure}
 
 Let us explore more the topological equivalency we detailed in the previous section.
-The valence/conduction band shows a maximum/minimum at $k=\pi$, which leads to the band gap $\Delta = 2\left|J-J'\right|$.
-As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and, for reasons which are explained shortly, we call $J>J'$ trivial insulator (TRI) and $J<J'$ topological insulator (TOI).
-Within each of those phases, all Hamiltonians are topologically equivalent, which is trivially satisfied by the definition of a smooth path which linearly interpolates the different values of the couplings.
+The valence/conduction band shows a maximum/minimum at $k=\pi$, resulting in a band gap of size $\Delta = 2\left|J-J'\right|$.
+As long as $J\neq J'$, the band gap $\Delta\neq0$ is preserved, and for reasons explained shortly, we call $J>J'$ trivial insulator (TRI) and $J<J'$ topological insulator (TOI).
+Within each of those phases, all Hamiltonians are topologically equivalent.
 It is also possible to define a family of Hamiltonians according to
 \begin{align}
     H(t,k) =
@@ -264,13 +264,8 @@ which is equivalent to the Bloch vector
     \quad
     B_y(t,k) = t\sin(k),
     \quad
-    B_z(t,k) = \sin(\pi t),
+    B_z(t,k) = \sin(\pi t).
 \end{align}
-for which $H(0,k)$ is of the TRI and $H(1,k)$ is of the TOI kind.
-In \cref{fig:ssh_deformed}, the path of the normalized Bloch vector $\hat{\bm B}(t,k)$ is depicted.
-If we allow the deformation along the $z$-axis, the cycle that is drawn in the TOI phase can be smoothly deformed to a point without closing the bulk gap.
-The spectrum of $H(t,k)$ is readily solved and evaluates to $\varepsilon_\pm(k,t)=\pm\sqrt{1-2(1-t)t+2(1-t)t\cos k+\sin(\pi t)}$.
-It is easy to see that $\Delta({t})\geq0$ for $0\leq t\leq1$, which demonstrates that TOI and TRI phases are, indeed, topologically equivalent.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.13\textwidth]{figures/ssh_deformed_normalized_bloch_vector_t0_000.jpg}
@@ -283,17 +278,31 @@ It is easy to see that $\Delta({t})\geq0$ for $0\leq t\leq1$, which demonstrates
     \caption{Depicted paths of $\hat{\bm B}(t,k)={\bm B}/|{\bm B}|$ (see text) as it wraps around the Brillouin zone $k\in(0,2\pi]$ for different $t\in\{0,1/8,1/4,1/2,3/4,7/8,1\}$ (from left to right). The solid angle of $2\pi$ spanned in the TOI phase (i.e. $t=1$) can be smoothly deformed to the trivial case in the TRI phase (i.e. $t=0$).}
     \label{fig:ssh_deformed}
 \end{figure}
+
+In the equations above, $H(0,k)$ describes a TRI and $H(1,k)$ a TOI phase.
+The spectrum of $H(t,k)$ is readily solved, and it is easy to verify that $\Delta({t})>0$ for $0\leq t\leq1$.
+The path of the normalized Bloch vector $\hat{\bm B}(t,k)$ for different values of the parametrization $t$ is depicted in \cref{fig:ssh_deformed}:
+If a deformation along the $z$-axis is allowed, the nontrivial circular path is smoothly connected to a trivial point without closing the bulk gap, demonstrating the adiabatic connection between TOI and TRI phases.
+
 This statement can be geometrically understood by the fact that the single-valued parametrization $\bm B(k)$ generates an arc of a circle or a full circle on the Bloch sphere.
 In other words, the surface $S$ spanned by $C$ (the white path in \cref{fig:ssh_deformed}) never fully encapsulates the degeneracy, which is the source of ${\bm F}_n$.
 As a consequence, $\gamma_n(C)$ is not quantized and adiabatic deformations like \cref{eq:hamiltonian_path} are possible to effectively remove the degeneracy from the surface integral, smoothly connecting all nonzero geometric phases to the trivial one.
+\begin{figure}[ht]
+    \centering
+    \includegraphics{figures/ssh_unnormalized_winding_2.png}
+    \includegraphics{figures/ssh_unnormalized_winding_3.png}
+    \includegraphics{figures/ssh_unnormalized_winding_4.png}
+    \includegraphics{figures/ssh_unnormalized_winding_6.png}
+    \caption{The path in $x,y$ plane spanned by the unnormalized Bloch vector $\bm B$, compared with the path of $\hat{\bm B}$ drawn on the Bloch sphere for different values of $J'/J$. The path drawn by $\bm B$ either traverses around the origin or not, resulting in a path spanning a nonzero surface area or a path which retraces itself thus spanning no surface.}
+    \label{fig:ssh_winding_easy}
+\end{figure}
 
-If, however, we require to keep $H(t,k)$ entirely off-diagonal and symmetric, an adiabatic deformation like \cref{eq:hamiltonian_path} with a term $B_z\neq0$ does not exist.
-As a consequence, any adiabatic deformation from a TOI to a TRI Hamiltonian necessarily crosses the critical point $J=J'$ for which the bulk gap vanishes.
-The Berry phase of such a system is an element of $\pi\mathds Z$, being non-zero if and only if the path $C$ spanned by $\hat{\bm B}$ defines a surface.
-This can again be understood more intuitively from a geometric point of view:
-By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral (this indeed requires a deformation along $\hat {B}_z$), and as a consequence the Berry phase is quantized.
-
-In analogy to the Chern number, this defines a topological index called the winding number, which corresponds to quantized values only in the equivalence classes of Hamiltonians respecting the imposed symmetry.
+If, however, we require to keep $H(t,k)$ entirely off-diagonal, deformations like \cref{eq:hamiltonian_path} with terms $B_z\neq0$ do not exist.
+As a consequence, any interpolation from a TOI to a TRI Hamiltonian necessarily crosses the critical point $J=J'$ where the bulk gap vanishes.
+The Berry phase of such a system is an element of $\pi\mathds Z$, being non-zero if and only if the path $C$ spanned by $\hat{\bm B}$ defines the boundary of a nontrivial surface.
+% This can be understood intuitively:
+% By imposing the off-diagonal structure of the family of Hamiltonians, the degeneracy cannot be removed from a nonzero surface integral, and as a consequence the Berry phase is quantized.
+In analogy to the Chern number, this defines a topological index called the winding number, which corresponds to quantized values only in the equivalence classes of Hamiltonians respecting the imposed ``symmetry'' of being off-diagonal (this is defined more properly in \cref{sec:Periodic_table_of_topological_insulators_and_superconductors}).
 It equals to the Berry phase divided $\pi$, i.e.
 \begin{align}
     \mathcal W = |\gamma_n(C)/\pi|,
@@ -317,15 +326,6 @@ The winding number can most easily be identified by close inspection of the unno
 This will then translate to $\hat{\bm B}$ drawing circles around the Bloch sphere, or retracing itself, thus spanning no surface (see \cref{fig:ssh_winding_easy} and compare plots with the insets).
 In particular, the former will be achieved if $J<J'$ ($\mathcal W=1$), while the latter occurs for $J>J'$ ($\mathcal W=0$).
 From now on, we call a phase with nonzero winding number topological insulator (TOI) and the other trivial insulator (TRI).
-\begin{figure}[ht]
-    \centering
-    \includegraphics{figures/ssh_unnormalized_winding_2.png}
-    \includegraphics{figures/ssh_unnormalized_winding_3.png}
-    \includegraphics{figures/ssh_unnormalized_winding_4.png}
-    \includegraphics{figures/ssh_unnormalized_winding_6.png}
-    \caption{The path in $x,y$ plane spanned by the unnormalized Bloch vector $\bm B$, compared with the path of $\hat{\bm B}$ drawn on the Bloch sphere for different values of $J'/J$. The path drawn by $\bm B$ either traverses around the origin or not, resulting in a path spanning a nonzero surface area or a path which retraces itself thus spanning no surface.}
-    \label{fig:ssh_winding_easy}
-\end{figure}
 
 To understand the emergence of edge modes, we must obviously introduce an interface of some sort.
 First of all, let me Fourier-transform the Bloch Hamiltonian to find the representation in real space, i.e.
@@ -333,7 +333,7 @@ First of all, let me Fourier-transform the Bloch Hamiltonian to find the represe
     \hat H = \sum_x \brlr{J\hat c^\dag_{x,A}\hat c^\pdag_{x,B} + J' \hat c^\dag_{x,B}\hat c^\pdag_{x+1,A}} + \hc,
 \end{align}
 in which $\hat c_{x,A/B}$ are the annihilators of a spinless fermionic particle at site $x$ and sublattice $A/B$.
-An interface which hosts edge states with energy zero, following the logic of the previous section, is readily implemented by two semi-infinite crystals, one with bulk invariant $0$ (e.g. for all negative lattice positions $x<0$), the other with bulk invariant $1$ (for all lattice positions $x\geq0$).
+An interface hosting edge states with energy zero, following the logic of the previous section, is readily implemented by two semi-infinite crystals, one with bulk invariant $0$ (e.g. for all negative lattice positions $x<0$), the other with bulk invariant $1$ (for all lattice positions $x\geq0$).
 For convenience, let me here construct this crystal from the two limiting cases (i) $J'=0$ and (ii) $J=0$.
 Note that for such a system, the central $A$ site at position $x=0$ does not contribute to the Hamiltonian and hosts a perfectly localized mode of zero energy.
 Obviously, this edge mode is preserved if we consider the vacuum in region (i).
@@ -342,7 +342,7 @@ Let me thus simplify the hypothetical crystal by replacing the trivial insulator
     \hat H = \sum_{x\geq0} J \hat c^\dag_{x,A}\hat c^\pdag_{x,B} + J' \hat c^\dag_{x,B}\hat c^\pdag_{x+1,A} + \hc
 \end{align}
 In this case, the presence of an edge zero mode is not particularly obvious and requires further inspection.
-One observation is that the fermionic Hamiltonian can be diagonalized by unitary transformations, which requires only a diagonalization of $\hat H = \hat{\bm c}^\dag H \hat{\bm c}$, in which $\hat{\bm c}=(\hat c_{0,A},\hat c_{0,B},\hat c_{1,A},\hat c_{1,B},\dots)^T$ is the successive vector of all annihilation operators.
+One observation is that the fermionic Hamiltonian can be diagonalized by unitary transformations, which requires only a diagonalization of $\hat H = \hat{\bm c}^\dag H \hat{\bm c}$, where $\hat{\bm c}=(\hat c_{0,A},\hat c_{0,B},\hat c_{1,A},\hat c_{1,B},\dots)^T$ is the successive vector of all annihilation operators.
 The matrix $H$ is quite sparse and has only alternating off-diagonal elements
 \begin{align}
     H =
@@ -354,7 +354,7 @@ The matrix $H$ is quite sparse and has only alternating off-diagonal elements
         \vdots & \vdots & \vdots & \vdots & \ddots
     \end{pmatrix},
 \end{align}
-which makes an analytic treatment not too difficult, even if the entries are spatially dependent~\cite{Asboth2016}.
+such that an analytic treatment is not too difficult, even if the entries are spatially dependent~\cite{Asboth2016}.
 An exact boundary mode can be found by evaluating $hv_L=0$, with a vector $v_L = (a_0,b_0,a_1,b_1,\dots)^T$, resulting in the set of equations
 \begin{align}
     J b_0 = 0,
@@ -363,7 +363,7 @@ An exact boundary mode can be found by evaluating $hv_L=0$, with a vector $v_L =
     \quad
     J' b_m + J b_{m+1} = 0.
 \end{align}
-Defining $w=J'/J$, the solution reveals an exponentially localized zero energy mode which has no support on sublattice $B$, i.e.
+Defining $w=J'/J$, the solution reveals an exponentially localized zero energy mode with no support on sublattice $B$, i.e.
 \begin{align}
     a_k=(-w)^{-k} a_0 \rightarrow |a_k| = \re^{-k/\ln w}|a_0|,
     \quad
@@ -377,8 +377,8 @@ Similarly to $v_L$, $v_R$ is exponentially localized at the right interface, has
 Thus, the two modes share exactly no overlap $v_L^T v_R = 0$.
 However, the two modes are not exact eigenstates of the Hamiltonian since each one slightly violates the boundary conditions.
 Note that $v_{L/R}^T h v_{L/R} = 0$ and $v_{L/R}^T h v_{R/L} = (1-w^{-1})^{-1}\re^{-(N-1)/\ln w}\re^{\pm\ri\varphi}$ with some phase $\varphi$.
-This then yields ``state hybridization'', a pair of orthogonal eigenstates with energy $\pm(1-w^{-1})^{-1}\re^{-(N-1)/\ln w}$ which read $v_\pm = 1/\sqrt2(v_L \pm v_R\re^{\pm\ri\varphi})$.
-Therefore, the hybridized states are still exponentially localized boundary modes and of ``almost'' zero energy with an exponential splitting in the system size.
+This then yields ``state hybridization'': a pair of orthogonal eigenstates $v_\pm = 1/\sqrt2(v_L \pm v_R\re^{\pm\ri\varphi})$ with energy $\pm(1-w^{-1})^{-1}\re^{-(N-1)/\ln w}$.
+Therefore, the hybridized states are exponentially localized boundary modes and of ``almost'' zero energy with an exponentially small splitting in the system size.
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -393,7 +393,7 @@ Let us consider an arbitrary non-interacting system of fermions, described by th
 \end{align}
 with a matrix $H$ dictating possible transition events.
 As before, we denote the collection of the fermionic operators as $\hat{\bm c}$.
-Note that $i,j$ are generic index labels -- i.e. it may represent a combination of the position $\bm x_i$ and additional ``internal quantum numbers'' $i\coloneqq(\bm x_i,q_i)$ such as the sublattice index of the SSH model for which $q_i\in \{A,B\}$.
+Note that $i,j$ are generic index labels -- they may represent a combination of the position $\bm x_i$ and additional ``internal quantum numbers'' $i\coloneqq(\bm x_i,q_i)$, e.g. the sublattice index $q_i\in \{A,B\}$ of the SSH model.
 The system is invariant under a (unitary) symmetry transformation $\hat U$, if it acts on the fermionic annihilation operators as a linear map
 \begin{align}
     \hat{\bm c}\rightarrow \hat{\bm c}' = \hat U \hat{\bm c} \hat U^{-1} = U \hat{\bm c},
@@ -415,7 +415,7 @@ Focussing on the so-called ``Altland-Zirnbauer'' classification scheme, we consi
 On-site symmetries, as the name suggests, only act on the ``internal'' degrees of freedom, such that they can be factorized $\hat U=\prod_{\bm x}\hat V_{\bm x}$ with the same $\hat V_{\bm x}$ on all lattice positions.
 Please note that $\hat V_{\bm x}$ acts nontrivially only on the ``internal dimension''.
 
-{\it 1. Time reversal symmetry} Note that anti-unitary transformations can be written as a composition of complex conjugation and a unitary transformation, such that the action of time reversal can be written as\footnote{Note that $\hat c\rightarrow \hat c^\dag$ in \cref{eq:time_reversal_symmetry} would be an equally valid choice, but, as we see later, can be treated as a combination of time reversal and particle hole symmetry.}
+{\it 1. Time reversal symmetry} Recall that anti-unitary transformations can be written as a composition of complex conjugation with unitary transformations\footnote{Note that $\hat c\rightarrow \hat c^\dag$ in \cref{eq:time_reversal_symmetry} would be an equally valid choice, but this is treated by convention as a combination of time reversal and particle hole symmetry.}, i.e.
 \begin{align}
     \hat T \hat c_i \hat T^{-1} = {U_T}_{ij} \hat c_j
     ,\quad
@@ -429,13 +429,13 @@ Applying the transformation twice results in the condition
     H = {U_T}^\dag ({U_T}^\dag H^* U_T)^* U_T = ({U_T}^*U_T)^\dag H ({U_T}^* U_T).
 \end{align}
 Since the first quantized Hamiltonian runs over an irreducible representation space, ${U_T}^* U_T = \re^{\ri\alpha}\mathbb1$ due to Schur's lemma~\cite{Chiu2016}.
-Moreover, $U_T$ is a unitary matrix, thus satisfies ${U_T}^*={U_T}^\dag\re^{\ri\alpha}$ (and equally ${{U_T}^\dag}^* = U_T\re^{\ri\alpha}$), and as such $({U_T}^\dag U_T)^* = \re^{-\ri2\alpha}\mathbb1$, for which $\alpha\in\pi\mathds Z$.
+Moreover, $U_T$ is a unitary matrix, satisfies ${U_T}^*={U_T}^\dag\re^{\ri\alpha}$ (and equally ${{U_T}^\dag}^* = U_T\re^{\ri\alpha}$), and $({U_T}^\dag U_T)^* = \re^{-\ri2\alpha}\mathbb1$, for which $\alpha\in\pi\mathds Z$.
 This implies that
 \begin{align}
     \hat T^2 \hat c_i \hat T^{-2} = {U_T}_{ij}^*{U_T}_{jk} \hat c_k = \re^{\ri\alpha}\hat c_i
 \end{align}
 maps to itself up to a possible sign.
-Since $\hat T$ is on-site, a generic $n$-body operator $\hat O$ transforms to $\hat T^2\hat O \hat T^{-2} = \re^{\ri\alpha n}\hat O$ and as such
+$\hat T$ acts on-site only and therefore a generic $n$-body operator $\hat O$ transforms to $\hat T^2\hat O \hat T^{-2} = \re^{\ri\alpha n}\hat O$, which leads to
 \begin{align}
     \hat T^2 = (\pm 1)^{\hat N}\Leftrightarrow {U_T}^* {U_T} = \pm\mathbb1,
 \end{align}
@@ -461,7 +461,7 @@ Repetition of the previous computation yields
 \begin{align}
     \hat S = \hat T \hat C.
 \end{align}
-This may lead to a situation in which both time reversal and particle-hole symmetry do not hold, but chiral symmetry is satisfied.
+This may lead to a situation where both time reversal and particle-hole symmetry do not hold, but chiral symmetry is satisfied.
 One finds
 \begin{align}
     \hat S \hat c_i \hat S^{-1} = (U_CU_T)_{ij}\hat c^\dag_j
@@ -469,9 +469,10 @@ One finds
     {U_S}^\dag H {U_S} = -H
     ,\quad
     {U_S} = {U_C}^* {U_T}^*
+    ,
 \end{align}
 in which, contrary to the other two symmetries, $U_S^2=\re^{\ri\alpha}\mathbb1$.
-This leaves a phase ambiguity, which is fixed by $U_S\rightarrow U_S\re^{\ri\alpha/2}$ such that the eigenvalues of the chiral operator are gauged to $\pm1$.
+This leaves a phase ambiguity that is fixed by $U_S\rightarrow U_S\re^{\ri\alpha/2}$ such that the eigenvalues of the chiral operator are gauged to $\pm1$.
 
 The established terminology allows to discuss the general symmetry classification of non-interacting systems.
 We obtained so far
@@ -584,8 +585,7 @@ extends well beyond the single-particle theory employed in this chapter~\cite{Gu
 Note that it can become arbitrarily complicated to give an operational recipe to compute the invariants in interacting systems.
 % In case of ultracold atoms, the extraction of the Zak phase can however be realized using a combination of Bloch oscillations and Ramsey interferometry~\cite{Atala2013}.
 % A similar approach can be used to measure single-particle Green's functions~\cite{Knap2013,Zeiher2016}.
-
-Our work in \cref{mcd1} provides a simple tool to probe the winding number of interacting quasi-one-dimensional systems with chiral symmetry.
+In \cref{mcd1} we propose a simple protocol to probe the winding number of interacting quasi-one-dimensional systems with chiral symmetry.
 The scheme relies on a dynamical measurement of the density distribution followed by a local quench, which can be readily implemented in many platforms of synthetic quantum matter.
 
 Now that the theoretical prerequisites have been detailed, we proceed by presenting our works.
