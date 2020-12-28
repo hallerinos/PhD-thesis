@@ -78,10 +78,10 @@ Each crystal momentum ${\bm k}$ is a good quantum number and linked to the Bloch
 Each Bloch state is an eigenstate of the Bloch Hamiltonian $\hat H(\bm k)$ which can be represented as a $\bm k$-dependent $s\times s$ matrix $H(\bm k)$.
 Its ordered spectrum $\varepsilon_s(\bm k)$ define what is known as the band structure.
 For insulators, a finite energy gap $\Delta$ separates the occupied valence band states from the empty conduction band states.
-Lattice translation symmetry implies the identity $H(\bm k + \bm G) = H(\bm k)$ for any reciprocal lattice vector $\bm G$, which defines the crystal momentum in the periodic Brillouin zone with $\bm k\equiv \bm k+\bm G$, which has the topology of a torus.
+Lattice translation symmetry implies the identity $H(\bm k + \bm G) = H(\bm k)$ for any reciprocal lattice vector $\bm G$, which defines the crystal momentum in the periodic Brillouin zone $\bm k\equiv \bm k+\bm G$ and therefore the topology of a torus.
 An insulating band structure can thus be viewed as a mapping from the torus to the space of Bloch Hamiltonians with a finite energy gap~\cite{Kane2013}.
 
-Two insulating systems are called adiabatically equivalent (or adiabatically connected), if their corresponding Hamiltonians can be adiabatically connected without closing the energy gap.
+Two insulating systems are called (adiabatically) equivalent if their corresponding Hamiltonians are adiabatically connected without closing the energy gap.
 Consider the special case of an interface where the crystal smoothly interpolates between two distinct insulating phases.
 Somewhere along the path the gap necessarily vanishes to not violate the assumption, which implies the presence of zero-energy modes spatially localized around the degeneracy.
 This interplay between bulk and surface is a ubiquitous phenomenon called the bulk-boundary correspondence.
@@ -89,30 +89,30 @@ The key question we seek to answer in the remaining chapter is: can we find and 
 
 One of the key concepts in topological band theory is the Berry phase, for which the construction arises from the intrinsic phase ambiguity of quantum states.
 Let us review the main results of the original work, presented in~\cite{Berry1984}.
-Imagine a particle evolving along a closed parameter path ${\bm \lambda}(0)={\bm \lambda}(T)$ in an adiabatic way, implying large $T$, such that the evolution of the state satisfies at all times\footnote{Note that, in this spirit, $\bm \lambda(t)$ enters in the wavefunction as a parameter and thus changes independently of \cref{eq:time_evolution}.}
+Imagine a particle evolving along a closed parameter path ${\bm \lambda}(0)={\bm \lambda}(T)$ in an adiabatic way ($T$ large enough), such that the evolution of the state satisfies at all times\footnote{Note that $\bm \lambda$ enters in the wavefunction as a parameter and thus changes independently of \cref{eq:time_evolution}.}
 \begin{align}
     \hat H(\bm \lambda)\ket{\psi(\bm \lambda)} = \ri\hbar\frac{\partial}{\partial t}\ket{\psi({\bm \lambda})},
     \label{eq:time_evolution}
 \end{align}
 and denote $\ket{n(\bm \lambda)}$ the eigenstates with energies $\varepsilon_n(\bm \lambda)$.
-Let us further assume $\bm \lambda\in\mathds R^3$ for simplicity, a discussion follows later.
-If the initial state is an eigenstate $\ket{n(\bm \lambda(0))}$, it will evolve according to $\hat H$ and result in $\ket{n(\bm \lambda(t))}=\re^{-\ri/\hbar\int_0^t \varepsilon_n(\bm \lambda(t))\rd t'}\ket{n(\bm \lambda(0))}$.
+Let us further assume $\bm \lambda\in\mathds R^3$ for simplicity and relax to more general parametrizations in a later discussion.
+If the initial state is an energy eigenstate $\ket{n(\bm \lambda(0))}$, it evolves accordingly and results in $\ket{n(\bm \lambda(t))}=\re^{-\ri/\hbar\int_0^t \varepsilon_n(\bm \lambda(t))\rd t'}\ket{n(\bm \lambda(0))}$.
 However, the eigenvalue equations do not relate the phases of $\ket{n(\bm \lambda)}$ at different $\bm \lambda$, and any (smooth) choice is allowed.
 A state with ``arbitrary'' phase can thus be written as
 \begin{align}
     \ket{\psi(t)} = \re^{-\ri\gamma_n(t)}\ket{n(\bm \lambda(t))}.
     \label{eq:strange_gauge}
 \end{align}
-Although $\gamma$ is, in general, non-integrable, the phase is not allowed to fluctuate randomly in time, which is specified by direct substitution of \cref{eq:strange_gauge} in \cref{eq:time_evolution}
+Although $\gamma_n$ is, in general, non-integrable, the phase is not allowed to fluctuate randomly in time, which is specified by direct substitution of \cref{eq:strange_gauge} in \cref{eq:time_evolution}
 \begin{align}
     \dot\gamma_n(t) = \varepsilon_n(\bm \lambda(t))/\hbar -\ri \braket{n({\bm \lambda(t)})|\bm\nabla n({\bm \lambda(t)})} \dot{\bm \lambda}(t).
     \label{eq:phase_evolution}
 \end{align}
-By defining the Berry connection (sometimes called Berry potential) $\bm A_n(\bm \lambda) = -\ri \braket{n(\bm \lambda)|\bm\nabla n(\bm \lambda)}$, the allowed phase change of $\ket\psi$ around a closed loop $C$ in $\bm \lambda$-space is thus given by
+By defining the Berry connection (sometimes called Berry potential) $\bm A_n(\bm \lambda) = -\ri \braket{n(\bm \lambda)|\bm\nabla n(\bm \lambda)}$, the allowed phase change of $\ket\psi$ around a closed loop $C$ in $\bm \lambda$-space is given by
 \begin{align}
     \ket{\psi(T)} = \re^{-\ri \gamma_n(C)}\re^{-\ri/\hbar\int_0^T\varepsilon_n(\bm \lambda(t))dt}\ket{\psi(0)}
     ,\quad
-    \\
+    % \\
     \gamma_n(C) = \oint_C{\bm A_n}\cdot\rd \bm \lambda.
     \label{eq:phase_change}
 \end{align}
@@ -122,7 +122,7 @@ Note the transformation of $\bm A_n$ under the gauge transformation $\ket{n(\bm 
 \end{align}
 which is similar to the electromagnetic vector potential.
 Normalization of the state implies that $\bm\nabla \braket{n|n} = \braket{\bm\nabla n|n} + \braket{n|\bm\nabla n} = 0$, which shows that $\braket{n|\bm\nabla n}$ is imaginary and thus ${\bm A_n}$ real-valued.
-This also demonstrates that $\bm A_n$ is indeed not gauge invariant, but the analog of a magnetic flux must be.
+This demonstrates that $\bm A_n$ is indeed not gauge invariant (like the electromagnetic vector potential), but the analog of a magnetic flux must be.
 In particular, we can derive the Berry flux by rewriting $\gamma_n(C)$ using Stokes's theorem,
 \begin{align}
     \gamma_n(C) = \int_S{\bm\nabla}\times{\bm A_n}\cdot\rd{\bm S} = -\ri\sum_{m\neq n}\int_S\braket{\bm\nabla n|m}\times\braket{m|\bm\nabla n}\cdot \rd{\bm S}
@@ -139,8 +139,8 @@ such that we arrive at the beautiful result
     \gamma_n(C) = \oint_C{\bm A_n}\cdot\rd \bm \lambda = \int_S {\bm F_n}\cdot\rd{\bm S}.
     \label{eq:berry_phase_stokes_theorem_2}
 \end{align}
-Note that the final equations derived here, in particular \cref{eq:phase_change} depend on the path $C$ only.
-Starting from an $n$-variable parametrization, for which $C$ forms an $n$-dimensional path, $\gamma_n$ can be used to define a more general topological invariant, related to the homotopy class of the mapping between parameter and target space of the parametrization\footnote{
+% Note that the final equations depend on $C$ only.
+If we would start from an $n$-variable parametrization, for which $C$ forms an $n$-dimensional path, $\gamma_n$ can be used to define a more general topological invariant, related to the homotopy class of the mapping between parameter and target space of the parametrization\footnote{
     The fundamental generalization of Stokes' theorem is the Stokes-Cartan theorem.
     It states that the integral of a differential form $\omega$ over the surface $\partial M$ of an (orientable) manifold $M$ is equivalent to the integral of the exterior derivative $\rd\omega$ over the full manifold $M$, i.e. $\int_{\partial M}\omega = \int_M\rd\omega$.
     The definitions of differential forms $\omega$, exterior derivatives $\rd\omega$ and surfaces of orientable manifolds $\partial M$ are found in many textbooks, e.g.~\cite{Nakahara1990}.
@@ -148,18 +148,18 @@ Starting from an $n$-variable parametrization, for which $C$ forms an $n$-dimens
 
 To apply the general equations in a more practical context, let us exploit the results for a spin-1/2 in a magnetic field $\bm B$, described by the following Hamiltonian
 \begin{align}
-    H(\bm B) = \kappa\hbar\bm B\cdot\hat{\bm s} = \frac{\kappa\hbar\varepsilon}2 \hat{\bm B}\cdot\bm\sigma
+    H(\bm B) = \kappa\hbar\bm B\cdot\hat{\bm s} = \frac{\kappa\hbar B}2 \hat{\bm B}\cdot\bm\sigma
     =
-    \frac{\kappa\hbar\varepsilon}2
+    \frac{\kappa\hbar B}2
     \begin{pmatrix}
         \hat{B}_z & \hat{B}_x - \ri \hat{B}_y \\
         \hat{B}_x + \ri \hat{B}_y & -\hat{B}_z
     \end{pmatrix},
     \label{eq:arbitrary_2by2}
 \end{align}
-in which $\kappa$ is a constant involving the gyromagnetic ratio, $\hat{\bm s} = \frac12{\bm \sigma}$ is the vector operator of Pauli matrices, $\hat{\bm B}={\bm B}/|\bm B|$ is a vector of unit norm and $\varepsilon_\pm = \pm\varepsilon = \pm|\bm B|$ spans the energy dispersion.
+in which $\kappa$ is a constant involving the gyromagnetic ratio, $\hat{\bm s} = \frac12{\bm \sigma}$ is the vector operator of Pauli matrices, $\hat{\bm B}={\bm B}/B$ is a vector of unit norm and $B = |\bm B|$.
 
-The eigenvectors lie on the Bloch sphere and can be parametrized as
+The eigenvectors have eigenvalues $\varepsilon_\pm = \pm k\hbar B/2$ and can be parametrized as
 \begin{align}
     \ket{\pm} = \frac{1}{\sqrt{2}}
     \begin{pmatrix}
@@ -196,7 +196,7 @@ In this case, an integer-valued topological invariant known as the Chern number 
 % Therefore, the Berry curvature integrated over a closed surface must be an element of $2\pi \mathds Z$.
 Note that \cref{eq:chern_number} shares the same fundamental expression as the Euler characteristic in \cref{eq:gauss_bonnet_theorem}.
 $\bm F_n$ can thus be understood as a curvature with similarities to a Gaussian one.
-Therefore, the Berry curvature integrated over a closed surface must be an element of $2\pi \mathds Z$, and the quantization of the Chern number naturally extends well beyond the two-band model.
+Therefore, the Berry curvature integrated over a closed surface must be an element of $2\pi \mathds Z$, and the quantization of the Chern number extends well beyond the two-band model.
 
 % In parameter spaces of other than $3$ dimensions, Stoke's theorem cannot be employed to transform the loop integral in \cref{eq:berry_phase_stokes_theorem}.
 % The generalization, however, transforms \cref{eq:phase_change} into the surface integral of a $2$-form bounded by $C$.
@@ -209,7 +209,7 @@ Therefore, the Berry curvature integrated over a closed surface must be an eleme
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-Let me clarify the previous statements by giving a pedagogical example.
+Let us clarify the previous statements by giving a pedagogical example.
 Consider the following one-dimensional Bloch Hamiltonian, corresponding to the Su-Schrieffer-Heeger model
 \begin{align}
     H_0(k)
@@ -221,7 +221,7 @@ Consider the following one-dimensional Bloch Hamiltonian, corresponding to the S
     \label{eq:SSH_momentum_space}
 \end{align}
 in which the couplings $J,J'\geq0$ are assumed positive.
-It models (among others) electronic properties of (trans-)poly\-acetylene with an even number of carbon atoms, which is the most simple example of a topological insulator.
+It models (among others) electronic properties of poly\-acetylene with an even number of carbon atoms, which provides the most simple example of a topological insulator.
 For details on the derivation, and a careful reduction of interactions, we refer to~\cite{Heeger1988}.
 The Hamiltonian coincides with the one of a spin-1/2 in a magnetic field (compare with \ref{eq:arbitrary_2by2}), and we identify
 \begin{align}
@@ -241,7 +241,7 @@ Examples of the band dispersion $\varepsilon_\pm(k)=\pm\sqrt{J^2+J'^2+2JJ'\cos(k
     \includegraphics{figures/cropped_ssh_dispersion_1.png}
     \includegraphics{figures/cropped_ssh_dispersion_2.png}
     \includegraphics{figures/cropped_ssh_dispersion_3.png}
-    \caption{Dimensionless band dispersion $\tilde\varepsilon_\pm(k)=\varepsilon_\pm(k)/|J+J'|$ of the SSH model for different real and positive couplings $J'/J$. The band gap $\Delta=|J-J'|$ closes at the point $J'/J=1$ and the (dimensionless) dispersion itself is symmetric with respect to $J'/J\rightarrow J/J'$.}
+    \caption{Dimensionless band dispersion $\tilde\varepsilon_\pm(k)=\varepsilon_\pm(k)/|J+J'|$ of the SSH model for different real and positive couplings $J'/J$. The band gap $\Delta=2|J-J'|$ closes at the point $J'/J=1$ and the (dimensionless) dispersion is symmetric with respect to $J'/J\rightarrow J/J'$.}
     \label{fig:ssh_dispersion}
 \end{figure}
 
@@ -328,21 +328,21 @@ In particular, the former will be achieved if $J<J'$ ($\mathcal W=1$), while the
 From now on, we call a phase with nonzero winding number topological insulator (TOI) and the other trivial insulator (TRI).
 
 To understand the emergence of edge modes, we must obviously introduce an interface of some sort.
-First of all, let me Fourier-transform the Bloch Hamiltonian to find the representation in real space, i.e.
+First of all, let us Fourier-transform the Bloch Hamiltonian to find the representation in real space, i.e.
 \begin{align}
     \hat H = \sum_x \brlr{J\hat c^\dag_{x,A}\hat c^\pdag_{x,B} + J' \hat c^\dag_{x,B}\hat c^\pdag_{x+1,A}} + \hc,
 \end{align}
 in which $\hat c_{x,A/B}$ are the annihilators of a spinless fermionic particle at site $x$ and sublattice $A/B$.
 An interface hosting edge states with energy zero, following the logic of the previous section, is readily implemented by two semi-infinite crystals, one with bulk invariant $0$ (e.g. for all negative lattice positions $x<0$), the other with bulk invariant $1$ (for all lattice positions $x\geq0$).
-For convenience, let me here construct this crystal from the two limiting cases (i) $J'=0$ and (ii) $J=0$.
+For convenience, let us construct this crystal from the two limiting cases (i) $J'=0$ and (ii) $J=0$.
 Note that for such a system, the central $A$ site at position $x=0$ does not contribute to the Hamiltonian and hosts a perfectly localized mode of zero energy.
 Obviously, this edge mode is preserved if we consider the vacuum in region (i).
-Let me thus simplify the hypothetical crystal by replacing the trivial insulator with the vacuum, and proceed by relaxing the constraint $J=0$ to $J'>J$ on the semi-infinite crystal:
+Let us simplify the hypothetical crystal by replacing the trivial insulator with the vacuum, and proceed by relaxing the constraint $J=0$ to $J'>J$ on the semi-infinite crystal:
 \begin{align}
     \hat H = \sum_{x\geq0} J \hat c^\dag_{x,A}\hat c^\pdag_{x,B} + J' \hat c^\dag_{x,B}\hat c^\pdag_{x+1,A} + \hc
 \end{align}
 In this case, the presence of an edge zero mode is not particularly obvious and requires further inspection.
-One observation is that the fermionic Hamiltonian can be diagonalized by unitary transformations, which requires only a diagonalization of $\hat H = \hat{\bm c}^\dag H \hat{\bm c}$, where $\hat{\bm c}=(\hat c_{0,A},\hat c_{0,B},\hat c_{1,A},\hat c_{1,B},\dots)^T$ is the successive vector of all annihilation operators.
+One observation is that the fermionic Hamiltonian can be diagonalized by unitary transformations, which requires only a diagonalization of $\hat H = \hat{\bm c}^\dag H \hat{\bm c}$, where $\hat{\bm c}=(\hat c_{0,A},\hat c_{0,B},\hat c_{1,A},\hat c_{1,B},\dots)^T$ is the successive vector of all fermionic annihilation operators.
 The matrix $H$ is quite sparse and has only alternating off-diagonal elements
 \begin{align}
     H =
@@ -536,12 +536,12 @@ If two quantum systems can be smoothly deformed into each other without closing 
 Trivial insulators (TRI) are then such phases which are adiabatically connected to an atomic insulator, fully characterized by independent and disconnected unit-cells.
 All the other equivalence classes are by definition not adiabatically connected to the atomic insulator and thus called topological insulators (TOI)\footnote{The concepts illustrated in this section hold equally for Bogoliubov-de Gennes Hamiltonians, which describe the mean-field theory of a conventional superconductor. Such systems, however, do not make much contact to our published articles, which is why we decided to avoid their notion at this point. Instead, we refer the interested reader to~\cite{Chiu2016,Asboth2016} and the online course \cite{topocondmat}.}.
 To use notation of the previous paragraphs, we decouple the space from the internal dimension, i.e. $H_{ij}=H_{q_1,q_2}(\bm x,\bm x')$ and consider translational invariant systems such that $H_{q_1,q_2}(\bm x,\bm x')=H_{q_1,q_2}(\bm x-\bm x')$.
-It is then particularly convenient to use the Bloch Hamiltonian description ($\hat c_q(\bm x)=\sum_{\bm k}\exp(i\bm k\bm x)\hat c_q(\bm k)$), such that the previous Hamiltonian results to
+It is then particularly convenient to use the Bloch Hamiltonian description ($\hat c_{\bm x,q}=\sum_{\bm k}\exp(i\bm k\bm x)\hat c_{{\bm k},q}$), such that the previous Hamiltonian results to
 \begin{align}
-    \hat H = \sum_{\bm k\in {\rm BZ}} \hat c^\dag_q(\bm k) H_{qq'}(\bm k)\hat c^\pdag_{q'}(\bm k),
+    \hat H = \sum_{\bm k\in {\rm BZ}} \hat c^\dag_{{\bm k},q} H_{qq'}(\bm k)\hat c^\pdag_{{\bm k},q'},
 \end{align}
 with the crystal momentum $\bm k$ defined in the first Brillouin zone (BZ).
-By close inspection of \cref{eq:symmetry_real_space}, the action of the symmetries on the Bloch Hamiltonian is given by
+By close inspection of \cref{eq:symmetry_real_space}, the actions of the symmetries on the Bloch Hamiltonian are given by
 \begin{align}
     \begin{array}{l l l l }
         & TH(\bm k)T^{-1} = +H(-\bm k)

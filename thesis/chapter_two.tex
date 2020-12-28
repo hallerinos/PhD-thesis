@@ -103,18 +103,18 @@ In particular, the sequence of identities reads
 % \end{align}
 \begin{align}
     T_{i_1,i_n}^{i_2,\dots,i_j,i_{j+1},\dots,i_{n-1}}
-    \equiv&\includegraphics[valign=c]{figures/rankntensor.pdf},
+    \equiv&\includegraphics[valign=c]{figures/rankntensor.pdf}
     \\
     \overset{(i)}{=}&
     f^{-1}\circ
     \includegraphics[valign=c]{figures/reshaping.pdf}
     \equiv
-    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}\Lambda^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)},
+    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}\Lambda^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)}
     \\
     \overset{(ii)}{=}&
     f^{-1}\circ\includegraphics[valign=c]{figures/bigsvd.pdf}
     \equiv
-    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}\Lambda^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)},
+    f^{-1}\circ U^\pdag_{(i_1,\dots,i_j),k}\Lambda^\pdag_{k}V^\dag_{k,(i_{j+1},\dots,i_n)}
     \\
     \overset{(iii)}{=}&
     \includegraphics[valign=c]{figures/rankntensor_decomposed.pdf}
@@ -224,15 +224,15 @@ We now proceed by applying the generalized SVD in a sequential manner:
 Starting with the decomposition spanned by the bipartition of the first (last) leg, keeping the left (right) isometry and shifting the right (left) isometry to the adjacent leg position, is possible to decompose $C$ into a product of isometries with a single matrix in between two arbitrary leg positions $\ell,\ell+1$.
 The decomposition sequence is easily reformulated in graphical notation
 \begin{align}
-    C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf},
+    C^{[i_1,i_2,\dots,i_L]} \equiv \includegraphics[valign=c]{figures/arbitrary_wavefunction.pdf}
     =
-    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_1.pdf},
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_1.pdf}\phantom{,}
     \\
     =
-    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_2.pdf},
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_2.pdf}\phantom{,}
     \\
     =
-    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_3.pdf},
+    \includegraphics[valign=c]{figures/arbitrary_wavefunction_partially_decomposed_3.pdf}\phantom{,}
     \\
     =\includegraphics[valign=c]{figures/arbitrary_wavefunction_decomposed.pdf},
     \label{eq:move_the_lambda_matrix}
@@ -325,7 +325,7 @@ If we keep the $m$ largest singular values $s_k(\ell)$, $k\in\{1,2,\dots,m\}$ fo
 
 Density matrices are naturally related to the generalized Gibbs entropy for quantum states
 \begin{align}
-    S_1(\ell) = -\tr(\hat\rho_A\ln\hat\rho_A) = -\tr(\hat\rho_B\ln\hat\rho_B) = -\sum_k s^2_k\ln(s^2_k)
+    S_1(\ell) = -\tr(\hat\rho_A\ln\hat\rho_A) = -\tr(\hat\rho_B\ln\hat\rho_B) = -\sum_k s^2_k\ln(s^2_k),
 \end{align}
 which is a straightforward measure for the shared information between the bipartition, in information theory perspectives often called Shannon entropy of communication.
 In this context, $-\ln(s^2_k)$ is understood as the information content (or surprisal) of the Schmidt state, and $S_1$ is simply the expectation value of surprisal.
@@ -386,9 +386,9 @@ Note that this expression is fundamentally different from the coherent superposi
 As such, we call a state $N$-partite entangled, if it cannot be decomposed according to~\cref{eq:separable_states}.
 The earlier example of a bipartite system is an element of the Bell basis, which are also called EPR states
 \begin{align}
-    \ket{\psi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}}
+    \ket{\psi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}},
     \quad
-    \ket{\phi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\uparrow}\pm\ket{\downarrow\downarrow}}
+    \ket{\phi^\pm}=\frac 1{\sqrt2}\brlr{\ket{\uparrow\uparrow}\pm\ket{\downarrow\downarrow}},
 \end{align}
 and they all have remarkable properties, first recognized by Schrödinger -- if one measures only one of the states, one finds it with equal probability in either $\ket{0}$ or $\ket{1}$.
 As such, the reduced density matrices represent mixed states and reveal no information about the subsystems, although the full state is still pure and therefore fully characterized.
@@ -506,7 +506,7 @@ The bulk operators have the form
         \hat{\mathbb 1}_\ell & \hat X_\ell & h \hat Z_\ell\\
          0 & 0 & J \hat X_\ell\\
         0 & 0 & \hat{\mathbb 1}_\ell\\
-    \end{pmatrix}
+    \end{pmatrix},
 \end{align}
 representing a set of local operators acting locally on a single site $\ell$.
 Similarly, the boundary operators are given by
@@ -690,7 +690,7 @@ A minimal example of the growing MPS algorithm is formalized as follows:
     \item Set $n=1$. Compute the lowest energy vector ${\bm A}_C^{[i_1,i_2]}$ for a system of two sites only.
     The eigenvalue equation and graphical representation reads
     \begin{align}
-        \bm H_{\rm eff.}^{[i_1',i_{2}',i_1,i_2]} {\bm A}_C^{[i_1,i_2]} &= \lambda_\psi {\bm A}_C^{[i_1',i_2']}\\
+        \bm H_{\rm eff.}^{[i_1',i_{2}',i_1,i_2]} {\bm A}_C^{[i_1,i_2]} &= \lambda_\psi {\bm A}_C^{[i_1',i_2']},\\
         \includegraphics[valign=c]{figures/two_site_problem_1.pdf}
         &=
         \lambda_\psi
@@ -834,7 +834,7 @@ First, the MPS will be written in the mixed canonical gauge with a tensor $A_C$ 
 \begin{align}
     C^{[i_1,i_2,\dots,i_\ell,\dots,i_L]} &= \brlr{\prod_{k=1}^{\ell-1} U^{[i_k]}} A_C^{[i_\ell]} \brlr{\prod_{k=\ell+1}^{L} V^{\dag[i_k]}}
     \equiv
-    &\includegraphics[valign=c]{figures/center_site_gauge.pdf},
+    &\includegraphics[valign=c]{figures/center_site_gauge.pdf}\phantom{,}
     \\
     &=\brlr{\prod_{k=1}^{\ell} U^{[i_k]}} C(\ell) \brlr{\prod_{k=\ell+1}^{L} V^{\dag[i_k]}}
     \equiv
@@ -863,7 +863,7 @@ As usual, the tensors $U$ and $V^\dag$ are isometries which satisfy \cref{eq:iso
 % \end{align}
 The projector $\hat P_{T\ket\psi}$ onto the tangent space of the MPS of $\ket\psi$ for a single site is written as~\cite{Haegeman2016}
 \begin{align}
-    \hat P_{T\ket\psi} = \sum_{\ell=1}^L \hat P_{A(\ell-1)}\hat{\mathbb1}_\ell \hat P_{B(\ell+1)} - \sum_{\ell=1}^{L-1}\hat P_{A(\ell)} \hat P_{B(\ell+1)}
+    \hat P_{T\ket\psi} = \sum_{\ell=1}^L \hat P_{A(\ell-1)}\hat{\mathbb1}_\ell \hat P_{B(\ell+1)} - \sum_{\ell=1}^{L-1}\hat P_{A(\ell)} \hat P_{B(\ell+1)},
 \end{align}
 in which $\hat P_{A/B(\ell)}$ are the corresponding projections onto the vectors of $\ket\psi$ forming the partition $A/B(\ell)$ of the first/last $\ell$ quantum numbers\footnote{Note that we conveniently use the convention $\hat P_{A(0)}=\hat P_{B(L+1)}=1$.}.
 In the gauge chosen for $\ket\psi$, the action of the tangent space projector onto the MPS representation of $\ket \psi$ can be written as a sum of rank-$2L$ tensors of the form
@@ -874,7 +874,7 @@ In the gauge chosen for $\ket\psi$, the action of the tangent space projector on
     \includegraphics[valign=c]{figures/tangent_space_projection_1.pdf}
     -
     \sum_{\ell=1}^{L-1}
-    \includegraphics[valign=c]{figures/tangent_space_projection_2.pdf}
+    \includegraphics[valign=c]{figures/tangent_space_projection_2.pdf},
 \end{align}
 where the tensors at site $\ell$ are highlighted in green.
 Note that the two terms correspond to a projection onto the reduced density matrices of the isometric bipartition spanned by the central tensor and matrix, respectively.
@@ -1003,19 +1003,20 @@ The index $\alpha$ labels the primary quantum number (or sector, or charge), and
 The second index $\beta$ labels the contributing states to this subspace (secondary quantum number), and $E$ does not depend on that as a consequence of Schur's lemma.
 The last index $\gamma$ (symmetry degeneracy label) represents all remaining information not captured by the primary quantum number $\alpha$~\cite{Silvi2019}.
 
-A representation of a symmetry group element acts onto the quantum states as
+A representation of a symmetry group element acts on the quantum states as
 \begin{align}
-    U(g)\ket{\psi_{\alpha,\beta,\gamma}} = \sum_{\beta'}W^{\alpha}_{\beta,\beta'}(g)\ket{\psi_{\alpha,\beta',\gamma}}
+    U(g)\ket{\psi_{\alpha,\beta,\gamma}} = \sum_{\beta'}W^{\alpha}_{\beta,\beta'}(g)\ket{\psi_{\alpha,\beta',\gamma}},
 \end{align}
 in which $W^\alpha(g)$ is the $\alpha$-irrep matrix of the group element $g$.
 The representation of symmetries are called Abelian when $\commutator{U(g),U(g')}=0$ and non-Abelian when ($\commutator{U(g),U(g')}\neq0$).
 Although an implementation of the latter is certainly possible, the former are computationally way easier to handle.
 For example, the simple fusion rules in typical Abelian symmetries like particle number conservation ($\alpha\oplus\alpha'=\alpha+\alpha'$) generalize to Clebsch-Gordan coefficients in the case of $SU(2)$ leading to a significant development overhead~\cite{Schmoll2020}.
-Abelian symmetries in general have one-dimensional irreps, and as such are of the form
+Abelian symmetries have one-dimensional irreps in general, i.e.
 \begin{align}
-    W^\alpha(g) = \re^{\ri\varphi_\alpha(g)}
+    W^\alpha(g) = \re^{\ri\varphi_\alpha(g)},
 \end{align}
-in which the phase $\varphi$ depends on the primary quantum number and the group element itself, and a secondary quantum number does not emerge~\cite{Silvi2019}.
+in which the phase $\varphi$ depends on the primary quantum number and the group element itself.
+In this case, a secondary quantum number does not emerge~\cite{Silvi2019}.
 The symmetric Hamiltonian is thus block diagonal in the $\alpha$ sectors without further constraints.
 For instance, the continuous planar rotation group, denoted by $U(1)$, is the symmetry group related to the conservation laws of integer quantities like the total number of particles.
 In this case, the irrep label $\alpha\in\mathds Z$, the element $g\in[0,2\pi)$, compositions are additive $g\circ g' = {(g+g')\mod 2\pi}$, and $\varphi_\alpha(g) = g\alpha$.

@@ -468,7 +468,7 @@ Such types can be found in traditional solid state scenarios where the nuclei ar
 In all our works, we cover theoretical aspects of interacting tight binding models which can be experimentally realized in a variety of different setups.
 For this reason, it will be useful to review briefly how these models are motivated from first principles, and how they can be understood in second quantization.
 
-For this purpose, we assume the problem of the single-particle Hamiltonian $\hat H_0$ to be fully solved, such that the Bloch states $\psi_{\alpha{\bm k}}$ diagonalize $\hat H_0$ and have energy eigenvalues $\varepsilon_{\alpha{\bm k}}$.
+Here, we assume the problem of the single-particle Hamiltonian $\hat H_0$ to be fully solved, such that the Bloch states $\psi_{\alpha{\bm k}}$ diagonalize $\hat H_0$ and have energy eigenvalues $\varepsilon_{\alpha{\bm k}}$.
 This allows to introduce the Wannier basis -- a localized basis composed of the Bloch states and defined as
 \begin{align}
     \ket{w_{\alpha{\bm R}}} = \frac1{\sqrt N}\sum_{\bm k}\re^{-\ri{\bm k}{\bm R}}\ket{\psi_{\alpha{\bm k}}}.
@@ -526,7 +526,7 @@ In higher dimensions, the evaluation of the dispersion relation may become lengt
 
 Oftentimes, a single-band approximation is established to fix (and drop) the band index $\alpha$.
 This situation may be achieved in case the bottom band is sufficiently separated from the second.
-In the Kronig-Penney model, this corresponds to $V_0\gg \hbar^2/(mab)$ with particle mass $m$, lattice constant $a$ and potential width $b$.
+In the Kronig-Penney model, this corresponds to $V_0\gg \hbar^2/(mab)$ with particle mass $m$, lattice constant $a$ and potential width $b\ll a$.
 For the emergence and discussion of such an approximation in case of ultracold atoms trapped in optical lattices, we refer to~\cite{Jaksch1998,Bloch2008,Buechler2010,Mazza2012}.
 Note that the single band approximation naturally fails to describe effects like orbital-selective Mott transitions which require at least two inequivalent bands~\cite{Anisimov2002,vanDongen2005}.
 
@@ -624,13 +624,14 @@ in which $\Phi_{\bm R_i,\bm R_j}(\bm r) = \oint_{\bm R_j\rightarrow\bm r\rightar
 %         w_{\alpha \bm R'}
 %     .
 % \end{align}
-Expanding to first order in $B=|\bm B|$, the transition elements are dressed with a complex phase factor and result to the Peierls approximation
+Expanding to first order in $B=|\bm B|$, the transition elements are dressed with a complex phase factor and result in
 \begin{align}
     T_{\alpha,i,j}'=\re^{\ri\frac q\hbar\int_{\bm R_j}^{\bm R_i}\bm A(\bm r')\cdot\rd\bm r'}T_{\alpha,i,j}+\mathcal O(B).
     \label{eq:peierls_substitution}
 \end{align}
-On a more abstract level, the Peierls approximation is often implemented and explored as a substitution (fully ignoring the error) to study intriguing phases of matter known as topological insulators\footnote{The complex transition elements induce a change of the Berry phase on the lattice scale. For a discussion and implications of this effect, see \cref{ch:topological_phases_of_matter}.}~\cite{Ozawa20192}, but it is important to note that the phase space of these studies is inaccessible by a vector potential, and that other methods like Raman-assisted tunneling~\cite{Garcia2012} must be used to achieve the complex phase modulation of the tunneling elements.
-In general, the amplitudes and complex phases of the transition elements are altered by the outcomes of the integral in~\cref{eq:pre_peierls_approximation}, such that the Peierls approximation can be invalid even for small magnetic fields~\cite{Alexandrov1991,Julen2014}.
+On a more abstract level, the approximation is often implemented and explored as the so-called ``Peierls substitution method'' (fully ignoring the error) to study intriguing phases of matter known as topological insulators\footnote{The complex transition elements induce a change of the Berry phase on the lattice scale. For a discussion and implications of this effect, see \cref{ch:topological_phases_of_matter}.}~\cite{Ozawa20192}.
+It is important to note that the phase space of these studies is largely inaccessible by a realistic vector potential~\cite{Alexandrov1991,Julen2014}, and other methods like Raman-assisted tunneling~\cite{Garcia2012} must be used to achieve the desired complex phase modulation of the tunneling elements.
+% In general, the amplitudes and complex phases of the transition elements are altered by the outcomes of the integral in~\cref{eq:pre_peierls_approximation}, such that the Peierls approximation can be invalid even for small magnetic fields~\cite{Alexandrov1991,Julen2014}.
 
 One of the most successful description of electrons in solids is band theory -- based on screened many-body interactions described by effective one-body potentials.
 This results in a form of \cref{eq:hubbard_hamiltonian} without density-density interactions such that a diagonalization of the hopping matrix $T$ solves the problem.
@@ -697,13 +698,13 @@ This implies drastic consequences for the relevant action of operators, which we
 Note that the density operator of the left/right species $\hat\rho_{\tau,q}$, $\tau\in\{L,R\}$ applied to a Fermi sea creates stable particle-hole excitations (i.e. particles and holes propagate with the same velocity $\pm v_F$) and can thus be used to construct a complete basis of the subspace $\FS^N$ -- for this discussion, we refer to~\cite{vonDelft1998}.
 The consequences of the approximation in \cref{eq:dispersion_linearization} is easily understood for the single-particle operators
 \begin{align}
-    \hat c^\dag_x = \frac1{\sqrt L}\sum_k \re^{-\ri k x}\hat c^\dag_k \approx \frac1{\sqrt L}\sum_{|q|<\Gamma}\re^{-\ri (q+k_F) x}\hat c^\dag_{q,R} + \re^{-\ri (q-k_F) x}\hat c^\dag_{q,L}
+    \hat c^\dag_x = \frac1{\sqrt L}\sum_k \re^{-\ri k x}\hat c^\dag_k \approx \frac1{\sqrt L}\sum_{|q|<\Gamma}\re^{-\ri (q+k_F) x}\hat c^\dag_{q,R} + \re^{-\ri (q-k_F) x}\hat c^\dag_{q,L},
     \label{eq:confinement_creation_annihilation}
 \end{align}
 which is then used to find the local density
 \begin{align}
     \hat n(x)
-    &\approx \frac1L\sum_{q,q'}\brlr{\re^{-\ri (q+k_F) x}\hat c^\dag_{q,R} + \re^{\ri (k_F-q) x}\hat c^\dag_{q,L}}\brlr{\re^{\ri (k_F+q') x}\hat c^\pdag_{q',R} + \re^{-\ri (k_F-q') x}\hat c^\pdag_{q',L}},
+    &\approx \frac1L\sum_{q,q'}\brlr{\re^{-\ri (q+k_F) x}\hat c^\dag_{q,R} + \re^{\ri (k_F-q) x}\hat c^\dag_{q,L}}\brlr{\re^{\ri (k_F+q') x}\hat c^\pdag_{q',R} + \re^{-\ri (k_F-q') x}\hat c^\pdag_{q',L}}
     \\
     &= \hat \rho_R(x) + \hat \rho_L(x) + \re^{-2\ri k_Fx}\hat c^\dag_{R}(x)\hat c^\pdag_{L}(x) + \re^{2\ri k_Fx}\hat c^\dag_{L}(x)\hat c^\pdag_{R}(x).
     \label{eq:local_density_approximation}
@@ -716,9 +717,9 @@ We now turn to an arbitrary two-body interaction of the form~\cref{eq:two_point_
     \hat V
     % &= \frac12\int\rd x'\int\rd x V(x'-x)c^\dag(x')c^\dag(x)c^\pdag(x)c^\pdag(x')
     % \\
-    &= \frac12\int\rd r\int\rd x V(r)\hat c^\dag(r+x)\hat c^\dag(x)\hat c^\pdag(x)\hat c^\pdag(r+x),
+    &= \frac12\int\rd r\int\rd x V(r)\hat c^\dag(r+x)\hat c^\dag(x)\hat c^\pdag(x)\hat c^\pdag(r+x)
     \\
-    &= \frac1{2L^2}\sum_{kk'll'}\int\rd r\int\rd x V(r)\re^{-\ri r(k-l')}\re^{-\ri x(k-l'+k'-l)}\hat c^\dag_k\hat c^\dag_{k'}\hat c^\pdag_l\hat c^\pdag_{l'},
+    &= \frac1{2L^2}\sum_{kk'll'}\int\rd r\int\rd x V(r)\re^{-\ri r(k-l')}\re^{-\ri x(k-l'+k'-l)}\hat c^\dag_k\hat c^\dag_{k'}\hat c^\pdag_l\hat c^\pdag_{l'}
     % \\
     % &= \frac1{2L}\sum_{kk'lq}\int\rd r V(r)\re^{-\ri rq}\delta_{l,k'+q}c^\dag_kc^\dag_{k'}c^\pdag_lc^\pdag_{k-q}
     \\
@@ -751,7 +752,7 @@ We will call those processes forward scattering
 \end{align}
 backscattering
 \begin{align}
-    g_2\sum_{k,k',q}\hat c^\dag_{k+q,\tau}\hat c^\dag_{k'-q,\overline\tau}\hat c^\pdag_{k',\overline\tau}\hat c^\pdag_{k,\tau} = g_2\sum_q \hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau}
+    g_2\sum_{k,k',q}\hat c^\dag_{k+q,\tau}\hat c^\dag_{k'-q,\overline\tau}\hat c^\pdag_{k',\overline\tau}\hat c^\pdag_{k,\tau} = g_2\sum_q \hat\rho^\pdag_{q,\tau}\hat\rho^\dag_{q,\overline\tau},
 \end{align}
 and $g_1$ scattering
 \begin{align}
@@ -799,7 +800,7 @@ To proceed further, it will be useful to compute the commutation of the density 
     =
     \delta_{\tau,\tau'}\sum_k\brlr{\hat c^\dag_{k+q,\tau}\hat c^\pdag_{k-q',\tau}-\hat c^\dag_{k+q+q',\tau}\hat c^\pdag_{k,\tau}}
     \approx
-    -\sigma_\tau\delta_{\tau,\tau'}\delta_{q,-q'}\frac{qL}{2\pi}
+    -\sigma_\tau\delta_{\tau,\tau'}\delta_{q,-q'}\frac{qL}{2\pi},
     \label{eq:chiral_density_commutation}
 \end{align}
 in which $\sigma_\tau=\pm1$ for $\tau=R/L$, respectively, and the right hand side is obtained through a projection on the ground state\footnote{This is a reasonable approximation for small interactions only (as a result from a first order perturbative expansion).
@@ -1681,7 +1682,8 @@ Any attempt to realize systems close to the phase transition requires system len
 The requirement for numerical techniques is two-fold: resolving the phase transition requires excessively long systems, and must capture a divergent correlation length.
 One simulation technique which was successfully applied for such tough systems is the density matrix renormalization group (DMRG) based on matrix product states (MPS), which we formalize in \cref{ch:matrix_product_states}.
 This is to say that the bottleneck of MPS to be efficient is based on simulating systems with a short correlation length (see \cref{sec:scaling_relations_of_the_entanglement_entropy}).
-However, MPS provides a possibility to extrapolate the results to both infinite system sizes and correlation lengths\footnote{To be explicit here, through a finite system size scaling, followed by a finite bond dimension scaling, which controls the effective correlation length captured by the MPS approximation.}, which overcomes the related issues and allows to extract quantitative results with great success, even if the correlation length is large.
+However, MPS provides a possibility to extrapolate the results to both infinite system sizes and correlation lengths, which overcomes the related issues and allows to extract quantitative results with great success.
+% \footnote{To be explicit here, through a finite system size scaling, followed by a finite bond dimension scaling, which controls the effective correlation length captured by the MPS approximation.}
 
 In \cref{one_half1,integer1}, we encounter various types of sine-Gordon terms embedded in a two-component Luttinger liquid.
 Among those which are potentially relevant, we characterize the phase diagram by a second order RG analysis equivalent to the example detailed in this section.
