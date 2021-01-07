@@ -1,5 +1,7 @@
-\documentclass[A4]{svmono}
+\documentclass[a4paper]{svmono}
 
+\newboolean{two_sided} %Deklaration
+\setboolean{two_sided}{true} %Zuweisung
 \usepackage{type1cm}
 \usepackage{makeidx}         % allows index generation
 \usepackage{graphicx}        % standard LaTeX graphics tool
@@ -18,7 +20,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{pdfpages}
-\usepackage[top=3cm,bottom=4cm,outer=3.5cm,inner=3.5cm]{geometry}
+\ifthenelse{\boolean{two_sided}}{
+    \usepackage[top=3cm,bottom=4cm,outer=2cm,inner=5cm]{geometry}
+    }{
+    \usepackage[top=3cm,bottom=4cm,outer=3.5cm,inner=3.5cm]{geometry}
+}
 \usepackage[normalem]{ulem}
 \usepackage{braket}
 \usepackage{tikz}
@@ -59,8 +65,8 @@
 \maketitle
 
 \frontmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\setcounter{page}{1}
+% \newpage
+% \setcounter{page}{1}
 
 \include{acknowledgement}
 \include{abstract}
