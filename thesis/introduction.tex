@@ -6,7 +6,7 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 %
-Most lectures on elementary quantum mechanics are initially formulated in ``first quan\-ti\-zation'' where the aim is to find analytical expressions for the wave function that satisfy a set of constraints dictated by partial differential equations.
+Most lectures on elementary quantum mechanics are initially formulated in ``first quan\-ti\-zation'', where the aim is to find analytical expressions for the wave function that satisfy a set of constraints dictated by partial differential equations.
 This approach can be both beautiful and frustrating at the same time as even simple problems are rather involved, if not impossible, to solve in practice.
 At a later stage one becomes familiar with ``second quantization'', which is more powerful in providing straightforward solutions as it relies on operator actions.
 The common notion of ``first'' and ``second'' is quite confusing -- there is no such thing as two different quantizations -- it denotes just two equivalent and consistent ways of describing the same fundamental theory.
@@ -32,8 +32,8 @@ Common perturbations potentially melting a Luttinger liquid phase are given by s
 Such terms are naturally encountered in systems of coupled wires, which we depict in \cref{sec:LL_with_spin}.
 In order to treat such interactions analytically, we introduce the concept of renormalization group theory (RG) in \cref{sec:renormalization_group_theory}, and study if and when the gapless Luttinger liquid evolves to a gapped, ``massive'' phase.
 RG relies on many simplifications to make the calculation amenable, and microscopic features are often lost in the approximations.
-These details are exchanged in favor of ``universality'', resulting from an effective theory which describes the physical properties of a family of different microscopic models at long scales.
-This framework is thus not intended for a quantitative description of the systems at hand, and numerical tools are of the essence to probe the qualitative predictions in reality.
+These details are exchanged in favor of ``universality'', resulting from an effective theory which describes the physical properties of many different microscopic models at long scales.
+This framework is thus not intended for a quantitative description of the systems at hand, and numerical tools are of the essence to probe the qualitative predictions from RG in reality.
 
 In the absence of analytical solutions, further insights can be obtained by numerical diagonalization of the Hamiltonian in matrix representation.
 Since the dimension of this matrix scales exponentially with the number of constituents, straightforward numerical solutions are limited to small clusters (roughly $\sim 30$ sites for spin-1/2 models).
@@ -44,7 +44,7 @@ For quasi one-dimensional systems, the many-body states can be expressed as matr
 We proceed by discussing two scaling relations of the entanglement entropy and explain the effectivity and the limitations of the MPS ansatz in \cref{sec:scaling_relations_of_the_entanglement_entropy}.
 As a natural extension to MPS, we then introduce matrix product operators (MPO) in \cref{sec:matrix_product_operators}.
 These objects represent actions on many-body states, which ultimately leads to a self-contained formulation of second quantization in the framework of tensor networks.
-We then introduce the basic strategy to approximate ground states based on an MPS ansatz in \cref{sec:variational_ground_state_search}.
+We then introduce the basic strategy to approximate ground states based on the MPS ansatz in \cref{sec:variational_ground_state_search}.
 This algorithm is quite similar to the time evolution presented in \cref{sec:time_evolution} and it can be used to simulate finite temperature systems, as depicted in \cref{sec:finite_temperature}.
 We conclude the chapter by a basic introduction into symmetry invariant MPS formulations, discussed in \cref{sec:exploiting_symmetries}.
 
