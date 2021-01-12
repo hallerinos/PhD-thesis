@@ -6,9 +6,9 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 %
-Most lectures on elementary quantum mechanics are initially formulated in ``first quan\-ti\-zation'' where the aim is to find analytical expressions for the wave function that satisfies a set of constraints dictated by partial differential equations.
+Most lectures on elementary quantum mechanics are initially formulated in ``first quan\-ti\-zation'' where the aim is to find analytical expressions for the wave function that satisfy a set of constraints dictated by partial differential equations.
 This approach can be both beautiful and frustrating at the same time as even simple problems are rather involved, if not impossible, to solve in practice.
-At a later stage one becomes familiar with ``second quantization'', which is more powerful in that respect as it relies on operator actions.
+At a later stage one becomes familiar with ``second quantization'', which is more powerful in providing straightforward solutions as it relies on operator actions.
 The common notion of ``first'' and ``second'' is quite confusing -- there is no such thing as two different quantizations -- it denotes just two equivalent and consistent ways of describing the same fundamental theory.
 % Ultimately, I've learned to accept this issue as a result of chronology: the original formulation of quantum mechanics is commonly called first quantization, in which the (motion of the) particle is quantized and possible electromagnetic fields or potentials are considered classical, whereas quantized fields have been formulated in the language of second quantization.
 Independently of the formulation, be it first or second, a quantum theory requires certain basic concepts.
@@ -22,27 +22,28 @@ We set our focus on transport and topological properties of quasi one-dimensiona
 In \cref{part:theory} we present a collection of theoretical prerequisites, necessary to deeply understand our works presented in \cref{part:results}.
 \Cref{ch:the_quantization_of_motion_and_fields} concerns many concepts of quantum physics encountered in low dimensions and beyond.
 After a general introduction to second quantization in \cref{sec:creation_and_annihilation_operators}, we motivate the existence of (electronic) bands and the tight binding approximation in \cref{sec:tight_binding_systems}, derived from the Kronig-Penney model in the strong potential limit (see \cref{sec:periodic_potentials}).
-As such, these sections are mainly aimed at newcomers in the field.
-We then illustrate the treatment of interactions on top of a non-interacting Hamiltonian using crucial tools to study quantum mechanical systems in low dimensions: In many cases, the starting point is a perturbed quantum harmonic oscillator, which we outline by deriving the quantum field theory of Luttinger liquids in \cref{sec:tomonaga_LL}.
+As such, these sections are mainly aimed at non-specialists.
+We then illustrate the treatment of interactions on top of a non-interacting Hamiltonian in the process of introducing crucial tools to study quantum mechanical systems in low dimensions.
+In many cases, the starting point is a perturbed quantum harmonic oscillator, which we outline by deriving the quantum field theory of Luttinger liquids in \cref{sec:tomonaga_LL}.
 The conceptual beauty of Luttinger liquids manifests in an analytically solvable theory, capturing the essential properties of many genuinely interacting low-dimensional systems.
-The formalism of path integrals is introduced in \cref{sec:properties_of_real_scalar_fields_and_their_correlations} and immediately applied for the derivation of correlation functions.
+The formalism of path integrals is introduced in \cref{sec:properties_of_real_scalar_fields_and_their_correlations} and immediately applied to the derivation of correlation functions.
 
 Common perturbations potentially melting a Luttinger liquid phase are given by sine-Gordon interactions.
 Such terms are naturally encountered in systems of coupled wires, which we depict in \cref{sec:LL_with_spin}.
 In order to treat such interactions analytically, we introduce the concept of renormalization group theory (RG) in \cref{sec:renormalization_group_theory}, and study if and when the gapless Luttinger liquid evolves to a gapped, ``massive'' phase.
-RG relies on many simplifications along the way to make the calculation amenable, and microscopic features are often lost in the approximations.
-These ``details'' are exchanged in favor of ``universality'': an effective theory which describes the physical properties of a family of different microscopic models at long scales.
+RG relies on many simplifications to make the calculation amenable, and microscopic features are often lost in the approximations.
+These details are exchanged in favor of ``universality'', resulting from an effective theory which describes the physical properties of a family of different microscopic models at long scales.
 This framework is thus not intended for a quantitative description of the systems at hand, and numerical tools are of the essence to probe the qualitative predictions in reality.
 
-In the absence of analytical solutions, further insights are usually obtained by numerical diagonalization of the Hamiltonian in matrix representation.
-Since the dimension of this matrix scales exponentially in the number of constituents, straightforward numerical solutions are limited to small clusters (roughly $\sim 30$ sites for spin-1/2 models).
-Although these ``exact diagonalization'' approaches provide estimates up to machine precision, the explorable system sizes are often insufficient for a meaningful investigation of collective many-body phenomena and other numerical techniques are needed.
-In \cref{ch:matrix_product_states} we derive and explain more efficient algorithms formalized in terms of tensor networks that are used intensively throughout all of our works.
-For quasi one-dimensional systems, the many-body states can be expressed in terms of matrix product representations, and the corresponding tensor network structures are called matrix product states (MPS).
+In the absence of analytical solutions, further insights can be obtained by numerical diagonalization of the Hamiltonian in matrix representation.
+Since the dimension of this matrix scales exponentially with the number of constituents, straightforward numerical solutions are limited to small clusters (roughly $\sim 30$ sites for spin-1/2 models).
+Although these ``exact diagonalization'' approaches provide estimates up to machine epsilon, the explorable system sizes are often insufficient for a meaningful investigation of collective many-body phenomena and other numerical techniques are needed.
+In \cref{ch:matrix_product_states} we derive and explain more efficient algorithms formalized in the language of tensor networks that are used intensively throughout all of our works.
+For quasi one-dimensional systems, the many-body states can be expressed as matrix product representations, and the corresponding tensor network structures are called matrix product states (MPS).
 \Cref{sec:tensor_networks,sec:reduced_density_matrix_and_renyi_entropy} are meant to introduce the field of tensor networks and MPS.
 We proceed by discussing two scaling relations of the entanglement entropy and explain the effectivity and the limitations of the MPS ansatz in \cref{sec:scaling_relations_of_the_entanglement_entropy}.
 As a natural extension to MPS, we then introduce matrix product operators (MPO) in \cref{sec:matrix_product_operators}.
-These objects represent actions on many-body states, which ultimately leads to a self-contained formulation of second quantization in terms of matrix product states and operators.
+These objects represent actions on many-body states, which ultimately leads to a self-contained formulation of second quantization in the framework of tensor networks.
 We then introduce the basic strategy to approximate ground states based on an MPS ansatz in \cref{sec:variational_ground_state_search}.
 This algorithm is quite similar to the time evolution presented in \cref{sec:time_evolution} and it can be used to simulate finite temperature systems, as depicted in \cref{sec:finite_temperature}.
 We conclude the chapter by a basic introduction into symmetry invariant MPS formulations, discussed in \cref{sec:exploiting_symmetries}.
@@ -50,13 +51,13 @@ We conclude the chapter by a basic introduction into symmetry invariant MPS form
 One rapidly growing field in modern physics is topological quantum matter, which falls outside Landau's paradigm to characterize phases of matter with local order parameters.
 Topological quantum matter is instead associated with more fundamental and global entities that are restricted to integer numbers, called topological invariants.
 For an overview of this topic, we review the classification of topological matter in \cref{ch:topological_phases_of_matter}.
-We explain the analytical treatment ``topological band theory'' in \cref{sec:topological_band_theory}, which denotes the combination of band theory and the Berry connection.
+We explain topological band theory in \cref{sec:topological_band_theory}, which denotes the combination of band theory and the Berry connection.
 We then explore the Su-Schrieffer-Heeger chain in \cref{sec:the_SSH_chain} to illustrate the key concepts in practice.
 The third chapter is concluded by the classification of topological insulators and superconductors in \cref{sec:Periodic_table_of_topological_insulators_and_superconductors}.
 
 In \cref{part:results} we present our published works in a thematic manner and I first declare my original contributions in \cref{ch:declaration_of_original_contributions}.
 The flexible tuning of transport properties, i.e. the Drude weight, is presented in \cref{drude_increased1}.
-The next three works presented in \cref{one_half1,integer1,chiral1} regard the emergence and understanding of strongly correlated helical phases of matter.
+The next three works presented in \cref{one_half1,integer1,chiral1} regard the emergence and understanding of strongly correlated helical phases of matter in systems of coupled wires.
 In \cref{mcd1}, we propose a dynamical experiment based on the mean chiral displacement to read-out the topological invariant of one-dimensional insulators protected by chiral symmetry.
 
 \Cref{part:summary} concludes this thesis -- we present a discussion of our advances in a short summary and provide perspectives about interesting future directions.
