@@ -1265,9 +1265,10 @@ The $g_1$ terms require more attention in this case:
 While inter-spin terms $g_{1\parallel}$ are equivalent to backscattering terms (up to a sign, see \cref{eq:umklapp_backscattering_equivalence}), the $g_{1\perp}$ term is resulting in
 \begin{align}
     g_{1\perp}\sum_{s\in\{\uparrow,\downarrow\}}\hat c^\dag_{L,s}(x)\hat c^\pdag_{R,s}(x)\hat c^\dag_{R,\overline s}(x)\hat c^\pdag_{L,\overline s}(x)
-    =
+    &=
     \frac{g_{1\perp}}{4\pi^2\alpha^2 }\sum_{s\in\{\uparrow,\downarrow\}}\re^{-2\ri\hat \phi_s(x)}\re^{2\ri\hat \phi_{\overline s}(x)}
-    =
+    \\
+    &=
     \frac{g_{1\perp}}{2\pi^2\alpha^2}\cos(2\sqrt2\hat \phi_-(x))
 \end{align}
 and therefore, the total Hamiltonian is of the form (again, setting $\hbar=1$)
@@ -1442,7 +1443,7 @@ For convenience, let me proceed with the assumption that the two-point correlati
     \right).
 \end{align}
 }%
-The disconnected part of the correlation function is evaluated using the identity $2\cos(a)\cos(b)=\cos(a+b)+\cos(a-b)$ and $(1-\alpha\rd l)^2 = 1-2\alpha\rd l + O(\rd l^2)$ and reads
+The disconnected part is evaluated using the identity \mbox{$2\cos(a)\cos(b)=\cos(a+b)+\cos(a-b)$} and $(1-\alpha\rd l)^2 = 1-2\alpha\rd l + O(\rd l^2)$ and reads
 \begin{align}
     \braket{S_I[\phi_{\Lambda'}+h]}_h^2
     = g^2\brlr{1 - \frac{K\beta^2}4\rd l}^2\int\rd^2x\rd^2x'\cos(\beta \phi_{\Lambda'}({\bm x}))\cos(\beta \phi_{\Lambda'}({\bm x'}))
@@ -1578,7 +1579,7 @@ The first $\cos$ term (\cref{eq:rg_int_1}) did not exist in the original Hamilto
     This allows for a practical and well-justified simplification of dropping the sum in the previous expression, because the dominant coupling is always independent of the amplitudes of less-relevant operators.
 } -- it is a new sine-Gordon type interaction with larger scaling dimension $D_{\tilde g} = K\beta^2$ compared to $D_g=K\beta^2/4$.
 The operator associated to $\tilde g$ is thus less relevant than the original term and can be disregarded.
-The second $\cos$ term in (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part,
+The second $\cos$ term (\cref{eq:rg_int_2}) yields a renormalization of the quadratic part,
 \begin{align}
     -\frac12\braket{S^2_I[\phi_{\Lambda'}+h]}_{h,{\rm conn.}}
     \approx
@@ -1627,7 +1628,7 @@ which dictate the modified RG equations
 \end{align}
 This set of variables is particularly useful to investigate the equations in proximity of $x=0$.
 Note that $(x+2)^3\approx8$, such that $\rd x/\rd l = -y^2$ and $\rd y/\rd l=-xy$ describes the effective RG flow close to the Luttinger liquid fix point at $x=0$ and $y=0$, which are known as the ``Kosterlitz-Thouless equations''~\cite{Kosterlitz1974,Kosterlitz1973}.
-
+\clearpage
 \begin{figure}
     \centering
     \subfigure[]{\includegraphics{figures/BKT_RG_flow1.png}}
