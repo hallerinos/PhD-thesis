@@ -1,0 +1,78 @@
+\documentclass[tikz]{standalone} % border={left bottom right top}
+\input{./Tensors_2.tex}
+\input{../definitions.tex}
+\usepackage{braket,bm}
+\begin{document}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth'
+}
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc/.style={
+      start angle=0, end angle=360,radius=0.4
+    }
+  }
+
+\tikzset{
+    tst/.style={
+      thin, opacity=0.5,
+      dashed
+    },
+    my-arc2/.style={
+      start angle=0, end angle=360,radius=0.2
+    }
+  }
+
+\definecolor{blue}{rgb}{0.2745098039, 0.5333333333, 0.9450980392}
+\definecolor{red}{rgb}{0.9176470588, 0.2588235294, 0.2078431373}
+\definecolor{yellos}{rgb}{0.9764705882, 0.7333333333, 0.1764705882}
+\definecolor{green}{rgb}{0.2039215686, 0.662745098, 0.3176470588}
+
+\usetikzlibrary{arrows,positioning}
+\tikzset{
+    %Define standard arrow tip
+    >=stealth',
+    %Define style for boxes
+    punkt/.style={
+           rectangle,
+           rounded corners,
+           draw=white, very thick,
+           text width=6.5em,
+           minimum height=2em,
+           text centered},
+    % Define arrow style
+    pil/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,}
+}
+
+
+\begin{tikzpicture}
+  \color{white}
+    \node[punkt] (a3) at (0,6) {1. MPS initialization};
+    \node[punkt] (a2) at (0,4) {2. Local optimization};
+    \node[punkt] (a) {2. Local optimization};
+
+    \node[punkt] (t) at (3,2) {4. Move $\bm A_C$ to the left $n\rightarrow n-1$} edge[pil, <- ,bend left=45] (a.east);
+    \draw (t.west) edge[pil, bend right=45] ($(a.north)+(.1,0)$);
+    \node[punkt] (g) at (-3,2) {3. Move $\bm A_C$ to the right, $n\rightarrow n+1$} edge[pil, bend right=45] node[below,pos=.4,xshift=-.8cm] {if $n=L-1$} (a.west);
+    % \draw (g.east) edge[pil, <-, bend left=45] ($(a.north)+(-.1,0)$);
+
+    \draw (t.north) edge[pil, bend right=45] node[above,pos=.4,xshift=.6cm] {if $n=1$} (a2.east);
+
+    \draw (a2.west) edge[pil, bend right=45] (g.north);
+    \draw (g.east) edge[pil, bend right=45] (a2.south);
+
+    \draw (a3.south) edge[pil] (a2.north);
+\end{tikzpicture}
+
+
+\end{document}
